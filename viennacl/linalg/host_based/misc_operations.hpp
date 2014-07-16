@@ -71,7 +71,6 @@ namespace viennacl
 
         }
       }
-        //git second cnage
     } // namespace host_based
   } //namespace linalg
 } //namespace viennacl
