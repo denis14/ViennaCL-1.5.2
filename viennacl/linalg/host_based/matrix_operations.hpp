@@ -1454,7 +1454,7 @@ namespace viennacl
                }
             }
          }
-
+        //git first commit
 
     } // namespace host_based
   } //namespace linalg
