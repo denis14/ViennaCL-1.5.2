@@ -1,0 +1,1 @@
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/generator_blas1bench-opencl.dir/generator_blas1.cpp.o  -o generator_blas1bench-opencl -rdynamic -lOpenCL 

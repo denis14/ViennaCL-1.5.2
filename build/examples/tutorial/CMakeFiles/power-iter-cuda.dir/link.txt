@@ -1,0 +1,1 @@
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/power-iter-cuda.dir/./power-iter-cuda_generated_power-iter.cu.o  -o power-iter-cuda -rdynamic -lcudart -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

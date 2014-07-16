@@ -1,0 +1,1 @@
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/libviennacl_blas2-test.dir/src/libviennacl_blas2.cpp.o  -o libviennacl_blas2-test -rdynamic ../libviennacl/libviennacl.so -lOpenCL -Wl,-rpath,/home/denis/Documents/ViennaCL-1.5.2/build/libviennacl 

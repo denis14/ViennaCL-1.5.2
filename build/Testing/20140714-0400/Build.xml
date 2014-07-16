@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Linux-c++"
+	BuildStamp="20140714-0400-Nightly"
+	Name="andi-N51Vn"
+	Generator="ctest-2.8.12.2"
+	CompilerName="/usr/bin/c++"
+	OSName="Linux"
+	Hostname="andi-N51Vn"
+	OSRelease="3.13.0-30-generic"
+	OSVersion="#55-Ubuntu SMP Fri Jul 4 21:43:42 UTC 2014"
+	OSPlatform="i686"
+	Is64Bits="0"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="23"
+	ProcessorCacheSize="3072"
+	NumberOfLogicalCPU="2"
+	NumberOfPhysicalCPU="2"
+	TotalVirtualMemory="1905"
+	TotalPhysicalMemory="4030"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="2528.13"
+>
+<Build>
+	<StartDateTime>Jul 14 11:27 CEST</StartDateTime>
+	<StartBuildTime>1405330029</StartBuildTime>
+<BuildCommand>/usr/bin/make -i</BuildCommand>
+	<Error>
+		<BuildLogLine>230</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/svd.hpp:517:7: error: ‘bidiag_pack’ is not a member of ‘viennacl::linalg::detail’
+</Text>
+		<SourceFile>viennacl/linalg/svd.hpp</SourceFile>
+		<SourceLineNumber>517</SourceLineNumber>
+		<PreContext>Linking CXX executable blas3_solve_float-test-cpu
+[ 51%] Built target blas3_solve_float-test-cpu
+Scanning dependencies of target blas3_solve_float-test-opencl
+[ 52%] Building CXX object tests/CMakeFiles/blas3_solve_float-test-opencl.dir/src/blas3_solve_float.cpp.o
+Linking CXX executable blas3_solve_float-test-opencl
+[ 52%] Built target blas3_solve_float-test-opencl
+Scanning dependencies of target external_linkage-opencl
+[ 53%] Building CXX object tests/CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.o
+In file included from /.../ViennaCL-1.5.2/tests/src/external_1.cpp:62:0:
+/.../ViennaCL-1.5.2/viennacl/linalg/svd.hpp: In function ‘void viennacl::linalg::svd(viennacl::matrix&lt;SCALARTYPE, viennacl::row_major, ALIGNMENT&gt;&amp;, viennacl::matrix&lt;SCALARTYPE, viennacl::row_major, ALIGNMENT&gt;&amp;, viennacl::matrix&lt;SCALARTYPE, viennacl::row_major, ALIGNMENT&gt;&amp;)’:
+</PreContext>
+		<PostContext>       detail::bidiag_pack(A, dh, sh);
+       ^
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Error>
+
+
+	<Warning>
+		<BuildLogLine>233</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/svd.hpp:517:7: note: suggested alternatives:
+</Text>
+		<SourceFile>viennacl/linalg/svd.hpp</SourceFile>
+		<SourceLineNumber>517</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>In file included from /.../ViennaCL-1.5.2/viennacl/matrix.hpp:28:0,
+                 from /.../ViennaCL-1.5.2/tests/src/external_1.cpp:36:
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>236</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/matrix_operations.hpp:783:10: note:   ‘viennacl::linalg::bidiag_pack’
+</Text>
+		<SourceFile>viennacl/linalg/matrix_operations.hpp</SourceFile>
+		<SourceLineNumber>783</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>     void bidiag_pack(viennacl::matrix&lt;SCALARTYPE, row_major, ALIGNMENT&gt;&amp; A,
+          ^
+In file included from /.../ViennaCL-1.5.2/viennacl/linalg/matrix_operations.hpp:38:0,
+                 from /.../ViennaCL-1.5.2/viennacl/matrix.hpp:28,
+                 from /.../ViennaCL-1.5.2/tests/src/external_1.cpp:36:
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>242</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/host_based/matrix_operations.hpp:1177:13: note:   ‘viennacl::linalg::host_based::bidiag_pack’
+</Text>
+		<SourceFile>viennacl/linalg/host_based/matrix_operations.hpp</SourceFile>
+		<SourceLineNumber>1177</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>        void bidiag_pack(viennacl::matrix&lt;SCALARTYPE, row_major, ALIGNMENT&gt;&amp; A,
+             ^
+In file included from /.../ViennaCL-1.5.2/viennacl/linalg/matrix_operations.hpp:41:0,
+                 from /.../ViennaCL-1.5.2/viennacl/matrix.hpp:28,
+                 from /.../ViennaCL-1.5.2/tests/src/external_1.cpp:36:
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>248</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/opencl/matrix_operations.hpp:1002:12: note:   ‘viennacl::linalg::opencl::bidiag_pack’
+</Text>
+		<SourceFile>viennacl/linalg/opencl/matrix_operations.hpp</SourceFile>
+		<SourceLineNumber>1002</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>       void bidiag_pack(viennacl::matrix&lt;SCALARTYPE, row_major, ALIGNMENT&gt;&amp; A,
+            ^
+[ 54%] Building CXX object tests/CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.o
+In file included from /.../ViennaCL-1.5.2/tests/src/external_2.cpp:62:0:
+/.../ViennaCL-1.5.2/viennacl/linalg/svd.hpp: In function ‘void viennacl::linalg::svd(viennacl::matrix&lt;SCALARTYPE, viennacl::row_major, ALIGNMENT&gt;&amp;, viennacl::matrix&lt;SCALARTYPE, viennacl::row_major, ALIGNMENT&gt;&amp;, viennacl::matrix&lt;SCALARTYPE, viennacl::row_major, ALIGNMENT&gt;&amp;)’:
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Error>
+		<BuildLogLine>254</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/svd.hpp:517:7: error: ‘bidiag_pack’ is not a member of ‘viennacl::linalg::detail’
+</Text>
+		<SourceFile>viennacl/linalg/svd.hpp</SourceFile>
+		<SourceLineNumber>517</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>       detail::bidiag_pack(A, dh, sh);
+       ^
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Error>
+
+
+	<Warning>
+		<BuildLogLine>257</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/svd.hpp:517:7: note: suggested alternatives:
+</Text>
+		<SourceFile>viennacl/linalg/svd.hpp</SourceFile>
+		<SourceLineNumber>517</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>In file included from /.../ViennaCL-1.5.2/viennacl/matrix.hpp:28:0,
+                 from /.../ViennaCL-1.5.2/tests/src/external_2.cpp:36:
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>260</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/matrix_operations.hpp:783:10: note:   ‘viennacl::linalg::bidiag_pack’
+</Text>
+		<SourceFile>viennacl/linalg/matrix_operations.hpp</SourceFile>
+		<SourceLineNumber>783</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>     void bidiag_pack(viennacl::matrix&lt;SCALARTYPE, row_major, ALIGNMENT&gt;&amp; A,
+          ^
+In file included from /.../ViennaCL-1.5.2/viennacl/linalg/matrix_operations.hpp:38:0,
+                 from /.../ViennaCL-1.5.2/viennacl/matrix.hpp:28,
+                 from /.../ViennaCL-1.5.2/tests/src/external_2.cpp:36:
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>266</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/host_based/matrix_operations.hpp:1177:13: note:   ‘viennacl::linalg::host_based::bidiag_pack’
+</Text>
+		<SourceFile>viennacl/linalg/host_based/matrix_operations.hpp</SourceFile>
+		<SourceLineNumber>1177</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>        void bidiag_pack(viennacl::matrix&lt;SCALARTYPE, row_major, ALIGNMENT&gt;&amp; A,
+             ^
+In file included from /.../ViennaCL-1.5.2/viennacl/linalg/matrix_operations.hpp:41:0,
+                 from /.../ViennaCL-1.5.2/viennacl/matrix.hpp:28,
+                 from /.../ViennaCL-1.5.2/tests/src/external_2.cpp:36:
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>272</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/opencl/matrix_operations.hpp:1002:12: note:   ‘viennacl::linalg::opencl::bidiag_pack’
+</Text>
+		<SourceFile>viennacl/linalg/opencl/matrix_operations.hpp</SourceFile>
+		<SourceLineNumber>1002</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>       void bidiag_pack(viennacl::matrix&lt;SCALARTYPE, row_major, ALIGNMENT&gt;&amp; A,
+            ^
+Linking CXX executable external_linkage-opencl
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Error>
+		<BuildLogLine>276</BuildLogLine>
+		<Text>c++: error: CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.o: Datei oder Verzeichnis nicht gefunden
+</Text>
+		<PreContext></PreContext>
+		<PostContext></PostContext>
+		<RepeatCount>0</RepeatCount>
+</Error>
+
+
+	<Error>
+		<BuildLogLine>277</BuildLogLine>
+		<Text>c++: error: CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.o: Datei oder Verzeichnis nicht gefunden
+</Text>
+		<PreContext></PreContext>
+		<PostContext>[ 54%] Built target external_linkage-opencl
+Scanning dependencies of target fft-test-opencl
+[ 54%] Building CXX object tests/CMakeFiles/fft-test-opencl.dir/src/fft.cpp.o
+Linking CXX executable fft-test-opencl
+[ 54%] Built target fft-test-opencl
+Scanning dependencies of target generator_blas1-test-opencl
+[ 55%] Building CXX object tests/CMakeFiles/generator_blas1-test-opencl.dir/src/generator_blas1.cpp.o
+Linking CXX executable generator_blas1-test-opencl
+[ 55%] Built target generator_blas1-test-opencl
+Scanning dependencies of target generator_blas2-test-opencl</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Error>
+
+
+	<Warning>
+		<BuildLogLine>390</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/tests/src/nmf.cpp:98:118: warning: format ‘%lu’ expects argument of type ‘long unsigned int’, but argument 3 has type ‘std::size_t {aka unsigned int}’ [-Wformat=]
+</Text>
+		<SourceFile>tests/src/nmf.cpp</SourceFile>
+		<SourceLineNumber>98</SourceLineNumber>
+		<PreContext>[ 76%] Building CXX object tests/CMakeFiles/matrix_vector_int-test-cpu.dir/src/matrix_vector_int.cpp.o
+Linking CXX executable matrix_vector_int-test-cpu
+[ 76%] Built target matrix_vector_int-test-cpu
+Scanning dependencies of target matrix_vector_int-test-opencl
+[ 76%] Building CXX object tests/CMakeFiles/matrix_vector_int-test-opencl.dir/src/matrix_vector_int.cpp.o
+Linking CXX executable matrix_vector_int-test-opencl
+[ 76%] Built target matrix_vector_int-test-opencl
+Scanning dependencies of target nmf-test-opencl
+[ 77%] Building CXX object tests/CMakeFiles/nmf-test-opencl.dir/src/nmf.cpp.o
+/.../ViennaCL-1.5.2/tests/src/nmf.cpp: In function ‘void test_nmf(std::size_t, std::size_t, std::size_t)’:
+</PreContext>
+		<PostContext>     printf("%6s [%lux%lux%lu] diff = %.6f (%ld iterations)\n", diff_ok ? "[[OK]]":"[FAIL]", m, k, n, diff, iterations);
+                                                                                                                      ^
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>393</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/tests/src/nmf.cpp:98:118: warning: format ‘%lu’ expects argument of type ‘long unsigned int’, but argument 4 has type ‘std::size_t {aka unsigned int}’ [-Wformat=]
+</Text>
+		<SourceFile>tests/src/nmf.cpp</SourceFile>
+		<SourceLineNumber>98</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext></PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>394</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/tests/src/nmf.cpp:98:118: warning: format ‘%lu’ expects argument of type ‘long unsigned int’, but argument 5 has type ‘std::size_t {aka unsigned int}’ [-Wformat=]
+</Text>
+		<SourceFile>tests/src/nmf.cpp</SourceFile>
+		<SourceLineNumber>98</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>Linking CXX executable nmf-test-opencl
+[ 77%] Built target nmf-test-opencl
+Scanning dependencies of target qr_method-test-cpu
+[ 78%] Building CXX object tests/CMakeFiles/qr_method-test-cpu.dir/src/qr_method.cpp.o
+In file included from /.../ViennaCL-1.5.2/viennacl/linalg/qr-method.hpp:25:0,
+                 from /.../ViennaCL-1.5.2/tests/src/qr_method.cpp:35:
+/.../ViennaCL-1.5.2/viennacl/linalg/qr-method-common.hpp: In function ‘void viennacl::linalg::detail::copy_vec(viennacl::matrix&lt;SCALARTYPE, viennacl::row_major, ALIGNMENT&gt;&amp;, viennacl::vector&lt;SCALARTYPE, ALIGNMENT&gt;&amp;, viennacl::vcl_size_t, viennacl::vcl_size_t, bool)’:
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Error>
+		<BuildLogLine>402</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/qr-method-common.hpp:156:77: error: ‘opencl_handle’ is not a member of ‘viennacl::traits’
+</Text>
+		<SourceFile>viennacl/linalg/qr-method-common.hpp</SourceFile>
+		<SourceLineNumber>156</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>         viennacl::ocl::context &amp; ctx = const_cast&lt;viennacl::ocl::context &amp;&gt;(viennacl::traits::opencl_handle(A).context());
+                                                                             ^
+In file included from /.../ViennaCL-1.5.2/tests/src/qr_method.cpp:35:0:
+/.../ViennaCL-1.5.2/viennacl/linalg/qr-method.hpp: In function ‘void viennacl::linalg::detail::final_iter_update_gpu(MatrixT&amp;, int, int, SCALARTYPE, SCALARTYPE)’:
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Error>
+
+
+	<Error>
+		<BuildLogLine>407</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/qr-method.hpp:251:81: error: ‘opencl_handle’ is not a member of ‘viennacl::traits’
+</Text>
+		<SourceFile>viennacl/linalg/qr-method.hpp</SourceFile>
+		<SourceLineNumber>251</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>             viennacl::ocl::context &amp; ctx = const_cast&lt;viennacl::ocl::context &amp;&gt;(viennacl::traits::opencl_handle(A).context());
+                                                                                 ^
+/.../ViennaCL-1.5.2/viennacl/linalg/qr-method.hpp: In function ‘void viennacl::linalg::detail::update_float_QR_column_gpu(MatrixT&amp;, const std::vector&lt;RowType&gt;&amp;, viennacl::vector&lt;T&gt;&amp;, int, int, int, bool)’:
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Error>
+
+
+	<Error>
+		<BuildLogLine>411</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/qr-method.hpp:275:81: error: ‘opencl_handle’ is not a member of ‘viennacl::traits’
+</Text>
+		<SourceFile>viennacl/linalg/qr-method.hpp</SourceFile>
+		<SourceLineNumber>275</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>             viennacl::ocl::context &amp; ctx = const_cast&lt;viennacl::ocl::context &amp;&gt;(viennacl::traits::opencl_handle(A).context());
+                                                                                 ^
+/.../ViennaCL-1.5.2/viennacl/linalg/qr-method.hpp: In function ‘void viennacl::linalg::detail::qr_method(viennacl::matrix&lt;SCALARTYPE, F, ALIGNMENT&gt;&amp;, viennacl::matrix&lt;SCALARTYPE, F, ALIGNMENT&gt;&amp;, boost::numeric::ublas::vector&lt;SCALARTYPE&gt;&amp;, boost::numeric::ublas::vector&lt;SCALARTYPE&gt;&amp;, bool)’:
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Error>
+
+
+	<Error>
+		<BuildLogLine>415</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/qr-method.hpp:953:81: error: ‘opencl_handle’ is not a member of ‘viennacl::traits’
+</Text>
+		<SourceFile>viennacl/linalg/qr-method.hpp</SourceFile>
+		<SourceLineNumber>953</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>             viennacl::ocl::context &amp; ctx = const_cast&lt;viennacl::ocl::context &amp;&gt;(viennacl::traits::opencl_handle(A).context());
+                                                                                 ^
+/.../ViennaCL-1.5.2/viennacl/linalg/qr-method.hpp: In instantiation of ‘void viennacl::linalg::detail::qr_method(viennacl::matrix&lt;SCALARTYPE, F, ALIGNMENT&gt;&amp;, viennacl::matrix&lt;SCALARTYPE, F, ALIGNMENT&gt;&amp;, boost::numeric::ublas::vector&lt;SCALARTYPE&gt;&amp;, boost::numeric::ublas::vector&lt;SCALARTYPE&gt;&amp;, bool) [with SCALARTYPE = float; F = viennacl::row_major; unsigned int ALIGNMENT = 1u]’:
+/.../ViennaCL-1.5.2/viennacl/linalg/qr-method.hpp:1034:43:   required from ‘void viennacl::linalg::qr_method_sym(viennacl::matrix&lt;SCALARTYPE, F, ALIGNMENT&gt;&amp;, viennacl::matrix&lt;SCALARTYPE, F, ALIGNMENT&gt;&amp;, boost::numeric::ublas::vector&lt;SCALARTYPE&gt;&amp;) [with SCALARTYPE = float; F = viennacl::row_major; unsigned int ALIGNMENT = 1u]’
+/.../ViennaCL-1.5.2/tests/src/qr_method.cpp:207:61:   required from here
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Error>
+
+
+	<Error>
+		<BuildLogLine>421</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/qr-method.hpp:962:15: error: no matching function for call to ‘viennacl::identity_matrix&lt;float&gt;::identity_matrix(viennacl::matrix_base&lt;float, viennacl::row_major, unsigned int, int&gt;::size_type, viennacl::ocl::context&amp;)’
+</Text>
+		<SourceFile>viennacl/linalg/qr-method.hpp</SourceFile>
+		<SourceLineNumber>962</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>             Q = viennacl::identity_matrix&lt;SCALARTYPE&gt;(Q.size1(), ctx);
+               ^
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Error>
+
+
+	<Warning>
+		<BuildLogLine>424</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/qr-method.hpp:962:15: note: candidates are:
+</Text>
+		<SourceFile>viennacl/linalg/qr-method.hpp</SourceFile>
+		<SourceLineNumber>962</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>In file included from /.../ViennaCL-1.5.2/viennacl/linalg/qr-method.hpp:22:0,
+                 from /.../ViennaCL-1.5.2/tests/src/qr_method.cpp:35:
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>427</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/matrix.hpp:83:7: note: viennacl::identity_matrix&lt;SCALARTYPE&gt;::identity_matrix(viennacl::identity_matrix&lt;SCALARTYPE&gt;::size_type, viennacl::context) [with SCALARTYPE = float; viennacl::identity_matrix&lt;SCALARTYPE&gt;::size_type = unsigned int]
+</Text>
+		<SourceFile>viennacl/matrix.hpp</SourceFile>
+		<SourceLineNumber>83</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>       identity_matrix(size_type s, viennacl::context ctx = viennacl::context()) : size_(s), diag_(1), off_diag_(0), ctx_(ctx) {}
+       ^
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>430</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/matrix.hpp:83:7: note:   no known conversion for argument 2 from ‘viennacl::ocl::context’ to ‘viennacl::context’
+</Text>
+		<SourceFile>viennacl/matrix.hpp</SourceFile>
+		<SourceLineNumber>83</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext></PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>431</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/matrix.hpp:77:9: note: viennacl::identity_matrix&lt;float&gt;::identity_matrix(const viennacl::identity_matrix&lt;float&gt;&amp;)
+</Text>
+		<SourceFile>viennacl/matrix.hpp</SourceFile>
+		<SourceLineNumber>77</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>   class identity_matrix
+         ^
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>434</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/matrix.hpp:77:9: note:   candidate expects 1 argument, 2 provided
+</Text>
+		<SourceFile>viennacl/matrix.hpp</SourceFile>
+		<SourceLineNumber>77</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>Linking CXX executable qr_method-test-cpu
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Error>
+		<BuildLogLine>436</BuildLogLine>
+		<Text>c++: error: CMakeFiles/qr_method-test-cpu.dir/src/qr_method.cpp.o: Datei oder Verzeichnis nicht gefunden
+</Text>
+		<PreContext></PreContext>
+		<PostContext>[ 78%] Built target qr_method-test-cpu
+Scanning dependencies of target qr_method-test-opencl
+[ 79%] Building CXX object tests/CMakeFiles/qr_method-test-opencl.dir/src/qr_method.cpp.o
+In file included from /.../ViennaCL-1.5.2/viennacl/linalg/qr-method.hpp:21:0,
+                 from /.../ViennaCL-1.5.2/tests/src/qr_method.cpp:35:
+/.../ViennaCL-1.5.2/viennacl/vector.hpp: In instantiation of ‘viennacl::vector_base&lt;SCALARTYPE, SizeType, DistanceType&gt;::self_type&amp; viennacl::vector_base&lt;SCALARTYPE, SizeType, DistanceType&gt;::operator=(const viennacl::vector_expression&lt;const LHS, const RHS, OP&gt;&amp;) [with LHS = viennacl::vector_base&lt;float&gt;; RHS = double; OP = viennacl::op_mult; SCALARTYPE = float; SizeType = unsigned int; DistanceType = int; viennacl::vector_base&lt;SCALARTYPE, SizeType, DistanceType&gt;::self_type = viennacl::vector_base&lt;float&gt;]’:
+/.../ViennaCL-1.5.2/viennacl/vector.hpp:2166:17:   required from ‘static void viennacl::linalg::detail::op_executor&lt;viennacl::vector_base&lt;T&gt;, viennacl::op_assign, viennacl::vector_expression&lt;const viennacl::vector_expression&lt;const LHS, const RHS, OP&gt;, const ScalarType, viennacl::op_mult&gt; &gt;::apply(viennacl::vector_base&lt;T&gt;&amp;, const viennacl::vector_expression&lt;const viennacl::vector_expression&lt;const LHS, const RHS, OP&gt;, const ScalarType, viennacl::op_mult&gt;&amp;) [with T = float; LHS = viennacl::matrix_expression&lt;const viennacl::matrix_base&lt;float&gt;, const viennacl::matrix_base&lt;float&gt;, viennacl::op_trans&gt;; RHS = viennacl::vector_base&lt;float&gt;; OP = viennacl::op_prod; ScalarType = double]’
+/.../ViennaCL-1.5.2/viennacl/vector.hpp:525:124:   required from ‘viennacl::vector_base&lt;SCALARTYPE, SizeType, DistanceType&gt;::self_type&amp; viennacl::vector_base&lt;SCALARTYPE, SizeType, DistanceType&gt;::operator=(const viennacl::vector_expression&lt;const LHS, const RHS, OP&gt;&amp;) [with LHS = viennacl::vector_expression&lt;const viennacl::matrix_expression&lt;const viennacl::matrix_base&lt;float&gt;, const viennacl::matrix_base&lt;float&gt;, viennacl::op_trans&gt;, const viennacl::vector_base&lt;float&gt;, viennacl::op_prod&gt;; RHS = double; OP = viennacl::op_mult; SCALARTYPE = float; SizeType = unsigned int; DistanceType = int; viennacl::vector_base&lt;SCALARTYPE, SizeType, DistanceType&gt;::self_type = viennacl::vector_base&lt;float&gt;]’
+/.../ViennaCL-1.5.2/viennacl/vector.hpp:1061:33:   required from ‘viennacl::vector&lt;SCALARTYPE, ALIGNMENT&gt;::self_type&amp; viennacl::vector&lt;SCALARTYPE, ALIGNMENT&gt;::operator=(const T&amp;) [with T = viennacl::vector_expression&lt;const viennacl::vector_expression&lt;const viennacl::matrix_expression&lt;const viennacl::matrix_base&lt;float&gt;, const viennacl::matrix_base&lt;float&gt;, viennacl::op_trans&gt;, const viennacl::vector_base&lt;float&gt;, viennacl::op_prod&gt;, const double, viennacl::op_mult&gt;; SCALARTYPE = float; unsigned int ALIGNMENT = 1u; viennacl::vector&lt;SCALARTYPE, ALIGNMENT&gt;::self_type = viennacl::vector&lt;float&gt;]’
+/.../ViennaCL-1.5.2/viennacl/linalg/host_based/matrix_operations.hpp:1217:16:   required from ‘void viennacl::linalg::host_based::house_update_A_left(viennacl::matrix&lt;SCALARTYPE, viennacl::row_major, ALIGNMENT&gt;&amp;, VectorType&amp;, viennacl::vcl_size_t) [with SCALARTYPE = float; unsigned int ALIGNMENT = 1u; VectorType = viennacl::vector&lt;float&gt;; viennacl::vcl_size_t = unsigned int]’</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Error>
+
+
+	<Error>
+		<BuildLogLine>453</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/vector.hpp:525:124: error: no matching function for call to ‘viennacl::linalg::detail::op_executor&lt;viennacl::vector_base&lt;float&gt;, viennacl::op_assign, viennacl::vector_expression&lt;const viennacl::vector_base&lt;float&gt;, const double, viennacl::op_mult&gt; &gt;::apply(viennacl::vector_base&lt;float&gt;&amp;, const viennacl::vector_expression&lt;const viennacl::vector_base&lt;float&gt;, const double, viennacl::op_mult&gt;&amp;)’
+</Text>
+		<SourceFile>viennacl/vector.hpp</SourceFile>
+		<SourceLineNumber>525</SourceLineNumber>
+		<PreContext>/.../ViennaCL-1.5.2/viennacl/linalg/matrix_operations.hpp:823:72:   required from ‘void viennacl::linalg::house_update_A_left(viennacl::matrix&lt;SCALARTYPE, viennacl::row_major, ALIGNMENT&gt;&amp;, VectorType&amp;, viennacl::vcl_size_t) [with SCALARTYPE = float; unsigned int ALIGNMENT = 1u; VectorType = viennacl::vector&lt;float&gt;; viennacl::vcl_size_t = unsigned int]’
+/.../ViennaCL-1.5.2/viennacl/linalg/qr-method.hpp:871:64:   required from ‘bool viennacl::linalg::detail::householder_twoside(viennacl::matrix&lt;SCALARTYPE, viennacl::row_major, ALIGNMENT&gt;&amp;, viennacl::matrix&lt;SCALARTYPE, viennacl::row_major, ALIGNMENT&gt;&amp;, viennacl::vector&lt;SCALARTYPE, ALIGNMENT&gt;&amp;, viennacl::vcl_size_t) [with SCALARTYPE = float; unsigned int ALIGNMENT = 1u; viennacl::vcl_size_t = unsigned int]’
+/.../ViennaCL-1.5.2/viennacl/linalg/qr-method.hpp:941:55:   required from ‘void viennacl::linalg::detail::tridiagonal_reduction(viennacl::matrix&lt;SCALARTYPE, F, ALIGNMENT&gt;&amp;, viennacl::matrix&lt;SCALARTYPE, F, ALIGNMENT&gt;&amp;) [with SCALARTYPE = float; F = viennacl::row_major; unsigned int ALIGNMENT = 1u]’
+/.../ViennaCL-1.5.2/viennacl/linalg/qr-method.hpp:965:47:   required from ‘void viennacl::linalg::detail::qr_method(viennacl::matrix&lt;SCALARTYPE, F, ALIGNMENT&gt;&amp;, viennacl::matrix&lt;SCALARTYPE, F, ALIGNMENT&gt;&amp;, boost::numeric::ublas::vector&lt;SCALARTYPE&gt;&amp;, boost::numeric::ublas::vector&lt;SCALARTYPE&gt;&amp;, bool) [with SCALARTYPE = float; F = viennacl::row_major; unsigned int ALIGNMENT = 1u]’
+/.../ViennaCL-1.5.2/viennacl/linalg/qr-method.hpp:1034:43:   required from ‘void viennacl::linalg::qr_method_sym(viennacl::matrix&lt;SCALARTYPE, F, ALIGNMENT&gt;&amp;, viennacl::matrix&lt;SCALARTYPE, F, ALIGNMENT&gt;&amp;, boost::numeric::ublas::vector&lt;SCALARTYPE&gt;&amp;) [with SCALARTYPE = float; F = viennacl::row_major; unsigned int ALIGNMENT = 1u]’
+/.../ViennaCL-1.5.2/tests/src/qr_method.cpp:207:61:   required from here
+</PreContext>
+		<PostContext>         linalg::detail::op_executor&lt;self_type, op_assign, vector_expression&lt;const LHS, const RHS, OP&gt; &gt;::apply(*this, proxy);
+                                                                                                                            ^
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Error>
+
+
+	<Warning>
+		<BuildLogLine>456</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/vector.hpp:525:124: note: candidates are:
+</Text>
+		<SourceFile>viennacl/vector.hpp</SourceFile>
+		<SourceLineNumber>525</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext></PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>457</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/vector.hpp:2093:21: note: template&lt;class LHS, class RHS, class OP&gt; static void viennacl::linalg::detail::op_executor&lt;viennacl::vector_base&lt;T&gt;, viennacl::op_assign, viennacl::vector_expression&lt;const viennacl::vector_base&lt;T&gt;, const S1, viennacl::op_mult&gt; &gt;::apply(viennacl::vector_base&lt;T&gt;&amp;, const viennacl::vector_expression&lt;const viennacl::vector_base&lt;T&gt;, const viennacl::scalar_expression&lt;T1, T2, OP&gt;, viennacl::op_mult&gt;&amp;) [with LHS = LHS; RHS = RHS; OP = OP; T = float; ScalarType = double]
+</Text>
+		<SourceFile>viennacl/vector.hpp</SourceFile>
+		<SourceLineNumber>2093</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>         static void apply(vector_base&lt;T&gt; &amp; lhs, vector_expression&lt;const vector_base&lt;T&gt;, const scalar_expression&lt;LHS, RHS, OP&gt;, op_mult&gt; const &amp; proxy)
+                     ^
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>460</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/vector.hpp:2093:21: note:   template argument deduction/substitution failed:
+</Text>
+		<SourceFile>viennacl/vector.hpp</SourceFile>
+		<SourceLineNumber>2093</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext></PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>461</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/vector.hpp:525:124: note:   mismatched types ‘const viennacl::scalar_expression&lt;LHS, RHS, OP&gt;’ and ‘const double’
+</Text>
+		<SourceFile>viennacl/vector.hpp</SourceFile>
+		<SourceLineNumber>525</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>         linalg::detail::op_executor&lt;self_type, op_assign, vector_expression&lt;const LHS, const RHS, OP&gt; &gt;::apply(*this, proxy);
+                                                                                                                            ^
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>464</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/vector.hpp:525:124: note:   ‘const viennacl::vector_expression&lt;const viennacl::vector_base&lt;float&gt;, const double, viennacl::op_mult&gt;’ is not derived from ‘const viennacl::vector_expression&lt;const viennacl::vector_base&lt;float&gt;, const viennacl::scalar_expression&lt;LHS, RHS, OP&gt;, viennacl::op_mult&gt;’
+</Text>
+		<SourceFile>viennacl/vector.hpp</SourceFile>
+		<SourceLineNumber>525</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext></PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>465</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/vector.hpp:2099:21: note: static void viennacl::linalg::detail::op_executor&lt;viennacl::vector_base&lt;T&gt;, viennacl::op_assign, viennacl::vector_expression&lt;const viennacl::vector_base&lt;T&gt;, const S1, viennacl::op_mult&gt; &gt;::apply(viennacl::vector_base&lt;T&gt;&amp;, const viennacl::vector_expression&lt;const viennacl::vector_base&lt;T&gt;, const viennacl::scalar&lt;T&gt;, viennacl::op_mult&gt;&amp;) [with T = float; ScalarType = double]
+</Text>
+		<SourceFile>viennacl/vector.hpp</SourceFile>
+		<SourceLineNumber>2099</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>         static void apply(vector_base&lt;T&gt; &amp; lhs, vector_expression&lt;const vector_base&lt;T&gt;, const scalar&lt;T&gt;, op_mult&gt; const &amp; proxy)
+                     ^
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>468</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/vector.hpp:2099:21: note:   no known conversion for argument 2 from ‘const viennacl::vector_expression&lt;const viennacl::vector_base&lt;float&gt;, const double, viennacl::op_mult&gt;’ to ‘const viennacl::vector_expression&lt;const viennacl::vector_base&lt;float&gt;, const viennacl::scalar&lt;float&gt;, viennacl::op_mult&gt;&amp;’
+</Text>
+		<SourceFile>viennacl/vector.hpp</SourceFile>
+		<SourceLineNumber>2099</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext></PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>469</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/vector.hpp:2104:21: note: static void viennacl::linalg::detail::op_executor&lt;viennacl::vector_base&lt;T&gt;, viennacl::op_assign, viennacl::vector_expression&lt;const viennacl::vector_base&lt;T&gt;, const S1, viennacl::op_mult&gt; &gt;::apply(viennacl::vector_base&lt;T&gt;&amp;, const viennacl::vector_expression&lt;const viennacl::vector_base&lt;T&gt;, const SCALARTYPE, viennacl::op_mult&gt;&amp;) [with T = float; ScalarType = double]
+</Text>
+		<SourceFile>viennacl/vector.hpp</SourceFile>
+		<SourceLineNumber>2104</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>         static void apply(vector_base&lt;T&gt; &amp; lhs, vector_expression&lt;const vector_base&lt;T&gt;, const T, op_mult&gt; const &amp; proxy)
+                     ^
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>472</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/vector.hpp:2104:21: note:   no known conversion for argument 2 from ‘const viennacl::vector_expression&lt;const viennacl::vector_base&lt;float&gt;, const double, viennacl::op_mult&gt;’ to ‘const viennacl::vector_expression&lt;const viennacl::vector_base&lt;float&gt;, const float, viennacl::op_mult&gt;&amp;’
+</Text>
+		<SourceFile>viennacl/vector.hpp</SourceFile>
+		<SourceLineNumber>2104</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>Linking CXX executable qr_method-test-opencl
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Error>
+		<BuildLogLine>474</BuildLogLine>
+		<Text>c++: error: CMakeFiles/qr_method-test-opencl.dir/src/qr_method.cpp.o: Datei oder Verzeichnis nicht gefunden
+</Text>
+		<PreContext></PreContext>
+		<PostContext>[ 79%] Built target qr_method-test-opencl
+Scanning dependencies of target scalar-test-cpu
+[ 80%] Building CXX object tests/CMakeFiles/scalar-test-cpu.dir/src/scalar.cpp.o
+Linking CXX executable scalar-test-cpu
+[ 80%] Built target scalar-test-cpu
+Scanning dependencies of target scalar-test-opencl
+[ 81%] Building CXX object tests/CMakeFiles/scalar-test-opencl.dir/src/scalar.cpp.o
+Linking CXX executable scalar-test-opencl
+[ 81%] Built target scalar-test-opencl
+Scanning dependencies of target scheduler_matrix-test-cpu</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Error>
+
+
+	<Error>
+		<BuildLogLine>528</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/svd.hpp:517:7: error: ‘bidiag_pack’ is not a member of ‘viennacl::linalg::detail’
+</Text>
+		<SourceFile>viennacl/linalg/svd.hpp</SourceFile>
+		<SourceLineNumber>517</SourceLineNumber>
+		<PreContext>Linking CXX executable spmdm-test-opencl
+[ 89%] Built target spmdm-test-opencl
+Scanning dependencies of target structured-matrices-test-opencl
+[ 90%] Building CXX object tests/CMakeFiles/structured-matrices-test-opencl.dir/src/structured-matrices.cpp.o
+Linking CXX executable structured-matrices-test-opencl
+[ 90%] Built target structured-matrices-test-opencl
+Scanning dependencies of target svd-test-opencl
+[ 91%] Building CXX object tests/CMakeFiles/svd-test-opencl.dir/src/svd.cpp.o
+In file included from /.../ViennaCL-1.5.2/tests/src/svd.cpp:27:0:
+/.../ViennaCL-1.5.2/viennacl/linalg/svd.hpp: In function ‘void viennacl::linalg::svd(viennacl::matrix&lt;SCALARTYPE, viennacl::row_major, ALIGNMENT&gt;&amp;, viennacl::matrix&lt;SCALARTYPE, viennacl::row_major, ALIGNMENT&gt;&amp;, viennacl::matrix&lt;SCALARTYPE, viennacl::row_major, ALIGNMENT&gt;&amp;)’:
+</PreContext>
+		<PostContext>       detail::bidiag_pack(A, dh, sh);
+       ^
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Error>
+
+
+	<Warning>
+		<BuildLogLine>531</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/svd.hpp:517:7: note: suggested alternatives:
+</Text>
+		<SourceFile>viennacl/linalg/svd.hpp</SourceFile>
+		<SourceLineNumber>517</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>In file included from /.../ViennaCL-1.5.2/viennacl/matrix.hpp:28:0,
+                 from /.../ViennaCL-1.5.2/tests/src/svd.cpp:24:
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>534</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/matrix_operations.hpp:783:10: note:   ‘viennacl::linalg::bidiag_pack’
+</Text>
+		<SourceFile>viennacl/linalg/matrix_operations.hpp</SourceFile>
+		<SourceLineNumber>783</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>     void bidiag_pack(viennacl::matrix&lt;SCALARTYPE, row_major, ALIGNMENT&gt;&amp; A,
+          ^
+In file included from /.../ViennaCL-1.5.2/viennacl/linalg/matrix_operations.hpp:38:0,
+                 from /.../ViennaCL-1.5.2/viennacl/matrix.hpp:28,
+                 from /.../ViennaCL-1.5.2/tests/src/svd.cpp:24:
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>540</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/host_based/matrix_operations.hpp:1177:13: note:   ‘viennacl::linalg::host_based::bidiag_pack’
+</Text>
+		<SourceFile>viennacl/linalg/host_based/matrix_operations.hpp</SourceFile>
+		<SourceLineNumber>1177</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>        void bidiag_pack(viennacl::matrix&lt;SCALARTYPE, row_major, ALIGNMENT&gt;&amp; A,
+             ^
+In file included from /.../ViennaCL-1.5.2/viennacl/linalg/matrix_operations.hpp:41:0,
+                 from /.../ViennaCL-1.5.2/viennacl/matrix.hpp:28,
+                 from /.../ViennaCL-1.5.2/tests/src/svd.cpp:24:
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Warning>
+		<BuildLogLine>546</BuildLogLine>
+		<Text>/.../ViennaCL-1.5.2/viennacl/linalg/opencl/matrix_operations.hpp:1002:12: note:   ‘viennacl::linalg::opencl::bidiag_pack’
+</Text>
+		<SourceFile>viennacl/linalg/opencl/matrix_operations.hpp</SourceFile>
+		<SourceLineNumber>1002</SourceLineNumber>
+		<PreContext></PreContext>
+		<PostContext>       void bidiag_pack(viennacl::matrix&lt;SCALARTYPE, row_major, ALIGNMENT&gt;&amp; A,
+            ^
+Linking CXX executable svd-test-opencl
+</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Warning>
+
+
+	<Error>
+		<BuildLogLine>550</BuildLogLine>
+		<Text>c++: error: CMakeFiles/svd-test-opencl.dir/src/svd.cpp.o: Datei oder Verzeichnis nicht gefunden
+</Text>
+		<PreContext></PreContext>
+		<PostContext>[ 91%] Built target svd-test-opencl
+Scanning dependencies of target vector_double-test-cpu
+[ 92%] Building CXX object tests/CMakeFiles/vector_double-test-cpu.dir/src/vector_double.cpp.o
+Linking CXX executable vector_double-test-cpu
+[ 92%] Built target vector_double-test-cpu
+Scanning dependencies of target vector_double-test-opencl
+[ 93%] Building CXX object tests/CMakeFiles/vector_double-test-opencl.dir/src/vector_double.cpp.o
+Linking CXX executable vector_double-test-opencl
+[ 93%] Built target vector_double-test-opencl
+Scanning dependencies of target vector_float-test-cpu</PostContext>
+		<RepeatCount>0</RepeatCount>
+</Error>
+
+
+	<Log Encoding="base64" Compression="/bin/gzip">
+	</Log>
+	<EndDateTime>Jul 14 11:47 CEST</EndDateTime>
+	<EndBuildTime>1405331224</EndBuildTime>
+<ElapsedMinutes>19.9</ElapsedMinutes></Build>
+</Site>

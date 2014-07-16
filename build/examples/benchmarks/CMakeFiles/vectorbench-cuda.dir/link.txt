@@ -1,0 +1,1 @@
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/vectorbench-cuda.dir/./vectorbench-cuda_generated_vector.cu.o  -o vectorbench-cuda -rdynamic -lcudart 

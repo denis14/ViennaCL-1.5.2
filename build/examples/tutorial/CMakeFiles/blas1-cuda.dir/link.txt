@@ -1,0 +1,1 @@
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/blas1-cuda.dir/./blas1-cuda_generated_blas1.cu.o  -o blas1-cuda -rdynamic -lcudart 

@@ -1,0 +1,1 @@
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/blas3_prod_double-test-cuda.dir/src/./blas3_prod_double-test-cuda_generated_blas3_prod_double.cu.o  -o blas3_prod_double-test-cuda -rdynamic -lcudart -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 
