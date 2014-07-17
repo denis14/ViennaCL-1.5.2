@@ -780,8 +780,8 @@ namespace viennacl
 
 
 
-      template <typename SCALARTYPE, unsigned int ALIGNMENT, typename VectorType>
-      void bidiag_pack(viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& A,
+      template <typename NumericT, typename F, typename VectorType>
+      void bidiag_pack(matrix_base<NumericT, F> & A,
                        VectorType & dh,
                        VectorType & sh
                       )
@@ -814,9 +814,9 @@ namespace viennacl
 
 
 
-    template <typename SCALARTYPE, unsigned int ALIGNMENT, typename VectorType>
-    void house_update_A_left(viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& A,
-                             VectorType & D,
+    template <typename NumericT, typename F>
+    void house_update_A_left(matrix_base<NumericT, F> & A,
+                             vector_base<NumericT>    & D,
                              vcl_size_t start)
     {
       switch (viennacl::traits::handle(A).get_active_handle_id())
@@ -847,10 +847,10 @@ namespace viennacl
 
 
 
-    template <typename SCALARTYPE, unsigned int ALIGNMENT, typename VectorType>
-    void house_update_A_right(viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& A,
-                             VectorType & D,
-                             vcl_size_t start)
+    template <typename NumericT, typename F>
+    void house_update_A_right(matrix_base<NumericT, F>& A,
+                              vector_base<NumericT>   & D,
+                              vcl_size_t start)
     {
       switch (viennacl::traits::handle(A).get_active_handle_id())
       {
@@ -879,10 +879,10 @@ namespace viennacl
 
 
 
-    template <typename SCALARTYPE, unsigned int ALIGNMENT>
-    void house_update_QL(viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& A,
-                         viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& Q,
-                         viennacl::vector<SCALARTYPE, ALIGNMENT>& D)
+    template <typename NumericT, typename F>
+    void house_update_QL(matrix_base<NumericT, F> & A,
+                         matrix_base<NumericT, F> & Q,
+                         vector_base<NumericT>    & D)
     {
       switch (viennacl::traits::handle(A).get_active_handle_id())
       {
@@ -902,6 +902,38 @@ namespace viennacl
           break;
 #endif
 */
+        case viennacl::MEMORY_NOT_INITIALIZED:
+          throw memory_exception("not initialised!");
+        default:
+          throw memory_exception("not implemented");
+      }
+    }
+
+    template<typename NumericT, typename F>
+    void givens_next(matrix_base<NumericT, F> & matrix,
+                     vector_base<NumericT> & tmp1,
+                     vector_base<NumericT> & tmp2,
+                     int l,
+                     int m
+                  )
+    {
+      switch (viennacl::traits::handle(matrix).get_active_handle_id())
+      {
+        case viennacl::MAIN_MEMORY:
+          viennacl::linalg::host_based::givens_next(matrix, tmp1, tmp2, l, m);
+          break;
+#ifdef VIENNACL_WITH_OPENCL
+        case viennacl::OPENCL_MEMORY:
+          viennacl::linalg::opencl::givens_next(matrix, tmp1, tmp2, l, m);
+          break;
+#endif
+
+#ifdef VIENNACL_WITH_CUDA
+        case viennacl::CUDA_MEMORY:
+          //viennacl::linalg::cuda::bidiag_pack(A, dh, sh);
+          break;
+#endif
+
         case viennacl::MEMORY_NOT_INITIALIZED:
           throw memory_exception("not initialised!");
         default:

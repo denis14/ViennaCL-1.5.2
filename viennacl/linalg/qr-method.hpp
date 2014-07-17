@@ -61,42 +61,6 @@ namespace viennacl
 
 
 
-
-      template<typename MatrixType, typename VectorType>
-        void givens_next(MatrixType& matrix,
-                        VectorType& tmp1,
-                        VectorType& tmp2,
-                        int l,
-                        int m
-                      )
-        {
-          switch (viennacl::traits::handle(matrix).get_active_handle_id())
-          {
-            case viennacl::MAIN_MEMORY:
-            //  viennacl::linalg::host_based::givens_next(matrix, tmp1, tmp2, l, m);
-              break;
-#ifdef VIENNACL_WITH_OPENCL
-            case viennacl::OPENCL_MEMORY:
-              std::cout << "Now running givens_next in OpenCL!\n";
-              viennacl::linalg::opencl::givens_next(matrix, tmp1, tmp2, l, m);
-              break;
-#endif
-
-    #ifdef VIENNACL_WITH_CUDA
-            case viennacl::CUDA_MEMORY:
-              //viennacl::linalg::cuda::bidiag_pack(A, dh, sh);
-              break;
-    #endif
-
-            case viennacl::MEMORY_NOT_INITIALIZED:
-              throw memory_exception("not initialised!");
-            default:
-              throw memory_exception("not implemented");
-          }
-        }
-
-
-
 /*
       template<typename MatrixType, typename VectorType>
         void givens_next(MatrixType& matrix,

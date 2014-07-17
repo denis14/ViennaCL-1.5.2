@@ -235,11 +235,7 @@ CTEST_SUBMIT_RETRY_COUNT:STRING=3
 CTEST_SUBMIT_RETRY_DELAY:STRING=5
 
 //Compile device code in 64 bit mode
-<<<<<<< HEAD
-CUDA_64_BIT_DEVICE_CODE:BOOL=ON
-=======
 CUDA_64_BIT_DEVICE_CODE:BOOL=OFF
->>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 //Attach the build rule to the CUDA source file.  Enable only when
 // the CUDA source file is added to at most one target.
@@ -252,17 +248,10 @@ CUDA_BUILD_CUBIN:BOOL=OFF
 CUDA_BUILD_EMULATION:BOOL=OFF
 
 //"cudart" library
-<<<<<<< HEAD
-CUDA_CUDART_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libcudart.so
-
-//"cuda" library (older versions only).
-CUDA_CUDA_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libcuda.so
-=======
 CUDA_CUDART_LIBRARY:FILEPATH=/usr/lib/i386-linux-gnu/libcudart.so
 
 //"cuda" library (older versions only).
 CUDA_CUDA_LIBRARY:FILEPATH=/usr/lib/i386-linux-gnu/libcuda.so
->>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 //Directory to put all the output files.  If blank it will default
 // to the CMAKE_CURRENT_BINARY_DIR
@@ -318,37 +307,15 @@ CUDA_VERBOSE_BUILD:BOOL=OFF
 CUDA_VERSION:STRING=5.5
 
 //"cublas" library
-<<<<<<< HEAD
-CUDA_cublas_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libcublas.so
-
-//"cufft" library
-CUDA_cufft_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libcufft.so
-=======
 CUDA_cublas_LIBRARY:FILEPATH=/usr/lib/i386-linux-gnu/libcublas.so
 
 //"cufft" library
 CUDA_cufft_LIBRARY:FILEPATH=/usr/lib/i386-linux-gnu/libcufft.so
->>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 //"cupti" library
 CUDA_cupti_LIBRARY:FILEPATH=CUDA_cupti_LIBRARY-NOTFOUND
 
 //"curand" library
-<<<<<<< HEAD
-CUDA_curand_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libcurand.so
-
-//"cusparse" library
-CUDA_cusparse_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libcusparse.so
-
-//"nppc" library
-CUDA_nppc_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libnppc.so
-
-//"nppi" library
-CUDA_nppi_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libnppi.so
-
-//"npps" library
-CUDA_npps_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libnpps.so
-=======
 CUDA_curand_LIBRARY:FILEPATH=/usr/lib/i386-linux-gnu/libcurand.so
 
 //"cusparse" library
@@ -362,7 +329,6 @@ CUDA_nppi_LIBRARY:FILEPATH=/usr/lib/i386-linux-gnu/libnppi.so
 
 //"npps" library
 CUDA_npps_LIBRARY:FILEPATH=/usr/lib/i386-linux-gnu/libnpps.so
->>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 //Path to a program.
 CVSCOMMAND:FILEPATH=CVSCOMMAND-NOTFOUND
@@ -441,11 +407,7 @@ ViennaCL_BINARY_DIR:STATIC=/home/andi/git/ViennaCL-1.5.2/build
 ViennaCL_SOURCE_DIR:STATIC=/home/andi/git/ViennaCL-1.5.2
 
 //Dependencies for the target
-<<<<<<< HEAD
-viennacl_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libcudart.so;general;/usr/lib/x86_64-linux-gnu/libOpenCL.so;
-=======
 viennacl_LIB_DEPENDS:STATIC=general;/usr/lib/i386-linux-gnu/libcudart.so;general;/usr/lib/i386-linux-gnu/libOpenCL.so;
->>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 
 ########################
@@ -626,11 +588,7 @@ CTEST_SUBMIT_RETRY_DELAY-ADVANCED:INTERNAL=1
 CUDA_64_BIT_DEVICE_CODE-ADVANCED:INTERNAL=1
 //List of intermediate files that are part of the cuda dependency
 // scanning.
-<<<<<<< HEAD
-CUDA_ADDITIONAL_CLEAN_FILES:INTERNAL=/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_prod_float-test-cuda.dir/src/blas3_prod_float-test-cuda_generated_blas3_prod_float.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_prod_double-test-cuda.dir/src/blas3_prod_double-test-cuda_generated_blas3_prod_double.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_float-test-cuda.dir/src/blas3_solve_float-test-cuda_generated_blas3_solve_float.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/iterators-test-cuda_generated_iterators.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/global_variables-test-cuda.dir/src/global_variables-test-cuda_generated_global_variables.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector-test-cuda.dir/src/matrix_vector-test-cuda_generated_matrix_vector.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_row_float-test-cuda.dir/src/matrix_row_float-test-cuda_generated_matrix_row_float.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_row_double-test-cuda.dir/src/matrix_row_double-test-cuda_generated_matrix_row_double.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_row_int-test-cuda.dir/src/matrix_row_int-test-cuda_generated_matrix_row_int.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/matrix_col_float-test-cuda_generated_matrix_col_float.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_double-test-cuda.dir/src/matrix_col_double-test-cuda_generated_matrix_col_double.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_int-test-cuda.dir/src/matrix_col_int-test-cuda_generated_matrix_col_int.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/src/scalar-test-cuda_generated_scalar.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/sparse-test-cuda.dir/src/sparse-test-cuda_generated_sparse.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/vector_float-test-cuda.dir/src/vector_float-test-cuda_generated_vector_float.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/vector_double-test-cuda.dir/src/vector_double-test-cuda_generated_vector_double.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/vector_int-test-cuda.dir/src/vector_int-test-cuda_generated_vector_int.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/vector_uint-test-cuda.dir/src/vector_uint-test-cuda_generated_vector_uint.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/src/vector_multi_inner_prod-test-cuda_generated_vector_multi_inner_prod.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/src/a_cuda-test-cuda_generated_a_cuda.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/spmdm-test-cuda.dir/src/spmdm-test-cuda_generated_spmdm.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/external_linkage-cuda_generated_external_1.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/external_linkage-cuda_generated_external_2.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1-test_generated_libviennacl_blas1.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas2-test.dir/src/libviennacl_blas2-test_generated_libviennacl_blas2.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/src/libviennacl_blas3-test_generated_libviennacl_blas3.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_backend.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1_host.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1_cuda.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1_opencl.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2_host.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2_cuda.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2_opencl.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3_host.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3_cuda.cu.o.depend;/home/denis/Documents/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3_opencl.cu.o.depend
-=======
 CUDA_ADDITIONAL_CLEAN_FILES:INTERNAL=/home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas1-cuda.dir//blas1-cuda_generated_blas1.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/wrap-cuda-buffer-cuda.dir//wrap-cuda-buffer-cuda_generated_wrap-cuda-buffer.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas2-cuda.dir//blas2-cuda_generated_blas2.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas3-cuda.dir//blas3-cuda_generated_blas3.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/iterative-cuda.dir//iterative-cuda_generated_iterative.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/least-squares-cuda.dir//least-squares-cuda_generated_least-squares.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/matrix-range-cuda.dir//matrix-range-cuda_generated_matrix-range.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/power-iter-cuda.dir//power-iter-cuda_generated_power-iter.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/qr-cuda.dir//qr-cuda_generated_qr.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/sparse-cuda.dir//sparse-cuda_generated_sparse.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/vector-range-cuda.dir//vector-range-cuda_generated_vector-range.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/libviennacl-tutorial.dir//libviennacl-tutorial_generated_libviennacl.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/blas3bench-cuda.dir//blas3bench-cuda_generated_blas3.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-cuda.dir//copybench-cuda_generated_copy.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/vectorbench-cuda.dir//vectorbench-cuda_generated_vector.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/sparsebench-cuda.dir//sparsebench-cuda_generated_sparse.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/solverbench-cuda.dir//solverbench-cuda_generated_solver.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_backend.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1_host.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1_cuda.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1_opencl.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2_host.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2_cuda.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2_opencl.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3_host.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3_cuda.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3_opencl.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_prod_float-test-cuda.dir/src/blas3_prod_float-test-cuda_generated_blas3_prod_float.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_prod_double-test-cuda.dir/src/blas3_prod_double-test-cuda_generated_blas3_prod_double.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_float-test-cuda.dir/src/blas3_solve_float-test-cuda_generated_blas3_solve_float.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/iterators-test-cuda_generated_iterators.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/global_variables-test-cuda.dir/src/global_variables-test-cuda_generated_global_variables.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector-test-cuda.dir/src/matrix_vector-test-cuda_generated_matrix_vector.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_row_float-test-cuda.dir/src/matrix_row_float-test-cuda_generated_matrix_row_float.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_row_double-test-cuda.dir/src/matrix_row_double-test-cuda_generated_matrix_row_double.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_row_int-test-cuda.dir/src/matrix_row_int-test-cuda_generated_matrix_row_int.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/matrix_col_float-test-cuda_generated_matrix_col_float.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_double-test-cuda.dir/src/matrix_col_double-test-cuda_generated_matrix_col_double.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_int-test-cuda.dir/src/matrix_col_int-test-cuda_generated_matrix_col_int.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/src/scalar-test-cuda_generated_scalar.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/sparse-test-cuda.dir/src/sparse-test-cuda_generated_sparse.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/vector_float-test-cuda.dir/src/vector_float-test-cuda_generated_vector_float.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/vector_double-test-cuda.dir/src/vector_double-test-cuda_generated_vector_double.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/vector_int-test-cuda.dir/src/vector_int-test-cuda_generated_vector_int.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/vector_uint-test-cuda.dir/src/vector_uint-test-cuda_generated_vector_uint.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/src/vector_multi_inner_prod-test-cuda_generated_vector_multi_inner_prod.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/src/a_cuda-test-cuda_generated_a_cuda.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/spmdm-test-cuda.dir/src/spmdm-test-cuda_generated_spmdm.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/external_linkage-cuda_generated_external_1.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/external_linkage-cuda_generated_external_2.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1-test_generated_libviennacl_blas1.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas2-test.dir/src/libviennacl_blas2-test_generated_libviennacl_blas2.cu.o.depend;/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/src/libviennacl_blas3-test_generated_libviennacl_blas3.cu.o.depend
->>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 //ADVANCED property for variable: CUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE
 CUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CUDA_CUDART_LIBRARY
@@ -710,11 +668,7 @@ ENABLE_VIENNAPROFILER-ADVANCED:INTERNAL=1
 //Enable examples using ViennaProfiler
 ENABLE_VIENNAPROFILER:INTERNAL=OFF
 //Details about finding CUDA
-<<<<<<< HEAD
-FIND_PACKAGE_MESSAGE_DETAILS_CUDA:INTERNAL=[/usr][/usr/bin/nvcc][/usr/include][/usr/lib/x86_64-linux-gnu/libcudart.so][v5.5()]
-=======
 FIND_PACKAGE_MESSAGE_DETAILS_CUDA:INTERNAL=[/usr][/usr/bin/nvcc][/usr/include][/usr/lib/i386-linux-gnu/libcudart.so][v5.5()]
->>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 //Details about finding OPENCL
 FIND_PACKAGE_MESSAGE_DETAILS_OPENCL:INTERNAL=[/usr/lib/i386-linux-gnu/libOpenCL.so][/usr/include][v()]
 //Details about finding OpenMP

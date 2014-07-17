@@ -38,17 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-<<<<<<< HEAD
-CMAKE_SOURCE_DIR = /home/denis/Documents/ViennaCL-1.5.2
-
-# The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/denis/Documents/ViennaCL-1.5.2/build
-=======
 CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
->>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/matrix_col_float-test-cuda.dir/depend.make
@@ -62,45 +55,30 @@ include tests/CMakeFiles/matrix_col_float-test-cuda.dir/flags.make
 tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/./matrix_col_float-test-cuda_generated_matrix_col_float.cu.o: tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/matrix_col_float-test-cuda_generated_matrix_col_float.cu.o.depend
 tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/./matrix_col_float-test-cuda_generated_matrix_col_float.cu.o: tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/matrix_col_float-test-cuda_generated_matrix_col_float.cu.o.cmake
 tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/./matrix_col_float-test-cuda_generated_matrix_col_float.cu.o: ../tests/src/matrix_col_float.cu
-<<<<<<< HEAD
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/./matrix_col_float-test-cuda_generated_matrix_col_float.cu.o"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/.
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/./matrix_col_float-test-cuda_generated_matrix_col_float.cu.o -D generated_cubin_file:STRING=/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/./matrix_col_float-test-cuda_generated_matrix_col_float.cu.o.cubin.txt -P /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/matrix_col_float-test-cuda_generated_matrix_col_float.cu.o.cmake
-=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/./matrix_col_float-test-cuda_generated_matrix_col_float.cu.o"
 	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/.
 	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/./matrix_col_float-test-cuda_generated_matrix_col_float.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/./matrix_col_float-test-cuda_generated_matrix_col_float.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/matrix_col_float-test-cuda_generated_matrix_col_float.cu.o.cmake
->>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 # Object files for target matrix_col_float-test-cuda
 matrix_col_float__test__cuda_OBJECTS =
 
 # External object files for target matrix_col_float-test-cuda
 matrix_col_float__test__cuda_EXTERNAL_OBJECTS = \
-<<<<<<< HEAD
-"/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/./matrix_col_float-test-cuda_generated_matrix_col_float.cu.o"
-=======
 "/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/./matrix_col_float-test-cuda_generated_matrix_col_float.cu.o"
->>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 tests/matrix_col_float-test-cuda: tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/./matrix_col_float-test-cuda_generated_matrix_col_float.cu.o
 tests/matrix_col_float-test-cuda: tests/CMakeFiles/matrix_col_float-test-cuda.dir/build.make
-tests/matrix_col_float-test-cuda: /usr/lib/x86_64-linux-gnu/libcudart.so
-tests/matrix_col_float-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-tests/matrix_col_float-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-tests/matrix_col_float-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
-tests/matrix_col_float-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_system.so
-tests/matrix_col_float-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-tests/matrix_col_float-test-cuda: /usr/lib/x86_64-linux-gnu/libpthread.so
+tests/matrix_col_float-test-cuda: /usr/lib/i386-linux-gnu/libcudart.so
+tests/matrix_col_float-test-cuda: /usr/lib/i386-linux-gnu/libboost_chrono.so
+tests/matrix_col_float-test-cuda: /usr/lib/i386-linux-gnu/libboost_date_time.so
+tests/matrix_col_float-test-cuda: /usr/lib/i386-linux-gnu/libboost_serialization.so
+tests/matrix_col_float-test-cuda: /usr/lib/i386-linux-gnu/libboost_system.so
+tests/matrix_col_float-test-cuda: /usr/lib/i386-linux-gnu/libboost_thread.so
+tests/matrix_col_float-test-cuda: /usr/lib/i386-linux-gnu/libpthread.so
 tests/matrix_col_float-test-cuda: tests/CMakeFiles/matrix_col_float-test-cuda.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable matrix_col_float-test-cuda"
-<<<<<<< HEAD
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/matrix_col_float-test-cuda.dir/link.txt --verbose=$(VERBOSE)
-=======
 	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/matrix_col_float-test-cuda.dir/link.txt --verbose=$(VERBOSE)
->>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/matrix_col_float-test-cuda.dir/build: tests/matrix_col_float-test-cuda
@@ -110,18 +88,10 @@ tests/CMakeFiles/matrix_col_float-test-cuda.dir/requires:
 .PHONY : tests/CMakeFiles/matrix_col_float-test-cuda.dir/requires
 
 tests/CMakeFiles/matrix_col_float-test-cuda.dir/clean:
-<<<<<<< HEAD
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/matrix_col_float-test-cuda.dir/cmake_clean.cmake
-.PHONY : tests/CMakeFiles/matrix_col_float-test-cuda.dir/clean
-
-tests/CMakeFiles/matrix_col_float-test-cuda.dir/depend: tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/./matrix_col_float-test-cuda_generated_matrix_col_float.cu.o
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/Documents/ViennaCL-1.5.2 /home/denis/Documents/ViennaCL-1.5.2/tests /home/denis/Documents/ViennaCL-1.5.2/build /home/denis/Documents/ViennaCL-1.5.2/build/tests /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
-=======
 	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/matrix_col_float-test-cuda.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/matrix_col_float-test-cuda.dir/clean
 
 tests/CMakeFiles/matrix_col_float-test-cuda.dir/depend: tests/CMakeFiles/matrix_col_float-test-cuda.dir/src/./matrix_col_float-test-cuda_generated_matrix_col_float.cu.o
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/tests /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/tests /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_float-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
->>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/matrix_col_float-test-cuda.dir/depend
 
