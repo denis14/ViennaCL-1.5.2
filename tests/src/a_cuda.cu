@@ -125,8 +125,13 @@ int main()
   //f.close();
   //matrix_print(A_input);
   
+<<<<<<< HEAD
   viennacl::linalg::cuda::bidiag_pack_kernel<<<128, 128>>>(A, 10, 11, 12);
   std::cout << "Testdata wurde gelesen!" << std::endl;
+=======
+  viennacl::linalg::cuda::bidiag_pack_kernel<<<128, 128>>>(10);
+  std::cout << "Testdata wurde gelesen! git" << std::endl;
+>>>>>>> 3a7900c58235e0ca21e06d8bb4851371977dd4c4
   //vector_print(D);
   //matrix_print(A_input);
 
