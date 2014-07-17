@@ -110,7 +110,7 @@ void vector_print(ublas::vector<ScalarType>& v )
 }
 int main()
 {
-  ublas::vector<ScalarType> A = ublas::scalar_vector<ScalarType>(sz, 0);
+  //ublas::vector<ScalarType> A(12); // = ublas::scalar_vector<ScalarType>(sz, 0);
   //ublas::vector<ScalarType> E = ublas::scalar_vector<ScalarType>(sz, 0);
   
   //std::size_t sz = 4;
@@ -119,14 +119,19 @@ int main()
   //read size of input matrix
   //read_matrix_size(f, sz);
   
-  //viennacl::matrix<ScalarType> A_input(4, 4);
+  viennacl::matrix<ScalarType> A(4, 4);
 
   //read_matrix_body(f, A_input);
   //f.close();
   //matrix_print(A_input);
   
-  viennacl::linalg::cuda::bidiag_pack_kernel<<<128, 128>>>(A, 10, 11, 12);
+
+  viennacl::linalg::cuda::bidiag_pack_kernel<<<128, 128>>>(viennacl::linalg::cuda::detail::cuda_arg<ScalarType>(A);
   std::cout << "Testdata wurde gelesen!" << std::endl;
+
+//  viennacl::linalg::cuda::bidiag_pack_kernel<<<128, 128>>>(10);
+  std::cout << "Testdata wurde gelesen! git" << std::endl;
+
   //vector_print(D);
   //matrix_print(A_input);
 

@@ -1416,12 +1416,12 @@ namespace viennacl
       // alpha on GPU
       template <typename T>
       __global__ void bidiag_pack_kernel(
-                  T * A,
+                  T * A)
                   //T * D,
                   //T * S,
-                  uint size1,
-                  uint size2,
-                  uint stride)
+                  //uint size1,
+                  //uint size2,
+                  //uint stride)
       {
         /*uint size = min(size1, size2);
         if(blockIdx.x * blockDim.x + threadIdx.x == 0)

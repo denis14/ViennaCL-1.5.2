@@ -189,7 +189,7 @@ namespace viennacl
                             viennacl::copy(cs, tmp1);
                             viennacl::copy(ss, tmp2);
                            // std::cout << Q << "\n";
-                            givens_next(Q, tmp1, tmp2, l, m);
+                           // givens_next(Q, tmp1, tmp2, l, m);
                            // std::cout << Q << "\n";
                         }
 

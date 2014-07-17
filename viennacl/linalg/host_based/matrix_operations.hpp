@@ -1310,9 +1310,10 @@ namespace viennacl
          NumericT temp, beta = 0;
          viennacl::matrix<NumericT> vcl_P(A.size1(), A.size2());
 
-         //viennacl::matrix<SCALARTYPE> I(A.size1(), A.size2());
+         viennacl::matrix<NumericT> I(A.size1(), A.size2());
          std::cout << D << std::endl;
          vcl_P = viennacl::identity_matrix<NumericT>(A.size1());
+         I     = viennacl::identity_matrix<NumericT>(A.size1());
          viennacl::vector<NumericT> vcl_D(D.size());
          viennacl::copy(D, vcl_D);
 
