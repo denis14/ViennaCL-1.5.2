@@ -38,10 +38,17 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
+<<<<<<< HEAD
 CMAKE_SOURCE_DIR = /home/denis/Documents/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/denis/Documents/ViennaCL-1.5.2/build
+=======
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/a_cuda-test-cuda.dir/depend.make
@@ -52,63 +59,63 @@ include tests/CMakeFiles/a_cuda-test-cuda.dir/progress.make
 # Include the compile flags for this target's objects.
 include tests/CMakeFiles/a_cuda-test-cuda.dir/flags.make
 
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../tests/src/a_cuda.cu
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/backend/cpu_ram.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/backend/cuda.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/backend/mem_handle.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/backend/memory.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/backend/util.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/compressed_matrix.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/context.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/forwards.h
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/io/matrix_market.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/bisect.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/cuda/common.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/cuda/matrix_operations.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/cuda/matrix_operations_col.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/cuda/matrix_operations_prod.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/cuda/matrix_operations_row.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/cuda/scalar_operations.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/cuda/sparse_matrix_operations.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/cuda/sparse_matrix_operations_solve.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/cuda/vector_operations.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/detail/op_applier.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/detail/op_executor.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/host_based/common.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/host_based/matrix_operations.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/host_based/scalar_operations.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/host_based/sparse_matrix_operations.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/host_based/vector_operations.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/inner_prod.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/lanczos.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/matrix_operations.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/norm_2.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/prod.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/scalar_operations.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/sparse_matrix_operations.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/linalg/vector_operations.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/matrix.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/meta/enable_if.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/meta/predicate.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/meta/result_of.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/meta/tag_of.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/ocl/forwards.h
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/range.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/scalar.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/slice.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/tools/adapter.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/tools/entry_proxy.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/tools/matrix_size_deducer.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/tools/shared_ptr.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/tools/tools.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/traits/context.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/traits/fill.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/traits/handle.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/traits/size.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/traits/start.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/traits/stride.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/vector.hpp
-tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../viennacl/vector_proxy.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/tests/src/a_cuda.cu
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/backend/cpu_ram.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/backend/cuda.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/backend/mem_handle.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/backend/memory.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/backend/util.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/compressed_matrix.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/context.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/forwards.h
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/io/matrix_market.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/bisect.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/cuda/common.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/cuda/matrix_operations.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/cuda/matrix_operations_col.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/cuda/matrix_operations_prod.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/cuda/matrix_operations_row.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/cuda/scalar_operations.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/cuda/sparse_matrix_operations.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/cuda/sparse_matrix_operations_solve.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/cuda/vector_operations.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/detail/op_applier.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/detail/op_executor.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/host_based/common.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/host_based/matrix_operations.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/host_based/scalar_operations.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/host_based/sparse_matrix_operations.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/host_based/vector_operations.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/inner_prod.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/lanczos.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/matrix_operations.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/norm_2.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/prod.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/scalar_operations.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/sparse_matrix_operations.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/vector_operations.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/matrix.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/meta/enable_if.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/meta/predicate.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/meta/result_of.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/meta/tag_of.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/ocl/forwards.h
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/range.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/scalar.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/slice.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/tools/adapter.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/tools/entry_proxy.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/tools/matrix_size_deducer.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/tools/shared_ptr.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/tools/tools.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/traits/context.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/traits/fill.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/traits/handle.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/traits/size.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/traits/start.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/traits/stride.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/vector.hpp
+tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/vector_proxy.hpp
 tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /usr/include/_G_config.h
 tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /usr/include/alloca.h
 tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /usr/include/asm-generic/errno-base.h
@@ -1402,17 +1409,28 @@ tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu
 tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: /usr/lib/nvidia-cuda-toolkit/include/surface_functions.h
 tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: tests/CMakeFiles/a_cuda-test-cuda.dir/src/a_cuda-test-cuda_generated_a_cuda.cu.o.cmake
 tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o: ../tests/src/a_cuda.cu
+<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o"
 	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/src/.
 	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o -D generated_cubin_file:STRING=/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o.cubin.txt -P /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/src/a_cuda-test-cuda_generated_a_cuda.cu.o.cmake
+=======
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o"
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/src/a_cuda-test-cuda_generated_a_cuda.cu.o.cmake
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 # Object files for target a_cuda-test-cuda
 a_cuda__test__cuda_OBJECTS =
 
 # External object files for target a_cuda-test-cuda
 a_cuda__test__cuda_EXTERNAL_OBJECTS = \
+<<<<<<< HEAD
 "/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o"
+=======
+"/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o"
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 tests/a_cuda-test-cuda: tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o
 tests/a_cuda-test-cuda: tests/CMakeFiles/a_cuda-test-cuda.dir/build.make
@@ -1425,7 +1443,11 @@ tests/a_cuda-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_thread.so
 tests/a_cuda-test-cuda: /usr/lib/x86_64-linux-gnu/libpthread.so
 tests/a_cuda-test-cuda: tests/CMakeFiles/a_cuda-test-cuda.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable a_cuda-test-cuda"
+<<<<<<< HEAD
 	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/a_cuda-test-cuda.dir/link.txt --verbose=$(VERBOSE)
+=======
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/a_cuda-test-cuda.dir/link.txt --verbose=$(VERBOSE)
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/a_cuda-test-cuda.dir/build: tests/a_cuda-test-cuda
@@ -1435,10 +1457,18 @@ tests/CMakeFiles/a_cuda-test-cuda.dir/requires:
 .PHONY : tests/CMakeFiles/a_cuda-test-cuda.dir/requires
 
 tests/CMakeFiles/a_cuda-test-cuda.dir/clean:
+<<<<<<< HEAD
 	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/a_cuda-test-cuda.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/a_cuda-test-cuda.dir/clean
 
 tests/CMakeFiles/a_cuda-test-cuda.dir/depend: tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/Documents/ViennaCL-1.5.2 /home/denis/Documents/ViennaCL-1.5.2/tests /home/denis/Documents/ViennaCL-1.5.2/build /home/denis/Documents/ViennaCL-1.5.2/build/tests /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
+=======
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/a_cuda-test-cuda.dir/cmake_clean.cmake
+.PHONY : tests/CMakeFiles/a_cuda-test-cuda.dir/clean
+
+tests/CMakeFiles/a_cuda-test-cuda.dir/depend: tests/CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/tests /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/tests /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/a_cuda-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/a_cuda-test-cuda.dir/depend
 

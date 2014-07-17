@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/andi/ViennaCL-1.5.2/examples/tutorial/wrap-host-buffer.cpp" "/home/andi/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/wrap-host-buffer.dir/wrap-host-buffer.cpp.o"
+  "/home/andi/git/ViennaCL-1.5.2/examples/tutorial/wrap-host-buffer.cpp" "/home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/wrap-host-buffer.dir/wrap-host-buffer.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

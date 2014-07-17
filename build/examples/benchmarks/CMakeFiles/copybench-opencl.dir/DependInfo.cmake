@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/andi/ViennaCL-1.5.2/examples/benchmarks/copy.cpp" "/home/andi/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-opencl.dir/copy.cpp.o"
+  "/home/andi/git/ViennaCL-1.5.2/examples/benchmarks/copy.cpp" "/home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-opencl.dir/copy.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

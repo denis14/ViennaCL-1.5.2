@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/denis/Documents/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/denis/Documents/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/vector_int-test-opencl.dir/depend.make
@@ -54,17 +54,17 @@ include tests/CMakeFiles/vector_int-test-opencl.dir/flags.make
 
 tests/CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.o: tests/CMakeFiles/vector_int-test-opencl.dir/flags.make
 tests/CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.o: ../tests/src/vector_int.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object tests/CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.o"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.o -c /home/denis/Documents/ViennaCL-1.5.2/tests/src/vector_int.cpp
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.o -c /home/andi/git/ViennaCL-1.5.2/tests/src/vector_int.cpp
 
 tests/CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.i"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/denis/Documents/ViennaCL-1.5.2/tests/src/vector_int.cpp > CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andi/git/ViennaCL-1.5.2/tests/src/vector_int.cpp > CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.i
 
 tests/CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.s"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/denis/Documents/ViennaCL-1.5.2/tests/src/vector_int.cpp -o CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andi/git/ViennaCL-1.5.2/tests/src/vector_int.cpp -o CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.s
 
 tests/CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.o.requires:
 .PHONY : tests/CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.o.requires
@@ -84,16 +84,16 @@ vector_int__test__opencl_EXTERNAL_OBJECTS =
 
 tests/vector_int-test-opencl: tests/CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.o
 tests/vector_int-test-opencl: tests/CMakeFiles/vector_int-test-opencl.dir/build.make
-tests/vector_int-test-opencl: /usr/lib/x86_64-linux-gnu/libOpenCL.so
-tests/vector_int-test-opencl: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-tests/vector_int-test-opencl: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-tests/vector_int-test-opencl: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
-tests/vector_int-test-opencl: /usr/lib/x86_64-linux-gnu/libboost_system.so
-tests/vector_int-test-opencl: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-tests/vector_int-test-opencl: /usr/lib/x86_64-linux-gnu/libpthread.so
+tests/vector_int-test-opencl: /usr/lib/i386-linux-gnu/libOpenCL.so
+tests/vector_int-test-opencl: /usr/lib/i386-linux-gnu/libboost_chrono.so
+tests/vector_int-test-opencl: /usr/lib/i386-linux-gnu/libboost_date_time.so
+tests/vector_int-test-opencl: /usr/lib/i386-linux-gnu/libboost_serialization.so
+tests/vector_int-test-opencl: /usr/lib/i386-linux-gnu/libboost_system.so
+tests/vector_int-test-opencl: /usr/lib/i386-linux-gnu/libboost_thread.so
+tests/vector_int-test-opencl: /usr/lib/i386-linux-gnu/libpthread.so
 tests/vector_int-test-opencl: tests/CMakeFiles/vector_int-test-opencl.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable vector_int-test-opencl"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vector_int-test-opencl.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vector_int-test-opencl.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/vector_int-test-opencl.dir/build: tests/vector_int-test-opencl
@@ -103,10 +103,10 @@ tests/CMakeFiles/vector_int-test-opencl.dir/requires: tests/CMakeFiles/vector_in
 .PHONY : tests/CMakeFiles/vector_int-test-opencl.dir/requires
 
 tests/CMakeFiles/vector_int-test-opencl.dir/clean:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/vector_int-test-opencl.dir/cmake_clean.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/vector_int-test-opencl.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/vector_int-test-opencl.dir/clean
 
 tests/CMakeFiles/vector_int-test-opencl.dir/depend:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/Documents/ViennaCL-1.5.2 /home/denis/Documents/ViennaCL-1.5.2/tests /home/denis/Documents/ViennaCL-1.5.2/build /home/denis/Documents/ViennaCL-1.5.2/build/tests /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/vector_int-test-opencl.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/tests /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/tests /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/vector_int-test-opencl.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/vector_int-test-opencl.dir/depend
 

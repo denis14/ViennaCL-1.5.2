@@ -1,4 +1,4 @@
-# Install script for directory: /home/andi/ViennaCL-1.5.2/examples/autotuner
+# Install script for directory: /home/andi/git/ViennaCL-1.5.2/examples/autotuner
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

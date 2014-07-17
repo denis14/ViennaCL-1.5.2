@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /home/denis/Documents/ViennaCL-1.5.2/tests
-# Build directory: /home/denis/Documents/ViennaCL-1.5.2/build/tests
+# Source directory: /home/andi/git/ViennaCL-1.5.2/tests
+# Build directory: /home/andi/git/ViennaCL-1.5.2/build/tests
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

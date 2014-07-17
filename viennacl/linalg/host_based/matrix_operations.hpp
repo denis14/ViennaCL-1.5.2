@@ -1206,32 +1206,31 @@ namespace viennacl
          vcl_size_t size2  = viennacl::traits::size(S);
 
          vcl_size_t size = std::min(size1, size2);
-         vcl_size_t i;
          if (detail::is_row_major(typename F::orientation_category()))
          {
 #ifdef VIENNACL_WITH_OPENMP
-          //  #pragma omp parallel for
+            #pragma omp parallel for
 #endif
-             for(i = 0;  i < size -1; i++)
+             for(vcl_size_t i = 0;  i < size -1; i++)
                {
 
                  data_D[start1 + inc1 * i] =        data_A[viennacl::row_major::mem_index(i * A_inc1 + A_start1, i * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
                  data_S[start2 + inc2 * (i + 1)] =  data_A[viennacl::row_major::mem_index(i * A_inc1 + A_start1, (i + 1) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
                }
-             data_D[start1 + inc1 * i] = data_A[viennacl::row_major::mem_index(i * A_inc1 + A_start1, i * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
+             data_D[start1 + inc1 * (size-1)] = data_A[viennacl::row_major::mem_index((size-1) * A_inc1 + A_start1, (size-1) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
 
           }
          else
            {
 #ifdef VIENNACL_WITH_OPENMP
-         //   #pragma omp parallel for
+            #pragma omp parallel for
 #endif
-             for(i = 0;  i < size -1; i++)
+             for(vcl_size_t i = 0;  i < size -1; i++)
                {
                  data_D[start1 + inc1 * i] =        data_A[viennacl::column_major::mem_index(i * A_inc1 + A_start1, i * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
                  data_S[start2 + inc2 * (i + 1)] =  data_A[viennacl::column_major::mem_index(i * A_inc1 + A_start1, (i + 1) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
                }
-             data_D[start1 + inc1 * i] = data_A[viennacl::column_major::mem_index(i * A_inc1 + A_start1, i * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
+             data_D[start1 + inc1 * (size-1)] = data_A[viennacl::column_major::mem_index((size-1) * A_inc1 + A_start1, (size-1) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
            }
 
        }
@@ -1333,12 +1332,14 @@ namespace viennacl
          viennacl::matrix<SCALARTYPE> vcl_P(A.size1(), A.size2());
 
          //viennacl::matrix<SCALARTYPE> I(A.size1(), A.size2());
-         //I = viennacl::identity_matrix<SCALARTYPE>(A.size1());
+         std::cout << D << std::endl;
+         vcl_P = viennacl::identity_matrix<SCALARTYPE>(A.size1());
          viennacl::vector<SCALARTYPE> vcl_D(D.size());
          viennacl::copy(D, vcl_D);
 
          temp = inner_prod(vcl_D, vcl_D);
          beta = 2/temp;
+         std::cout << beta << std::endl;
 /*
          for(unsigned int i = 0; i < A.size1(); i++)
          {
@@ -1351,6 +1352,7 @@ namespace viennacl
          viennacl::linalg::host_based::scaled_rank_1_update(vcl_P, beta, 1, 0, 1, vcl_D, vcl_D);  //scaled_rank_1_update in linalg/matrix_operations.hpp beschrieben
 
          Q = prod(Q, vcl_P);
+         std::cout << vcl_P << std::endl;
        }
 
        template<typename MatrixType, typename VectorType>
@@ -1454,6 +1456,8 @@ namespace viennacl
                }
             }
          }
+
+
     } // namespace host_based
   } //namespace linalg
 } //namespace viennacl

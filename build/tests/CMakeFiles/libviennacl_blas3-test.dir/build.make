@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/denis/Documents/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/denis/Documents/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/libviennacl_blas3-test.dir/depend.make
@@ -55,16 +55,24 @@ include tests/CMakeFiles/libviennacl_blas3-test.dir/flags.make
 tests/CMakeFiles/libviennacl_blas3-test.dir/src/./libviennacl_blas3-test_generated_libviennacl_blas3.cu.o: tests/CMakeFiles/libviennacl_blas3-test.dir/src/libviennacl_blas3-test_generated_libviennacl_blas3.cu.o.depend
 tests/CMakeFiles/libviennacl_blas3-test.dir/src/./libviennacl_blas3-test_generated_libviennacl_blas3.cu.o: tests/CMakeFiles/libviennacl_blas3-test.dir/src/libviennacl_blas3-test_generated_libviennacl_blas3.cu.o.cmake
 tests/CMakeFiles/libviennacl_blas3-test.dir/src/./libviennacl_blas3-test_generated_libviennacl_blas3.cu.o: ../tests/src/libviennacl_blas3.cu
+<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/libviennacl_blas3-test.dir/src/./libviennacl_blas3-test_generated_libviennacl_blas3.cu.o"
 	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/src && /usr/bin/cmake -E make_directory /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/src/.
 	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/src/./libviennacl_blas3-test_generated_libviennacl_blas3.cu.o -D generated_cubin_file:STRING=/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/src/./libviennacl_blas3-test_generated_libviennacl_blas3.cu.o.cubin.txt -P /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/src/libviennacl_blas3-test_generated_libviennacl_blas3.cu.o.cmake
+=======
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/libviennacl_blas3-test.dir/src/./libviennacl_blas3-test_generated_libviennacl_blas3.cu.o"
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/src/./libviennacl_blas3-test_generated_libviennacl_blas3.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/src/./libviennacl_blas3-test_generated_libviennacl_blas3.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/src/libviennacl_blas3-test_generated_libviennacl_blas3.cu.o.cmake
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 # Object files for target libviennacl_blas3-test
 libviennacl_blas3__test_OBJECTS =
 
 # External object files for target libviennacl_blas3-test
 libviennacl_blas3__test_EXTERNAL_OBJECTS = \
+<<<<<<< HEAD
 "/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/src/./libviennacl_blas3-test_generated_libviennacl_blas3.cu.o"
 
 tests/libviennacl_blas3-test: tests/CMakeFiles/libviennacl_blas3-test.dir/src/./libviennacl_blas3-test_generated_libviennacl_blas3.cu.o
@@ -74,9 +82,20 @@ tests/libviennacl_blas3-test: libviennacl/libviennacl.so
 tests/libviennacl_blas3-test: /usr/lib/x86_64-linux-gnu/libOpenCL.so
 tests/libviennacl_blas3-test: /usr/lib/x86_64-linux-gnu/libcudart.so
 tests/libviennacl_blas3-test: /usr/lib/x86_64-linux-gnu/libOpenCL.so
+=======
+"/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/src/./libviennacl_blas3-test_generated_libviennacl_blas3.cu.o"
+
+tests/libviennacl_blas3-test: tests/CMakeFiles/libviennacl_blas3-test.dir/src/./libviennacl_blas3-test_generated_libviennacl_blas3.cu.o
+tests/libviennacl_blas3-test: tests/CMakeFiles/libviennacl_blas3-test.dir/build.make
+tests/libviennacl_blas3-test: /usr/lib/i386-linux-gnu/libcudart.so
+tests/libviennacl_blas3-test: libviennacl/libviennacl.so
+tests/libviennacl_blas3-test: /usr/lib/i386-linux-gnu/libOpenCL.so
+tests/libviennacl_blas3-test: /usr/lib/i386-linux-gnu/libcudart.so
+tests/libviennacl_blas3-test: /usr/lib/i386-linux-gnu/libOpenCL.so
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 tests/libviennacl_blas3-test: tests/CMakeFiles/libviennacl_blas3-test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable libviennacl_blas3-test"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/libviennacl_blas3-test.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/libviennacl_blas3-test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/libviennacl_blas3-test.dir/build: tests/libviennacl_blas3-test
@@ -86,10 +105,14 @@ tests/CMakeFiles/libviennacl_blas3-test.dir/requires:
 .PHONY : tests/CMakeFiles/libviennacl_blas3-test.dir/requires
 
 tests/CMakeFiles/libviennacl_blas3-test.dir/clean:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/libviennacl_blas3-test.dir/cmake_clean.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/libviennacl_blas3-test.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/libviennacl_blas3-test.dir/clean
 
 tests/CMakeFiles/libviennacl_blas3-test.dir/depend: tests/CMakeFiles/libviennacl_blas3-test.dir/src/./libviennacl_blas3-test_generated_libviennacl_blas3.cu.o
+<<<<<<< HEAD
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/Documents/ViennaCL-1.5.2 /home/denis/Documents/ViennaCL-1.5.2/tests /home/denis/Documents/ViennaCL-1.5.2/build /home/denis/Documents/ViennaCL-1.5.2/build/tests /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/DependInfo.cmake --color=$(COLOR)
+=======
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/tests /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/tests /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas3-test.dir/DependInfo.cmake --color=$(COLOR)
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/libviennacl_blas3-test.dir/depend
 

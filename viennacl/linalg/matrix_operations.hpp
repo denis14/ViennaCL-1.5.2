@@ -780,22 +780,12 @@ namespace viennacl
 
 
 
-
-
-
-    namespace detail
-    {
       template <typename SCALARTYPE, unsigned int ALIGNMENT, typename VectorType>
       void bidiag_pack(viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& A,
                        VectorType & dh,
                        VectorType & sh
                       )
       {
-        viennacl::vector<SCALARTYPE> D(dh.size());
-        viennacl::vector<SCALARTYPE> S(sh.size());
-        viennacl::copy(dh, D);
-        viennacl::copy(sh, S);
-
         switch (viennacl::traits::handle(A).get_active_handle_id())
         {
           case viennacl::MAIN_MEMORY:
@@ -818,11 +808,9 @@ namespace viennacl
           default:
             throw memory_exception("not implemented");
         }
-       // viennacl::copy(D, dh);
-       // viennacl::copy(S, sh);
+
 
       }
-    }
 
 
 

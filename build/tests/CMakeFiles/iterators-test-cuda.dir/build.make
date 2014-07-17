@@ -38,10 +38,17 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
+<<<<<<< HEAD
 CMAKE_SOURCE_DIR = /home/denis/Documents/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/denis/Documents/ViennaCL-1.5.2/build
+=======
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/iterators-test-cuda.dir/depend.make
@@ -55,17 +62,28 @@ include tests/CMakeFiles/iterators-test-cuda.dir/flags.make
 tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: tests/CMakeFiles/iterators-test-cuda.dir/src/iterators-test-cuda_generated_iterators.cu.o.depend
 tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: tests/CMakeFiles/iterators-test-cuda.dir/src/iterators-test-cuda_generated_iterators.cu.o.cmake
 tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../tests/src/iterators.cu
+<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o"
 	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/.
 	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o -D generated_cubin_file:STRING=/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o.cubin.txt -P /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/iterators-test-cuda_generated_iterators.cu.o.cmake
+=======
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o"
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/iterators-test-cuda_generated_iterators.cu.o.cmake
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 # Object files for target iterators-test-cuda
 iterators__test__cuda_OBJECTS =
 
 # External object files for target iterators-test-cuda
 iterators__test__cuda_EXTERNAL_OBJECTS = \
+<<<<<<< HEAD
 "/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o"
+=======
+"/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o"
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 tests/iterators-test-cuda: tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o
 tests/iterators-test-cuda: tests/CMakeFiles/iterators-test-cuda.dir/build.make
@@ -78,7 +96,11 @@ tests/iterators-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_thread.so
 tests/iterators-test-cuda: /usr/lib/x86_64-linux-gnu/libpthread.so
 tests/iterators-test-cuda: tests/CMakeFiles/iterators-test-cuda.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable iterators-test-cuda"
+<<<<<<< HEAD
 	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/iterators-test-cuda.dir/link.txt --verbose=$(VERBOSE)
+=======
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/iterators-test-cuda.dir/link.txt --verbose=$(VERBOSE)
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/iterators-test-cuda.dir/build: tests/iterators-test-cuda
@@ -88,10 +110,18 @@ tests/CMakeFiles/iterators-test-cuda.dir/requires:
 .PHONY : tests/CMakeFiles/iterators-test-cuda.dir/requires
 
 tests/CMakeFiles/iterators-test-cuda.dir/clean:
+<<<<<<< HEAD
 	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/iterators-test-cuda.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/iterators-test-cuda.dir/clean
 
 tests/CMakeFiles/iterators-test-cuda.dir/depend: tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/Documents/ViennaCL-1.5.2 /home/denis/Documents/ViennaCL-1.5.2/tests /home/denis/Documents/ViennaCL-1.5.2/build /home/denis/Documents/ViennaCL-1.5.2/build/tests /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
+=======
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/iterators-test-cuda.dir/cmake_clean.cmake
+.PHONY : tests/CMakeFiles/iterators-test-cuda.dir/clean
+
+tests/CMakeFiles/iterators-test-cuda.dir/depend: tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/tests /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/tests /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/iterators-test-cuda.dir/depend
 

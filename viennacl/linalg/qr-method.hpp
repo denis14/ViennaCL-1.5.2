@@ -43,7 +43,6 @@ namespace viennacl
       {
           boost::numeric::ublas::matrix<float> A(A_orig.size1(), A_orig.size2());
           viennacl::copy(A_orig, A);
-          std::cout << "matrix_print!\n";
           for (unsigned int i = 0; i < A.size1(); i++) {
               for (unsigned int j = 0; j < A.size2(); j++)
                  std::cout << std::fixed << A(i, j) << "\t";
@@ -54,8 +53,6 @@ namespace viennacl
 
       void vector_print(boost::numeric::ublas::vector<float>& A)
       {
-
-          std::cout << "vector_print!\n";
           for (unsigned int i = 0; i < A.size(); i++)
             std::cout << std::fixed << A(i) << "\t";
           std::cout << "\n";
@@ -227,8 +224,9 @@ namespace viennacl
                         {
                             viennacl::copy(cs, tmp1);
                             viennacl::copy(ss, tmp2);
-
+                           // std::cout << Q << "\n";
                             givens_next(Q, tmp1, tmp2, l, m);
+                           // std::cout << Q << "\n";
                         }
 
                         // Check for convergence.
@@ -953,15 +951,12 @@ namespace viennacl
                        bool is_symmetric = true)
         {
 
-#ifdef VIENNACL_WITH_OPENCL
-            viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(A).context());
-            viennacl::linalg::opencl::kernels::svd<SCALARTYPE>::init(ctx);
             assert(A.size1() == A.size2() && bool("Input matrix must be square for QR method!"));
-#endif
             D.resize(A.size1());
             E.resize(A.size1());
 
-
+            D.clear();
+            E.clear();
 
             Q = viennacl::identity_matrix<SCALARTYPE>(Q.size1());
 
@@ -973,7 +968,7 @@ namespace viennacl
             // pack diagonal and super-diagonal
             // ublas::vector<SCALARTYPE> D(A.size1()), E(A.size1());
 
-            viennacl::linalg::detail::bidiag_pack(A, D, E);     // in matrix_operations.hpp
+            viennacl::linalg::bidiag_pack(A, D, E);     // in matrix_operations.hpp
             std::cout <<"\nprint diagonal:\n";
             vector_print(D);
             std::cout << "\nprint superdiagonal:\n";
