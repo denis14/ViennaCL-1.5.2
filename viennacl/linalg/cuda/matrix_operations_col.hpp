@@ -1416,26 +1416,26 @@ namespace viennacl
       // alpha on GPU
       template <typename T>
       __global__ void bidiag_pack_kernel(
-                  T * A)
-                  //T * D,
-                  //T * S,
-                  //uint size1,
-                  //uint size2,
-                  //uint stride)
-      {
-        /*uint size = min(size1, size2);
+                  T * A,
+                  T * D,
+                  T * S,
+                  uint size1,
+                  uint size2,
+                  uint stride)
+     {
+        uint size = min(size1, size2);
         if(blockIdx.x * blockDim.x + threadIdx.x == 0)
           S[0] = 0;
 
-        for(uint i = blockIdx.x * blockDim.x + threadIdx.x,
+        for(uint i = blockIdx.x * blockDim.x + threadIdx.x;
                  i < size;
                  i += gridDim.x * blockDim.x)
           {
             D[i] = A[i*stride + i];
             S[i+1] = (i + 1 < size2) ? A[i*stride + (i + 1)] : 0;
-          }*/
+          }
       }
-/*
+
       template<typename T>
       __device__ void col_reduce_lcl_array(
               T * sums,
@@ -1500,7 +1500,7 @@ namespace viennacl
               uint size2,
               uint stride)
       {
-          __shared__ T sums[128];
+          __shared__ T sums[128];  //unused variable
           T ss = 0;
 
           for(uint i = blockIdx.x * blockDim.x + threadIdx.x + col_start;
@@ -1533,8 +1533,8 @@ namespace viennacl
           {
               ss = 0;
               for(uint j = threadIdx.x; j < size2; j+= blockDim.x)
-                  ss = ss (V[j] * A[i * stride + j])
-              sums[threadIdx.x];
+                  ss = ss + (V[j] * A[i * stride + j]);
+              sums[threadIdx.x]; //no effect
 
               __syncthreads();
               col_reduce_lcl_array(sums, threadIdx.x, blockDim.x);
@@ -1543,7 +1543,7 @@ namespace viennacl
               T sum_Av = sums[0];
 
               for(uint j = threadIdx.x; j < size2; j+= blockDim.x)
-                  A[i * stride + j] = A[i * stide + j] - (2 * V[j] * sum_Av);
+                  A[i * stride + j] = A[i * stride + j] - (2 * V[j] * sum_Av);
           }
       }
 
@@ -1574,7 +1574,6 @@ namespace viennacl
                   QL[i * strideQ + j] = QL[i * strideQ + j] - (2 * V[j] * sum_Qv);
           }
       }
-*/
     } // namespace cuda
   } //namespace linalg
 } //namespace viennacl
