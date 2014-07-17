@@ -1173,10 +1173,10 @@ namespace viennacl
         }
       }
 
-      template <typename NumericT, typename F, typename S1, typename S2>
+      template <typename NumericT, typename F, typename S1>
        void bidiag_pack_kernel(matrix_base<NumericT, F> & A,
                         vector_base<S1> & D,
-                        vector_base<S2> & S
+                        vector_base<S1> & S
                         )
 
        {
@@ -1237,15 +1237,15 @@ namespace viennacl
 
 
 
-       template <typename SCALARTYPE, unsigned int ALIGNMENT, typename VectorType>
-        void bidiag_pack(viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& A,
+       template <typename NumericT, typename F, typename VectorType>
+        void bidiag_pack(matrix_base<NumericT, F> & A,
                          VectorType & dh,
                          VectorType & sh
                         )
         {
           std::cout << "bidiag_pack!\n";
-          viennacl::vector<SCALARTYPE> D(dh.size());
-          viennacl::vector<SCALARTYPE> S(sh.size());
+          viennacl::vector<NumericT> D(dh.size());
+          viennacl::vector<NumericT> S(sh.size());
           viennacl::copy(dh, D);
           viennacl::copy(sh, S);
 
@@ -1258,83 +1258,62 @@ namespace viennacl
 
 
 
-       template <typename SCALARTYPE, unsigned int ALIGNMENT, typename VectorType>
-       void house_update_A_left(viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& A,
-                                VectorType & D,
+       template <typename NumericT, typename F>
+       void house_update_A_left(matrix_base<NumericT, F>& A,
+                                vector_base<NumericT> & D,
                                 vcl_size_t start)
-       {
+       {         
          //std::cout << "house_update_A_left host based started!!\n";
-         SCALARTYPE temp = 0;
-         SCALARTYPE beta = 0;
+         NumericT temp = 0;
+         NumericT beta = 0;
 
-         viennacl::vector<SCALARTYPE> vcl_w(D.size());
-         viennacl::vector<SCALARTYPE> vcl_D(D.size());
+         viennacl::vector<NumericT> vcl_w(D.size());
+         viennacl::vector<NumericT> vcl_D(D.size());
          viennacl::copy(D, vcl_D);
 
          temp = inner_prod(vcl_D, vcl_D);
          beta = 2/temp;
 
          vcl_w = beta*viennacl::linalg::prod(trans(A), vcl_D);
-
          viennacl::linalg::host_based::scaled_rank_1_update(A, 1, 1, 0, 1, vcl_D, vcl_w);
-         /*
-         for(unsigned int i = start; i < A.size1(); i++)
-         {
-             for(unsigned int j = 0; j < A.size2(); j++)
-             {
-                A(i, j) -= (vcl_D[i] * vcl_w[j]);
-             }
-         }
-         */
-
        }
 
-       template <typename SCALARTYPE, unsigned int ALIGNMENT, typename VectorType>
-       void house_update_A_right(viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& A,
-                                VectorType & D,
-                                vcl_size_t start)
+       template <typename NumericT, typename F>
+       void house_update_A_right(matrix_base<NumericT, F>& A,
+                                 vector_base<NumericT> & D,
+                                 vcl_size_t start)
        {
          //std::cout << "house_update_A_right host based started!!\n";
 
-         SCALARTYPE temp = 0;
-         SCALARTYPE beta = 0;
+         NumericT temp = 0;
+         NumericT beta = 0;
 
-         viennacl::vector<SCALARTYPE> vcl_w(D.size());
-         viennacl::vector<SCALARTYPE> vcl_D(D.size());
+         viennacl::vector<NumericT> vcl_w(D.size());
+         viennacl::vector<NumericT> vcl_D(D.size());
          viennacl::copy(D, vcl_D);
 
          temp = inner_prod(vcl_D, vcl_D);
          beta = 2/temp;
 
          vcl_w = beta*viennacl::linalg::prod(A, vcl_D);
-
          viennacl::linalg::host_based::scaled_rank_1_update(A, 1, 1, 0, 1, vcl_w, vcl_D);
-          /*
-         for(unsigned int i = 0; i < A.size1(); i++)
-         {
-             for(unsigned int j = start; j < A.size2(); j++)
-             {
-                A(i, j) -= vcl_w[i] * vcl_D[j];
-             }
-         }
-         */
-
        }
 
-       template <typename SCALARTYPE, unsigned int ALIGNMENT>
-       void house_update_QL(viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& A,
-                            viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& Q,
-                            viennacl::vector<SCALARTYPE, ALIGNMENT>& D)
+
+       template <typename NumericT, typename F>
+       void house_update_QL(matrix_base<NumericT, F>& A,
+                            matrix_base<NumericT, F>& Q,
+                            vector_base<NumericT> & D)
 
        {
          //std::cout << "house_update_QL host based started!!\n";
-         SCALARTYPE temp, beta = 0;
-         viennacl::matrix<SCALARTYPE> vcl_P(A.size1(), A.size2());
+         NumericT temp, beta = 0;
+         viennacl::matrix<NumericT> vcl_P(A.size1(), A.size2());
 
          //viennacl::matrix<SCALARTYPE> I(A.size1(), A.size2());
          std::cout << D << std::endl;
-         vcl_P = viennacl::identity_matrix<SCALARTYPE>(A.size1());
-         viennacl::vector<SCALARTYPE> vcl_D(D.size());
+         vcl_P = viennacl::identity_matrix<NumericT>(A.size1());
+         viennacl::vector<NumericT> vcl_D(D.size());
          viennacl::copy(D, vcl_D);
 
          temp = inner_prod(vcl_D, vcl_D);
@@ -1355,12 +1334,12 @@ namespace viennacl
          std::cout << vcl_P << std::endl;
        }
 
-       template<typename MatrixType, typename VectorType>
-         void givens_next(MatrixType& matrix,
-                         VectorType& tmp1,    //cs
-                         VectorType& tmp2,    //ss
-                         int l,               //start_i
-                         int m                //end_i+1
+       template<typename NumericT, typename F>
+         void givens_next(matrix_base<NumericT, F>& matrix,
+                         vector_base<NumericT> & tmp1,    //cs
+                         vector_base<NumericT> & tmp2,    //ss
+                         int l,                           //start_i
+                         int m                            //end_i+1
                        )
          {
            //std::cout << "givens_next host based started!!\n";
