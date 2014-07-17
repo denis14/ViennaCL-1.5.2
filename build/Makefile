@@ -517,6 +517,19 @@ NightlyUpdate/fast:
 .PHONY : NightlyUpdate/fast
 
 #=============================================================================
+# Target rules for targets named a_cuda-test-cuda
+
+# Build rule for target.
+a_cuda-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 a_cuda-test-cuda
+.PHONY : a_cuda-test-cuda
+
+# fast build rule for target.
+a_cuda-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/a_cuda-test-cuda.dir/build.make tests/CMakeFiles/a_cuda-test-cuda.dir/build
+.PHONY : a_cuda-test-cuda/fast
+
+#=============================================================================
 # Target rules for targets named bidiag_test-test-cpu
 
 # Build rule for target.
@@ -541,6 +554,19 @@ blas3_prod_double-test-cpu: cmake_check_build_system
 blas3_prod_double-test-cpu/fast:
 	$(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cpu.dir/build
 .PHONY : blas3_prod_double-test-cpu/fast
+
+#=============================================================================
+# Target rules for targets named blas3_prod_double-test-cuda
+
+# Build rule for target.
+blas3_prod_double-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 blas3_prod_double-test-cuda
+.PHONY : blas3_prod_double-test-cuda
+
+# fast build rule for target.
+blas3_prod_double-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cuda.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cuda.dir/build
+.PHONY : blas3_prod_double-test-cuda/fast
 
 #=============================================================================
 # Target rules for targets named blas3_prod_double-test-opencl
@@ -569,6 +595,19 @@ blas3_prod_float-test-cpu/fast:
 .PHONY : blas3_prod_float-test-cpu/fast
 
 #=============================================================================
+# Target rules for targets named blas3_prod_float-test-cuda
+
+# Build rule for target.
+blas3_prod_float-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 blas3_prod_float-test-cuda
+.PHONY : blas3_prod_float-test-cuda
+
+# fast build rule for target.
+blas3_prod_float-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cuda.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cuda.dir/build
+.PHONY : blas3_prod_float-test-cuda/fast
+
+#=============================================================================
 # Target rules for targets named blas3_prod_float-test-opencl
 
 # Build rule for target.
@@ -593,6 +632,19 @@ blas3_solve_double-test-cpu: cmake_check_build_system
 blas3_solve_double-test-cpu/fast:
 	$(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cpu.dir/build
 .PHONY : blas3_solve_double-test-cpu/fast
+
+#=============================================================================
+# Target rules for targets named blas3_solve_double-test-cuda
+
+# Build rule for target.
+blas3_solve_double-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 blas3_solve_double-test-cuda
+.PHONY : blas3_solve_double-test-cuda
+
+# fast build rule for target.
+blas3_solve_double-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cuda.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cuda.dir/build
+.PHONY : blas3_solve_double-test-cuda/fast
 
 #=============================================================================
 # Target rules for targets named blas3_solve_double-test-opencl
@@ -621,6 +673,19 @@ blas3_solve_float-test-cpu/fast:
 .PHONY : blas3_solve_float-test-cpu/fast
 
 #=============================================================================
+# Target rules for targets named blas3_solve_float-test-cuda
+
+# Build rule for target.
+blas3_solve_float-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 blas3_solve_float-test-cuda
+.PHONY : blas3_solve_float-test-cuda
+
+# fast build rule for target.
+blas3_solve_float-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cuda.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cuda.dir/build
+.PHONY : blas3_solve_float-test-cuda/fast
+
+#=============================================================================
 # Target rules for targets named blas3_solve_float-test-opencl
 
 # Build rule for target.
@@ -632,6 +697,19 @@ blas3_solve_float-test-opencl: cmake_check_build_system
 blas3_solve_float-test-opencl/fast:
 	$(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_float-test-opencl.dir/build
 .PHONY : blas3_solve_float-test-opencl/fast
+
+#=============================================================================
+# Target rules for targets named external_linkage-cuda
+
+# Build rule for target.
+external_linkage-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 external_linkage-cuda
+.PHONY : external_linkage-cuda
+
+# fast build rule for target.
+external_linkage-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/external_linkage-cuda.dir/build.make tests/CMakeFiles/external_linkage-cuda.dir/build
+.PHONY : external_linkage-cuda/fast
 
 #=============================================================================
 # Target rules for targets named external_linkage-opencl
@@ -712,6 +790,19 @@ global_variables-test-cpu/fast:
 .PHONY : global_variables-test-cpu/fast
 
 #=============================================================================
+# Target rules for targets named global_variables-test-cuda
+
+# Build rule for target.
+global_variables-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 global_variables-test-cuda
+.PHONY : global_variables-test-cuda
+
+# fast build rule for target.
+global_variables-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/global_variables-test-cuda.dir/build.make tests/CMakeFiles/global_variables-test-cuda.dir/build
+.PHONY : global_variables-test-cuda/fast
+
+#=============================================================================
 # Target rules for targets named global_variables-test-opencl
 
 # Build rule for target.
@@ -736,6 +827,19 @@ iterators-test-cpu: cmake_check_build_system
 iterators-test-cpu/fast:
 	$(MAKE) -f tests/CMakeFiles/iterators-test-cpu.dir/build.make tests/CMakeFiles/iterators-test-cpu.dir/build
 .PHONY : iterators-test-cpu/fast
+
+#=============================================================================
+# Target rules for targets named iterators-test-cuda
+
+# Build rule for target.
+iterators-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 iterators-test-cuda
+.PHONY : iterators-test-cuda
+
+# fast build rule for target.
+iterators-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/iterators-test-cuda.dir/build.make tests/CMakeFiles/iterators-test-cuda.dir/build
+.PHONY : iterators-test-cuda/fast
 
 #=============================================================================
 # Target rules for targets named iterators-test-opencl
@@ -803,6 +907,19 @@ matrix_col_double-test-cpu/fast:
 .PHONY : matrix_col_double-test-cpu/fast
 
 #=============================================================================
+# Target rules for targets named matrix_col_double-test-cuda
+
+# Build rule for target.
+matrix_col_double-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 matrix_col_double-test-cuda
+.PHONY : matrix_col_double-test-cuda
+
+# fast build rule for target.
+matrix_col_double-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_double-test-cuda.dir/build
+.PHONY : matrix_col_double-test-cuda/fast
+
+#=============================================================================
 # Target rules for targets named matrix_col_double-test-opencl
 
 # Build rule for target.
@@ -827,6 +944,19 @@ matrix_col_float-test-cpu: cmake_check_build_system
 matrix_col_float-test-cpu/fast:
 	$(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_float-test-cpu.dir/build
 .PHONY : matrix_col_float-test-cpu/fast
+
+#=============================================================================
+# Target rules for targets named matrix_col_float-test-cuda
+
+# Build rule for target.
+matrix_col_float-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 matrix_col_float-test-cuda
+.PHONY : matrix_col_float-test-cuda
+
+# fast build rule for target.
+matrix_col_float-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_float-test-cuda.dir/build
+.PHONY : matrix_col_float-test-cuda/fast
 
 #=============================================================================
 # Target rules for targets named matrix_col_float-test-opencl
@@ -855,6 +985,19 @@ matrix_col_int-test-cpu/fast:
 .PHONY : matrix_col_int-test-cpu/fast
 
 #=============================================================================
+# Target rules for targets named matrix_col_int-test-cuda
+
+# Build rule for target.
+matrix_col_int-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 matrix_col_int-test-cuda
+.PHONY : matrix_col_int-test-cuda
+
+# fast build rule for target.
+matrix_col_int-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_int-test-cuda.dir/build
+.PHONY : matrix_col_int-test-cuda/fast
+
+#=============================================================================
 # Target rules for targets named matrix_col_int-test-opencl
 
 # Build rule for target.
@@ -879,6 +1022,19 @@ matrix_row_double-test-cpu: cmake_check_build_system
 matrix_row_double-test-cpu/fast:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_double-test-cpu.dir/build
 .PHONY : matrix_row_double-test-cpu/fast
+
+#=============================================================================
+# Target rules for targets named matrix_row_double-test-cuda
+
+# Build rule for target.
+matrix_row_double-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 matrix_row_double-test-cuda
+.PHONY : matrix_row_double-test-cuda
+
+# fast build rule for target.
+matrix_row_double-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_double-test-cuda.dir/build
+.PHONY : matrix_row_double-test-cuda/fast
 
 #=============================================================================
 # Target rules for targets named matrix_row_double-test-opencl
@@ -907,6 +1063,19 @@ matrix_row_float-test-cpu/fast:
 .PHONY : matrix_row_float-test-cpu/fast
 
 #=============================================================================
+# Target rules for targets named matrix_row_float-test-cuda
+
+# Build rule for target.
+matrix_row_float-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 matrix_row_float-test-cuda
+.PHONY : matrix_row_float-test-cuda
+
+# fast build rule for target.
+matrix_row_float-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_float-test-cuda.dir/build
+.PHONY : matrix_row_float-test-cuda/fast
+
+#=============================================================================
 # Target rules for targets named matrix_row_float-test-opencl
 
 # Build rule for target.
@@ -931,6 +1100,19 @@ matrix_row_int-test-cpu: cmake_check_build_system
 matrix_row_int-test-cpu/fast:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_int-test-cpu.dir/build
 .PHONY : matrix_row_int-test-cpu/fast
+
+#=============================================================================
+# Target rules for targets named matrix_row_int-test-cuda
+
+# Build rule for target.
+matrix_row_int-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 matrix_row_int-test-cuda
+.PHONY : matrix_row_int-test-cuda
+
+# fast build rule for target.
+matrix_row_int-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_int-test-cuda.dir/build
+.PHONY : matrix_row_int-test-cuda/fast
 
 #=============================================================================
 # Target rules for targets named matrix_row_int-test-opencl
@@ -959,6 +1141,19 @@ matrix_vector-test-cpu/fast:
 .PHONY : matrix_vector-test-cpu/fast
 
 #=============================================================================
+# Target rules for targets named matrix_vector-test-cuda
+
+# Build rule for target.
+matrix_vector-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 matrix_vector-test-cuda
+.PHONY : matrix_vector-test-cuda
+
+# fast build rule for target.
+matrix_vector-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/matrix_vector-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector-test-cuda.dir/build
+.PHONY : matrix_vector-test-cuda/fast
+
+#=============================================================================
 # Target rules for targets named matrix_vector-test-opencl
 
 # Build rule for target.
@@ -983,6 +1178,19 @@ matrix_vector_int-test-cpu: cmake_check_build_system
 matrix_vector_int-test-cpu/fast:
 	$(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cpu.dir/build
 .PHONY : matrix_vector_int-test-cpu/fast
+
+#=============================================================================
+# Target rules for targets named matrix_vector_int-test-cuda
+
+# Build rule for target.
+matrix_vector_int-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 matrix_vector_int-test-cuda
+.PHONY : matrix_vector_int-test-cuda
+
+# fast build rule for target.
+matrix_vector_int-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cuda.dir/build
+.PHONY : matrix_vector_int-test-cuda/fast
 
 #=============================================================================
 # Target rules for targets named matrix_vector_int-test-opencl
@@ -1048,6 +1256,19 @@ scalar-test-cpu: cmake_check_build_system
 scalar-test-cpu/fast:
 	$(MAKE) -f tests/CMakeFiles/scalar-test-cpu.dir/build.make tests/CMakeFiles/scalar-test-cpu.dir/build
 .PHONY : scalar-test-cpu/fast
+
+#=============================================================================
+# Target rules for targets named scalar-test-cuda
+
+# Build rule for target.
+scalar-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 scalar-test-cuda
+.PHONY : scalar-test-cuda
+
+# fast build rule for target.
+scalar-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/scalar-test-cuda.dir/build.make tests/CMakeFiles/scalar-test-cuda.dir/build
+.PHONY : scalar-test-cuda/fast
 
 #=============================================================================
 # Target rules for targets named scalar-test-opencl
@@ -1141,6 +1362,19 @@ sparse-test-cpu/fast:
 .PHONY : sparse-test-cpu/fast
 
 #=============================================================================
+# Target rules for targets named sparse-test-cuda
+
+# Build rule for target.
+sparse-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sparse-test-cuda
+.PHONY : sparse-test-cuda
+
+# fast build rule for target.
+sparse-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/sparse-test-cuda.dir/build.make tests/CMakeFiles/sparse-test-cuda.dir/build
+.PHONY : sparse-test-cuda/fast
+
+#=============================================================================
 # Target rules for targets named sparse-test-opencl
 
 # Build rule for target.
@@ -1165,6 +1399,19 @@ spmdm-test-cpu: cmake_check_build_system
 spmdm-test-cpu/fast:
 	$(MAKE) -f tests/CMakeFiles/spmdm-test-cpu.dir/build.make tests/CMakeFiles/spmdm-test-cpu.dir/build
 .PHONY : spmdm-test-cpu/fast
+
+#=============================================================================
+# Target rules for targets named spmdm-test-cuda
+
+# Build rule for target.
+spmdm-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 spmdm-test-cuda
+.PHONY : spmdm-test-cuda
+
+# fast build rule for target.
+spmdm-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/spmdm-test-cuda.dir/build.make tests/CMakeFiles/spmdm-test-cuda.dir/build
+.PHONY : spmdm-test-cuda/fast
 
 #=============================================================================
 # Target rules for targets named spmdm-test-opencl
@@ -1219,6 +1466,19 @@ vector_double-test-cpu/fast:
 .PHONY : vector_double-test-cpu/fast
 
 #=============================================================================
+# Target rules for targets named vector_double-test-cuda
+
+# Build rule for target.
+vector_double-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 vector_double-test-cuda
+.PHONY : vector_double-test-cuda
+
+# fast build rule for target.
+vector_double-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/vector_double-test-cuda.dir/build.make tests/CMakeFiles/vector_double-test-cuda.dir/build
+.PHONY : vector_double-test-cuda/fast
+
+#=============================================================================
 # Target rules for targets named vector_double-test-opencl
 
 # Build rule for target.
@@ -1243,6 +1503,19 @@ vector_float-test-cpu: cmake_check_build_system
 vector_float-test-cpu/fast:
 	$(MAKE) -f tests/CMakeFiles/vector_float-test-cpu.dir/build.make tests/CMakeFiles/vector_float-test-cpu.dir/build
 .PHONY : vector_float-test-cpu/fast
+
+#=============================================================================
+# Target rules for targets named vector_float-test-cuda
+
+# Build rule for target.
+vector_float-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 vector_float-test-cuda
+.PHONY : vector_float-test-cuda
+
+# fast build rule for target.
+vector_float-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/vector_float-test-cuda.dir/build.make tests/CMakeFiles/vector_float-test-cuda.dir/build
+.PHONY : vector_float-test-cuda/fast
 
 #=============================================================================
 # Target rules for targets named vector_float-test-opencl
@@ -1271,6 +1544,19 @@ vector_int-test-cpu/fast:
 .PHONY : vector_int-test-cpu/fast
 
 #=============================================================================
+# Target rules for targets named vector_int-test-cuda
+
+# Build rule for target.
+vector_int-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 vector_int-test-cuda
+.PHONY : vector_int-test-cuda
+
+# fast build rule for target.
+vector_int-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/vector_int-test-cuda.dir/build.make tests/CMakeFiles/vector_int-test-cuda.dir/build
+.PHONY : vector_int-test-cuda/fast
+
+#=============================================================================
 # Target rules for targets named vector_int-test-opencl
 
 # Build rule for target.
@@ -1297,6 +1583,19 @@ vector_multi_inner_prod-test-cpu/fast:
 .PHONY : vector_multi_inner_prod-test-cpu/fast
 
 #=============================================================================
+# Target rules for targets named vector_multi_inner_prod-test-cuda
+
+# Build rule for target.
+vector_multi_inner_prod-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 vector_multi_inner_prod-test-cuda
+.PHONY : vector_multi_inner_prod-test-cuda
+
+# fast build rule for target.
+vector_multi_inner_prod-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/build
+.PHONY : vector_multi_inner_prod-test-cuda/fast
+
+#=============================================================================
 # Target rules for targets named vector_multi_inner_prod-test-opencl
 
 # Build rule for target.
@@ -1321,6 +1620,19 @@ vector_uint-test-cpu: cmake_check_build_system
 vector_uint-test-cpu/fast:
 	$(MAKE) -f tests/CMakeFiles/vector_uint-test-cpu.dir/build.make tests/CMakeFiles/vector_uint-test-cpu.dir/build
 .PHONY : vector_uint-test-cpu/fast
+
+#=============================================================================
+# Target rules for targets named vector_uint-test-cuda
+
+# Build rule for target.
+vector_uint-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 vector_uint-test-cuda
+.PHONY : vector_uint-test-cuda
+
+# fast build rule for target.
+vector_uint-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/vector_uint-test-cuda.dir/build.make tests/CMakeFiles/vector_uint-test-cuda.dir/build
+.PHONY : vector_uint-test-cuda/fast
 
 #=============================================================================
 # Target rules for targets named vector_uint-test-opencl
@@ -1389,47 +1701,64 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... a_cuda-test-cuda"
 	@echo "... bidiag_test-test-cpu"
 	@echo "... blas3_prod_double-test-cpu"
+	@echo "... blas3_prod_double-test-cuda"
 	@echo "... blas3_prod_double-test-opencl"
 	@echo "... blas3_prod_float-test-cpu"
+	@echo "... blas3_prod_float-test-cuda"
 	@echo "... blas3_prod_float-test-opencl"
 	@echo "... blas3_solve_double-test-cpu"
+	@echo "... blas3_solve_double-test-cuda"
 	@echo "... blas3_solve_double-test-opencl"
 	@echo "... blas3_solve_float-test-cpu"
+	@echo "... blas3_solve_float-test-cuda"
 	@echo "... blas3_solve_float-test-opencl"
+	@echo "... external_linkage-cuda"
 	@echo "... external_linkage-opencl"
 	@echo "... fft-test-opencl"
 	@echo "... generator_blas1-test-opencl"
 	@echo "... generator_blas2-test-opencl"
 	@echo "... generator_blas3-test-opencl"
 	@echo "... global_variables-test-cpu"
+	@echo "... global_variables-test-cuda"
 	@echo "... global_variables-test-opencl"
 	@echo "... iterators-test-cpu"
+	@echo "... iterators-test-cuda"
 	@echo "... iterators-test-opencl"
 	@echo "... libviennacl_blas1-test"
 	@echo "... libviennacl_blas2-test"
 	@echo "... libviennacl_blas3-test"
 	@echo "... matrix_col_double-test-cpu"
+	@echo "... matrix_col_double-test-cuda"
 	@echo "... matrix_col_double-test-opencl"
 	@echo "... matrix_col_float-test-cpu"
+	@echo "... matrix_col_float-test-cuda"
 	@echo "... matrix_col_float-test-opencl"
 	@echo "... matrix_col_int-test-cpu"
+	@echo "... matrix_col_int-test-cuda"
 	@echo "... matrix_col_int-test-opencl"
 	@echo "... matrix_row_double-test-cpu"
+	@echo "... matrix_row_double-test-cuda"
 	@echo "... matrix_row_double-test-opencl"
 	@echo "... matrix_row_float-test-cpu"
+	@echo "... matrix_row_float-test-cuda"
 	@echo "... matrix_row_float-test-opencl"
 	@echo "... matrix_row_int-test-cpu"
+	@echo "... matrix_row_int-test-cuda"
 	@echo "... matrix_row_int-test-opencl"
 	@echo "... matrix_vector-test-cpu"
+	@echo "... matrix_vector-test-cuda"
 	@echo "... matrix_vector-test-opencl"
 	@echo "... matrix_vector_int-test-cpu"
+	@echo "... matrix_vector_int-test-cuda"
 	@echo "... matrix_vector_int-test-opencl"
 	@echo "... nmf-test-opencl"
 	@echo "... qr_method-test-cpu"
 	@echo "... qr_method-test-opencl"
 	@echo "... scalar-test-cpu"
+	@echo "... scalar-test-cuda"
 	@echo "... scalar-test-opencl"
 	@echo "... scheduler_matrix-test-cpu"
 	@echo "... scheduler_matrix_matrix-test-cpu"
@@ -1437,20 +1766,27 @@ help:
 	@echo "... scheduler_sparse-test-cpu"
 	@echo "... scheduler_vector-test-cpu"
 	@echo "... sparse-test-cpu"
+	@echo "... sparse-test-cuda"
 	@echo "... sparse-test-opencl"
 	@echo "... spmdm-test-cpu"
+	@echo "... spmdm-test-cuda"
 	@echo "... spmdm-test-opencl"
 	@echo "... structured-matrices-test-opencl"
 	@echo "... svd-test-opencl"
 	@echo "... vector_double-test-cpu"
+	@echo "... vector_double-test-cuda"
 	@echo "... vector_double-test-opencl"
 	@echo "... vector_float-test-cpu"
+	@echo "... vector_float-test-cuda"
 	@echo "... vector_float-test-opencl"
 	@echo "... vector_int-test-cpu"
+	@echo "... vector_int-test-cuda"
 	@echo "... vector_int-test-opencl"
 	@echo "... vector_multi_inner_prod-test-cpu"
+	@echo "... vector_multi_inner_prod-test-cuda"
 	@echo "... vector_multi_inner_prod-test-opencl"
 	@echo "... vector_uint-test-cpu"
+	@echo "... vector_uint-test-cuda"
 	@echo "... vector_uint-test-opencl"
 	@echo "... viennacl"
 .PHONY : help

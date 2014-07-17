@@ -153,6 +153,20 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+tests/CMakeFiles/a_cuda-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/a_cuda-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/a_cuda-test-cuda.dir/rule
+
+# Convenience name for target.
+a_cuda-test-cuda: tests/CMakeFiles/a_cuda-test-cuda.dir/rule
+.PHONY : a_cuda-test-cuda
+
+# fast build rule for target.
+a_cuda-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_cuda-test-cuda.dir/build.make tests/CMakeFiles/a_cuda-test-cuda.dir/build
+.PHONY : a_cuda-test-cuda/fast
+
+# Convenience name for target.
 tests/CMakeFiles/bidiag_test-test-cpu.dir/rule:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/bidiag_test-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/bidiag_test-test-cpu.dir/rule
@@ -179,6 +193,20 @@ blas3_prod_double-test-cpu: tests/CMakeFiles/blas3_prod_double-test-cpu.dir/rule
 blas3_prod_double-test-cpu/fast:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cpu.dir/build
 .PHONY : blas3_prod_double-test-cpu/fast
+
+# Convenience name for target.
+tests/CMakeFiles/blas3_prod_double-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_double-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/blas3_prod_double-test-cuda.dir/rule
+
+# Convenience name for target.
+blas3_prod_double-test-cuda: tests/CMakeFiles/blas3_prod_double-test-cuda.dir/rule
+.PHONY : blas3_prod_double-test-cuda
+
+# fast build rule for target.
+blas3_prod_double-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cuda.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cuda.dir/build
+.PHONY : blas3_prod_double-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_prod_double-test-opencl.dir/rule:
@@ -209,6 +237,20 @@ blas3_prod_float-test-cpu/fast:
 .PHONY : blas3_prod_float-test-cpu/fast
 
 # Convenience name for target.
+tests/CMakeFiles/blas3_prod_float-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_float-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/blas3_prod_float-test-cuda.dir/rule
+
+# Convenience name for target.
+blas3_prod_float-test-cuda: tests/CMakeFiles/blas3_prod_float-test-cuda.dir/rule
+.PHONY : blas3_prod_float-test-cuda
+
+# fast build rule for target.
+blas3_prod_float-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cuda.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cuda.dir/build
+.PHONY : blas3_prod_float-test-cuda/fast
+
+# Convenience name for target.
 tests/CMakeFiles/blas3_prod_float-test-opencl.dir/rule:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_float-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/blas3_prod_float-test-opencl.dir/rule
@@ -235,6 +277,20 @@ blas3_solve_double-test-cpu: tests/CMakeFiles/blas3_solve_double-test-cpu.dir/ru
 blas3_solve_double-test-cpu/fast:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cpu.dir/build
 .PHONY : blas3_solve_double-test-cpu/fast
+
+# Convenience name for target.
+tests/CMakeFiles/blas3_solve_double-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_double-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/blas3_solve_double-test-cuda.dir/rule
+
+# Convenience name for target.
+blas3_solve_double-test-cuda: tests/CMakeFiles/blas3_solve_double-test-cuda.dir/rule
+.PHONY : blas3_solve_double-test-cuda
+
+# fast build rule for target.
+blas3_solve_double-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cuda.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cuda.dir/build
+.PHONY : blas3_solve_double-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_solve_double-test-opencl.dir/rule:
@@ -265,6 +321,20 @@ blas3_solve_float-test-cpu/fast:
 .PHONY : blas3_solve_float-test-cpu/fast
 
 # Convenience name for target.
+tests/CMakeFiles/blas3_solve_float-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_float-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/blas3_solve_float-test-cuda.dir/rule
+
+# Convenience name for target.
+blas3_solve_float-test-cuda: tests/CMakeFiles/blas3_solve_float-test-cuda.dir/rule
+.PHONY : blas3_solve_float-test-cuda
+
+# fast build rule for target.
+blas3_solve_float-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cuda.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cuda.dir/build
+.PHONY : blas3_solve_float-test-cuda/fast
+
+# Convenience name for target.
 tests/CMakeFiles/blas3_solve_float-test-opencl.dir/rule:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_float-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/blas3_solve_float-test-opencl.dir/rule
@@ -277,6 +347,20 @@ blas3_solve_float-test-opencl: tests/CMakeFiles/blas3_solve_float-test-opencl.di
 blas3_solve_float-test-opencl/fast:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_float-test-opencl.dir/build
 .PHONY : blas3_solve_float-test-opencl/fast
+
+# Convenience name for target.
+tests/CMakeFiles/external_linkage-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/external_linkage-cuda.dir/rule
+.PHONY : tests/CMakeFiles/external_linkage-cuda.dir/rule
+
+# Convenience name for target.
+external_linkage-cuda: tests/CMakeFiles/external_linkage-cuda.dir/rule
+.PHONY : external_linkage-cuda
+
+# fast build rule for target.
+external_linkage-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-cuda.dir/build.make tests/CMakeFiles/external_linkage-cuda.dir/build
+.PHONY : external_linkage-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/external_linkage-opencl.dir/rule:
@@ -363,6 +447,20 @@ global_variables-test-cpu/fast:
 .PHONY : global_variables-test-cpu/fast
 
 # Convenience name for target.
+tests/CMakeFiles/global_variables-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/global_variables-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/global_variables-test-cuda.dir/rule
+
+# Convenience name for target.
+global_variables-test-cuda: tests/CMakeFiles/global_variables-test-cuda.dir/rule
+.PHONY : global_variables-test-cuda
+
+# fast build rule for target.
+global_variables-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-cuda.dir/build.make tests/CMakeFiles/global_variables-test-cuda.dir/build
+.PHONY : global_variables-test-cuda/fast
+
+# Convenience name for target.
 tests/CMakeFiles/global_variables-test-opencl.dir/rule:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/global_variables-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/global_variables-test-opencl.dir/rule
@@ -389,6 +487,20 @@ iterators-test-cpu: tests/CMakeFiles/iterators-test-cpu.dir/rule
 iterators-test-cpu/fast:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-cpu.dir/build.make tests/CMakeFiles/iterators-test-cpu.dir/build
 .PHONY : iterators-test-cpu/fast
+
+# Convenience name for target.
+tests/CMakeFiles/iterators-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/iterators-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/iterators-test-cuda.dir/rule
+
+# Convenience name for target.
+iterators-test-cuda: tests/CMakeFiles/iterators-test-cuda.dir/rule
+.PHONY : iterators-test-cuda
+
+# fast build rule for target.
+iterators-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-cuda.dir/build.make tests/CMakeFiles/iterators-test-cuda.dir/build
+.PHONY : iterators-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/iterators-test-opencl.dir/rule:
@@ -461,6 +573,20 @@ matrix_col_double-test-cpu/fast:
 .PHONY : matrix_col_double-test-cpu/fast
 
 # Convenience name for target.
+tests/CMakeFiles/matrix_col_double-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_double-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/matrix_col_double-test-cuda.dir/rule
+
+# Convenience name for target.
+matrix_col_double-test-cuda: tests/CMakeFiles/matrix_col_double-test-cuda.dir/rule
+.PHONY : matrix_col_double-test-cuda
+
+# fast build rule for target.
+matrix_col_double-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_double-test-cuda.dir/build
+.PHONY : matrix_col_double-test-cuda/fast
+
+# Convenience name for target.
 tests/CMakeFiles/matrix_col_double-test-opencl.dir/rule:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_double-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/matrix_col_double-test-opencl.dir/rule
@@ -487,6 +613,20 @@ matrix_col_float-test-cpu: tests/CMakeFiles/matrix_col_float-test-cpu.dir/rule
 matrix_col_float-test-cpu/fast:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_float-test-cpu.dir/build
 .PHONY : matrix_col_float-test-cpu/fast
+
+# Convenience name for target.
+tests/CMakeFiles/matrix_col_float-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_float-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/matrix_col_float-test-cuda.dir/rule
+
+# Convenience name for target.
+matrix_col_float-test-cuda: tests/CMakeFiles/matrix_col_float-test-cuda.dir/rule
+.PHONY : matrix_col_float-test-cuda
+
+# fast build rule for target.
+matrix_col_float-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_float-test-cuda.dir/build
+.PHONY : matrix_col_float-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_col_float-test-opencl.dir/rule:
@@ -517,6 +657,20 @@ matrix_col_int-test-cpu/fast:
 .PHONY : matrix_col_int-test-cpu/fast
 
 # Convenience name for target.
+tests/CMakeFiles/matrix_col_int-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_int-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/matrix_col_int-test-cuda.dir/rule
+
+# Convenience name for target.
+matrix_col_int-test-cuda: tests/CMakeFiles/matrix_col_int-test-cuda.dir/rule
+.PHONY : matrix_col_int-test-cuda
+
+# fast build rule for target.
+matrix_col_int-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_int-test-cuda.dir/build
+.PHONY : matrix_col_int-test-cuda/fast
+
+# Convenience name for target.
 tests/CMakeFiles/matrix_col_int-test-opencl.dir/rule:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_int-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/matrix_col_int-test-opencl.dir/rule
@@ -543,6 +697,20 @@ matrix_row_double-test-cpu: tests/CMakeFiles/matrix_row_double-test-cpu.dir/rule
 matrix_row_double-test-cpu/fast:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_double-test-cpu.dir/build
 .PHONY : matrix_row_double-test-cpu/fast
+
+# Convenience name for target.
+tests/CMakeFiles/matrix_row_double-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_double-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/matrix_row_double-test-cuda.dir/rule
+
+# Convenience name for target.
+matrix_row_double-test-cuda: tests/CMakeFiles/matrix_row_double-test-cuda.dir/rule
+.PHONY : matrix_row_double-test-cuda
+
+# fast build rule for target.
+matrix_row_double-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_double-test-cuda.dir/build
+.PHONY : matrix_row_double-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_row_double-test-opencl.dir/rule:
@@ -573,6 +741,20 @@ matrix_row_float-test-cpu/fast:
 .PHONY : matrix_row_float-test-cpu/fast
 
 # Convenience name for target.
+tests/CMakeFiles/matrix_row_float-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_float-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/matrix_row_float-test-cuda.dir/rule
+
+# Convenience name for target.
+matrix_row_float-test-cuda: tests/CMakeFiles/matrix_row_float-test-cuda.dir/rule
+.PHONY : matrix_row_float-test-cuda
+
+# fast build rule for target.
+matrix_row_float-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_float-test-cuda.dir/build
+.PHONY : matrix_row_float-test-cuda/fast
+
+# Convenience name for target.
 tests/CMakeFiles/matrix_row_float-test-opencl.dir/rule:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_float-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/matrix_row_float-test-opencl.dir/rule
@@ -599,6 +781,20 @@ matrix_row_int-test-cpu: tests/CMakeFiles/matrix_row_int-test-cpu.dir/rule
 matrix_row_int-test-cpu/fast:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_int-test-cpu.dir/build
 .PHONY : matrix_row_int-test-cpu/fast
+
+# Convenience name for target.
+tests/CMakeFiles/matrix_row_int-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_int-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/matrix_row_int-test-cuda.dir/rule
+
+# Convenience name for target.
+matrix_row_int-test-cuda: tests/CMakeFiles/matrix_row_int-test-cuda.dir/rule
+.PHONY : matrix_row_int-test-cuda
+
+# fast build rule for target.
+matrix_row_int-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_int-test-cuda.dir/build
+.PHONY : matrix_row_int-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_row_int-test-opencl.dir/rule:
@@ -629,6 +825,20 @@ matrix_vector-test-cpu/fast:
 .PHONY : matrix_vector-test-cpu/fast
 
 # Convenience name for target.
+tests/CMakeFiles/matrix_vector-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/matrix_vector-test-cuda.dir/rule
+
+# Convenience name for target.
+matrix_vector-test-cuda: tests/CMakeFiles/matrix_vector-test-cuda.dir/rule
+.PHONY : matrix_vector-test-cuda
+
+# fast build rule for target.
+matrix_vector-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector-test-cuda.dir/build
+.PHONY : matrix_vector-test-cuda/fast
+
+# Convenience name for target.
 tests/CMakeFiles/matrix_vector-test-opencl.dir/rule:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/matrix_vector-test-opencl.dir/rule
@@ -655,6 +865,20 @@ matrix_vector_int-test-cpu: tests/CMakeFiles/matrix_vector_int-test-cpu.dir/rule
 matrix_vector_int-test-cpu/fast:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cpu.dir/build
 .PHONY : matrix_vector_int-test-cpu/fast
+
+# Convenience name for target.
+tests/CMakeFiles/matrix_vector_int-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector_int-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/matrix_vector_int-test-cuda.dir/rule
+
+# Convenience name for target.
+matrix_vector_int-test-cuda: tests/CMakeFiles/matrix_vector_int-test-cuda.dir/rule
+.PHONY : matrix_vector_int-test-cuda
+
+# fast build rule for target.
+matrix_vector_int-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cuda.dir/build
+.PHONY : matrix_vector_int-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_vector_int-test-opencl.dir/rule:
@@ -725,6 +949,20 @@ scalar-test-cpu: tests/CMakeFiles/scalar-test-cpu.dir/rule
 scalar-test-cpu/fast:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-cpu.dir/build.make tests/CMakeFiles/scalar-test-cpu.dir/build
 .PHONY : scalar-test-cpu/fast
+
+# Convenience name for target.
+tests/CMakeFiles/scalar-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scalar-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/scalar-test-cuda.dir/rule
+
+# Convenience name for target.
+scalar-test-cuda: tests/CMakeFiles/scalar-test-cuda.dir/rule
+.PHONY : scalar-test-cuda
+
+# fast build rule for target.
+scalar-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-cuda.dir/build.make tests/CMakeFiles/scalar-test-cuda.dir/build
+.PHONY : scalar-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/scalar-test-opencl.dir/rule:
@@ -825,6 +1063,20 @@ sparse-test-cpu/fast:
 .PHONY : sparse-test-cpu/fast
 
 # Convenience name for target.
+tests/CMakeFiles/sparse-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/sparse-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/sparse-test-cuda.dir/rule
+
+# Convenience name for target.
+sparse-test-cuda: tests/CMakeFiles/sparse-test-cuda.dir/rule
+.PHONY : sparse-test-cuda
+
+# fast build rule for target.
+sparse-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-cuda.dir/build.make tests/CMakeFiles/sparse-test-cuda.dir/build
+.PHONY : sparse-test-cuda/fast
+
+# Convenience name for target.
 tests/CMakeFiles/sparse-test-opencl.dir/rule:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/sparse-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/sparse-test-opencl.dir/rule
@@ -851,6 +1103,20 @@ spmdm-test-cpu: tests/CMakeFiles/spmdm-test-cpu.dir/rule
 spmdm-test-cpu/fast:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-cpu.dir/build.make tests/CMakeFiles/spmdm-test-cpu.dir/build
 .PHONY : spmdm-test-cpu/fast
+
+# Convenience name for target.
+tests/CMakeFiles/spmdm-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/spmdm-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/spmdm-test-cuda.dir/rule
+
+# Convenience name for target.
+spmdm-test-cuda: tests/CMakeFiles/spmdm-test-cuda.dir/rule
+.PHONY : spmdm-test-cuda
+
+# fast build rule for target.
+spmdm-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-cuda.dir/build.make tests/CMakeFiles/spmdm-test-cuda.dir/build
+.PHONY : spmdm-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/spmdm-test-opencl.dir/rule:
@@ -909,6 +1175,20 @@ vector_double-test-cpu/fast:
 .PHONY : vector_double-test-cpu/fast
 
 # Convenience name for target.
+tests/CMakeFiles/vector_double-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_double-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/vector_double-test-cuda.dir/rule
+
+# Convenience name for target.
+vector_double-test-cuda: tests/CMakeFiles/vector_double-test-cuda.dir/rule
+.PHONY : vector_double-test-cuda
+
+# fast build rule for target.
+vector_double-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-cuda.dir/build.make tests/CMakeFiles/vector_double-test-cuda.dir/build
+.PHONY : vector_double-test-cuda/fast
+
+# Convenience name for target.
 tests/CMakeFiles/vector_double-test-opencl.dir/rule:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_double-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/vector_double-test-opencl.dir/rule
@@ -935,6 +1215,20 @@ vector_float-test-cpu: tests/CMakeFiles/vector_float-test-cpu.dir/rule
 vector_float-test-cpu/fast:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-cpu.dir/build.make tests/CMakeFiles/vector_float-test-cpu.dir/build
 .PHONY : vector_float-test-cpu/fast
+
+# Convenience name for target.
+tests/CMakeFiles/vector_float-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_float-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/vector_float-test-cuda.dir/rule
+
+# Convenience name for target.
+vector_float-test-cuda: tests/CMakeFiles/vector_float-test-cuda.dir/rule
+.PHONY : vector_float-test-cuda
+
+# fast build rule for target.
+vector_float-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-cuda.dir/build.make tests/CMakeFiles/vector_float-test-cuda.dir/build
+.PHONY : vector_float-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/vector_float-test-opencl.dir/rule:
@@ -965,6 +1259,20 @@ vector_int-test-cpu/fast:
 .PHONY : vector_int-test-cpu/fast
 
 # Convenience name for target.
+tests/CMakeFiles/vector_int-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_int-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/vector_int-test-cuda.dir/rule
+
+# Convenience name for target.
+vector_int-test-cuda: tests/CMakeFiles/vector_int-test-cuda.dir/rule
+.PHONY : vector_int-test-cuda
+
+# fast build rule for target.
+vector_int-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-cuda.dir/build.make tests/CMakeFiles/vector_int-test-cuda.dir/build
+.PHONY : vector_int-test-cuda/fast
+
+# Convenience name for target.
 tests/CMakeFiles/vector_int-test-opencl.dir/rule:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_int-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/vector_int-test-opencl.dir/rule
@@ -993,6 +1301,20 @@ vector_multi_inner_prod-test-cpu/fast:
 .PHONY : vector_multi_inner_prod-test-cpu/fast
 
 # Convenience name for target.
+tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/rule
+
+# Convenience name for target.
+vector_multi_inner_prod-test-cuda: tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/rule
+.PHONY : vector_multi_inner_prod-test-cuda
+
+# fast build rule for target.
+vector_multi_inner_prod-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/build
+.PHONY : vector_multi_inner_prod-test-cuda/fast
+
+# Convenience name for target.
 tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/rule:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/rule
@@ -1019,6 +1341,20 @@ vector_uint-test-cpu: tests/CMakeFiles/vector_uint-test-cpu.dir/rule
 vector_uint-test-cpu/fast:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-cpu.dir/build.make tests/CMakeFiles/vector_uint-test-cpu.dir/build
 .PHONY : vector_uint-test-cpu/fast
+
+# Convenience name for target.
+tests/CMakeFiles/vector_uint-test-cuda.dir/rule:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_uint-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/vector_uint-test-cuda.dir/rule
+
+# Convenience name for target.
+vector_uint-test-cuda: tests/CMakeFiles/vector_uint-test-cuda.dir/rule
+.PHONY : vector_uint-test-cuda
+
+# fast build rule for target.
+vector_uint-test-cuda/fast:
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-cuda.dir/build.make tests/CMakeFiles/vector_uint-test-cuda.dir/build
+.PHONY : vector_uint-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/vector_uint-test-opencl.dir/rule:
@@ -1363,78 +1699,6 @@ src/iterators.cpp.s:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-cpu.dir/build.make tests/CMakeFiles/iterators-test-cpu.dir/src/iterators.cpp.s
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-opencl.dir/build.make tests/CMakeFiles/iterators-test-opencl.dir/src/iterators.cpp.s
 .PHONY : src/iterators.cpp.s
-
-src/libviennacl_blas1.o: src/libviennacl_blas1.cpp.o
-.PHONY : src/libviennacl_blas1.o
-
-# target to build an object file
-src/libviennacl_blas1.cpp.o:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/libviennacl_blas1-test.dir/build.make tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.o
-.PHONY : src/libviennacl_blas1.cpp.o
-
-src/libviennacl_blas1.i: src/libviennacl_blas1.cpp.i
-.PHONY : src/libviennacl_blas1.i
-
-# target to preprocess a source file
-src/libviennacl_blas1.cpp.i:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/libviennacl_blas1-test.dir/build.make tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.i
-.PHONY : src/libviennacl_blas1.cpp.i
-
-src/libviennacl_blas1.s: src/libviennacl_blas1.cpp.s
-.PHONY : src/libviennacl_blas1.s
-
-# target to generate assembly for a file
-src/libviennacl_blas1.cpp.s:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/libviennacl_blas1-test.dir/build.make tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.s
-.PHONY : src/libviennacl_blas1.cpp.s
-
-src/libviennacl_blas2.o: src/libviennacl_blas2.cpp.o
-.PHONY : src/libviennacl_blas2.o
-
-# target to build an object file
-src/libviennacl_blas2.cpp.o:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/libviennacl_blas2-test.dir/build.make tests/CMakeFiles/libviennacl_blas2-test.dir/src/libviennacl_blas2.cpp.o
-.PHONY : src/libviennacl_blas2.cpp.o
-
-src/libviennacl_blas2.i: src/libviennacl_blas2.cpp.i
-.PHONY : src/libviennacl_blas2.i
-
-# target to preprocess a source file
-src/libviennacl_blas2.cpp.i:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/libviennacl_blas2-test.dir/build.make tests/CMakeFiles/libviennacl_blas2-test.dir/src/libviennacl_blas2.cpp.i
-.PHONY : src/libviennacl_blas2.cpp.i
-
-src/libviennacl_blas2.s: src/libviennacl_blas2.cpp.s
-.PHONY : src/libviennacl_blas2.s
-
-# target to generate assembly for a file
-src/libviennacl_blas2.cpp.s:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/libviennacl_blas2-test.dir/build.make tests/CMakeFiles/libviennacl_blas2-test.dir/src/libviennacl_blas2.cpp.s
-.PHONY : src/libviennacl_blas2.cpp.s
-
-src/libviennacl_blas3.o: src/libviennacl_blas3.cpp.o
-.PHONY : src/libviennacl_blas3.o
-
-# target to build an object file
-src/libviennacl_blas3.cpp.o:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/libviennacl_blas3-test.dir/build.make tests/CMakeFiles/libviennacl_blas3-test.dir/src/libviennacl_blas3.cpp.o
-.PHONY : src/libviennacl_blas3.cpp.o
-
-src/libviennacl_blas3.i: src/libviennacl_blas3.cpp.i
-.PHONY : src/libviennacl_blas3.i
-
-# target to preprocess a source file
-src/libviennacl_blas3.cpp.i:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/libviennacl_blas3-test.dir/build.make tests/CMakeFiles/libviennacl_blas3-test.dir/src/libviennacl_blas3.cpp.i
-.PHONY : src/libviennacl_blas3.cpp.i
-
-src/libviennacl_blas3.s: src/libviennacl_blas3.cpp.s
-.PHONY : src/libviennacl_blas3.s
-
-# target to generate assembly for a file
-src/libviennacl_blas3.cpp.s:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/libviennacl_blas3-test.dir/build.make tests/CMakeFiles/libviennacl_blas3-test.dir/src/libviennacl_blas3.cpp.s
-.PHONY : src/libviennacl_blas3.cpp.s
 
 src/matrix_col_double.o: src/matrix_col_double.cpp.o
 .PHONY : src/matrix_col_double.o
@@ -2093,53 +2357,70 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... a_cuda-test-cuda"
 	@echo "... bidiag_test-test-cpu"
 	@echo "... blas3_prod_double-test-cpu"
+	@echo "... blas3_prod_double-test-cuda"
 	@echo "... blas3_prod_double-test-opencl"
 	@echo "... blas3_prod_float-test-cpu"
+	@echo "... blas3_prod_float-test-cuda"
 	@echo "... blas3_prod_float-test-opencl"
 	@echo "... blas3_solve_double-test-cpu"
+	@echo "... blas3_solve_double-test-cuda"
 	@echo "... blas3_solve_double-test-opencl"
 	@echo "... blas3_solve_float-test-cpu"
+	@echo "... blas3_solve_float-test-cuda"
 	@echo "... blas3_solve_float-test-opencl"
 	@echo "... edit_cache"
+	@echo "... external_linkage-cuda"
 	@echo "... external_linkage-opencl"
 	@echo "... fft-test-opencl"
 	@echo "... generator_blas1-test-opencl"
 	@echo "... generator_blas2-test-opencl"
 	@echo "... generator_blas3-test-opencl"
 	@echo "... global_variables-test-cpu"
+	@echo "... global_variables-test-cuda"
 	@echo "... global_variables-test-opencl"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... iterators-test-cpu"
+	@echo "... iterators-test-cuda"
 	@echo "... iterators-test-opencl"
 	@echo "... libviennacl_blas1-test"
 	@echo "... libviennacl_blas2-test"
 	@echo "... libviennacl_blas3-test"
 	@echo "... list_install_components"
 	@echo "... matrix_col_double-test-cpu"
+	@echo "... matrix_col_double-test-cuda"
 	@echo "... matrix_col_double-test-opencl"
 	@echo "... matrix_col_float-test-cpu"
+	@echo "... matrix_col_float-test-cuda"
 	@echo "... matrix_col_float-test-opencl"
 	@echo "... matrix_col_int-test-cpu"
+	@echo "... matrix_col_int-test-cuda"
 	@echo "... matrix_col_int-test-opencl"
 	@echo "... matrix_row_double-test-cpu"
+	@echo "... matrix_row_double-test-cuda"
 	@echo "... matrix_row_double-test-opencl"
 	@echo "... matrix_row_float-test-cpu"
+	@echo "... matrix_row_float-test-cuda"
 	@echo "... matrix_row_float-test-opencl"
 	@echo "... matrix_row_int-test-cpu"
+	@echo "... matrix_row_int-test-cuda"
 	@echo "... matrix_row_int-test-opencl"
 	@echo "... matrix_vector-test-cpu"
+	@echo "... matrix_vector-test-cuda"
 	@echo "... matrix_vector-test-opencl"
 	@echo "... matrix_vector_int-test-cpu"
+	@echo "... matrix_vector_int-test-cuda"
 	@echo "... matrix_vector_int-test-opencl"
 	@echo "... nmf-test-opencl"
 	@echo "... qr_method-test-cpu"
 	@echo "... qr_method-test-opencl"
 	@echo "... rebuild_cache"
 	@echo "... scalar-test-cpu"
+	@echo "... scalar-test-cuda"
 	@echo "... scalar-test-opencl"
 	@echo "... scheduler_matrix-test-cpu"
 	@echo "... scheduler_matrix_matrix-test-cpu"
@@ -2147,21 +2428,28 @@ help:
 	@echo "... scheduler_sparse-test-cpu"
 	@echo "... scheduler_vector-test-cpu"
 	@echo "... sparse-test-cpu"
+	@echo "... sparse-test-cuda"
 	@echo "... sparse-test-opencl"
 	@echo "... spmdm-test-cpu"
+	@echo "... spmdm-test-cuda"
 	@echo "... spmdm-test-opencl"
 	@echo "... structured-matrices-test-opencl"
 	@echo "... svd-test-opencl"
 	@echo "... test"
 	@echo "... vector_double-test-cpu"
+	@echo "... vector_double-test-cuda"
 	@echo "... vector_double-test-opencl"
 	@echo "... vector_float-test-cpu"
+	@echo "... vector_float-test-cuda"
 	@echo "... vector_float-test-opencl"
 	@echo "... vector_int-test-cpu"
+	@echo "... vector_int-test-cuda"
 	@echo "... vector_int-test-opencl"
 	@echo "... vector_multi_inner_prod-test-cpu"
+	@echo "... vector_multi_inner_prod-test-cuda"
 	@echo "... vector_multi_inner_prod-test-opencl"
 	@echo "... vector_uint-test-cpu"
+	@echo "... vector_uint-test-cuda"
 	@echo "... vector_uint-test-opencl"
 	@echo "... src/bidiag_test.o"
 	@echo "... src/bidiag_test.i"
@@ -2202,15 +2490,6 @@ help:
 	@echo "... src/iterators.o"
 	@echo "... src/iterators.i"
 	@echo "... src/iterators.s"
-	@echo "... src/libviennacl_blas1.o"
-	@echo "... src/libviennacl_blas1.i"
-	@echo "... src/libviennacl_blas1.s"
-	@echo "... src/libviennacl_blas2.o"
-	@echo "... src/libviennacl_blas2.i"
-	@echo "... src/libviennacl_blas2.s"
-	@echo "... src/libviennacl_blas3.o"
-	@echo "... src/libviennacl_blas3.i"
-	@echo "... src/libviennacl_blas3.s"
 	@echo "... src/matrix_col_double.o"
 	@echo "... src/matrix_col_double.i"
 	@echo "... src/matrix_col_double.s"

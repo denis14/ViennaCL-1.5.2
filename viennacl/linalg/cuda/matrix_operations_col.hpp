@@ -1417,13 +1417,13 @@ namespace viennacl
       template <typename T>
       __global__ void bidiag_pack_kernel(
                   T * A,
-                  T * D,
-                  T * S,
+                  //T * D,
+                  //T * S,
                   uint size1,
                   uint size2,
                   uint stride)
       {
-        uint size = min(size1, size2);
+        /*uint size = min(size1, size2);
         if(blockIdx.x * blockDim.x + threadIdx.x == 0)
           S[0] = 0;
 
@@ -1433,9 +1433,9 @@ namespace viennacl
           {
             D[i] = A[i*stride + i];
             S[i+1] = (i + 1 < size2) ? A[i*stride + (i + 1)] : 0;
-          }
+          }*/
       }
-
+/*
       template<typename T>
       __device__ void col_reduce_lcl_array(
               T * sums,
@@ -1574,7 +1574,7 @@ namespace viennacl
                   QL[i * strideQ + j] = QL[i * strideQ + j] - (2 * V[j] * sum_Qv);
           }
       }
-
+*/
     } // namespace cuda
   } //namespace linalg
 } //namespace viennacl

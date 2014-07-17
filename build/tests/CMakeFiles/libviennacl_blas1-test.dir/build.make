@@ -52,39 +52,27 @@ include tests/CMakeFiles/libviennacl_blas1-test.dir/progress.make
 # Include the compile flags for this target's objects.
 include tests/CMakeFiles/libviennacl_blas1-test.dir/flags.make
 
-tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.o: tests/CMakeFiles/libviennacl_blas1-test.dir/flags.make
-tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.o: ../tests/src/libviennacl_blas1.cpp
+tests/CMakeFiles/libviennacl_blas1-test.dir/src/./libviennacl_blas1-test_generated_libviennacl_blas1.cu.o: tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1-test_generated_libviennacl_blas1.cu.o.depend
+tests/CMakeFiles/libviennacl_blas1-test.dir/src/./libviennacl_blas1-test_generated_libviennacl_blas1.cu.o: tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1-test_generated_libviennacl_blas1.cu.o.cmake
+tests/CMakeFiles/libviennacl_blas1-test.dir/src/./libviennacl_blas1-test_generated_libviennacl_blas1.cu.o: ../tests/src/libviennacl_blas1.cu
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.o"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.o -c /home/denis/Documents/ViennaCL-1.5.2/tests/src/libviennacl_blas1.cpp
-
-tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.i"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/denis/Documents/ViennaCL-1.5.2/tests/src/libviennacl_blas1.cpp > CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.i
-
-tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.s"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/denis/Documents/ViennaCL-1.5.2/tests/src/libviennacl_blas1.cpp -o CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.s
-
-tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.o.requires:
-.PHONY : tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.o.requires
-
-tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.o.provides: tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.o.requires
-	$(MAKE) -f tests/CMakeFiles/libviennacl_blas1-test.dir/build.make tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.o.provides.build
-.PHONY : tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.o.provides
-
-tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.o.provides.build: tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/libviennacl_blas1-test.dir/src/./libviennacl_blas1-test_generated_libviennacl_blas1.cu.o"
+	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas1-test.dir/src && /usr/bin/cmake -E make_directory /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas1-test.dir/src/.
+	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas1-test.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas1-test.dir/src/./libviennacl_blas1-test_generated_libviennacl_blas1.cu.o -D generated_cubin_file:STRING=/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas1-test.dir/src/./libviennacl_blas1-test_generated_libviennacl_blas1.cu.o.cubin.txt -P /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1-test_generated_libviennacl_blas1.cu.o.cmake
 
 # Object files for target libviennacl_blas1-test
-libviennacl_blas1__test_OBJECTS = \
-"CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.o"
+libviennacl_blas1__test_OBJECTS =
 
 # External object files for target libviennacl_blas1-test
-libviennacl_blas1__test_EXTERNAL_OBJECTS =
+libviennacl_blas1__test_EXTERNAL_OBJECTS = \
+"/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas1-test.dir/src/./libviennacl_blas1-test_generated_libviennacl_blas1.cu.o"
 
-tests/libviennacl_blas1-test: tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.o
+tests/libviennacl_blas1-test: tests/CMakeFiles/libviennacl_blas1-test.dir/src/./libviennacl_blas1-test_generated_libviennacl_blas1.cu.o
 tests/libviennacl_blas1-test: tests/CMakeFiles/libviennacl_blas1-test.dir/build.make
+tests/libviennacl_blas1-test: /usr/lib/x86_64-linux-gnu/libcudart.so
 tests/libviennacl_blas1-test: libviennacl/libviennacl.so
+tests/libviennacl_blas1-test: /usr/lib/x86_64-linux-gnu/libOpenCL.so
+tests/libviennacl_blas1-test: /usr/lib/x86_64-linux-gnu/libcudart.so
 tests/libviennacl_blas1-test: /usr/lib/x86_64-linux-gnu/libOpenCL.so
 tests/libviennacl_blas1-test: tests/CMakeFiles/libviennacl_blas1-test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable libviennacl_blas1-test"
@@ -94,14 +82,14 @@ tests/libviennacl_blas1-test: tests/CMakeFiles/libviennacl_blas1-test.dir/link.t
 tests/CMakeFiles/libviennacl_blas1-test.dir/build: tests/libviennacl_blas1-test
 .PHONY : tests/CMakeFiles/libviennacl_blas1-test.dir/build
 
-tests/CMakeFiles/libviennacl_blas1-test.dir/requires: tests/CMakeFiles/libviennacl_blas1-test.dir/src/libviennacl_blas1.cpp.o.requires
+tests/CMakeFiles/libviennacl_blas1-test.dir/requires:
 .PHONY : tests/CMakeFiles/libviennacl_blas1-test.dir/requires
 
 tests/CMakeFiles/libviennacl_blas1-test.dir/clean:
 	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/libviennacl_blas1-test.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/libviennacl_blas1-test.dir/clean
 
-tests/CMakeFiles/libviennacl_blas1-test.dir/depend:
+tests/CMakeFiles/libviennacl_blas1-test.dir/depend: tests/CMakeFiles/libviennacl_blas1-test.dir/src/./libviennacl_blas1-test_generated_libviennacl_blas1.cu.o
 	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/Documents/ViennaCL-1.5.2 /home/denis/Documents/ViennaCL-1.5.2/tests /home/denis/Documents/ViennaCL-1.5.2/build /home/denis/Documents/ViennaCL-1.5.2/build/tests /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/libviennacl_blas1-test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/libviennacl_blas1-test.dir/depend
 
