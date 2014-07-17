@@ -1437,6 +1437,23 @@ namespace viennacl
       }
 
       template<typename T>
+      __device__ void col_reduce_lcl_array(
+              T * sums,
+              uint th_Idx,
+              uint bl_Dim)
+      {
+          uint step = bl_Dim >> 1;
+
+          while(step > 0)
+          {
+              if(th_Idx < step)
+                  sums[th_Idx] += sums[th_Idx + step];
+              step >>= 1;
+              __syncthreads();
+          }
+      }
+
+      template<typename T>
       __global__ void copy_col_kernel(
               T * A,
               T * V,
@@ -1481,9 +1498,9 @@ namespace viennacl
               uint col_start,
               uint size1,
               uint size2,
-              uint stride,
-              T * sums)
+              uint stride)
       {
+          __shared__ T sums[128];
           T ss = 0;
 
           for(uint i = blockIdx.x * blockDim.x + threadIdx.x + col_start;
@@ -1507,22 +1524,54 @@ namespace viennacl
               uint col_start,
               uint size1,
               uint size2,
-              uint stride,
-              )
+              uint stride)
       {
           __shared__ T sums[128];
           T ss = 0;
 
-          for(uint i = blockIdx.x+ row_start; i < size1; i+= gridDim.x)
+          for(uint i = blockIdx.x + row_start; i < size1; i+= gridDim.x)
           {
               ss = 0;
               for(uint j = threadIdx.x; j < size2; j+= blockDim.x)
                   ss = ss (V[j] * A[i * stride + j])
-              sums[/*lcl_id*/];
+              sums[threadIdx.x];
 
               __syncthreads();
-              col_reduce_lcl_array(sums, /*lcl_id*/, blockDim.x);
-              __sy
+              col_reduce_lcl_array(sums, threadIdx.x, blockDim.x);
+              __syncthreads();
+
+              T sum_Av = sums[0];
+
+              for(uint j = threadIdx.x; j < size2; j+= blockDim.x)
+                  A[i * stride + j] = A[i * stide + j] - (2 * V[j] * sum_Av);
+          }
+      }
+
+      template <typename T>
+      __global__ void house_update_QL_kernel(
+              T * QL,
+              T * V,
+              uint size1,
+              uint size2,
+              uint strideQ)
+      {
+          __shared__ T sums[128];
+          T ss = 0;
+          for(uint i = blockIdx.x; i < size1; i += gridDim.x)
+          {
+              ss = 0;
+              for(uint j = threadIdx.x; j < size1; j += blockDim.x)
+                  ss = ss + (V[j] * QL[i * strideQ + j]);
+              sums[threadIdx.x] = ss;
+
+              __syncthreads();
+              col_reduce_lcl_array(sums, threadIdx.x, blockDim.x);
+              __syncthreads();
+
+              T sum_Qv = sums[0];
+
+              for(uint j = threadIdx.x; j < size1; j += blockDim.x)
+                  QL[i * strideQ + j] = QL[i * strideQ + j] - (2 * V[j] * sum_Qv);
           }
       }
 
