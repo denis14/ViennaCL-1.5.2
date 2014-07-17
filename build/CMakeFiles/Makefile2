@@ -1117,7 +1117,11 @@ tests/preinstall:
 tests/CMakeFiles/a_cuda-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/a_cuda-test-cuda.dir/build.make tests/CMakeFiles/a_cuda-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/a_cuda-test-cuda.dir/build.make tests/CMakeFiles/a_cuda-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target a_cuda-test-cuda"
 .PHONY : tests/CMakeFiles/a_cuda-test-cuda.dir/all
 
@@ -1127,9 +1131,15 @@ all: tests/CMakeFiles/a_cuda-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/a_cuda-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/a_cuda-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/a_cuda-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/a_cuda-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1222,7 +1232,11 @@ clean: tests/CMakeFiles/blas3_prod_double-test-cpu.dir/clean
 tests/CMakeFiles/blas3_prod_double-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cuda.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cuda.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  3
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  3
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target blas3_prod_double-test-cuda"
 .PHONY : tests/CMakeFiles/blas3_prod_double-test-cuda.dir/all
 
@@ -1232,9 +1246,15 @@ all: tests/CMakeFiles/blas3_prod_double-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/blas3_prod_double-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_double-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_double-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/blas3_prod_double-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1257,7 +1277,11 @@ clean: tests/CMakeFiles/blas3_prod_double-test-cuda.dir/clean
 tests/CMakeFiles/blas3_prod_double-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_double-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_double-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  4
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  4
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target blas3_prod_double-test-opencl"
 .PHONY : tests/CMakeFiles/blas3_prod_double-test-opencl.dir/all
 
@@ -1292,7 +1316,11 @@ clean: tests/CMakeFiles/blas3_prod_double-test-opencl.dir/clean
 tests/CMakeFiles/blas3_prod_float-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  5
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  5
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target blas3_prod_float-test-cpu"
 .PHONY : tests/CMakeFiles/blas3_prod_float-test-cpu.dir/all
 
@@ -1327,7 +1355,11 @@ clean: tests/CMakeFiles/blas3_prod_float-test-cpu.dir/clean
 tests/CMakeFiles/blas3_prod_float-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cuda.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cuda.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  6
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  6
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target blas3_prod_float-test-cuda"
 .PHONY : tests/CMakeFiles/blas3_prod_float-test-cuda.dir/all
 
@@ -1337,9 +1369,15 @@ all: tests/CMakeFiles/blas3_prod_float-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/blas3_prod_float-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_float-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_float-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/blas3_prod_float-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1362,7 +1400,11 @@ clean: tests/CMakeFiles/blas3_prod_float-test-cuda.dir/clean
 tests/CMakeFiles/blas3_prod_float-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_float-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_float-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  7
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  7
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target blas3_prod_float-test-opencl"
 .PHONY : tests/CMakeFiles/blas3_prod_float-test-opencl.dir/all
 
@@ -1397,7 +1439,11 @@ clean: tests/CMakeFiles/blas3_prod_float-test-opencl.dir/clean
 tests/CMakeFiles/blas3_solve_double-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  8
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  8
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target blas3_solve_double-test-cpu"
 .PHONY : tests/CMakeFiles/blas3_solve_double-test-cpu.dir/all
 
@@ -1432,7 +1478,11 @@ clean: tests/CMakeFiles/blas3_solve_double-test-cpu.dir/clean
 tests/CMakeFiles/blas3_solve_double-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cuda.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cuda.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  9
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  9
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target blas3_solve_double-test-cuda"
 .PHONY : tests/CMakeFiles/blas3_solve_double-test-cuda.dir/all
 
@@ -1442,9 +1492,15 @@ all: tests/CMakeFiles/blas3_solve_double-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/blas3_solve_double-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_double-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_double-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/blas3_solve_double-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1467,7 +1523,11 @@ clean: tests/CMakeFiles/blas3_solve_double-test-cuda.dir/clean
 tests/CMakeFiles/blas3_solve_double-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_double-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_double-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  10
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  10
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target blas3_solve_double-test-opencl"
 .PHONY : tests/CMakeFiles/blas3_solve_double-test-opencl.dir/all
 
@@ -1502,7 +1562,11 @@ clean: tests/CMakeFiles/blas3_solve_double-test-opencl.dir/clean
 tests/CMakeFiles/blas3_solve_float-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  11
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  11
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target blas3_solve_float-test-cpu"
 .PHONY : tests/CMakeFiles/blas3_solve_float-test-cpu.dir/all
 
@@ -1537,7 +1601,11 @@ clean: tests/CMakeFiles/blas3_solve_float-test-cpu.dir/clean
 tests/CMakeFiles/blas3_solve_float-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cuda.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cuda.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  12
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  12
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target blas3_solve_float-test-cuda"
 .PHONY : tests/CMakeFiles/blas3_solve_float-test-cuda.dir/all
 
@@ -1547,9 +1615,15 @@ all: tests/CMakeFiles/blas3_solve_float-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/blas3_solve_float-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_float-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_float-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/blas3_solve_float-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1572,7 +1646,11 @@ clean: tests/CMakeFiles/blas3_solve_float-test-cuda.dir/clean
 tests/CMakeFiles/blas3_solve_float-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_float-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_float-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  13
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  13
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target blas3_solve_float-test-opencl"
 .PHONY : tests/CMakeFiles/blas3_solve_float-test-opencl.dir/all
 
@@ -1607,7 +1685,11 @@ clean: tests/CMakeFiles/blas3_solve_float-test-opencl.dir/clean
 tests/CMakeFiles/external_linkage-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/external_linkage-cuda.dir/build.make tests/CMakeFiles/external_linkage-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/external_linkage-cuda.dir/build.make tests/CMakeFiles/external_linkage-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  14 15
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  14 15
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target external_linkage-cuda"
 .PHONY : tests/CMakeFiles/external_linkage-cuda.dir/all
 
@@ -1617,9 +1699,15 @@ all: tests/CMakeFiles/external_linkage-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/external_linkage-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/external_linkage-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/external_linkage-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/external_linkage-cuda.dir/rule
 
 # Convenience name for target.
@@ -1642,7 +1730,11 @@ clean: tests/CMakeFiles/external_linkage-cuda.dir/clean
 tests/CMakeFiles/external_linkage-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/external_linkage-opencl.dir/build.make tests/CMakeFiles/external_linkage-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/external_linkage-opencl.dir/build.make tests/CMakeFiles/external_linkage-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  16 17
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  16 17
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target external_linkage-opencl"
 .PHONY : tests/CMakeFiles/external_linkage-opencl.dir/all
 
@@ -1677,7 +1769,11 @@ clean: tests/CMakeFiles/external_linkage-opencl.dir/clean
 tests/CMakeFiles/fft-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/fft-test-opencl.dir/build.make tests/CMakeFiles/fft-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/fft-test-opencl.dir/build.make tests/CMakeFiles/fft-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  18
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  18
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target fft-test-opencl"
 .PHONY : tests/CMakeFiles/fft-test-opencl.dir/all
 
@@ -1712,7 +1808,11 @@ clean: tests/CMakeFiles/fft-test-opencl.dir/clean
 tests/CMakeFiles/generator_blas1-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/generator_blas1-test-opencl.dir/build.make tests/CMakeFiles/generator_blas1-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/generator_blas1-test-opencl.dir/build.make tests/CMakeFiles/generator_blas1-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  19
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  19
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target generator_blas1-test-opencl"
 .PHONY : tests/CMakeFiles/generator_blas1-test-opencl.dir/all
 
@@ -1747,7 +1847,11 @@ clean: tests/CMakeFiles/generator_blas1-test-opencl.dir/clean
 tests/CMakeFiles/generator_blas2-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/generator_blas2-test-opencl.dir/build.make tests/CMakeFiles/generator_blas2-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/generator_blas2-test-opencl.dir/build.make tests/CMakeFiles/generator_blas2-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  20
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  20
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target generator_blas2-test-opencl"
 .PHONY : tests/CMakeFiles/generator_blas2-test-opencl.dir/all
 
@@ -1782,7 +1886,11 @@ clean: tests/CMakeFiles/generator_blas2-test-opencl.dir/clean
 tests/CMakeFiles/generator_blas3-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/generator_blas3-test-opencl.dir/build.make tests/CMakeFiles/generator_blas3-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/generator_blas3-test-opencl.dir/build.make tests/CMakeFiles/generator_blas3-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  21
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  21
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target generator_blas3-test-opencl"
 .PHONY : tests/CMakeFiles/generator_blas3-test-opencl.dir/all
 
@@ -1817,7 +1925,11 @@ clean: tests/CMakeFiles/generator_blas3-test-opencl.dir/clean
 tests/CMakeFiles/global_variables-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/global_variables-test-cpu.dir/build.make tests/CMakeFiles/global_variables-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/global_variables-test-cpu.dir/build.make tests/CMakeFiles/global_variables-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  22
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  22
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target global_variables-test-cpu"
 .PHONY : tests/CMakeFiles/global_variables-test-cpu.dir/all
 
@@ -1852,7 +1964,11 @@ clean: tests/CMakeFiles/global_variables-test-cpu.dir/clean
 tests/CMakeFiles/global_variables-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/global_variables-test-cuda.dir/build.make tests/CMakeFiles/global_variables-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/global_variables-test-cuda.dir/build.make tests/CMakeFiles/global_variables-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  23
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  23
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target global_variables-test-cuda"
 .PHONY : tests/CMakeFiles/global_variables-test-cuda.dir/all
 
@@ -1862,9 +1978,15 @@ all: tests/CMakeFiles/global_variables-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/global_variables-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/global_variables-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/global_variables-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/global_variables-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1887,7 +2009,11 @@ clean: tests/CMakeFiles/global_variables-test-cuda.dir/clean
 tests/CMakeFiles/global_variables-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/global_variables-test-opencl.dir/build.make tests/CMakeFiles/global_variables-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/global_variables-test-opencl.dir/build.make tests/CMakeFiles/global_variables-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  24
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  24
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target global_variables-test-opencl"
 .PHONY : tests/CMakeFiles/global_variables-test-opencl.dir/all
 
@@ -1922,7 +2048,11 @@ clean: tests/CMakeFiles/global_variables-test-opencl.dir/clean
 tests/CMakeFiles/iterators-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/iterators-test-cpu.dir/build.make tests/CMakeFiles/iterators-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/iterators-test-cpu.dir/build.make tests/CMakeFiles/iterators-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  25
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  25
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target iterators-test-cpu"
 .PHONY : tests/CMakeFiles/iterators-test-cpu.dir/all
 
@@ -1957,7 +2087,11 @@ clean: tests/CMakeFiles/iterators-test-cpu.dir/clean
 tests/CMakeFiles/iterators-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/iterators-test-cuda.dir/build.make tests/CMakeFiles/iterators-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/iterators-test-cuda.dir/build.make tests/CMakeFiles/iterators-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  26
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  26
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target iterators-test-cuda"
 .PHONY : tests/CMakeFiles/iterators-test-cuda.dir/all
 
@@ -1967,9 +2101,15 @@ all: tests/CMakeFiles/iterators-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/iterators-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/iterators-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/iterators-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/iterators-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1992,7 +2132,11 @@ clean: tests/CMakeFiles/iterators-test-cuda.dir/clean
 tests/CMakeFiles/iterators-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/iterators-test-opencl.dir/build.make tests/CMakeFiles/iterators-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/iterators-test-opencl.dir/build.make tests/CMakeFiles/iterators-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  27
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  27
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target iterators-test-opencl"
 .PHONY : tests/CMakeFiles/iterators-test-opencl.dir/all
 
@@ -2027,7 +2171,11 @@ clean: tests/CMakeFiles/iterators-test-opencl.dir/clean
 tests/CMakeFiles/libviennacl_blas1-test.dir/all: libviennacl/CMakeFiles/viennacl.dir/all
 	$(MAKE) -f tests/CMakeFiles/libviennacl_blas1-test.dir/build.make tests/CMakeFiles/libviennacl_blas1-test.dir/depend
 	$(MAKE) -f tests/CMakeFiles/libviennacl_blas1-test.dir/build.make tests/CMakeFiles/libviennacl_blas1-test.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  28
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  28
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target libviennacl_blas1-test"
 .PHONY : tests/CMakeFiles/libviennacl_blas1-test.dir/all
 
@@ -2037,7 +2185,11 @@ all: tests/CMakeFiles/libviennacl_blas1-test.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/libviennacl_blas1-test.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 14
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 14
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/libviennacl_blas1-test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
 .PHONY : tests/CMakeFiles/libviennacl_blas1-test.dir/rule
@@ -2062,7 +2214,11 @@ clean: tests/CMakeFiles/libviennacl_blas1-test.dir/clean
 tests/CMakeFiles/libviennacl_blas2-test.dir/all: libviennacl/CMakeFiles/viennacl.dir/all
 	$(MAKE) -f tests/CMakeFiles/libviennacl_blas2-test.dir/build.make tests/CMakeFiles/libviennacl_blas2-test.dir/depend
 	$(MAKE) -f tests/CMakeFiles/libviennacl_blas2-test.dir/build.make tests/CMakeFiles/libviennacl_blas2-test.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  29
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  29
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target libviennacl_blas2-test"
 .PHONY : tests/CMakeFiles/libviennacl_blas2-test.dir/all
 
@@ -2072,7 +2228,11 @@ all: tests/CMakeFiles/libviennacl_blas2-test.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/libviennacl_blas2-test.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 14
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 14
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/libviennacl_blas2-test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
 .PHONY : tests/CMakeFiles/libviennacl_blas2-test.dir/rule
@@ -2097,7 +2257,11 @@ clean: tests/CMakeFiles/libviennacl_blas2-test.dir/clean
 tests/CMakeFiles/libviennacl_blas3-test.dir/all: libviennacl/CMakeFiles/viennacl.dir/all
 	$(MAKE) -f tests/CMakeFiles/libviennacl_blas3-test.dir/build.make tests/CMakeFiles/libviennacl_blas3-test.dir/depend
 	$(MAKE) -f tests/CMakeFiles/libviennacl_blas3-test.dir/build.make tests/CMakeFiles/libviennacl_blas3-test.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  30
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  30
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target libviennacl_blas3-test"
 .PHONY : tests/CMakeFiles/libviennacl_blas3-test.dir/all
 
@@ -2107,7 +2271,11 @@ all: tests/CMakeFiles/libviennacl_blas3-test.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/libviennacl_blas3-test.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 14
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 14
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/libviennacl_blas3-test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
 .PHONY : tests/CMakeFiles/libviennacl_blas3-test.dir/rule
@@ -2132,7 +2300,11 @@ clean: tests/CMakeFiles/libviennacl_blas3-test.dir/clean
 tests/CMakeFiles/matrix_col_double-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_double-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_double-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  31
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  31
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_col_double-test-cpu"
 .PHONY : tests/CMakeFiles/matrix_col_double-test-cpu.dir/all
 
@@ -2167,7 +2339,11 @@ clean: tests/CMakeFiles/matrix_col_double-test-cpu.dir/clean
 tests/CMakeFiles/matrix_col_double-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_double-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_double-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  32
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  32
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_col_double-test-cuda"
 .PHONY : tests/CMakeFiles/matrix_col_double-test-cuda.dir/all
 
@@ -2177,9 +2353,15 @@ all: tests/CMakeFiles/matrix_col_double-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/matrix_col_double-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_double-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_double-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/matrix_col_double-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -2202,7 +2384,11 @@ clean: tests/CMakeFiles/matrix_col_double-test-cuda.dir/clean
 tests/CMakeFiles/matrix_col_double-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_col_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_double-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_col_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_double-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  33
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  33
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_col_double-test-opencl"
 .PHONY : tests/CMakeFiles/matrix_col_double-test-opencl.dir/all
 
@@ -2237,7 +2423,11 @@ clean: tests/CMakeFiles/matrix_col_double-test-opencl.dir/clean
 tests/CMakeFiles/matrix_col_float-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_float-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_float-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  34
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  34
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_col_float-test-cpu"
 .PHONY : tests/CMakeFiles/matrix_col_float-test-cpu.dir/all
 
@@ -2272,7 +2462,11 @@ clean: tests/CMakeFiles/matrix_col_float-test-cpu.dir/clean
 tests/CMakeFiles/matrix_col_float-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_float-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_float-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  35
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  35
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_col_float-test-cuda"
 .PHONY : tests/CMakeFiles/matrix_col_float-test-cuda.dir/all
 
@@ -2282,9 +2476,15 @@ all: tests/CMakeFiles/matrix_col_float-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/matrix_col_float-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_float-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_float-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/matrix_col_float-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -2307,7 +2507,11 @@ clean: tests/CMakeFiles/matrix_col_float-test-cuda.dir/clean
 tests/CMakeFiles/matrix_col_float-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_col_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_float-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_col_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_float-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  36
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  36
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_col_float-test-opencl"
 .PHONY : tests/CMakeFiles/matrix_col_float-test-opencl.dir/all
 
@@ -2342,7 +2546,11 @@ clean: tests/CMakeFiles/matrix_col_float-test-opencl.dir/clean
 tests/CMakeFiles/matrix_col_int-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_int-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_int-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  37
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  37
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_col_int-test-cpu"
 .PHONY : tests/CMakeFiles/matrix_col_int-test-cpu.dir/all
 
@@ -2377,7 +2585,11 @@ clean: tests/CMakeFiles/matrix_col_int-test-cpu.dir/clean
 tests/CMakeFiles/matrix_col_int-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_int-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_int-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  38
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  38
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_col_int-test-cuda"
 .PHONY : tests/CMakeFiles/matrix_col_int-test-cuda.dir/all
 
@@ -2387,9 +2599,15 @@ all: tests/CMakeFiles/matrix_col_int-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/matrix_col_int-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_int-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_int-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/matrix_col_int-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -2412,7 +2630,11 @@ clean: tests/CMakeFiles/matrix_col_int-test-cuda.dir/clean
 tests/CMakeFiles/matrix_col_int-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_col_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_int-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_col_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_int-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  39
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  39
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_col_int-test-opencl"
 .PHONY : tests/CMakeFiles/matrix_col_int-test-opencl.dir/all
 
@@ -2447,7 +2669,11 @@ clean: tests/CMakeFiles/matrix_col_int-test-opencl.dir/clean
 tests/CMakeFiles/matrix_row_double-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_double-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_double-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  40
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  40
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_row_double-test-cpu"
 .PHONY : tests/CMakeFiles/matrix_row_double-test-cpu.dir/all
 
@@ -2482,7 +2708,11 @@ clean: tests/CMakeFiles/matrix_row_double-test-cpu.dir/clean
 tests/CMakeFiles/matrix_row_double-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_double-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_double-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  41
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  41
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_row_double-test-cuda"
 .PHONY : tests/CMakeFiles/matrix_row_double-test-cuda.dir/all
 
@@ -2492,9 +2722,15 @@ all: tests/CMakeFiles/matrix_row_double-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/matrix_row_double-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_double-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_double-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/matrix_row_double-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -2517,7 +2753,11 @@ clean: tests/CMakeFiles/matrix_row_double-test-cuda.dir/clean
 tests/CMakeFiles/matrix_row_double-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_double-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_row_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_double-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  42
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  42
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_row_double-test-opencl"
 .PHONY : tests/CMakeFiles/matrix_row_double-test-opencl.dir/all
 
@@ -2552,7 +2792,11 @@ clean: tests/CMakeFiles/matrix_row_double-test-opencl.dir/clean
 tests/CMakeFiles/matrix_row_float-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_float-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_float-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  43
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  43
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_row_float-test-cpu"
 .PHONY : tests/CMakeFiles/matrix_row_float-test-cpu.dir/all
 
@@ -2578,6 +2822,41 @@ tests/CMakeFiles/matrix_row_float-test-cpu.dir/clean:
 
 # clean rule for target.
 clean: tests/CMakeFiles/matrix_row_float-test-cpu.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target tests/CMakeFiles/matrix_row_float-test-cuda.dir
+
+# All Build rule for target.
+tests/CMakeFiles/matrix_row_float-test-cuda.dir/all:
+	$(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_float-test-cuda.dir/depend
+	$(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_float-test-cuda.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  44
+	@echo "Built target matrix_row_float-test-cuda"
+.PHONY : tests/CMakeFiles/matrix_row_float-test-cuda.dir/all
+
+# Include target in all.
+all: tests/CMakeFiles/matrix_row_float-test-cuda.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+tests/CMakeFiles/matrix_row_float-test-cuda.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_float-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+.PHONY : tests/CMakeFiles/matrix_row_float-test-cuda.dir/rule
+
+# Convenience name for target.
+matrix_row_float-test-cuda: tests/CMakeFiles/matrix_row_float-test-cuda.dir/rule
+.PHONY : matrix_row_float-test-cuda
+
+# clean rule for target.
+tests/CMakeFiles/matrix_row_float-test-cuda.dir/clean:
+	$(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_float-test-cuda.dir/clean
+.PHONY : tests/CMakeFiles/matrix_row_float-test-cuda.dir/clean
+
+# clean rule for target.
+clean: tests/CMakeFiles/matrix_row_float-test-cuda.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -2622,7 +2901,11 @@ clean: tests/CMakeFiles/matrix_row_float-test-cuda.dir/clean
 tests/CMakeFiles/matrix_row_float-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_float-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_row_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_float-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  45
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  45
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_row_float-test-opencl"
 .PHONY : tests/CMakeFiles/matrix_row_float-test-opencl.dir/all
 
@@ -2657,7 +2940,11 @@ clean: tests/CMakeFiles/matrix_row_float-test-opencl.dir/clean
 tests/CMakeFiles/matrix_row_int-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_int-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_int-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  46
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  46
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_row_int-test-cpu"
 .PHONY : tests/CMakeFiles/matrix_row_int-test-cpu.dir/all
 
@@ -2692,7 +2979,11 @@ clean: tests/CMakeFiles/matrix_row_int-test-cpu.dir/clean
 tests/CMakeFiles/matrix_row_int-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_int-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_int-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  47
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  47
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_row_int-test-cuda"
 .PHONY : tests/CMakeFiles/matrix_row_int-test-cuda.dir/all
 
@@ -2702,9 +2993,15 @@ all: tests/CMakeFiles/matrix_row_int-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/matrix_row_int-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_int-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_int-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/matrix_row_int-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -2727,7 +3024,11 @@ clean: tests/CMakeFiles/matrix_row_int-test-cuda.dir/clean
 tests/CMakeFiles/matrix_row_int-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_int-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_row_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_int-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  48
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  48
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_row_int-test-opencl"
 .PHONY : tests/CMakeFiles/matrix_row_int-test-opencl.dir/all
 
@@ -2762,7 +3063,11 @@ clean: tests/CMakeFiles/matrix_row_int-test-opencl.dir/clean
 tests/CMakeFiles/matrix_vector-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  49
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  49
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_vector-test-cpu"
 .PHONY : tests/CMakeFiles/matrix_vector-test-cpu.dir/all
 
@@ -2797,7 +3102,11 @@ clean: tests/CMakeFiles/matrix_vector-test-cpu.dir/clean
 tests/CMakeFiles/matrix_vector-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_vector-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_vector-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  50
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  50
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_vector-test-cuda"
 .PHONY : tests/CMakeFiles/matrix_vector-test-cuda.dir/all
 
@@ -2807,9 +3116,15 @@ all: tests/CMakeFiles/matrix_vector-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/matrix_vector-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/matrix_vector-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -2832,7 +3147,11 @@ clean: tests/CMakeFiles/matrix_vector-test-cuda.dir/clean
 tests/CMakeFiles/matrix_vector-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_vector-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_vector-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_vector-test-opencl"
 .PHONY : tests/CMakeFiles/matrix_vector-test-opencl.dir/all
 
@@ -2842,7 +3161,11 @@ all: tests/CMakeFiles/matrix_vector-test-opencl.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/matrix_vector-test-opencl.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector-test-opencl.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
 .PHONY : tests/CMakeFiles/matrix_vector-test-opencl.dir/rule
@@ -2867,7 +3190,11 @@ clean: tests/CMakeFiles/matrix_vector-test-opencl.dir/clean
 tests/CMakeFiles/matrix_vector_int-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  51
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  51
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_vector_int-test-cpu"
 .PHONY : tests/CMakeFiles/matrix_vector_int-test-cpu.dir/all
 
@@ -2902,7 +3229,11 @@ clean: tests/CMakeFiles/matrix_vector_int-test-cpu.dir/clean
 tests/CMakeFiles/matrix_vector_int-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  52
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  52
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_vector_int-test-cuda"
 .PHONY : tests/CMakeFiles/matrix_vector_int-test-cuda.dir/all
 
@@ -2912,9 +3243,15 @@ all: tests/CMakeFiles/matrix_vector_int-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/matrix_vector_int-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector_int-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector_int-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/matrix_vector_int-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -2937,7 +3274,11 @@ clean: tests/CMakeFiles/matrix_vector_int-test-cuda.dir/clean
 tests/CMakeFiles/matrix_vector_int-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector_int-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector_int-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  53
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  53
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target matrix_vector_int-test-opencl"
 .PHONY : tests/CMakeFiles/matrix_vector_int-test-opencl.dir/all
 
@@ -2972,7 +3313,11 @@ clean: tests/CMakeFiles/matrix_vector_int-test-opencl.dir/clean
 tests/CMakeFiles/nmf-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/nmf-test-opencl.dir/build.make tests/CMakeFiles/nmf-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/nmf-test-opencl.dir/build.make tests/CMakeFiles/nmf-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  54
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  54
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target nmf-test-opencl"
 .PHONY : tests/CMakeFiles/nmf-test-opencl.dir/all
 
@@ -3007,7 +3352,11 @@ clean: tests/CMakeFiles/nmf-test-opencl.dir/clean
 tests/CMakeFiles/qr_method-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/qr_method-test-cpu.dir/build.make tests/CMakeFiles/qr_method-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/qr_method-test-cpu.dir/build.make tests/CMakeFiles/qr_method-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  55
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  55
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target qr_method-test-cpu"
 .PHONY : tests/CMakeFiles/qr_method-test-cpu.dir/all
 
@@ -3042,7 +3391,11 @@ clean: tests/CMakeFiles/qr_method-test-cpu.dir/clean
 tests/CMakeFiles/qr_method-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/qr_method-test-opencl.dir/build.make tests/CMakeFiles/qr_method-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/qr_method-test-opencl.dir/build.make tests/CMakeFiles/qr_method-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  56
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  56
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target qr_method-test-opencl"
 .PHONY : tests/CMakeFiles/qr_method-test-opencl.dir/all
 
@@ -3077,7 +3430,11 @@ clean: tests/CMakeFiles/qr_method-test-opencl.dir/clean
 tests/CMakeFiles/scalar-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/scalar-test-cpu.dir/build.make tests/CMakeFiles/scalar-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/scalar-test-cpu.dir/build.make tests/CMakeFiles/scalar-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  57
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  57
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target scalar-test-cpu"
 .PHONY : tests/CMakeFiles/scalar-test-cpu.dir/all
 
@@ -3112,7 +3469,11 @@ clean: tests/CMakeFiles/scalar-test-cpu.dir/clean
 tests/CMakeFiles/scalar-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/scalar-test-cuda.dir/build.make tests/CMakeFiles/scalar-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/scalar-test-cuda.dir/build.make tests/CMakeFiles/scalar-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  58
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  58
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target scalar-test-cuda"
 .PHONY : tests/CMakeFiles/scalar-test-cuda.dir/all
 
@@ -3122,9 +3483,15 @@ all: tests/CMakeFiles/scalar-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/scalar-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scalar-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scalar-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/scalar-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -3147,7 +3514,11 @@ clean: tests/CMakeFiles/scalar-test-cuda.dir/clean
 tests/CMakeFiles/scalar-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/scalar-test-opencl.dir/build.make tests/CMakeFiles/scalar-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/scalar-test-opencl.dir/build.make tests/CMakeFiles/scalar-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  59
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  59
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target scalar-test-opencl"
 .PHONY : tests/CMakeFiles/scalar-test-opencl.dir/all
 
@@ -3182,7 +3553,11 @@ clean: tests/CMakeFiles/scalar-test-opencl.dir/clean
 tests/CMakeFiles/scheduler_matrix-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  60
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  60
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target scheduler_matrix-test-cpu"
 .PHONY : tests/CMakeFiles/scheduler_matrix-test-cpu.dir/all
 
@@ -3217,7 +3592,11 @@ clean: tests/CMakeFiles/scheduler_matrix-test-cpu.dir/clean
 tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  61
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  61
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target scheduler_matrix_matrix-test-cpu"
 .PHONY : tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/all
 
@@ -3252,7 +3631,11 @@ clean: tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/clean
 tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  62
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  62
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target scheduler_matrix_vector-test-cpu"
 .PHONY : tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/all
 
@@ -3287,7 +3670,11 @@ clean: tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/clean
 tests/CMakeFiles/scheduler_sparse-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/scheduler_sparse-test-cpu.dir/build.make tests/CMakeFiles/scheduler_sparse-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/scheduler_sparse-test-cpu.dir/build.make tests/CMakeFiles/scheduler_sparse-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  63
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  63
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target scheduler_sparse-test-cpu"
 .PHONY : tests/CMakeFiles/scheduler_sparse-test-cpu.dir/all
 
@@ -3322,7 +3709,11 @@ clean: tests/CMakeFiles/scheduler_sparse-test-cpu.dir/clean
 tests/CMakeFiles/scheduler_vector-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/scheduler_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_vector-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/scheduler_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_vector-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  64
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  64
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target scheduler_vector-test-cpu"
 .PHONY : tests/CMakeFiles/scheduler_vector-test-cpu.dir/all
 
@@ -3357,7 +3748,11 @@ clean: tests/CMakeFiles/scheduler_vector-test-cpu.dir/clean
 tests/CMakeFiles/sparse-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/sparse-test-cpu.dir/build.make tests/CMakeFiles/sparse-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/sparse-test-cpu.dir/build.make tests/CMakeFiles/sparse-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  65
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  65
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target sparse-test-cpu"
 .PHONY : tests/CMakeFiles/sparse-test-cpu.dir/all
 
@@ -3392,7 +3787,11 @@ clean: tests/CMakeFiles/sparse-test-cpu.dir/clean
 tests/CMakeFiles/sparse-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/sparse-test-cuda.dir/build.make tests/CMakeFiles/sparse-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/sparse-test-cuda.dir/build.make tests/CMakeFiles/sparse-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  66
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  66
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target sparse-test-cuda"
 .PHONY : tests/CMakeFiles/sparse-test-cuda.dir/all
 
@@ -3402,9 +3801,15 @@ all: tests/CMakeFiles/sparse-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/sparse-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/sparse-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/sparse-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/sparse-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -3427,7 +3832,11 @@ clean: tests/CMakeFiles/sparse-test-cuda.dir/clean
 tests/CMakeFiles/sparse-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/sparse-test-opencl.dir/build.make tests/CMakeFiles/sparse-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/sparse-test-opencl.dir/build.make tests/CMakeFiles/sparse-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  67
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  67
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target sparse-test-opencl"
 .PHONY : tests/CMakeFiles/sparse-test-opencl.dir/all
 
@@ -3462,7 +3871,11 @@ clean: tests/CMakeFiles/sparse-test-opencl.dir/clean
 tests/CMakeFiles/spmdm-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/spmdm-test-cpu.dir/build.make tests/CMakeFiles/spmdm-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/spmdm-test-cpu.dir/build.make tests/CMakeFiles/spmdm-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  68
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  68
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target spmdm-test-cpu"
 .PHONY : tests/CMakeFiles/spmdm-test-cpu.dir/all
 
@@ -3497,7 +3910,11 @@ clean: tests/CMakeFiles/spmdm-test-cpu.dir/clean
 tests/CMakeFiles/spmdm-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/spmdm-test-cuda.dir/build.make tests/CMakeFiles/spmdm-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/spmdm-test-cuda.dir/build.make tests/CMakeFiles/spmdm-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  69
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  69
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target spmdm-test-cuda"
 .PHONY : tests/CMakeFiles/spmdm-test-cuda.dir/all
 
@@ -3507,9 +3924,15 @@ all: tests/CMakeFiles/spmdm-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/spmdm-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/spmdm-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/spmdm-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/spmdm-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -3532,7 +3955,11 @@ clean: tests/CMakeFiles/spmdm-test-cuda.dir/clean
 tests/CMakeFiles/spmdm-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/spmdm-test-opencl.dir/build.make tests/CMakeFiles/spmdm-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/spmdm-test-opencl.dir/build.make tests/CMakeFiles/spmdm-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  70
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  70
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target spmdm-test-opencl"
 .PHONY : tests/CMakeFiles/spmdm-test-opencl.dir/all
 
@@ -3567,7 +3994,11 @@ clean: tests/CMakeFiles/spmdm-test-opencl.dir/clean
 tests/CMakeFiles/structured-matrices-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/structured-matrices-test-opencl.dir/build.make tests/CMakeFiles/structured-matrices-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/structured-matrices-test-opencl.dir/build.make tests/CMakeFiles/structured-matrices-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  71
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  71
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target structured-matrices-test-opencl"
 .PHONY : tests/CMakeFiles/structured-matrices-test-opencl.dir/all
 
@@ -3602,7 +4033,11 @@ clean: tests/CMakeFiles/structured-matrices-test-opencl.dir/clean
 tests/CMakeFiles/svd-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/svd-test-opencl.dir/build.make tests/CMakeFiles/svd-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/svd-test-opencl.dir/build.make tests/CMakeFiles/svd-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  72
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  72
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target svd-test-opencl"
 .PHONY : tests/CMakeFiles/svd-test-opencl.dir/all
 
@@ -3637,7 +4072,11 @@ clean: tests/CMakeFiles/svd-test-opencl.dir/clean
 tests/CMakeFiles/vector_double-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/vector_double-test-cpu.dir/build.make tests/CMakeFiles/vector_double-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/vector_double-test-cpu.dir/build.make tests/CMakeFiles/vector_double-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  73
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  73
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target vector_double-test-cpu"
 .PHONY : tests/CMakeFiles/vector_double-test-cpu.dir/all
 
@@ -3672,7 +4111,11 @@ clean: tests/CMakeFiles/vector_double-test-cpu.dir/clean
 tests/CMakeFiles/vector_double-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/vector_double-test-cuda.dir/build.make tests/CMakeFiles/vector_double-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/vector_double-test-cuda.dir/build.make tests/CMakeFiles/vector_double-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  74
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  74
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target vector_double-test-cuda"
 .PHONY : tests/CMakeFiles/vector_double-test-cuda.dir/all
 
@@ -3682,9 +4125,15 @@ all: tests/CMakeFiles/vector_double-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/vector_double-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_double-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_double-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/vector_double-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -3707,7 +4156,11 @@ clean: tests/CMakeFiles/vector_double-test-cuda.dir/clean
 tests/CMakeFiles/vector_double-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/vector_double-test-opencl.dir/build.make tests/CMakeFiles/vector_double-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/vector_double-test-opencl.dir/build.make tests/CMakeFiles/vector_double-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  75
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  75
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target vector_double-test-opencl"
 .PHONY : tests/CMakeFiles/vector_double-test-opencl.dir/all
 
@@ -3742,7 +4195,11 @@ clean: tests/CMakeFiles/vector_double-test-opencl.dir/clean
 tests/CMakeFiles/vector_float-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/vector_float-test-cpu.dir/build.make tests/CMakeFiles/vector_float-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/vector_float-test-cpu.dir/build.make tests/CMakeFiles/vector_float-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  76
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  76
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target vector_float-test-cpu"
 .PHONY : tests/CMakeFiles/vector_float-test-cpu.dir/all
 
@@ -3777,7 +4234,11 @@ clean: tests/CMakeFiles/vector_float-test-cpu.dir/clean
 tests/CMakeFiles/vector_float-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/vector_float-test-cuda.dir/build.make tests/CMakeFiles/vector_float-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/vector_float-test-cuda.dir/build.make tests/CMakeFiles/vector_float-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  77
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  77
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target vector_float-test-cuda"
 .PHONY : tests/CMakeFiles/vector_float-test-cuda.dir/all
 
@@ -3787,9 +4248,15 @@ all: tests/CMakeFiles/vector_float-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/vector_float-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_float-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_float-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/vector_float-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -3812,7 +4279,11 @@ clean: tests/CMakeFiles/vector_float-test-cuda.dir/clean
 tests/CMakeFiles/vector_float-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/vector_float-test-opencl.dir/build.make tests/CMakeFiles/vector_float-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/vector_float-test-opencl.dir/build.make tests/CMakeFiles/vector_float-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  78
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  78
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target vector_float-test-opencl"
 .PHONY : tests/CMakeFiles/vector_float-test-opencl.dir/all
 
@@ -3847,7 +4318,11 @@ clean: tests/CMakeFiles/vector_float-test-opencl.dir/clean
 tests/CMakeFiles/vector_int-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/vector_int-test-cpu.dir/build.make tests/CMakeFiles/vector_int-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/vector_int-test-cpu.dir/build.make tests/CMakeFiles/vector_int-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  79
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  79
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target vector_int-test-cpu"
 .PHONY : tests/CMakeFiles/vector_int-test-cpu.dir/all
 
@@ -3882,7 +4357,11 @@ clean: tests/CMakeFiles/vector_int-test-cpu.dir/clean
 tests/CMakeFiles/vector_int-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/vector_int-test-cuda.dir/build.make tests/CMakeFiles/vector_int-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/vector_int-test-cuda.dir/build.make tests/CMakeFiles/vector_int-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  80
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  80
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target vector_int-test-cuda"
 .PHONY : tests/CMakeFiles/vector_int-test-cuda.dir/all
 
@@ -3892,9 +4371,15 @@ all: tests/CMakeFiles/vector_int-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/vector_int-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_int-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_int-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/vector_int-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -3917,7 +4402,11 @@ clean: tests/CMakeFiles/vector_int-test-cuda.dir/clean
 tests/CMakeFiles/vector_int-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/vector_int-test-opencl.dir/build.make tests/CMakeFiles/vector_int-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/vector_int-test-opencl.dir/build.make tests/CMakeFiles/vector_int-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  81
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  81
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target vector_int-test-opencl"
 .PHONY : tests/CMakeFiles/vector_int-test-opencl.dir/all
 
@@ -3952,7 +4441,11 @@ clean: tests/CMakeFiles/vector_int-test-opencl.dir/clean
 tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  82
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  82
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target vector_multi_inner_prod-test-cpu"
 .PHONY : tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/all
 
@@ -3987,7 +4480,11 @@ clean: tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/clean
 tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  83
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  83
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target vector_multi_inner_prod-test-cuda"
 .PHONY : tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/all
 
@@ -3997,9 +4494,15 @@ all: tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -4022,7 +4525,11 @@ clean: tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/clean
 tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  84
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  84
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target vector_multi_inner_prod-test-opencl"
 .PHONY : tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/all
 
@@ -4057,7 +4564,11 @@ clean: tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/clean
 tests/CMakeFiles/vector_uint-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/vector_uint-test-cpu.dir/build.make tests/CMakeFiles/vector_uint-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/vector_uint-test-cpu.dir/build.make tests/CMakeFiles/vector_uint-test-cpu.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  85
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  85
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target vector_uint-test-cpu"
 .PHONY : tests/CMakeFiles/vector_uint-test-cpu.dir/all
 
@@ -4092,7 +4603,11 @@ clean: tests/CMakeFiles/vector_uint-test-cpu.dir/clean
 tests/CMakeFiles/vector_uint-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/vector_uint-test-cuda.dir/build.make tests/CMakeFiles/vector_uint-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/vector_uint-test-cuda.dir/build.make tests/CMakeFiles/vector_uint-test-cuda.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  86
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  86
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target vector_uint-test-cuda"
 .PHONY : tests/CMakeFiles/vector_uint-test-cuda.dir/all
 
@@ -4102,9 +4617,15 @@ all: tests/CMakeFiles/vector_uint-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/vector_uint-test-cuda.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_uint-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_uint-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/vector_uint-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -4127,7 +4648,11 @@ clean: tests/CMakeFiles/vector_uint-test-cuda.dir/clean
 tests/CMakeFiles/vector_uint-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/vector_uint-test-opencl.dir/build.make tests/CMakeFiles/vector_uint-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/vector_uint-test-opencl.dir/build.make tests/CMakeFiles/vector_uint-test-opencl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  87
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  87
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target vector_uint-test-opencl"
 .PHONY : tests/CMakeFiles/vector_uint-test-opencl.dir/all
 
@@ -4177,7 +4702,11 @@ libviennacl/preinstall:
 libviennacl/CMakeFiles/viennacl.dir/all:
 	$(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/depend
 	$(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/build
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles  88 89 90 91 92 93 94 95 96 97 98 99 100
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  88 89 90 91 92 93 94 95 96 97 98 99 100
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	@echo "Built target viennacl"
 .PHONY : libviennacl/CMakeFiles/viennacl.dir/all
 
@@ -4187,7 +4716,11 @@ all: libviennacl/CMakeFiles/viennacl.dir/all
 
 # Build rule for subdir invocation for target.
 libviennacl/CMakeFiles/viennacl.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 13
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 13
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 	$(MAKE) -f CMakeFiles/Makefile2 libviennacl/CMakeFiles/viennacl.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
 .PHONY : libviennacl/CMakeFiles/viennacl.dir/rule

@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/openclbench-opencl.dir/opencl.cpp.o  -o openclbench-opencl -rdynamic -lOpenCL 

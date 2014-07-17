@@ -1,1 +1,5 @@
+<<<<<<< HEAD
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/libviennacl_blas1-test.dir/src/./libviennacl_blas1-test_generated_libviennacl_blas1.cu.o  -o libviennacl_blas1-test -rdynamic -lcudart ../libviennacl/libviennacl.so -lOpenCL -lcudart -lOpenCL -Wl,-rpath,/home/denis/Documents/ViennaCL-1.5.2/build/libviennacl 
+=======
 /usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/libviennacl_blas1-test.dir/src/./libviennacl_blas1-test_generated_libviennacl_blas1.cu.o  -o libviennacl_blas1-test -rdynamic -lcudart ../libviennacl/libviennacl.so -lOpenCL -lcudart -lOpenCL -Wl,-rpath,/home/andi/git/ViennaCL-1.5.2/build/libviennacl 
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6

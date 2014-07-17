@@ -110,7 +110,7 @@ void vector_print(ublas::vector<ScalarType>& v )
 }
 int main()
 {
-  //ublas::vector<ScalarType> D = ublas::scalar_vector<ScalarType>(sz, 0);
+  ublas::vector<ScalarType> A = ublas::scalar_vector<ScalarType>(sz, 0);
   //ublas::vector<ScalarType> E = ublas::scalar_vector<ScalarType>(sz, 0);
   
   //std::size_t sz = 4;
@@ -125,7 +125,7 @@ int main()
   //f.close();
   //matrix_print(A_input);
   
-  viennacl::linalg::cuda::bidiag_pack_kernel<<<128, 128>>>(10);
+  viennacl::linalg::cuda::bidiag_pack_kernel<<<128, 128>>>(A, 10, 11, 12);
   std::cout << "Testdata wurde gelesen!" << std::endl;
   //vector_print(D);
   //matrix_print(A_input);

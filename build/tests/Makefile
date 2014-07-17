@@ -154,7 +154,11 @@ depend:
 
 # Convenience name for target.
 tests/CMakeFiles/a_cuda-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/a_cuda-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/a_cuda-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/a_cuda-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -163,7 +167,11 @@ a_cuda-test-cuda: tests/CMakeFiles/a_cuda-test-cuda.dir/rule
 
 # fast build rule for target.
 a_cuda-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_cuda-test-cuda.dir/build.make tests/CMakeFiles/a_cuda-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_cuda-test-cuda.dir/build.make tests/CMakeFiles/a_cuda-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : a_cuda-test-cuda/fast
 
 # Convenience name for target.
@@ -196,7 +204,11 @@ blas3_prod_double-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_prod_double-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_double-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_double-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/blas3_prod_double-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -205,7 +217,11 @@ blas3_prod_double-test-cuda: tests/CMakeFiles/blas3_prod_double-test-cuda.dir/ru
 
 # fast build rule for target.
 blas3_prod_double-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cuda.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cuda.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : blas3_prod_double-test-cuda/fast
 
 # Convenience name for target.
@@ -238,7 +254,11 @@ blas3_prod_float-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_prod_float-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_float-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_float-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/blas3_prod_float-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -247,7 +267,11 @@ blas3_prod_float-test-cuda: tests/CMakeFiles/blas3_prod_float-test-cuda.dir/rule
 
 # fast build rule for target.
 blas3_prod_float-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cuda.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cuda.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : blas3_prod_float-test-cuda/fast
 
 # Convenience name for target.
@@ -280,7 +304,11 @@ blas3_solve_double-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_solve_double-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_double-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_double-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/blas3_solve_double-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -289,7 +317,11 @@ blas3_solve_double-test-cuda: tests/CMakeFiles/blas3_solve_double-test-cuda.dir/
 
 # fast build rule for target.
 blas3_solve_double-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cuda.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cuda.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : blas3_solve_double-test-cuda/fast
 
 # Convenience name for target.
@@ -322,7 +354,11 @@ blas3_solve_float-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_solve_float-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_float-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_float-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/blas3_solve_float-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -331,7 +367,11 @@ blas3_solve_float-test-cuda: tests/CMakeFiles/blas3_solve_float-test-cuda.dir/ru
 
 # fast build rule for target.
 blas3_solve_float-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cuda.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cuda.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : blas3_solve_float-test-cuda/fast
 
 # Convenience name for target.
@@ -350,7 +390,11 @@ blas3_solve_float-test-opencl/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/external_linkage-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/external_linkage-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/external_linkage-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/external_linkage-cuda.dir/rule
 
 # Convenience name for target.
@@ -359,7 +403,11 @@ external_linkage-cuda: tests/CMakeFiles/external_linkage-cuda.dir/rule
 
 # fast build rule for target.
 external_linkage-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-cuda.dir/build.make tests/CMakeFiles/external_linkage-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-cuda.dir/build.make tests/CMakeFiles/external_linkage-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : external_linkage-cuda/fast
 
 # Convenience name for target.
@@ -448,7 +496,11 @@ global_variables-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/global_variables-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/global_variables-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/global_variables-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/global_variables-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -457,7 +509,11 @@ global_variables-test-cuda: tests/CMakeFiles/global_variables-test-cuda.dir/rule
 
 # fast build rule for target.
 global_variables-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-cuda.dir/build.make tests/CMakeFiles/global_variables-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-cuda.dir/build.make tests/CMakeFiles/global_variables-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : global_variables-test-cuda/fast
 
 # Convenience name for target.
@@ -490,7 +546,11 @@ iterators-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/iterators-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/iterators-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/iterators-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/iterators-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -499,7 +559,11 @@ iterators-test-cuda: tests/CMakeFiles/iterators-test-cuda.dir/rule
 
 # fast build rule for target.
 iterators-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-cuda.dir/build.make tests/CMakeFiles/iterators-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-cuda.dir/build.make tests/CMakeFiles/iterators-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : iterators-test-cuda/fast
 
 # Convenience name for target.
@@ -574,7 +638,11 @@ matrix_col_double-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_col_double-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_double-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_double-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/matrix_col_double-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -583,7 +651,11 @@ matrix_col_double-test-cuda: tests/CMakeFiles/matrix_col_double-test-cuda.dir/ru
 
 # fast build rule for target.
 matrix_col_double-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_double-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_double-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : matrix_col_double-test-cuda/fast
 
 # Convenience name for target.
@@ -616,7 +688,11 @@ matrix_col_float-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_col_float-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_float-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_float-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/matrix_col_float-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -625,7 +701,11 @@ matrix_col_float-test-cuda: tests/CMakeFiles/matrix_col_float-test-cuda.dir/rule
 
 # fast build rule for target.
 matrix_col_float-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_float-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_float-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : matrix_col_float-test-cuda/fast
 
 # Convenience name for target.
@@ -658,7 +738,11 @@ matrix_col_int-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_col_int-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_int-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_int-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/matrix_col_int-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -667,7 +751,11 @@ matrix_col_int-test-cuda: tests/CMakeFiles/matrix_col_int-test-cuda.dir/rule
 
 # fast build rule for target.
 matrix_col_int-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_int-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_int-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : matrix_col_int-test-cuda/fast
 
 # Convenience name for target.
@@ -700,7 +788,11 @@ matrix_row_double-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_row_double-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_double-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_double-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/matrix_row_double-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -709,7 +801,11 @@ matrix_row_double-test-cuda: tests/CMakeFiles/matrix_row_double-test-cuda.dir/ru
 
 # fast build rule for target.
 matrix_row_double-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_double-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_double-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : matrix_row_double-test-cuda/fast
 
 # Convenience name for target.
@@ -742,7 +838,11 @@ matrix_row_float-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_row_float-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_float-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_float-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/matrix_row_float-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -751,7 +851,11 @@ matrix_row_float-test-cuda: tests/CMakeFiles/matrix_row_float-test-cuda.dir/rule
 
 # fast build rule for target.
 matrix_row_float-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_float-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_float-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : matrix_row_float-test-cuda/fast
 
 # Convenience name for target.
@@ -784,7 +888,11 @@ matrix_row_int-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_row_int-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_int-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_int-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/matrix_row_int-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -793,7 +901,11 @@ matrix_row_int-test-cuda: tests/CMakeFiles/matrix_row_int-test-cuda.dir/rule
 
 # fast build rule for target.
 matrix_row_int-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_int-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_int-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : matrix_row_int-test-cuda/fast
 
 # Convenience name for target.
@@ -826,7 +938,11 @@ matrix_vector-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_vector-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/matrix_vector-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -835,7 +951,11 @@ matrix_vector-test-cuda: tests/CMakeFiles/matrix_vector-test-cuda.dir/rule
 
 # fast build rule for target.
 matrix_vector-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : matrix_vector-test-cuda/fast
 
 # Convenience name for target.
@@ -868,7 +988,11 @@ matrix_vector_int-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_vector_int-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector_int-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector_int-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/matrix_vector_int-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -877,7 +1001,11 @@ matrix_vector_int-test-cuda: tests/CMakeFiles/matrix_vector_int-test-cuda.dir/ru
 
 # fast build rule for target.
 matrix_vector_int-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : matrix_vector_int-test-cuda/fast
 
 # Convenience name for target.
@@ -952,7 +1080,11 @@ scalar-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/scalar-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scalar-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scalar-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/scalar-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -961,7 +1093,11 @@ scalar-test-cuda: tests/CMakeFiles/scalar-test-cuda.dir/rule
 
 # fast build rule for target.
 scalar-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-cuda.dir/build.make tests/CMakeFiles/scalar-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-cuda.dir/build.make tests/CMakeFiles/scalar-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : scalar-test-cuda/fast
 
 # Convenience name for target.
@@ -1064,7 +1200,11 @@ sparse-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/sparse-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/sparse-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/sparse-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/sparse-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1073,7 +1213,11 @@ sparse-test-cuda: tests/CMakeFiles/sparse-test-cuda.dir/rule
 
 # fast build rule for target.
 sparse-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-cuda.dir/build.make tests/CMakeFiles/sparse-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-cuda.dir/build.make tests/CMakeFiles/sparse-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : sparse-test-cuda/fast
 
 # Convenience name for target.
@@ -1106,7 +1250,11 @@ spmdm-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/spmdm-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/spmdm-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/spmdm-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/spmdm-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1115,7 +1263,11 @@ spmdm-test-cuda: tests/CMakeFiles/spmdm-test-cuda.dir/rule
 
 # fast build rule for target.
 spmdm-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-cuda.dir/build.make tests/CMakeFiles/spmdm-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-cuda.dir/build.make tests/CMakeFiles/spmdm-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : spmdm-test-cuda/fast
 
 # Convenience name for target.
@@ -1176,7 +1328,11 @@ vector_double-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/vector_double-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_double-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_double-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/vector_double-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1185,7 +1341,11 @@ vector_double-test-cuda: tests/CMakeFiles/vector_double-test-cuda.dir/rule
 
 # fast build rule for target.
 vector_double-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-cuda.dir/build.make tests/CMakeFiles/vector_double-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-cuda.dir/build.make tests/CMakeFiles/vector_double-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : vector_double-test-cuda/fast
 
 # Convenience name for target.
@@ -1218,7 +1378,11 @@ vector_float-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/vector_float-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_float-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_float-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/vector_float-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1227,7 +1391,11 @@ vector_float-test-cuda: tests/CMakeFiles/vector_float-test-cuda.dir/rule
 
 # fast build rule for target.
 vector_float-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-cuda.dir/build.make tests/CMakeFiles/vector_float-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-cuda.dir/build.make tests/CMakeFiles/vector_float-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : vector_float-test-cuda/fast
 
 # Convenience name for target.
@@ -1260,7 +1428,11 @@ vector_int-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/vector_int-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_int-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_int-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/vector_int-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1269,7 +1441,11 @@ vector_int-test-cuda: tests/CMakeFiles/vector_int-test-cuda.dir/rule
 
 # fast build rule for target.
 vector_int-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-cuda.dir/build.make tests/CMakeFiles/vector_int-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-cuda.dir/build.make tests/CMakeFiles/vector_int-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : vector_int-test-cuda/fast
 
 # Convenience name for target.
@@ -1302,7 +1478,11 @@ vector_multi_inner_prod-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1311,7 +1491,11 @@ vector_multi_inner_prod-test-cuda: tests/CMakeFiles/vector_multi_inner_prod-test
 
 # fast build rule for target.
 vector_multi_inner_prod-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : vector_multi_inner_prod-test-cuda/fast
 
 # Convenience name for target.
@@ -1344,7 +1528,11 @@ vector_uint-test-cpu/fast:
 
 # Convenience name for target.
 tests/CMakeFiles/vector_uint-test-cuda.dir/rule:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_uint-test-cuda.dir/rule
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_uint-test-cuda.dir/rule
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/vector_uint-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1353,7 +1541,11 @@ vector_uint-test-cuda: tests/CMakeFiles/vector_uint-test-cuda.dir/rule
 
 # fast build rule for target.
 vector_uint-test-cuda/fast:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-cuda.dir/build.make tests/CMakeFiles/vector_uint-test-cuda.dir/build
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-cuda.dir/build.make tests/CMakeFiles/vector_uint-test-cuda.dir/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : vector_uint-test-cuda/fast
 
 # Convenience name for target.

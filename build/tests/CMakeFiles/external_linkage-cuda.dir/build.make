@@ -38,10 +38,17 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
+<<<<<<< HEAD
+CMAKE_SOURCE_DIR = /home/denis/Documents/ViennaCL-1.5.2
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = /home/denis/Documents/ViennaCL-1.5.2/build
+=======
 CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/external_linkage-cuda.dir/depend.make
@@ -55,40 +62,63 @@ include tests/CMakeFiles/external_linkage-cuda.dir/flags.make
 tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_1.cu.o: tests/CMakeFiles/external_linkage-cuda.dir/src/external_linkage-cuda_generated_external_1.cu.o.depend
 tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_1.cu.o: tests/CMakeFiles/external_linkage-cuda.dir/src/external_linkage-cuda_generated_external_1.cu.o.cmake
 tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_1.cu.o: ../tests/src/external_1.cu
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_1.cu.o"
+	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src && /usr/bin/cmake -E make_directory /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/.
+	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_1.cu.o -D generated_cubin_file:STRING=/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_1.cu.o.cubin.txt -P /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/external_linkage-cuda_generated_external_1.cu.o.cmake
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_1.cu.o"
 	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/.
 	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_1.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_1.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/external_linkage-cuda_generated_external_1.cu.o.cmake
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_2.cu.o: tests/CMakeFiles/external_linkage-cuda.dir/src/external_linkage-cuda_generated_external_2.cu.o.depend
 tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_2.cu.o: tests/CMakeFiles/external_linkage-cuda.dir/src/external_linkage-cuda_generated_external_2.cu.o.cmake
 tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_2.cu.o: ../tests/src/external_2.cu
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_2.cu.o"
+	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src && /usr/bin/cmake -E make_directory /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/.
+	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_2.cu.o -D generated_cubin_file:STRING=/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_2.cu.o.cubin.txt -P /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/external_linkage-cuda_generated_external_2.cu.o.cmake
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_2.cu.o"
 	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/.
 	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_2.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_2.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/external_linkage-cuda_generated_external_2.cu.o.cmake
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 # Object files for target external_linkage-cuda
 external_linkage__cuda_OBJECTS =
 
 # External object files for target external_linkage-cuda
 external_linkage__cuda_EXTERNAL_OBJECTS = \
+<<<<<<< HEAD
+"/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_1.cu.o" \
+"/home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_2.cu.o"
+=======
 "/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_1.cu.o" \
 "/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_2.cu.o"
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 tests/external_linkage-cuda: tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_1.cu.o
 tests/external_linkage-cuda: tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_2.cu.o
 tests/external_linkage-cuda: tests/CMakeFiles/external_linkage-cuda.dir/build.make
-tests/external_linkage-cuda: /usr/lib/i386-linux-gnu/libcudart.so
-tests/external_linkage-cuda: /usr/lib/i386-linux-gnu/libboost_chrono.so
-tests/external_linkage-cuda: /usr/lib/i386-linux-gnu/libboost_date_time.so
-tests/external_linkage-cuda: /usr/lib/i386-linux-gnu/libboost_serialization.so
-tests/external_linkage-cuda: /usr/lib/i386-linux-gnu/libboost_system.so
-tests/external_linkage-cuda: /usr/lib/i386-linux-gnu/libboost_thread.so
-tests/external_linkage-cuda: /usr/lib/i386-linux-gnu/libpthread.so
+tests/external_linkage-cuda: /usr/lib/x86_64-linux-gnu/libcudart.so
+tests/external_linkage-cuda: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+tests/external_linkage-cuda: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+tests/external_linkage-cuda: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
+tests/external_linkage-cuda: /usr/lib/x86_64-linux-gnu/libboost_system.so
+tests/external_linkage-cuda: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+tests/external_linkage-cuda: /usr/lib/x86_64-linux-gnu/libpthread.so
 tests/external_linkage-cuda: tests/CMakeFiles/external_linkage-cuda.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable external_linkage-cuda"
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/external_linkage-cuda.dir/link.txt --verbose=$(VERBOSE)
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/external_linkage-cuda.dir/link.txt --verbose=$(VERBOSE)
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/external_linkage-cuda.dir/build: tests/external_linkage-cuda
@@ -98,11 +128,19 @@ tests/CMakeFiles/external_linkage-cuda.dir/requires:
 .PHONY : tests/CMakeFiles/external_linkage-cuda.dir/requires
 
 tests/CMakeFiles/external_linkage-cuda.dir/clean:
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/external_linkage-cuda.dir/cmake_clean.cmake
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/external_linkage-cuda.dir/cmake_clean.cmake
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/external_linkage-cuda.dir/clean
 
 tests/CMakeFiles/external_linkage-cuda.dir/depend: tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_1.cu.o
 tests/CMakeFiles/external_linkage-cuda.dir/depend: tests/CMakeFiles/external_linkage-cuda.dir/src/./external_linkage-cuda_generated_external_2.cu.o
+<<<<<<< HEAD
+	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/Documents/ViennaCL-1.5.2 /home/denis/Documents/ViennaCL-1.5.2/tests /home/denis/Documents/ViennaCL-1.5.2/build /home/denis/Documents/ViennaCL-1.5.2/build/tests /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/DependInfo.cmake --color=$(COLOR)
+=======
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/tests /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/tests /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-cuda.dir/DependInfo.cmake --color=$(COLOR)
+>>>>>>> 18ea777fbaf799ee7d33f419621d5d740873a5f6
 .PHONY : tests/CMakeFiles/external_linkage-cuda.dir/depend
 
