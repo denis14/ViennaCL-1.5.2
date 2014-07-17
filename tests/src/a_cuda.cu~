@@ -119,7 +119,7 @@ int main()
   //read size of input matrix
   //read_matrix_size(f, sz);
   
-  viennacl::matrix<ScalarType> A_input(4, 4);
+  //viennacl::matrix<ScalarType> A_input(4, 4);
 
   //read_matrix_body(f, A_input);
   //f.close();
