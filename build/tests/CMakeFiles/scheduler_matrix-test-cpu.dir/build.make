@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/denis/Documents/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/denis/Documents/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/scheduler_matrix-test-cpu.dir/depend.make
@@ -54,17 +54,17 @@ include tests/CMakeFiles/scheduler_matrix-test-cpu.dir/flags.make
 
 tests/CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.o: tests/CMakeFiles/scheduler_matrix-test-cpu.dir/flags.make
 tests/CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.o: ../tests/src/scheduler_matrix.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object tests/CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.o"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.o -c /home/denis/Documents/ViennaCL-1.5.2/tests/src/scheduler_matrix.cpp
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.o -c /home/andi/git/ViennaCL-1.5.2/tests/src/scheduler_matrix.cpp
 
 tests/CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.i"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/denis/Documents/ViennaCL-1.5.2/tests/src/scheduler_matrix.cpp > CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andi/git/ViennaCL-1.5.2/tests/src/scheduler_matrix.cpp > CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.i
 
 tests/CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.s"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/denis/Documents/ViennaCL-1.5.2/tests/src/scheduler_matrix.cpp -o CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andi/git/ViennaCL-1.5.2/tests/src/scheduler_matrix.cpp -o CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.s
 
 tests/CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.o.requires:
 .PHONY : tests/CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.o.requires
@@ -84,15 +84,15 @@ scheduler_matrix__test__cpu_EXTERNAL_OBJECTS =
 
 tests/scheduler_matrix-test-cpu: tests/CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.o
 tests/scheduler_matrix-test-cpu: tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build.make
-tests/scheduler_matrix-test-cpu: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-tests/scheduler_matrix-test-cpu: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-tests/scheduler_matrix-test-cpu: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
-tests/scheduler_matrix-test-cpu: /usr/lib/x86_64-linux-gnu/libboost_system.so
-tests/scheduler_matrix-test-cpu: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-tests/scheduler_matrix-test-cpu: /usr/lib/x86_64-linux-gnu/libpthread.so
+tests/scheduler_matrix-test-cpu: /usr/lib/i386-linux-gnu/libboost_chrono.so
+tests/scheduler_matrix-test-cpu: /usr/lib/i386-linux-gnu/libboost_date_time.so
+tests/scheduler_matrix-test-cpu: /usr/lib/i386-linux-gnu/libboost_serialization.so
+tests/scheduler_matrix-test-cpu: /usr/lib/i386-linux-gnu/libboost_system.so
+tests/scheduler_matrix-test-cpu: /usr/lib/i386-linux-gnu/libboost_thread.so
+tests/scheduler_matrix-test-cpu: /usr/lib/i386-linux-gnu/libpthread.so
 tests/scheduler_matrix-test-cpu: tests/CMakeFiles/scheduler_matrix-test-cpu.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable scheduler_matrix-test-cpu"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/scheduler_matrix-test-cpu.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/scheduler_matrix-test-cpu.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build: tests/scheduler_matrix-test-cpu
@@ -102,10 +102,10 @@ tests/CMakeFiles/scheduler_matrix-test-cpu.dir/requires: tests/CMakeFiles/schedu
 .PHONY : tests/CMakeFiles/scheduler_matrix-test-cpu.dir/requires
 
 tests/CMakeFiles/scheduler_matrix-test-cpu.dir/clean:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/scheduler_matrix-test-cpu.dir/cmake_clean.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/scheduler_matrix-test-cpu.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/scheduler_matrix-test-cpu.dir/clean
 
 tests/CMakeFiles/scheduler_matrix-test-cpu.dir/depend:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/Documents/ViennaCL-1.5.2 /home/denis/Documents/ViennaCL-1.5.2/tests /home/denis/Documents/ViennaCL-1.5.2/build /home/denis/Documents/ViennaCL-1.5.2/build/tests /home/denis/Documents/ViennaCL-1.5.2/build/tests/CMakeFiles/scheduler_matrix-test-cpu.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/tests /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/tests /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/scheduler_matrix-test-cpu.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/scheduler_matrix-test-cpu.dir/depend
 

@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andi/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andi/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
 
 # Include any dependencies generated for this target.
 include examples/benchmarks/CMakeFiles/copybench-cuda.dir/depend.make
@@ -52,43 +52,43 @@ include examples/benchmarks/CMakeFiles/copybench-cuda.dir/progress.make
 # Include the compile flags for this target's objects.
 include examples/benchmarks/CMakeFiles/copybench-cuda.dir/flags.make
 
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../examples/benchmarks/benchmark-utils.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../examples/benchmarks/copy.cu
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/backend/cpu_ram.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/backend/cuda.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/backend/mem_handle.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/backend/memory.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/backend/util.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/context.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/forwards.h
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/linalg/cuda/common.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/linalg/cuda/scalar_operations.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/linalg/cuda/vector_operations.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/linalg/detail/op_applier.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/linalg/detail/op_executor.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/linalg/host_based/common.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/linalg/host_based/scalar_operations.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/linalg/host_based/vector_operations.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/linalg/inner_prod.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/linalg/norm_2.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/linalg/scalar_operations.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/linalg/vector_operations.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/meta/enable_if.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/meta/predicate.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/meta/result_of.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/meta/tag_of.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/ocl/forwards.h
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/scalar.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/tools/adapter.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/tools/entry_proxy.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/tools/shared_ptr.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/tools/tools.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/traits/context.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/traits/handle.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/traits/size.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/traits/start.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/traits/stride.hpp
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../viennacl/vector.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/examples/benchmarks/benchmark-utils.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/examples/benchmarks/copy.cu
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/backend/cpu_ram.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/backend/cuda.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/backend/mem_handle.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/backend/memory.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/backend/util.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/context.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/forwards.h
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/cuda/common.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/cuda/scalar_operations.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/cuda/vector_operations.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/detail/op_applier.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/detail/op_executor.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/host_based/common.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/host_based/scalar_operations.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/host_based/vector_operations.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/inner_prod.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/norm_2.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/scalar_operations.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/linalg/vector_operations.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/meta/enable_if.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/meta/predicate.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/meta/result_of.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/meta/tag_of.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/ocl/forwards.h
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/scalar.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/tools/adapter.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/tools/entry_proxy.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/tools/shared_ptr.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/tools/tools.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/traits/context.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/traits/handle.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/traits/size.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/traits/start.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/traits/stride.hpp
+examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /home/andi/ViennaCL-1.5.2/viennacl/vector.hpp
 examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /usr/include/_G_config.h
 examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /usr/include/alloca.h
 examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /usr/include/assert.h
@@ -282,24 +282,24 @@ examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_cop
 examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: /usr/lib/nvidia-cuda-toolkit/include/surface_functions.h
 examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: examples/benchmarks/CMakeFiles/copybench-cuda.dir/copybench-cuda_generated_copy.cu.o.cmake
 examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o: ../examples/benchmarks/copy.cu
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object examples/benchmarks/CMakeFiles/copybench-cuda.dir//./copybench-cuda_generated_copy.cu.o"
-	cd /home/andi/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-cuda.dir && /usr/bin/cmake -E make_directory /home/andi/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-cuda.dir//.
-	cd /home/andi/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-cuda.dir && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-cuda.dir//./copybench-cuda_generated_copy.cu.o -D generated_cubin_file:STRING=/home/andi/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-cuda.dir//./copybench-cuda_generated_copy.cu.o.cubin.txt -P /home/andi/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-cuda.dir//copybench-cuda_generated_copy.cu.o.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-cuda.dir && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-cuda.dir//.
+	cd /home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-cuda.dir && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-cuda.dir//./copybench-cuda_generated_copy.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-cuda.dir//./copybench-cuda_generated_copy.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-cuda.dir//copybench-cuda_generated_copy.cu.o.cmake
 
 # Object files for target copybench-cuda
 copybench__cuda_OBJECTS =
 
 # External object files for target copybench-cuda
 copybench__cuda_EXTERNAL_OBJECTS = \
-"/home/andi/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o"
+"/home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o"
 
 examples/benchmarks/copybench-cuda: examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o
 examples/benchmarks/copybench-cuda: examples/benchmarks/CMakeFiles/copybench-cuda.dir/build.make
 examples/benchmarks/copybench-cuda: /usr/lib/i386-linux-gnu/libcudart.so
 examples/benchmarks/copybench-cuda: examples/benchmarks/CMakeFiles/copybench-cuda.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable copybench-cuda"
-	cd /home/andi/ViennaCL-1.5.2/build/examples/benchmarks && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/copybench-cuda.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/copybench-cuda.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 examples/benchmarks/CMakeFiles/copybench-cuda.dir/build: examples/benchmarks/copybench-cuda
@@ -309,10 +309,10 @@ examples/benchmarks/CMakeFiles/copybench-cuda.dir/requires:
 .PHONY : examples/benchmarks/CMakeFiles/copybench-cuda.dir/requires
 
 examples/benchmarks/CMakeFiles/copybench-cuda.dir/clean:
-	cd /home/andi/ViennaCL-1.5.2/build/examples/benchmarks && $(CMAKE_COMMAND) -P CMakeFiles/copybench-cuda.dir/cmake_clean.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks && $(CMAKE_COMMAND) -P CMakeFiles/copybench-cuda.dir/cmake_clean.cmake
 .PHONY : examples/benchmarks/CMakeFiles/copybench-cuda.dir/clean
 
 examples/benchmarks/CMakeFiles/copybench-cuda.dir/depend: examples/benchmarks/CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o
-	cd /home/andi/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/ViennaCL-1.5.2 /home/andi/ViennaCL-1.5.2/examples/benchmarks /home/andi/ViennaCL-1.5.2/build /home/andi/ViennaCL-1.5.2/build/examples/benchmarks /home/andi/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-cuda.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/examples/benchmarks /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks /home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/copybench-cuda.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : examples/benchmarks/CMakeFiles/copybench-cuda.dir/depend
 

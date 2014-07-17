@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andi/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andi/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/matrix_vector_int-test-cuda.dir/depend.make
@@ -55,17 +55,17 @@ include tests/CMakeFiles/matrix_vector_int-test-cuda.dir/flags.make
 tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/./matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o: tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o.depend
 tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/./matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o: tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o.cmake
 tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/./matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o: ../tests/src/matrix_vector_int.cu
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/./matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o"
-	cd /home/andi/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/andi/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/.
-	cd /home/andi/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/./matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o -D generated_cubin_file:STRING=/home/andi/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/./matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o.cubin.txt -P /home/andi/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/./matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/./matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o.cmake
 
 # Object files for target matrix_vector_int-test-cuda
 matrix_vector_int__test__cuda_OBJECTS =
 
 # External object files for target matrix_vector_int-test-cuda
 matrix_vector_int__test__cuda_EXTERNAL_OBJECTS = \
-"/home/andi/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/./matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o"
+"/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/./matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o"
 
 tests/matrix_vector_int-test-cuda: tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/./matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o
 tests/matrix_vector_int-test-cuda: tests/CMakeFiles/matrix_vector_int-test-cuda.dir/build.make
@@ -78,7 +78,7 @@ tests/matrix_vector_int-test-cuda: /usr/lib/i386-linux-gnu/libboost_thread.so
 tests/matrix_vector_int-test-cuda: /usr/lib/i386-linux-gnu/libpthread.so
 tests/matrix_vector_int-test-cuda: tests/CMakeFiles/matrix_vector_int-test-cuda.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable matrix_vector_int-test-cuda"
-	cd /home/andi/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/matrix_vector_int-test-cuda.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/matrix_vector_int-test-cuda.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/matrix_vector_int-test-cuda.dir/build: tests/matrix_vector_int-test-cuda
@@ -88,10 +88,10 @@ tests/CMakeFiles/matrix_vector_int-test-cuda.dir/requires:
 .PHONY : tests/CMakeFiles/matrix_vector_int-test-cuda.dir/requires
 
 tests/CMakeFiles/matrix_vector_int-test-cuda.dir/clean:
-	cd /home/andi/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/matrix_vector_int-test-cuda.dir/cmake_clean.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/matrix_vector_int-test-cuda.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/matrix_vector_int-test-cuda.dir/clean
 
 tests/CMakeFiles/matrix_vector_int-test-cuda.dir/depend: tests/CMakeFiles/matrix_vector_int-test-cuda.dir/src/./matrix_vector_int-test-cuda_generated_matrix_vector_int.cu.o
-	cd /home/andi/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/ViennaCL-1.5.2 /home/andi/ViennaCL-1.5.2/tests /home/andi/ViennaCL-1.5.2/build /home/andi/ViennaCL-1.5.2/build/tests /home/andi/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/tests /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/tests /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/matrix_vector_int-test-cuda.dir/depend
 

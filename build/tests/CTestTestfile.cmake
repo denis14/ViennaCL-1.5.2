@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /home/denis/Documents/ViennaCL-1.5.2/tests
-# Build directory: /home/denis/Documents/ViennaCL-1.5.2/build/tests
+# Source directory: /home/andi/git/ViennaCL-1.5.2/tests
+# Build directory: /home/andi/git/ViennaCL-1.5.2/build/tests
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
@@ -63,6 +63,29 @@ ADD_TEST(vector_int-opencl "vector_int-test-opencl")
 ADD_TEST(vector_uint-opencl "vector_uint-test-opencl")
 ADD_TEST(vector_multi_inner_prod-opencl "vector_multi_inner_prod-test-opencl")
 ADD_TEST(spmdm-opencl "spmdm-test-opencl")
+ADD_TEST(blas3_prod_float-cuda "blas3_prod_float-test-cuda")
+ADD_TEST(blas3_prod_double-cuda "blas3_prod_double-test-cuda")
+ADD_TEST(blas3_solve_float-cuda "blas3_solve_float-test-cuda")
+ADD_TEST(blas3_solve_double-cuda "blas3_solve_double-test-cuda")
+ADD_TEST(iterators-cuda "iterators-test-cuda")
+ADD_TEST(global_variables-cuda "global_variables-test-cuda")
+ADD_TEST(matrix_vector-cuda "matrix_vector-test-cuda")
+ADD_TEST(matrix_vector_int-cuda "matrix_vector_int-test-cuda")
+ADD_TEST(matrix_row_float-cuda "matrix_row_float-test-cuda")
+ADD_TEST(matrix_row_double-cuda "matrix_row_double-test-cuda")
+ADD_TEST(matrix_row_int-cuda "matrix_row_int-test-cuda")
+ADD_TEST(matrix_col_float-cuda "matrix_col_float-test-cuda")
+ADD_TEST(matrix_col_double-cuda "matrix_col_double-test-cuda")
+ADD_TEST(matrix_col_int-cuda "matrix_col_int-test-cuda")
+ADD_TEST(scalar-cuda "scalar-test-cuda")
+ADD_TEST(sparse-cuda "sparse-test-cuda")
+ADD_TEST(vector_float-cuda "vector_float-test-cuda")
+ADD_TEST(vector_double-cuda "vector_double-test-cuda")
+ADD_TEST(vector_int-cuda "vector_int-test-cuda")
+ADD_TEST(vector_uint-cuda "vector_uint-test-cuda")
+ADD_TEST(vector_multi_inner_prod-cuda "vector_multi_inner_prod-test-cuda")
+ADD_TEST(a_cuda-cuda "a_cuda-test-cuda")
+ADD_TEST(spmdm-cuda "spmdm-test-cuda")
 ADD_TEST(libviennacl-blas1 "libviennacl_blas1-test")
 ADD_TEST(libviennacl-blas2 "libviennacl_blas2-test")
 ADD_TEST(libviennacl-blas3 "libviennacl_blas3-test")

@@ -5,7 +5,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
 
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/andi/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/DependInfo.cmake"
+  "/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/DependInfo.cmake"
   )
 
 # The include file search paths:

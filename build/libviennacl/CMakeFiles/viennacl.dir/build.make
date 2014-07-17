@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/denis/Documents/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/denis/Documents/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
 
 # Include any dependencies generated for this target.
 include libviennacl/CMakeFiles/viennacl.dir/depend.make
@@ -52,289 +52,173 @@ include libviennacl/CMakeFiles/viennacl.dir/progress.make
 # Include the compile flags for this target's objects.
 include libviennacl/CMakeFiles/viennacl.dir/flags.make
 
-libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.o: libviennacl/CMakeFiles/viennacl.dir/flags.make
-libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.o: ../libviennacl/src/backend.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.o"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/viennacl.dir/src/backend.cpp.o -c /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/backend.cpp
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_backend.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_backend.cu.o.depend
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_backend.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_backend.cu.o.cmake
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_backend.cu.o: ../libviennacl/src/backend.cu
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_backend.cu.o"
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_backend.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_backend.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_backend.cu.o.cmake
 
-libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viennacl.dir/src/backend.cpp.i"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/backend.cpp > CMakeFiles/viennacl.dir/src/backend.cpp.i
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1.cu.o.depend
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1.cu.o.cmake
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1.cu.o: ../libviennacl/src/blas1.cu
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1.cu.o"
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1.cu.o.cmake
 
-libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viennacl.dir/src/backend.cpp.s"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/backend.cpp -o CMakeFiles/viennacl.dir/src/backend.cpp.s
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_host.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1_host.cu.o.depend
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_host.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1_host.cu.o.cmake
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_host.cu.o: ../libviennacl/src/blas1_host.cu
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_host.cu.o"
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_host.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_host.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1_host.cu.o.cmake
 
-libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.o.requires:
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.o.requires
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_cuda.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1_cuda.cu.o.depend
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_cuda.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1_cuda.cu.o.cmake
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_cuda.cu.o: ../libviennacl/src/blas1_cuda.cu
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_cuda.cu.o"
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_cuda.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_cuda.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1_cuda.cu.o.cmake
 
-libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.o.provides: libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.o.requires
-	$(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.o.provides.build
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.o.provides
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_opencl.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1_opencl.cu.o.depend
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_opencl.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1_opencl.cu.o.cmake
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_opencl.cu.o: ../libviennacl/src/blas1_opencl.cu
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_opencl.cu.o"
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_opencl.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_opencl.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas1_opencl.cu.o.cmake
 
-libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.o.provides.build: libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.o
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2.cu.o.depend
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2.cu.o.cmake
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2.cu.o: ../libviennacl/src/blas2.cu
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2.cu.o"
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2.cu.o.cmake
 
-libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.o: libviennacl/CMakeFiles/viennacl.dir/flags.make
-libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.o: ../libviennacl/src/blas1.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.o"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/viennacl.dir/src/blas1.cpp.o -c /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas1.cpp
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_host.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2_host.cu.o.depend
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_host.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2_host.cu.o.cmake
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_host.cu.o: ../libviennacl/src/blas2_host.cu
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_host.cu.o"
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_host.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_host.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2_host.cu.o.cmake
 
-libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viennacl.dir/src/blas1.cpp.i"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas1.cpp > CMakeFiles/viennacl.dir/src/blas1.cpp.i
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_cuda.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2_cuda.cu.o.depend
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_cuda.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2_cuda.cu.o.cmake
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_cuda.cu.o: ../libviennacl/src/blas2_cuda.cu
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_cuda.cu.o"
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_cuda.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_cuda.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2_cuda.cu.o.cmake
 
-libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viennacl.dir/src/blas1.cpp.s"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas1.cpp -o CMakeFiles/viennacl.dir/src/blas1.cpp.s
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_opencl.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2_opencl.cu.o.depend
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_opencl.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2_opencl.cu.o.cmake
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_opencl.cu.o: ../libviennacl/src/blas2_opencl.cu
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_opencl.cu.o"
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_opencl.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_opencl.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2_opencl.cu.o.cmake
 
-libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.o.requires:
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.o.requires
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3.cu.o.depend
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3.cu.o.cmake
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3.cu.o: ../libviennacl/src/blas3.cu
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3.cu.o"
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3.cu.o.cmake
 
-libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.o.provides: libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.o.requires
-	$(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.o.provides.build
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.o.provides
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_host.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3_host.cu.o.depend
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_host.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3_host.cu.o.cmake
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_host.cu.o: ../libviennacl/src/blas3_host.cu
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_11)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_host.cu.o"
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_host.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_host.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3_host.cu.o.cmake
 
-libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.o.provides.build: libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.o
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_cuda.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3_cuda.cu.o.depend
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_cuda.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3_cuda.cu.o.cmake
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_cuda.cu.o: ../libviennacl/src/blas3_cuda.cu
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_12)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_cuda.cu.o"
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_cuda.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_cuda.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3_cuda.cu.o.cmake
 
-libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.o: libviennacl/CMakeFiles/viennacl.dir/flags.make
-libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.o: ../libviennacl/src/blas1_host.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_3)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.o"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/viennacl.dir/src/blas1_host.cpp.o -c /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas1_host.cpp
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viennacl.dir/src/blas1_host.cpp.i"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas1_host.cpp > CMakeFiles/viennacl.dir/src/blas1_host.cpp.i
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viennacl.dir/src/blas1_host.cpp.s"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas1_host.cpp -o CMakeFiles/viennacl.dir/src/blas1_host.cpp.s
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.o.requires:
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.o.requires
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.o.provides: libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.o.requires
-	$(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.o.provides.build
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.o.provides
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.o.provides.build: libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.o
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.o: libviennacl/CMakeFiles/viennacl.dir/flags.make
-libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.o: ../libviennacl/src/blas1_opencl.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_4)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.o"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.o -c /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas1_opencl.cpp
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.i"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas1_opencl.cpp > CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.i
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.s"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas1_opencl.cpp -o CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.s
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.o.requires:
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.o.requires
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.o.provides: libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.o.requires
-	$(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.o.provides.build
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.o.provides
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.o.provides.build: libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.o
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.o: libviennacl/CMakeFiles/viennacl.dir/flags.make
-libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.o: ../libviennacl/src/blas2.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_5)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.o"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/viennacl.dir/src/blas2.cpp.o -c /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas2.cpp
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viennacl.dir/src/blas2.cpp.i"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas2.cpp > CMakeFiles/viennacl.dir/src/blas2.cpp.i
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viennacl.dir/src/blas2.cpp.s"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas2.cpp -o CMakeFiles/viennacl.dir/src/blas2.cpp.s
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.o.requires:
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.o.requires
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.o.provides: libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.o.requires
-	$(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.o.provides.build
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.o.provides
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.o.provides.build: libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.o
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.o: libviennacl/CMakeFiles/viennacl.dir/flags.make
-libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.o: ../libviennacl/src/blas2_host.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_6)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.o"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/viennacl.dir/src/blas2_host.cpp.o -c /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas2_host.cpp
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viennacl.dir/src/blas2_host.cpp.i"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas2_host.cpp > CMakeFiles/viennacl.dir/src/blas2_host.cpp.i
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viennacl.dir/src/blas2_host.cpp.s"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas2_host.cpp -o CMakeFiles/viennacl.dir/src/blas2_host.cpp.s
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.o.requires:
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.o.requires
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.o.provides: libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.o.requires
-	$(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.o.provides.build
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.o.provides
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.o.provides.build: libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.o
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.o: libviennacl/CMakeFiles/viennacl.dir/flags.make
-libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.o: ../libviennacl/src/blas2_opencl.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_7)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.o"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.o -c /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas2_opencl.cpp
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.i"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas2_opencl.cpp > CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.i
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.s"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas2_opencl.cpp -o CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.s
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.o.requires:
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.o.requires
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.o.provides: libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.o.requires
-	$(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.o.provides.build
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.o.provides
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.o.provides.build: libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.o
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.o: libviennacl/CMakeFiles/viennacl.dir/flags.make
-libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.o: ../libviennacl/src/blas3.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_8)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.o"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/viennacl.dir/src/blas3.cpp.o -c /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas3.cpp
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viennacl.dir/src/blas3.cpp.i"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas3.cpp > CMakeFiles/viennacl.dir/src/blas3.cpp.i
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viennacl.dir/src/blas3.cpp.s"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas3.cpp -o CMakeFiles/viennacl.dir/src/blas3.cpp.s
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.o.requires:
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.o.requires
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.o.provides: libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.o.requires
-	$(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.o.provides.build
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.o.provides
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.o.provides.build: libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.o
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.o: libviennacl/CMakeFiles/viennacl.dir/flags.make
-libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.o: ../libviennacl/src/blas3_host.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_9)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.o"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/viennacl.dir/src/blas3_host.cpp.o -c /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas3_host.cpp
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viennacl.dir/src/blas3_host.cpp.i"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas3_host.cpp > CMakeFiles/viennacl.dir/src/blas3_host.cpp.i
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viennacl.dir/src/blas3_host.cpp.s"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas3_host.cpp -o CMakeFiles/viennacl.dir/src/blas3_host.cpp.s
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.o.requires:
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.o.requires
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.o.provides: libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.o.requires
-	$(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.o.provides.build
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.o.provides
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.o.provides.build: libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.o
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.o: libviennacl/CMakeFiles/viennacl.dir/flags.make
-libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.o: ../libviennacl/src/blas3_opencl.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_10)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.o"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.o -c /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas3_opencl.cpp
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.i"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas3_opencl.cpp > CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.i
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.s"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/denis/Documents/ViennaCL-1.5.2/libviennacl/src/blas3_opencl.cpp -o CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.s
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.o.requires:
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.o.requires
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.o.provides: libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.o.requires
-	$(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.o.provides.build
-.PHONY : libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.o.provides
-
-libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.o.provides.build: libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.o
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_opencl.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3_opencl.cu.o.depend
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_opencl.cu.o: libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3_opencl.cu.o.cmake
+libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_opencl.cu.o: ../libviennacl/src/blas3_opencl.cu
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_13)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_opencl.cu.o"
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_opencl.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_opencl.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas3_opencl.cu.o.cmake
 
 # Object files for target viennacl
-viennacl_OBJECTS = \
-"CMakeFiles/viennacl.dir/src/backend.cpp.o" \
-"CMakeFiles/viennacl.dir/src/blas1.cpp.o" \
-"CMakeFiles/viennacl.dir/src/blas1_host.cpp.o" \
-"CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.o" \
-"CMakeFiles/viennacl.dir/src/blas2.cpp.o" \
-"CMakeFiles/viennacl.dir/src/blas2_host.cpp.o" \
-"CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.o" \
-"CMakeFiles/viennacl.dir/src/blas3.cpp.o" \
-"CMakeFiles/viennacl.dir/src/blas3_host.cpp.o" \
-"CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.o"
+viennacl_OBJECTS =
 
 # External object files for target viennacl
-viennacl_EXTERNAL_OBJECTS =
+viennacl_EXTERNAL_OBJECTS = \
+"/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_backend.cu.o" \
+"/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1.cu.o" \
+"/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_host.cu.o" \
+"/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_cuda.cu.o" \
+"/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_opencl.cu.o" \
+"/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2.cu.o" \
+"/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_host.cu.o" \
+"/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_cuda.cu.o" \
+"/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_opencl.cu.o" \
+"/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3.cu.o" \
+"/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_host.cu.o" \
+"/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_cuda.cu.o" \
+"/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_opencl.cu.o"
 
-libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.o
-libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.o
-libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.o
-libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.o
-libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.o
-libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.o
-libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.o
-libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.o
-libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.o
-libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.o
+libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_backend.cu.o
+libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1.cu.o
+libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_host.cu.o
+libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_cuda.cu.o
+libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_opencl.cu.o
+libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2.cu.o
+libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_host.cu.o
+libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_cuda.cu.o
+libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_opencl.cu.o
+libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3.cu.o
+libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_host.cu.o
+libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_cuda.cu.o
+libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_opencl.cu.o
 libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/build.make
-libviennacl/libviennacl.so: /usr/lib/x86_64-linux-gnu/libOpenCL.so
+libviennacl/libviennacl.so: /usr/lib/i386-linux-gnu/libcudart.so
+libviennacl/libviennacl.so: /usr/lib/i386-linux-gnu/libOpenCL.so
 libviennacl/libviennacl.so: libviennacl/CMakeFiles/viennacl.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX shared library libviennacl.so"
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/viennacl.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/viennacl.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 libviennacl/CMakeFiles/viennacl.dir/build: libviennacl/libviennacl.so
 .PHONY : libviennacl/CMakeFiles/viennacl.dir/build
 
-libviennacl/CMakeFiles/viennacl.dir/requires: libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.o.requires
-libviennacl/CMakeFiles/viennacl.dir/requires: libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.o.requires
-libviennacl/CMakeFiles/viennacl.dir/requires: libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.o.requires
-libviennacl/CMakeFiles/viennacl.dir/requires: libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.o.requires
-libviennacl/CMakeFiles/viennacl.dir/requires: libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.o.requires
-libviennacl/CMakeFiles/viennacl.dir/requires: libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.o.requires
-libviennacl/CMakeFiles/viennacl.dir/requires: libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.o.requires
-libviennacl/CMakeFiles/viennacl.dir/requires: libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.o.requires
-libviennacl/CMakeFiles/viennacl.dir/requires: libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.o.requires
-libviennacl/CMakeFiles/viennacl.dir/requires: libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.o.requires
+libviennacl/CMakeFiles/viennacl.dir/requires:
 .PHONY : libviennacl/CMakeFiles/viennacl.dir/requires
 
 libviennacl/CMakeFiles/viennacl.dir/clean:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl && $(CMAKE_COMMAND) -P CMakeFiles/viennacl.dir/cmake_clean.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/libviennacl && $(CMAKE_COMMAND) -P CMakeFiles/viennacl.dir/cmake_clean.cmake
 .PHONY : libviennacl/CMakeFiles/viennacl.dir/clean
 
-libviennacl/CMakeFiles/viennacl.dir/depend:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/Documents/ViennaCL-1.5.2 /home/denis/Documents/ViennaCL-1.5.2/libviennacl /home/denis/Documents/ViennaCL-1.5.2/build /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/DependInfo.cmake --color=$(COLOR)
+libviennacl/CMakeFiles/viennacl.dir/depend: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_backend.cu.o
+libviennacl/CMakeFiles/viennacl.dir/depend: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1.cu.o
+libviennacl/CMakeFiles/viennacl.dir/depend: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_host.cu.o
+libviennacl/CMakeFiles/viennacl.dir/depend: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_cuda.cu.o
+libviennacl/CMakeFiles/viennacl.dir/depend: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas1_opencl.cu.o
+libviennacl/CMakeFiles/viennacl.dir/depend: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2.cu.o
+libviennacl/CMakeFiles/viennacl.dir/depend: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_host.cu.o
+libviennacl/CMakeFiles/viennacl.dir/depend: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_cuda.cu.o
+libviennacl/CMakeFiles/viennacl.dir/depend: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2_opencl.cu.o
+libviennacl/CMakeFiles/viennacl.dir/depend: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3.cu.o
+libviennacl/CMakeFiles/viennacl.dir/depend: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_host.cu.o
+libviennacl/CMakeFiles/viennacl.dir/depend: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_cuda.cu.o
+libviennacl/CMakeFiles/viennacl.dir/depend: libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas3_opencl.cu.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/libviennacl /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/libviennacl /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : libviennacl/CMakeFiles/viennacl.dir/depend
 

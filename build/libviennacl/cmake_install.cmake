@@ -1,4 +1,4 @@
-# Install script for directory: /home/denis/Documents/ViennaCL-1.5.2/libviennacl
+# Install script for directory: /home/andi/git/ViennaCL-1.5.2/libviennacl
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

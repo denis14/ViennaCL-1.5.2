@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andi/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andi/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -111,26 +111,16 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-.PHONY : test/fast
-
 # The main all target
 all: cmake_check_build_system
-	cd /home/andi/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/andi/ViennaCL-1.5.2/build/CMakeFiles /home/andi/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/progress.marks
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/ViennaCL-1.5.2/build/CMakeFiles 0
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles /home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/progress.marks
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/clean
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/clean
 .PHONY : clean
 
 # The main clean target
@@ -139,22 +129,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/preinstall
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/preinstall
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/andi/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/rule
 
 # Convenience name for target.
@@ -163,12 +153,12 @@ blas3bench-cpu: examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/rule
 
 # fast build rule for target.
 blas3bench-cpu/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/build
 .PHONY : blas3bench-cpu/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/blas3bench-cuda.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/blas3bench-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/blas3bench-cuda.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/blas3bench-cuda.dir/rule
 
 # Convenience name for target.
@@ -177,12 +167,12 @@ blas3bench-cuda: examples/benchmarks/CMakeFiles/blas3bench-cuda.dir/rule
 
 # fast build rule for target.
 blas3bench-cuda/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-cuda.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-cuda.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-cuda.dir/build
 .PHONY : blas3bench-cuda/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/rule
 
 # Convenience name for target.
@@ -191,12 +181,12 @@ blas3bench-opencl: examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/rule
 
 # fast build rule for target.
 blas3bench-opencl/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/build
 .PHONY : blas3bench-opencl/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/copybench-cpu.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/copybench-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/copybench-cpu.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/copybench-cpu.dir/rule
 
 # Convenience name for target.
@@ -205,12 +195,12 @@ copybench-cpu: examples/benchmarks/CMakeFiles/copybench-cpu.dir/rule
 
 # fast build rule for target.
 copybench-cpu/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-cpu.dir/build.make examples/benchmarks/CMakeFiles/copybench-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-cpu.dir/build.make examples/benchmarks/CMakeFiles/copybench-cpu.dir/build
 .PHONY : copybench-cpu/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/copybench-cuda.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/copybench-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/copybench-cuda.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/copybench-cuda.dir/rule
 
 # Convenience name for target.
@@ -219,12 +209,12 @@ copybench-cuda: examples/benchmarks/CMakeFiles/copybench-cuda.dir/rule
 
 # fast build rule for target.
 copybench-cuda/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-cuda.dir/build.make examples/benchmarks/CMakeFiles/copybench-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-cuda.dir/build.make examples/benchmarks/CMakeFiles/copybench-cuda.dir/build
 .PHONY : copybench-cuda/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/copybench-opencl.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/copybench-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/copybench-opencl.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/copybench-opencl.dir/rule
 
 # Convenience name for target.
@@ -233,12 +223,12 @@ copybench-opencl: examples/benchmarks/CMakeFiles/copybench-opencl.dir/rule
 
 # fast build rule for target.
 copybench-opencl/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-opencl.dir/build.make examples/benchmarks/CMakeFiles/copybench-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-opencl.dir/build.make examples/benchmarks/CMakeFiles/copybench-opencl.dir/build
 .PHONY : copybench-opencl/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/rule
 
 # Convenience name for target.
@@ -247,12 +237,12 @@ generator_blas1bench-opencl: examples/benchmarks/CMakeFiles/generator_blas1bench
 
 # fast build rule for target.
 generator_blas1bench-opencl/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/build
 .PHONY : generator_blas1bench-opencl/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/rule
 
 # Convenience name for target.
@@ -261,12 +251,12 @@ generator_blas2bench-opencl: examples/benchmarks/CMakeFiles/generator_blas2bench
 
 # fast build rule for target.
 generator_blas2bench-opencl/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/build
 .PHONY : generator_blas2bench-opencl/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/rule
 
 # Convenience name for target.
@@ -275,12 +265,12 @@ generator_blas3bench-opencl: examples/benchmarks/CMakeFiles/generator_blas3bench
 
 # fast build rule for target.
 generator_blas3bench-opencl/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/build
 .PHONY : generator_blas3bench-opencl/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/openclbench-opencl.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/openclbench-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/openclbench-opencl.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/openclbench-opencl.dir/rule
 
 # Convenience name for target.
@@ -289,12 +279,12 @@ openclbench-opencl: examples/benchmarks/CMakeFiles/openclbench-opencl.dir/rule
 
 # fast build rule for target.
 openclbench-opencl/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/openclbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/openclbench-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/openclbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/openclbench-opencl.dir/build
 .PHONY : openclbench-opencl/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/rule
 
 # Convenience name for target.
@@ -303,12 +293,12 @@ schedulerbench-cpu: examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/rule
 
 # fast build rule for target.
 schedulerbench-cpu/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/build
 .PHONY : schedulerbench-cpu/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/solverbench-cpu.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/solverbench-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/solverbench-cpu.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/solverbench-cpu.dir/rule
 
 # Convenience name for target.
@@ -317,12 +307,12 @@ solverbench-cpu: examples/benchmarks/CMakeFiles/solverbench-cpu.dir/rule
 
 # fast build rule for target.
 solverbench-cpu/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/solverbench-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/solverbench-cpu.dir/build
 .PHONY : solverbench-cpu/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/solverbench-cuda.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/solverbench-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/solverbench-cuda.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/solverbench-cuda.dir/rule
 
 # Convenience name for target.
@@ -331,12 +321,12 @@ solverbench-cuda: examples/benchmarks/CMakeFiles/solverbench-cuda.dir/rule
 
 # fast build rule for target.
 solverbench-cuda/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-cuda.dir/build.make examples/benchmarks/CMakeFiles/solverbench-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-cuda.dir/build.make examples/benchmarks/CMakeFiles/solverbench-cuda.dir/build
 .PHONY : solverbench-cuda/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/solverbench-opencl.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/solverbench-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/solverbench-opencl.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/solverbench-opencl.dir/rule
 
 # Convenience name for target.
@@ -345,12 +335,12 @@ solverbench-opencl: examples/benchmarks/CMakeFiles/solverbench-opencl.dir/rule
 
 # fast build rule for target.
 solverbench-opencl/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/solverbench-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/solverbench-opencl.dir/build
 .PHONY : solverbench-opencl/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/rule
 
 # Convenience name for target.
@@ -359,12 +349,12 @@ sparsebench-cpu: examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/rule
 
 # fast build rule for target.
 sparsebench-cpu/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/build
 .PHONY : sparsebench-cpu/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/sparsebench-cuda.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/sparsebench-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/sparsebench-cuda.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/sparsebench-cuda.dir/rule
 
 # Convenience name for target.
@@ -373,12 +363,12 @@ sparsebench-cuda: examples/benchmarks/CMakeFiles/sparsebench-cuda.dir/rule
 
 # fast build rule for target.
 sparsebench-cuda/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-cuda.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-cuda.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-cuda.dir/build
 .PHONY : sparsebench-cuda/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/rule
 
 # Convenience name for target.
@@ -387,12 +377,12 @@ sparsebench-opencl: examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/rule
 
 # fast build rule for target.
 sparsebench-opencl/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/build
 .PHONY : sparsebench-opencl/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/rule
 
 # Convenience name for target.
@@ -401,12 +391,12 @@ vectorbench-cpu: examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/rule
 
 # fast build rule for target.
 vectorbench-cpu/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/build
 .PHONY : vectorbench-cpu/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/vectorbench-cuda.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/vectorbench-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/vectorbench-cuda.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/vectorbench-cuda.dir/rule
 
 # Convenience name for target.
@@ -415,12 +405,12 @@ vectorbench-cuda: examples/benchmarks/CMakeFiles/vectorbench-cuda.dir/rule
 
 # fast build rule for target.
 vectorbench-cuda/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-cuda.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-cuda.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-cuda.dir/build
 .PHONY : vectorbench-cuda/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/rule:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/rule
 
 # Convenience name for target.
@@ -429,7 +419,7 @@ vectorbench-opencl: examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/rule
 
 # fast build rule for target.
 vectorbench-opencl/fast:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/build
 .PHONY : vectorbench-opencl/fast
 
 blas3.o: blas3.cpp.o
@@ -437,8 +427,8 @@ blas3.o: blas3.cpp.o
 
 # target to build an object file
 blas3.cpp.o:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/blas3.cpp.o
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/blas3.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/blas3.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/blas3.cpp.o
 .PHONY : blas3.cpp.o
 
 blas3.i: blas3.cpp.i
@@ -446,8 +436,8 @@ blas3.i: blas3.cpp.i
 
 # target to preprocess a source file
 blas3.cpp.i:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/blas3.cpp.i
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/blas3.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/blas3.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/blas3.cpp.i
 .PHONY : blas3.cpp.i
 
 blas3.s: blas3.cpp.s
@@ -455,8 +445,8 @@ blas3.s: blas3.cpp.s
 
 # target to generate assembly for a file
 blas3.cpp.s:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/blas3.cpp.s
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/blas3.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-cpu.dir/blas3.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/blas3.cpp.s
 .PHONY : blas3.cpp.s
 
 copy.o: copy.cpp.o
@@ -464,8 +454,8 @@ copy.o: copy.cpp.o
 
 # target to build an object file
 copy.cpp.o:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-cpu.dir/build.make examples/benchmarks/CMakeFiles/copybench-cpu.dir/copy.cpp.o
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-opencl.dir/build.make examples/benchmarks/CMakeFiles/copybench-opencl.dir/copy.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-cpu.dir/build.make examples/benchmarks/CMakeFiles/copybench-cpu.dir/copy.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-opencl.dir/build.make examples/benchmarks/CMakeFiles/copybench-opencl.dir/copy.cpp.o
 .PHONY : copy.cpp.o
 
 copy.i: copy.cpp.i
@@ -473,8 +463,8 @@ copy.i: copy.cpp.i
 
 # target to preprocess a source file
 copy.cpp.i:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-cpu.dir/build.make examples/benchmarks/CMakeFiles/copybench-cpu.dir/copy.cpp.i
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-opencl.dir/build.make examples/benchmarks/CMakeFiles/copybench-opencl.dir/copy.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-cpu.dir/build.make examples/benchmarks/CMakeFiles/copybench-cpu.dir/copy.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-opencl.dir/build.make examples/benchmarks/CMakeFiles/copybench-opencl.dir/copy.cpp.i
 .PHONY : copy.cpp.i
 
 copy.s: copy.cpp.s
@@ -482,8 +472,8 @@ copy.s: copy.cpp.s
 
 # target to generate assembly for a file
 copy.cpp.s:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-cpu.dir/build.make examples/benchmarks/CMakeFiles/copybench-cpu.dir/copy.cpp.s
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-opencl.dir/build.make examples/benchmarks/CMakeFiles/copybench-opencl.dir/copy.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-cpu.dir/build.make examples/benchmarks/CMakeFiles/copybench-cpu.dir/copy.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-opencl.dir/build.make examples/benchmarks/CMakeFiles/copybench-opencl.dir/copy.cpp.s
 .PHONY : copy.cpp.s
 
 generator_blas1.o: generator_blas1.cpp.o
@@ -491,7 +481,7 @@ generator_blas1.o: generator_blas1.cpp.o
 
 # target to build an object file
 generator_blas1.cpp.o:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/generator_blas1.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/generator_blas1.cpp.o
 .PHONY : generator_blas1.cpp.o
 
 generator_blas1.i: generator_blas1.cpp.i
@@ -499,7 +489,7 @@ generator_blas1.i: generator_blas1.cpp.i
 
 # target to preprocess a source file
 generator_blas1.cpp.i:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/generator_blas1.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/generator_blas1.cpp.i
 .PHONY : generator_blas1.cpp.i
 
 generator_blas1.s: generator_blas1.cpp.s
@@ -507,7 +497,7 @@ generator_blas1.s: generator_blas1.cpp.s
 
 # target to generate assembly for a file
 generator_blas1.cpp.s:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/generator_blas1.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas1bench-opencl.dir/generator_blas1.cpp.s
 .PHONY : generator_blas1.cpp.s
 
 generator_blas2.o: generator_blas2.cpp.o
@@ -515,7 +505,7 @@ generator_blas2.o: generator_blas2.cpp.o
 
 # target to build an object file
 generator_blas2.cpp.o:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/generator_blas2.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/generator_blas2.cpp.o
 .PHONY : generator_blas2.cpp.o
 
 generator_blas2.i: generator_blas2.cpp.i
@@ -523,7 +513,7 @@ generator_blas2.i: generator_blas2.cpp.i
 
 # target to preprocess a source file
 generator_blas2.cpp.i:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/generator_blas2.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/generator_blas2.cpp.i
 .PHONY : generator_blas2.cpp.i
 
 generator_blas2.s: generator_blas2.cpp.s
@@ -531,7 +521,7 @@ generator_blas2.s: generator_blas2.cpp.s
 
 # target to generate assembly for a file
 generator_blas2.cpp.s:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/generator_blas2.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas2bench-opencl.dir/generator_blas2.cpp.s
 .PHONY : generator_blas2.cpp.s
 
 generator_blas3.o: generator_blas3.cpp.o
@@ -539,7 +529,7 @@ generator_blas3.o: generator_blas3.cpp.o
 
 # target to build an object file
 generator_blas3.cpp.o:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/generator_blas3.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/generator_blas3.cpp.o
 .PHONY : generator_blas3.cpp.o
 
 generator_blas3.i: generator_blas3.cpp.i
@@ -547,7 +537,7 @@ generator_blas3.i: generator_blas3.cpp.i
 
 # target to preprocess a source file
 generator_blas3.cpp.i:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/generator_blas3.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/generator_blas3.cpp.i
 .PHONY : generator_blas3.cpp.i
 
 generator_blas3.s: generator_blas3.cpp.s
@@ -555,7 +545,7 @@ generator_blas3.s: generator_blas3.cpp.s
 
 # target to generate assembly for a file
 generator_blas3.cpp.s:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/generator_blas3.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/build.make examples/benchmarks/CMakeFiles/generator_blas3bench-opencl.dir/generator_blas3.cpp.s
 .PHONY : generator_blas3.cpp.s
 
 opencl.o: opencl.cpp.o
@@ -563,7 +553,7 @@ opencl.o: opencl.cpp.o
 
 # target to build an object file
 opencl.cpp.o:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/openclbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/openclbench-opencl.dir/opencl.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/openclbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/openclbench-opencl.dir/opencl.cpp.o
 .PHONY : opencl.cpp.o
 
 opencl.i: opencl.cpp.i
@@ -571,7 +561,7 @@ opencl.i: opencl.cpp.i
 
 # target to preprocess a source file
 opencl.cpp.i:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/openclbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/openclbench-opencl.dir/opencl.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/openclbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/openclbench-opencl.dir/opencl.cpp.i
 .PHONY : opencl.cpp.i
 
 opencl.s: opencl.cpp.s
@@ -579,7 +569,7 @@ opencl.s: opencl.cpp.s
 
 # target to generate assembly for a file
 opencl.cpp.s:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/openclbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/openclbench-opencl.dir/opencl.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/openclbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/openclbench-opencl.dir/opencl.cpp.s
 .PHONY : opencl.cpp.s
 
 scheduler.o: scheduler.cpp.o
@@ -587,7 +577,7 @@ scheduler.o: scheduler.cpp.o
 
 # target to build an object file
 scheduler.cpp.o:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/scheduler.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/scheduler.cpp.o
 .PHONY : scheduler.cpp.o
 
 scheduler.i: scheduler.cpp.i
@@ -595,7 +585,7 @@ scheduler.i: scheduler.cpp.i
 
 # target to preprocess a source file
 scheduler.cpp.i:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/scheduler.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/scheduler.cpp.i
 .PHONY : scheduler.cpp.i
 
 scheduler.s: scheduler.cpp.s
@@ -603,7 +593,7 @@ scheduler.s: scheduler.cpp.s
 
 # target to generate assembly for a file
 scheduler.cpp.s:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/scheduler.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/schedulerbench-cpu.dir/scheduler.cpp.s
 .PHONY : scheduler.cpp.s
 
 solver.o: solver.cpp.o
@@ -611,8 +601,8 @@ solver.o: solver.cpp.o
 
 # target to build an object file
 solver.cpp.o:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/solverbench-cpu.dir/solver.cpp.o
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/solverbench-opencl.dir/solver.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/solverbench-cpu.dir/solver.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/solverbench-opencl.dir/solver.cpp.o
 .PHONY : solver.cpp.o
 
 solver.i: solver.cpp.i
@@ -620,8 +610,8 @@ solver.i: solver.cpp.i
 
 # target to preprocess a source file
 solver.cpp.i:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/solverbench-cpu.dir/solver.cpp.i
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/solverbench-opencl.dir/solver.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/solverbench-cpu.dir/solver.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/solverbench-opencl.dir/solver.cpp.i
 .PHONY : solver.cpp.i
 
 solver.s: solver.cpp.s
@@ -629,8 +619,8 @@ solver.s: solver.cpp.s
 
 # target to generate assembly for a file
 solver.cpp.s:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/solverbench-cpu.dir/solver.cpp.s
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/solverbench-opencl.dir/solver.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/solverbench-cpu.dir/solver.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/solverbench-opencl.dir/solver.cpp.s
 .PHONY : solver.cpp.s
 
 sparse.o: sparse.cpp.o
@@ -638,8 +628,8 @@ sparse.o: sparse.cpp.o
 
 # target to build an object file
 sparse.cpp.o:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/sparse.cpp.o
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/sparse.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/sparse.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/sparse.cpp.o
 .PHONY : sparse.cpp.o
 
 sparse.i: sparse.cpp.i
@@ -647,8 +637,8 @@ sparse.i: sparse.cpp.i
 
 # target to preprocess a source file
 sparse.cpp.i:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/sparse.cpp.i
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/sparse.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/sparse.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/sparse.cpp.i
 .PHONY : sparse.cpp.i
 
 sparse.s: sparse.cpp.s
@@ -656,8 +646,8 @@ sparse.s: sparse.cpp.s
 
 # target to generate assembly for a file
 sparse.cpp.s:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/sparse.cpp.s
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/sparse.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-cpu.dir/sparse.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/sparse.cpp.s
 .PHONY : sparse.cpp.s
 
 vector.o: vector.cpp.o
@@ -665,8 +655,8 @@ vector.o: vector.cpp.o
 
 # target to build an object file
 vector.cpp.o:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/vector.cpp.o
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/vector.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/vector.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/vector.cpp.o
 .PHONY : vector.cpp.o
 
 vector.i: vector.cpp.i
@@ -674,8 +664,8 @@ vector.i: vector.cpp.i
 
 # target to preprocess a source file
 vector.cpp.i:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/vector.cpp.i
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/vector.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/vector.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/vector.cpp.i
 .PHONY : vector.cpp.i
 
 vector.s: vector.cpp.s
@@ -683,8 +673,8 @@ vector.s: vector.cpp.s
 
 # target to generate assembly for a file
 vector.cpp.s:
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/vector.cpp.s
-	cd /home/andi/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/vector.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/vector.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/vector.cpp.s
 .PHONY : vector.cpp.s
 
 # Help Target
@@ -716,7 +706,6 @@ help:
 	@echo "... sparsebench-cpu"
 	@echo "... sparsebench-cuda"
 	@echo "... sparsebench-opencl"
-	@echo "... test"
 	@echo "... vectorbench-cpu"
 	@echo "... vectorbench-cuda"
 	@echo "... vectorbench-opencl"
@@ -761,6 +750,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/andi/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

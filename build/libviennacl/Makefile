@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/denis/Documents/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/denis/Documents/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -123,14 +123,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles /home/denis/Documents/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/progress.marks
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 libviennacl/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/Documents/ViennaCL-1.5.2/build/CMakeFiles 0
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles /home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/progress.marks
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 libviennacl/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 libviennacl/clean
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 libviennacl/clean
 .PHONY : clean
 
 # The main clean target
@@ -139,22 +139,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 libviennacl/preinstall
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 libviennacl/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 libviennacl/preinstall
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 libviennacl/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 libviennacl/CMakeFiles/viennacl.dir/rule:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 libviennacl/CMakeFiles/viennacl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 libviennacl/CMakeFiles/viennacl.dir/rule
 .PHONY : libviennacl/CMakeFiles/viennacl.dir/rule
 
 # Convenience name for target.
@@ -163,248 +163,8 @@ viennacl: libviennacl/CMakeFiles/viennacl.dir/rule
 
 # fast build rule for target.
 viennacl/fast:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/build
 .PHONY : viennacl/fast
-
-src/backend.o: src/backend.cpp.o
-.PHONY : src/backend.o
-
-# target to build an object file
-src/backend.cpp.o:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.o
-.PHONY : src/backend.cpp.o
-
-src/backend.i: src/backend.cpp.i
-.PHONY : src/backend.i
-
-# target to preprocess a source file
-src/backend.cpp.i:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.i
-.PHONY : src/backend.cpp.i
-
-src/backend.s: src/backend.cpp.s
-.PHONY : src/backend.s
-
-# target to generate assembly for a file
-src/backend.cpp.s:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/backend.cpp.s
-.PHONY : src/backend.cpp.s
-
-src/blas1.o: src/blas1.cpp.o
-.PHONY : src/blas1.o
-
-# target to build an object file
-src/blas1.cpp.o:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.o
-.PHONY : src/blas1.cpp.o
-
-src/blas1.i: src/blas1.cpp.i
-.PHONY : src/blas1.i
-
-# target to preprocess a source file
-src/blas1.cpp.i:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.i
-.PHONY : src/blas1.cpp.i
-
-src/blas1.s: src/blas1.cpp.s
-.PHONY : src/blas1.s
-
-# target to generate assembly for a file
-src/blas1.cpp.s:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas1.cpp.s
-.PHONY : src/blas1.cpp.s
-
-src/blas1_host.o: src/blas1_host.cpp.o
-.PHONY : src/blas1_host.o
-
-# target to build an object file
-src/blas1_host.cpp.o:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.o
-.PHONY : src/blas1_host.cpp.o
-
-src/blas1_host.i: src/blas1_host.cpp.i
-.PHONY : src/blas1_host.i
-
-# target to preprocess a source file
-src/blas1_host.cpp.i:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.i
-.PHONY : src/blas1_host.cpp.i
-
-src/blas1_host.s: src/blas1_host.cpp.s
-.PHONY : src/blas1_host.s
-
-# target to generate assembly for a file
-src/blas1_host.cpp.s:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas1_host.cpp.s
-.PHONY : src/blas1_host.cpp.s
-
-src/blas1_opencl.o: src/blas1_opencl.cpp.o
-.PHONY : src/blas1_opencl.o
-
-# target to build an object file
-src/blas1_opencl.cpp.o:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.o
-.PHONY : src/blas1_opencl.cpp.o
-
-src/blas1_opencl.i: src/blas1_opencl.cpp.i
-.PHONY : src/blas1_opencl.i
-
-# target to preprocess a source file
-src/blas1_opencl.cpp.i:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.i
-.PHONY : src/blas1_opencl.cpp.i
-
-src/blas1_opencl.s: src/blas1_opencl.cpp.s
-.PHONY : src/blas1_opencl.s
-
-# target to generate assembly for a file
-src/blas1_opencl.cpp.s:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas1_opencl.cpp.s
-.PHONY : src/blas1_opencl.cpp.s
-
-src/blas2.o: src/blas2.cpp.o
-.PHONY : src/blas2.o
-
-# target to build an object file
-src/blas2.cpp.o:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.o
-.PHONY : src/blas2.cpp.o
-
-src/blas2.i: src/blas2.cpp.i
-.PHONY : src/blas2.i
-
-# target to preprocess a source file
-src/blas2.cpp.i:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.i
-.PHONY : src/blas2.cpp.i
-
-src/blas2.s: src/blas2.cpp.s
-.PHONY : src/blas2.s
-
-# target to generate assembly for a file
-src/blas2.cpp.s:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas2.cpp.s
-.PHONY : src/blas2.cpp.s
-
-src/blas2_host.o: src/blas2_host.cpp.o
-.PHONY : src/blas2_host.o
-
-# target to build an object file
-src/blas2_host.cpp.o:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.o
-.PHONY : src/blas2_host.cpp.o
-
-src/blas2_host.i: src/blas2_host.cpp.i
-.PHONY : src/blas2_host.i
-
-# target to preprocess a source file
-src/blas2_host.cpp.i:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.i
-.PHONY : src/blas2_host.cpp.i
-
-src/blas2_host.s: src/blas2_host.cpp.s
-.PHONY : src/blas2_host.s
-
-# target to generate assembly for a file
-src/blas2_host.cpp.s:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas2_host.cpp.s
-.PHONY : src/blas2_host.cpp.s
-
-src/blas2_opencl.o: src/blas2_opencl.cpp.o
-.PHONY : src/blas2_opencl.o
-
-# target to build an object file
-src/blas2_opencl.cpp.o:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.o
-.PHONY : src/blas2_opencl.cpp.o
-
-src/blas2_opencl.i: src/blas2_opencl.cpp.i
-.PHONY : src/blas2_opencl.i
-
-# target to preprocess a source file
-src/blas2_opencl.cpp.i:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.i
-.PHONY : src/blas2_opencl.cpp.i
-
-src/blas2_opencl.s: src/blas2_opencl.cpp.s
-.PHONY : src/blas2_opencl.s
-
-# target to generate assembly for a file
-src/blas2_opencl.cpp.s:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas2_opencl.cpp.s
-.PHONY : src/blas2_opencl.cpp.s
-
-src/blas3.o: src/blas3.cpp.o
-.PHONY : src/blas3.o
-
-# target to build an object file
-src/blas3.cpp.o:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.o
-.PHONY : src/blas3.cpp.o
-
-src/blas3.i: src/blas3.cpp.i
-.PHONY : src/blas3.i
-
-# target to preprocess a source file
-src/blas3.cpp.i:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.i
-.PHONY : src/blas3.cpp.i
-
-src/blas3.s: src/blas3.cpp.s
-.PHONY : src/blas3.s
-
-# target to generate assembly for a file
-src/blas3.cpp.s:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas3.cpp.s
-.PHONY : src/blas3.cpp.s
-
-src/blas3_host.o: src/blas3_host.cpp.o
-.PHONY : src/blas3_host.o
-
-# target to build an object file
-src/blas3_host.cpp.o:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.o
-.PHONY : src/blas3_host.cpp.o
-
-src/blas3_host.i: src/blas3_host.cpp.i
-.PHONY : src/blas3_host.i
-
-# target to preprocess a source file
-src/blas3_host.cpp.i:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.i
-.PHONY : src/blas3_host.cpp.i
-
-src/blas3_host.s: src/blas3_host.cpp.s
-.PHONY : src/blas3_host.s
-
-# target to generate assembly for a file
-src/blas3_host.cpp.s:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas3_host.cpp.s
-.PHONY : src/blas3_host.cpp.s
-
-src/blas3_opencl.o: src/blas3_opencl.cpp.o
-.PHONY : src/blas3_opencl.o
-
-# target to build an object file
-src/blas3_opencl.cpp.o:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.o
-.PHONY : src/blas3_opencl.cpp.o
-
-src/blas3_opencl.i: src/blas3_opencl.cpp.i
-.PHONY : src/blas3_opencl.i
-
-# target to preprocess a source file
-src/blas3_opencl.cpp.i:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.i
-.PHONY : src/blas3_opencl.cpp.i
-
-src/blas3_opencl.s: src/blas3_opencl.cpp.s
-.PHONY : src/blas3_opencl.s
-
-# target to generate assembly for a file
-src/blas3_opencl.cpp.s:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(MAKE) -f libviennacl/CMakeFiles/viennacl.dir/build.make libviennacl/CMakeFiles/viennacl.dir/src/blas3_opencl.cpp.s
-.PHONY : src/blas3_opencl.cpp.s
 
 # Help Target
 help:
@@ -420,36 +180,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... viennacl"
-	@echo "... src/backend.o"
-	@echo "... src/backend.i"
-	@echo "... src/backend.s"
-	@echo "... src/blas1.o"
-	@echo "... src/blas1.i"
-	@echo "... src/blas1.s"
-	@echo "... src/blas1_host.o"
-	@echo "... src/blas1_host.i"
-	@echo "... src/blas1_host.s"
-	@echo "... src/blas1_opencl.o"
-	@echo "... src/blas1_opencl.i"
-	@echo "... src/blas1_opencl.s"
-	@echo "... src/blas2.o"
-	@echo "... src/blas2.i"
-	@echo "... src/blas2.s"
-	@echo "... src/blas2_host.o"
-	@echo "... src/blas2_host.i"
-	@echo "... src/blas2_host.s"
-	@echo "... src/blas2_opencl.o"
-	@echo "... src/blas2_opencl.i"
-	@echo "... src/blas2_opencl.s"
-	@echo "... src/blas3.o"
-	@echo "... src/blas3.i"
-	@echo "... src/blas3.s"
-	@echo "... src/blas3_host.o"
-	@echo "... src/blas3_host.i"
-	@echo "... src/blas3_host.s"
-	@echo "... src/blas3_opencl.o"
-	@echo "... src/blas3_opencl.i"
-	@echo "... src/blas3_opencl.s"
 .PHONY : help
 
 
@@ -461,6 +191,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/denis/Documents/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
