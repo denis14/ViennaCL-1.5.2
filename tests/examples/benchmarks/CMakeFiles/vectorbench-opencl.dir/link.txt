@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/vectorbench-opencl.dir/vector.cpp.o  -o vectorbench-opencl -rdynamic -lOpenCL 

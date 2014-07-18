@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/dump_default_kernels.dir/dump_default_kernels.cpp.o  -o dump_default_kernels -rdynamic -lOpenCL 

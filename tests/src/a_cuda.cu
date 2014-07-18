@@ -100,6 +100,7 @@ void matrix_print(viennacl::matrix<ScalarType>& A_orig)
     }
 }
 
+
 void vector_print(ublas::vector<ScalarType>& v )
 {
 

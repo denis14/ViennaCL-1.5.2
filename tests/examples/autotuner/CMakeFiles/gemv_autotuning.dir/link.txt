@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/gemv_autotuning.dir/gemv_autotuning.cpp.o  -o gemv_autotuning -rdynamic -lOpenCL 

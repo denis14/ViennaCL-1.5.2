@@ -118,7 +118,7 @@ int main()
   ublas::vector<ScalarType> D = ublas::scalar_vector<ScalarType>(4, 0);
 	ublas::vector<ScalarType> S = ublas::scalar_vector<ScalarType>(4, 0);
 	 
-	//std::size_t sz = 4;
+	std::size_t sz = 4;
 	// read file
 	std::fstream f("../../examples/testdata/eigen/symm1.example", std::fstream::in);
 	//read size of input matrix

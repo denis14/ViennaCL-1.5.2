@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o  -o libviennacl-tutorial -rdynamic ../../libviennacl/libviennacl.so -lOpenCL -Wl,-rpath,/home/denis/Documents/ViennaCL-1.5.2/tests/libviennacl 

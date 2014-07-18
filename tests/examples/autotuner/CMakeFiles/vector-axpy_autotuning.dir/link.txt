@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/vector-axpy_autotuning.dir/vector-axpy_autotuning.cpp.o  -o vector-axpy_autotuning -rdynamic -lOpenCL 

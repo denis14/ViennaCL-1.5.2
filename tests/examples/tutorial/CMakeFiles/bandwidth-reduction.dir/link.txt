@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/bandwidth-reduction.dir/bandwidth-reduction.cpp.o  -o bandwidth-reduction -rdynamic -lOpenCL 

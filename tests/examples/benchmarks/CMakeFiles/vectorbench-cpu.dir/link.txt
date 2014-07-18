@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/vectorbench-cpu.dir/vector.cpp.o  -o vectorbench-cpu -rdynamic 
