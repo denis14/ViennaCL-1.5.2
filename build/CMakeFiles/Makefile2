@@ -982,6 +982,7 @@ tests/all: tests/CMakeFiles/matrix_vector_int-test-cuda.dir/all
 tests/all: tests/CMakeFiles/matrix_vector_int-test-opencl.dir/all
 tests/all: tests/CMakeFiles/nmf-test-opencl.dir/all
 tests/all: tests/CMakeFiles/qr_method-test-cpu.dir/all
+tests/all: tests/CMakeFiles/qr_method-test-cuda.dir/all
 tests/all: tests/CMakeFiles/qr_method-test-opencl.dir/all
 tests/all: tests/CMakeFiles/scalar-test-cpu.dir/all
 tests/all: tests/CMakeFiles/scalar-test-cuda.dir/all
@@ -1072,6 +1073,7 @@ tests/clean: tests/CMakeFiles/matrix_vector_int-test-cuda.dir/clean
 tests/clean: tests/CMakeFiles/matrix_vector_int-test-opencl.dir/clean
 tests/clean: tests/CMakeFiles/nmf-test-opencl.dir/clean
 tests/clean: tests/CMakeFiles/qr_method-test-cpu.dir/clean
+tests/clean: tests/CMakeFiles/qr_method-test-cuda.dir/clean
 tests/clean: tests/CMakeFiles/qr_method-test-opencl.dir/clean
 tests/clean: tests/CMakeFiles/scalar-test-cpu.dir/clean
 tests/clean: tests/CMakeFiles/scalar-test-cuda.dir/clean
@@ -2237,7 +2239,7 @@ clean: tests/CMakeFiles/matrix_col_double-test-opencl.dir/clean
 tests/CMakeFiles/matrix_col_float-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_float-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_float-test-cpu.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  34
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 
 	@echo "Built target matrix_col_float-test-cpu"
 .PHONY : tests/CMakeFiles/matrix_col_float-test-cpu.dir/all
 
@@ -2247,7 +2249,7 @@ all: tests/CMakeFiles/matrix_col_float-test-cpu.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/matrix_col_float-test-cpu.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_float-test-cpu.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
 .PHONY : tests/CMakeFiles/matrix_col_float-test-cpu.dir/rule
@@ -2272,7 +2274,7 @@ clean: tests/CMakeFiles/matrix_col_float-test-cpu.dir/clean
 tests/CMakeFiles/matrix_col_float-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_float-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_float-test-cuda.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  35
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  34
 	@echo "Built target matrix_col_float-test-cuda"
 .PHONY : tests/CMakeFiles/matrix_col_float-test-cuda.dir/all
 
@@ -2307,7 +2309,7 @@ clean: tests/CMakeFiles/matrix_col_float-test-cuda.dir/clean
 tests/CMakeFiles/matrix_col_float-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_col_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_float-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_col_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_float-test-opencl.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  36
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  35
 	@echo "Built target matrix_col_float-test-opencl"
 .PHONY : tests/CMakeFiles/matrix_col_float-test-opencl.dir/all
 
@@ -2342,7 +2344,7 @@ clean: tests/CMakeFiles/matrix_col_float-test-opencl.dir/clean
 tests/CMakeFiles/matrix_col_int-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_int-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_int-test-cpu.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  37
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  36
 	@echo "Built target matrix_col_int-test-cpu"
 .PHONY : tests/CMakeFiles/matrix_col_int-test-cpu.dir/all
 
@@ -2377,7 +2379,7 @@ clean: tests/CMakeFiles/matrix_col_int-test-cpu.dir/clean
 tests/CMakeFiles/matrix_col_int-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_int-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_int-test-cuda.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  38
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  37
 	@echo "Built target matrix_col_int-test-cuda"
 .PHONY : tests/CMakeFiles/matrix_col_int-test-cuda.dir/all
 
@@ -2412,7 +2414,7 @@ clean: tests/CMakeFiles/matrix_col_int-test-cuda.dir/clean
 tests/CMakeFiles/matrix_col_int-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_col_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_int-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_col_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_int-test-opencl.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  39
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  38
 	@echo "Built target matrix_col_int-test-opencl"
 .PHONY : tests/CMakeFiles/matrix_col_int-test-opencl.dir/all
 
@@ -2447,7 +2449,7 @@ clean: tests/CMakeFiles/matrix_col_int-test-opencl.dir/clean
 tests/CMakeFiles/matrix_row_double-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_double-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_double-test-cpu.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  40
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  39
 	@echo "Built target matrix_row_double-test-cpu"
 .PHONY : tests/CMakeFiles/matrix_row_double-test-cpu.dir/all
 
@@ -2482,7 +2484,7 @@ clean: tests/CMakeFiles/matrix_row_double-test-cpu.dir/clean
 tests/CMakeFiles/matrix_row_double-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_double-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_double-test-cuda.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  41
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  40
 	@echo "Built target matrix_row_double-test-cuda"
 .PHONY : tests/CMakeFiles/matrix_row_double-test-cuda.dir/all
 
@@ -2517,7 +2519,7 @@ clean: tests/CMakeFiles/matrix_row_double-test-cuda.dir/clean
 tests/CMakeFiles/matrix_row_double-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_double-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_row_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_double-test-opencl.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  42
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  41
 	@echo "Built target matrix_row_double-test-opencl"
 .PHONY : tests/CMakeFiles/matrix_row_double-test-opencl.dir/all
 
@@ -2552,7 +2554,7 @@ clean: tests/CMakeFiles/matrix_row_double-test-opencl.dir/clean
 tests/CMakeFiles/matrix_row_float-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_float-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_float-test-cpu.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  43
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  42
 	@echo "Built target matrix_row_float-test-cpu"
 .PHONY : tests/CMakeFiles/matrix_row_float-test-cpu.dir/all
 
@@ -2587,7 +2589,7 @@ clean: tests/CMakeFiles/matrix_row_float-test-cpu.dir/clean
 tests/CMakeFiles/matrix_row_float-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_float-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_float-test-cuda.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  44
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  43
 	@echo "Built target matrix_row_float-test-cuda"
 .PHONY : tests/CMakeFiles/matrix_row_float-test-cuda.dir/all
 
@@ -2622,7 +2624,7 @@ clean: tests/CMakeFiles/matrix_row_float-test-cuda.dir/clean
 tests/CMakeFiles/matrix_row_float-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_float-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_row_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_float-test-opencl.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  45
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  44
 	@echo "Built target matrix_row_float-test-opencl"
 .PHONY : tests/CMakeFiles/matrix_row_float-test-opencl.dir/all
 
@@ -2657,7 +2659,7 @@ clean: tests/CMakeFiles/matrix_row_float-test-opencl.dir/clean
 tests/CMakeFiles/matrix_row_int-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_int-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_int-test-cpu.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  46
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  45
 	@echo "Built target matrix_row_int-test-cpu"
 .PHONY : tests/CMakeFiles/matrix_row_int-test-cpu.dir/all
 
@@ -2692,7 +2694,7 @@ clean: tests/CMakeFiles/matrix_row_int-test-cpu.dir/clean
 tests/CMakeFiles/matrix_row_int-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_int-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_int-test-cuda.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  47
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  46
 	@echo "Built target matrix_row_int-test-cuda"
 .PHONY : tests/CMakeFiles/matrix_row_int-test-cuda.dir/all
 
@@ -2727,7 +2729,7 @@ clean: tests/CMakeFiles/matrix_row_int-test-cuda.dir/clean
 tests/CMakeFiles/matrix_row_int-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_row_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_int-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_row_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_int-test-opencl.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  48
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  47
 	@echo "Built target matrix_row_int-test-opencl"
 .PHONY : tests/CMakeFiles/matrix_row_int-test-opencl.dir/all
 
@@ -2762,7 +2764,7 @@ clean: tests/CMakeFiles/matrix_row_int-test-opencl.dir/clean
 tests/CMakeFiles/matrix_vector-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector-test-cpu.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  49
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  48
 	@echo "Built target matrix_vector-test-cpu"
 .PHONY : tests/CMakeFiles/matrix_vector-test-cpu.dir/all
 
@@ -2797,7 +2799,7 @@ clean: tests/CMakeFiles/matrix_vector-test-cpu.dir/clean
 tests/CMakeFiles/matrix_vector-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_vector-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_vector-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector-test-cuda.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  50
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  49
 	@echo "Built target matrix_vector-test-cuda"
 .PHONY : tests/CMakeFiles/matrix_vector-test-cuda.dir/all
 
@@ -2832,7 +2834,7 @@ clean: tests/CMakeFiles/matrix_vector-test-cuda.dir/clean
 tests/CMakeFiles/matrix_vector-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/matrix_vector-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/matrix_vector-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector-test-opencl.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  50
 	@echo "Built target matrix_vector-test-opencl"
 .PHONY : tests/CMakeFiles/matrix_vector-test-opencl.dir/all
 
@@ -2842,7 +2844,7 @@ all: tests/CMakeFiles/matrix_vector-test-opencl.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/matrix_vector-test-opencl.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector-test-opencl.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
 .PHONY : tests/CMakeFiles/matrix_vector-test-opencl.dir/rule
@@ -3036,13 +3038,48 @@ clean: tests/CMakeFiles/qr_method-test-cpu.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target tests/CMakeFiles/qr_method-test-cuda.dir
+
+# All Build rule for target.
+tests/CMakeFiles/qr_method-test-cuda.dir/all:
+	$(MAKE) -f tests/CMakeFiles/qr_method-test-cuda.dir/build.make tests/CMakeFiles/qr_method-test-cuda.dir/depend
+	$(MAKE) -f tests/CMakeFiles/qr_method-test-cuda.dir/build.make tests/CMakeFiles/qr_method-test-cuda.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  56
+	@echo "Built target qr_method-test-cuda"
+.PHONY : tests/CMakeFiles/qr_method-test-cuda.dir/all
+
+# Include target in all.
+all: tests/CMakeFiles/qr_method-test-cuda.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+tests/CMakeFiles/qr_method-test-cuda.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/qr_method-test-cuda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+.PHONY : tests/CMakeFiles/qr_method-test-cuda.dir/rule
+
+# Convenience name for target.
+qr_method-test-cuda: tests/CMakeFiles/qr_method-test-cuda.dir/rule
+.PHONY : qr_method-test-cuda
+
+# clean rule for target.
+tests/CMakeFiles/qr_method-test-cuda.dir/clean:
+	$(MAKE) -f tests/CMakeFiles/qr_method-test-cuda.dir/build.make tests/CMakeFiles/qr_method-test-cuda.dir/clean
+.PHONY : tests/CMakeFiles/qr_method-test-cuda.dir/clean
+
+# clean rule for target.
+clean: tests/CMakeFiles/qr_method-test-cuda.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target tests/CMakeFiles/qr_method-test-opencl.dir
 
 # All Build rule for target.
 tests/CMakeFiles/qr_method-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/qr_method-test-opencl.dir/build.make tests/CMakeFiles/qr_method-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/qr_method-test-opencl.dir/build.make tests/CMakeFiles/qr_method-test-opencl.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  56
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  57
 	@echo "Built target qr_method-test-opencl"
 .PHONY : tests/CMakeFiles/qr_method-test-opencl.dir/all
 
@@ -3077,7 +3114,7 @@ clean: tests/CMakeFiles/qr_method-test-opencl.dir/clean
 tests/CMakeFiles/scalar-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/scalar-test-cpu.dir/build.make tests/CMakeFiles/scalar-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/scalar-test-cpu.dir/build.make tests/CMakeFiles/scalar-test-cpu.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  57
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  58
 	@echo "Built target scalar-test-cpu"
 .PHONY : tests/CMakeFiles/scalar-test-cpu.dir/all
 
@@ -3112,7 +3149,7 @@ clean: tests/CMakeFiles/scalar-test-cpu.dir/clean
 tests/CMakeFiles/scalar-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/scalar-test-cuda.dir/build.make tests/CMakeFiles/scalar-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/scalar-test-cuda.dir/build.make tests/CMakeFiles/scalar-test-cuda.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  58
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  59
 	@echo "Built target scalar-test-cuda"
 .PHONY : tests/CMakeFiles/scalar-test-cuda.dir/all
 
@@ -3147,7 +3184,7 @@ clean: tests/CMakeFiles/scalar-test-cuda.dir/clean
 tests/CMakeFiles/scalar-test-opencl.dir/all:
 	$(MAKE) -f tests/CMakeFiles/scalar-test-opencl.dir/build.make tests/CMakeFiles/scalar-test-opencl.dir/depend
 	$(MAKE) -f tests/CMakeFiles/scalar-test-opencl.dir/build.make tests/CMakeFiles/scalar-test-opencl.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  59
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  60
 	@echo "Built target scalar-test-opencl"
 .PHONY : tests/CMakeFiles/scalar-test-opencl.dir/all
 
@@ -3182,7 +3219,7 @@ clean: tests/CMakeFiles/scalar-test-opencl.dir/clean
 tests/CMakeFiles/scheduler_matrix-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  60
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  61
 	@echo "Built target scheduler_matrix-test-cpu"
 .PHONY : tests/CMakeFiles/scheduler_matrix-test-cpu.dir/all
 
@@ -3217,7 +3254,7 @@ clean: tests/CMakeFiles/scheduler_matrix-test-cpu.dir/clean
 tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  61
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  62
 	@echo "Built target scheduler_matrix_matrix-test-cpu"
 .PHONY : tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/all
 
@@ -3252,7 +3289,7 @@ clean: tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/clean
 tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  62
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  63
 	@echo "Built target scheduler_matrix_vector-test-cpu"
 .PHONY : tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/all
 
@@ -3287,7 +3324,7 @@ clean: tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/clean
 tests/CMakeFiles/scheduler_sparse-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/scheduler_sparse-test-cpu.dir/build.make tests/CMakeFiles/scheduler_sparse-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/scheduler_sparse-test-cpu.dir/build.make tests/CMakeFiles/scheduler_sparse-test-cpu.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  63
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  64
 	@echo "Built target scheduler_sparse-test-cpu"
 .PHONY : tests/CMakeFiles/scheduler_sparse-test-cpu.dir/all
 
@@ -3322,7 +3359,7 @@ clean: tests/CMakeFiles/scheduler_sparse-test-cpu.dir/clean
 tests/CMakeFiles/scheduler_vector-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/scheduler_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_vector-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/scheduler_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_vector-test-cpu.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  64
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  65
 	@echo "Built target scheduler_vector-test-cpu"
 .PHONY : tests/CMakeFiles/scheduler_vector-test-cpu.dir/all
 
@@ -3357,7 +3394,7 @@ clean: tests/CMakeFiles/scheduler_vector-test-cpu.dir/clean
 tests/CMakeFiles/sparse-test-cpu.dir/all:
 	$(MAKE) -f tests/CMakeFiles/sparse-test-cpu.dir/build.make tests/CMakeFiles/sparse-test-cpu.dir/depend
 	$(MAKE) -f tests/CMakeFiles/sparse-test-cpu.dir/build.make tests/CMakeFiles/sparse-test-cpu.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  65
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  66
 	@echo "Built target sparse-test-cpu"
 .PHONY : tests/CMakeFiles/sparse-test-cpu.dir/all
 
@@ -3392,7 +3429,7 @@ clean: tests/CMakeFiles/sparse-test-cpu.dir/clean
 tests/CMakeFiles/sparse-test-cuda.dir/all:
 	$(MAKE) -f tests/CMakeFiles/sparse-test-cuda.dir/build.make tests/CMakeFiles/sparse-test-cuda.dir/depend
 	$(MAKE) -f tests/CMakeFiles/sparse-test-cuda.dir/build.make tests/CMakeFiles/sparse-test-cuda.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles  66
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 
 	@echo "Built target sparse-test-cuda"
 .PHONY : tests/CMakeFiles/sparse-test-cuda.dir/all
 
@@ -3402,7 +3439,7 @@ all: tests/CMakeFiles/sparse-test-cuda.dir/all
 
 # Build rule for subdir invocation for target.
 tests/CMakeFiles/sparse-test-cuda.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/sparse-test-cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
 .PHONY : tests/CMakeFiles/sparse-test-cuda.dir/rule

@@ -1232,6 +1232,19 @@ qr_method-test-cpu/fast:
 .PHONY : qr_method-test-cpu/fast
 
 #=============================================================================
+# Target rules for targets named qr_method-test-cuda
+
+# Build rule for target.
+qr_method-test-cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 qr_method-test-cuda
+.PHONY : qr_method-test-cuda
+
+# fast build rule for target.
+qr_method-test-cuda/fast:
+	$(MAKE) -f tests/CMakeFiles/qr_method-test-cuda.dir/build.make tests/CMakeFiles/qr_method-test-cuda.dir/build
+.PHONY : qr_method-test-cuda/fast
+
+#=============================================================================
 # Target rules for targets named qr_method-test-opencl
 
 # Build rule for target.
@@ -1756,6 +1769,7 @@ help:
 	@echo "... matrix_vector_int-test-opencl"
 	@echo "... nmf-test-opencl"
 	@echo "... qr_method-test-cpu"
+	@echo "... qr_method-test-cuda"
 	@echo "... qr_method-test-opencl"
 	@echo "... scalar-test-cpu"
 	@echo "... scalar-test-cuda"

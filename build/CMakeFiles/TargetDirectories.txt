@@ -81,6 +81,7 @@
 /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_vector_int-test-opencl.dir
 /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/nmf-test-opencl.dir
 /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/qr_method-test-cpu.dir
+/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/qr_method-test-cuda.dir
 /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/qr_method-test-opencl.dir
 /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cpu.dir
 /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir

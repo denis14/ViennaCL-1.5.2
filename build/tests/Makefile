@@ -923,6 +923,20 @@ qr_method-test-cpu/fast:
 .PHONY : qr_method-test-cpu/fast
 
 # Convenience name for target.
+tests/CMakeFiles/qr_method-test-cuda.dir/rule:
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/qr_method-test-cuda.dir/rule
+.PHONY : tests/CMakeFiles/qr_method-test-cuda.dir/rule
+
+# Convenience name for target.
+qr_method-test-cuda: tests/CMakeFiles/qr_method-test-cuda.dir/rule
+.PHONY : qr_method-test-cuda
+
+# fast build rule for target.
+qr_method-test-cuda/fast:
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-cuda.dir/build.make tests/CMakeFiles/qr_method-test-cuda.dir/build
+.PHONY : qr_method-test-cuda/fast
+
+# Convenience name for target.
 tests/CMakeFiles/qr_method-test-opencl.dir/rule:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/qr_method-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/qr_method-test-opencl.dir/rule
@@ -2417,6 +2431,7 @@ help:
 	@echo "... matrix_vector_int-test-opencl"
 	@echo "... nmf-test-opencl"
 	@echo "... qr_method-test-cpu"
+	@echo "... qr_method-test-cuda"
 	@echo "... qr_method-test-opencl"
 	@echo "... rebuild_cache"
 	@echo "... scalar-test-cpu"

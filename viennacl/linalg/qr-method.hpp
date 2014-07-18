@@ -189,7 +189,7 @@ namespace viennacl
                             viennacl::copy(cs, tmp1);
                             viennacl::copy(ss, tmp2);
                            // std::cout << Q << "\n";
-                           // givens_next(Q, tmp1, tmp2, l, m);
+                            givens_next(Q, tmp1, tmp2, l, m);
                            // std::cout << Q << "\n";
                         }
 
@@ -925,6 +925,7 @@ namespace viennacl
             Q = viennacl::identity_matrix<SCALARTYPE>(Q.size1());
 
             // reduce to tridiagonal form
+            //std::cout << "tridiagonal_reduction start!\n";
             detail::tridiagonal_reduction(A, Q);
             std::cout << "tridiagonal_reduction fertig!\n";
             matrix_print(A);

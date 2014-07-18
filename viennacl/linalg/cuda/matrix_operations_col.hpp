@@ -1538,7 +1538,7 @@ namespace viennacl
               uint size2,
               uint stride)
       {
-          __shared__ T sums[128];  //unused variable
+         // __shared__ T sums[128];  //unused variable
           T ss = 0;
 
           for(uint i = blockIdx.x * blockDim.x + threadIdx.x + col_start;
@@ -1589,7 +1589,7 @@ namespace viennacl
               ss = 0;
               for(uint j = threadIdx.x; j < size2; j+= blockDim.x)
                   ss = ss + (V[j] * A[i * stride + j]);
-              sums[threadIdx.x]; //no effect
+              //sums[threadIdx.x]; //no effect
 
               __syncthreads();
               col_reduce_lcl_array(sums, threadIdx.x, blockDim.x);

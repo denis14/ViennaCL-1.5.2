@@ -26,6 +26,10 @@
 #include "viennacl/ocl/kernel.hpp"
 #include "viennacl/linalg/opencl/kernels/svd.hpp"
 #endif
+
+#ifdef VIENNACL_WITH_CUDA
+#include "viennacl/linalg/cuda/matrix_operations.hpp"
+#endif
 #include "viennacl/meta/result_of.hpp"
 #include "viennacl/vector.hpp"
 #include "viennacl/matrix.hpp"
@@ -162,17 +166,16 @@ namespace viennacl
             break;
   #ifdef VIENNACL_WITH_OPENCL
           case viennacl::OPENCL_MEMORY:
-            std::cout << "Now running copy_vec in OpenCL!\n";
             viennacl::linalg::opencl::copy_vec(A, V, row_start, col_start, copy_col);
             break;
   #endif
-        /*
+
   #ifdef VIENNACL_WITH_CUDA
           case viennacl::CUDA_MEMORY:
-            viennacl::linalg::cuda::bidiag_pack(A, dh, sh);
+            viennacl::linalg::cuda::copy_vec(A, V, row_start, col_start, copy_col);
             break;
   #endif
-  */
+
           case viennacl::MEMORY_NOT_INITIALIZED:
             throw memory_exception("not initialised!");
           default:
@@ -253,7 +256,7 @@ namespace viennacl
 
       */
 
-    }
+    } //detail
   }
 }
 

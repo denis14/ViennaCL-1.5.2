@@ -796,13 +796,13 @@ namespace viennacl
             viennacl::linalg::opencl::bidiag_pack(A, dh, sh);
             break;
   #endif
-        /*
+
   #ifdef VIENNACL_WITH_CUDA
           case viennacl::CUDA_MEMORY:
             viennacl::linalg::cuda::bidiag_pack(A, dh, sh);
             break;
   #endif
-  */
+
           case viennacl::MEMORY_NOT_INITIALIZED:
             throw memory_exception("not initialised!");
           default:
@@ -830,13 +830,13 @@ namespace viennacl
           viennacl::linalg::opencl::house_update_A_left(A, D, start);
           break;
 #endif
-      /*
+
 #ifdef VIENNACL_WITH_CUDA
         case viennacl::CUDA_MEMORY:
-          viennacl::linalg::cuda::bidiag_pack(A, dh, sh);
+          viennacl::linalg::cuda::house_update_A_left(A, D, start);
           break;
 #endif
-*/
+
         case viennacl::MEMORY_NOT_INITIALIZED:
           throw memory_exception("not initialised!");
         default:
@@ -863,13 +863,13 @@ namespace viennacl
           viennacl::linalg::opencl::house_update_A_right(A, D, start);
           break;
 #endif
-      /*
+
 #ifdef VIENNACL_WITH_CUDA
         case viennacl::CUDA_MEMORY:
-          viennacl::linalg::cuda::bidiag_pack(A, dh, sh);
+          viennacl::linalg::cuda::house_update_A_right(A, D, start);
           break;
 #endif
-*/
+
         case viennacl::MEMORY_NOT_INITIALIZED:
           throw memory_exception("not initialised!");
         default:
@@ -895,13 +895,13 @@ namespace viennacl
           viennacl::linalg::opencl::house_update_QL(A, Q, D);
           break;
 #endif
-      /*
+
 #ifdef VIENNACL_WITH_CUDA
         case viennacl::CUDA_MEMORY:
-          viennacl::linalg::cuda::bidiag_pack(A, dh, sh);
+          viennacl::linalg::cuda::house_update_QL(A, Q, D);
           break;
 #endif
-*/
+
         case viennacl::MEMORY_NOT_INITIALIZED:
           throw memory_exception("not initialised!");
         default:
@@ -930,7 +930,7 @@ namespace viennacl
 
 #ifdef VIENNACL_WITH_CUDA
         case viennacl::CUDA_MEMORY:
-          //viennacl::linalg::cuda::bidiag_pack(A, dh, sh);
+          //viennacl::linalg::cuda::givens_next(matrix, tmp1, tmp2, l, m);
           break;
 #endif
 
