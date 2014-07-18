@@ -1311,6 +1311,8 @@ namespace viennacl
          viennacl::matrix<NumericT> vcl_P(A.size1(), A.size2());
 
          viennacl::matrix<NumericT> I(A.size1(), A.size2());
+         viennacl::matrix<NumericT> Q_temp(Q.size1(), Q.size2());
+         copy(Q, Q_temp);
          std::cout << D << std::endl;
          vcl_P = viennacl::identity_matrix<NumericT>(A.size1());
          I     = viennacl::identity_matrix<NumericT>(A.size1());
@@ -1330,9 +1332,10 @@ namespace viennacl
          }
 */
          viennacl::linalg::host_based::scaled_rank_1_update(vcl_P, beta, 1, 0, 1, vcl_D, vcl_D);  //scaled_rank_1_update in linalg/matrix_operations.hpp beschrieben
-
-         Q = prod(Q, vcl_P);
-         std::cout << vcl_P << std::endl;
+         std::cout << "\n\nMatrix Q_temp:\n" << Q_temp << std::endl;
+         Q = prod(Q_temp, vcl_P);  //P wurde korrekt berechnet - ueberprueft
+         std::cout << "\n\nMatrix P:\n" << vcl_P << std::endl;
+         std::cout << "\n\nMatrix Q:\n" << Q << std::endl;
        }
 
        template<typename NumericT, typename F>
