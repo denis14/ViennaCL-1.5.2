@@ -1678,6 +1678,52 @@ namespace viennacl
                                              static_cast<unsigned int>(viennacl::traits::internal_size2(Q)));
       }
 
+      template <typename T>
+      __global__ void givens_next(
+              T * matr,
+              T * cs,
+              T * ss,
+              uint size,
+              uint stride,
+              uint start_i,
+              uint end_i)
+      {
+          j = blockIdx.x * blockDim.x + threadIdx.x;
+          __shared__ cs_lcl[256];
+          __shared__ ss_lcl[256];
+
+          T x = (j < size) ? matr[(end_i + 1) * stride + j] : 0;
+
+          uint elems_num = end_i - start_i + 1;
+          uint block_num = (elems_num + blockDim.x - 1) / blockDim.x;
+
+          for(uint block_id = 0; block_id < block_num; block_id++)
+          {
+              uint to = min(elems_num - block_id * blockDim.x, blockDim.x);
+
+              if(threadIdx.x < to)
+              {
+                  cs_lcl[threadIdx.x] = cs[end_i - (threadIdx.x + block_id * threadIdx.x)];
+                  ss_lcl[threadIdx.x] = ss[end_i - (threadIdx.x + block_id * threadIdx.x)];
+              }
+              __syncthreads();
+              if(j < size)
+              {
+                  for(uint ind = 0; ind < to; ind++)
+                  {
+                      uint i = end_i - (ind + block_id * threadIdx.x);
+                      T z = matr[i * stride + j];
+                      T cs_val = cs_lcl[ind];
+                      T ss_val = ss_lcl[ind];
+                      matr[(i + 1) * stride + j] = x * cs_val + z * ss_val;
+                      x = -x * ss_val + z * cs_val;
+                  }
+              }
+              __syncthreads();
+           }
+           if(j < size)
+             matr[(start_i) * stride + j] = x;
+      }
     } // namespace cuda
   } //namespace linalg
 } //namespace viennacl
