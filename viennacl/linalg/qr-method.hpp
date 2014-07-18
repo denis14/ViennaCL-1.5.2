@@ -189,7 +189,7 @@ namespace viennacl
                             viennacl::copy(cs, tmp1);
                             viennacl::copy(ss, tmp2);
                            // std::cout << Q << "\n";
-                            givens_next(Q, tmp1, tmp2, l, m);
+                           // givens_next(Q, tmp1, tmp2, l, m);
                            // std::cout << Q << "\n";
                         }
 
@@ -880,6 +880,8 @@ namespace viennacl
 
             {
               viennacl::linalg::house_update_QL(A, Q, D);
+              std::cout << "Matrix Q: \n";
+              matrix_print(Q);
               /*
                 viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE>::program_name(), SVD_HOUSEHOLDER_UPDATE_QL_KERNEL);
 
@@ -926,7 +928,6 @@ namespace viennacl
 
             D.clear();
             E.clear();
-
             Q = viennacl::identity_matrix<SCALARTYPE>(Q.size1());
 
             // reduce to tridiagonal form
@@ -939,6 +940,7 @@ namespace viennacl
             // ublas::vector<SCALARTYPE> D(A.size1()), E(A.size1());
 
             viennacl::linalg::bidiag_pack(A, D, E);     // in matrix_operations.hpp
+
             std::cout <<"\nprint diagonal:\n";
             vector_print(D);
             std::cout << "\nprint superdiagonal:\n";
@@ -949,14 +951,15 @@ namespace viennacl
             {
 
                 detail::tql2(Q, D, E);
-                transpose(Q);
+                Q = trans(Q);                   //geaendert !!!
+                //transpose(Q);
             }
             else
             {
                 detail::hqr2(A, Q, D, E);
             }
 
-            // std::cout << A << "\n";
+
 
             boost::numeric::ublas::matrix<float> eigen_values(A.size1(), A.size1());
             eigen_values.clear();

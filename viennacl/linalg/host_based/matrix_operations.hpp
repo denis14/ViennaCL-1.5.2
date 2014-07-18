@@ -1332,10 +1332,9 @@ namespace viennacl
          }
 */
          viennacl::linalg::host_based::scaled_rank_1_update(vcl_P, beta, 1, 0, 1, vcl_D, vcl_D);  //scaled_rank_1_update in linalg/matrix_operations.hpp beschrieben
-         std::cout << "\n\nMatrix Q_temp:\n" << Q_temp << std::endl;
+         //std::cout << "\n\nMatrix Q_temp:\n" << Q_temp << std::endl;
          Q = prod(Q_temp, vcl_P);  //P wurde korrekt berechnet - ueberprueft
-         std::cout << "\n\nMatrix P:\n" << vcl_P << std::endl;
-         std::cout << "\n\nMatrix Q:\n" << Q << std::endl;
+
        }
 
        template<typename NumericT, typename F>
