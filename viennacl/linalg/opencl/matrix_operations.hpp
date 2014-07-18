@@ -1015,6 +1015,7 @@ namespace viennacl
         viennacl::vector<NumericT> S(sh.size());
 
         viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(A).context());
+        viennacl::linalg::opencl::kernels::svd<NumericT>::init(ctx);                    // neu hinzugefuegt
         viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT>::program_name(), SVD_BIDIAG_PACK_KERNEL);
 
         viennacl::ocl::enqueue(kernel(
@@ -1038,6 +1039,7 @@ namespace viennacl
       {
 
           viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(A).context());
+          viennacl::linalg::opencl::kernels::svd<NumericT>::init(ctx);                    // neu hinzugefuegt
           viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT>::program_name(), SVD_HOUSEHOLDER_UPDATE_A_LEFT_KERNEL);
 
           viennacl::ocl::enqueue(kernel(
@@ -1059,6 +1061,7 @@ namespace viennacl
                                 vcl_size_t start)
       {
           viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(A).context());
+          viennacl::linalg::opencl::kernels::svd<NumericT>::init(ctx);                    // neu hinzugefuegt
           viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT>::program_name(), SVD_HOUSEHOLDER_UPDATE_A_RIGHT_KERNEL);
 
           viennacl::ocl::enqueue(kernel(
@@ -1082,6 +1085,7 @@ namespace viennacl
 
       {
           viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(A).context());
+          viennacl::linalg::opencl::kernels::svd<NumericT>::init(ctx);                    // neu hinzugefuegt
           viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT>::program_name(), SVD_HOUSEHOLDER_UPDATE_QL_KERNEL);
 
           viennacl::ocl::enqueue(kernel(
@@ -1107,7 +1111,7 @@ namespace viennacl
 
         //  typedef typename MatrixType::value_type                                   ScalarType;
         //  typedef typename viennacl::result_of::cpu_value_type<ScalarType>::type    CPU_ScalarType;
-
+          viennacl::linalg::opencl::kernels::svd<NumericT>::init(ctx);                    // neu hinzugefuegt
           viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT>::program_name(), SVD_GIVENS_NEXT_KERNEL);
 
           kernel.global_work_size(0, viennacl::tools::align_to_multiple<cl_uint>(cl_uint(viennacl::traits::size1(matrix)), 256));

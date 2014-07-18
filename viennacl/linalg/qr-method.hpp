@@ -834,8 +834,12 @@ namespace viennacl
             std::cout << "\nprint householder_vector:\n";
             for(uint i = 0; i<A.size1(); i++)
               std::cout << D[i] << "\n";
+            std::cout << "Matrix A: \n";
+            matrix_print(A);
+            std::cout << "start: " << start << std::endl;
             {
               viennacl::linalg::house_update_A_left(A, D, start);
+              matrix_print(A);
 
 /*
               viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE>::program_name(), SVD_HOUSEHOLDER_UPDATE_A_LEFT_KERNEL);
@@ -856,6 +860,7 @@ namespace viennacl
 
             {
               viennacl::linalg::house_update_A_right(A, D, 0);
+              matrix_print(A);
               /*
 
               viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE>::program_name(), SVD_HOUSEHOLDER_UPDATE_A_RIGHT_KERNEL);
