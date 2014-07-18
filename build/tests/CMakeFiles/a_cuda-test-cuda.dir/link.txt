@@ -1,1 +1,1 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o  -o a_cuda-test-cuda -rdynamic -lcudart -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 
+/usr/bin/c++   -g    CMakeFiles/a_cuda-test-cuda.dir/src/./a_cuda-test-cuda_generated_a_cuda.cu.o  -o a_cuda-test-cuda -rdynamic -lcudart -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

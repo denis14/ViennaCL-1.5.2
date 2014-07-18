@@ -75,7 +75,6 @@ SET(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-2.8/Modules/FindBoost.cmake"
   "/usr/share/cmake-2.8/Modules/FindCUDA.cmake"
   "/usr/share/cmake-2.8/Modules/FindCUDA/run_nvcc.cmake"
-  "/usr/share/cmake-2.8/Modules/FindOpenMP.cmake"
   "/usr/share/cmake-2.8/Modules/FindPackageHandleStandardArgs.cmake"
   "/usr/share/cmake-2.8/Modules/FindPackageMessage.cmake"
   "/usr/share/cmake-2.8/Modules/Platform/Linux-GNU-C.cmake"

@@ -111,23 +111,24 @@ void vector_print(ublas::vector<ScalarType>& v )
 int main()
 {
   
-	viennacl::vector<ScalarType> A(12);
-	viennacl::vector<ScalarType> D(12);
-	viennacl::vector<ScalarType> S(12);
+	viennacl::matrix<ScalarType> A_input(4, 4);
+	//viennacl::vector<ScalarType> D(4);
+	//viennacl::vector<ScalarType> S(4);
 	//viennacl::vector<ScalarType> Q(12); // = ublas::scalar_vector<ScalarType>(sz, 0);
-	//ublas::vector<ScalarType> E = ublas::scalar_vector<ScalarType>(sz, 0);
+  ublas::vector<ScalarType> D = ublas::scalar_vector<ScalarType>(4, 0);
+	ublas::vector<ScalarType> S = ublas::scalar_vector<ScalarType>(4, 0);
 	 
-	//std::size_t sz = 4;
+	std::size_t sz = 4;
 	// read file
-	//std::fstream f("../../examples/testdata/eigen/symm1.example", std::fstream::in);
+	std::fstream f("../../examples/testdata/eigen/symm1.example", std::fstream::in);
 	//read size of input matrix
-	//read_matrix_size(f, sz);
+	read_matrix_size(f, sz);
 	  
 	//viennacl::matrix<ScalarType> A_input(4, 4);
 	// viennacl::matrix<ScalarType> A(4, 4);
-	//read_matrix_body(f, A_input);
-	//f.close();
-	//matrix_print(A_input);
+	read_matrix_body(f, A_input);
+	f.close();
+	matrix_print(A_input);
 	
 	/*  
 	viennacl::linalg::cuda::bidiag_pack_kernel<<<128, 128>>>(viennacl::linalg::cuda::detail::cuda_arg<ScalarType>(A),
@@ -152,11 +153,17 @@ int main()
 	       							          viennacl::linalg::cuda::detail::cuda_arg<ScalarType>(D),
 								          2, 3, 12, 13, 14); 
 	*/
+	/*
 	viennacl::linalg::cuda::house_update_QL_kernel<<<128, 128>>>(viennacl::linalg::cuda::detail::cuda_arg<ScalarType>(A),
 	       							     viennacl::linalg::cuda::detail::cuda_arg<ScalarType>(D),
 								     12, 13, 14); 
 	std::cout << "Testdata wurde gelesen!" << std::endl;
-
+*/
+  
+  
+  viennacl::linalg::bidiag_pack(A_input, D, S);
+  vector_print(D);
+  vector_print(S);
 	//vector_print(D);
 	//matrix_print(A_input);
 

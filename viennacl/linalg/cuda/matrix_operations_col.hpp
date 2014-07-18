@@ -1436,22 +1436,30 @@ namespace viennacl
           }
       }
 
-      template<typename T>
-      __device__ void col_reduce_lcl_array(
-              T * sums,
-              uint th_Idx,
-              uint bl_Dim)
-      {
-          uint step = bl_Dim >> 1;
 
-          while(step > 0)
-          {
-              if(th_Idx < step)
-                  sums[th_Idx] += sums[th_Idx + step];
-              step >>= 1;
-              __syncthreads();
-          }
+      template <typename NumericT, typename F, typename VectorType>
+      void bidiag_pack(matrix_base<NumericT, F> & A,
+                       VectorType & dh,
+                       VectorType & sh
+                      )
+      {
+        std::cout << "Bidiag_pack started in CUDA !!\n";
+        viennacl::vector<NumericT> D(dh.size());
+        viennacl::vector<NumericT> S(sh.size());
+
+	viennacl::linalg::cuda::bidiag_pack_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
+								 viennacl::linalg::cuda::detail::cuda_arg<NumericT>(D),
+								 viennacl::linalg::cuda::detail::cuda_arg<NumericT>(S),
+								 static_cast<unsigned int>(viennacl::traits::size1(A)),
+								 static_cast<unsigned int>(viennacl::traits::size2(A)),
+								 static_cast<unsigned int>(viennacl::traits::internal_size2(A)));
+
+        fast_copy(D, dh);
+        fast_copy(S, sh);
       }
+
+
+
 
       template<typename T>
       __global__ void copy_col_kernel(
@@ -1490,6 +1498,36 @@ namespace viennacl
 
       }
 
+      template <typename NumericT, typename F>
+      void copy_vec(matrix_base<NumericT, F>& A,
+                    vector_base<NumericT> & V,
+                    vcl_size_t row_start,
+                    vcl_size_t col_start,
+                    bool copy_col
+      )
+      {
+        if(copy_col)
+          {
+            copy_col_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
+                                          detail::cuda_arg<NumericT>(V),
+                                          static_cast<unsigned int>(row_start),         // vcl_size_t oder unsigned int ?
+                                          static_cast<unsigned int>(col_start),
+                                          static_cast<unsigned int>(viennacl::traits::size1(A)),
+                                          static_cast<unsigned int>(viennacl::traits::internal_size2(A)));
+
+          }
+        else
+          {
+            copy_row_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
+                                          detail::cuda_arg<NumericT>(V),
+                                          static_cast<unsigned int>(row_start),
+                                          static_cast<unsigned int>(col_start),
+                                          static_cast<unsigned int>(viennacl::traits::size2(A)),
+                                          static_cast<unsigned int>(viennacl::traits::internal_size2(A)));
+          }
+      }
+
+
       template<typename T>
       __global__ void house_update_A_left_kernel(
               T * A,
@@ -1515,6 +1553,23 @@ namespace viennacl
                   A[j * stride + i] = A[j * stride + i] - (2 * V[j] * ss);
           }
       }
+
+      template <typename NumericT, typename F>
+      void house_update_A_left(matrix_base<NumericT, F> & A,
+                               vector_base<NumericT> & D,
+                               vcl_size_t start)
+      {
+        house_update_A_left_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
+                                                 detail::cuda_arg<NumericT>(D),
+                                                 static_cast<unsigned int>(start + 1),
+                                                 static_cast<unsigned int>(start),
+                                                 static_cast<unsigned int>(viennacl::traits::size1(A)),
+                                                 static_cast<unsigned int>(viennacl::traits::size2(A)),
+                                                 static_cast<unsigned int>(viennacl::traits::internal_size2(A)));
+
+      }
+
+
 
       template<typename T>
       __global__ void house_update_A_right_kernel(
@@ -1547,6 +1602,40 @@ namespace viennacl
           }
       }
 
+      template <typename NumericT, typename F>
+      void house_update_A_right(matrix_base<NumericT, F> & A,
+                               vector_base<NumericT> & D,
+                               vcl_size_t start)
+      {
+        house_update_A_right_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
+                                                  detail::cuda_arg<NumericT>(D),
+                                                  static_cast<unsigned int>(0),
+                                                  static_cast<unsigned int>(0),
+                                                  static_cast<unsigned int>(viennacl::traits::size1(A)),
+                                                  static_cast<unsigned int>(viennacl::traits::size2(A)),
+                                                  static_cast<unsigned int>(viennacl::traits::internal_size2(A)));
+
+      }
+
+
+      template<typename T>
+      __device__ void col_reduce_lcl_array(
+              T * sums,
+              uint th_Idx,
+              uint bl_Dim)
+      {
+          uint step = bl_Dim >> 1;
+
+          while(step > 0)
+          {
+              if(th_Idx < step)
+                  sums[th_Idx] += sums[th_Idx + step];
+              step >>= 1;
+              __syncthreads();
+          }
+      }
+
+
       template <typename T>
       __global__ void house_update_QL_kernel(
               T * QL,
@@ -1574,6 +1663,21 @@ namespace viennacl
                   QL[i * strideQ + j] = QL[i * strideQ + j] - (2 * V[j] * sum_Qv);
           }
       }
+
+
+      template <typename NumericT, typename F>
+      void house_update_QL(matrix_base<NumericT, F> & A,
+                           matrix_base<NumericT, F> & Q,
+                           vector_base<NumericT> & D)
+
+      {
+        house_update_QL_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(Q),
+                                             detail::cuda_arg<NumericT>(D),
+                                             static_cast<unsigned int>(viennacl::traits::size1(A)),
+                                             static_cast<unsigned int>(viennacl::traits::size2(A)),
+                                             static_cast<unsigned int>(viennacl::traits::internal_size2(Q)));
+      }
+
     } // namespace cuda
   } //namespace linalg
 } //namespace viennacl

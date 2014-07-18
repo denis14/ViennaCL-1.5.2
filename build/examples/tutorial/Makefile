@@ -185,20 +185,6 @@ blas1/fast:
 .PHONY : blas1/fast
 
 # Convenience name for target.
-examples/tutorial/CMakeFiles/blas1-cuda.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/blas1-cuda.dir/rule
-.PHONY : examples/tutorial/CMakeFiles/blas1-cuda.dir/rule
-
-# Convenience name for target.
-blas1-cuda: examples/tutorial/CMakeFiles/blas1-cuda.dir/rule
-.PHONY : blas1-cuda
-
-# fast build rule for target.
-blas1-cuda/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas1-cuda.dir/build.make examples/tutorial/CMakeFiles/blas1-cuda.dir/build
-.PHONY : blas1-cuda/fast
-
-# Convenience name for target.
 examples/tutorial/CMakeFiles/blas2.dir/rule:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/blas2.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/blas2.dir/rule
@@ -213,20 +199,6 @@ blas2/fast:
 .PHONY : blas2/fast
 
 # Convenience name for target.
-examples/tutorial/CMakeFiles/blas2-cuda.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/blas2-cuda.dir/rule
-.PHONY : examples/tutorial/CMakeFiles/blas2-cuda.dir/rule
-
-# Convenience name for target.
-blas2-cuda: examples/tutorial/CMakeFiles/blas2-cuda.dir/rule
-.PHONY : blas2-cuda
-
-# fast build rule for target.
-blas2-cuda/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas2-cuda.dir/build.make examples/tutorial/CMakeFiles/blas2-cuda.dir/build
-.PHONY : blas2-cuda/fast
-
-# Convenience name for target.
 examples/tutorial/CMakeFiles/blas3.dir/rule:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/blas3.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/blas3.dir/rule
@@ -239,20 +211,6 @@ blas3: examples/tutorial/CMakeFiles/blas3.dir/rule
 blas3/fast:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas3.dir/build.make examples/tutorial/CMakeFiles/blas3.dir/build
 .PHONY : blas3/fast
-
-# Convenience name for target.
-examples/tutorial/CMakeFiles/blas3-cuda.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/blas3-cuda.dir/rule
-.PHONY : examples/tutorial/CMakeFiles/blas3-cuda.dir/rule
-
-# Convenience name for target.
-blas3-cuda: examples/tutorial/CMakeFiles/blas3-cuda.dir/rule
-.PHONY : blas3-cuda
-
-# fast build rule for target.
-blas3-cuda/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas3-cuda.dir/build.make examples/tutorial/CMakeFiles/blas3-cuda.dir/build
-.PHONY : blas3-cuda/fast
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/custom-context.dir/rule:
@@ -311,20 +269,6 @@ iterative/fast:
 .PHONY : iterative/fast
 
 # Convenience name for target.
-examples/tutorial/CMakeFiles/iterative-cuda.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/iterative-cuda.dir/rule
-.PHONY : examples/tutorial/CMakeFiles/iterative-cuda.dir/rule
-
-# Convenience name for target.
-iterative-cuda: examples/tutorial/CMakeFiles/iterative-cuda.dir/rule
-.PHONY : iterative-cuda
-
-# fast build rule for target.
-iterative-cuda/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative-cuda.dir/build.make examples/tutorial/CMakeFiles/iterative-cuda.dir/build
-.PHONY : iterative-cuda/fast
-
-# Convenience name for target.
 examples/tutorial/CMakeFiles/iterative-ublas.dir/rule:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/iterative-ublas.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/iterative-ublas.dir/rule
@@ -367,20 +311,6 @@ least-squares/fast:
 .PHONY : least-squares/fast
 
 # Convenience name for target.
-examples/tutorial/CMakeFiles/least-squares-cuda.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/least-squares-cuda.dir/rule
-.PHONY : examples/tutorial/CMakeFiles/least-squares-cuda.dir/rule
-
-# Convenience name for target.
-least-squares-cuda: examples/tutorial/CMakeFiles/least-squares-cuda.dir/rule
-.PHONY : least-squares-cuda
-
-# fast build rule for target.
-least-squares-cuda/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/least-squares-cuda.dir/build.make examples/tutorial/CMakeFiles/least-squares-cuda.dir/build
-.PHONY : least-squares-cuda/fast
-
-# Convenience name for target.
 examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/rule:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/rule
@@ -407,20 +337,6 @@ matrix-range: examples/tutorial/CMakeFiles/matrix-range.dir/rule
 matrix-range/fast:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/matrix-range.dir/build.make examples/tutorial/CMakeFiles/matrix-range.dir/build
 .PHONY : matrix-range/fast
-
-# Convenience name for target.
-examples/tutorial/CMakeFiles/matrix-range-cuda.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/matrix-range-cuda.dir/rule
-.PHONY : examples/tutorial/CMakeFiles/matrix-range-cuda.dir/rule
-
-# Convenience name for target.
-matrix-range-cuda: examples/tutorial/CMakeFiles/matrix-range-cuda.dir/rule
-.PHONY : matrix-range-cuda
-
-# fast build rule for target.
-matrix-range-cuda/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/matrix-range-cuda.dir/build.make examples/tutorial/CMakeFiles/matrix-range-cuda.dir/build
-.PHONY : matrix-range-cuda/fast
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/multithreaded.dir/rule:
@@ -465,20 +381,6 @@ power-iter/fast:
 .PHONY : power-iter/fast
 
 # Convenience name for target.
-examples/tutorial/CMakeFiles/power-iter-cuda.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/power-iter-cuda.dir/rule
-.PHONY : examples/tutorial/CMakeFiles/power-iter-cuda.dir/rule
-
-# Convenience name for target.
-power-iter-cuda: examples/tutorial/CMakeFiles/power-iter-cuda.dir/rule
-.PHONY : power-iter-cuda
-
-# fast build rule for target.
-power-iter-cuda/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/power-iter-cuda.dir/build.make examples/tutorial/CMakeFiles/power-iter-cuda.dir/build
-.PHONY : power-iter-cuda/fast
-
-# Convenience name for target.
 examples/tutorial/CMakeFiles/qr.dir/rule:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/qr.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/qr.dir/rule
@@ -491,20 +393,6 @@ qr: examples/tutorial/CMakeFiles/qr.dir/rule
 qr/fast:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/qr.dir/build.make examples/tutorial/CMakeFiles/qr.dir/build
 .PHONY : qr/fast
-
-# Convenience name for target.
-examples/tutorial/CMakeFiles/qr-cuda.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/qr-cuda.dir/rule
-.PHONY : examples/tutorial/CMakeFiles/qr-cuda.dir/rule
-
-# Convenience name for target.
-qr-cuda: examples/tutorial/CMakeFiles/qr-cuda.dir/rule
-.PHONY : qr-cuda
-
-# fast build rule for target.
-qr-cuda/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/qr-cuda.dir/build.make examples/tutorial/CMakeFiles/qr-cuda.dir/build
-.PHONY : qr-cuda/fast
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/scheduler.dir/rule:
@@ -549,20 +437,6 @@ sparse/fast:
 .PHONY : sparse/fast
 
 # Convenience name for target.
-examples/tutorial/CMakeFiles/sparse-cuda.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/sparse-cuda.dir/rule
-.PHONY : examples/tutorial/CMakeFiles/sparse-cuda.dir/rule
-
-# Convenience name for target.
-sparse-cuda: examples/tutorial/CMakeFiles/sparse-cuda.dir/rule
-.PHONY : sparse-cuda
-
-# fast build rule for target.
-sparse-cuda/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/sparse-cuda.dir/build.make examples/tutorial/CMakeFiles/sparse-cuda.dir/build
-.PHONY : sparse-cuda/fast
-
-# Convenience name for target.
 examples/tutorial/CMakeFiles/structured-matrices.dir/rule:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/structured-matrices.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/structured-matrices.dir/rule
@@ -591,20 +465,6 @@ vector-range/fast:
 .PHONY : vector-range/fast
 
 # Convenience name for target.
-examples/tutorial/CMakeFiles/vector-range-cuda.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/vector-range-cuda.dir/rule
-.PHONY : examples/tutorial/CMakeFiles/vector-range-cuda.dir/rule
-
-# Convenience name for target.
-vector-range-cuda: examples/tutorial/CMakeFiles/vector-range-cuda.dir/rule
-.PHONY : vector-range-cuda
-
-# fast build rule for target.
-vector-range-cuda/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/vector-range-cuda.dir/build.make examples/tutorial/CMakeFiles/vector-range-cuda.dir/build
-.PHONY : vector-range-cuda/fast
-
-# Convenience name for target.
 examples/tutorial/CMakeFiles/viennacl-info.dir/rule:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/viennacl-info.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/viennacl-info.dir/rule
@@ -617,20 +477,6 @@ viennacl-info: examples/tutorial/CMakeFiles/viennacl-info.dir/rule
 viennacl-info/fast:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/viennacl-info.dir/build.make examples/tutorial/CMakeFiles/viennacl-info.dir/build
 .PHONY : viennacl-info/fast
-
-# Convenience name for target.
-examples/tutorial/CMakeFiles/wrap-cuda-buffer-cuda.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/wrap-cuda-buffer-cuda.dir/rule
-.PHONY : examples/tutorial/CMakeFiles/wrap-cuda-buffer-cuda.dir/rule
-
-# Convenience name for target.
-wrap-cuda-buffer-cuda: examples/tutorial/CMakeFiles/wrap-cuda-buffer-cuda.dir/rule
-.PHONY : wrap-cuda-buffer-cuda
-
-# fast build rule for target.
-wrap-cuda-buffer-cuda/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/wrap-cuda-buffer-cuda.dir/build.make examples/tutorial/CMakeFiles/wrap-cuda-buffer-cuda.dir/build
-.PHONY : wrap-cuda-buffer-cuda/fast
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/wrap-host-buffer.dir/rule:
@@ -934,6 +780,30 @@ least-squares.cpp.s:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/least-squares.dir/build.make examples/tutorial/CMakeFiles/least-squares.dir/least-squares.cpp.s
 .PHONY : least-squares.cpp.s
 
+libviennacl.o: libviennacl.cpp.o
+.PHONY : libviennacl.o
+
+# target to build an object file
+libviennacl.cpp.o:
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/build.make examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o
+.PHONY : libviennacl.cpp.o
+
+libviennacl.i: libviennacl.cpp.i
+.PHONY : libviennacl.i
+
+# target to preprocess a source file
+libviennacl.cpp.i:
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/build.make examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.i
+.PHONY : libviennacl.cpp.i
+
+libviennacl.s: libviennacl.cpp.s
+.PHONY : libviennacl.s
+
+# target to generate assembly for a file
+libviennacl.cpp.s:
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/build.make examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.s
+.PHONY : libviennacl.cpp.s
+
 matrix-range.o: matrix-range.cpp.o
 .PHONY : matrix-range.o
 
@@ -1231,11 +1101,8 @@ help:
 	@echo "... amg"
 	@echo "... bandwidth-reduction"
 	@echo "... blas1"
-	@echo "... blas1-cuda"
 	@echo "... blas2"
-	@echo "... blas2-cuda"
 	@echo "... blas3"
-	@echo "... blas3-cuda"
 	@echo "... custom-context"
 	@echo "... custom-kernels"
 	@echo "... edit_cache"
@@ -1244,31 +1111,23 @@ help:
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... iterative"
-	@echo "... iterative-cuda"
 	@echo "... iterative-ublas"
 	@echo "... lanczos"
 	@echo "... least-squares"
-	@echo "... least-squares-cuda"
 	@echo "... libviennacl-tutorial"
 	@echo "... list_install_components"
 	@echo "... matrix-range"
-	@echo "... matrix-range-cuda"
 	@echo "... multithreaded"
 	@echo "... multithreaded_cg"
 	@echo "... power-iter"
-	@echo "... power-iter-cuda"
 	@echo "... qr"
-	@echo "... qr-cuda"
 	@echo "... rebuild_cache"
 	@echo "... scheduler"
 	@echo "... spai"
 	@echo "... sparse"
-	@echo "... sparse-cuda"
 	@echo "... structured-matrices"
 	@echo "... vector-range"
-	@echo "... vector-range-cuda"
 	@echo "... viennacl-info"
-	@echo "... wrap-cuda-buffer-cuda"
 	@echo "... wrap-host-buffer"
 	@echo "... amg.o"
 	@echo "... amg.i"
@@ -1306,6 +1165,9 @@ help:
 	@echo "... least-squares.o"
 	@echo "... least-squares.i"
 	@echo "... least-squares.s"
+	@echo "... libviennacl.o"
+	@echo "... libviennacl.i"
+	@echo "... libviennacl.s"
 	@echo "... matrix-range.o"
 	@echo "... matrix-range.i"
 	@echo "... matrix-range.s"

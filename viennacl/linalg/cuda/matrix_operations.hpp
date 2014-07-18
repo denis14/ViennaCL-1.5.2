@@ -2531,14 +2531,6 @@ namespace viennacl
         }
       }
 
-      template <typename SCALARTYPE, unsigned int ALIGNMENT, typename VectorType>
-       void bidiag_pack(viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& A,
-                        VectorType & D,
-                        VectorType & S
-                       )
-       {
-         std::cout << "In bidiag_pack CUDA!\n";
-       }
 
     } // namespace opencl
   } //namespace linalg

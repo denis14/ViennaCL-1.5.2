@@ -157,20 +157,6 @@ blas3bench-cpu/fast:
 .PHONY : blas3bench-cpu/fast
 
 # Convenience name for target.
-examples/benchmarks/CMakeFiles/blas3bench-cuda.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/blas3bench-cuda.dir/rule
-.PHONY : examples/benchmarks/CMakeFiles/blas3bench-cuda.dir/rule
-
-# Convenience name for target.
-blas3bench-cuda: examples/benchmarks/CMakeFiles/blas3bench-cuda.dir/rule
-.PHONY : blas3bench-cuda
-
-# fast build rule for target.
-blas3bench-cuda/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/blas3bench-cuda.dir/build.make examples/benchmarks/CMakeFiles/blas3bench-cuda.dir/build
-.PHONY : blas3bench-cuda/fast
-
-# Convenience name for target.
 examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/rule:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/blas3bench-opencl.dir/rule
@@ -197,20 +183,6 @@ copybench-cpu: examples/benchmarks/CMakeFiles/copybench-cpu.dir/rule
 copybench-cpu/fast:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-cpu.dir/build.make examples/benchmarks/CMakeFiles/copybench-cpu.dir/build
 .PHONY : copybench-cpu/fast
-
-# Convenience name for target.
-examples/benchmarks/CMakeFiles/copybench-cuda.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/copybench-cuda.dir/rule
-.PHONY : examples/benchmarks/CMakeFiles/copybench-cuda.dir/rule
-
-# Convenience name for target.
-copybench-cuda: examples/benchmarks/CMakeFiles/copybench-cuda.dir/rule
-.PHONY : copybench-cuda
-
-# fast build rule for target.
-copybench-cuda/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/copybench-cuda.dir/build.make examples/benchmarks/CMakeFiles/copybench-cuda.dir/build
-.PHONY : copybench-cuda/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/copybench-opencl.dir/rule:
@@ -311,20 +283,6 @@ solverbench-cpu/fast:
 .PHONY : solverbench-cpu/fast
 
 # Convenience name for target.
-examples/benchmarks/CMakeFiles/solverbench-cuda.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/solverbench-cuda.dir/rule
-.PHONY : examples/benchmarks/CMakeFiles/solverbench-cuda.dir/rule
-
-# Convenience name for target.
-solverbench-cuda: examples/benchmarks/CMakeFiles/solverbench-cuda.dir/rule
-.PHONY : solverbench-cuda
-
-# fast build rule for target.
-solverbench-cuda/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/solverbench-cuda.dir/build.make examples/benchmarks/CMakeFiles/solverbench-cuda.dir/build
-.PHONY : solverbench-cuda/fast
-
-# Convenience name for target.
 examples/benchmarks/CMakeFiles/solverbench-opencl.dir/rule:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/solverbench-opencl.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/solverbench-opencl.dir/rule
@@ -353,20 +311,6 @@ sparsebench-cpu/fast:
 .PHONY : sparsebench-cpu/fast
 
 # Convenience name for target.
-examples/benchmarks/CMakeFiles/sparsebench-cuda.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/sparsebench-cuda.dir/rule
-.PHONY : examples/benchmarks/CMakeFiles/sparsebench-cuda.dir/rule
-
-# Convenience name for target.
-sparsebench-cuda: examples/benchmarks/CMakeFiles/sparsebench-cuda.dir/rule
-.PHONY : sparsebench-cuda
-
-# fast build rule for target.
-sparsebench-cuda/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/sparsebench-cuda.dir/build.make examples/benchmarks/CMakeFiles/sparsebench-cuda.dir/build
-.PHONY : sparsebench-cuda/fast
-
-# Convenience name for target.
 examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/rule:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/rule
 .PHONY : examples/benchmarks/CMakeFiles/sparsebench-opencl.dir/rule
@@ -393,20 +337,6 @@ vectorbench-cpu: examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/rule
 vectorbench-cpu/fast:
 	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-cpu.dir/build
 .PHONY : vectorbench-cpu/fast
-
-# Convenience name for target.
-examples/benchmarks/CMakeFiles/vectorbench-cuda.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/benchmarks/CMakeFiles/vectorbench-cuda.dir/rule
-.PHONY : examples/benchmarks/CMakeFiles/vectorbench-cuda.dir/rule
-
-# Convenience name for target.
-vectorbench-cuda: examples/benchmarks/CMakeFiles/vectorbench-cuda.dir/rule
-.PHONY : vectorbench-cuda
-
-# fast build rule for target.
-vectorbench-cuda/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/benchmarks/CMakeFiles/vectorbench-cuda.dir/build.make examples/benchmarks/CMakeFiles/vectorbench-cuda.dir/build
-.PHONY : vectorbench-cuda/fast
 
 # Convenience name for target.
 examples/benchmarks/CMakeFiles/vectorbench-opencl.dir/rule:
@@ -684,10 +614,8 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... blas3bench-cpu"
-	@echo "... blas3bench-cuda"
 	@echo "... blas3bench-opencl"
 	@echo "... copybench-cpu"
-	@echo "... copybench-cuda"
 	@echo "... copybench-opencl"
 	@echo "... edit_cache"
 	@echo "... generator_blas1bench-opencl"
@@ -701,13 +629,10 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... schedulerbench-cpu"
 	@echo "... solverbench-cpu"
-	@echo "... solverbench-cuda"
 	@echo "... solverbench-opencl"
 	@echo "... sparsebench-cpu"
-	@echo "... sparsebench-cuda"
 	@echo "... sparsebench-opencl"
 	@echo "... vectorbench-cpu"
-	@echo "... vectorbench-cuda"
 	@echo "... vectorbench-opencl"
 	@echo "... blas3.o"
 	@echo "... blas3.i"
