@@ -891,7 +891,6 @@ namespace viennacl
           break;
 #ifdef VIENNACL_WITH_OPENCL
         case viennacl::OPENCL_MEMORY:
-          std::cout << "Now running house_update_QL in OpenCL!\n";
           viennacl::linalg::opencl::house_update_QL(A, Q, D);
           break;
 #endif
@@ -930,7 +929,7 @@ namespace viennacl
 
 #ifdef VIENNACL_WITH_CUDA
         case viennacl::CUDA_MEMORY:
-          //viennacl::linalg::cuda::givens_next(matrix, tmp1, tmp2, l, m);
+          viennacl::linalg::cuda::givens_next(matrix, tmp1, tmp2, l, m);
           break;
 #endif
 

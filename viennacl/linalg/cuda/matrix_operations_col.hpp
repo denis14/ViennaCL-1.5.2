@@ -1679,7 +1679,7 @@ namespace viennacl
       }
 
       template <typename T>
-      __global__ void givens_next(
+      __global__ void givens_next_kernel(
               T * matr,
               T * cs,
               T * ss,
@@ -1688,9 +1688,9 @@ namespace viennacl
               uint start_i,
               uint end_i)
       {
-          j = blockIdx.x * blockDim.x + threadIdx.x;
-          __shared__ cs_lcl[256];
-          __shared__ ss_lcl[256];
+          uint j = blockIdx.x * blockDim.x + threadIdx.x;
+          __shared__ T cs_lcl[256];
+          __shared__ T ss_lcl[256];
 
           T x = (j < size) ? matr[(end_i + 1) * stride + j] : 0;
 
@@ -1724,6 +1724,22 @@ namespace viennacl
            if(j < size)
              matr[(start_i) * stride + j] = x;
       }
+      template<typename NumericT, typename F>
+        void givens_next(matrix_base<NumericT, F> & matrix,
+                        vector_base<NumericT>& tmp1,
+                        vector_base<NumericT>& tmp2,
+                        int l,
+                        int m)
+        {
+        givens_next_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(matrix),
+                                         detail::cuda_arg<NumericT>(tmp1),
+                                         detail::cuda_arg<NumericT>(tmp2),
+                                         static_cast<unsigned int>(viennacl::traits::size1(matrix)),
+                                         static_cast<unsigned int>(viennacl::traits::internal_size2(matrix)),
+                                         static_cast<unsigned int>(l),
+                                         static_cast<unsigned int>(m - 1));
+      }
+
     } // namespace cuda
   } //namespace linalg
 } //namespace viennacl
