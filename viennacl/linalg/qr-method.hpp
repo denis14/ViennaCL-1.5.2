@@ -177,6 +177,8 @@ namespace viennacl
                             p = c * d(i) - s * g;
                             d(i + 1) = h + s * (c * g + s * d(i));
 
+                            //Accumulate transformation
+
                             cs[i] = c;
                             ss[i] = s;
                         }
@@ -188,9 +190,20 @@ namespace viennacl
                         {
                             viennacl::copy(cs, tmp1);
                             viennacl::copy(ss, tmp2);
-                           // std::cout << Q << "\n";
-                           // givens_next(Q, tmp1, tmp2, l, m);
-                           // std::cout << Q << "\n";
+                            givens_next(Q, tmp1, tmp2, l, m);
+                            /*
+                            for( int i = m - 1; i >= l; i--)
+                              {
+                                for(uint k = 0; k < n; k++)
+                                  {
+                                    //const unsigned int off_k = k * n;
+                                    h = Q(i+1, k);
+                                    Q(i+1, k) = tmp2[i] * Q(i, k) + tmp1[i]*h;
+                                    Q(i,   k) = tmp1[i] * Q(i, k) - tmp2[i]*h;
+                                  }
+                              }
+                            */
+
                         }
 
                         // Check for convergence.
@@ -830,16 +843,15 @@ namespace viennacl
                 return false;
 
             prepare_householder_vector(A, D, A.size1(), start + 1, start, start + 1, true);
-
+/*
             std::cout << "\nprint householder_vector:\n";
             for(uint i = 0; i<A.size1(); i++)
               std::cout << D[i] << "\n";
-            std::cout << "Matrix A: \n";
-            matrix_print(A);
+*/
             std::cout << "start: " << start << std::endl;
             {
               viennacl::linalg::house_update_A_left(A, D, start);
-              matrix_print(A);
+
 
 /*
               viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE>::program_name(), SVD_HOUSEHOLDER_UPDATE_A_LEFT_KERNEL);
@@ -860,7 +872,7 @@ namespace viennacl
 
             {
               viennacl::linalg::house_update_A_right(A, D, 0);
-              matrix_print(A);
+
               /*
 
               viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE>::program_name(), SVD_HOUSEHOLDER_UPDATE_A_RIGHT_KERNEL);
@@ -880,8 +892,6 @@ namespace viennacl
 
             {
               viennacl::linalg::house_update_QL(A, Q, D);
-              std::cout << "Matrix Q: \n";
-              matrix_print(Q);
               /*
                 viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE>::program_name(), SVD_HOUSEHOLDER_UPDATE_QL_KERNEL);
 
@@ -934,18 +944,18 @@ namespace viennacl
             //std::cout << "tridiagonal_reduction start!\n";
             detail::tridiagonal_reduction(A, Q);
             std::cout << "tridiagonal_reduction fertig!\n";
-            matrix_print(A);
+            //matrix_print(A);
 
             // pack diagonal and super-diagonal
             // ublas::vector<SCALARTYPE> D(A.size1()), E(A.size1());
 
             viennacl::linalg::bidiag_pack(A, D, E);     // in matrix_operations.hpp
-
+/*
             std::cout <<"\nprint diagonal:\n";
             vector_print(D);
             std::cout << "\nprint superdiagonal:\n";
             vector_print(E);
-
+*/
             // find eigenvalues
             if(is_symmetric)
             {

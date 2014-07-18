@@ -1322,15 +1322,7 @@ namespace viennacl
          temp = inner_prod(vcl_D, vcl_D);
          beta = 2/temp;
          std::cout << beta << std::endl;
-/*
-         for(unsigned int i = 0; i < A.size1(); i++)
-         {
-             for(unsigned int j = 0; j < A.size2(); j++)
-             {
-                 vcl_P(i, j) = I(i, j) - beta * (vcl_D[i] * vcl_D[j]);
-             }
-         }
-*/
+
          viennacl::linalg::host_based::scaled_rank_1_update(vcl_P, beta, 1, 0, 1, vcl_D, vcl_D);  //scaled_rank_1_update in linalg/matrix_operations.hpp beschrieben
          //std::cout << "\n\nMatrix Q_temp:\n" << Q_temp << std::endl;
          Q = prod(Q_temp, vcl_P);  //P wurde korrekt berechnet - ueberprueft
@@ -1338,29 +1330,85 @@ namespace viennacl
        }
 
        template<typename NumericT, typename F>
-         void givens_next(matrix_base<NumericT, F>& matrix,
+         void givens_next(matrix_base<NumericT, F>& Q,
                          vector_base<NumericT> & tmp1,    //cs
                          vector_base<NumericT> & tmp2,    //ss
                          int l,                           //start_i
                          int m                            //end_i+1
                        )
          {
-           //std::cout << "givens_next host based started!!\n";
-           /*
-           uint size = matrix.size1();
-           float cs[size];
-           float cs[size];
+           typedef NumericT        value_type;
 
-           uint elems_num = m - l;
+           value_type * data_Q  = detail::extract_raw_pointer<value_type>(Q);
+           value_type * data_tmp1 = detail::extract_raw_pointer<value_type>(tmp1);
+           value_type * data_tmp2 = detail::extract_raw_pointer<value_type>(tmp2);
 
-           for(uint j = 0; j < size; j++)
+           vcl_size_t Q_start1 = viennacl::traits::start1(Q);
+           vcl_size_t Q_start2 = viennacl::traits::start2(Q);
+           vcl_size_t Q_inc1   = viennacl::traits::stride1(Q);
+           vcl_size_t Q_inc2   = viennacl::traits::stride2(Q);
+           vcl_size_t Q_size1  = viennacl::traits::size1(Q);
+           vcl_size_t Q_size2  = viennacl::traits::size2(Q);
+           vcl_size_t Q_internal_size1  = viennacl::traits::internal_size1(Q);
+           vcl_size_t Q_internal_size2  = viennacl::traits::internal_size2(Q);
+
+           vcl_size_t start1 = viennacl::traits::start(tmp1);
+           vcl_size_t inc1   = viennacl::traits::stride(tmp1);
+           vcl_size_t size1  = viennacl::traits::size(tmp1);
+
+           vcl_size_t start2 = viennacl::traits::start(tmp2);
+           vcl_size_t inc2   = viennacl::traits::stride(tmp2);
+           vcl_size_t size2  = viennacl::traits::size(tmp2);
+
+
+
+           //std::cout << "givens_next host based started!\n";if (detail::is_row_major(typename F::orientation_category()))
+
+
+
+           if (detail::is_row_major(typename F::orientation_category()))
+           {
+               for( int i = m - 1; i >= l; i--)
+                 {
+                   for(uint k = 0; k < Q_size1; k++)
+                     {
+
+                      // h = data_Q(i+1, k);
+                       NumericT h = data_Q[viennacl::row_major::mem_index((i + 1) * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)];
+
+                       //Q(i+1, k) = tmp2[i] * Q(i, k) + tmp1[i]*h;
+                       data_Q[viennacl::row_major::mem_index((i + 1) * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp2[start2 + inc2 * i] *
+                           data_Q[viennacl::row_major::mem_index(i  * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] + tmp1[start1 + inc1 * i] * h;
+
+                       //Q(i,   k) = tmp1[i] * Q(i, k) - tmp2[i]*h;
+                       data_Q[viennacl::row_major::mem_index(i  * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp1[start1 + inc1 * i] *
+                           data_Q[viennacl::row_major::mem_index(i  * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] - tmp2[start2 + inc2 * i]*h;
+                     }
+                 }
+           }
+           else       // column_major
              {
-               x = matrix(m, j);
+               for( int i = m - 1; i >= l; i--)
+                 {
+                   for(uint k = 0; k < Q_size1; k++)
+                     {
 
+                      // h = data_Q(i+1, k);
+                       NumericT h = data_Q[viennacl::column_major::mem_index((i + 1) * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)];
 
+                       //Q(i+1, k) = tmp2[i] * Q(i, k) + tmp1[i]*h;
+                       data_Q[viennacl::column_major::mem_index((i + 1) * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp2[start2 + inc2 *i] *
+                           data_Q[viennacl::column_major::mem_index(i  * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] + tmp1[i] * h;
+
+                       //Q(i,   k) = tmp1[i] * Q(i, k) - tmp2[i]*h;
+                       data_Q[viennacl::column_major::mem_index(i  * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp1[start1 + inc1 * i] *
+                           data_Q[viennacl::column_major::mem_index(i  * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] - tmp2[start2 + inc2 * i]*h;
+                     }
+                 }
              }
-*/
+
          }
+
 
 
 
