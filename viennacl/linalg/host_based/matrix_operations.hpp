@@ -1361,11 +1361,6 @@ namespace viennacl
            vcl_size_t size2  = viennacl::traits::size(tmp2);
 
 
-
-           //std::cout << "givens_next host based started!\n";if (detail::is_row_major(typename F::orientation_category()))
-
-
-
            if (detail::is_row_major(typename F::orientation_category()))
            {
                for( int i = m - 1; i >= l; i--)
@@ -1373,16 +1368,16 @@ namespace viennacl
                    for(uint k = 0; k < Q_size1; k++)
                      {
 
-                      // h = data_Q(i+1, k);
-                       NumericT h = data_Q[viennacl::row_major::mem_index((i + 1) * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)];
+                      // h = data_Q(k, i+1);
+                       NumericT h = data_Q[viennacl::row_major::mem_index(k * Q_inc1 + Q_start1, (i + 1) * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)];
 
-                       //Q(i+1, k) = tmp2[i] * Q(i, k) + tmp1[i]*h;
-                       data_Q[viennacl::row_major::mem_index((i + 1) * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp2[start2 + inc2 * i] *
-                           data_Q[viennacl::row_major::mem_index(i  * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] + tmp1[start1 + inc1 * i] * h;
+                       //Q(k, i+1) = tmp2[i] * Q(k, i) + tmp1[i]*h;
+                       data_Q[viennacl::row_major::mem_index(k * Q_inc1 + Q_start1, (i + 1) * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp2[start2 + inc2 * i] *
+                           data_Q[viennacl::row_major::mem_index(k  * Q_inc1 + Q_start1, i * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] + tmp1[start1 + inc1 * i] * h;
 
-                       //Q(i,   k) = tmp1[i] * Q(i, k) - tmp2[i]*h;
-                       data_Q[viennacl::row_major::mem_index(i  * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp1[start1 + inc1 * i] *
-                           data_Q[viennacl::row_major::mem_index(i  * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] - tmp2[start2 + inc2 * i]*h;
+                       //Q(k,   i) = tmp1[i] * Q(k, i) - tmp2[i]*h;
+                       data_Q[viennacl::row_major::mem_index(k  * Q_inc1 + Q_start1, i * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp1[start1 + inc1 * i] *
+                           data_Q[viennacl::row_major::mem_index(k  * Q_inc1 + Q_start1, i * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] - tmp2[start2 + inc2 * i]*h;
                      }
                  }
            }
@@ -1393,17 +1388,17 @@ namespace viennacl
                    for(uint k = 0; k < Q_size1; k++)
                      {
 
-                      // h = data_Q(i+1, k);
-                       NumericT h = data_Q[viennacl::column_major::mem_index((i + 1) * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)];
+                      // h = data_Q(k, i+1);
+                        NumericT h = data_Q[viennacl::column_major::mem_index(k * Q_inc1 + Q_start1, (i + 1) * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)];
 
-                       //Q(i+1, k) = tmp2[i] * Q(i, k) + tmp1[i]*h;
-                       data_Q[viennacl::column_major::mem_index((i + 1) * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp2[start2 + inc2 *i] *
-                           data_Q[viennacl::column_major::mem_index(i  * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] + tmp1[i] * h;
+                         //Q(k, i+1) = tmp2[i] * Q(k, i) + tmp1[i]*h;
+                        data_Q[viennacl::column_major::mem_index(k * Q_inc1 + Q_start1, (i + 1) * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp2[start2 + inc2 * i] *
+                            data_Q[viennacl::column_major::mem_index(k  * Q_inc1 + Q_start1, i * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] + tmp1[start1 + inc1 * i] * h;
 
-                       //Q(i,   k) = tmp1[i] * Q(i, k) - tmp2[i]*h;
-                       data_Q[viennacl::column_major::mem_index(i  * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp1[start1 + inc1 * i] *
-                           data_Q[viennacl::column_major::mem_index(i  * Q_inc1 + Q_start1, k * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] - tmp2[start2 + inc2 * i]*h;
-                     }
+                        //Q(k,   i) = tmp1[i] * Q(k, i) - tmp2[i]*h;
+                        data_Q[viennacl::column_major::mem_index(k  * Q_inc1 + Q_start1, i * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp1[start1 + inc1 * i] *
+                            data_Q[viennacl::column_major::mem_index(k  * Q_inc1 + Q_start1, i * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] - tmp2[start2 + inc2 * i]*h;
+                                           }
                  }
              }
 

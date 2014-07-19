@@ -101,6 +101,7 @@ namespace viennacl
                   boost::numeric::ublas::vector<SCALARTYPE> & d,
                   boost::numeric::ublas::vector<SCALARTYPE> & e)
         {
+           // Q = trans(Q);
             int n = static_cast<int>(Q.size1());
             std::cout << "tql2 matrix print Q: \n";
             matrix_print(Q);
@@ -179,19 +180,20 @@ namespace viennacl
                             d(i + 1) = h + s * (c * g + s * d(i));
 
                             //Accumulate transformation
-
+/*
                             for(uint k = 0; k < n; k++)
                               {
                                 //const unsigned int off_k = k * n;
-                                h = Q(i+1, k);
-                                Q(i+1, k) = s * Q(i, k) + c * h;
-                                Q(i,   k) = c * Q(i, k) - s * h;
+                                h = Q(k, i+1);
+                                Q(k, i+1) = s * Q(k, i) + c * h;
+                                Q(k,   i) = c * Q(k, i) - s * h;
                               }
-
+*/
 
                             cs[i] = c;
                             ss[i] = s;
                         }
+
 
                         p = -s * s2 * c3 * el1 * e(l) / dl1;
                         e(l) = s * p;
@@ -200,7 +202,7 @@ namespace viennacl
                         {
                             viennacl::copy(cs, tmp1);
                             viennacl::copy(ss, tmp2);
-                            //givens_next(Q, tmp1, tmp2, l, m);
+                            givens_next(Q, tmp1, tmp2, l, m);
                             /*
                             for( int i = m - 1; i >= l; i--)
                               {
@@ -223,6 +225,31 @@ namespace viennacl
                 d(l) = d(l) + f;
                 e(l) = 0;
             }
+
+            // Sort eigenvalues and corresponding vectors.
+
+               for (int i = 0; i < n-1; i++) {
+                  int k = i;
+                  SCALARTYPE p = d(i);
+                  for (int j = i+1; j < n; j++) {
+                     if (d(j) > p) {
+                        k = j;
+                        p = d(j);
+                     }
+                  }
+                  if (k != i) {
+                     d(k) = d(i);
+                     d(i) = p;
+                     for (int j = 0; j < n; j++) {
+                        //const Int_t off_j = j*n;
+                        p = Q(j, i);
+                        Q(j, i) = Q(j, k);
+                        Q(j, k) = p;
+                     }
+                  }
+               }
+
+
         }
 
         template <typename SCALARTYPE, typename MatrixT>
@@ -971,7 +998,7 @@ namespace viennacl
             {
 
                 detail::tql2(Q, D, E);
-                Q = trans(Q);                   //geaendert !!!
+                //Q = trans(Q);                   //geaendert !!!
                 //transpose(Q);
             }
             else
