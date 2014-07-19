@@ -102,7 +102,8 @@ namespace viennacl
                   boost::numeric::ublas::vector<SCALARTYPE> & e)
         {
             int n = static_cast<int>(Q.size1());
-
+            std::cout << "tql2 matrix print Q: \n";
+            matrix_print(Q);
             boost::numeric::ublas::vector<SCALARTYPE> cs(n), ss(n);
             viennacl::vector<SCALARTYPE> tmp1(n), tmp2(n);
 
@@ -179,6 +180,15 @@ namespace viennacl
 
                             //Accumulate transformation
 
+                            for(uint k = 0; k < n; k++)
+                              {
+                                //const unsigned int off_k = k * n;
+                                h = Q(i+1, k);
+                                Q(i+1, k) = s * Q(i, k) + c * h;
+                                Q(i,   k) = c * Q(i, k) - s * h;
+                              }
+
+
                             cs[i] = c;
                             ss[i] = s;
                         }
@@ -190,7 +200,7 @@ namespace viennacl
                         {
                             viennacl::copy(cs, tmp1);
                             viennacl::copy(ss, tmp2);
-                            givens_next(Q, tmp1, tmp2, l, m);
+                            //givens_next(Q, tmp1, tmp2, l, m);
                             /*
                             for( int i = m - 1; i >= l; i--)
                               {
@@ -944,7 +954,7 @@ namespace viennacl
             //std::cout << "tridiagonal_reduction start!\n";
             detail::tridiagonal_reduction(A, Q);
             std::cout << "tridiagonal_reduction fertig!\n";
-            //matrix_print(A);
+            matrix_print(A);
 
             // pack diagonal and super-diagonal
             // ublas::vector<SCALARTYPE> D(A.size1()), E(A.size1());

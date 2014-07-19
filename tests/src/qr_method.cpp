@@ -281,8 +281,8 @@ void test_eigen(const std::string& fn, bool is_symm)
 
 int main()
 {
-  test_eigen("../../examples/testdata/eigen/symm1.example", true);
-  // test_eigen("../../examples/testdata/eigen/symm2.example", true);
+  test_eigen("../../examples/testdata/eigen/symm4.example", true);
+  test_eigen("../../examples/testdata/eigen/symm2.example", true);
   // test_eigen("../../examples/testdata/eigen/symm3.example", true);
 
   test_eigen("../../examples/testdata/eigen/nsm1.example", false);
