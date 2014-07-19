@@ -119,6 +119,8 @@ namespace viennacl
           source.append("} \n");
         }
 
+
+
         template <typename StringType>
         void generate_svd_givens_next(StringType & source, std::string const & numeric_string)
         {
@@ -180,6 +182,7 @@ namespace viennacl
           source.append("        matr[(start_i) * stride + j] = x; \n");
           source.append("} \n");
         }
+
 
         template <typename StringType>
         void generate_svd_givens_prev(StringType & source, std::string const & numeric_string)
