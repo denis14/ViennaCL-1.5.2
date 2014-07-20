@@ -144,7 +144,7 @@ namespace viennacl
           source.append("    __local "); source.append(numeric_string); source.append(" cs_lcl[256]; \n");
           source.append("    __local "); source.append(numeric_string); source.append(" ss_lcl[256]; \n");
 
-          source.append("    "); source.append(numeric_string); source.append(" x = (j < size) ? matr[(end_i + 1) * stride + j] : 0; \n");
+          source.append("    "); source.append(numeric_string); source.append(" x = (j < size) ? matr[(end_i + 1) + j * stride] : 0; \n");
 
           source.append("    uint elems_num = end_i - start_i + 1; \n");
           source.append("    uint block_num = (elems_num + lcl_sz - 1) / lcl_sz; \n");
@@ -167,22 +167,21 @@ namespace viennacl
           source.append("            { \n");
           source.append("                uint i = end_i - (ind + block_id * lcl_sz); \n");
 
-          source.append("                "); source.append(numeric_string); source.append(" z = matr[i * stride + j]; \n");
+          source.append("                "); source.append(numeric_string); source.append(" z = matr[i + j * stride]; \n");
 
           source.append("                "); source.append(numeric_string); source.append(" cs_val = cs_lcl[ind]; \n");
           source.append("                "); source.append(numeric_string); source.append(" ss_val = ss_lcl[ind]; \n");
 
-          source.append("                matr[(i + 1) * stride + j] = x * cs_val + z * ss_val; \n");
+          source.append("                matr[(i + 1) + j * stride] = x * cs_val + z * ss_val; \n");
           source.append("                x = -x * ss_val + z * cs_val; \n");
           source.append("            } \n");
           source.append("        } \n");
           source.append("        barrier(CLK_LOCAL_MEM_FENCE); \n");
           source.append("    } \n");
           source.append("    if(j < size) \n");
-          source.append("        matr[(start_i) * stride + j] = x; \n");
+          source.append("        matr[(start_i) + j * stride] = x; \n");
           source.append("} \n");
         }
-
 
         template <typename StringType>
         void generate_svd_givens_prev(StringType & source, std::string const & numeric_string)

@@ -1731,6 +1731,7 @@ namespace viennacl
                         int l,
                         int m)
         {
+        matrix = trans(matrix);
         givens_next_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(matrix),
                                          detail::cuda_arg<NumericT>(tmp1),
                                          detail::cuda_arg<NumericT>(tmp2),
@@ -1738,6 +1739,7 @@ namespace viennacl
                                          static_cast<unsigned int>(viennacl::traits::internal_size2(matrix)),
                                          static_cast<unsigned int>(l),
                                          static_cast<unsigned int>(m - 1));
+        matrix = trans(matrix);
       }
 
     } // namespace cuda

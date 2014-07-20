@@ -1113,7 +1113,7 @@ namespace viennacl
         //  typedef typename viennacl::result_of::cpu_value_type<ScalarType>::type    CPU_ScalarType;
           viennacl::linalg::opencl::kernels::svd<NumericT>::init(ctx);                    // neu hinzugefuegt
           viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT>::program_name(), SVD_GIVENS_NEXT_KERNEL);
-          matrix = trans(matrix);
+          //matrix = trans(matrix);
           kernel.global_work_size(0, viennacl::tools::align_to_multiple<cl_uint>(cl_uint(viennacl::traits::size1(matrix)), 256));
           kernel.local_work_size(0, 256);
 
@@ -1126,7 +1126,7 @@ namespace viennacl
                                         static_cast<cl_uint>(l),
                                         static_cast<cl_uint>(m - 1)
                                 ));
-          matrix = trans(matrix);
+          //matrix = trans(matrix);
         }
 
         template <typename NumericT, typename F>

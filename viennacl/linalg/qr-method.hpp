@@ -103,8 +103,8 @@ namespace viennacl
         {
            // Q = trans(Q);
             int n = static_cast<int>(Q.size1());
-            std::cout << "tql2 matrix print Q: \n";
-            matrix_print(Q);
+            std::cout << "tql2: \n";
+            //matrix_print(Q);
             boost::numeric::ublas::vector<SCALARTYPE> cs(n), ss(n);
             viennacl::vector<SCALARTYPE> tmp1(n), tmp2(n);
 
@@ -202,6 +202,7 @@ namespace viennacl
                         {
                             viennacl::copy(cs, tmp1);
                             viennacl::copy(ss, tmp2);
+                            //std::cout << "Givens next:\n";
                             givens_next(Q, tmp1, tmp2, l, m);
                             /*
                             for( int i = m - 1; i >= l; i--)
@@ -981,11 +982,11 @@ namespace viennacl
             //std::cout << "tridiagonal_reduction start!\n";
             detail::tridiagonal_reduction(A, Q);
             std::cout << "tridiagonal_reduction fertig!\n";
-            matrix_print(A);
+            //matrix_print(A);
 
             // pack diagonal and super-diagonal
             // ublas::vector<SCALARTYPE> D(A.size1()), E(A.size1());
-
+            std::cout << "Start bidiag_pack\n";
             viennacl::linalg::bidiag_pack(A, D, E);     // in matrix_operations.hpp
 /*
             std::cout <<"\nprint diagonal:\n";
