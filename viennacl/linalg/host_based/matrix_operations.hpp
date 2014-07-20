@@ -1310,18 +1310,18 @@ namespace viennacl
          NumericT temp, beta = 0;
          viennacl::matrix<NumericT> vcl_P(A.size1(), A.size2());
 
-         viennacl::matrix<NumericT> I(A.size1(), A.size2());
+         //viennacl::matrix<NumericT> I(A.size1(), A.size2());
          viennacl::matrix<NumericT> Q_temp(Q.size1(), Q.size2());
          copy(Q, Q_temp);
-         std::cout << D << std::endl;
+         //std::cout << D << std::endl;
          vcl_P = viennacl::identity_matrix<NumericT>(A.size1());
-         I     = viennacl::identity_matrix<NumericT>(A.size1());
+         //I     = viennacl::identity_matrix<NumericT>(A.size1());
          viennacl::vector<NumericT> vcl_D(D.size());
          viennacl::copy(D, vcl_D);
 
          temp = inner_prod(vcl_D, vcl_D);
          beta = 2/temp;
-         std::cout << beta << std::endl;
+         //std::cout << beta << std::endl;
 
          viennacl::linalg::host_based::scaled_rank_1_update(vcl_P, beta, 1, 0, 1, vcl_D, vcl_D);  //scaled_rank_1_update in linalg/matrix_operations.hpp beschrieben
          //std::cout << "\n\nMatrix Q_temp:\n" << Q_temp << std::endl;
@@ -1365,6 +1365,9 @@ namespace viennacl
            {
                for( int i = m - 1; i >= l; i--)
                  {
+#ifdef VIENNACL_WITH_OPENMP
+                   #pragma omp parallel for
+#endif
                    for(uint k = 0; k < Q_size1; k++)
                      {
 
@@ -1385,6 +1388,9 @@ namespace viennacl
              {
                for( int i = m - 1; i >= l; i--)
                  {
+#ifdef VIENNACL_WITH_OPENMP
+                   #pragma omp parallel for
+#endif
                    for(uint k = 0; k < Q_size1; k++)
                      {
 

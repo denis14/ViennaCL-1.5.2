@@ -187,7 +187,7 @@ void test_eigen(const std::string& fn, bool is_symm)
 
     read_matrix_body(f, A_input);
 
-    matrix_print(A_input);
+    //matrix_print(A_input);
 
     read_vector_body(f, eigen_ref_re);
 
@@ -209,10 +209,10 @@ void test_eigen(const std::string& fn, bool is_symm)
         viennacl::linalg::qr_method_nsm(A_input, Q, eigen_re, eigen_im);
 
     std::cout << "\n\n Matrix A: \n\n";
-    matrix_print(A_input);
+    //matrix_print(A_input);
     std::cout << "\n\n";
     std::cout << "\n\n Matrix Q: \n\n";
-    matrix_print(Q);
+    //matrix_print(Q);
     std::cout << "\n\n";
     // std::cout << A_input << "\n";
     viennacl::backend::finish();
@@ -281,13 +281,14 @@ void test_eigen(const std::string& fn, bool is_symm)
 
 int main()
 {
-  //test_eigen("../../examples/testdata/eigen/symm1.example", true);
-  test_eigen("../../examples/testdata/eigen/symm2.example", true);
-  // test_eigen("../../examples/testdata/eigen/symm3.example", true);
 
-  test_eigen("../../examples/testdata/eigen/nsm1.example", false);
-  test_eigen("../../examples/testdata/eigen/nsm2.example", false);
-  test_eigen("../../examples/testdata/eigen/nsm3.example", false);
+  //test_eigen("../../examples/testdata/eigen/symm1.example", true);
+  //test_eigen("../../examples/testdata/eigen/symm2.example", true);
+  test_eigen("../../examples/testdata/eigen/symm3.example", true);
+
+  //test_eigen("../../examples/testdata/eigen/nsm1.example", false);
+  //test_eigen("../../examples/testdata/eigen/nsm2.example", false);
+  //test_eigen("../../examples/testdata/eigen/nsm3.example", false);
   //test_eigen("../../examples/testdata/eigen/nsm4.example", false); //Note: This test suffers from round-off errors in single precision, hence disabled
 
   std::cout << std::endl;

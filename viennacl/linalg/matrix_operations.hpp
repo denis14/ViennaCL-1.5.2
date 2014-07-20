@@ -826,7 +826,6 @@ namespace viennacl
           break;
 #ifdef VIENNACL_WITH_OPENCL
         case viennacl::OPENCL_MEMORY:
-          std::cout << "Now running house_update_A_left in OpenCL!\n";
           viennacl::linalg::opencl::house_update_A_left(A, D, start);
           break;
 #endif
@@ -859,7 +858,6 @@ namespace viennacl
           break;
 #ifdef VIENNACL_WITH_OPENCL
         case viennacl::OPENCL_MEMORY:
-          std::cout << "Now running house_update_A_right in OpenCL!\n";
           viennacl::linalg::opencl::house_update_A_right(A, D, start);
           break;
 #endif
