@@ -9,7 +9,7 @@ foreach(PROG blas3_prod_float blas3_prod_double blas3_solve_float blas3_solve_do
              matrix_col_float matrix_col_double matrix_col_int
              scalar scheduler_matrix scheduler_matrix_matrix scheduler_matrix_vector scheduler_sparse scheduler_vector sparse
              vector_float vector_double vector_int vector_uint vector_multi_inner_prod
-             a_bidiag_pack a_house_update_A_left qr_method a_qr_method_test                                                            #selbst hinzugefuegt
+             a_bidiag_pack a_qr_method_test qr_method                                                                                                      #selbst hinzugefuegt
              
              spmdm)
    add_executable(${PROG}-test-cpu src/${PROG}.cpp)
@@ -27,7 +27,7 @@ if (ENABLE_OPENCL)
                matrix_row_float matrix_row_double matrix_row_int
                matrix_col_float matrix_col_double matrix_col_int
                nmf qr_method 
-               a_bidiag_pack a_house_update_A_left a_qr_method_test                                                           #selbst hinzugefuegt 
+               a_bidiag_pack a_qr_method_test                                                                                #selbst hinzugefuegt 
                scalar sparse structured-matrices svd
                vector_float vector_double vector_int vector_uint vector_multi_inner_prod
                spmdm)
@@ -54,7 +54,7 @@ if (ENABLE_CUDA)
                matrix_col_float matrix_col_double matrix_col_int
                scalar sparse
                vector_float vector_double vector_int vector_uint vector_multi_inner_prod
-               a_cuda qr_method
+               a_cuda qr_method a_qr_method_test
                spmdm)
      cuda_add_executable(${PROG}-test-cuda src/${PROG}.cu)
      target_link_libraries(${PROG}-test-cuda ${Boost_LIBRARIES})

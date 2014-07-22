@@ -39,9 +39,10 @@ namespace viennacl
     namespace detail
     {
 
-      void matrix_print(viennacl::matrix<float>& A_orig)
+      template <typename ScalarType, typename F>
+      void matrix_print(viennacl::matrix<ScalarType, F>& A_orig)
       {
-          boost::numeric::ublas::matrix<float> A(A_orig.size1(), A_orig.size2());
+          boost::numeric::ublas::matrix<ScalarType> A(A_orig.size1(), A_orig.size2());
           viennacl::copy(A_orig, A);
           for (unsigned int i = 0; i < A.size1(); i++) {
               for (unsigned int j = 0; j < A.size2(); j++)
@@ -50,8 +51,8 @@ namespace viennacl
           }
       }
 
-
-      void vector_print(boost::numeric::ublas::vector<float>& A)
+      template <typename ScalarType>
+      void vector_print(boost::numeric::ublas::vector<ScalarType>& A)
       {
           for (unsigned int i = 0; i < A.size(); i++)
             std::cout << std::fixed << A(i) << "\t";
@@ -96,13 +97,14 @@ namespace viennacl
         // Symmetric tridiagonal QL algorithm.
         // This is derived from the Algol procedures tql2, by Bowdler, Martin, Reinsch, and Wilkinson,
         // Handbook for Auto. Comp., Vol.ii-Linear Algebra, and the corresponding Fortran subroutine in EISPACK.
-        template <typename SCALARTYPE, unsigned int ALIGNMENT>
-        void tql2(viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT> & Q,
+        template <typename SCALARTYPE, typename F>
+        void tql2(matrix_base<SCALARTYPE, F> & Q,
                   boost::numeric::ublas::vector<SCALARTYPE> & d,
                   boost::numeric::ublas::vector<SCALARTYPE> & e)
         {
            // Q = trans(Q);
-            int n = static_cast<int>(Q.size1());
+            int n = static_cast<int>(viennacl::traits::size1(Q));
+
             std::cout << "tql2: \n";
             //matrix_print(Q);
             boost::numeric::ublas::vector<SCALARTYPE> cs(n), ss(n);
@@ -116,6 +118,7 @@ namespace viennacl
             SCALARTYPE f = 0;
             SCALARTYPE tst1 = 0;
             SCALARTYPE eps = 2 * static_cast<SCALARTYPE>(EPS);
+            //SCALARTYPE eps = static_cast<SCALARTYPE>(EPS);
 
             for (int l = 0; l < n; l++)
             {
@@ -228,7 +231,7 @@ namespace viennacl
             }
 
             // Sort eigenvalues and corresponding vectors.
-
+/*
                for (int i = 0; i < n-1; i++) {
                   int k = i;
                   SCALARTYPE p = d(i);
@@ -249,12 +252,13 @@ namespace viennacl
                      }
                   }
                }
+               */
 
 
         }
 
-        template <typename SCALARTYPE, typename MatrixT>
-        void final_iter_update_gpu(MatrixT& A,
+        template <typename SCALARTYPE, typename F>
+        void final_iter_update_gpu(matrix_base<SCALARTYPE, F> & A,
                                 int n,
                                 int last_n,
                                 SCALARTYPE q,
@@ -264,7 +268,7 @@ namespace viennacl
 #ifdef VIENNACL_WITH_OPENCL
             viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(A).context());
 
-            viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE>::program_name(), SVD_FINAL_ITER_UPDATE_KERNEL);
+            viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE, F>::program_name(), SVD_FINAL_ITER_UPDATE_KERNEL);
 
             viennacl::ocl::enqueue(kernel(
                                           A,
@@ -277,8 +281,8 @@ namespace viennacl
 #endif
         }
 
-        template <typename SCALARTYPE, typename MatrixT>
-        void update_float_QR_column_gpu(MatrixT& A,
+        template <typename SCALARTYPE, typename F>
+        void update_float_QR_column_gpu(matrix_base<SCALARTYPE, F> & A,
                                 const std::vector<SCALARTYPE>& buf,
                                 viennacl::vector<SCALARTYPE>& buf_vcl,
                                 int m,
@@ -292,7 +296,7 @@ namespace viennacl
 
             viennacl::fast_copy(buf, buf_vcl);
 
-            viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE>::program_name(), SVD_UPDATE_QR_COLUMN_KERNEL);
+            viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE, F>::program_name(), SVD_UPDATE_QR_COLUMN_KERNEL);
 
             viennacl::ocl::enqueue(kernel(
                                           A,
@@ -868,19 +872,19 @@ namespace viennacl
             V = viennacl::linalg::prod(trans(tmp), vcl_H);
         }
 
-        template <typename SCALARTYPE, unsigned int ALIGNMENT>
+        template <typename SCALARTYPE, typename F>
         bool householder_twoside(
-                            viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& A,
-                            viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& Q,
-                            viennacl::vector<SCALARTYPE, ALIGNMENT>& D,
+                            matrix_base<SCALARTYPE, F>& A,
+                            matrix_base<SCALARTYPE, F>& Q,
+                            vector_base<SCALARTYPE>& D,
                             vcl_size_t start)
         {
             //viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(A).context());
-
-            if(start + 2 >= A.size1())
+            vcl_size_t A_size1 = static_cast<vcl_size_t>(viennacl::traits::size1(A));
+            if(start + 2 >= A_size1)
                 return false;
 
-            prepare_householder_vector(A, D, A.size1(), start + 1, start, start + 1, true);
+            prepare_householder_vector(A, D, A_size1, start + 1, start, start + 1, true);
 /*
             std::cout << "\nprint householder_vector:\n";
             for(uint i = 0; i<A.size1(); i++)
@@ -947,9 +951,9 @@ namespace viennacl
             return true;
         }
 
-        template <typename SCALARTYPE, typename F, unsigned int ALIGNMENT>
-        void tridiagonal_reduction(viennacl::matrix<SCALARTYPE, F, ALIGNMENT>& A,
-                                    viennacl::matrix<SCALARTYPE, F, ALIGNMENT>& Q)
+        template <typename SCALARTYPE, typename F>
+        void tridiagonal_reduction(matrix_base<SCALARTYPE, F>& A,
+                                   matrix_base<SCALARTYPE, F>& Q)
         {
             vcl_size_t sz = A.size1();
 
@@ -982,18 +986,23 @@ namespace viennacl
             //std::cout << "tridiagonal_reduction start!\n";
             detail::tridiagonal_reduction(A, Q);
             std::cout << "tridiagonal_reduction fertig!\n";
-            //matrix_print(A);
+/*
+            std::cout << "Matrix A: \n";
+            matrix_print(A);
+            std::cout << "\nMatrix Q: \n";
+            matrix_print(Q);
+*/
 
             // pack diagonal and super-diagonal
             // ublas::vector<SCALARTYPE> D(A.size1()), E(A.size1());
             std::cout << "Start bidiag_pack\n";
             viennacl::linalg::bidiag_pack(A, D, E);     // in matrix_operations.hpp
-/*
+
             std::cout <<"\nprint diagonal:\n";
             vector_print(D);
             std::cout << "\nprint superdiagonal:\n";
             vector_print(E);
-*/
+
             // find eigenvalues
             if(is_symmetric)
             {
@@ -1004,7 +1013,7 @@ namespace viennacl
             }
             else
             {
-                detail::hqr2(A, Q, D, E);
+                //detail::hqr2(A, Q, D, E);
             }
 
 

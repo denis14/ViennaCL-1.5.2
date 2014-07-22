@@ -109,14 +109,14 @@ namespace viennacl
         normalize(v, v.size());
       }
 
-      template <typename MatrixType>
-      void transpose(MatrixType & A)
+      template <typename SCALARTYPE, typename F>
+      void transpose(matrix_base<SCALARTYPE, F> & A)
       {
 #ifdef VIENNACL_WITH_OPENCL
-        typedef typename MatrixType::value_type                                   ScalarType;
-        typedef typename viennacl::result_of::cpu_value_type<ScalarType>::type    CPU_ScalarType;
+        //typedef typename MatrixType::value_type                                   ScalarType;
+        //typedef typename viennacl::result_of::cpu_value_type<ScalarType>::type    CPU_ScalarType;
 
-        viennacl::ocl::kernel & kernel = viennacl::ocl::get_kernel(viennacl::linalg::opencl::kernels::svd<CPU_ScalarType>::program_name(), SVD_MATRIX_TRANSPOSE_KERNEL);
+        viennacl::ocl::kernel & kernel = viennacl::ocl::get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE, F>::program_name(), SVD_MATRIX_TRANSPOSE_KERNEL);
 
         viennacl::ocl::enqueue(kernel(A,
                                       static_cast<cl_uint>(A.internal_size1()),
@@ -151,9 +151,9 @@ namespace viennacl
       }
 
 
-      template <typename SCALARTYPE, unsigned int ALIGNMENT>
-      void copy_vec(viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& A,
-                    viennacl::vector<SCALARTYPE, ALIGNMENT>& V,
+      template <typename SCALARTYPE, typename F>
+      void copy_vec(matrix_base<SCALARTYPE, F>& A,
+                    vector_base<SCALARTYPE>& V,
                     vcl_size_t row_start,
                     vcl_size_t col_start,
                     bool copy_col
@@ -203,10 +203,10 @@ namespace viennacl
       }
 
 
-      template<typename SCALARTYPE, unsigned int ALIGNMENT>
+      template<typename SCALARTYPE, typename F>
       void prepare_householder_vector(
-                                    viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& A,
-                                    viennacl::vector<SCALARTYPE, ALIGNMENT>& D,
+                                    matrix_base<SCALARTYPE, F>& A,
+                                    vector_base<SCALARTYPE>& D,
                                     vcl_size_t size,
                                     vcl_size_t row_start,
                                     vcl_size_t col_start,
@@ -215,16 +215,12 @@ namespace viennacl
                                     )
       {
         boost::numeric::ublas::vector<SCALARTYPE> tmp = boost::numeric::ublas::scalar_vector<SCALARTYPE>(size, 0);
-        //matrix_column(A, col_start, D);
+
         copy_vec(A, D, row_start, col_start, is_column);
         fast_copy(D.begin(), D.begin() + vcl_ptrdiff_t(size - start), tmp.begin() + start);
 
-        //std::cout << "1: " << tmp << "\n";
-
         detail::householder_vector(tmp, start);
         fast_copy(tmp, D);
-
-        //std::cout << "2: "  << D << "\n";
       }
 
 

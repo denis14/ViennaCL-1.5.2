@@ -1413,9 +1413,9 @@ namespace viennacl
         }
       }
 
-      // alpha on GPU
+
       template <typename T>
-      __global__ void bidiag_pack_kernel(
+      __global__ void bidiag_pack_row_major_kernel(
                   T * A,
                   T * D,
                   T * S,
@@ -1436,6 +1436,28 @@ namespace viennacl
           }
       }
 
+      template <typename T>
+      __global__ void bidiag_pack_column_major_kernel(
+                  T * A,
+                  T * D,
+                  T * S,
+                  uint size1,
+                  uint size2,
+                  uint stride)
+     {
+        uint size = min(size1, size2);
+        if(blockIdx.x * blockDim.x + threadIdx.x == 0)
+          S[0] = 0;
+
+        for(uint i = blockIdx.x * blockDim.x + threadIdx.x;
+                 i < size;
+                 i += gridDim.x * blockDim.x)
+          {
+            D[i] = A[i*stride + i];
+            S[i+1] = (i + 1 < size2) ? A[i + (i + 1) * stride] : 0;
+          }
+      }
+
 
       template <typename NumericT, typename F, typename VectorType>
       void bidiag_pack(matrix_base<NumericT, F> & A,
@@ -1446,13 +1468,25 @@ namespace viennacl
         std::cout << "Bidiag_pack started in CUDA !!\n";
         viennacl::vector<NumericT> D(dh.size());
         viennacl::vector<NumericT> S(sh.size());
+        if (viennacl::is_row_major<F>::value)
+          {
+            viennacl::linalg::cuda::bidiag_pack_row_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
+                                                                     viennacl::linalg::cuda::detail::cuda_arg<NumericT>(D),
+                                                                     viennacl::linalg::cuda::detail::cuda_arg<NumericT>(S),
+                                                                     static_cast<unsigned int>(viennacl::traits::size1(A)),
+                                                                     static_cast<unsigned int>(viennacl::traits::size2(A)),
+                                                                     static_cast<unsigned int>(viennacl::traits::internal_size2(A)));
+          }
+        else
+          {
+            viennacl::linalg::cuda::bidiag_pack_column_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
+                                                                     viennacl::linalg::cuda::detail::cuda_arg<NumericT>(D),
+                                                                     viennacl::linalg::cuda::detail::cuda_arg<NumericT>(S),
+                                                                     static_cast<unsigned int>(viennacl::traits::size1(A)),
+                                                                     static_cast<unsigned int>(viennacl::traits::size2(A)),
+                                                                     static_cast<unsigned int>(viennacl::traits::internal_size1(A)));
+          }
 
-	viennacl::linalg::cuda::bidiag_pack_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
-								 viennacl::linalg::cuda::detail::cuda_arg<NumericT>(D),
-								 viennacl::linalg::cuda::detail::cuda_arg<NumericT>(S),
-								 static_cast<unsigned int>(viennacl::traits::size1(A)),
-								 static_cast<unsigned int>(viennacl::traits::size2(A)),
-								 static_cast<unsigned int>(viennacl::traits::internal_size2(A)));
 
         fast_copy(D, dh);
         fast_copy(S, sh);
@@ -1462,7 +1496,7 @@ namespace viennacl
 
 
       template<typename T>
-      __global__ void copy_col_kernel(
+      __global__ void copy_col_row_major_kernel(
               T * A,
               T * V,
               uint row_start,
@@ -1480,7 +1514,25 @@ namespace viennacl
       }
 
       template<typename T>
-      __global__ void copy_row_kernel(
+      __global__ void copy_col_column_major_kernel(
+              T * A,
+              T * V,
+              uint row_start,
+              uint col_start,
+              uint size,
+              uint stride)
+      {
+          uint x = blockIdx.x * blockDim.x + threadIdx.x;
+          uint sz = gridDim.x * blockDim.x;
+
+          for(uint i = row_start + x; i < size; i += sz)
+          {
+              V[i - row_start] = A[i + col_start * stride];
+          }
+      }
+
+      template<typename T>
+      __global__ void copy_row_row_major_kernel(
               T * A,
               T * V,
               uint row_start,
@@ -1498,6 +1550,25 @@ namespace viennacl
 
       }
 
+      template<typename T>
+      __global__ void copy_row_column_major_kernel(
+              T * A,
+              T * V,
+              uint row_start,
+              uint col_start,
+              uint size,
+              uint stride)
+      {
+          uint x = blockIdx.x * blockDim.x + threadIdx.x;
+          uint sz = gridDim.x * blockDim.x;
+
+          for(uint i = col_start + x; i < size; i += sz)
+          {
+              V[i - col_start] = A[row_start + i * stride];
+          }
+
+      }
+
       template <typename NumericT, typename F>
       void copy_vec(matrix_base<NumericT, F>& A,
                     vector_base<NumericT> & V,
@@ -1508,28 +1579,53 @@ namespace viennacl
       {
         if(copy_col)
           {
-            copy_col_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
-                                          detail::cuda_arg<NumericT>(V),
-                                          static_cast<unsigned int>(row_start),         // vcl_size_t oder unsigned int ?
-                                          static_cast<unsigned int>(col_start),
-                                          static_cast<unsigned int>(viennacl::traits::size1(A)),
-                                          static_cast<unsigned int>(viennacl::traits::internal_size2(A)));
+            if (viennacl::is_row_major<F>::value)
+              {
+                copy_col_row_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
+                                              detail::cuda_arg<NumericT>(V),
+                                              static_cast<unsigned int>(row_start),
+                                              static_cast<unsigned int>(col_start),
+                                              static_cast<unsigned int>(viennacl::traits::size1(A)),
+                                              static_cast<unsigned int>(viennacl::traits::internal_size2(A)));
+              }
+            else
+              {
+                copy_col_column_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
+                                              detail::cuda_arg<NumericT>(V),
+                                              static_cast<unsigned int>(row_start),
+                                              static_cast<unsigned int>(col_start),
+                                              static_cast<unsigned int>(viennacl::traits::size1(A)),
+                                              static_cast<unsigned int>(viennacl::traits::internal_size1(A)));
+              }
+
 
           }
         else
           {
-            copy_row_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
-                                          detail::cuda_arg<NumericT>(V),
-                                          static_cast<unsigned int>(row_start),
-                                          static_cast<unsigned int>(col_start),
-                                          static_cast<unsigned int>(viennacl::traits::size2(A)),
-                                          static_cast<unsigned int>(viennacl::traits::internal_size2(A)));
+            if (viennacl::is_row_major<F>::value)
+              {
+                copy_row_row_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
+                                              detail::cuda_arg<NumericT>(V),
+                                              static_cast<unsigned int>(row_start),
+                                              static_cast<unsigned int>(col_start),
+                                              static_cast<unsigned int>(viennacl::traits::size2(A)),
+                                              static_cast<unsigned int>(viennacl::traits::internal_size2(A)));
+              }
+            else
+              {
+                copy_row_column_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
+                                              detail::cuda_arg<NumericT>(V),
+                                              static_cast<unsigned int>(row_start),
+                                              static_cast<unsigned int>(col_start),
+                                              static_cast<unsigned int>(viennacl::traits::size2(A)),
+                                              static_cast<unsigned int>(viennacl::traits::internal_size1(A)));
+              }
           }
       }
 
 
       template<typename T>
-      __global__ void house_update_A_left_kernel(
+      __global__ void house_update_A_left_row_major_kernel(
               T * A,
               T * V,        //housholder vector
               uint row_start,
@@ -1554,25 +1650,68 @@ namespace viennacl
           }
       }
 
+      template<typename T>
+      __global__ void house_update_A_left_column_major_kernel(
+              T * A,
+              T * V,        //housholder vector
+              uint row_start,
+              uint col_start,
+              uint size1,
+              uint size2,
+              uint stride)
+      {
+         // __shared__ T sums[128];  //unused variable
+          T ss = 0;
+
+          for(uint i = blockIdx.x * blockDim.x + threadIdx.x + col_start;
+              i < size2;
+              i += gridDim.x * blockDim.x)
+          {
+              ss = 0;
+              for(uint j = row_start; j < size1; j++)
+                  ss = ss +(V[j] * A[j + i * stride]);
+
+              for(uint j = row_start; j < size1; j++)
+                  A[j + i * stride] = A[j + i * stride] - (2 * V[j] * ss);
+          }
+      }
+
       template <typename NumericT, typename F>
       void house_update_A_left(matrix_base<NumericT, F> & A,
                                vector_base<NumericT> & D,
                                vcl_size_t start)
       {
-        house_update_A_left_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
-                                                 detail::cuda_arg<NumericT>(D),
-                                                 static_cast<unsigned int>(start + 1),
-                                                 static_cast<unsigned int>(start),
-                                                 static_cast<unsigned int>(viennacl::traits::size1(A)),
-                                                 static_cast<unsigned int>(viennacl::traits::size2(A)),
-                                                 static_cast<unsigned int>(viennacl::traits::internal_size2(A)));
+        if (viennacl::is_row_major<F>::value)
+        {
+            house_update_A_left_row_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
+                                                     detail::cuda_arg<NumericT>(D),
+                                                     static_cast<unsigned int>(start + 1),
+                                                     static_cast<unsigned int>(start),
+                                                     static_cast<unsigned int>(viennacl::traits::size1(A)),
+                                                     static_cast<unsigned int>(viennacl::traits::size2(A)),
+                                                     static_cast<unsigned int>(viennacl::traits::internal_size2(A)));
+
+
+        }
+        else
+          {
+            house_update_A_left_column_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
+                                                     detail::cuda_arg<NumericT>(D),
+                                                     static_cast<unsigned int>(start + 1),
+                                                     static_cast<unsigned int>(start),
+                                                     static_cast<unsigned int>(viennacl::traits::size1(A)),
+                                                     static_cast<unsigned int>(viennacl::traits::size2(A)),
+                                                     static_cast<unsigned int>(viennacl::traits::internal_size1(A)));
+
+
+          }
 
       }
 
 
 
       template<typename T>
-      __global__ void house_update_A_right_kernel(
+      __global__ void house_update_A_right_row_major_kernel(
               T * A,
               T * V,  //housholder vector
               uint row_start,
@@ -1589,7 +1728,7 @@ namespace viennacl
               ss = 0;
               for(uint j = threadIdx.x; j < size2; j+= blockDim.x)
                   ss = ss + (V[j] * A[i * stride + j]);
-              //sums[threadIdx.x]; //no effect
+              sums[threadIdx.x] = ss; //no effect
 
               __syncthreads();
               col_reduce_lcl_array(sums, threadIdx.x, blockDim.x);
@@ -1602,18 +1741,67 @@ namespace viennacl
           }
       }
 
+      template<typename T>
+      __global__ void house_update_A_right_column_major_kernel(
+              T * A,
+              T * V,  //housholder vector
+              uint row_start,
+              uint col_start,
+              uint size1,
+              uint size2,
+              uint stride)
+      {
+          __shared__ T sums[128];
+          T ss = 0;
+
+          for(uint i = blockIdx.x + row_start; i < size1; i+= gridDim.x)
+          {
+              ss = 0;
+              for(uint j = threadIdx.x; j < size2; j+= blockDim.x)
+                  ss = ss + (V[j] * A[i + j * stride]);
+              sums[threadIdx.x] = ss; //no effect
+
+              __syncthreads();
+              col_reduce_lcl_array(sums, threadIdx.x, blockDim.x);
+              __syncthreads();
+
+              T sum_Av = sums[0];
+
+              for(uint j = threadIdx.x; j < size2; j+= blockDim.x)
+                  A[i + j * stride] = A[i + j * stride] - (2 * V[j] * sum_Av);
+          }
+      }
+
+
+
       template <typename NumericT, typename F>
       void house_update_A_right(matrix_base<NumericT, F> & A,
                                vector_base<NumericT> & D,
                                vcl_size_t start)
       {
-        house_update_A_right_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
-                                                  detail::cuda_arg<NumericT>(D),
-                                                  static_cast<unsigned int>(0),
-                                                  static_cast<unsigned int>(0),
-                                                  static_cast<unsigned int>(viennacl::traits::size1(A)),
-                                                  static_cast<unsigned int>(viennacl::traits::size2(A)),
-                                                  static_cast<unsigned int>(viennacl::traits::internal_size2(A)));
+        if (viennacl::is_row_major<F>::value)
+          {
+            house_update_A_right_row_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
+                                                      detail::cuda_arg<NumericT>(D),
+                                                      static_cast<unsigned int>(0),
+                                                      static_cast<unsigned int>(0),
+                                                      static_cast<unsigned int>(viennacl::traits::size1(A)),
+                                                      static_cast<unsigned int>(viennacl::traits::size2(A)),
+                                                      static_cast<unsigned int>(viennacl::traits::internal_size2(A)));
+
+
+          }
+        else
+          {
+            house_update_A_right_column_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
+                                                      detail::cuda_arg<NumericT>(D),
+                                                      static_cast<unsigned int>(0),
+                                                      static_cast<unsigned int>(0),
+                                                      static_cast<unsigned int>(viennacl::traits::size1(A)),
+                                                      static_cast<unsigned int>(viennacl::traits::size2(A)),
+                                                      static_cast<unsigned int>(viennacl::traits::internal_size1(A)));
+
+          }
 
       }
 
@@ -1637,7 +1825,7 @@ namespace viennacl
 
 
       template <typename T>
-      __global__ void house_update_QL_kernel(
+      __global__ void house_update_QL_row_major_kernel(
               T * QL,
               T * V,
               uint size1,
@@ -1664,6 +1852,34 @@ namespace viennacl
           }
       }
 
+      template <typename T>
+      __global__ void house_update_QL_column_major_kernel(
+              T * QL,
+              T * V,
+              uint size1,
+              uint size2,
+              uint strideQ)
+      {
+          __shared__ T sums[128];
+          T ss = 0;
+          for(uint i = blockIdx.x; i < size1; i += gridDim.x)
+          {
+              ss = 0;
+              for(uint j = threadIdx.x; j < size1; j += blockDim.x)
+                  ss = ss + (V[j] * QL[i + j * strideQ]);
+              sums[threadIdx.x] = ss;
+
+              __syncthreads();
+              col_reduce_lcl_array(sums, threadIdx.x, blockDim.x);
+              __syncthreads();
+
+              T sum_Qv = sums[0];
+
+              for(uint j = threadIdx.x; j < size1; j += blockDim.x)
+                  QL[i + j * strideQ] = QL[i + j * strideQ] - (2 * V[j] * sum_Qv);
+          }
+      }
+
 
       template <typename NumericT, typename F>
       void house_update_QL(matrix_base<NumericT, F> & A,
@@ -1671,15 +1887,27 @@ namespace viennacl
                            vector_base<NumericT> & D)
 
       {
-        house_update_QL_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(Q),
-                                             detail::cuda_arg<NumericT>(D),
-                                             static_cast<unsigned int>(viennacl::traits::size1(A)),
-                                             static_cast<unsigned int>(viennacl::traits::size2(A)),
-                                             static_cast<unsigned int>(viennacl::traits::internal_size2(Q)));
+        if (viennacl::is_row_major<F>::value)
+          {
+            house_update_QL_row_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(Q),
+                                                 detail::cuda_arg<NumericT>(D),
+                                                 static_cast<unsigned int>(viennacl::traits::size1(A)),
+                                                 static_cast<unsigned int>(viennacl::traits::size2(A)),
+                                                 static_cast<unsigned int>(viennacl::traits::internal_size2(Q)));
+          }
+        else
+          {
+            house_update_QL_column_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(Q),
+                                                 detail::cuda_arg<NumericT>(D),
+                                                 static_cast<unsigned int>(viennacl::traits::size1(A)),
+                                                 static_cast<unsigned int>(viennacl::traits::size2(A)),
+                                                 static_cast<unsigned int>(viennacl::traits::internal_size1(Q)));
+          }
+
       }
 
       template <typename T>
-      __global__ void givens_next_kernel(
+      __global__ void givens_next_row_major_kernel(
               T * matr,
               T * cs,
               T * ss,
@@ -1692,7 +1920,7 @@ namespace viennacl
           __shared__ T cs_lcl[256];
           __shared__ T ss_lcl[256];
 
-          T x = (j < size) ? matr[(end_i + 1) * stride + j] : 0;
+          T x = (j < size) ? matr[(end_i + 1) + j * stride] : 0;
 
           uint elems_num = end_i - start_i + 1;
           uint block_num = (elems_num + blockDim.x - 1) / blockDim.x;
@@ -1712,7 +1940,54 @@ namespace viennacl
                   for(uint ind = 0; ind < to; ind++)
                   {
                       uint i = end_i - (ind + block_id * threadIdx.x);
-                      T z = matr[i * stride + j];
+                      T z = matr[i + j * stride];
+                      T cs_val = cs_lcl[ind];
+                      T ss_val = ss_lcl[ind];
+                      matr[(i + 1) + j * stride] = x * cs_val + z * ss_val;
+                      x = -x * ss_val + z * cs_val;
+                  }
+              }
+              __syncthreads();
+           }
+           if(j < size)
+             matr[(start_i) + j * stride] = x;
+      }
+
+      template <typename T>
+      __global__ void givens_next_column_major_kernel(
+              T * matr,
+              T * cs,
+              T * ss,
+              uint size,
+              uint stride,
+              uint start_i,
+              uint end_i)
+      {
+          uint j = blockIdx.x * blockDim.x + threadIdx.x;
+          __shared__ T cs_lcl[256];
+          __shared__ T ss_lcl[256];
+
+          T x = (j < size) ? matr[(end_i + 1) *stride + j] : 0;
+
+          uint elems_num = end_i - start_i + 1;
+          uint block_num = (elems_num + blockDim.x - 1) / blockDim.x;
+
+          for(uint block_id = 0; block_id < block_num; block_id++)
+          {
+              uint to = min(elems_num - block_id * blockDim.x, blockDim.x);
+
+              if(threadIdx.x < to)
+              {
+                  cs_lcl[threadIdx.x] = cs[end_i - (threadIdx.x + block_id * threadIdx.x)];
+                  ss_lcl[threadIdx.x] = ss[end_i - (threadIdx.x + block_id * threadIdx.x)];
+              }
+              __syncthreads();
+              if(j < size)
+              {
+                  for(uint ind = 0; ind < to; ind++)
+                  {
+                      uint i = end_i - (ind + block_id * threadIdx.x);
+                      T z = matr[i *stride + j];
                       T cs_val = cs_lcl[ind];
                       T ss_val = ss_lcl[ind];
                       matr[(i + 1) * stride + j] = x * cs_val + z * ss_val;
@@ -1724,6 +1999,7 @@ namespace viennacl
            if(j < size)
              matr[(start_i) * stride + j] = x;
       }
+
       template<typename NumericT, typename F>
         void givens_next(matrix_base<NumericT, F> & matrix,
                         vector_base<NumericT>& tmp1,
@@ -1731,15 +2007,27 @@ namespace viennacl
                         int l,
                         int m)
         {
-        matrix = trans(matrix);
-        givens_next_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(matrix),
-                                         detail::cuda_arg<NumericT>(tmp1),
-                                         detail::cuda_arg<NumericT>(tmp2),
-                                         static_cast<unsigned int>(viennacl::traits::size1(matrix)),
-                                         static_cast<unsigned int>(viennacl::traits::internal_size2(matrix)),
-                                         static_cast<unsigned int>(l),
-                                         static_cast<unsigned int>(m - 1));
-        matrix = trans(matrix);
+        if (viennacl::is_row_major<F>::value)
+          {
+            givens_next_row_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(matrix),
+                                           detail::cuda_arg<NumericT>(tmp1),
+                                           detail::cuda_arg<NumericT>(tmp2),
+                                           static_cast<unsigned int>(viennacl::traits::size1(matrix)),
+                                           static_cast<unsigned int>(viennacl::traits::internal_size2(matrix)),
+                                           static_cast<unsigned int>(l),
+                                           static_cast<unsigned int>(m - 1));
+          }
+        else
+          {
+            givens_next_column_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(matrix),
+                                           detail::cuda_arg<NumericT>(tmp1),
+                                           detail::cuda_arg<NumericT>(tmp2),
+                                           static_cast<unsigned int>(viennacl::traits::size1(matrix)),
+                                           static_cast<unsigned int>(viennacl::traits::internal_size1(matrix)),
+                                           static_cast<unsigned int>(l),
+                                           static_cast<unsigned int>(m - 1));
+          }
+
       }
 
     } // namespace cuda

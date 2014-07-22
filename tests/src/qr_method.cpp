@@ -55,7 +55,8 @@ void read_matrix_size(std::fstream& f, std::size_t& sz)
     f >> sz;
 }
 
-void read_matrix_body(std::fstream& f, viennacl::matrix<ScalarType>& A)
+template <typename MatrixLayout>
+void read_matrix_body(std::fstream& f, viennacl::matrix<ScalarType, MatrixLayout>& A)
 {
     if(!f.is_open())
     {
@@ -87,7 +88,8 @@ void read_vector_body(std::fstream& f, ublas::vector<ScalarType>& v) {
     }
 }
 
-bool check_tridiag(viennacl::matrix<ScalarType>& A_orig)
+template <typename MatrixLayout>
+bool check_tridiag(viennacl::matrix<ScalarType, MatrixLayout>& A_orig)
 {
     ublas::matrix<ScalarType> A(A_orig.size1(), A_orig.size2());
     viennacl::copy(A_orig, A);
@@ -104,7 +106,8 @@ bool check_tridiag(viennacl::matrix<ScalarType>& A_orig)
     return true;
 }
 
-bool check_hessenberg(viennacl::matrix<ScalarType>& A_orig)
+template <typename MatrixLayout>
+bool check_hessenberg(viennacl::matrix<ScalarType, MatrixLayout>& A_orig)
 {
     ublas::matrix<ScalarType> A(A_orig.size1(), A_orig.size2());
     viennacl::copy(A_orig, A);
@@ -156,7 +159,8 @@ ScalarType vector_compare(ublas::vector<ScalarType>& res,
     return diff / mx;
 }
 
-void matrix_print(viennacl::matrix<ScalarType>& A_orig)
+template <typename MatrixLayout>
+void matrix_print(viennacl::matrix<ScalarType, MatrixLayout>& A_orig)
 {
     ublas::matrix<ScalarType> A(A_orig.size1(), A_orig.size2());
     viennacl::copy(A_orig, A);
@@ -168,7 +172,7 @@ void matrix_print(viennacl::matrix<ScalarType>& A_orig)
     }
 }
 
-
+template <typename MatrixLayout>
 void test_eigen(const std::string& fn, bool is_symm)
 {
     std::cout << "Reading..." << "\n";
@@ -179,7 +183,7 @@ void test_eigen(const std::string& fn, bool is_symm)
     read_matrix_size(f, sz);
     std::cout << "Testing matrix of size " << sz << "-by-" << sz << std::endl;
 
-    viennacl::matrix<ScalarType> A_input(sz, sz), A_ref(sz, sz), Q(sz, sz);
+    viennacl::matrix<ScalarType, MatrixLayout> A_input(sz, sz), A_ref(sz, sz), Q(sz, sz);
     ublas::vector<ScalarType> eigen_ref_re = ublas::scalar_vector<ScalarType>(sz, 0);
     ublas::vector<ScalarType> eigen_ref_im = ublas::scalar_vector<ScalarType>(sz, 0);
     ublas::vector<ScalarType> eigen_re = ublas::scalar_vector<ScalarType>(sz, 0);
@@ -208,6 +212,7 @@ void test_eigen(const std::string& fn, bool is_symm)
     else
         viennacl::linalg::qr_method_nsm(A_input, Q, eigen_re, eigen_im);
 
+    /*
     std::cout << "\n\n Matrix A: \n\n";
     matrix_print(A_input);
     std::cout << "\n\n";
@@ -215,6 +220,7 @@ void test_eigen(const std::string& fn, bool is_symm)
     std::cout << "\n\n Matrix Q: \n\n";
     matrix_print(Q);
     std::cout << "\n\n";
+    */
 
     viennacl::backend::finish();
 
@@ -278,13 +284,14 @@ void test_eigen(const std::string& fn, bool is_symm)
 
     if (!is_ok)
       exit(EXIT_FAILURE);
+
 }
 
 int main()
 {
 
-  test_eigen("../../examples/testdata/eigen/symm1.example", true);
-  test_eigen("../../examples/testdata/eigen/symm2.example", true);
+  test_eigen<viennacl::row_major>("../../examples/testdata/eigen/symm3.example", true);
+  //test_eigen<viennacl::column_major>("../../examples/testdata/eigen/symm3.example", true);
   //test_eigen("../../examples/testdata/eigen/symm3.example", true);
 
   //test_eigen("../../examples/testdata/eigen/nsm1.example", false);
