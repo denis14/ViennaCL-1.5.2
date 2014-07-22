@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/denis/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/denis/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -123,14 +123,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/denis/ViennaCL-1.5.2/build/CMakeFiles /home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/progress.marks
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/ViennaCL-1.5.2/build/CMakeFiles 0
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/progress.marks
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/clean
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/clean
 .PHONY : clean
 
 # The main clean target
@@ -139,50 +139,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-tests/CMakeFiles/a_bidiag_pack-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/a_bidiag_pack-test-cpu.dir/rule
-.PHONY : tests/CMakeFiles/a_bidiag_pack-test-cpu.dir/rule
-
-# Convenience name for target.
-a_bidiag_pack-test-cpu: tests/CMakeFiles/a_bidiag_pack-test-cpu.dir/rule
-.PHONY : a_bidiag_pack-test-cpu
-
-# fast build rule for target.
-a_bidiag_pack-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_bidiag_pack-test-cpu.dir/build.make tests/CMakeFiles/a_bidiag_pack-test-cpu.dir/build
-.PHONY : a_bidiag_pack-test-cpu/fast
-
-# Convenience name for target.
-tests/CMakeFiles/a_bidiag_pack-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/a_bidiag_pack-test-opencl.dir/rule
-.PHONY : tests/CMakeFiles/a_bidiag_pack-test-opencl.dir/rule
-
-# Convenience name for target.
-a_bidiag_pack-test-opencl: tests/CMakeFiles/a_bidiag_pack-test-opencl.dir/rule
-.PHONY : a_bidiag_pack-test-opencl
-
-# fast build rule for target.
-a_bidiag_pack-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_bidiag_pack-test-opencl.dir/build.make tests/CMakeFiles/a_bidiag_pack-test-opencl.dir/build
-.PHONY : a_bidiag_pack-test-opencl/fast
-
-# Convenience name for target.
 tests/CMakeFiles/a_cuda-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/a_cuda-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/a_cuda-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/a_cuda-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -191,68 +163,26 @@ a_cuda-test-cuda: tests/CMakeFiles/a_cuda-test-cuda.dir/rule
 
 # fast build rule for target.
 a_cuda-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_cuda-test-cuda.dir/build.make tests/CMakeFiles/a_cuda-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_cuda-test-cuda.dir/build.make tests/CMakeFiles/a_cuda-test-cuda.dir/build
 .PHONY : a_cuda-test-cuda/fast
 
 # Convenience name for target.
-tests/CMakeFiles/a_house_update_A_left-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/a_house_update_A_left-test-cpu.dir/rule
-.PHONY : tests/CMakeFiles/a_house_update_A_left-test-cpu.dir/rule
+tests/CMakeFiles/bidiag_test-test-cpu.dir/rule:
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/bidiag_test-test-cpu.dir/rule
+.PHONY : tests/CMakeFiles/bidiag_test-test-cpu.dir/rule
 
 # Convenience name for target.
-a_house_update_A_left-test-cpu: tests/CMakeFiles/a_house_update_A_left-test-cpu.dir/rule
-.PHONY : a_house_update_A_left-test-cpu
+bidiag_test-test-cpu: tests/CMakeFiles/bidiag_test-test-cpu.dir/rule
+.PHONY : bidiag_test-test-cpu
 
 # fast build rule for target.
-a_house_update_A_left-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_house_update_A_left-test-cpu.dir/build.make tests/CMakeFiles/a_house_update_A_left-test-cpu.dir/build
-.PHONY : a_house_update_A_left-test-cpu/fast
-
-# Convenience name for target.
-tests/CMakeFiles/a_house_update_A_left-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/a_house_update_A_left-test-opencl.dir/rule
-.PHONY : tests/CMakeFiles/a_house_update_A_left-test-opencl.dir/rule
-
-# Convenience name for target.
-a_house_update_A_left-test-opencl: tests/CMakeFiles/a_house_update_A_left-test-opencl.dir/rule
-.PHONY : a_house_update_A_left-test-opencl
-
-# fast build rule for target.
-a_house_update_A_left-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_house_update_A_left-test-opencl.dir/build.make tests/CMakeFiles/a_house_update_A_left-test-opencl.dir/build
-.PHONY : a_house_update_A_left-test-opencl/fast
-
-# Convenience name for target.
-tests/CMakeFiles/a_qr_method_test-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/a_qr_method_test-test-cpu.dir/rule
-.PHONY : tests/CMakeFiles/a_qr_method_test-test-cpu.dir/rule
-
-# Convenience name for target.
-a_qr_method_test-test-cpu: tests/CMakeFiles/a_qr_method_test-test-cpu.dir/rule
-.PHONY : a_qr_method_test-test-cpu
-
-# fast build rule for target.
-a_qr_method_test-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_qr_method_test-test-cpu.dir/build.make tests/CMakeFiles/a_qr_method_test-test-cpu.dir/build
-.PHONY : a_qr_method_test-test-cpu/fast
-
-# Convenience name for target.
-tests/CMakeFiles/a_qr_method_test-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/a_qr_method_test-test-opencl.dir/rule
-.PHONY : tests/CMakeFiles/a_qr_method_test-test-opencl.dir/rule
-
-# Convenience name for target.
-a_qr_method_test-test-opencl: tests/CMakeFiles/a_qr_method_test-test-opencl.dir/rule
-.PHONY : a_qr_method_test-test-opencl
-
-# fast build rule for target.
-a_qr_method_test-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_qr_method_test-test-opencl.dir/build.make tests/CMakeFiles/a_qr_method_test-test-opencl.dir/build
-.PHONY : a_qr_method_test-test-opencl/fast
+bidiag_test-test-cpu/fast:
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/bidiag_test-test-cpu.dir/build.make tests/CMakeFiles/bidiag_test-test-cpu.dir/build
+.PHONY : bidiag_test-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_prod_double-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_double-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_double-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/blas3_prod_double-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -261,12 +191,12 @@ blas3_prod_double-test-cpu: tests/CMakeFiles/blas3_prod_double-test-cpu.dir/rule
 
 # fast build rule for target.
 blas3_prod_double-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cpu.dir/build
 .PHONY : blas3_prod_double-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_prod_double-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_double-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_double-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/blas3_prod_double-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -275,12 +205,12 @@ blas3_prod_double-test-cuda: tests/CMakeFiles/blas3_prod_double-test-cuda.dir/ru
 
 # fast build rule for target.
 blas3_prod_double-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cuda.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cuda.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cuda.dir/build
 .PHONY : blas3_prod_double-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_prod_double-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_double-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_double-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/blas3_prod_double-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -289,12 +219,12 @@ blas3_prod_double-test-opencl: tests/CMakeFiles/blas3_prod_double-test-opencl.di
 
 # fast build rule for target.
 blas3_prod_double-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_double-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_double-test-opencl.dir/build
 .PHONY : blas3_prod_double-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_prod_float-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_float-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_float-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/blas3_prod_float-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -303,12 +233,12 @@ blas3_prod_float-test-cpu: tests/CMakeFiles/blas3_prod_float-test-cpu.dir/rule
 
 # fast build rule for target.
 blas3_prod_float-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cpu.dir/build
 .PHONY : blas3_prod_float-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_prod_float-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_float-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_float-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/blas3_prod_float-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -317,12 +247,12 @@ blas3_prod_float-test-cuda: tests/CMakeFiles/blas3_prod_float-test-cuda.dir/rule
 
 # fast build rule for target.
 blas3_prod_float-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cuda.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cuda.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cuda.dir/build
 .PHONY : blas3_prod_float-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_prod_float-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_float-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_prod_float-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/blas3_prod_float-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -331,12 +261,12 @@ blas3_prod_float-test-opencl: tests/CMakeFiles/blas3_prod_float-test-opencl.dir/
 
 # fast build rule for target.
 blas3_prod_float-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_float-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_float-test-opencl.dir/build
 .PHONY : blas3_prod_float-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_solve_double-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_double-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_double-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/blas3_solve_double-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -345,12 +275,12 @@ blas3_solve_double-test-cpu: tests/CMakeFiles/blas3_solve_double-test-cpu.dir/ru
 
 # fast build rule for target.
 blas3_solve_double-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cpu.dir/build
 .PHONY : blas3_solve_double-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_solve_double-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_double-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_double-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/blas3_solve_double-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -359,12 +289,12 @@ blas3_solve_double-test-cuda: tests/CMakeFiles/blas3_solve_double-test-cuda.dir/
 
 # fast build rule for target.
 blas3_solve_double-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cuda.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cuda.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cuda.dir/build
 .PHONY : blas3_solve_double-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_solve_double-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_double-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_double-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/blas3_solve_double-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -373,12 +303,12 @@ blas3_solve_double-test-opencl: tests/CMakeFiles/blas3_solve_double-test-opencl.
 
 # fast build rule for target.
 blas3_solve_double-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_double-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_double-test-opencl.dir/build
 .PHONY : blas3_solve_double-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_solve_float-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_float-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_float-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/blas3_solve_float-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -387,12 +317,12 @@ blas3_solve_float-test-cpu: tests/CMakeFiles/blas3_solve_float-test-cpu.dir/rule
 
 # fast build rule for target.
 blas3_solve_float-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cpu.dir/build
 .PHONY : blas3_solve_float-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_solve_float-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_float-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_float-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/blas3_solve_float-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -401,12 +331,12 @@ blas3_solve_float-test-cuda: tests/CMakeFiles/blas3_solve_float-test-cuda.dir/ru
 
 # fast build rule for target.
 blas3_solve_float-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cuda.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cuda.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cuda.dir/build
 .PHONY : blas3_solve_float-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/blas3_solve_float-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_float-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/blas3_solve_float-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/blas3_solve_float-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -415,12 +345,12 @@ blas3_solve_float-test-opencl: tests/CMakeFiles/blas3_solve_float-test-opencl.di
 
 # fast build rule for target.
 blas3_solve_float-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_float-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_float-test-opencl.dir/build
 .PHONY : blas3_solve_float-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/external_linkage-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/external_linkage-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/external_linkage-cuda.dir/rule
 .PHONY : tests/CMakeFiles/external_linkage-cuda.dir/rule
 
 # Convenience name for target.
@@ -429,12 +359,12 @@ external_linkage-cuda: tests/CMakeFiles/external_linkage-cuda.dir/rule
 
 # fast build rule for target.
 external_linkage-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-cuda.dir/build.make tests/CMakeFiles/external_linkage-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-cuda.dir/build.make tests/CMakeFiles/external_linkage-cuda.dir/build
 .PHONY : external_linkage-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/external_linkage-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/external_linkage-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/external_linkage-opencl.dir/rule
 .PHONY : tests/CMakeFiles/external_linkage-opencl.dir/rule
 
 # Convenience name for target.
@@ -443,12 +373,12 @@ external_linkage-opencl: tests/CMakeFiles/external_linkage-opencl.dir/rule
 
 # fast build rule for target.
 external_linkage-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-opencl.dir/build.make tests/CMakeFiles/external_linkage-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-opencl.dir/build.make tests/CMakeFiles/external_linkage-opencl.dir/build
 .PHONY : external_linkage-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/fft-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/fft-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/fft-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/fft-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -457,12 +387,12 @@ fft-test-opencl: tests/CMakeFiles/fft-test-opencl.dir/rule
 
 # fast build rule for target.
 fft-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/fft-test-opencl.dir/build.make tests/CMakeFiles/fft-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/fft-test-opencl.dir/build.make tests/CMakeFiles/fft-test-opencl.dir/build
 .PHONY : fft-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/generator_blas1-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/generator_blas1-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/generator_blas1-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/generator_blas1-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -471,12 +401,12 @@ generator_blas1-test-opencl: tests/CMakeFiles/generator_blas1-test-opencl.dir/ru
 
 # fast build rule for target.
 generator_blas1-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas1-test-opencl.dir/build.make tests/CMakeFiles/generator_blas1-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas1-test-opencl.dir/build.make tests/CMakeFiles/generator_blas1-test-opencl.dir/build
 .PHONY : generator_blas1-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/generator_blas2-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/generator_blas2-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/generator_blas2-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/generator_blas2-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -485,12 +415,12 @@ generator_blas2-test-opencl: tests/CMakeFiles/generator_blas2-test-opencl.dir/ru
 
 # fast build rule for target.
 generator_blas2-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas2-test-opencl.dir/build.make tests/CMakeFiles/generator_blas2-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas2-test-opencl.dir/build.make tests/CMakeFiles/generator_blas2-test-opencl.dir/build
 .PHONY : generator_blas2-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/generator_blas3-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/generator_blas3-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/generator_blas3-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/generator_blas3-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -499,12 +429,12 @@ generator_blas3-test-opencl: tests/CMakeFiles/generator_blas3-test-opencl.dir/ru
 
 # fast build rule for target.
 generator_blas3-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas3-test-opencl.dir/build.make tests/CMakeFiles/generator_blas3-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas3-test-opencl.dir/build.make tests/CMakeFiles/generator_blas3-test-opencl.dir/build
 .PHONY : generator_blas3-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/global_variables-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/global_variables-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/global_variables-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/global_variables-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -513,12 +443,12 @@ global_variables-test-cpu: tests/CMakeFiles/global_variables-test-cpu.dir/rule
 
 # fast build rule for target.
 global_variables-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-cpu.dir/build.make tests/CMakeFiles/global_variables-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-cpu.dir/build.make tests/CMakeFiles/global_variables-test-cpu.dir/build
 .PHONY : global_variables-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/global_variables-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/global_variables-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/global_variables-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/global_variables-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -527,12 +457,12 @@ global_variables-test-cuda: tests/CMakeFiles/global_variables-test-cuda.dir/rule
 
 # fast build rule for target.
 global_variables-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-cuda.dir/build.make tests/CMakeFiles/global_variables-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-cuda.dir/build.make tests/CMakeFiles/global_variables-test-cuda.dir/build
 .PHONY : global_variables-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/global_variables-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/global_variables-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/global_variables-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/global_variables-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -541,12 +471,12 @@ global_variables-test-opencl: tests/CMakeFiles/global_variables-test-opencl.dir/
 
 # fast build rule for target.
 global_variables-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-opencl.dir/build.make tests/CMakeFiles/global_variables-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-opencl.dir/build.make tests/CMakeFiles/global_variables-test-opencl.dir/build
 .PHONY : global_variables-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/iterators-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/iterators-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/iterators-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/iterators-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -555,12 +485,12 @@ iterators-test-cpu: tests/CMakeFiles/iterators-test-cpu.dir/rule
 
 # fast build rule for target.
 iterators-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-cpu.dir/build.make tests/CMakeFiles/iterators-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-cpu.dir/build.make tests/CMakeFiles/iterators-test-cpu.dir/build
 .PHONY : iterators-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/iterators-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/iterators-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/iterators-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/iterators-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -569,12 +499,12 @@ iterators-test-cuda: tests/CMakeFiles/iterators-test-cuda.dir/rule
 
 # fast build rule for target.
 iterators-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-cuda.dir/build.make tests/CMakeFiles/iterators-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-cuda.dir/build.make tests/CMakeFiles/iterators-test-cuda.dir/build
 .PHONY : iterators-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/iterators-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/iterators-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/iterators-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/iterators-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -583,12 +513,12 @@ iterators-test-opencl: tests/CMakeFiles/iterators-test-opencl.dir/rule
 
 # fast build rule for target.
 iterators-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-opencl.dir/build.make tests/CMakeFiles/iterators-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-opencl.dir/build.make tests/CMakeFiles/iterators-test-opencl.dir/build
 .PHONY : iterators-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/libviennacl_blas1-test.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/libviennacl_blas1-test.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/libviennacl_blas1-test.dir/rule
 .PHONY : tests/CMakeFiles/libviennacl_blas1-test.dir/rule
 
 # Convenience name for target.
@@ -597,12 +527,12 @@ libviennacl_blas1-test: tests/CMakeFiles/libviennacl_blas1-test.dir/rule
 
 # fast build rule for target.
 libviennacl_blas1-test/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/libviennacl_blas1-test.dir/build.make tests/CMakeFiles/libviennacl_blas1-test.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/libviennacl_blas1-test.dir/build.make tests/CMakeFiles/libviennacl_blas1-test.dir/build
 .PHONY : libviennacl_blas1-test/fast
 
 # Convenience name for target.
 tests/CMakeFiles/libviennacl_blas2-test.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/libviennacl_blas2-test.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/libviennacl_blas2-test.dir/rule
 .PHONY : tests/CMakeFiles/libviennacl_blas2-test.dir/rule
 
 # Convenience name for target.
@@ -611,12 +541,12 @@ libviennacl_blas2-test: tests/CMakeFiles/libviennacl_blas2-test.dir/rule
 
 # fast build rule for target.
 libviennacl_blas2-test/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/libviennacl_blas2-test.dir/build.make tests/CMakeFiles/libviennacl_blas2-test.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/libviennacl_blas2-test.dir/build.make tests/CMakeFiles/libviennacl_blas2-test.dir/build
 .PHONY : libviennacl_blas2-test/fast
 
 # Convenience name for target.
 tests/CMakeFiles/libviennacl_blas3-test.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/libviennacl_blas3-test.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/libviennacl_blas3-test.dir/rule
 .PHONY : tests/CMakeFiles/libviennacl_blas3-test.dir/rule
 
 # Convenience name for target.
@@ -625,12 +555,12 @@ libviennacl_blas3-test: tests/CMakeFiles/libviennacl_blas3-test.dir/rule
 
 # fast build rule for target.
 libviennacl_blas3-test/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/libviennacl_blas3-test.dir/build.make tests/CMakeFiles/libviennacl_blas3-test.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/libviennacl_blas3-test.dir/build.make tests/CMakeFiles/libviennacl_blas3-test.dir/build
 .PHONY : libviennacl_blas3-test/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_col_double-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_double-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_double-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/matrix_col_double-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -639,12 +569,12 @@ matrix_col_double-test-cpu: tests/CMakeFiles/matrix_col_double-test-cpu.dir/rule
 
 # fast build rule for target.
 matrix_col_double-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_double-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_double-test-cpu.dir/build
 .PHONY : matrix_col_double-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_col_double-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_double-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_double-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/matrix_col_double-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -653,12 +583,12 @@ matrix_col_double-test-cuda: tests/CMakeFiles/matrix_col_double-test-cuda.dir/ru
 
 # fast build rule for target.
 matrix_col_double-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_double-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_double-test-cuda.dir/build
 .PHONY : matrix_col_double-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_col_double-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_double-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_double-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/matrix_col_double-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -667,12 +597,12 @@ matrix_col_double-test-opencl: tests/CMakeFiles/matrix_col_double-test-opencl.di
 
 # fast build rule for target.
 matrix_col_double-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_double-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_double-test-opencl.dir/build
 .PHONY : matrix_col_double-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_col_float-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_float-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_float-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/matrix_col_float-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -681,12 +611,12 @@ matrix_col_float-test-cpu: tests/CMakeFiles/matrix_col_float-test-cpu.dir/rule
 
 # fast build rule for target.
 matrix_col_float-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_float-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_float-test-cpu.dir/build
 .PHONY : matrix_col_float-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_col_float-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_float-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_float-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/matrix_col_float-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -695,12 +625,12 @@ matrix_col_float-test-cuda: tests/CMakeFiles/matrix_col_float-test-cuda.dir/rule
 
 # fast build rule for target.
 matrix_col_float-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_float-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_float-test-cuda.dir/build
 .PHONY : matrix_col_float-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_col_float-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_float-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_float-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/matrix_col_float-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -709,12 +639,12 @@ matrix_col_float-test-opencl: tests/CMakeFiles/matrix_col_float-test-opencl.dir/
 
 # fast build rule for target.
 matrix_col_float-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_float-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_float-test-opencl.dir/build
 .PHONY : matrix_col_float-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_col_int-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_int-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_int-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/matrix_col_int-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -723,12 +653,12 @@ matrix_col_int-test-cpu: tests/CMakeFiles/matrix_col_int-test-cpu.dir/rule
 
 # fast build rule for target.
 matrix_col_int-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_int-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_int-test-cpu.dir/build
 .PHONY : matrix_col_int-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_col_int-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_int-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_int-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/matrix_col_int-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -737,12 +667,12 @@ matrix_col_int-test-cuda: tests/CMakeFiles/matrix_col_int-test-cuda.dir/rule
 
 # fast build rule for target.
 matrix_col_int-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_int-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_col_int-test-cuda.dir/build
 .PHONY : matrix_col_int-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_col_int-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_int-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_col_int-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/matrix_col_int-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -751,12 +681,12 @@ matrix_col_int-test-opencl: tests/CMakeFiles/matrix_col_int-test-opencl.dir/rule
 
 # fast build rule for target.
 matrix_col_int-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_int-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_int-test-opencl.dir/build
 .PHONY : matrix_col_int-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_row_double-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_double-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_double-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/matrix_row_double-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -765,12 +695,12 @@ matrix_row_double-test-cpu: tests/CMakeFiles/matrix_row_double-test-cpu.dir/rule
 
 # fast build rule for target.
 matrix_row_double-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_double-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_double-test-cpu.dir/build
 .PHONY : matrix_row_double-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_row_double-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_double-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_double-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/matrix_row_double-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -779,12 +709,12 @@ matrix_row_double-test-cuda: tests/CMakeFiles/matrix_row_double-test-cuda.dir/ru
 
 # fast build rule for target.
 matrix_row_double-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_double-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_double-test-cuda.dir/build
 .PHONY : matrix_row_double-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_row_double-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_double-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_double-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/matrix_row_double-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -793,12 +723,12 @@ matrix_row_double-test-opencl: tests/CMakeFiles/matrix_row_double-test-opencl.di
 
 # fast build rule for target.
 matrix_row_double-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_double-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_double-test-opencl.dir/build
 .PHONY : matrix_row_double-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_row_float-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_float-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_float-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/matrix_row_float-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -807,12 +737,12 @@ matrix_row_float-test-cpu: tests/CMakeFiles/matrix_row_float-test-cpu.dir/rule
 
 # fast build rule for target.
 matrix_row_float-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_float-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_float-test-cpu.dir/build
 .PHONY : matrix_row_float-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_row_float-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_float-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_float-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/matrix_row_float-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -821,12 +751,12 @@ matrix_row_float-test-cuda: tests/CMakeFiles/matrix_row_float-test-cuda.dir/rule
 
 # fast build rule for target.
 matrix_row_float-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_float-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_float-test-cuda.dir/build
 .PHONY : matrix_row_float-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_row_float-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_float-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_float-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/matrix_row_float-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -835,12 +765,12 @@ matrix_row_float-test-opencl: tests/CMakeFiles/matrix_row_float-test-opencl.dir/
 
 # fast build rule for target.
 matrix_row_float-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_float-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_float-test-opencl.dir/build
 .PHONY : matrix_row_float-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_row_int-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_int-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_int-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/matrix_row_int-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -849,12 +779,12 @@ matrix_row_int-test-cpu: tests/CMakeFiles/matrix_row_int-test-cpu.dir/rule
 
 # fast build rule for target.
 matrix_row_int-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_int-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_int-test-cpu.dir/build
 .PHONY : matrix_row_int-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_row_int-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_int-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_int-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/matrix_row_int-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -863,12 +793,12 @@ matrix_row_int-test-cuda: tests/CMakeFiles/matrix_row_int-test-cuda.dir/rule
 
 # fast build rule for target.
 matrix_row_int-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_int-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_row_int-test-cuda.dir/build
 .PHONY : matrix_row_int-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_row_int-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_int-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_row_int-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/matrix_row_int-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -877,12 +807,12 @@ matrix_row_int-test-opencl: tests/CMakeFiles/matrix_row_int-test-opencl.dir/rule
 
 # fast build rule for target.
 matrix_row_int-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_int-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_int-test-opencl.dir/build
 .PHONY : matrix_row_int-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_vector-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/matrix_vector-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -891,12 +821,12 @@ matrix_vector-test-cpu: tests/CMakeFiles/matrix_vector-test-cpu.dir/rule
 
 # fast build rule for target.
 matrix_vector-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector-test-cpu.dir/build
 .PHONY : matrix_vector-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_vector-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/matrix_vector-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -905,12 +835,12 @@ matrix_vector-test-cuda: tests/CMakeFiles/matrix_vector-test-cuda.dir/rule
 
 # fast build rule for target.
 matrix_vector-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector-test-cuda.dir/build
 .PHONY : matrix_vector-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_vector-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/matrix_vector-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -919,12 +849,12 @@ matrix_vector-test-opencl: tests/CMakeFiles/matrix_vector-test-opencl.dir/rule
 
 # fast build rule for target.
 matrix_vector-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector-test-opencl.dir/build
 .PHONY : matrix_vector-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_vector_int-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector_int-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector_int-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/matrix_vector_int-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -933,12 +863,12 @@ matrix_vector_int-test-cpu: tests/CMakeFiles/matrix_vector_int-test-cpu.dir/rule
 
 # fast build rule for target.
 matrix_vector_int-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cpu.dir/build
 .PHONY : matrix_vector_int-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_vector_int-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector_int-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector_int-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/matrix_vector_int-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -947,12 +877,12 @@ matrix_vector_int-test-cuda: tests/CMakeFiles/matrix_vector_int-test-cuda.dir/ru
 
 # fast build rule for target.
 matrix_vector_int-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cuda.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cuda.dir/build
 .PHONY : matrix_vector_int-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/matrix_vector_int-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector_int-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/matrix_vector_int-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/matrix_vector_int-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -961,12 +891,12 @@ matrix_vector_int-test-opencl: tests/CMakeFiles/matrix_vector_int-test-opencl.di
 
 # fast build rule for target.
 matrix_vector_int-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector_int-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector_int-test-opencl.dir/build
 .PHONY : matrix_vector_int-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/nmf-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/nmf-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/nmf-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/nmf-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -975,12 +905,12 @@ nmf-test-opencl: tests/CMakeFiles/nmf-test-opencl.dir/rule
 
 # fast build rule for target.
 nmf-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/nmf-test-opencl.dir/build.make tests/CMakeFiles/nmf-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/nmf-test-opencl.dir/build.make tests/CMakeFiles/nmf-test-opencl.dir/build
 .PHONY : nmf-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/qr_method-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/qr_method-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/qr_method-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/qr_method-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -989,12 +919,12 @@ qr_method-test-cpu: tests/CMakeFiles/qr_method-test-cpu.dir/rule
 
 # fast build rule for target.
 qr_method-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-cpu.dir/build.make tests/CMakeFiles/qr_method-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-cpu.dir/build.make tests/CMakeFiles/qr_method-test-cpu.dir/build
 .PHONY : qr_method-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/qr_method-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/qr_method-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/qr_method-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/qr_method-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1003,12 +933,12 @@ qr_method-test-cuda: tests/CMakeFiles/qr_method-test-cuda.dir/rule
 
 # fast build rule for target.
 qr_method-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-cuda.dir/build.make tests/CMakeFiles/qr_method-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-cuda.dir/build.make tests/CMakeFiles/qr_method-test-cuda.dir/build
 .PHONY : qr_method-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/qr_method-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/qr_method-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/qr_method-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/qr_method-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -1017,12 +947,12 @@ qr_method-test-opencl: tests/CMakeFiles/qr_method-test-opencl.dir/rule
 
 # fast build rule for target.
 qr_method-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-opencl.dir/build.make tests/CMakeFiles/qr_method-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-opencl.dir/build.make tests/CMakeFiles/qr_method-test-opencl.dir/build
 .PHONY : qr_method-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/scalar-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scalar-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scalar-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/scalar-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -1031,12 +961,12 @@ scalar-test-cpu: tests/CMakeFiles/scalar-test-cpu.dir/rule
 
 # fast build rule for target.
 scalar-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-cpu.dir/build.make tests/CMakeFiles/scalar-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-cpu.dir/build.make tests/CMakeFiles/scalar-test-cpu.dir/build
 .PHONY : scalar-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/scalar-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scalar-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scalar-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/scalar-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1045,12 +975,12 @@ scalar-test-cuda: tests/CMakeFiles/scalar-test-cuda.dir/rule
 
 # fast build rule for target.
 scalar-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-cuda.dir/build.make tests/CMakeFiles/scalar-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-cuda.dir/build.make tests/CMakeFiles/scalar-test-cuda.dir/build
 .PHONY : scalar-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/scalar-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scalar-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scalar-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/scalar-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -1059,12 +989,12 @@ scalar-test-opencl: tests/CMakeFiles/scalar-test-opencl.dir/rule
 
 # fast build rule for target.
 scalar-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-opencl.dir/build.make tests/CMakeFiles/scalar-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-opencl.dir/build.make tests/CMakeFiles/scalar-test-opencl.dir/build
 .PHONY : scalar-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/scheduler_matrix-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scheduler_matrix-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scheduler_matrix-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/scheduler_matrix-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -1073,12 +1003,12 @@ scheduler_matrix-test-cpu: tests/CMakeFiles/scheduler_matrix-test-cpu.dir/rule
 
 # fast build rule for target.
 scheduler_matrix-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build
 .PHONY : scheduler_matrix-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -1087,12 +1017,12 @@ scheduler_matrix_matrix-test-cpu: tests/CMakeFiles/scheduler_matrix_matrix-test-
 
 # fast build rule for target.
 scheduler_matrix_matrix-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/build
 .PHONY : scheduler_matrix_matrix-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -1101,12 +1031,12 @@ scheduler_matrix_vector-test-cpu: tests/CMakeFiles/scheduler_matrix_vector-test-
 
 # fast build rule for target.
 scheduler_matrix_vector-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/build
 .PHONY : scheduler_matrix_vector-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/scheduler_sparse-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scheduler_sparse-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scheduler_sparse-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/scheduler_sparse-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -1115,12 +1045,12 @@ scheduler_sparse-test-cpu: tests/CMakeFiles/scheduler_sparse-test-cpu.dir/rule
 
 # fast build rule for target.
 scheduler_sparse-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_sparse-test-cpu.dir/build.make tests/CMakeFiles/scheduler_sparse-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_sparse-test-cpu.dir/build.make tests/CMakeFiles/scheduler_sparse-test-cpu.dir/build
 .PHONY : scheduler_sparse-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/scheduler_vector-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scheduler_vector-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/scheduler_vector-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/scheduler_vector-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -1129,12 +1059,12 @@ scheduler_vector-test-cpu: tests/CMakeFiles/scheduler_vector-test-cpu.dir/rule
 
 # fast build rule for target.
 scheduler_vector-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_vector-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_vector-test-cpu.dir/build
 .PHONY : scheduler_vector-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/sparse-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/sparse-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/sparse-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/sparse-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -1143,12 +1073,12 @@ sparse-test-cpu: tests/CMakeFiles/sparse-test-cpu.dir/rule
 
 # fast build rule for target.
 sparse-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-cpu.dir/build.make tests/CMakeFiles/sparse-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-cpu.dir/build.make tests/CMakeFiles/sparse-test-cpu.dir/build
 .PHONY : sparse-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/sparse-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/sparse-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/sparse-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/sparse-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1157,12 +1087,12 @@ sparse-test-cuda: tests/CMakeFiles/sparse-test-cuda.dir/rule
 
 # fast build rule for target.
 sparse-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-cuda.dir/build.make tests/CMakeFiles/sparse-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-cuda.dir/build.make tests/CMakeFiles/sparse-test-cuda.dir/build
 .PHONY : sparse-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/sparse-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/sparse-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/sparse-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/sparse-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -1171,12 +1101,12 @@ sparse-test-opencl: tests/CMakeFiles/sparse-test-opencl.dir/rule
 
 # fast build rule for target.
 sparse-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-opencl.dir/build.make tests/CMakeFiles/sparse-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-opencl.dir/build.make tests/CMakeFiles/sparse-test-opencl.dir/build
 .PHONY : sparse-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/spmdm-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/spmdm-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/spmdm-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/spmdm-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -1185,12 +1115,12 @@ spmdm-test-cpu: tests/CMakeFiles/spmdm-test-cpu.dir/rule
 
 # fast build rule for target.
 spmdm-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-cpu.dir/build.make tests/CMakeFiles/spmdm-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-cpu.dir/build.make tests/CMakeFiles/spmdm-test-cpu.dir/build
 .PHONY : spmdm-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/spmdm-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/spmdm-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/spmdm-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/spmdm-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1199,12 +1129,12 @@ spmdm-test-cuda: tests/CMakeFiles/spmdm-test-cuda.dir/rule
 
 # fast build rule for target.
 spmdm-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-cuda.dir/build.make tests/CMakeFiles/spmdm-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-cuda.dir/build.make tests/CMakeFiles/spmdm-test-cuda.dir/build
 .PHONY : spmdm-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/spmdm-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/spmdm-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/spmdm-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/spmdm-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -1213,12 +1143,12 @@ spmdm-test-opencl: tests/CMakeFiles/spmdm-test-opencl.dir/rule
 
 # fast build rule for target.
 spmdm-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-opencl.dir/build.make tests/CMakeFiles/spmdm-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-opencl.dir/build.make tests/CMakeFiles/spmdm-test-opencl.dir/build
 .PHONY : spmdm-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/structured-matrices-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/structured-matrices-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/structured-matrices-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/structured-matrices-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -1227,12 +1157,12 @@ structured-matrices-test-opencl: tests/CMakeFiles/structured-matrices-test-openc
 
 # fast build rule for target.
 structured-matrices-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/structured-matrices-test-opencl.dir/build.make tests/CMakeFiles/structured-matrices-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/structured-matrices-test-opencl.dir/build.make tests/CMakeFiles/structured-matrices-test-opencl.dir/build
 .PHONY : structured-matrices-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/svd-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/svd-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/svd-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/svd-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -1241,12 +1171,12 @@ svd-test-opencl: tests/CMakeFiles/svd-test-opencl.dir/rule
 
 # fast build rule for target.
 svd-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/svd-test-opencl.dir/build.make tests/CMakeFiles/svd-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/svd-test-opencl.dir/build.make tests/CMakeFiles/svd-test-opencl.dir/build
 .PHONY : svd-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/vector_double-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_double-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_double-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/vector_double-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -1255,12 +1185,12 @@ vector_double-test-cpu: tests/CMakeFiles/vector_double-test-cpu.dir/rule
 
 # fast build rule for target.
 vector_double-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-cpu.dir/build.make tests/CMakeFiles/vector_double-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-cpu.dir/build.make tests/CMakeFiles/vector_double-test-cpu.dir/build
 .PHONY : vector_double-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/vector_double-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_double-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_double-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/vector_double-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1269,12 +1199,12 @@ vector_double-test-cuda: tests/CMakeFiles/vector_double-test-cuda.dir/rule
 
 # fast build rule for target.
 vector_double-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-cuda.dir/build.make tests/CMakeFiles/vector_double-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-cuda.dir/build.make tests/CMakeFiles/vector_double-test-cuda.dir/build
 .PHONY : vector_double-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/vector_double-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_double-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_double-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/vector_double-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -1283,12 +1213,12 @@ vector_double-test-opencl: tests/CMakeFiles/vector_double-test-opencl.dir/rule
 
 # fast build rule for target.
 vector_double-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-opencl.dir/build.make tests/CMakeFiles/vector_double-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-opencl.dir/build.make tests/CMakeFiles/vector_double-test-opencl.dir/build
 .PHONY : vector_double-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/vector_float-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_float-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_float-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/vector_float-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -1297,12 +1227,12 @@ vector_float-test-cpu: tests/CMakeFiles/vector_float-test-cpu.dir/rule
 
 # fast build rule for target.
 vector_float-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-cpu.dir/build.make tests/CMakeFiles/vector_float-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-cpu.dir/build.make tests/CMakeFiles/vector_float-test-cpu.dir/build
 .PHONY : vector_float-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/vector_float-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_float-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_float-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/vector_float-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1311,12 +1241,12 @@ vector_float-test-cuda: tests/CMakeFiles/vector_float-test-cuda.dir/rule
 
 # fast build rule for target.
 vector_float-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-cuda.dir/build.make tests/CMakeFiles/vector_float-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-cuda.dir/build.make tests/CMakeFiles/vector_float-test-cuda.dir/build
 .PHONY : vector_float-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/vector_float-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_float-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_float-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/vector_float-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -1325,12 +1255,12 @@ vector_float-test-opencl: tests/CMakeFiles/vector_float-test-opencl.dir/rule
 
 # fast build rule for target.
 vector_float-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-opencl.dir/build.make tests/CMakeFiles/vector_float-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-opencl.dir/build.make tests/CMakeFiles/vector_float-test-opencl.dir/build
 .PHONY : vector_float-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/vector_int-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_int-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_int-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/vector_int-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -1339,12 +1269,12 @@ vector_int-test-cpu: tests/CMakeFiles/vector_int-test-cpu.dir/rule
 
 # fast build rule for target.
 vector_int-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-cpu.dir/build.make tests/CMakeFiles/vector_int-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-cpu.dir/build.make tests/CMakeFiles/vector_int-test-cpu.dir/build
 .PHONY : vector_int-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/vector_int-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_int-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_int-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/vector_int-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1353,12 +1283,12 @@ vector_int-test-cuda: tests/CMakeFiles/vector_int-test-cuda.dir/rule
 
 # fast build rule for target.
 vector_int-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-cuda.dir/build.make tests/CMakeFiles/vector_int-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-cuda.dir/build.make tests/CMakeFiles/vector_int-test-cuda.dir/build
 .PHONY : vector_int-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/vector_int-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_int-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_int-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/vector_int-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -1367,12 +1297,12 @@ vector_int-test-opencl: tests/CMakeFiles/vector_int-test-opencl.dir/rule
 
 # fast build rule for target.
 vector_int-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-opencl.dir/build.make tests/CMakeFiles/vector_int-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-opencl.dir/build.make tests/CMakeFiles/vector_int-test-opencl.dir/build
 .PHONY : vector_int-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -1381,12 +1311,12 @@ vector_multi_inner_prod-test-cpu: tests/CMakeFiles/vector_multi_inner_prod-test-
 
 # fast build rule for target.
 vector_multi_inner_prod-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/build
 .PHONY : vector_multi_inner_prod-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1395,12 +1325,12 @@ vector_multi_inner_prod-test-cuda: tests/CMakeFiles/vector_multi_inner_prod-test
 
 # fast build rule for target.
 vector_multi_inner_prod-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cuda.dir/build
 .PHONY : vector_multi_inner_prod-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -1409,12 +1339,12 @@ vector_multi_inner_prod-test-opencl: tests/CMakeFiles/vector_multi_inner_prod-te
 
 # fast build rule for target.
 vector_multi_inner_prod-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/build
 .PHONY : vector_multi_inner_prod-test-opencl/fast
 
 # Convenience name for target.
 tests/CMakeFiles/vector_uint-test-cpu.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_uint-test-cpu.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_uint-test-cpu.dir/rule
 .PHONY : tests/CMakeFiles/vector_uint-test-cpu.dir/rule
 
 # Convenience name for target.
@@ -1423,12 +1353,12 @@ vector_uint-test-cpu: tests/CMakeFiles/vector_uint-test-cpu.dir/rule
 
 # fast build rule for target.
 vector_uint-test-cpu/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-cpu.dir/build.make tests/CMakeFiles/vector_uint-test-cpu.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-cpu.dir/build.make tests/CMakeFiles/vector_uint-test-cpu.dir/build
 .PHONY : vector_uint-test-cpu/fast
 
 # Convenience name for target.
 tests/CMakeFiles/vector_uint-test-cuda.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_uint-test-cuda.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_uint-test-cuda.dir/rule
 .PHONY : tests/CMakeFiles/vector_uint-test-cuda.dir/rule
 
 # Convenience name for target.
@@ -1437,12 +1367,12 @@ vector_uint-test-cuda: tests/CMakeFiles/vector_uint-test-cuda.dir/rule
 
 # fast build rule for target.
 vector_uint-test-cuda/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-cuda.dir/build.make tests/CMakeFiles/vector_uint-test-cuda.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-cuda.dir/build.make tests/CMakeFiles/vector_uint-test-cuda.dir/build
 .PHONY : vector_uint-test-cuda/fast
 
 # Convenience name for target.
 tests/CMakeFiles/vector_uint-test-opencl.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_uint-test-opencl.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/vector_uint-test-opencl.dir/rule
 .PHONY : tests/CMakeFiles/vector_uint-test-opencl.dir/rule
 
 # Convenience name for target.
@@ -1451,97 +1381,40 @@ vector_uint-test-opencl: tests/CMakeFiles/vector_uint-test-opencl.dir/rule
 
 # fast build rule for target.
 vector_uint-test-opencl/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-opencl.dir/build.make tests/CMakeFiles/vector_uint-test-opencl.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-opencl.dir/build.make tests/CMakeFiles/vector_uint-test-opencl.dir/build
 .PHONY : vector_uint-test-opencl/fast
 
-src/a_bidiag_pack.o: src/a_bidiag_pack.cpp.o
-.PHONY : src/a_bidiag_pack.o
+src/bidiag_test.o: src/bidiag_test.cpp.o
+.PHONY : src/bidiag_test.o
 
 # target to build an object file
-src/a_bidiag_pack.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_bidiag_pack-test-cpu.dir/build.make tests/CMakeFiles/a_bidiag_pack-test-cpu.dir/src/a_bidiag_pack.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_bidiag_pack-test-opencl.dir/build.make tests/CMakeFiles/a_bidiag_pack-test-opencl.dir/src/a_bidiag_pack.cpp.o
-.PHONY : src/a_bidiag_pack.cpp.o
+src/bidiag_test.cpp.o:
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/bidiag_test-test-cpu.dir/build.make tests/CMakeFiles/bidiag_test-test-cpu.dir/src/bidiag_test.cpp.o
+.PHONY : src/bidiag_test.cpp.o
 
-src/a_bidiag_pack.i: src/a_bidiag_pack.cpp.i
-.PHONY : src/a_bidiag_pack.i
-
-# target to preprocess a source file
-src/a_bidiag_pack.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_bidiag_pack-test-cpu.dir/build.make tests/CMakeFiles/a_bidiag_pack-test-cpu.dir/src/a_bidiag_pack.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_bidiag_pack-test-opencl.dir/build.make tests/CMakeFiles/a_bidiag_pack-test-opencl.dir/src/a_bidiag_pack.cpp.i
-.PHONY : src/a_bidiag_pack.cpp.i
-
-src/a_bidiag_pack.s: src/a_bidiag_pack.cpp.s
-.PHONY : src/a_bidiag_pack.s
-
-# target to generate assembly for a file
-src/a_bidiag_pack.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_bidiag_pack-test-cpu.dir/build.make tests/CMakeFiles/a_bidiag_pack-test-cpu.dir/src/a_bidiag_pack.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_bidiag_pack-test-opencl.dir/build.make tests/CMakeFiles/a_bidiag_pack-test-opencl.dir/src/a_bidiag_pack.cpp.s
-.PHONY : src/a_bidiag_pack.cpp.s
-
-src/a_house_update_A_left.o: src/a_house_update_A_left.cpp.o
-.PHONY : src/a_house_update_A_left.o
-
-# target to build an object file
-src/a_house_update_A_left.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_house_update_A_left-test-cpu.dir/build.make tests/CMakeFiles/a_house_update_A_left-test-cpu.dir/src/a_house_update_A_left.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_house_update_A_left-test-opencl.dir/build.make tests/CMakeFiles/a_house_update_A_left-test-opencl.dir/src/a_house_update_A_left.cpp.o
-.PHONY : src/a_house_update_A_left.cpp.o
-
-src/a_house_update_A_left.i: src/a_house_update_A_left.cpp.i
-.PHONY : src/a_house_update_A_left.i
+src/bidiag_test.i: src/bidiag_test.cpp.i
+.PHONY : src/bidiag_test.i
 
 # target to preprocess a source file
-src/a_house_update_A_left.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_house_update_A_left-test-cpu.dir/build.make tests/CMakeFiles/a_house_update_A_left-test-cpu.dir/src/a_house_update_A_left.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_house_update_A_left-test-opencl.dir/build.make tests/CMakeFiles/a_house_update_A_left-test-opencl.dir/src/a_house_update_A_left.cpp.i
-.PHONY : src/a_house_update_A_left.cpp.i
+src/bidiag_test.cpp.i:
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/bidiag_test-test-cpu.dir/build.make tests/CMakeFiles/bidiag_test-test-cpu.dir/src/bidiag_test.cpp.i
+.PHONY : src/bidiag_test.cpp.i
 
-src/a_house_update_A_left.s: src/a_house_update_A_left.cpp.s
-.PHONY : src/a_house_update_A_left.s
-
-# target to generate assembly for a file
-src/a_house_update_A_left.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_house_update_A_left-test-cpu.dir/build.make tests/CMakeFiles/a_house_update_A_left-test-cpu.dir/src/a_house_update_A_left.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_house_update_A_left-test-opencl.dir/build.make tests/CMakeFiles/a_house_update_A_left-test-opencl.dir/src/a_house_update_A_left.cpp.s
-.PHONY : src/a_house_update_A_left.cpp.s
-
-src/a_qr_method_test.o: src/a_qr_method_test.cpp.o
-.PHONY : src/a_qr_method_test.o
-
-# target to build an object file
-src/a_qr_method_test.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_qr_method_test-test-cpu.dir/build.make tests/CMakeFiles/a_qr_method_test-test-cpu.dir/src/a_qr_method_test.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_qr_method_test-test-opencl.dir/build.make tests/CMakeFiles/a_qr_method_test-test-opencl.dir/src/a_qr_method_test.cpp.o
-.PHONY : src/a_qr_method_test.cpp.o
-
-src/a_qr_method_test.i: src/a_qr_method_test.cpp.i
-.PHONY : src/a_qr_method_test.i
-
-# target to preprocess a source file
-src/a_qr_method_test.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_qr_method_test-test-cpu.dir/build.make tests/CMakeFiles/a_qr_method_test-test-cpu.dir/src/a_qr_method_test.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_qr_method_test-test-opencl.dir/build.make tests/CMakeFiles/a_qr_method_test-test-opencl.dir/src/a_qr_method_test.cpp.i
-.PHONY : src/a_qr_method_test.cpp.i
-
-src/a_qr_method_test.s: src/a_qr_method_test.cpp.s
-.PHONY : src/a_qr_method_test.s
+src/bidiag_test.s: src/bidiag_test.cpp.s
+.PHONY : src/bidiag_test.s
 
 # target to generate assembly for a file
-src/a_qr_method_test.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_qr_method_test-test-cpu.dir/build.make tests/CMakeFiles/a_qr_method_test-test-cpu.dir/src/a_qr_method_test.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/a_qr_method_test-test-opencl.dir/build.make tests/CMakeFiles/a_qr_method_test-test-opencl.dir/src/a_qr_method_test.cpp.s
-.PHONY : src/a_qr_method_test.cpp.s
+src/bidiag_test.cpp.s:
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/bidiag_test-test-cpu.dir/build.make tests/CMakeFiles/bidiag_test-test-cpu.dir/src/bidiag_test.cpp.s
+.PHONY : src/bidiag_test.cpp.s
 
 src/blas3_prod_double.o: src/blas3_prod_double.cpp.o
 .PHONY : src/blas3_prod_double.o
 
 # target to build an object file
 src/blas3_prod_double.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cpu.dir/src/blas3_prod_double.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_double-test-opencl.dir/src/blas3_prod_double.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cpu.dir/src/blas3_prod_double.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_double-test-opencl.dir/src/blas3_prod_double.cpp.o
 .PHONY : src/blas3_prod_double.cpp.o
 
 src/blas3_prod_double.i: src/blas3_prod_double.cpp.i
@@ -1549,8 +1422,8 @@ src/blas3_prod_double.i: src/blas3_prod_double.cpp.i
 
 # target to preprocess a source file
 src/blas3_prod_double.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cpu.dir/src/blas3_prod_double.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_double-test-opencl.dir/src/blas3_prod_double.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cpu.dir/src/blas3_prod_double.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_double-test-opencl.dir/src/blas3_prod_double.cpp.i
 .PHONY : src/blas3_prod_double.cpp.i
 
 src/blas3_prod_double.s: src/blas3_prod_double.cpp.s
@@ -1558,8 +1431,8 @@ src/blas3_prod_double.s: src/blas3_prod_double.cpp.s
 
 # target to generate assembly for a file
 src/blas3_prod_double.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cpu.dir/src/blas3_prod_double.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_double-test-opencl.dir/src/blas3_prod_double.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_double-test-cpu.dir/src/blas3_prod_double.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_double-test-opencl.dir/src/blas3_prod_double.cpp.s
 .PHONY : src/blas3_prod_double.cpp.s
 
 src/blas3_prod_float.o: src/blas3_prod_float.cpp.o
@@ -1567,8 +1440,8 @@ src/blas3_prod_float.o: src/blas3_prod_float.cpp.o
 
 # target to build an object file
 src/blas3_prod_float.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cpu.dir/src/blas3_prod_float.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_float-test-opencl.dir/src/blas3_prod_float.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cpu.dir/src/blas3_prod_float.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_float-test-opencl.dir/src/blas3_prod_float.cpp.o
 .PHONY : src/blas3_prod_float.cpp.o
 
 src/blas3_prod_float.i: src/blas3_prod_float.cpp.i
@@ -1576,8 +1449,8 @@ src/blas3_prod_float.i: src/blas3_prod_float.cpp.i
 
 # target to preprocess a source file
 src/blas3_prod_float.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cpu.dir/src/blas3_prod_float.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_float-test-opencl.dir/src/blas3_prod_float.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cpu.dir/src/blas3_prod_float.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_float-test-opencl.dir/src/blas3_prod_float.cpp.i
 .PHONY : src/blas3_prod_float.cpp.i
 
 src/blas3_prod_float.s: src/blas3_prod_float.cpp.s
@@ -1585,8 +1458,8 @@ src/blas3_prod_float.s: src/blas3_prod_float.cpp.s
 
 # target to generate assembly for a file
 src/blas3_prod_float.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cpu.dir/src/blas3_prod_float.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_float-test-opencl.dir/src/blas3_prod_float.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_prod_float-test-cpu.dir/src/blas3_prod_float.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_prod_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_prod_float-test-opencl.dir/src/blas3_prod_float.cpp.s
 .PHONY : src/blas3_prod_float.cpp.s
 
 src/blas3_solve_double.o: src/blas3_solve_double.cpp.o
@@ -1594,8 +1467,8 @@ src/blas3_solve_double.o: src/blas3_solve_double.cpp.o
 
 # target to build an object file
 src/blas3_solve_double.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cpu.dir/src/blas3_solve_double.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_double-test-opencl.dir/src/blas3_solve_double.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cpu.dir/src/blas3_solve_double.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_double-test-opencl.dir/src/blas3_solve_double.cpp.o
 .PHONY : src/blas3_solve_double.cpp.o
 
 src/blas3_solve_double.i: src/blas3_solve_double.cpp.i
@@ -1603,8 +1476,8 @@ src/blas3_solve_double.i: src/blas3_solve_double.cpp.i
 
 # target to preprocess a source file
 src/blas3_solve_double.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cpu.dir/src/blas3_solve_double.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_double-test-opencl.dir/src/blas3_solve_double.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cpu.dir/src/blas3_solve_double.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_double-test-opencl.dir/src/blas3_solve_double.cpp.i
 .PHONY : src/blas3_solve_double.cpp.i
 
 src/blas3_solve_double.s: src/blas3_solve_double.cpp.s
@@ -1612,8 +1485,8 @@ src/blas3_solve_double.s: src/blas3_solve_double.cpp.s
 
 # target to generate assembly for a file
 src/blas3_solve_double.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cpu.dir/src/blas3_solve_double.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_double-test-opencl.dir/src/blas3_solve_double.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_double-test-cpu.dir/src/blas3_solve_double.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_double-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_double-test-opencl.dir/src/blas3_solve_double.cpp.s
 .PHONY : src/blas3_solve_double.cpp.s
 
 src/blas3_solve_float.o: src/blas3_solve_float.cpp.o
@@ -1621,8 +1494,8 @@ src/blas3_solve_float.o: src/blas3_solve_float.cpp.o
 
 # target to build an object file
 src/blas3_solve_float.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cpu.dir/src/blas3_solve_float.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_float-test-opencl.dir/src/blas3_solve_float.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cpu.dir/src/blas3_solve_float.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_float-test-opencl.dir/src/blas3_solve_float.cpp.o
 .PHONY : src/blas3_solve_float.cpp.o
 
 src/blas3_solve_float.i: src/blas3_solve_float.cpp.i
@@ -1630,8 +1503,8 @@ src/blas3_solve_float.i: src/blas3_solve_float.cpp.i
 
 # target to preprocess a source file
 src/blas3_solve_float.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cpu.dir/src/blas3_solve_float.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_float-test-opencl.dir/src/blas3_solve_float.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cpu.dir/src/blas3_solve_float.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_float-test-opencl.dir/src/blas3_solve_float.cpp.i
 .PHONY : src/blas3_solve_float.cpp.i
 
 src/blas3_solve_float.s: src/blas3_solve_float.cpp.s
@@ -1639,8 +1512,8 @@ src/blas3_solve_float.s: src/blas3_solve_float.cpp.s
 
 # target to generate assembly for a file
 src/blas3_solve_float.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cpu.dir/src/blas3_solve_float.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_float-test-opencl.dir/src/blas3_solve_float.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-cpu.dir/build.make tests/CMakeFiles/blas3_solve_float-test-cpu.dir/src/blas3_solve_float.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/blas3_solve_float-test-opencl.dir/build.make tests/CMakeFiles/blas3_solve_float-test-opencl.dir/src/blas3_solve_float.cpp.s
 .PHONY : src/blas3_solve_float.cpp.s
 
 src/external_1.o: src/external_1.cpp.o
@@ -1648,7 +1521,7 @@ src/external_1.o: src/external_1.cpp.o
 
 # target to build an object file
 src/external_1.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-opencl.dir/build.make tests/CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-opencl.dir/build.make tests/CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.o
 .PHONY : src/external_1.cpp.o
 
 src/external_1.i: src/external_1.cpp.i
@@ -1656,7 +1529,7 @@ src/external_1.i: src/external_1.cpp.i
 
 # target to preprocess a source file
 src/external_1.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-opencl.dir/build.make tests/CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-opencl.dir/build.make tests/CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.i
 .PHONY : src/external_1.cpp.i
 
 src/external_1.s: src/external_1.cpp.s
@@ -1664,7 +1537,7 @@ src/external_1.s: src/external_1.cpp.s
 
 # target to generate assembly for a file
 src/external_1.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-opencl.dir/build.make tests/CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-opencl.dir/build.make tests/CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.s
 .PHONY : src/external_1.cpp.s
 
 src/external_2.o: src/external_2.cpp.o
@@ -1672,7 +1545,7 @@ src/external_2.o: src/external_2.cpp.o
 
 # target to build an object file
 src/external_2.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-opencl.dir/build.make tests/CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-opencl.dir/build.make tests/CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.o
 .PHONY : src/external_2.cpp.o
 
 src/external_2.i: src/external_2.cpp.i
@@ -1680,7 +1553,7 @@ src/external_2.i: src/external_2.cpp.i
 
 # target to preprocess a source file
 src/external_2.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-opencl.dir/build.make tests/CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-opencl.dir/build.make tests/CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.i
 .PHONY : src/external_2.cpp.i
 
 src/external_2.s: src/external_2.cpp.s
@@ -1688,7 +1561,7 @@ src/external_2.s: src/external_2.cpp.s
 
 # target to generate assembly for a file
 src/external_2.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-opencl.dir/build.make tests/CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/external_linkage-opencl.dir/build.make tests/CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.s
 .PHONY : src/external_2.cpp.s
 
 src/fft.o: src/fft.cpp.o
@@ -1696,7 +1569,7 @@ src/fft.o: src/fft.cpp.o
 
 # target to build an object file
 src/fft.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/fft-test-opencl.dir/build.make tests/CMakeFiles/fft-test-opencl.dir/src/fft.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/fft-test-opencl.dir/build.make tests/CMakeFiles/fft-test-opencl.dir/src/fft.cpp.o
 .PHONY : src/fft.cpp.o
 
 src/fft.i: src/fft.cpp.i
@@ -1704,7 +1577,7 @@ src/fft.i: src/fft.cpp.i
 
 # target to preprocess a source file
 src/fft.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/fft-test-opencl.dir/build.make tests/CMakeFiles/fft-test-opencl.dir/src/fft.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/fft-test-opencl.dir/build.make tests/CMakeFiles/fft-test-opencl.dir/src/fft.cpp.i
 .PHONY : src/fft.cpp.i
 
 src/fft.s: src/fft.cpp.s
@@ -1712,7 +1585,7 @@ src/fft.s: src/fft.cpp.s
 
 # target to generate assembly for a file
 src/fft.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/fft-test-opencl.dir/build.make tests/CMakeFiles/fft-test-opencl.dir/src/fft.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/fft-test-opencl.dir/build.make tests/CMakeFiles/fft-test-opencl.dir/src/fft.cpp.s
 .PHONY : src/fft.cpp.s
 
 src/generator_blas1.o: src/generator_blas1.cpp.o
@@ -1720,7 +1593,7 @@ src/generator_blas1.o: src/generator_blas1.cpp.o
 
 # target to build an object file
 src/generator_blas1.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas1-test-opencl.dir/build.make tests/CMakeFiles/generator_blas1-test-opencl.dir/src/generator_blas1.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas1-test-opencl.dir/build.make tests/CMakeFiles/generator_blas1-test-opencl.dir/src/generator_blas1.cpp.o
 .PHONY : src/generator_blas1.cpp.o
 
 src/generator_blas1.i: src/generator_blas1.cpp.i
@@ -1728,7 +1601,7 @@ src/generator_blas1.i: src/generator_blas1.cpp.i
 
 # target to preprocess a source file
 src/generator_blas1.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas1-test-opencl.dir/build.make tests/CMakeFiles/generator_blas1-test-opencl.dir/src/generator_blas1.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas1-test-opencl.dir/build.make tests/CMakeFiles/generator_blas1-test-opencl.dir/src/generator_blas1.cpp.i
 .PHONY : src/generator_blas1.cpp.i
 
 src/generator_blas1.s: src/generator_blas1.cpp.s
@@ -1736,7 +1609,7 @@ src/generator_blas1.s: src/generator_blas1.cpp.s
 
 # target to generate assembly for a file
 src/generator_blas1.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas1-test-opencl.dir/build.make tests/CMakeFiles/generator_blas1-test-opencl.dir/src/generator_blas1.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas1-test-opencl.dir/build.make tests/CMakeFiles/generator_blas1-test-opencl.dir/src/generator_blas1.cpp.s
 .PHONY : src/generator_blas1.cpp.s
 
 src/generator_blas2.o: src/generator_blas2.cpp.o
@@ -1744,7 +1617,7 @@ src/generator_blas2.o: src/generator_blas2.cpp.o
 
 # target to build an object file
 src/generator_blas2.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas2-test-opencl.dir/build.make tests/CMakeFiles/generator_blas2-test-opencl.dir/src/generator_blas2.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas2-test-opencl.dir/build.make tests/CMakeFiles/generator_blas2-test-opencl.dir/src/generator_blas2.cpp.o
 .PHONY : src/generator_blas2.cpp.o
 
 src/generator_blas2.i: src/generator_blas2.cpp.i
@@ -1752,7 +1625,7 @@ src/generator_blas2.i: src/generator_blas2.cpp.i
 
 # target to preprocess a source file
 src/generator_blas2.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas2-test-opencl.dir/build.make tests/CMakeFiles/generator_blas2-test-opencl.dir/src/generator_blas2.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas2-test-opencl.dir/build.make tests/CMakeFiles/generator_blas2-test-opencl.dir/src/generator_blas2.cpp.i
 .PHONY : src/generator_blas2.cpp.i
 
 src/generator_blas2.s: src/generator_blas2.cpp.s
@@ -1760,7 +1633,7 @@ src/generator_blas2.s: src/generator_blas2.cpp.s
 
 # target to generate assembly for a file
 src/generator_blas2.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas2-test-opencl.dir/build.make tests/CMakeFiles/generator_blas2-test-opencl.dir/src/generator_blas2.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas2-test-opencl.dir/build.make tests/CMakeFiles/generator_blas2-test-opencl.dir/src/generator_blas2.cpp.s
 .PHONY : src/generator_blas2.cpp.s
 
 src/generator_blas3.o: src/generator_blas3.cpp.o
@@ -1768,7 +1641,7 @@ src/generator_blas3.o: src/generator_blas3.cpp.o
 
 # target to build an object file
 src/generator_blas3.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas3-test-opencl.dir/build.make tests/CMakeFiles/generator_blas3-test-opencl.dir/src/generator_blas3.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas3-test-opencl.dir/build.make tests/CMakeFiles/generator_blas3-test-opencl.dir/src/generator_blas3.cpp.o
 .PHONY : src/generator_blas3.cpp.o
 
 src/generator_blas3.i: src/generator_blas3.cpp.i
@@ -1776,7 +1649,7 @@ src/generator_blas3.i: src/generator_blas3.cpp.i
 
 # target to preprocess a source file
 src/generator_blas3.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas3-test-opencl.dir/build.make tests/CMakeFiles/generator_blas3-test-opencl.dir/src/generator_blas3.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas3-test-opencl.dir/build.make tests/CMakeFiles/generator_blas3-test-opencl.dir/src/generator_blas3.cpp.i
 .PHONY : src/generator_blas3.cpp.i
 
 src/generator_blas3.s: src/generator_blas3.cpp.s
@@ -1784,7 +1657,7 @@ src/generator_blas3.s: src/generator_blas3.cpp.s
 
 # target to generate assembly for a file
 src/generator_blas3.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas3-test-opencl.dir/build.make tests/CMakeFiles/generator_blas3-test-opencl.dir/src/generator_blas3.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/generator_blas3-test-opencl.dir/build.make tests/CMakeFiles/generator_blas3-test-opencl.dir/src/generator_blas3.cpp.s
 .PHONY : src/generator_blas3.cpp.s
 
 src/global_variables.o: src/global_variables.cpp.o
@@ -1792,8 +1665,8 @@ src/global_variables.o: src/global_variables.cpp.o
 
 # target to build an object file
 src/global_variables.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-cpu.dir/build.make tests/CMakeFiles/global_variables-test-cpu.dir/src/global_variables.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-opencl.dir/build.make tests/CMakeFiles/global_variables-test-opencl.dir/src/global_variables.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-cpu.dir/build.make tests/CMakeFiles/global_variables-test-cpu.dir/src/global_variables.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-opencl.dir/build.make tests/CMakeFiles/global_variables-test-opencl.dir/src/global_variables.cpp.o
 .PHONY : src/global_variables.cpp.o
 
 src/global_variables.i: src/global_variables.cpp.i
@@ -1801,8 +1674,8 @@ src/global_variables.i: src/global_variables.cpp.i
 
 # target to preprocess a source file
 src/global_variables.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-cpu.dir/build.make tests/CMakeFiles/global_variables-test-cpu.dir/src/global_variables.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-opencl.dir/build.make tests/CMakeFiles/global_variables-test-opencl.dir/src/global_variables.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-cpu.dir/build.make tests/CMakeFiles/global_variables-test-cpu.dir/src/global_variables.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-opencl.dir/build.make tests/CMakeFiles/global_variables-test-opencl.dir/src/global_variables.cpp.i
 .PHONY : src/global_variables.cpp.i
 
 src/global_variables.s: src/global_variables.cpp.s
@@ -1810,8 +1683,8 @@ src/global_variables.s: src/global_variables.cpp.s
 
 # target to generate assembly for a file
 src/global_variables.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-cpu.dir/build.make tests/CMakeFiles/global_variables-test-cpu.dir/src/global_variables.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-opencl.dir/build.make tests/CMakeFiles/global_variables-test-opencl.dir/src/global_variables.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-cpu.dir/build.make tests/CMakeFiles/global_variables-test-cpu.dir/src/global_variables.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/global_variables-test-opencl.dir/build.make tests/CMakeFiles/global_variables-test-opencl.dir/src/global_variables.cpp.s
 .PHONY : src/global_variables.cpp.s
 
 src/iterators.o: src/iterators.cpp.o
@@ -1819,8 +1692,8 @@ src/iterators.o: src/iterators.cpp.o
 
 # target to build an object file
 src/iterators.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-cpu.dir/build.make tests/CMakeFiles/iterators-test-cpu.dir/src/iterators.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-opencl.dir/build.make tests/CMakeFiles/iterators-test-opencl.dir/src/iterators.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-cpu.dir/build.make tests/CMakeFiles/iterators-test-cpu.dir/src/iterators.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-opencl.dir/build.make tests/CMakeFiles/iterators-test-opencl.dir/src/iterators.cpp.o
 .PHONY : src/iterators.cpp.o
 
 src/iterators.i: src/iterators.cpp.i
@@ -1828,8 +1701,8 @@ src/iterators.i: src/iterators.cpp.i
 
 # target to preprocess a source file
 src/iterators.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-cpu.dir/build.make tests/CMakeFiles/iterators-test-cpu.dir/src/iterators.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-opencl.dir/build.make tests/CMakeFiles/iterators-test-opencl.dir/src/iterators.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-cpu.dir/build.make tests/CMakeFiles/iterators-test-cpu.dir/src/iterators.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-opencl.dir/build.make tests/CMakeFiles/iterators-test-opencl.dir/src/iterators.cpp.i
 .PHONY : src/iterators.cpp.i
 
 src/iterators.s: src/iterators.cpp.s
@@ -1837,8 +1710,8 @@ src/iterators.s: src/iterators.cpp.s
 
 # target to generate assembly for a file
 src/iterators.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-cpu.dir/build.make tests/CMakeFiles/iterators-test-cpu.dir/src/iterators.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-opencl.dir/build.make tests/CMakeFiles/iterators-test-opencl.dir/src/iterators.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-cpu.dir/build.make tests/CMakeFiles/iterators-test-cpu.dir/src/iterators.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/iterators-test-opencl.dir/build.make tests/CMakeFiles/iterators-test-opencl.dir/src/iterators.cpp.s
 .PHONY : src/iterators.cpp.s
 
 src/matrix_col_double.o: src/matrix_col_double.cpp.o
@@ -1846,8 +1719,8 @@ src/matrix_col_double.o: src/matrix_col_double.cpp.o
 
 # target to build an object file
 src/matrix_col_double.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_double-test-cpu.dir/src/matrix_col_double.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_double-test-opencl.dir/src/matrix_col_double.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_double-test-cpu.dir/src/matrix_col_double.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_double-test-opencl.dir/src/matrix_col_double.cpp.o
 .PHONY : src/matrix_col_double.cpp.o
 
 src/matrix_col_double.i: src/matrix_col_double.cpp.i
@@ -1855,8 +1728,8 @@ src/matrix_col_double.i: src/matrix_col_double.cpp.i
 
 # target to preprocess a source file
 src/matrix_col_double.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_double-test-cpu.dir/src/matrix_col_double.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_double-test-opencl.dir/src/matrix_col_double.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_double-test-cpu.dir/src/matrix_col_double.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_double-test-opencl.dir/src/matrix_col_double.cpp.i
 .PHONY : src/matrix_col_double.cpp.i
 
 src/matrix_col_double.s: src/matrix_col_double.cpp.s
@@ -1864,8 +1737,8 @@ src/matrix_col_double.s: src/matrix_col_double.cpp.s
 
 # target to generate assembly for a file
 src/matrix_col_double.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_double-test-cpu.dir/src/matrix_col_double.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_double-test-opencl.dir/src/matrix_col_double.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_double-test-cpu.dir/src/matrix_col_double.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_double-test-opencl.dir/src/matrix_col_double.cpp.s
 .PHONY : src/matrix_col_double.cpp.s
 
 src/matrix_col_float.o: src/matrix_col_float.cpp.o
@@ -1873,8 +1746,8 @@ src/matrix_col_float.o: src/matrix_col_float.cpp.o
 
 # target to build an object file
 src/matrix_col_float.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_float-test-cpu.dir/src/matrix_col_float.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_float-test-opencl.dir/src/matrix_col_float.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_float-test-cpu.dir/src/matrix_col_float.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_float-test-opencl.dir/src/matrix_col_float.cpp.o
 .PHONY : src/matrix_col_float.cpp.o
 
 src/matrix_col_float.i: src/matrix_col_float.cpp.i
@@ -1882,8 +1755,8 @@ src/matrix_col_float.i: src/matrix_col_float.cpp.i
 
 # target to preprocess a source file
 src/matrix_col_float.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_float-test-cpu.dir/src/matrix_col_float.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_float-test-opencl.dir/src/matrix_col_float.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_float-test-cpu.dir/src/matrix_col_float.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_float-test-opencl.dir/src/matrix_col_float.cpp.i
 .PHONY : src/matrix_col_float.cpp.i
 
 src/matrix_col_float.s: src/matrix_col_float.cpp.s
@@ -1891,8 +1764,8 @@ src/matrix_col_float.s: src/matrix_col_float.cpp.s
 
 # target to generate assembly for a file
 src/matrix_col_float.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_float-test-cpu.dir/src/matrix_col_float.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_float-test-opencl.dir/src/matrix_col_float.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_float-test-cpu.dir/src/matrix_col_float.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_float-test-opencl.dir/src/matrix_col_float.cpp.s
 .PHONY : src/matrix_col_float.cpp.s
 
 src/matrix_col_int.o: src/matrix_col_int.cpp.o
@@ -1900,8 +1773,8 @@ src/matrix_col_int.o: src/matrix_col_int.cpp.o
 
 # target to build an object file
 src/matrix_col_int.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_int-test-cpu.dir/src/matrix_col_int.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_int-test-opencl.dir/src/matrix_col_int.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_int-test-cpu.dir/src/matrix_col_int.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_int-test-opencl.dir/src/matrix_col_int.cpp.o
 .PHONY : src/matrix_col_int.cpp.o
 
 src/matrix_col_int.i: src/matrix_col_int.cpp.i
@@ -1909,8 +1782,8 @@ src/matrix_col_int.i: src/matrix_col_int.cpp.i
 
 # target to preprocess a source file
 src/matrix_col_int.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_int-test-cpu.dir/src/matrix_col_int.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_int-test-opencl.dir/src/matrix_col_int.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_int-test-cpu.dir/src/matrix_col_int.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_int-test-opencl.dir/src/matrix_col_int.cpp.i
 .PHONY : src/matrix_col_int.cpp.i
 
 src/matrix_col_int.s: src/matrix_col_int.cpp.s
@@ -1918,8 +1791,8 @@ src/matrix_col_int.s: src/matrix_col_int.cpp.s
 
 # target to generate assembly for a file
 src/matrix_col_int.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_int-test-cpu.dir/src/matrix_col_int.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_int-test-opencl.dir/src/matrix_col_int.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_col_int-test-cpu.dir/src/matrix_col_int.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_col_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_col_int-test-opencl.dir/src/matrix_col_int.cpp.s
 .PHONY : src/matrix_col_int.cpp.s
 
 src/matrix_row_double.o: src/matrix_row_double.cpp.o
@@ -1927,8 +1800,8 @@ src/matrix_row_double.o: src/matrix_row_double.cpp.o
 
 # target to build an object file
 src/matrix_row_double.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_double-test-cpu.dir/src/matrix_row_double.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_double-test-opencl.dir/src/matrix_row_double.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_double-test-cpu.dir/src/matrix_row_double.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_double-test-opencl.dir/src/matrix_row_double.cpp.o
 .PHONY : src/matrix_row_double.cpp.o
 
 src/matrix_row_double.i: src/matrix_row_double.cpp.i
@@ -1936,8 +1809,8 @@ src/matrix_row_double.i: src/matrix_row_double.cpp.i
 
 # target to preprocess a source file
 src/matrix_row_double.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_double-test-cpu.dir/src/matrix_row_double.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_double-test-opencl.dir/src/matrix_row_double.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_double-test-cpu.dir/src/matrix_row_double.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_double-test-opencl.dir/src/matrix_row_double.cpp.i
 .PHONY : src/matrix_row_double.cpp.i
 
 src/matrix_row_double.s: src/matrix_row_double.cpp.s
@@ -1945,8 +1818,8 @@ src/matrix_row_double.s: src/matrix_row_double.cpp.s
 
 # target to generate assembly for a file
 src/matrix_row_double.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_double-test-cpu.dir/src/matrix_row_double.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_double-test-opencl.dir/src/matrix_row_double.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_double-test-cpu.dir/src/matrix_row_double.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_double-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_double-test-opencl.dir/src/matrix_row_double.cpp.s
 .PHONY : src/matrix_row_double.cpp.s
 
 src/matrix_row_float.o: src/matrix_row_float.cpp.o
@@ -1954,8 +1827,8 @@ src/matrix_row_float.o: src/matrix_row_float.cpp.o
 
 # target to build an object file
 src/matrix_row_float.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_float-test-cpu.dir/src/matrix_row_float.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_float-test-opencl.dir/src/matrix_row_float.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_float-test-cpu.dir/src/matrix_row_float.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_float-test-opencl.dir/src/matrix_row_float.cpp.o
 .PHONY : src/matrix_row_float.cpp.o
 
 src/matrix_row_float.i: src/matrix_row_float.cpp.i
@@ -1963,8 +1836,8 @@ src/matrix_row_float.i: src/matrix_row_float.cpp.i
 
 # target to preprocess a source file
 src/matrix_row_float.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_float-test-cpu.dir/src/matrix_row_float.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_float-test-opencl.dir/src/matrix_row_float.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_float-test-cpu.dir/src/matrix_row_float.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_float-test-opencl.dir/src/matrix_row_float.cpp.i
 .PHONY : src/matrix_row_float.cpp.i
 
 src/matrix_row_float.s: src/matrix_row_float.cpp.s
@@ -1972,8 +1845,8 @@ src/matrix_row_float.s: src/matrix_row_float.cpp.s
 
 # target to generate assembly for a file
 src/matrix_row_float.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_float-test-cpu.dir/src/matrix_row_float.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_float-test-opencl.dir/src/matrix_row_float.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_float-test-cpu.dir/src/matrix_row_float.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_float-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_float-test-opencl.dir/src/matrix_row_float.cpp.s
 .PHONY : src/matrix_row_float.cpp.s
 
 src/matrix_row_int.o: src/matrix_row_int.cpp.o
@@ -1981,8 +1854,8 @@ src/matrix_row_int.o: src/matrix_row_int.cpp.o
 
 # target to build an object file
 src/matrix_row_int.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_int-test-cpu.dir/src/matrix_row_int.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_int-test-opencl.dir/src/matrix_row_int.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_int-test-cpu.dir/src/matrix_row_int.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_int-test-opencl.dir/src/matrix_row_int.cpp.o
 .PHONY : src/matrix_row_int.cpp.o
 
 src/matrix_row_int.i: src/matrix_row_int.cpp.i
@@ -1990,8 +1863,8 @@ src/matrix_row_int.i: src/matrix_row_int.cpp.i
 
 # target to preprocess a source file
 src/matrix_row_int.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_int-test-cpu.dir/src/matrix_row_int.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_int-test-opencl.dir/src/matrix_row_int.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_int-test-cpu.dir/src/matrix_row_int.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_int-test-opencl.dir/src/matrix_row_int.cpp.i
 .PHONY : src/matrix_row_int.cpp.i
 
 src/matrix_row_int.s: src/matrix_row_int.cpp.s
@@ -1999,8 +1872,8 @@ src/matrix_row_int.s: src/matrix_row_int.cpp.s
 
 # target to generate assembly for a file
 src/matrix_row_int.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_int-test-cpu.dir/src/matrix_row_int.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_int-test-opencl.dir/src/matrix_row_int.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_row_int-test-cpu.dir/src/matrix_row_int.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_row_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_row_int-test-opencl.dir/src/matrix_row_int.cpp.s
 .PHONY : src/matrix_row_int.cpp.s
 
 src/matrix_vector.o: src/matrix_vector.cpp.o
@@ -2008,8 +1881,8 @@ src/matrix_vector.o: src/matrix_vector.cpp.o
 
 # target to build an object file
 src/matrix_vector.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector-test-cpu.dir/src/matrix_vector.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector-test-opencl.dir/src/matrix_vector.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector-test-cpu.dir/src/matrix_vector.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector-test-opencl.dir/src/matrix_vector.cpp.o
 .PHONY : src/matrix_vector.cpp.o
 
 src/matrix_vector.i: src/matrix_vector.cpp.i
@@ -2017,8 +1890,8 @@ src/matrix_vector.i: src/matrix_vector.cpp.i
 
 # target to preprocess a source file
 src/matrix_vector.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector-test-cpu.dir/src/matrix_vector.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector-test-opencl.dir/src/matrix_vector.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector-test-cpu.dir/src/matrix_vector.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector-test-opencl.dir/src/matrix_vector.cpp.i
 .PHONY : src/matrix_vector.cpp.i
 
 src/matrix_vector.s: src/matrix_vector.cpp.s
@@ -2026,8 +1899,8 @@ src/matrix_vector.s: src/matrix_vector.cpp.s
 
 # target to generate assembly for a file
 src/matrix_vector.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector-test-cpu.dir/src/matrix_vector.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector-test-opencl.dir/src/matrix_vector.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector-test-cpu.dir/src/matrix_vector.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector-test-opencl.dir/src/matrix_vector.cpp.s
 .PHONY : src/matrix_vector.cpp.s
 
 src/matrix_vector_int.o: src/matrix_vector_int.cpp.o
@@ -2035,8 +1908,8 @@ src/matrix_vector_int.o: src/matrix_vector_int.cpp.o
 
 # target to build an object file
 src/matrix_vector_int.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cpu.dir/src/matrix_vector_int.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector_int-test-opencl.dir/src/matrix_vector_int.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cpu.dir/src/matrix_vector_int.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector_int-test-opencl.dir/src/matrix_vector_int.cpp.o
 .PHONY : src/matrix_vector_int.cpp.o
 
 src/matrix_vector_int.i: src/matrix_vector_int.cpp.i
@@ -2044,8 +1917,8 @@ src/matrix_vector_int.i: src/matrix_vector_int.cpp.i
 
 # target to preprocess a source file
 src/matrix_vector_int.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cpu.dir/src/matrix_vector_int.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector_int-test-opencl.dir/src/matrix_vector_int.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cpu.dir/src/matrix_vector_int.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector_int-test-opencl.dir/src/matrix_vector_int.cpp.i
 .PHONY : src/matrix_vector_int.cpp.i
 
 src/matrix_vector_int.s: src/matrix_vector_int.cpp.s
@@ -2053,8 +1926,8 @@ src/matrix_vector_int.s: src/matrix_vector_int.cpp.s
 
 # target to generate assembly for a file
 src/matrix_vector_int.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cpu.dir/src/matrix_vector_int.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector_int-test-opencl.dir/src/matrix_vector_int.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-cpu.dir/build.make tests/CMakeFiles/matrix_vector_int-test-cpu.dir/src/matrix_vector_int.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/matrix_vector_int-test-opencl.dir/build.make tests/CMakeFiles/matrix_vector_int-test-opencl.dir/src/matrix_vector_int.cpp.s
 .PHONY : src/matrix_vector_int.cpp.s
 
 src/nmf.o: src/nmf.cpp.o
@@ -2062,7 +1935,7 @@ src/nmf.o: src/nmf.cpp.o
 
 # target to build an object file
 src/nmf.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/nmf-test-opencl.dir/build.make tests/CMakeFiles/nmf-test-opencl.dir/src/nmf.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/nmf-test-opencl.dir/build.make tests/CMakeFiles/nmf-test-opencl.dir/src/nmf.cpp.o
 .PHONY : src/nmf.cpp.o
 
 src/nmf.i: src/nmf.cpp.i
@@ -2070,7 +1943,7 @@ src/nmf.i: src/nmf.cpp.i
 
 # target to preprocess a source file
 src/nmf.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/nmf-test-opencl.dir/build.make tests/CMakeFiles/nmf-test-opencl.dir/src/nmf.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/nmf-test-opencl.dir/build.make tests/CMakeFiles/nmf-test-opencl.dir/src/nmf.cpp.i
 .PHONY : src/nmf.cpp.i
 
 src/nmf.s: src/nmf.cpp.s
@@ -2078,7 +1951,7 @@ src/nmf.s: src/nmf.cpp.s
 
 # target to generate assembly for a file
 src/nmf.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/nmf-test-opencl.dir/build.make tests/CMakeFiles/nmf-test-opencl.dir/src/nmf.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/nmf-test-opencl.dir/build.make tests/CMakeFiles/nmf-test-opencl.dir/src/nmf.cpp.s
 .PHONY : src/nmf.cpp.s
 
 src/qr_method.o: src/qr_method.cpp.o
@@ -2086,8 +1959,8 @@ src/qr_method.o: src/qr_method.cpp.o
 
 # target to build an object file
 src/qr_method.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-cpu.dir/build.make tests/CMakeFiles/qr_method-test-cpu.dir/src/qr_method.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-opencl.dir/build.make tests/CMakeFiles/qr_method-test-opencl.dir/src/qr_method.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-cpu.dir/build.make tests/CMakeFiles/qr_method-test-cpu.dir/src/qr_method.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-opencl.dir/build.make tests/CMakeFiles/qr_method-test-opencl.dir/src/qr_method.cpp.o
 .PHONY : src/qr_method.cpp.o
 
 src/qr_method.i: src/qr_method.cpp.i
@@ -2095,8 +1968,8 @@ src/qr_method.i: src/qr_method.cpp.i
 
 # target to preprocess a source file
 src/qr_method.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-cpu.dir/build.make tests/CMakeFiles/qr_method-test-cpu.dir/src/qr_method.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-opencl.dir/build.make tests/CMakeFiles/qr_method-test-opencl.dir/src/qr_method.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-cpu.dir/build.make tests/CMakeFiles/qr_method-test-cpu.dir/src/qr_method.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-opencl.dir/build.make tests/CMakeFiles/qr_method-test-opencl.dir/src/qr_method.cpp.i
 .PHONY : src/qr_method.cpp.i
 
 src/qr_method.s: src/qr_method.cpp.s
@@ -2104,8 +1977,8 @@ src/qr_method.s: src/qr_method.cpp.s
 
 # target to generate assembly for a file
 src/qr_method.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-cpu.dir/build.make tests/CMakeFiles/qr_method-test-cpu.dir/src/qr_method.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-opencl.dir/build.make tests/CMakeFiles/qr_method-test-opencl.dir/src/qr_method.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-cpu.dir/build.make tests/CMakeFiles/qr_method-test-cpu.dir/src/qr_method.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/qr_method-test-opencl.dir/build.make tests/CMakeFiles/qr_method-test-opencl.dir/src/qr_method.cpp.s
 .PHONY : src/qr_method.cpp.s
 
 src/scalar.o: src/scalar.cpp.o
@@ -2113,8 +1986,8 @@ src/scalar.o: src/scalar.cpp.o
 
 # target to build an object file
 src/scalar.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-cpu.dir/build.make tests/CMakeFiles/scalar-test-cpu.dir/src/scalar.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-opencl.dir/build.make tests/CMakeFiles/scalar-test-opencl.dir/src/scalar.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-cpu.dir/build.make tests/CMakeFiles/scalar-test-cpu.dir/src/scalar.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-opencl.dir/build.make tests/CMakeFiles/scalar-test-opencl.dir/src/scalar.cpp.o
 .PHONY : src/scalar.cpp.o
 
 src/scalar.i: src/scalar.cpp.i
@@ -2122,8 +1995,8 @@ src/scalar.i: src/scalar.cpp.i
 
 # target to preprocess a source file
 src/scalar.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-cpu.dir/build.make tests/CMakeFiles/scalar-test-cpu.dir/src/scalar.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-opencl.dir/build.make tests/CMakeFiles/scalar-test-opencl.dir/src/scalar.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-cpu.dir/build.make tests/CMakeFiles/scalar-test-cpu.dir/src/scalar.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-opencl.dir/build.make tests/CMakeFiles/scalar-test-opencl.dir/src/scalar.cpp.i
 .PHONY : src/scalar.cpp.i
 
 src/scalar.s: src/scalar.cpp.s
@@ -2131,8 +2004,8 @@ src/scalar.s: src/scalar.cpp.s
 
 # target to generate assembly for a file
 src/scalar.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-cpu.dir/build.make tests/CMakeFiles/scalar-test-cpu.dir/src/scalar.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-opencl.dir/build.make tests/CMakeFiles/scalar-test-opencl.dir/src/scalar.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-cpu.dir/build.make tests/CMakeFiles/scalar-test-cpu.dir/src/scalar.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scalar-test-opencl.dir/build.make tests/CMakeFiles/scalar-test-opencl.dir/src/scalar.cpp.s
 .PHONY : src/scalar.cpp.s
 
 src/scheduler_matrix.o: src/scheduler_matrix.cpp.o
@@ -2140,7 +2013,7 @@ src/scheduler_matrix.o: src/scheduler_matrix.cpp.o
 
 # target to build an object file
 src/scheduler_matrix.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.o
 .PHONY : src/scheduler_matrix.cpp.o
 
 src/scheduler_matrix.i: src/scheduler_matrix.cpp.i
@@ -2148,7 +2021,7 @@ src/scheduler_matrix.i: src/scheduler_matrix.cpp.i
 
 # target to preprocess a source file
 src/scheduler_matrix.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.i
 .PHONY : src/scheduler_matrix.cpp.i
 
 src/scheduler_matrix.s: src/scheduler_matrix.cpp.s
@@ -2156,7 +2029,7 @@ src/scheduler_matrix.s: src/scheduler_matrix.cpp.s
 
 # target to generate assembly for a file
 src/scheduler_matrix.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.s
 .PHONY : src/scheduler_matrix.cpp.s
 
 src/scheduler_matrix_matrix.o: src/scheduler_matrix_matrix.cpp.o
@@ -2164,7 +2037,7 @@ src/scheduler_matrix_matrix.o: src/scheduler_matrix_matrix.cpp.o
 
 # target to build an object file
 src/scheduler_matrix_matrix.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/src/scheduler_matrix_matrix.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/src/scheduler_matrix_matrix.cpp.o
 .PHONY : src/scheduler_matrix_matrix.cpp.o
 
 src/scheduler_matrix_matrix.i: src/scheduler_matrix_matrix.cpp.i
@@ -2172,7 +2045,7 @@ src/scheduler_matrix_matrix.i: src/scheduler_matrix_matrix.cpp.i
 
 # target to preprocess a source file
 src/scheduler_matrix_matrix.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/src/scheduler_matrix_matrix.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/src/scheduler_matrix_matrix.cpp.i
 .PHONY : src/scheduler_matrix_matrix.cpp.i
 
 src/scheduler_matrix_matrix.s: src/scheduler_matrix_matrix.cpp.s
@@ -2180,7 +2053,7 @@ src/scheduler_matrix_matrix.s: src/scheduler_matrix_matrix.cpp.s
 
 # target to generate assembly for a file
 src/scheduler_matrix_matrix.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/src/scheduler_matrix_matrix.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_matrix-test-cpu.dir/src/scheduler_matrix_matrix.cpp.s
 .PHONY : src/scheduler_matrix_matrix.cpp.s
 
 src/scheduler_matrix_vector.o: src/scheduler_matrix_vector.cpp.o
@@ -2188,7 +2061,7 @@ src/scheduler_matrix_vector.o: src/scheduler_matrix_vector.cpp.o
 
 # target to build an object file
 src/scheduler_matrix_vector.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/src/scheduler_matrix_vector.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/src/scheduler_matrix_vector.cpp.o
 .PHONY : src/scheduler_matrix_vector.cpp.o
 
 src/scheduler_matrix_vector.i: src/scheduler_matrix_vector.cpp.i
@@ -2196,7 +2069,7 @@ src/scheduler_matrix_vector.i: src/scheduler_matrix_vector.cpp.i
 
 # target to preprocess a source file
 src/scheduler_matrix_vector.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/src/scheduler_matrix_vector.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/src/scheduler_matrix_vector.cpp.i
 .PHONY : src/scheduler_matrix_vector.cpp.i
 
 src/scheduler_matrix_vector.s: src/scheduler_matrix_vector.cpp.s
@@ -2204,7 +2077,7 @@ src/scheduler_matrix_vector.s: src/scheduler_matrix_vector.cpp.s
 
 # target to generate assembly for a file
 src/scheduler_matrix_vector.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/src/scheduler_matrix_vector.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_matrix_vector-test-cpu.dir/src/scheduler_matrix_vector.cpp.s
 .PHONY : src/scheduler_matrix_vector.cpp.s
 
 src/scheduler_sparse.o: src/scheduler_sparse.cpp.o
@@ -2212,7 +2085,7 @@ src/scheduler_sparse.o: src/scheduler_sparse.cpp.o
 
 # target to build an object file
 src/scheduler_sparse.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_sparse-test-cpu.dir/build.make tests/CMakeFiles/scheduler_sparse-test-cpu.dir/src/scheduler_sparse.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_sparse-test-cpu.dir/build.make tests/CMakeFiles/scheduler_sparse-test-cpu.dir/src/scheduler_sparse.cpp.o
 .PHONY : src/scheduler_sparse.cpp.o
 
 src/scheduler_sparse.i: src/scheduler_sparse.cpp.i
@@ -2220,7 +2093,7 @@ src/scheduler_sparse.i: src/scheduler_sparse.cpp.i
 
 # target to preprocess a source file
 src/scheduler_sparse.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_sparse-test-cpu.dir/build.make tests/CMakeFiles/scheduler_sparse-test-cpu.dir/src/scheduler_sparse.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_sparse-test-cpu.dir/build.make tests/CMakeFiles/scheduler_sparse-test-cpu.dir/src/scheduler_sparse.cpp.i
 .PHONY : src/scheduler_sparse.cpp.i
 
 src/scheduler_sparse.s: src/scheduler_sparse.cpp.s
@@ -2228,7 +2101,7 @@ src/scheduler_sparse.s: src/scheduler_sparse.cpp.s
 
 # target to generate assembly for a file
 src/scheduler_sparse.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_sparse-test-cpu.dir/build.make tests/CMakeFiles/scheduler_sparse-test-cpu.dir/src/scheduler_sparse.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_sparse-test-cpu.dir/build.make tests/CMakeFiles/scheduler_sparse-test-cpu.dir/src/scheduler_sparse.cpp.s
 .PHONY : src/scheduler_sparse.cpp.s
 
 src/scheduler_vector.o: src/scheduler_vector.cpp.o
@@ -2236,7 +2109,7 @@ src/scheduler_vector.o: src/scheduler_vector.cpp.o
 
 # target to build an object file
 src/scheduler_vector.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_vector-test-cpu.dir/src/scheduler_vector.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_vector-test-cpu.dir/src/scheduler_vector.cpp.o
 .PHONY : src/scheduler_vector.cpp.o
 
 src/scheduler_vector.i: src/scheduler_vector.cpp.i
@@ -2244,7 +2117,7 @@ src/scheduler_vector.i: src/scheduler_vector.cpp.i
 
 # target to preprocess a source file
 src/scheduler_vector.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_vector-test-cpu.dir/src/scheduler_vector.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_vector-test-cpu.dir/src/scheduler_vector.cpp.i
 .PHONY : src/scheduler_vector.cpp.i
 
 src/scheduler_vector.s: src/scheduler_vector.cpp.s
@@ -2252,7 +2125,7 @@ src/scheduler_vector.s: src/scheduler_vector.cpp.s
 
 # target to generate assembly for a file
 src/scheduler_vector.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_vector-test-cpu.dir/src/scheduler_vector.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/scheduler_vector-test-cpu.dir/build.make tests/CMakeFiles/scheduler_vector-test-cpu.dir/src/scheduler_vector.cpp.s
 .PHONY : src/scheduler_vector.cpp.s
 
 src/sparse.o: src/sparse.cpp.o
@@ -2260,8 +2133,8 @@ src/sparse.o: src/sparse.cpp.o
 
 # target to build an object file
 src/sparse.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-cpu.dir/build.make tests/CMakeFiles/sparse-test-cpu.dir/src/sparse.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-opencl.dir/build.make tests/CMakeFiles/sparse-test-opencl.dir/src/sparse.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-cpu.dir/build.make tests/CMakeFiles/sparse-test-cpu.dir/src/sparse.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-opencl.dir/build.make tests/CMakeFiles/sparse-test-opencl.dir/src/sparse.cpp.o
 .PHONY : src/sparse.cpp.o
 
 src/sparse.i: src/sparse.cpp.i
@@ -2269,8 +2142,8 @@ src/sparse.i: src/sparse.cpp.i
 
 # target to preprocess a source file
 src/sparse.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-cpu.dir/build.make tests/CMakeFiles/sparse-test-cpu.dir/src/sparse.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-opencl.dir/build.make tests/CMakeFiles/sparse-test-opencl.dir/src/sparse.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-cpu.dir/build.make tests/CMakeFiles/sparse-test-cpu.dir/src/sparse.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-opencl.dir/build.make tests/CMakeFiles/sparse-test-opencl.dir/src/sparse.cpp.i
 .PHONY : src/sparse.cpp.i
 
 src/sparse.s: src/sparse.cpp.s
@@ -2278,8 +2151,8 @@ src/sparse.s: src/sparse.cpp.s
 
 # target to generate assembly for a file
 src/sparse.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-cpu.dir/build.make tests/CMakeFiles/sparse-test-cpu.dir/src/sparse.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-opencl.dir/build.make tests/CMakeFiles/sparse-test-opencl.dir/src/sparse.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-cpu.dir/build.make tests/CMakeFiles/sparse-test-cpu.dir/src/sparse.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/sparse-test-opencl.dir/build.make tests/CMakeFiles/sparse-test-opencl.dir/src/sparse.cpp.s
 .PHONY : src/sparse.cpp.s
 
 src/spmdm.o: src/spmdm.cpp.o
@@ -2287,8 +2160,8 @@ src/spmdm.o: src/spmdm.cpp.o
 
 # target to build an object file
 src/spmdm.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-cpu.dir/build.make tests/CMakeFiles/spmdm-test-cpu.dir/src/spmdm.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-opencl.dir/build.make tests/CMakeFiles/spmdm-test-opencl.dir/src/spmdm.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-cpu.dir/build.make tests/CMakeFiles/spmdm-test-cpu.dir/src/spmdm.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-opencl.dir/build.make tests/CMakeFiles/spmdm-test-opencl.dir/src/spmdm.cpp.o
 .PHONY : src/spmdm.cpp.o
 
 src/spmdm.i: src/spmdm.cpp.i
@@ -2296,8 +2169,8 @@ src/spmdm.i: src/spmdm.cpp.i
 
 # target to preprocess a source file
 src/spmdm.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-cpu.dir/build.make tests/CMakeFiles/spmdm-test-cpu.dir/src/spmdm.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-opencl.dir/build.make tests/CMakeFiles/spmdm-test-opencl.dir/src/spmdm.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-cpu.dir/build.make tests/CMakeFiles/spmdm-test-cpu.dir/src/spmdm.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-opencl.dir/build.make tests/CMakeFiles/spmdm-test-opencl.dir/src/spmdm.cpp.i
 .PHONY : src/spmdm.cpp.i
 
 src/spmdm.s: src/spmdm.cpp.s
@@ -2305,8 +2178,8 @@ src/spmdm.s: src/spmdm.cpp.s
 
 # target to generate assembly for a file
 src/spmdm.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-cpu.dir/build.make tests/CMakeFiles/spmdm-test-cpu.dir/src/spmdm.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-opencl.dir/build.make tests/CMakeFiles/spmdm-test-opencl.dir/src/spmdm.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-cpu.dir/build.make tests/CMakeFiles/spmdm-test-cpu.dir/src/spmdm.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/spmdm-test-opencl.dir/build.make tests/CMakeFiles/spmdm-test-opencl.dir/src/spmdm.cpp.s
 .PHONY : src/spmdm.cpp.s
 
 src/structured-matrices.o: src/structured-matrices.cpp.o
@@ -2314,7 +2187,7 @@ src/structured-matrices.o: src/structured-matrices.cpp.o
 
 # target to build an object file
 src/structured-matrices.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/structured-matrices-test-opencl.dir/build.make tests/CMakeFiles/structured-matrices-test-opencl.dir/src/structured-matrices.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/structured-matrices-test-opencl.dir/build.make tests/CMakeFiles/structured-matrices-test-opencl.dir/src/structured-matrices.cpp.o
 .PHONY : src/structured-matrices.cpp.o
 
 src/structured-matrices.i: src/structured-matrices.cpp.i
@@ -2322,7 +2195,7 @@ src/structured-matrices.i: src/structured-matrices.cpp.i
 
 # target to preprocess a source file
 src/structured-matrices.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/structured-matrices-test-opencl.dir/build.make tests/CMakeFiles/structured-matrices-test-opencl.dir/src/structured-matrices.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/structured-matrices-test-opencl.dir/build.make tests/CMakeFiles/structured-matrices-test-opencl.dir/src/structured-matrices.cpp.i
 .PHONY : src/structured-matrices.cpp.i
 
 src/structured-matrices.s: src/structured-matrices.cpp.s
@@ -2330,7 +2203,7 @@ src/structured-matrices.s: src/structured-matrices.cpp.s
 
 # target to generate assembly for a file
 src/structured-matrices.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/structured-matrices-test-opencl.dir/build.make tests/CMakeFiles/structured-matrices-test-opencl.dir/src/structured-matrices.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/structured-matrices-test-opencl.dir/build.make tests/CMakeFiles/structured-matrices-test-opencl.dir/src/structured-matrices.cpp.s
 .PHONY : src/structured-matrices.cpp.s
 
 src/svd.o: src/svd.cpp.o
@@ -2338,7 +2211,7 @@ src/svd.o: src/svd.cpp.o
 
 # target to build an object file
 src/svd.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/svd-test-opencl.dir/build.make tests/CMakeFiles/svd-test-opencl.dir/src/svd.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/svd-test-opencl.dir/build.make tests/CMakeFiles/svd-test-opencl.dir/src/svd.cpp.o
 .PHONY : src/svd.cpp.o
 
 src/svd.i: src/svd.cpp.i
@@ -2346,7 +2219,7 @@ src/svd.i: src/svd.cpp.i
 
 # target to preprocess a source file
 src/svd.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/svd-test-opencl.dir/build.make tests/CMakeFiles/svd-test-opencl.dir/src/svd.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/svd-test-opencl.dir/build.make tests/CMakeFiles/svd-test-opencl.dir/src/svd.cpp.i
 .PHONY : src/svd.cpp.i
 
 src/svd.s: src/svd.cpp.s
@@ -2354,7 +2227,7 @@ src/svd.s: src/svd.cpp.s
 
 # target to generate assembly for a file
 src/svd.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/svd-test-opencl.dir/build.make tests/CMakeFiles/svd-test-opencl.dir/src/svd.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/svd-test-opencl.dir/build.make tests/CMakeFiles/svd-test-opencl.dir/src/svd.cpp.s
 .PHONY : src/svd.cpp.s
 
 src/vector_double.o: src/vector_double.cpp.o
@@ -2362,8 +2235,8 @@ src/vector_double.o: src/vector_double.cpp.o
 
 # target to build an object file
 src/vector_double.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-cpu.dir/build.make tests/CMakeFiles/vector_double-test-cpu.dir/src/vector_double.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-opencl.dir/build.make tests/CMakeFiles/vector_double-test-opencl.dir/src/vector_double.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-cpu.dir/build.make tests/CMakeFiles/vector_double-test-cpu.dir/src/vector_double.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-opencl.dir/build.make tests/CMakeFiles/vector_double-test-opencl.dir/src/vector_double.cpp.o
 .PHONY : src/vector_double.cpp.o
 
 src/vector_double.i: src/vector_double.cpp.i
@@ -2371,8 +2244,8 @@ src/vector_double.i: src/vector_double.cpp.i
 
 # target to preprocess a source file
 src/vector_double.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-cpu.dir/build.make tests/CMakeFiles/vector_double-test-cpu.dir/src/vector_double.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-opencl.dir/build.make tests/CMakeFiles/vector_double-test-opencl.dir/src/vector_double.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-cpu.dir/build.make tests/CMakeFiles/vector_double-test-cpu.dir/src/vector_double.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-opencl.dir/build.make tests/CMakeFiles/vector_double-test-opencl.dir/src/vector_double.cpp.i
 .PHONY : src/vector_double.cpp.i
 
 src/vector_double.s: src/vector_double.cpp.s
@@ -2380,8 +2253,8 @@ src/vector_double.s: src/vector_double.cpp.s
 
 # target to generate assembly for a file
 src/vector_double.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-cpu.dir/build.make tests/CMakeFiles/vector_double-test-cpu.dir/src/vector_double.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-opencl.dir/build.make tests/CMakeFiles/vector_double-test-opencl.dir/src/vector_double.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-cpu.dir/build.make tests/CMakeFiles/vector_double-test-cpu.dir/src/vector_double.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_double-test-opencl.dir/build.make tests/CMakeFiles/vector_double-test-opencl.dir/src/vector_double.cpp.s
 .PHONY : src/vector_double.cpp.s
 
 src/vector_float.o: src/vector_float.cpp.o
@@ -2389,8 +2262,8 @@ src/vector_float.o: src/vector_float.cpp.o
 
 # target to build an object file
 src/vector_float.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-cpu.dir/build.make tests/CMakeFiles/vector_float-test-cpu.dir/src/vector_float.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-opencl.dir/build.make tests/CMakeFiles/vector_float-test-opencl.dir/src/vector_float.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-cpu.dir/build.make tests/CMakeFiles/vector_float-test-cpu.dir/src/vector_float.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-opencl.dir/build.make tests/CMakeFiles/vector_float-test-opencl.dir/src/vector_float.cpp.o
 .PHONY : src/vector_float.cpp.o
 
 src/vector_float.i: src/vector_float.cpp.i
@@ -2398,8 +2271,8 @@ src/vector_float.i: src/vector_float.cpp.i
 
 # target to preprocess a source file
 src/vector_float.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-cpu.dir/build.make tests/CMakeFiles/vector_float-test-cpu.dir/src/vector_float.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-opencl.dir/build.make tests/CMakeFiles/vector_float-test-opencl.dir/src/vector_float.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-cpu.dir/build.make tests/CMakeFiles/vector_float-test-cpu.dir/src/vector_float.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-opencl.dir/build.make tests/CMakeFiles/vector_float-test-opencl.dir/src/vector_float.cpp.i
 .PHONY : src/vector_float.cpp.i
 
 src/vector_float.s: src/vector_float.cpp.s
@@ -2407,8 +2280,8 @@ src/vector_float.s: src/vector_float.cpp.s
 
 # target to generate assembly for a file
 src/vector_float.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-cpu.dir/build.make tests/CMakeFiles/vector_float-test-cpu.dir/src/vector_float.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-opencl.dir/build.make tests/CMakeFiles/vector_float-test-opencl.dir/src/vector_float.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-cpu.dir/build.make tests/CMakeFiles/vector_float-test-cpu.dir/src/vector_float.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_float-test-opencl.dir/build.make tests/CMakeFiles/vector_float-test-opencl.dir/src/vector_float.cpp.s
 .PHONY : src/vector_float.cpp.s
 
 src/vector_int.o: src/vector_int.cpp.o
@@ -2416,8 +2289,8 @@ src/vector_int.o: src/vector_int.cpp.o
 
 # target to build an object file
 src/vector_int.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-cpu.dir/build.make tests/CMakeFiles/vector_int-test-cpu.dir/src/vector_int.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-opencl.dir/build.make tests/CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-cpu.dir/build.make tests/CMakeFiles/vector_int-test-cpu.dir/src/vector_int.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-opencl.dir/build.make tests/CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.o
 .PHONY : src/vector_int.cpp.o
 
 src/vector_int.i: src/vector_int.cpp.i
@@ -2425,8 +2298,8 @@ src/vector_int.i: src/vector_int.cpp.i
 
 # target to preprocess a source file
 src/vector_int.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-cpu.dir/build.make tests/CMakeFiles/vector_int-test-cpu.dir/src/vector_int.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-opencl.dir/build.make tests/CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-cpu.dir/build.make tests/CMakeFiles/vector_int-test-cpu.dir/src/vector_int.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-opencl.dir/build.make tests/CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.i
 .PHONY : src/vector_int.cpp.i
 
 src/vector_int.s: src/vector_int.cpp.s
@@ -2434,8 +2307,8 @@ src/vector_int.s: src/vector_int.cpp.s
 
 # target to generate assembly for a file
 src/vector_int.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-cpu.dir/build.make tests/CMakeFiles/vector_int-test-cpu.dir/src/vector_int.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-opencl.dir/build.make tests/CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-cpu.dir/build.make tests/CMakeFiles/vector_int-test-cpu.dir/src/vector_int.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_int-test-opencl.dir/build.make tests/CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.s
 .PHONY : src/vector_int.cpp.s
 
 src/vector_multi_inner_prod.o: src/vector_multi_inner_prod.cpp.o
@@ -2443,8 +2316,8 @@ src/vector_multi_inner_prod.o: src/vector_multi_inner_prod.cpp.o
 
 # target to build an object file
 src/vector_multi_inner_prod.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/src/vector_multi_inner_prod.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/src/vector_multi_inner_prod.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/src/vector_multi_inner_prod.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/src/vector_multi_inner_prod.cpp.o
 .PHONY : src/vector_multi_inner_prod.cpp.o
 
 src/vector_multi_inner_prod.i: src/vector_multi_inner_prod.cpp.i
@@ -2452,8 +2325,8 @@ src/vector_multi_inner_prod.i: src/vector_multi_inner_prod.cpp.i
 
 # target to preprocess a source file
 src/vector_multi_inner_prod.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/src/vector_multi_inner_prod.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/src/vector_multi_inner_prod.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/src/vector_multi_inner_prod.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/src/vector_multi_inner_prod.cpp.i
 .PHONY : src/vector_multi_inner_prod.cpp.i
 
 src/vector_multi_inner_prod.s: src/vector_multi_inner_prod.cpp.s
@@ -2461,8 +2334,8 @@ src/vector_multi_inner_prod.s: src/vector_multi_inner_prod.cpp.s
 
 # target to generate assembly for a file
 src/vector_multi_inner_prod.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/src/vector_multi_inner_prod.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/src/vector_multi_inner_prod.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-cpu.dir/src/vector_multi_inner_prod.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/build.make tests/CMakeFiles/vector_multi_inner_prod-test-opencl.dir/src/vector_multi_inner_prod.cpp.s
 .PHONY : src/vector_multi_inner_prod.cpp.s
 
 src/vector_uint.o: src/vector_uint.cpp.o
@@ -2470,8 +2343,8 @@ src/vector_uint.o: src/vector_uint.cpp.o
 
 # target to build an object file
 src/vector_uint.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-cpu.dir/build.make tests/CMakeFiles/vector_uint-test-cpu.dir/src/vector_uint.cpp.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-opencl.dir/build.make tests/CMakeFiles/vector_uint-test-opencl.dir/src/vector_uint.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-cpu.dir/build.make tests/CMakeFiles/vector_uint-test-cpu.dir/src/vector_uint.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-opencl.dir/build.make tests/CMakeFiles/vector_uint-test-opencl.dir/src/vector_uint.cpp.o
 .PHONY : src/vector_uint.cpp.o
 
 src/vector_uint.i: src/vector_uint.cpp.i
@@ -2479,8 +2352,8 @@ src/vector_uint.i: src/vector_uint.cpp.i
 
 # target to preprocess a source file
 src/vector_uint.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-cpu.dir/build.make tests/CMakeFiles/vector_uint-test-cpu.dir/src/vector_uint.cpp.i
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-opencl.dir/build.make tests/CMakeFiles/vector_uint-test-opencl.dir/src/vector_uint.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-cpu.dir/build.make tests/CMakeFiles/vector_uint-test-cpu.dir/src/vector_uint.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-opencl.dir/build.make tests/CMakeFiles/vector_uint-test-opencl.dir/src/vector_uint.cpp.i
 .PHONY : src/vector_uint.cpp.i
 
 src/vector_uint.s: src/vector_uint.cpp.s
@@ -2488,8 +2361,8 @@ src/vector_uint.s: src/vector_uint.cpp.s
 
 # target to generate assembly for a file
 src/vector_uint.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-cpu.dir/build.make tests/CMakeFiles/vector_uint-test-cpu.dir/src/vector_uint.cpp.s
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-opencl.dir/build.make tests/CMakeFiles/vector_uint-test-opencl.dir/src/vector_uint.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-cpu.dir/build.make tests/CMakeFiles/vector_uint-test-cpu.dir/src/vector_uint.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f tests/CMakeFiles/vector_uint-test-opencl.dir/build.make tests/CMakeFiles/vector_uint-test-opencl.dir/src/vector_uint.cpp.s
 .PHONY : src/vector_uint.cpp.s
 
 # Help Target
@@ -2498,13 +2371,8 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... a_bidiag_pack-test-cpu"
-	@echo "... a_bidiag_pack-test-opencl"
 	@echo "... a_cuda-test-cuda"
-	@echo "... a_house_update_A_left-test-cpu"
-	@echo "... a_house_update_A_left-test-opencl"
-	@echo "... a_qr_method_test-test-cpu"
-	@echo "... a_qr_method_test-test-opencl"
+	@echo "... bidiag_test-test-cpu"
 	@echo "... blas3_prod_double-test-cpu"
 	@echo "... blas3_prod_double-test-cuda"
 	@echo "... blas3_prod_double-test-opencl"
@@ -2598,15 +2466,9 @@ help:
 	@echo "... vector_uint-test-cpu"
 	@echo "... vector_uint-test-cuda"
 	@echo "... vector_uint-test-opencl"
-	@echo "... src/a_bidiag_pack.o"
-	@echo "... src/a_bidiag_pack.i"
-	@echo "... src/a_bidiag_pack.s"
-	@echo "... src/a_house_update_A_left.o"
-	@echo "... src/a_house_update_A_left.i"
-	@echo "... src/a_house_update_A_left.s"
-	@echo "... src/a_qr_method_test.o"
-	@echo "... src/a_qr_method_test.i"
-	@echo "... src/a_qr_method_test.s"
+	@echo "... src/bidiag_test.o"
+	@echo "... src/bidiag_test.i"
+	@echo "... src/bidiag_test.s"
 	@echo "... src/blas3_prod_double.o"
 	@echo "... src/blas3_prod_double.i"
 	@echo "... src/blas3_prod_double.s"
@@ -2729,6 +2591,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

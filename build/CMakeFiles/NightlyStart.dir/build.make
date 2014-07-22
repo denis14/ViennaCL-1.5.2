@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/denis/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/denis/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
 
 # Utility rule file for NightlyStart.
 
@@ -64,6 +64,6 @@ CMakeFiles/NightlyStart.dir/clean:
 .PHONY : CMakeFiles/NightlyStart.dir/clean
 
 CMakeFiles/NightlyStart.dir/depend:
-	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/ViennaCL-1.5.2 /home/denis/ViennaCL-1.5.2 /home/denis/ViennaCL-1.5.2/build /home/denis/ViennaCL-1.5.2/build /home/denis/ViennaCL-1.5.2/build/CMakeFiles/NightlyStart.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles/NightlyStart.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/NightlyStart.dir/depend
 

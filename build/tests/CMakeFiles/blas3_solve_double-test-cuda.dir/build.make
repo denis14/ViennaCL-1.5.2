@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/denis/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/denis/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/blas3_solve_double-test-cuda.dir/depend.make
@@ -55,30 +55,30 @@ include tests/CMakeFiles/blas3_solve_double-test-cuda.dir/flags.make
 tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/./blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o: tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o.depend
 tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/./blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o: tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o.cmake
 tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/./blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o: ../tests/src/blas3_solve_double.cu
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/./blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o"
-	cd /home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/.
-	cd /home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/./blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o -D generated_cubin_file:STRING=/home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/./blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o.cubin.txt -P /home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING=Debug -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/./blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/./blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o.cmake
 
 # Object files for target blas3_solve_double-test-cuda
 blas3_solve_double__test__cuda_OBJECTS =
 
 # External object files for target blas3_solve_double-test-cuda
 blas3_solve_double__test__cuda_EXTERNAL_OBJECTS = \
-"/home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/./blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o"
+"/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/./blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o"
 
 tests/blas3_solve_double-test-cuda: tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/./blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o
 tests/blas3_solve_double-test-cuda: tests/CMakeFiles/blas3_solve_double-test-cuda.dir/build.make
-tests/blas3_solve_double-test-cuda: /usr/lib/x86_64-linux-gnu/libcudart.so
-tests/blas3_solve_double-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-tests/blas3_solve_double-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-tests/blas3_solve_double-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
-tests/blas3_solve_double-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_system.so
-tests/blas3_solve_double-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-tests/blas3_solve_double-test-cuda: /usr/lib/x86_64-linux-gnu/libpthread.so
+tests/blas3_solve_double-test-cuda: /usr/lib/i386-linux-gnu/libcudart.so
+tests/blas3_solve_double-test-cuda: /usr/lib/i386-linux-gnu/libboost_chrono.so
+tests/blas3_solve_double-test-cuda: /usr/lib/i386-linux-gnu/libboost_date_time.so
+tests/blas3_solve_double-test-cuda: /usr/lib/i386-linux-gnu/libboost_serialization.so
+tests/blas3_solve_double-test-cuda: /usr/lib/i386-linux-gnu/libboost_system.so
+tests/blas3_solve_double-test-cuda: /usr/lib/i386-linux-gnu/libboost_thread.so
+tests/blas3_solve_double-test-cuda: /usr/lib/i386-linux-gnu/libpthread.so
 tests/blas3_solve_double-test-cuda: tests/CMakeFiles/blas3_solve_double-test-cuda.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable blas3_solve_double-test-cuda"
-	cd /home/denis/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/blas3_solve_double-test-cuda.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/blas3_solve_double-test-cuda.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/blas3_solve_double-test-cuda.dir/build: tests/blas3_solve_double-test-cuda
@@ -88,10 +88,10 @@ tests/CMakeFiles/blas3_solve_double-test-cuda.dir/requires:
 .PHONY : tests/CMakeFiles/blas3_solve_double-test-cuda.dir/requires
 
 tests/CMakeFiles/blas3_solve_double-test-cuda.dir/clean:
-	cd /home/denis/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/blas3_solve_double-test-cuda.dir/cmake_clean.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/blas3_solve_double-test-cuda.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/blas3_solve_double-test-cuda.dir/clean
 
 tests/CMakeFiles/blas3_solve_double-test-cuda.dir/depend: tests/CMakeFiles/blas3_solve_double-test-cuda.dir/src/./blas3_solve_double-test-cuda_generated_blas3_solve_double.cu.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/ViennaCL-1.5.2 /home/denis/ViennaCL-1.5.2/tests /home/denis/ViennaCL-1.5.2/build /home/denis/ViennaCL-1.5.2/build/tests /home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/tests /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/tests /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_double-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/blas3_solve_double-test-cuda.dir/depend
 

@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/denis/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/denis/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/scalar-test-cuda.dir/depend.make
@@ -55,30 +55,30 @@ include tests/CMakeFiles/scalar-test-cuda.dir/flags.make
 tests/CMakeFiles/scalar-test-cuda.dir/src/./scalar-test-cuda_generated_scalar.cu.o: tests/CMakeFiles/scalar-test-cuda.dir/src/scalar-test-cuda_generated_scalar.cu.o.depend
 tests/CMakeFiles/scalar-test-cuda.dir/src/./scalar-test-cuda_generated_scalar.cu.o: tests/CMakeFiles/scalar-test-cuda.dir/src/scalar-test-cuda_generated_scalar.cu.o.cmake
 tests/CMakeFiles/scalar-test-cuda.dir/src/./scalar-test-cuda_generated_scalar.cu.o: ../tests/src/scalar.cu
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/scalar-test-cuda.dir/src/./scalar-test-cuda_generated_scalar.cu.o"
-	cd /home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/src/.
-	cd /home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/src/./scalar-test-cuda_generated_scalar.cu.o -D generated_cubin_file:STRING=/home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/src/./scalar-test-cuda_generated_scalar.cu.o.cubin.txt -P /home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/src/scalar-test-cuda_generated_scalar.cu.o.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING=Debug -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/src/./scalar-test-cuda_generated_scalar.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/src/./scalar-test-cuda_generated_scalar.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/src/scalar-test-cuda_generated_scalar.cu.o.cmake
 
 # Object files for target scalar-test-cuda
 scalar__test__cuda_OBJECTS =
 
 # External object files for target scalar-test-cuda
 scalar__test__cuda_EXTERNAL_OBJECTS = \
-"/home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/src/./scalar-test-cuda_generated_scalar.cu.o"
+"/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/src/./scalar-test-cuda_generated_scalar.cu.o"
 
 tests/scalar-test-cuda: tests/CMakeFiles/scalar-test-cuda.dir/src/./scalar-test-cuda_generated_scalar.cu.o
 tests/scalar-test-cuda: tests/CMakeFiles/scalar-test-cuda.dir/build.make
-tests/scalar-test-cuda: /usr/lib/x86_64-linux-gnu/libcudart.so
-tests/scalar-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-tests/scalar-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-tests/scalar-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
-tests/scalar-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_system.so
-tests/scalar-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-tests/scalar-test-cuda: /usr/lib/x86_64-linux-gnu/libpthread.so
+tests/scalar-test-cuda: /usr/lib/i386-linux-gnu/libcudart.so
+tests/scalar-test-cuda: /usr/lib/i386-linux-gnu/libboost_chrono.so
+tests/scalar-test-cuda: /usr/lib/i386-linux-gnu/libboost_date_time.so
+tests/scalar-test-cuda: /usr/lib/i386-linux-gnu/libboost_serialization.so
+tests/scalar-test-cuda: /usr/lib/i386-linux-gnu/libboost_system.so
+tests/scalar-test-cuda: /usr/lib/i386-linux-gnu/libboost_thread.so
+tests/scalar-test-cuda: /usr/lib/i386-linux-gnu/libpthread.so
 tests/scalar-test-cuda: tests/CMakeFiles/scalar-test-cuda.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable scalar-test-cuda"
-	cd /home/denis/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/scalar-test-cuda.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/scalar-test-cuda.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/scalar-test-cuda.dir/build: tests/scalar-test-cuda
@@ -88,10 +88,10 @@ tests/CMakeFiles/scalar-test-cuda.dir/requires:
 .PHONY : tests/CMakeFiles/scalar-test-cuda.dir/requires
 
 tests/CMakeFiles/scalar-test-cuda.dir/clean:
-	cd /home/denis/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/scalar-test-cuda.dir/cmake_clean.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/scalar-test-cuda.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/scalar-test-cuda.dir/clean
 
 tests/CMakeFiles/scalar-test-cuda.dir/depend: tests/CMakeFiles/scalar-test-cuda.dir/src/./scalar-test-cuda_generated_scalar.cu.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/ViennaCL-1.5.2 /home/denis/ViennaCL-1.5.2/tests /home/denis/ViennaCL-1.5.2/build /home/denis/ViennaCL-1.5.2/build/tests /home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/tests /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/tests /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/scalar-test-cuda.dir/depend
 

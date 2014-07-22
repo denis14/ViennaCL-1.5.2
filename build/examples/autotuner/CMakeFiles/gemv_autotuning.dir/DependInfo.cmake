@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/denis/ViennaCL-1.5.2/examples/autotuner/gemv_autotuning.cpp" "/home/denis/ViennaCL-1.5.2/build/examples/autotuner/CMakeFiles/gemv_autotuning.dir/gemv_autotuning.cpp.o"
+  "/home/andi/git/ViennaCL-1.5.2/examples/autotuner/gemv_autotuning.cpp" "/home/andi/git/ViennaCL-1.5.2/build/examples/autotuner/CMakeFiles/gemv_autotuning.dir/gemv_autotuning.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

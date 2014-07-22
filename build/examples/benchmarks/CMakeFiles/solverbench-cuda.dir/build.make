@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/denis/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/denis/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
 
 # Include any dependencies generated for this target.
 include examples/benchmarks/CMakeFiles/solverbench-cuda.dir/depend.make
@@ -55,30 +55,30 @@ include examples/benchmarks/CMakeFiles/solverbench-cuda.dir/flags.make
 examples/benchmarks/CMakeFiles/solverbench-cuda.dir/./solverbench-cuda_generated_solver.cu.o: examples/benchmarks/CMakeFiles/solverbench-cuda.dir/solverbench-cuda_generated_solver.cu.o.depend
 examples/benchmarks/CMakeFiles/solverbench-cuda.dir/./solverbench-cuda_generated_solver.cu.o: examples/benchmarks/CMakeFiles/solverbench-cuda.dir/solverbench-cuda_generated_solver.cu.o.cmake
 examples/benchmarks/CMakeFiles/solverbench-cuda.dir/./solverbench-cuda_generated_solver.cu.o: ../examples/benchmarks/solver.cu
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object examples/benchmarks/CMakeFiles/solverbench-cuda.dir//./solverbench-cuda_generated_solver.cu.o"
-	cd /home/denis/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/solverbench-cuda.dir && /usr/bin/cmake -E make_directory /home/denis/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/solverbench-cuda.dir//.
-	cd /home/denis/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/solverbench-cuda.dir && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/denis/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/solverbench-cuda.dir//./solverbench-cuda_generated_solver.cu.o -D generated_cubin_file:STRING=/home/denis/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/solverbench-cuda.dir//./solverbench-cuda_generated_solver.cu.o.cubin.txt -P /home/denis/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/solverbench-cuda.dir//solverbench-cuda_generated_solver.cu.o.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/solverbench-cuda.dir && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/solverbench-cuda.dir//.
+	cd /home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/solverbench-cuda.dir && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/solverbench-cuda.dir//./solverbench-cuda_generated_solver.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/solverbench-cuda.dir//./solverbench-cuda_generated_solver.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/solverbench-cuda.dir//solverbench-cuda_generated_solver.cu.o.cmake
 
 # Object files for target solverbench-cuda
 solverbench__cuda_OBJECTS =
 
 # External object files for target solverbench-cuda
 solverbench__cuda_EXTERNAL_OBJECTS = \
-"/home/denis/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/solverbench-cuda.dir/./solverbench-cuda_generated_solver.cu.o"
+"/home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/solverbench-cuda.dir/./solverbench-cuda_generated_solver.cu.o"
 
 examples/benchmarks/solverbench-cuda: examples/benchmarks/CMakeFiles/solverbench-cuda.dir/./solverbench-cuda_generated_solver.cu.o
 examples/benchmarks/solverbench-cuda: examples/benchmarks/CMakeFiles/solverbench-cuda.dir/build.make
-examples/benchmarks/solverbench-cuda: /usr/lib/x86_64-linux-gnu/libcudart.so
-examples/benchmarks/solverbench-cuda: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-examples/benchmarks/solverbench-cuda: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-examples/benchmarks/solverbench-cuda: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
-examples/benchmarks/solverbench-cuda: /usr/lib/x86_64-linux-gnu/libboost_system.so
-examples/benchmarks/solverbench-cuda: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-examples/benchmarks/solverbench-cuda: /usr/lib/x86_64-linux-gnu/libpthread.so
+examples/benchmarks/solverbench-cuda: /usr/lib/i386-linux-gnu/libcudart.so
+examples/benchmarks/solverbench-cuda: /usr/lib/i386-linux-gnu/libboost_chrono.so
+examples/benchmarks/solverbench-cuda: /usr/lib/i386-linux-gnu/libboost_date_time.so
+examples/benchmarks/solverbench-cuda: /usr/lib/i386-linux-gnu/libboost_serialization.so
+examples/benchmarks/solverbench-cuda: /usr/lib/i386-linux-gnu/libboost_system.so
+examples/benchmarks/solverbench-cuda: /usr/lib/i386-linux-gnu/libboost_thread.so
+examples/benchmarks/solverbench-cuda: /usr/lib/i386-linux-gnu/libpthread.so
 examples/benchmarks/solverbench-cuda: examples/benchmarks/CMakeFiles/solverbench-cuda.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable solverbench-cuda"
-	cd /home/denis/ViennaCL-1.5.2/build/examples/benchmarks && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/solverbench-cuda.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/solverbench-cuda.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 examples/benchmarks/CMakeFiles/solverbench-cuda.dir/build: examples/benchmarks/solverbench-cuda
@@ -88,10 +88,10 @@ examples/benchmarks/CMakeFiles/solverbench-cuda.dir/requires:
 .PHONY : examples/benchmarks/CMakeFiles/solverbench-cuda.dir/requires
 
 examples/benchmarks/CMakeFiles/solverbench-cuda.dir/clean:
-	cd /home/denis/ViennaCL-1.5.2/build/examples/benchmarks && $(CMAKE_COMMAND) -P CMakeFiles/solverbench-cuda.dir/cmake_clean.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks && $(CMAKE_COMMAND) -P CMakeFiles/solverbench-cuda.dir/cmake_clean.cmake
 .PHONY : examples/benchmarks/CMakeFiles/solverbench-cuda.dir/clean
 
 examples/benchmarks/CMakeFiles/solverbench-cuda.dir/depend: examples/benchmarks/CMakeFiles/solverbench-cuda.dir/./solverbench-cuda_generated_solver.cu.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/ViennaCL-1.5.2 /home/denis/ViennaCL-1.5.2/examples/benchmarks /home/denis/ViennaCL-1.5.2/build /home/denis/ViennaCL-1.5.2/build/examples/benchmarks /home/denis/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/solverbench-cuda.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/examples/benchmarks /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks /home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/CMakeFiles/solverbench-cuda.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : examples/benchmarks/CMakeFiles/solverbench-cuda.dir/depend
 

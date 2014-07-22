@@ -1,1 +1,1 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/libviennacl-tutorial.dir/./libviennacl-tutorial_generated_libviennacl.cu.o  -o libviennacl-tutorial -rdynamic -lcudart ../../libviennacl/libviennacl.so -lOpenCL -lcudart -lOpenCL -Wl,-rpath,/home/denis/ViennaCL-1.5.2/build/libviennacl 
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o  -o libviennacl-tutorial -rdynamic ../../libviennacl/libviennacl.so -lOpenCL -Wl,-rpath,/home/andi/git/ViennaCL-1.5.2/build/libviennacl 

@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/denis/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/denis/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -111,26 +111,16 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-.PHONY : test/fast
-
 # The main all target
 all: cmake_check_build_system
-	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/denis/ViennaCL-1.5.2/build/CMakeFiles /home/denis/ViennaCL-1.5.2/build/examples/autotuner/CMakeFiles/progress.marks
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/ViennaCL-1.5.2/build/CMakeFiles 0
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles /home/andi/git/ViennaCL-1.5.2/build/examples/autotuner/CMakeFiles/progress.marks
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/clean
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/clean
 .PHONY : clean
 
 # The main clean target
@@ -139,22 +129,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/preinstall
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/preinstall
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 examples/autotuner/CMakeFiles/dot_autotuning.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/CMakeFiles/dot_autotuning.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/CMakeFiles/dot_autotuning.dir/rule
 .PHONY : examples/autotuner/CMakeFiles/dot_autotuning.dir/rule
 
 # Convenience name for target.
@@ -163,12 +153,12 @@ dot_autotuning: examples/autotuner/CMakeFiles/dot_autotuning.dir/rule
 
 # fast build rule for target.
 dot_autotuning/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/dot_autotuning.dir/build.make examples/autotuner/CMakeFiles/dot_autotuning.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/dot_autotuning.dir/build.make examples/autotuner/CMakeFiles/dot_autotuning.dir/build
 .PHONY : dot_autotuning/fast
 
 # Convenience name for target.
 examples/autotuner/CMakeFiles/dump_default_kernels.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/CMakeFiles/dump_default_kernels.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/CMakeFiles/dump_default_kernels.dir/rule
 .PHONY : examples/autotuner/CMakeFiles/dump_default_kernels.dir/rule
 
 # Convenience name for target.
@@ -177,12 +167,12 @@ dump_default_kernels: examples/autotuner/CMakeFiles/dump_default_kernels.dir/rul
 
 # fast build rule for target.
 dump_default_kernels/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/dump_default_kernels.dir/build.make examples/autotuner/CMakeFiles/dump_default_kernels.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/dump_default_kernels.dir/build.make examples/autotuner/CMakeFiles/dump_default_kernels.dir/build
 .PHONY : dump_default_kernels/fast
 
 # Convenience name for target.
 examples/autotuner/CMakeFiles/gemm_autotuning.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/CMakeFiles/gemm_autotuning.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/CMakeFiles/gemm_autotuning.dir/rule
 .PHONY : examples/autotuner/CMakeFiles/gemm_autotuning.dir/rule
 
 # Convenience name for target.
@@ -191,12 +181,12 @@ gemm_autotuning: examples/autotuner/CMakeFiles/gemm_autotuning.dir/rule
 
 # fast build rule for target.
 gemm_autotuning/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/gemm_autotuning.dir/build.make examples/autotuner/CMakeFiles/gemm_autotuning.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/gemm_autotuning.dir/build.make examples/autotuner/CMakeFiles/gemm_autotuning.dir/build
 .PHONY : gemm_autotuning/fast
 
 # Convenience name for target.
 examples/autotuner/CMakeFiles/gemv_autotuning.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/CMakeFiles/gemv_autotuning.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/CMakeFiles/gemv_autotuning.dir/rule
 .PHONY : examples/autotuner/CMakeFiles/gemv_autotuning.dir/rule
 
 # Convenience name for target.
@@ -205,12 +195,12 @@ gemv_autotuning: examples/autotuner/CMakeFiles/gemv_autotuning.dir/rule
 
 # fast build rule for target.
 gemv_autotuning/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/gemv_autotuning.dir/build.make examples/autotuner/CMakeFiles/gemv_autotuning.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/gemv_autotuning.dir/build.make examples/autotuner/CMakeFiles/gemv_autotuning.dir/build
 .PHONY : gemv_autotuning/fast
 
 # Convenience name for target.
 examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/rule:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/rule
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/rule
 .PHONY : examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/rule
 
 # Convenience name for target.
@@ -219,7 +209,7 @@ vector-axpy_autotuning: examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir
 
 # fast build rule for target.
 vector-axpy_autotuning/fast:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/build.make examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/build
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/build.make examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/build
 .PHONY : vector-axpy_autotuning/fast
 
 dot_autotuning.o: dot_autotuning.cpp.o
@@ -227,7 +217,7 @@ dot_autotuning.o: dot_autotuning.cpp.o
 
 # target to build an object file
 dot_autotuning.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/dot_autotuning.dir/build.make examples/autotuner/CMakeFiles/dot_autotuning.dir/dot_autotuning.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/dot_autotuning.dir/build.make examples/autotuner/CMakeFiles/dot_autotuning.dir/dot_autotuning.cpp.o
 .PHONY : dot_autotuning.cpp.o
 
 dot_autotuning.i: dot_autotuning.cpp.i
@@ -235,7 +225,7 @@ dot_autotuning.i: dot_autotuning.cpp.i
 
 # target to preprocess a source file
 dot_autotuning.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/dot_autotuning.dir/build.make examples/autotuner/CMakeFiles/dot_autotuning.dir/dot_autotuning.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/dot_autotuning.dir/build.make examples/autotuner/CMakeFiles/dot_autotuning.dir/dot_autotuning.cpp.i
 .PHONY : dot_autotuning.cpp.i
 
 dot_autotuning.s: dot_autotuning.cpp.s
@@ -243,7 +233,7 @@ dot_autotuning.s: dot_autotuning.cpp.s
 
 # target to generate assembly for a file
 dot_autotuning.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/dot_autotuning.dir/build.make examples/autotuner/CMakeFiles/dot_autotuning.dir/dot_autotuning.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/dot_autotuning.dir/build.make examples/autotuner/CMakeFiles/dot_autotuning.dir/dot_autotuning.cpp.s
 .PHONY : dot_autotuning.cpp.s
 
 dump_default_kernels.o: dump_default_kernels.cpp.o
@@ -251,7 +241,7 @@ dump_default_kernels.o: dump_default_kernels.cpp.o
 
 # target to build an object file
 dump_default_kernels.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/dump_default_kernels.dir/build.make examples/autotuner/CMakeFiles/dump_default_kernels.dir/dump_default_kernels.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/dump_default_kernels.dir/build.make examples/autotuner/CMakeFiles/dump_default_kernels.dir/dump_default_kernels.cpp.o
 .PHONY : dump_default_kernels.cpp.o
 
 dump_default_kernels.i: dump_default_kernels.cpp.i
@@ -259,7 +249,7 @@ dump_default_kernels.i: dump_default_kernels.cpp.i
 
 # target to preprocess a source file
 dump_default_kernels.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/dump_default_kernels.dir/build.make examples/autotuner/CMakeFiles/dump_default_kernels.dir/dump_default_kernels.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/dump_default_kernels.dir/build.make examples/autotuner/CMakeFiles/dump_default_kernels.dir/dump_default_kernels.cpp.i
 .PHONY : dump_default_kernels.cpp.i
 
 dump_default_kernels.s: dump_default_kernels.cpp.s
@@ -267,7 +257,7 @@ dump_default_kernels.s: dump_default_kernels.cpp.s
 
 # target to generate assembly for a file
 dump_default_kernels.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/dump_default_kernels.dir/build.make examples/autotuner/CMakeFiles/dump_default_kernels.dir/dump_default_kernels.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/dump_default_kernels.dir/build.make examples/autotuner/CMakeFiles/dump_default_kernels.dir/dump_default_kernels.cpp.s
 .PHONY : dump_default_kernels.cpp.s
 
 gemm_autotuning.o: gemm_autotuning.cpp.o
@@ -275,7 +265,7 @@ gemm_autotuning.o: gemm_autotuning.cpp.o
 
 # target to build an object file
 gemm_autotuning.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/gemm_autotuning.dir/build.make examples/autotuner/CMakeFiles/gemm_autotuning.dir/gemm_autotuning.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/gemm_autotuning.dir/build.make examples/autotuner/CMakeFiles/gemm_autotuning.dir/gemm_autotuning.cpp.o
 .PHONY : gemm_autotuning.cpp.o
 
 gemm_autotuning.i: gemm_autotuning.cpp.i
@@ -283,7 +273,7 @@ gemm_autotuning.i: gemm_autotuning.cpp.i
 
 # target to preprocess a source file
 gemm_autotuning.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/gemm_autotuning.dir/build.make examples/autotuner/CMakeFiles/gemm_autotuning.dir/gemm_autotuning.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/gemm_autotuning.dir/build.make examples/autotuner/CMakeFiles/gemm_autotuning.dir/gemm_autotuning.cpp.i
 .PHONY : gemm_autotuning.cpp.i
 
 gemm_autotuning.s: gemm_autotuning.cpp.s
@@ -291,7 +281,7 @@ gemm_autotuning.s: gemm_autotuning.cpp.s
 
 # target to generate assembly for a file
 gemm_autotuning.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/gemm_autotuning.dir/build.make examples/autotuner/CMakeFiles/gemm_autotuning.dir/gemm_autotuning.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/gemm_autotuning.dir/build.make examples/autotuner/CMakeFiles/gemm_autotuning.dir/gemm_autotuning.cpp.s
 .PHONY : gemm_autotuning.cpp.s
 
 gemv_autotuning.o: gemv_autotuning.cpp.o
@@ -299,7 +289,7 @@ gemv_autotuning.o: gemv_autotuning.cpp.o
 
 # target to build an object file
 gemv_autotuning.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/gemv_autotuning.dir/build.make examples/autotuner/CMakeFiles/gemv_autotuning.dir/gemv_autotuning.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/gemv_autotuning.dir/build.make examples/autotuner/CMakeFiles/gemv_autotuning.dir/gemv_autotuning.cpp.o
 .PHONY : gemv_autotuning.cpp.o
 
 gemv_autotuning.i: gemv_autotuning.cpp.i
@@ -307,7 +297,7 @@ gemv_autotuning.i: gemv_autotuning.cpp.i
 
 # target to preprocess a source file
 gemv_autotuning.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/gemv_autotuning.dir/build.make examples/autotuner/CMakeFiles/gemv_autotuning.dir/gemv_autotuning.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/gemv_autotuning.dir/build.make examples/autotuner/CMakeFiles/gemv_autotuning.dir/gemv_autotuning.cpp.i
 .PHONY : gemv_autotuning.cpp.i
 
 gemv_autotuning.s: gemv_autotuning.cpp.s
@@ -315,7 +305,7 @@ gemv_autotuning.s: gemv_autotuning.cpp.s
 
 # target to generate assembly for a file
 gemv_autotuning.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/gemv_autotuning.dir/build.make examples/autotuner/CMakeFiles/gemv_autotuning.dir/gemv_autotuning.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/gemv_autotuning.dir/build.make examples/autotuner/CMakeFiles/gemv_autotuning.dir/gemv_autotuning.cpp.s
 .PHONY : gemv_autotuning.cpp.s
 
 vector-axpy_autotuning.o: vector-axpy_autotuning.cpp.o
@@ -323,7 +313,7 @@ vector-axpy_autotuning.o: vector-axpy_autotuning.cpp.o
 
 # target to build an object file
 vector-axpy_autotuning.cpp.o:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/build.make examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/vector-axpy_autotuning.cpp.o
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/build.make examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/vector-axpy_autotuning.cpp.o
 .PHONY : vector-axpy_autotuning.cpp.o
 
 vector-axpy_autotuning.i: vector-axpy_autotuning.cpp.i
@@ -331,7 +321,7 @@ vector-axpy_autotuning.i: vector-axpy_autotuning.cpp.i
 
 # target to preprocess a source file
 vector-axpy_autotuning.cpp.i:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/build.make examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/vector-axpy_autotuning.cpp.i
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/build.make examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/vector-axpy_autotuning.cpp.i
 .PHONY : vector-axpy_autotuning.cpp.i
 
 vector-axpy_autotuning.s: vector-axpy_autotuning.cpp.s
@@ -339,7 +329,7 @@ vector-axpy_autotuning.s: vector-axpy_autotuning.cpp.s
 
 # target to generate assembly for a file
 vector-axpy_autotuning.cpp.s:
-	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/build.make examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/vector-axpy_autotuning.cpp.s
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/build.make examples/autotuner/CMakeFiles/vector-axpy_autotuning.dir/vector-axpy_autotuning.cpp.s
 .PHONY : vector-axpy_autotuning.cpp.s
 
 # Help Target
@@ -358,7 +348,6 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... test"
 	@echo "... vector-axpy_autotuning"
 	@echo "... dot_autotuning.o"
 	@echo "... dot_autotuning.i"
@@ -386,6 +375,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

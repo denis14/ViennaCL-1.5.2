@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/denis/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/denis/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/iterators-test-cuda.dir/depend.make
@@ -52,33 +52,276 @@ include tests/CMakeFiles/iterators-test-cuda.dir/progress.make
 # Include the compile flags for this target's objects.
 include tests/CMakeFiles/iterators-test-cuda.dir/flags.make
 
-tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: tests/CMakeFiles/iterators-test-cuda.dir/src/iterators-test-cuda_generated_iterators.cu.o.depend
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../tests/src/iterators.cu
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/backend/cpu_ram.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/backend/cuda.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/backend/mem_handle.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/backend/memory.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/backend/util.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/context.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/forwards.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/cuda/common.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/cuda/matrix_operations.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/cuda/matrix_operations_col.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/cuda/matrix_operations_prod.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/cuda/matrix_operations_row.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/cuda/scalar_operations.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/cuda/sparse_matrix_operations.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/cuda/sparse_matrix_operations_solve.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/cuda/vector_operations.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/detail/op_applier.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/detail/op_executor.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/host_based/common.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/host_based/matrix_operations.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/host_based/scalar_operations.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/host_based/sparse_matrix_operations.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/host_based/vector_operations.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/inner_prod.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/matrix_operations.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/prod.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/scalar_operations.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/sparse_matrix_operations.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/linalg/vector_operations.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/matrix.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/meta/enable_if.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/meta/predicate.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/meta/result_of.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/meta/tag_of.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/ocl/forwards.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/range.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/scalar.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/slice.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/tools/adapter.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/tools/entry_proxy.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/tools/matrix_size_deducer.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/tools/shared_ptr.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/tools/tools.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/traits/context.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/traits/handle.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/traits/size.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/traits/start.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/traits/stride.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/vector.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../viennacl/vector_proxy.hpp
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/_G_config.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/alloca.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/assert.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/builtin_types.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/algorithm
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/backward/binders.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/algorithmfwd.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/allocator.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/atomic_lockfree_defines.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/basic_ios.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/basic_ios.tcc
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/basic_string.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/basic_string.tcc
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/char_traits.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/codecvt.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/concept_check.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/cpp_type_traits.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/cxxabi_forced.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/exception_defines.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/fstream.tcc
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/functexcept.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/ios_base.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/istream.tcc
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/list.tcc
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/locale_classes.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/locale_classes.tcc
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/locale_facets.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/locale_facets.tcc
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/localefwd.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/memoryfwd.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/move.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/ostream.tcc
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/ostream_insert.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/postypes.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/range_access.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/sstream.tcc
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_algo.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_algobase.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_bvector.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_construct.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_function.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_heap.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_iterator.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_iterator_base_funcs.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_iterator_base_types.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_list.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_map.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_multimap.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_pair.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_relops.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_tempbuf.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_tree.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_uninitialized.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stl_vector.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/streambuf.tcc
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/streambuf_iterator.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/stringfwd.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/bits/vector.tcc
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/cassert
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/cctype
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/clocale
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/cmath
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/cstddef
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/cstdio
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/cstdlib
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/cwchar
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/cwctype
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/debug/debug.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/exception
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/ext/alloc_traits.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/ext/atomicity.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/ext/new_allocator.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/ext/numeric_traits.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/ext/type_traits.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/fstream
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/ios
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/iosfwd
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/iostream
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/istream
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/list
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/map
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/new
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/ostream
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/sstream
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/streambuf
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/string
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/utility
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/c++/4.8/vector
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/channel_descriptor.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/common_functions.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/ctype.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/cuda_device_runtime_api.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/cuda_runtime_api.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/cuda_surface_types.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/cuda_texture_types.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/device_launch_parameters.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/device_types.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/driver_functions.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/driver_types.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/endian.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/features.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/host_config.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/host_defines.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/byteswap-16.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/byteswap.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/endian.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/huge_val.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/huge_valf.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/huge_vall.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/inf.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/local_lim.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/locale.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/mathcalls.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/mathdef.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/nan.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/posix1_lim.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/posix2_lim.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/pthreadtypes.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/sched.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/select.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/setjmp.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/sigset.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/stdio_lim.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/stdlib-float.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/sys_errlist.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/time.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/timex.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/types.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/typesizes.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/waitflags.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/waitstatus.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/wchar.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/wordsize.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/bits/xopen_lim.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/c++/4.8/bits/atomic_word.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/c++/4.8/bits/basic_file.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/c++/4.8/bits/c++allocator.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/c++/4.8/bits/c++config.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/c++/4.8/bits/c++io.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/c++/4.8/bits/c++locale.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/c++/4.8/bits/cpu_defines.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/c++/4.8/bits/ctype_base.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/c++/4.8/bits/ctype_inline.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/c++/4.8/bits/gthr-default.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/c++/4.8/bits/gthr.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/c++/4.8/bits/os_defines.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/gnu/stubs-32.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/gnu/stubs.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/sys/cdefs.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/sys/select.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/sys/sysmacros.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/i386-linux-gnu/sys/types.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/libio.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/limits.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/linux/limits.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/locale.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/math.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/math_functions.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/math_functions_dbl_ptx3.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/pthread.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/sched.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/sm_11_atomic_functions.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/sm_12_atomic_functions.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/sm_13_double_functions.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/sm_20_atomic_functions.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/sm_20_intrinsics.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/sm_30_intrinsics.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/sm_32_atomic_functions.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/sm_32_intrinsics.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/sm_35_atomic_functions.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/sm_35_intrinsics.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/stdc-predef.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/stdio.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/stdlib.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/string.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/surface_indirect_functions.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/surface_types.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/texture_fetch_functions.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/texture_indirect_functions.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/texture_types.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/time.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/vector_functions.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/vector_types.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/wchar.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/wctype.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/include/xlocale.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/lib/gcc/i686-linux-gnu/4.8/include-fixed/limits.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/lib/gcc/i686-linux-gnu/4.8/include-fixed/syslimits.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/lib/nvidia-cuda-toolkit/include/cuda_runtime.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/lib/nvidia-cuda-toolkit/include/device_functions.h
+tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: /usr/lib/nvidia-cuda-toolkit/include/surface_functions.h
 tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: tests/CMakeFiles/iterators-test-cuda.dir/src/iterators-test-cuda_generated_iterators.cu.o.cmake
 tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o: ../tests/src/iterators.cu
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o"
-	cd /home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/.
-	cd /home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o -D generated_cubin_file:STRING=/home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o.cubin.txt -P /home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/iterators-test-cuda_generated_iterators.cu.o.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/.
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING=Debug -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/iterators-test-cuda_generated_iterators.cu.o.cmake
 
 # Object files for target iterators-test-cuda
 iterators__test__cuda_OBJECTS =
 
 # External object files for target iterators-test-cuda
 iterators__test__cuda_EXTERNAL_OBJECTS = \
-"/home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o"
+"/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o"
 
 tests/iterators-test-cuda: tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o
 tests/iterators-test-cuda: tests/CMakeFiles/iterators-test-cuda.dir/build.make
-tests/iterators-test-cuda: /usr/lib/x86_64-linux-gnu/libcudart.so
-tests/iterators-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-tests/iterators-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-tests/iterators-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
-tests/iterators-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_system.so
-tests/iterators-test-cuda: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-tests/iterators-test-cuda: /usr/lib/x86_64-linux-gnu/libpthread.so
+tests/iterators-test-cuda: /usr/lib/i386-linux-gnu/libcudart.so
+tests/iterators-test-cuda: /usr/lib/i386-linux-gnu/libboost_chrono.so
+tests/iterators-test-cuda: /usr/lib/i386-linux-gnu/libboost_date_time.so
+tests/iterators-test-cuda: /usr/lib/i386-linux-gnu/libboost_serialization.so
+tests/iterators-test-cuda: /usr/lib/i386-linux-gnu/libboost_system.so
+tests/iterators-test-cuda: /usr/lib/i386-linux-gnu/libboost_thread.so
+tests/iterators-test-cuda: /usr/lib/i386-linux-gnu/libpthread.so
 tests/iterators-test-cuda: tests/CMakeFiles/iterators-test-cuda.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable iterators-test-cuda"
-	cd /home/denis/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/iterators-test-cuda.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/iterators-test-cuda.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/iterators-test-cuda.dir/build: tests/iterators-test-cuda
@@ -88,10 +331,10 @@ tests/CMakeFiles/iterators-test-cuda.dir/requires:
 .PHONY : tests/CMakeFiles/iterators-test-cuda.dir/requires
 
 tests/CMakeFiles/iterators-test-cuda.dir/clean:
-	cd /home/denis/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/iterators-test-cuda.dir/cmake_clean.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/iterators-test-cuda.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/iterators-test-cuda.dir/clean
 
 tests/CMakeFiles/iterators-test-cuda.dir/depend: tests/CMakeFiles/iterators-test-cuda.dir/src/./iterators-test-cuda_generated_iterators.cu.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/ViennaCL-1.5.2 /home/denis/ViennaCL-1.5.2/tests /home/denis/ViennaCL-1.5.2/build /home/denis/ViennaCL-1.5.2/build/tests /home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/tests /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/tests /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/iterators-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/iterators-test-cuda.dir/depend
 

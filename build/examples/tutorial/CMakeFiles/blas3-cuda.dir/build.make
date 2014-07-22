@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/denis/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/denis/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
 
 # Include any dependencies generated for this target.
 include examples/tutorial/CMakeFiles/blas3-cuda.dir/depend.make
@@ -55,30 +55,30 @@ include examples/tutorial/CMakeFiles/blas3-cuda.dir/flags.make
 examples/tutorial/CMakeFiles/blas3-cuda.dir/./blas3-cuda_generated_blas3.cu.o: examples/tutorial/CMakeFiles/blas3-cuda.dir/blas3-cuda_generated_blas3.cu.o.depend
 examples/tutorial/CMakeFiles/blas3-cuda.dir/./blas3-cuda_generated_blas3.cu.o: examples/tutorial/CMakeFiles/blas3-cuda.dir/blas3-cuda_generated_blas3.cu.o.cmake
 examples/tutorial/CMakeFiles/blas3-cuda.dir/./blas3-cuda_generated_blas3.cu.o: ../examples/tutorial/blas3.cu
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object examples/tutorial/CMakeFiles/blas3-cuda.dir//./blas3-cuda_generated_blas3.cu.o"
-	cd /home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas3-cuda.dir && /usr/bin/cmake -E make_directory /home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas3-cuda.dir//.
-	cd /home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas3-cuda.dir && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas3-cuda.dir//./blas3-cuda_generated_blas3.cu.o -D generated_cubin_file:STRING=/home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas3-cuda.dir//./blas3-cuda_generated_blas3.cu.o.cubin.txt -P /home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas3-cuda.dir//blas3-cuda_generated_blas3.cu.o.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas3-cuda.dir && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas3-cuda.dir//.
+	cd /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas3-cuda.dir && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas3-cuda.dir//./blas3-cuda_generated_blas3.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas3-cuda.dir//./blas3-cuda_generated_blas3.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas3-cuda.dir//blas3-cuda_generated_blas3.cu.o.cmake
 
 # Object files for target blas3-cuda
 blas3__cuda_OBJECTS =
 
 # External object files for target blas3-cuda
 blas3__cuda_EXTERNAL_OBJECTS = \
-"/home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas3-cuda.dir/./blas3-cuda_generated_blas3.cu.o"
+"/home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas3-cuda.dir/./blas3-cuda_generated_blas3.cu.o"
 
 examples/tutorial/blas3-cuda: examples/tutorial/CMakeFiles/blas3-cuda.dir/./blas3-cuda_generated_blas3.cu.o
 examples/tutorial/blas3-cuda: examples/tutorial/CMakeFiles/blas3-cuda.dir/build.make
-examples/tutorial/blas3-cuda: /usr/lib/x86_64-linux-gnu/libcudart.so
-examples/tutorial/blas3-cuda: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-examples/tutorial/blas3-cuda: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-examples/tutorial/blas3-cuda: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
-examples/tutorial/blas3-cuda: /usr/lib/x86_64-linux-gnu/libboost_system.so
-examples/tutorial/blas3-cuda: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-examples/tutorial/blas3-cuda: /usr/lib/x86_64-linux-gnu/libpthread.so
+examples/tutorial/blas3-cuda: /usr/lib/i386-linux-gnu/libcudart.so
+examples/tutorial/blas3-cuda: /usr/lib/i386-linux-gnu/libboost_chrono.so
+examples/tutorial/blas3-cuda: /usr/lib/i386-linux-gnu/libboost_date_time.so
+examples/tutorial/blas3-cuda: /usr/lib/i386-linux-gnu/libboost_serialization.so
+examples/tutorial/blas3-cuda: /usr/lib/i386-linux-gnu/libboost_system.so
+examples/tutorial/blas3-cuda: /usr/lib/i386-linux-gnu/libboost_thread.so
+examples/tutorial/blas3-cuda: /usr/lib/i386-linux-gnu/libpthread.so
 examples/tutorial/blas3-cuda: examples/tutorial/CMakeFiles/blas3-cuda.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable blas3-cuda"
-	cd /home/denis/ViennaCL-1.5.2/build/examples/tutorial && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/blas3-cuda.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/blas3-cuda.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 examples/tutorial/CMakeFiles/blas3-cuda.dir/build: examples/tutorial/blas3-cuda
@@ -88,10 +88,10 @@ examples/tutorial/CMakeFiles/blas3-cuda.dir/requires:
 .PHONY : examples/tutorial/CMakeFiles/blas3-cuda.dir/requires
 
 examples/tutorial/CMakeFiles/blas3-cuda.dir/clean:
-	cd /home/denis/ViennaCL-1.5.2/build/examples/tutorial && $(CMAKE_COMMAND) -P CMakeFiles/blas3-cuda.dir/cmake_clean.cmake
+	cd /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial && $(CMAKE_COMMAND) -P CMakeFiles/blas3-cuda.dir/cmake_clean.cmake
 .PHONY : examples/tutorial/CMakeFiles/blas3-cuda.dir/clean
 
 examples/tutorial/CMakeFiles/blas3-cuda.dir/depend: examples/tutorial/CMakeFiles/blas3-cuda.dir/./blas3-cuda_generated_blas3.cu.o
-	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/ViennaCL-1.5.2 /home/denis/ViennaCL-1.5.2/examples/tutorial /home/denis/ViennaCL-1.5.2/build /home/denis/ViennaCL-1.5.2/build/examples/tutorial /home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas3-cuda.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/examples/tutorial /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/blas3-cuda.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : examples/tutorial/CMakeFiles/blas3-cuda.dir/depend
 

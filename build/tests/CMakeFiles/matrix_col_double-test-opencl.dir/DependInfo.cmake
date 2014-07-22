@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/denis/ViennaCL-1.5.2/tests/src/matrix_col_double.cpp" "/home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_double-test-opencl.dir/src/matrix_col_double.cpp.o"
+  "/home/andi/git/ViennaCL-1.5.2/tests/src/matrix_col_double.cpp" "/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/matrix_col_double-test-opencl.dir/src/matrix_col_double.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -15,6 +15,7 @@ SET(CMAKE_TARGET_LINKED_INFO_FILES
 # The include file search paths:
 SET(CMAKE_C_TARGET_INCLUDE_PATH
   ".."
+  "/usr/local/boost_1_55_0"
   "../external"
   "../libviennacl/include"
   )

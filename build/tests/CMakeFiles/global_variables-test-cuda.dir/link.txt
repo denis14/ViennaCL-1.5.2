@@ -1,1 +1,1 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/global_variables-test-cuda.dir/src/./global_variables-test-cuda_generated_global_variables.cu.o  -o global_variables-test-cuda -rdynamic -lcudart -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 
+/usr/bin/c++   -g    CMakeFiles/global_variables-test-cuda.dir/src/./global_variables-test-cuda_generated_global_variables.cu.o  -o global_variables-test-cuda -rdynamic -lcudart -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 
