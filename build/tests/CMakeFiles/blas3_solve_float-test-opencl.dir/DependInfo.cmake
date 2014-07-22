@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/andi/git/ViennaCL-1.5.2/tests/src/blas3_solve_float.cpp" "/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_float-test-opencl.dir/src/blas3_solve_float.cpp.o"
+  "/home/denis/ViennaCL-1.5.2/tests/src/blas3_solve_float.cpp" "/home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/blas3_solve_float-test-opencl.dir/src/blas3_solve_float.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -15,7 +15,6 @@ SET(CMAKE_TARGET_LINKED_INFO_FILES
 # The include file search paths:
 SET(CMAKE_C_TARGET_INCLUDE_PATH
   ".."
-  "/usr/local/boost_1_55_0"
   "../external"
   "../libviennacl/include"
   )

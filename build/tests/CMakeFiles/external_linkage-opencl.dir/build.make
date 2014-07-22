@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/denis/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/denis/ViennaCL-1.5.2/build
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/external_linkage-opencl.dir/depend.make
@@ -54,17 +54,17 @@ include tests/CMakeFiles/external_linkage-opencl.dir/flags.make
 
 tests/CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.o: tests/CMakeFiles/external_linkage-opencl.dir/flags.make
 tests/CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.o: ../tests/src/external_1.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object tests/CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.o"
-	cd /home/andi/git/ViennaCL-1.5.2/build/tests && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.o -c /home/andi/git/ViennaCL-1.5.2/tests/src/external_1.cpp
+	cd /home/denis/ViennaCL-1.5.2/build/tests && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.o -c /home/denis/ViennaCL-1.5.2/tests/src/external_1.cpp
 
 tests/CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.i"
-	cd /home/andi/git/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andi/git/ViennaCL-1.5.2/tests/src/external_1.cpp > CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/denis/ViennaCL-1.5.2/tests/src/external_1.cpp > CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.i
 
 tests/CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.s"
-	cd /home/andi/git/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andi/git/ViennaCL-1.5.2/tests/src/external_1.cpp -o CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/denis/ViennaCL-1.5.2/tests/src/external_1.cpp -o CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.s
 
 tests/CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.o.requires:
 .PHONY : tests/CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.o.requires
@@ -77,17 +77,17 @@ tests/CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.o.provides.build
 
 tests/CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.o: tests/CMakeFiles/external_linkage-opencl.dir/flags.make
 tests/CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.o: ../tests/src/external_2.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object tests/CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.o"
-	cd /home/andi/git/ViennaCL-1.5.2/build/tests && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.o -c /home/andi/git/ViennaCL-1.5.2/tests/src/external_2.cpp
+	cd /home/denis/ViennaCL-1.5.2/build/tests && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.o -c /home/denis/ViennaCL-1.5.2/tests/src/external_2.cpp
 
 tests/CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.i"
-	cd /home/andi/git/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andi/git/ViennaCL-1.5.2/tests/src/external_2.cpp > CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/denis/ViennaCL-1.5.2/tests/src/external_2.cpp > CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.i
 
 tests/CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.s"
-	cd /home/andi/git/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andi/git/ViennaCL-1.5.2/tests/src/external_2.cpp -o CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/denis/ViennaCL-1.5.2/tests/src/external_2.cpp -o CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.s
 
 tests/CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.o.requires:
 .PHONY : tests/CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.o.requires
@@ -109,16 +109,16 @@ external_linkage__opencl_EXTERNAL_OBJECTS =
 tests/external_linkage-opencl: tests/CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.o
 tests/external_linkage-opencl: tests/CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.o
 tests/external_linkage-opencl: tests/CMakeFiles/external_linkage-opencl.dir/build.make
-tests/external_linkage-opencl: /usr/lib/i386-linux-gnu/libOpenCL.so
-tests/external_linkage-opencl: /usr/lib/i386-linux-gnu/libboost_chrono.so
-tests/external_linkage-opencl: /usr/lib/i386-linux-gnu/libboost_date_time.so
-tests/external_linkage-opencl: /usr/lib/i386-linux-gnu/libboost_serialization.so
-tests/external_linkage-opencl: /usr/lib/i386-linux-gnu/libboost_system.so
-tests/external_linkage-opencl: /usr/lib/i386-linux-gnu/libboost_thread.so
-tests/external_linkage-opencl: /usr/lib/i386-linux-gnu/libpthread.so
+tests/external_linkage-opencl: /usr/lib/x86_64-linux-gnu/libOpenCL.so
+tests/external_linkage-opencl: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+tests/external_linkage-opencl: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+tests/external_linkage-opencl: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
+tests/external_linkage-opencl: /usr/lib/x86_64-linux-gnu/libboost_system.so
+tests/external_linkage-opencl: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+tests/external_linkage-opencl: /usr/lib/x86_64-linux-gnu/libpthread.so
 tests/external_linkage-opencl: tests/CMakeFiles/external_linkage-opencl.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable external_linkage-opencl"
-	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/external_linkage-opencl.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/denis/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/external_linkage-opencl.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/external_linkage-opencl.dir/build: tests/external_linkage-opencl
@@ -129,10 +129,10 @@ tests/CMakeFiles/external_linkage-opencl.dir/requires: tests/CMakeFiles/external
 .PHONY : tests/CMakeFiles/external_linkage-opencl.dir/requires
 
 tests/CMakeFiles/external_linkage-opencl.dir/clean:
-	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/external_linkage-opencl.dir/cmake_clean.cmake
+	cd /home/denis/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/external_linkage-opencl.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/external_linkage-opencl.dir/clean
 
 tests/CMakeFiles/external_linkage-opencl.dir/depend:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/tests /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/tests /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-opencl.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/ViennaCL-1.5.2 /home/denis/ViennaCL-1.5.2/tests /home/denis/ViennaCL-1.5.2/build /home/denis/ViennaCL-1.5.2/build/tests /home/denis/ViennaCL-1.5.2/build/tests/CMakeFiles/external_linkage-opencl.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/external_linkage-opencl.dir/depend
 

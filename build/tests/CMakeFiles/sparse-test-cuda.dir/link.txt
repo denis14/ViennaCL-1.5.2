@@ -1,1 +1,1 @@
-/usr/bin/c++   -g    CMakeFiles/sparse-test-cuda.dir/src/./sparse-test-cuda_generated_sparse.cu.o  -o sparse-test-cuda -rdynamic -lcudart -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/sparse-test-cuda.dir/src/./sparse-test-cuda_generated_sparse.cu.o  -o sparse-test-cuda -rdynamic -lcudart -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

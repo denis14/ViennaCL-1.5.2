@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/denis/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/denis/ViennaCL-1.5.2/build
 
 # Include any dependencies generated for this target.
 include examples/tutorial/CMakeFiles/sparse.dir/depend.make
@@ -54,17 +54,17 @@ include examples/tutorial/CMakeFiles/sparse.dir/flags.make
 
 examples/tutorial/CMakeFiles/sparse.dir/sparse.cpp.o: examples/tutorial/CMakeFiles/sparse.dir/flags.make
 examples/tutorial/CMakeFiles/sparse.dir/sparse.cpp.o: ../examples/tutorial/sparse.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object examples/tutorial/CMakeFiles/sparse.dir/sparse.cpp.o"
-	cd /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sparse.dir/sparse.cpp.o -c /home/andi/git/ViennaCL-1.5.2/examples/tutorial/sparse.cpp
+	cd /home/denis/ViennaCL-1.5.2/build/examples/tutorial && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sparse.dir/sparse.cpp.o -c /home/denis/ViennaCL-1.5.2/examples/tutorial/sparse.cpp
 
 examples/tutorial/CMakeFiles/sparse.dir/sparse.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sparse.dir/sparse.cpp.i"
-	cd /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andi/git/ViennaCL-1.5.2/examples/tutorial/sparse.cpp > CMakeFiles/sparse.dir/sparse.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build/examples/tutorial && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/denis/ViennaCL-1.5.2/examples/tutorial/sparse.cpp > CMakeFiles/sparse.dir/sparse.cpp.i
 
 examples/tutorial/CMakeFiles/sparse.dir/sparse.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sparse.dir/sparse.cpp.s"
-	cd /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andi/git/ViennaCL-1.5.2/examples/tutorial/sparse.cpp -o CMakeFiles/sparse.dir/sparse.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build/examples/tutorial && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/denis/ViennaCL-1.5.2/examples/tutorial/sparse.cpp -o CMakeFiles/sparse.dir/sparse.cpp.s
 
 examples/tutorial/CMakeFiles/sparse.dir/sparse.cpp.o.requires:
 .PHONY : examples/tutorial/CMakeFiles/sparse.dir/sparse.cpp.o.requires
@@ -84,23 +84,23 @@ sparse_EXTERNAL_OBJECTS =
 
 examples/tutorial/sparse: examples/tutorial/CMakeFiles/sparse.dir/sparse.cpp.o
 examples/tutorial/sparse: examples/tutorial/CMakeFiles/sparse.dir/build.make
-examples/tutorial/sparse: /usr/lib/i386-linux-gnu/libboost_chrono.so
-examples/tutorial/sparse: /usr/lib/i386-linux-gnu/libboost_date_time.so
-examples/tutorial/sparse: /usr/lib/i386-linux-gnu/libboost_serialization.so
-examples/tutorial/sparse: /usr/lib/i386-linux-gnu/libboost_system.so
-examples/tutorial/sparse: /usr/lib/i386-linux-gnu/libboost_thread.so
-examples/tutorial/sparse: /usr/lib/i386-linux-gnu/libpthread.so
-examples/tutorial/sparse: /usr/lib/i386-linux-gnu/libOpenCL.so
-examples/tutorial/sparse: /usr/lib/i386-linux-gnu/libboost_chrono.so
-examples/tutorial/sparse: /usr/lib/i386-linux-gnu/libboost_date_time.so
-examples/tutorial/sparse: /usr/lib/i386-linux-gnu/libboost_serialization.so
-examples/tutorial/sparse: /usr/lib/i386-linux-gnu/libboost_system.so
-examples/tutorial/sparse: /usr/lib/i386-linux-gnu/libboost_thread.so
-examples/tutorial/sparse: /usr/lib/i386-linux-gnu/libpthread.so
-examples/tutorial/sparse: /usr/lib/i386-linux-gnu/libOpenCL.so
+examples/tutorial/sparse: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+examples/tutorial/sparse: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+examples/tutorial/sparse: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
+examples/tutorial/sparse: /usr/lib/x86_64-linux-gnu/libboost_system.so
+examples/tutorial/sparse: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+examples/tutorial/sparse: /usr/lib/x86_64-linux-gnu/libpthread.so
+examples/tutorial/sparse: /usr/lib/x86_64-linux-gnu/libOpenCL.so
+examples/tutorial/sparse: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+examples/tutorial/sparse: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+examples/tutorial/sparse: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
+examples/tutorial/sparse: /usr/lib/x86_64-linux-gnu/libboost_system.so
+examples/tutorial/sparse: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+examples/tutorial/sparse: /usr/lib/x86_64-linux-gnu/libpthread.so
+examples/tutorial/sparse: /usr/lib/x86_64-linux-gnu/libOpenCL.so
 examples/tutorial/sparse: examples/tutorial/CMakeFiles/sparse.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable sparse"
-	cd /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sparse.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/denis/ViennaCL-1.5.2/build/examples/tutorial && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sparse.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 examples/tutorial/CMakeFiles/sparse.dir/build: examples/tutorial/sparse
@@ -110,10 +110,10 @@ examples/tutorial/CMakeFiles/sparse.dir/requires: examples/tutorial/CMakeFiles/s
 .PHONY : examples/tutorial/CMakeFiles/sparse.dir/requires
 
 examples/tutorial/CMakeFiles/sparse.dir/clean:
-	cd /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial && $(CMAKE_COMMAND) -P CMakeFiles/sparse.dir/cmake_clean.cmake
+	cd /home/denis/ViennaCL-1.5.2/build/examples/tutorial && $(CMAKE_COMMAND) -P CMakeFiles/sparse.dir/cmake_clean.cmake
 .PHONY : examples/tutorial/CMakeFiles/sparse.dir/clean
 
 examples/tutorial/CMakeFiles/sparse.dir/depend:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/examples/tutorial /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/sparse.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/ViennaCL-1.5.2 /home/denis/ViennaCL-1.5.2/examples/tutorial /home/denis/ViennaCL-1.5.2/build /home/denis/ViennaCL-1.5.2/build/examples/tutorial /home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/sparse.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : examples/tutorial/CMakeFiles/sparse.dir/depend
 

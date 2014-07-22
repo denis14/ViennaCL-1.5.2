@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/denis/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/denis/ViennaCL-1.5.2/build
 
 # Include any dependencies generated for this target.
 include examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/depend.make
@@ -52,56 +52,44 @@ include examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/progress.make
 # Include the compile flags for this target's objects.
 include examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/flags.make
 
-examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o: examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/flags.make
-examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o: ../examples/tutorial/libviennacl.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o"
-	cd /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o -c /home/andi/git/ViennaCL-1.5.2/examples/tutorial/libviennacl.cpp
-
-examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.i"
-	cd /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andi/git/ViennaCL-1.5.2/examples/tutorial/libviennacl.cpp > CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.i
-
-examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.s"
-	cd /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andi/git/ViennaCL-1.5.2/examples/tutorial/libviennacl.cpp -o CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.s
-
-examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o.requires:
-.PHONY : examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o.requires
-
-examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o.provides: examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o.requires
-	$(MAKE) -f examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/build.make examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o.provides.build
-.PHONY : examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o.provides
-
-examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o.provides.build: examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o
+examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/./libviennacl-tutorial_generated_libviennacl.cu.o: examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl-tutorial_generated_libviennacl.cu.o.depend
+examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/./libviennacl-tutorial_generated_libviennacl.cu.o: examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl-tutorial_generated_libviennacl.cu.o.cmake
+examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/./libviennacl-tutorial_generated_libviennacl.cu.o: ../examples/tutorial/libviennacl.cu
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/denis/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object examples/tutorial/CMakeFiles/libviennacl-tutorial.dir//./libviennacl-tutorial_generated_libviennacl.cu.o"
+	cd /home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/libviennacl-tutorial.dir && /usr/bin/cmake -E make_directory /home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/libviennacl-tutorial.dir//.
+	cd /home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/libviennacl-tutorial.dir && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/libviennacl-tutorial.dir//./libviennacl-tutorial_generated_libviennacl.cu.o -D generated_cubin_file:STRING=/home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/libviennacl-tutorial.dir//./libviennacl-tutorial_generated_libviennacl.cu.o.cubin.txt -P /home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/libviennacl-tutorial.dir//libviennacl-tutorial_generated_libviennacl.cu.o.cmake
 
 # Object files for target libviennacl-tutorial
-libviennacl__tutorial_OBJECTS = \
-"CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o"
+libviennacl__tutorial_OBJECTS =
 
 # External object files for target libviennacl-tutorial
-libviennacl__tutorial_EXTERNAL_OBJECTS =
+libviennacl__tutorial_EXTERNAL_OBJECTS = \
+"/home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/./libviennacl-tutorial_generated_libviennacl.cu.o"
 
-examples/tutorial/libviennacl-tutorial: examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o
+examples/tutorial/libviennacl-tutorial: examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/./libviennacl-tutorial_generated_libviennacl.cu.o
 examples/tutorial/libviennacl-tutorial: examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/build.make
+examples/tutorial/libviennacl-tutorial: /usr/lib/x86_64-linux-gnu/libcudart.so
 examples/tutorial/libviennacl-tutorial: libviennacl/libviennacl.so
-examples/tutorial/libviennacl-tutorial: /usr/lib/i386-linux-gnu/libOpenCL.so
+examples/tutorial/libviennacl-tutorial: /usr/lib/x86_64-linux-gnu/libOpenCL.so
+examples/tutorial/libviennacl-tutorial: /usr/lib/x86_64-linux-gnu/libcudart.so
+examples/tutorial/libviennacl-tutorial: /usr/lib/x86_64-linux-gnu/libOpenCL.so
 examples/tutorial/libviennacl-tutorial: examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable libviennacl-tutorial"
-	cd /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/libviennacl-tutorial.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/denis/ViennaCL-1.5.2/build/examples/tutorial && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/libviennacl-tutorial.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/build: examples/tutorial/libviennacl-tutorial
 .PHONY : examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/build
 
-examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/requires: examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o.requires
+examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/requires:
 .PHONY : examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/requires
 
 examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/clean:
-	cd /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial && $(CMAKE_COMMAND) -P CMakeFiles/libviennacl-tutorial.dir/cmake_clean.cmake
+	cd /home/denis/ViennaCL-1.5.2/build/examples/tutorial && $(CMAKE_COMMAND) -P CMakeFiles/libviennacl-tutorial.dir/cmake_clean.cmake
 .PHONY : examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/clean
 
-examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/depend:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/examples/tutorial /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/DependInfo.cmake --color=$(COLOR)
+examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/depend: examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/./libviennacl-tutorial_generated_libviennacl.cu.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/denis/ViennaCL-1.5.2 /home/denis/ViennaCL-1.5.2/examples/tutorial /home/denis/ViennaCL-1.5.2/build /home/denis/ViennaCL-1.5.2/build/examples/tutorial /home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/depend
 

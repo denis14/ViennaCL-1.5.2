@@ -1,1 +1,1 @@
-/usr/bin/c++   -g    CMakeFiles/iterators-test-opencl.dir/src/iterators.cpp.o  -o iterators-test-opencl -rdynamic -lOpenCL -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/iterators-test-opencl.dir/src/iterators.cpp.o  -o iterators-test-opencl -rdynamic -lOpenCL -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

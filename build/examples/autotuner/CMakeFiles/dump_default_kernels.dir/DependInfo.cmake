@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/andi/git/ViennaCL-1.5.2/examples/autotuner/dump_default_kernels.cpp" "/home/andi/git/ViennaCL-1.5.2/build/examples/autotuner/CMakeFiles/dump_default_kernels.dir/dump_default_kernels.cpp.o"
+  "/home/denis/ViennaCL-1.5.2/examples/autotuner/dump_default_kernels.cpp" "/home/denis/ViennaCL-1.5.2/build/examples/autotuner/CMakeFiles/dump_default_kernels.dir/dump_default_kernels.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

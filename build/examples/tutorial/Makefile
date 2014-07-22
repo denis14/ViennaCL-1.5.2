@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/denis/ViennaCL-1.5.2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/denis/ViennaCL-1.5.2/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -111,16 +111,26 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # The main all target
 all: cmake_check_build_system
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles /home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/progress.marks
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles 0
+	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/denis/ViennaCL-1.5.2/build/CMakeFiles /home/denis/ViennaCL-1.5.2/build/examples/tutorial/CMakeFiles/progress.marks
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/denis/ViennaCL-1.5.2/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/clean
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/clean
 .PHONY : clean
 
 # The main clean target
@@ -129,22 +139,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/preinstall
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/preinstall
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/amg.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/amg.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/amg.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/amg.dir/rule
 
 # Convenience name for target.
@@ -153,12 +163,12 @@ amg: examples/tutorial/CMakeFiles/amg.dir/rule
 
 # fast build rule for target.
 amg/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/amg.dir/build.make examples/tutorial/CMakeFiles/amg.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/amg.dir/build.make examples/tutorial/CMakeFiles/amg.dir/build
 .PHONY : amg/fast
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/bandwidth-reduction.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/bandwidth-reduction.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/bandwidth-reduction.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/bandwidth-reduction.dir/rule
 
 # Convenience name for target.
@@ -167,12 +177,12 @@ bandwidth-reduction: examples/tutorial/CMakeFiles/bandwidth-reduction.dir/rule
 
 # fast build rule for target.
 bandwidth-reduction/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/bandwidth-reduction.dir/build.make examples/tutorial/CMakeFiles/bandwidth-reduction.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/bandwidth-reduction.dir/build.make examples/tutorial/CMakeFiles/bandwidth-reduction.dir/build
 .PHONY : bandwidth-reduction/fast
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/blas1.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/blas1.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/blas1.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/blas1.dir/rule
 
 # Convenience name for target.
@@ -181,12 +191,26 @@ blas1: examples/tutorial/CMakeFiles/blas1.dir/rule
 
 # fast build rule for target.
 blas1/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas1.dir/build.make examples/tutorial/CMakeFiles/blas1.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas1.dir/build.make examples/tutorial/CMakeFiles/blas1.dir/build
 .PHONY : blas1/fast
 
 # Convenience name for target.
+examples/tutorial/CMakeFiles/blas1-cuda.dir/rule:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/blas1-cuda.dir/rule
+.PHONY : examples/tutorial/CMakeFiles/blas1-cuda.dir/rule
+
+# Convenience name for target.
+blas1-cuda: examples/tutorial/CMakeFiles/blas1-cuda.dir/rule
+.PHONY : blas1-cuda
+
+# fast build rule for target.
+blas1-cuda/fast:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas1-cuda.dir/build.make examples/tutorial/CMakeFiles/blas1-cuda.dir/build
+.PHONY : blas1-cuda/fast
+
+# Convenience name for target.
 examples/tutorial/CMakeFiles/blas2.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/blas2.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/blas2.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/blas2.dir/rule
 
 # Convenience name for target.
@@ -195,12 +219,26 @@ blas2: examples/tutorial/CMakeFiles/blas2.dir/rule
 
 # fast build rule for target.
 blas2/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas2.dir/build.make examples/tutorial/CMakeFiles/blas2.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas2.dir/build.make examples/tutorial/CMakeFiles/blas2.dir/build
 .PHONY : blas2/fast
 
 # Convenience name for target.
+examples/tutorial/CMakeFiles/blas2-cuda.dir/rule:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/blas2-cuda.dir/rule
+.PHONY : examples/tutorial/CMakeFiles/blas2-cuda.dir/rule
+
+# Convenience name for target.
+blas2-cuda: examples/tutorial/CMakeFiles/blas2-cuda.dir/rule
+.PHONY : blas2-cuda
+
+# fast build rule for target.
+blas2-cuda/fast:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas2-cuda.dir/build.make examples/tutorial/CMakeFiles/blas2-cuda.dir/build
+.PHONY : blas2-cuda/fast
+
+# Convenience name for target.
 examples/tutorial/CMakeFiles/blas3.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/blas3.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/blas3.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/blas3.dir/rule
 
 # Convenience name for target.
@@ -209,12 +247,26 @@ blas3: examples/tutorial/CMakeFiles/blas3.dir/rule
 
 # fast build rule for target.
 blas3/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas3.dir/build.make examples/tutorial/CMakeFiles/blas3.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas3.dir/build.make examples/tutorial/CMakeFiles/blas3.dir/build
 .PHONY : blas3/fast
 
 # Convenience name for target.
+examples/tutorial/CMakeFiles/blas3-cuda.dir/rule:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/blas3-cuda.dir/rule
+.PHONY : examples/tutorial/CMakeFiles/blas3-cuda.dir/rule
+
+# Convenience name for target.
+blas3-cuda: examples/tutorial/CMakeFiles/blas3-cuda.dir/rule
+.PHONY : blas3-cuda
+
+# fast build rule for target.
+blas3-cuda/fast:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas3-cuda.dir/build.make examples/tutorial/CMakeFiles/blas3-cuda.dir/build
+.PHONY : blas3-cuda/fast
+
+# Convenience name for target.
 examples/tutorial/CMakeFiles/custom-context.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/custom-context.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/custom-context.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/custom-context.dir/rule
 
 # Convenience name for target.
@@ -223,12 +275,12 @@ custom-context: examples/tutorial/CMakeFiles/custom-context.dir/rule
 
 # fast build rule for target.
 custom-context/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/custom-context.dir/build.make examples/tutorial/CMakeFiles/custom-context.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/custom-context.dir/build.make examples/tutorial/CMakeFiles/custom-context.dir/build
 .PHONY : custom-context/fast
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/custom-kernels.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/custom-kernels.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/custom-kernels.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/custom-kernels.dir/rule
 
 # Convenience name for target.
@@ -237,12 +289,12 @@ custom-kernels: examples/tutorial/CMakeFiles/custom-kernels.dir/rule
 
 # fast build rule for target.
 custom-kernels/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/custom-kernels.dir/build.make examples/tutorial/CMakeFiles/custom-kernels.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/custom-kernels.dir/build.make examples/tutorial/CMakeFiles/custom-kernels.dir/build
 .PHONY : custom-kernels/fast
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/fft.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/fft.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/fft.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/fft.dir/rule
 
 # Convenience name for target.
@@ -251,12 +303,12 @@ fft: examples/tutorial/CMakeFiles/fft.dir/rule
 
 # fast build rule for target.
 fft/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/fft.dir/build.make examples/tutorial/CMakeFiles/fft.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/fft.dir/build.make examples/tutorial/CMakeFiles/fft.dir/build
 .PHONY : fft/fast
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/iterative.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/iterative.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/iterative.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/iterative.dir/rule
 
 # Convenience name for target.
@@ -265,12 +317,26 @@ iterative: examples/tutorial/CMakeFiles/iterative.dir/rule
 
 # fast build rule for target.
 iterative/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative.dir/build.make examples/tutorial/CMakeFiles/iterative.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative.dir/build.make examples/tutorial/CMakeFiles/iterative.dir/build
 .PHONY : iterative/fast
 
 # Convenience name for target.
+examples/tutorial/CMakeFiles/iterative-cuda.dir/rule:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/iterative-cuda.dir/rule
+.PHONY : examples/tutorial/CMakeFiles/iterative-cuda.dir/rule
+
+# Convenience name for target.
+iterative-cuda: examples/tutorial/CMakeFiles/iterative-cuda.dir/rule
+.PHONY : iterative-cuda
+
+# fast build rule for target.
+iterative-cuda/fast:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative-cuda.dir/build.make examples/tutorial/CMakeFiles/iterative-cuda.dir/build
+.PHONY : iterative-cuda/fast
+
+# Convenience name for target.
 examples/tutorial/CMakeFiles/iterative-ublas.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/iterative-ublas.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/iterative-ublas.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/iterative-ublas.dir/rule
 
 # Convenience name for target.
@@ -279,12 +345,12 @@ iterative-ublas: examples/tutorial/CMakeFiles/iterative-ublas.dir/rule
 
 # fast build rule for target.
 iterative-ublas/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative-ublas.dir/build.make examples/tutorial/CMakeFiles/iterative-ublas.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative-ublas.dir/build.make examples/tutorial/CMakeFiles/iterative-ublas.dir/build
 .PHONY : iterative-ublas/fast
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/lanczos.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/lanczos.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/lanczos.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/lanczos.dir/rule
 
 # Convenience name for target.
@@ -293,12 +359,12 @@ lanczos: examples/tutorial/CMakeFiles/lanczos.dir/rule
 
 # fast build rule for target.
 lanczos/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/lanczos.dir/build.make examples/tutorial/CMakeFiles/lanczos.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/lanczos.dir/build.make examples/tutorial/CMakeFiles/lanczos.dir/build
 .PHONY : lanczos/fast
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/least-squares.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/least-squares.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/least-squares.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/least-squares.dir/rule
 
 # Convenience name for target.
@@ -307,12 +373,26 @@ least-squares: examples/tutorial/CMakeFiles/least-squares.dir/rule
 
 # fast build rule for target.
 least-squares/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/least-squares.dir/build.make examples/tutorial/CMakeFiles/least-squares.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/least-squares.dir/build.make examples/tutorial/CMakeFiles/least-squares.dir/build
 .PHONY : least-squares/fast
 
 # Convenience name for target.
+examples/tutorial/CMakeFiles/least-squares-cuda.dir/rule:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/least-squares-cuda.dir/rule
+.PHONY : examples/tutorial/CMakeFiles/least-squares-cuda.dir/rule
+
+# Convenience name for target.
+least-squares-cuda: examples/tutorial/CMakeFiles/least-squares-cuda.dir/rule
+.PHONY : least-squares-cuda
+
+# fast build rule for target.
+least-squares-cuda/fast:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/least-squares-cuda.dir/build.make examples/tutorial/CMakeFiles/least-squares-cuda.dir/build
+.PHONY : least-squares-cuda/fast
+
+# Convenience name for target.
 examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/rule
 
 # Convenience name for target.
@@ -321,12 +401,12 @@ libviennacl-tutorial: examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/rule
 
 # fast build rule for target.
 libviennacl-tutorial/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/build.make examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/build.make examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/build
 .PHONY : libviennacl-tutorial/fast
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/matrix-range.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/matrix-range.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/matrix-range.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/matrix-range.dir/rule
 
 # Convenience name for target.
@@ -335,12 +415,26 @@ matrix-range: examples/tutorial/CMakeFiles/matrix-range.dir/rule
 
 # fast build rule for target.
 matrix-range/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/matrix-range.dir/build.make examples/tutorial/CMakeFiles/matrix-range.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/matrix-range.dir/build.make examples/tutorial/CMakeFiles/matrix-range.dir/build
 .PHONY : matrix-range/fast
 
 # Convenience name for target.
+examples/tutorial/CMakeFiles/matrix-range-cuda.dir/rule:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/matrix-range-cuda.dir/rule
+.PHONY : examples/tutorial/CMakeFiles/matrix-range-cuda.dir/rule
+
+# Convenience name for target.
+matrix-range-cuda: examples/tutorial/CMakeFiles/matrix-range-cuda.dir/rule
+.PHONY : matrix-range-cuda
+
+# fast build rule for target.
+matrix-range-cuda/fast:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/matrix-range-cuda.dir/build.make examples/tutorial/CMakeFiles/matrix-range-cuda.dir/build
+.PHONY : matrix-range-cuda/fast
+
+# Convenience name for target.
 examples/tutorial/CMakeFiles/multithreaded.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/multithreaded.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/multithreaded.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/multithreaded.dir/rule
 
 # Convenience name for target.
@@ -349,12 +443,12 @@ multithreaded: examples/tutorial/CMakeFiles/multithreaded.dir/rule
 
 # fast build rule for target.
 multithreaded/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/multithreaded.dir/build.make examples/tutorial/CMakeFiles/multithreaded.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/multithreaded.dir/build.make examples/tutorial/CMakeFiles/multithreaded.dir/build
 .PHONY : multithreaded/fast
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/multithreaded_cg.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/multithreaded_cg.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/multithreaded_cg.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/multithreaded_cg.dir/rule
 
 # Convenience name for target.
@@ -363,12 +457,12 @@ multithreaded_cg: examples/tutorial/CMakeFiles/multithreaded_cg.dir/rule
 
 # fast build rule for target.
 multithreaded_cg/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/multithreaded_cg.dir/build.make examples/tutorial/CMakeFiles/multithreaded_cg.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/multithreaded_cg.dir/build.make examples/tutorial/CMakeFiles/multithreaded_cg.dir/build
 .PHONY : multithreaded_cg/fast
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/power-iter.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/power-iter.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/power-iter.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/power-iter.dir/rule
 
 # Convenience name for target.
@@ -377,12 +471,26 @@ power-iter: examples/tutorial/CMakeFiles/power-iter.dir/rule
 
 # fast build rule for target.
 power-iter/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/power-iter.dir/build.make examples/tutorial/CMakeFiles/power-iter.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/power-iter.dir/build.make examples/tutorial/CMakeFiles/power-iter.dir/build
 .PHONY : power-iter/fast
 
 # Convenience name for target.
+examples/tutorial/CMakeFiles/power-iter-cuda.dir/rule:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/power-iter-cuda.dir/rule
+.PHONY : examples/tutorial/CMakeFiles/power-iter-cuda.dir/rule
+
+# Convenience name for target.
+power-iter-cuda: examples/tutorial/CMakeFiles/power-iter-cuda.dir/rule
+.PHONY : power-iter-cuda
+
+# fast build rule for target.
+power-iter-cuda/fast:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/power-iter-cuda.dir/build.make examples/tutorial/CMakeFiles/power-iter-cuda.dir/build
+.PHONY : power-iter-cuda/fast
+
+# Convenience name for target.
 examples/tutorial/CMakeFiles/qr.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/qr.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/qr.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/qr.dir/rule
 
 # Convenience name for target.
@@ -391,12 +499,26 @@ qr: examples/tutorial/CMakeFiles/qr.dir/rule
 
 # fast build rule for target.
 qr/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/qr.dir/build.make examples/tutorial/CMakeFiles/qr.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/qr.dir/build.make examples/tutorial/CMakeFiles/qr.dir/build
 .PHONY : qr/fast
 
 # Convenience name for target.
+examples/tutorial/CMakeFiles/qr-cuda.dir/rule:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/qr-cuda.dir/rule
+.PHONY : examples/tutorial/CMakeFiles/qr-cuda.dir/rule
+
+# Convenience name for target.
+qr-cuda: examples/tutorial/CMakeFiles/qr-cuda.dir/rule
+.PHONY : qr-cuda
+
+# fast build rule for target.
+qr-cuda/fast:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/qr-cuda.dir/build.make examples/tutorial/CMakeFiles/qr-cuda.dir/build
+.PHONY : qr-cuda/fast
+
+# Convenience name for target.
 examples/tutorial/CMakeFiles/scheduler.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/scheduler.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/scheduler.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/scheduler.dir/rule
 
 # Convenience name for target.
@@ -405,12 +527,12 @@ scheduler: examples/tutorial/CMakeFiles/scheduler.dir/rule
 
 # fast build rule for target.
 scheduler/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/scheduler.dir/build.make examples/tutorial/CMakeFiles/scheduler.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/scheduler.dir/build.make examples/tutorial/CMakeFiles/scheduler.dir/build
 .PHONY : scheduler/fast
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/spai.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/spai.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/spai.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/spai.dir/rule
 
 # Convenience name for target.
@@ -419,12 +541,12 @@ spai: examples/tutorial/CMakeFiles/spai.dir/rule
 
 # fast build rule for target.
 spai/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/spai.dir/build.make examples/tutorial/CMakeFiles/spai.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/spai.dir/build.make examples/tutorial/CMakeFiles/spai.dir/build
 .PHONY : spai/fast
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/sparse.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/sparse.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/sparse.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/sparse.dir/rule
 
 # Convenience name for target.
@@ -433,12 +555,26 @@ sparse: examples/tutorial/CMakeFiles/sparse.dir/rule
 
 # fast build rule for target.
 sparse/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/sparse.dir/build.make examples/tutorial/CMakeFiles/sparse.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/sparse.dir/build.make examples/tutorial/CMakeFiles/sparse.dir/build
 .PHONY : sparse/fast
 
 # Convenience name for target.
+examples/tutorial/CMakeFiles/sparse-cuda.dir/rule:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/sparse-cuda.dir/rule
+.PHONY : examples/tutorial/CMakeFiles/sparse-cuda.dir/rule
+
+# Convenience name for target.
+sparse-cuda: examples/tutorial/CMakeFiles/sparse-cuda.dir/rule
+.PHONY : sparse-cuda
+
+# fast build rule for target.
+sparse-cuda/fast:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/sparse-cuda.dir/build.make examples/tutorial/CMakeFiles/sparse-cuda.dir/build
+.PHONY : sparse-cuda/fast
+
+# Convenience name for target.
 examples/tutorial/CMakeFiles/structured-matrices.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/structured-matrices.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/structured-matrices.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/structured-matrices.dir/rule
 
 # Convenience name for target.
@@ -447,12 +583,12 @@ structured-matrices: examples/tutorial/CMakeFiles/structured-matrices.dir/rule
 
 # fast build rule for target.
 structured-matrices/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/structured-matrices.dir/build.make examples/tutorial/CMakeFiles/structured-matrices.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/structured-matrices.dir/build.make examples/tutorial/CMakeFiles/structured-matrices.dir/build
 .PHONY : structured-matrices/fast
 
 # Convenience name for target.
 examples/tutorial/CMakeFiles/vector-range.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/vector-range.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/vector-range.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/vector-range.dir/rule
 
 # Convenience name for target.
@@ -461,12 +597,26 @@ vector-range: examples/tutorial/CMakeFiles/vector-range.dir/rule
 
 # fast build rule for target.
 vector-range/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/vector-range.dir/build.make examples/tutorial/CMakeFiles/vector-range.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/vector-range.dir/build.make examples/tutorial/CMakeFiles/vector-range.dir/build
 .PHONY : vector-range/fast
 
 # Convenience name for target.
+examples/tutorial/CMakeFiles/vector-range-cuda.dir/rule:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/vector-range-cuda.dir/rule
+.PHONY : examples/tutorial/CMakeFiles/vector-range-cuda.dir/rule
+
+# Convenience name for target.
+vector-range-cuda: examples/tutorial/CMakeFiles/vector-range-cuda.dir/rule
+.PHONY : vector-range-cuda
+
+# fast build rule for target.
+vector-range-cuda/fast:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/vector-range-cuda.dir/build.make examples/tutorial/CMakeFiles/vector-range-cuda.dir/build
+.PHONY : vector-range-cuda/fast
+
+# Convenience name for target.
 examples/tutorial/CMakeFiles/viennacl-info.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/viennacl-info.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/viennacl-info.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/viennacl-info.dir/rule
 
 # Convenience name for target.
@@ -475,12 +625,26 @@ viennacl-info: examples/tutorial/CMakeFiles/viennacl-info.dir/rule
 
 # fast build rule for target.
 viennacl-info/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/viennacl-info.dir/build.make examples/tutorial/CMakeFiles/viennacl-info.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/viennacl-info.dir/build.make examples/tutorial/CMakeFiles/viennacl-info.dir/build
 .PHONY : viennacl-info/fast
 
 # Convenience name for target.
+examples/tutorial/CMakeFiles/wrap-cuda-buffer-cuda.dir/rule:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/wrap-cuda-buffer-cuda.dir/rule
+.PHONY : examples/tutorial/CMakeFiles/wrap-cuda-buffer-cuda.dir/rule
+
+# Convenience name for target.
+wrap-cuda-buffer-cuda: examples/tutorial/CMakeFiles/wrap-cuda-buffer-cuda.dir/rule
+.PHONY : wrap-cuda-buffer-cuda
+
+# fast build rule for target.
+wrap-cuda-buffer-cuda/fast:
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/wrap-cuda-buffer-cuda.dir/build.make examples/tutorial/CMakeFiles/wrap-cuda-buffer-cuda.dir/build
+.PHONY : wrap-cuda-buffer-cuda/fast
+
+# Convenience name for target.
 examples/tutorial/CMakeFiles/wrap-host-buffer.dir/rule:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/wrap-host-buffer.dir/rule
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f CMakeFiles/Makefile2 examples/tutorial/CMakeFiles/wrap-host-buffer.dir/rule
 .PHONY : examples/tutorial/CMakeFiles/wrap-host-buffer.dir/rule
 
 # Convenience name for target.
@@ -489,7 +653,7 @@ wrap-host-buffer: examples/tutorial/CMakeFiles/wrap-host-buffer.dir/rule
 
 # fast build rule for target.
 wrap-host-buffer/fast:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/wrap-host-buffer.dir/build.make examples/tutorial/CMakeFiles/wrap-host-buffer.dir/build
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/wrap-host-buffer.dir/build.make examples/tutorial/CMakeFiles/wrap-host-buffer.dir/build
 .PHONY : wrap-host-buffer/fast
 
 amg.o: amg.cpp.o
@@ -497,7 +661,7 @@ amg.o: amg.cpp.o
 
 # target to build an object file
 amg.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/amg.dir/build.make examples/tutorial/CMakeFiles/amg.dir/amg.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/amg.dir/build.make examples/tutorial/CMakeFiles/amg.dir/amg.cpp.o
 .PHONY : amg.cpp.o
 
 amg.i: amg.cpp.i
@@ -505,7 +669,7 @@ amg.i: amg.cpp.i
 
 # target to preprocess a source file
 amg.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/amg.dir/build.make examples/tutorial/CMakeFiles/amg.dir/amg.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/amg.dir/build.make examples/tutorial/CMakeFiles/amg.dir/amg.cpp.i
 .PHONY : amg.cpp.i
 
 amg.s: amg.cpp.s
@@ -513,7 +677,7 @@ amg.s: amg.cpp.s
 
 # target to generate assembly for a file
 amg.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/amg.dir/build.make examples/tutorial/CMakeFiles/amg.dir/amg.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/amg.dir/build.make examples/tutorial/CMakeFiles/amg.dir/amg.cpp.s
 .PHONY : amg.cpp.s
 
 bandwidth-reduction.o: bandwidth-reduction.cpp.o
@@ -521,7 +685,7 @@ bandwidth-reduction.o: bandwidth-reduction.cpp.o
 
 # target to build an object file
 bandwidth-reduction.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/bandwidth-reduction.dir/build.make examples/tutorial/CMakeFiles/bandwidth-reduction.dir/bandwidth-reduction.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/bandwidth-reduction.dir/build.make examples/tutorial/CMakeFiles/bandwidth-reduction.dir/bandwidth-reduction.cpp.o
 .PHONY : bandwidth-reduction.cpp.o
 
 bandwidth-reduction.i: bandwidth-reduction.cpp.i
@@ -529,7 +693,7 @@ bandwidth-reduction.i: bandwidth-reduction.cpp.i
 
 # target to preprocess a source file
 bandwidth-reduction.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/bandwidth-reduction.dir/build.make examples/tutorial/CMakeFiles/bandwidth-reduction.dir/bandwidth-reduction.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/bandwidth-reduction.dir/build.make examples/tutorial/CMakeFiles/bandwidth-reduction.dir/bandwidth-reduction.cpp.i
 .PHONY : bandwidth-reduction.cpp.i
 
 bandwidth-reduction.s: bandwidth-reduction.cpp.s
@@ -537,7 +701,7 @@ bandwidth-reduction.s: bandwidth-reduction.cpp.s
 
 # target to generate assembly for a file
 bandwidth-reduction.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/bandwidth-reduction.dir/build.make examples/tutorial/CMakeFiles/bandwidth-reduction.dir/bandwidth-reduction.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/bandwidth-reduction.dir/build.make examples/tutorial/CMakeFiles/bandwidth-reduction.dir/bandwidth-reduction.cpp.s
 .PHONY : bandwidth-reduction.cpp.s
 
 blas1.o: blas1.cpp.o
@@ -545,7 +709,7 @@ blas1.o: blas1.cpp.o
 
 # target to build an object file
 blas1.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas1.dir/build.make examples/tutorial/CMakeFiles/blas1.dir/blas1.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas1.dir/build.make examples/tutorial/CMakeFiles/blas1.dir/blas1.cpp.o
 .PHONY : blas1.cpp.o
 
 blas1.i: blas1.cpp.i
@@ -553,7 +717,7 @@ blas1.i: blas1.cpp.i
 
 # target to preprocess a source file
 blas1.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas1.dir/build.make examples/tutorial/CMakeFiles/blas1.dir/blas1.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas1.dir/build.make examples/tutorial/CMakeFiles/blas1.dir/blas1.cpp.i
 .PHONY : blas1.cpp.i
 
 blas1.s: blas1.cpp.s
@@ -561,7 +725,7 @@ blas1.s: blas1.cpp.s
 
 # target to generate assembly for a file
 blas1.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas1.dir/build.make examples/tutorial/CMakeFiles/blas1.dir/blas1.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas1.dir/build.make examples/tutorial/CMakeFiles/blas1.dir/blas1.cpp.s
 .PHONY : blas1.cpp.s
 
 blas2.o: blas2.cpp.o
@@ -569,7 +733,7 @@ blas2.o: blas2.cpp.o
 
 # target to build an object file
 blas2.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas2.dir/build.make examples/tutorial/CMakeFiles/blas2.dir/blas2.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas2.dir/build.make examples/tutorial/CMakeFiles/blas2.dir/blas2.cpp.o
 .PHONY : blas2.cpp.o
 
 blas2.i: blas2.cpp.i
@@ -577,7 +741,7 @@ blas2.i: blas2.cpp.i
 
 # target to preprocess a source file
 blas2.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas2.dir/build.make examples/tutorial/CMakeFiles/blas2.dir/blas2.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas2.dir/build.make examples/tutorial/CMakeFiles/blas2.dir/blas2.cpp.i
 .PHONY : blas2.cpp.i
 
 blas2.s: blas2.cpp.s
@@ -585,7 +749,7 @@ blas2.s: blas2.cpp.s
 
 # target to generate assembly for a file
 blas2.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas2.dir/build.make examples/tutorial/CMakeFiles/blas2.dir/blas2.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas2.dir/build.make examples/tutorial/CMakeFiles/blas2.dir/blas2.cpp.s
 .PHONY : blas2.cpp.s
 
 blas3.o: blas3.cpp.o
@@ -593,7 +757,7 @@ blas3.o: blas3.cpp.o
 
 # target to build an object file
 blas3.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas3.dir/build.make examples/tutorial/CMakeFiles/blas3.dir/blas3.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas3.dir/build.make examples/tutorial/CMakeFiles/blas3.dir/blas3.cpp.o
 .PHONY : blas3.cpp.o
 
 blas3.i: blas3.cpp.i
@@ -601,7 +765,7 @@ blas3.i: blas3.cpp.i
 
 # target to preprocess a source file
 blas3.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas3.dir/build.make examples/tutorial/CMakeFiles/blas3.dir/blas3.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas3.dir/build.make examples/tutorial/CMakeFiles/blas3.dir/blas3.cpp.i
 .PHONY : blas3.cpp.i
 
 blas3.s: blas3.cpp.s
@@ -609,7 +773,7 @@ blas3.s: blas3.cpp.s
 
 # target to generate assembly for a file
 blas3.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas3.dir/build.make examples/tutorial/CMakeFiles/blas3.dir/blas3.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/blas3.dir/build.make examples/tutorial/CMakeFiles/blas3.dir/blas3.cpp.s
 .PHONY : blas3.cpp.s
 
 custom-context.o: custom-context.cpp.o
@@ -617,7 +781,7 @@ custom-context.o: custom-context.cpp.o
 
 # target to build an object file
 custom-context.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/custom-context.dir/build.make examples/tutorial/CMakeFiles/custom-context.dir/custom-context.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/custom-context.dir/build.make examples/tutorial/CMakeFiles/custom-context.dir/custom-context.cpp.o
 .PHONY : custom-context.cpp.o
 
 custom-context.i: custom-context.cpp.i
@@ -625,7 +789,7 @@ custom-context.i: custom-context.cpp.i
 
 # target to preprocess a source file
 custom-context.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/custom-context.dir/build.make examples/tutorial/CMakeFiles/custom-context.dir/custom-context.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/custom-context.dir/build.make examples/tutorial/CMakeFiles/custom-context.dir/custom-context.cpp.i
 .PHONY : custom-context.cpp.i
 
 custom-context.s: custom-context.cpp.s
@@ -633,7 +797,7 @@ custom-context.s: custom-context.cpp.s
 
 # target to generate assembly for a file
 custom-context.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/custom-context.dir/build.make examples/tutorial/CMakeFiles/custom-context.dir/custom-context.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/custom-context.dir/build.make examples/tutorial/CMakeFiles/custom-context.dir/custom-context.cpp.s
 .PHONY : custom-context.cpp.s
 
 custom-kernels.o: custom-kernels.cpp.o
@@ -641,7 +805,7 @@ custom-kernels.o: custom-kernels.cpp.o
 
 # target to build an object file
 custom-kernels.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/custom-kernels.dir/build.make examples/tutorial/CMakeFiles/custom-kernels.dir/custom-kernels.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/custom-kernels.dir/build.make examples/tutorial/CMakeFiles/custom-kernels.dir/custom-kernels.cpp.o
 .PHONY : custom-kernels.cpp.o
 
 custom-kernels.i: custom-kernels.cpp.i
@@ -649,7 +813,7 @@ custom-kernels.i: custom-kernels.cpp.i
 
 # target to preprocess a source file
 custom-kernels.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/custom-kernels.dir/build.make examples/tutorial/CMakeFiles/custom-kernels.dir/custom-kernels.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/custom-kernels.dir/build.make examples/tutorial/CMakeFiles/custom-kernels.dir/custom-kernels.cpp.i
 .PHONY : custom-kernels.cpp.i
 
 custom-kernels.s: custom-kernels.cpp.s
@@ -657,7 +821,7 @@ custom-kernels.s: custom-kernels.cpp.s
 
 # target to generate assembly for a file
 custom-kernels.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/custom-kernels.dir/build.make examples/tutorial/CMakeFiles/custom-kernels.dir/custom-kernels.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/custom-kernels.dir/build.make examples/tutorial/CMakeFiles/custom-kernels.dir/custom-kernels.cpp.s
 .PHONY : custom-kernels.cpp.s
 
 fft.o: fft.cpp.o
@@ -665,7 +829,7 @@ fft.o: fft.cpp.o
 
 # target to build an object file
 fft.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/fft.dir/build.make examples/tutorial/CMakeFiles/fft.dir/fft.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/fft.dir/build.make examples/tutorial/CMakeFiles/fft.dir/fft.cpp.o
 .PHONY : fft.cpp.o
 
 fft.i: fft.cpp.i
@@ -673,7 +837,7 @@ fft.i: fft.cpp.i
 
 # target to preprocess a source file
 fft.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/fft.dir/build.make examples/tutorial/CMakeFiles/fft.dir/fft.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/fft.dir/build.make examples/tutorial/CMakeFiles/fft.dir/fft.cpp.i
 .PHONY : fft.cpp.i
 
 fft.s: fft.cpp.s
@@ -681,7 +845,7 @@ fft.s: fft.cpp.s
 
 # target to generate assembly for a file
 fft.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/fft.dir/build.make examples/tutorial/CMakeFiles/fft.dir/fft.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/fft.dir/build.make examples/tutorial/CMakeFiles/fft.dir/fft.cpp.s
 .PHONY : fft.cpp.s
 
 iterative-ublas.o: iterative-ublas.cpp.o
@@ -689,7 +853,7 @@ iterative-ublas.o: iterative-ublas.cpp.o
 
 # target to build an object file
 iterative-ublas.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative-ublas.dir/build.make examples/tutorial/CMakeFiles/iterative-ublas.dir/iterative-ublas.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative-ublas.dir/build.make examples/tutorial/CMakeFiles/iterative-ublas.dir/iterative-ublas.cpp.o
 .PHONY : iterative-ublas.cpp.o
 
 iterative-ublas.i: iterative-ublas.cpp.i
@@ -697,7 +861,7 @@ iterative-ublas.i: iterative-ublas.cpp.i
 
 # target to preprocess a source file
 iterative-ublas.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative-ublas.dir/build.make examples/tutorial/CMakeFiles/iterative-ublas.dir/iterative-ublas.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative-ublas.dir/build.make examples/tutorial/CMakeFiles/iterative-ublas.dir/iterative-ublas.cpp.i
 .PHONY : iterative-ublas.cpp.i
 
 iterative-ublas.s: iterative-ublas.cpp.s
@@ -705,7 +869,7 @@ iterative-ublas.s: iterative-ublas.cpp.s
 
 # target to generate assembly for a file
 iterative-ublas.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative-ublas.dir/build.make examples/tutorial/CMakeFiles/iterative-ublas.dir/iterative-ublas.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative-ublas.dir/build.make examples/tutorial/CMakeFiles/iterative-ublas.dir/iterative-ublas.cpp.s
 .PHONY : iterative-ublas.cpp.s
 
 iterative.o: iterative.cpp.o
@@ -713,7 +877,7 @@ iterative.o: iterative.cpp.o
 
 # target to build an object file
 iterative.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative.dir/build.make examples/tutorial/CMakeFiles/iterative.dir/iterative.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative.dir/build.make examples/tutorial/CMakeFiles/iterative.dir/iterative.cpp.o
 .PHONY : iterative.cpp.o
 
 iterative.i: iterative.cpp.i
@@ -721,7 +885,7 @@ iterative.i: iterative.cpp.i
 
 # target to preprocess a source file
 iterative.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative.dir/build.make examples/tutorial/CMakeFiles/iterative.dir/iterative.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative.dir/build.make examples/tutorial/CMakeFiles/iterative.dir/iterative.cpp.i
 .PHONY : iterative.cpp.i
 
 iterative.s: iterative.cpp.s
@@ -729,7 +893,7 @@ iterative.s: iterative.cpp.s
 
 # target to generate assembly for a file
 iterative.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative.dir/build.make examples/tutorial/CMakeFiles/iterative.dir/iterative.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/iterative.dir/build.make examples/tutorial/CMakeFiles/iterative.dir/iterative.cpp.s
 .PHONY : iterative.cpp.s
 
 lanczos.o: lanczos.cpp.o
@@ -737,7 +901,7 @@ lanczos.o: lanczos.cpp.o
 
 # target to build an object file
 lanczos.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/lanczos.dir/build.make examples/tutorial/CMakeFiles/lanczos.dir/lanczos.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/lanczos.dir/build.make examples/tutorial/CMakeFiles/lanczos.dir/lanczos.cpp.o
 .PHONY : lanczos.cpp.o
 
 lanczos.i: lanczos.cpp.i
@@ -745,7 +909,7 @@ lanczos.i: lanczos.cpp.i
 
 # target to preprocess a source file
 lanczos.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/lanczos.dir/build.make examples/tutorial/CMakeFiles/lanczos.dir/lanczos.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/lanczos.dir/build.make examples/tutorial/CMakeFiles/lanczos.dir/lanczos.cpp.i
 .PHONY : lanczos.cpp.i
 
 lanczos.s: lanczos.cpp.s
@@ -753,7 +917,7 @@ lanczos.s: lanczos.cpp.s
 
 # target to generate assembly for a file
 lanczos.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/lanczos.dir/build.make examples/tutorial/CMakeFiles/lanczos.dir/lanczos.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/lanczos.dir/build.make examples/tutorial/CMakeFiles/lanczos.dir/lanczos.cpp.s
 .PHONY : lanczos.cpp.s
 
 least-squares.o: least-squares.cpp.o
@@ -761,7 +925,7 @@ least-squares.o: least-squares.cpp.o
 
 # target to build an object file
 least-squares.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/least-squares.dir/build.make examples/tutorial/CMakeFiles/least-squares.dir/least-squares.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/least-squares.dir/build.make examples/tutorial/CMakeFiles/least-squares.dir/least-squares.cpp.o
 .PHONY : least-squares.cpp.o
 
 least-squares.i: least-squares.cpp.i
@@ -769,7 +933,7 @@ least-squares.i: least-squares.cpp.i
 
 # target to preprocess a source file
 least-squares.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/least-squares.dir/build.make examples/tutorial/CMakeFiles/least-squares.dir/least-squares.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/least-squares.dir/build.make examples/tutorial/CMakeFiles/least-squares.dir/least-squares.cpp.i
 .PHONY : least-squares.cpp.i
 
 least-squares.s: least-squares.cpp.s
@@ -777,39 +941,15 @@ least-squares.s: least-squares.cpp.s
 
 # target to generate assembly for a file
 least-squares.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/least-squares.dir/build.make examples/tutorial/CMakeFiles/least-squares.dir/least-squares.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/least-squares.dir/build.make examples/tutorial/CMakeFiles/least-squares.dir/least-squares.cpp.s
 .PHONY : least-squares.cpp.s
-
-libviennacl.o: libviennacl.cpp.o
-.PHONY : libviennacl.o
-
-# target to build an object file
-libviennacl.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/build.make examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.o
-.PHONY : libviennacl.cpp.o
-
-libviennacl.i: libviennacl.cpp.i
-.PHONY : libviennacl.i
-
-# target to preprocess a source file
-libviennacl.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/build.make examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.i
-.PHONY : libviennacl.cpp.i
-
-libviennacl.s: libviennacl.cpp.s
-.PHONY : libviennacl.s
-
-# target to generate assembly for a file
-libviennacl.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/build.make examples/tutorial/CMakeFiles/libviennacl-tutorial.dir/libviennacl.cpp.s
-.PHONY : libviennacl.cpp.s
 
 matrix-range.o: matrix-range.cpp.o
 .PHONY : matrix-range.o
 
 # target to build an object file
 matrix-range.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/matrix-range.dir/build.make examples/tutorial/CMakeFiles/matrix-range.dir/matrix-range.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/matrix-range.dir/build.make examples/tutorial/CMakeFiles/matrix-range.dir/matrix-range.cpp.o
 .PHONY : matrix-range.cpp.o
 
 matrix-range.i: matrix-range.cpp.i
@@ -817,7 +957,7 @@ matrix-range.i: matrix-range.cpp.i
 
 # target to preprocess a source file
 matrix-range.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/matrix-range.dir/build.make examples/tutorial/CMakeFiles/matrix-range.dir/matrix-range.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/matrix-range.dir/build.make examples/tutorial/CMakeFiles/matrix-range.dir/matrix-range.cpp.i
 .PHONY : matrix-range.cpp.i
 
 matrix-range.s: matrix-range.cpp.s
@@ -825,7 +965,7 @@ matrix-range.s: matrix-range.cpp.s
 
 # target to generate assembly for a file
 matrix-range.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/matrix-range.dir/build.make examples/tutorial/CMakeFiles/matrix-range.dir/matrix-range.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/matrix-range.dir/build.make examples/tutorial/CMakeFiles/matrix-range.dir/matrix-range.cpp.s
 .PHONY : matrix-range.cpp.s
 
 multithreaded.o: multithreaded.cpp.o
@@ -833,7 +973,7 @@ multithreaded.o: multithreaded.cpp.o
 
 # target to build an object file
 multithreaded.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/multithreaded.dir/build.make examples/tutorial/CMakeFiles/multithreaded.dir/multithreaded.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/multithreaded.dir/build.make examples/tutorial/CMakeFiles/multithreaded.dir/multithreaded.cpp.o
 .PHONY : multithreaded.cpp.o
 
 multithreaded.i: multithreaded.cpp.i
@@ -841,7 +981,7 @@ multithreaded.i: multithreaded.cpp.i
 
 # target to preprocess a source file
 multithreaded.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/multithreaded.dir/build.make examples/tutorial/CMakeFiles/multithreaded.dir/multithreaded.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/multithreaded.dir/build.make examples/tutorial/CMakeFiles/multithreaded.dir/multithreaded.cpp.i
 .PHONY : multithreaded.cpp.i
 
 multithreaded.s: multithreaded.cpp.s
@@ -849,7 +989,7 @@ multithreaded.s: multithreaded.cpp.s
 
 # target to generate assembly for a file
 multithreaded.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/multithreaded.dir/build.make examples/tutorial/CMakeFiles/multithreaded.dir/multithreaded.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/multithreaded.dir/build.make examples/tutorial/CMakeFiles/multithreaded.dir/multithreaded.cpp.s
 .PHONY : multithreaded.cpp.s
 
 multithreaded_cg.o: multithreaded_cg.cpp.o
@@ -857,7 +997,7 @@ multithreaded_cg.o: multithreaded_cg.cpp.o
 
 # target to build an object file
 multithreaded_cg.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/multithreaded_cg.dir/build.make examples/tutorial/CMakeFiles/multithreaded_cg.dir/multithreaded_cg.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/multithreaded_cg.dir/build.make examples/tutorial/CMakeFiles/multithreaded_cg.dir/multithreaded_cg.cpp.o
 .PHONY : multithreaded_cg.cpp.o
 
 multithreaded_cg.i: multithreaded_cg.cpp.i
@@ -865,7 +1005,7 @@ multithreaded_cg.i: multithreaded_cg.cpp.i
 
 # target to preprocess a source file
 multithreaded_cg.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/multithreaded_cg.dir/build.make examples/tutorial/CMakeFiles/multithreaded_cg.dir/multithreaded_cg.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/multithreaded_cg.dir/build.make examples/tutorial/CMakeFiles/multithreaded_cg.dir/multithreaded_cg.cpp.i
 .PHONY : multithreaded_cg.cpp.i
 
 multithreaded_cg.s: multithreaded_cg.cpp.s
@@ -873,7 +1013,7 @@ multithreaded_cg.s: multithreaded_cg.cpp.s
 
 # target to generate assembly for a file
 multithreaded_cg.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/multithreaded_cg.dir/build.make examples/tutorial/CMakeFiles/multithreaded_cg.dir/multithreaded_cg.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/multithreaded_cg.dir/build.make examples/tutorial/CMakeFiles/multithreaded_cg.dir/multithreaded_cg.cpp.s
 .PHONY : multithreaded_cg.cpp.s
 
 power-iter.o: power-iter.cpp.o
@@ -881,7 +1021,7 @@ power-iter.o: power-iter.cpp.o
 
 # target to build an object file
 power-iter.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/power-iter.dir/build.make examples/tutorial/CMakeFiles/power-iter.dir/power-iter.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/power-iter.dir/build.make examples/tutorial/CMakeFiles/power-iter.dir/power-iter.cpp.o
 .PHONY : power-iter.cpp.o
 
 power-iter.i: power-iter.cpp.i
@@ -889,7 +1029,7 @@ power-iter.i: power-iter.cpp.i
 
 # target to preprocess a source file
 power-iter.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/power-iter.dir/build.make examples/tutorial/CMakeFiles/power-iter.dir/power-iter.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/power-iter.dir/build.make examples/tutorial/CMakeFiles/power-iter.dir/power-iter.cpp.i
 .PHONY : power-iter.cpp.i
 
 power-iter.s: power-iter.cpp.s
@@ -897,7 +1037,7 @@ power-iter.s: power-iter.cpp.s
 
 # target to generate assembly for a file
 power-iter.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/power-iter.dir/build.make examples/tutorial/CMakeFiles/power-iter.dir/power-iter.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/power-iter.dir/build.make examples/tutorial/CMakeFiles/power-iter.dir/power-iter.cpp.s
 .PHONY : power-iter.cpp.s
 
 qr.o: qr.cpp.o
@@ -905,7 +1045,7 @@ qr.o: qr.cpp.o
 
 # target to build an object file
 qr.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/qr.dir/build.make examples/tutorial/CMakeFiles/qr.dir/qr.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/qr.dir/build.make examples/tutorial/CMakeFiles/qr.dir/qr.cpp.o
 .PHONY : qr.cpp.o
 
 qr.i: qr.cpp.i
@@ -913,7 +1053,7 @@ qr.i: qr.cpp.i
 
 # target to preprocess a source file
 qr.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/qr.dir/build.make examples/tutorial/CMakeFiles/qr.dir/qr.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/qr.dir/build.make examples/tutorial/CMakeFiles/qr.dir/qr.cpp.i
 .PHONY : qr.cpp.i
 
 qr.s: qr.cpp.s
@@ -921,7 +1061,7 @@ qr.s: qr.cpp.s
 
 # target to generate assembly for a file
 qr.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/qr.dir/build.make examples/tutorial/CMakeFiles/qr.dir/qr.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/qr.dir/build.make examples/tutorial/CMakeFiles/qr.dir/qr.cpp.s
 .PHONY : qr.cpp.s
 
 scheduler.o: scheduler.cpp.o
@@ -929,7 +1069,7 @@ scheduler.o: scheduler.cpp.o
 
 # target to build an object file
 scheduler.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/scheduler.dir/build.make examples/tutorial/CMakeFiles/scheduler.dir/scheduler.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/scheduler.dir/build.make examples/tutorial/CMakeFiles/scheduler.dir/scheduler.cpp.o
 .PHONY : scheduler.cpp.o
 
 scheduler.i: scheduler.cpp.i
@@ -937,7 +1077,7 @@ scheduler.i: scheduler.cpp.i
 
 # target to preprocess a source file
 scheduler.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/scheduler.dir/build.make examples/tutorial/CMakeFiles/scheduler.dir/scheduler.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/scheduler.dir/build.make examples/tutorial/CMakeFiles/scheduler.dir/scheduler.cpp.i
 .PHONY : scheduler.cpp.i
 
 scheduler.s: scheduler.cpp.s
@@ -945,7 +1085,7 @@ scheduler.s: scheduler.cpp.s
 
 # target to generate assembly for a file
 scheduler.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/scheduler.dir/build.make examples/tutorial/CMakeFiles/scheduler.dir/scheduler.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/scheduler.dir/build.make examples/tutorial/CMakeFiles/scheduler.dir/scheduler.cpp.s
 .PHONY : scheduler.cpp.s
 
 spai.o: spai.cpp.o
@@ -953,7 +1093,7 @@ spai.o: spai.cpp.o
 
 # target to build an object file
 spai.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/spai.dir/build.make examples/tutorial/CMakeFiles/spai.dir/spai.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/spai.dir/build.make examples/tutorial/CMakeFiles/spai.dir/spai.cpp.o
 .PHONY : spai.cpp.o
 
 spai.i: spai.cpp.i
@@ -961,7 +1101,7 @@ spai.i: spai.cpp.i
 
 # target to preprocess a source file
 spai.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/spai.dir/build.make examples/tutorial/CMakeFiles/spai.dir/spai.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/spai.dir/build.make examples/tutorial/CMakeFiles/spai.dir/spai.cpp.i
 .PHONY : spai.cpp.i
 
 spai.s: spai.cpp.s
@@ -969,7 +1109,7 @@ spai.s: spai.cpp.s
 
 # target to generate assembly for a file
 spai.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/spai.dir/build.make examples/tutorial/CMakeFiles/spai.dir/spai.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/spai.dir/build.make examples/tutorial/CMakeFiles/spai.dir/spai.cpp.s
 .PHONY : spai.cpp.s
 
 sparse.o: sparse.cpp.o
@@ -977,7 +1117,7 @@ sparse.o: sparse.cpp.o
 
 # target to build an object file
 sparse.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/sparse.dir/build.make examples/tutorial/CMakeFiles/sparse.dir/sparse.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/sparse.dir/build.make examples/tutorial/CMakeFiles/sparse.dir/sparse.cpp.o
 .PHONY : sparse.cpp.o
 
 sparse.i: sparse.cpp.i
@@ -985,7 +1125,7 @@ sparse.i: sparse.cpp.i
 
 # target to preprocess a source file
 sparse.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/sparse.dir/build.make examples/tutorial/CMakeFiles/sparse.dir/sparse.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/sparse.dir/build.make examples/tutorial/CMakeFiles/sparse.dir/sparse.cpp.i
 .PHONY : sparse.cpp.i
 
 sparse.s: sparse.cpp.s
@@ -993,7 +1133,7 @@ sparse.s: sparse.cpp.s
 
 # target to generate assembly for a file
 sparse.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/sparse.dir/build.make examples/tutorial/CMakeFiles/sparse.dir/sparse.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/sparse.dir/build.make examples/tutorial/CMakeFiles/sparse.dir/sparse.cpp.s
 .PHONY : sparse.cpp.s
 
 structured-matrices.o: structured-matrices.cpp.o
@@ -1001,7 +1141,7 @@ structured-matrices.o: structured-matrices.cpp.o
 
 # target to build an object file
 structured-matrices.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/structured-matrices.dir/build.make examples/tutorial/CMakeFiles/structured-matrices.dir/structured-matrices.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/structured-matrices.dir/build.make examples/tutorial/CMakeFiles/structured-matrices.dir/structured-matrices.cpp.o
 .PHONY : structured-matrices.cpp.o
 
 structured-matrices.i: structured-matrices.cpp.i
@@ -1009,7 +1149,7 @@ structured-matrices.i: structured-matrices.cpp.i
 
 # target to preprocess a source file
 structured-matrices.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/structured-matrices.dir/build.make examples/tutorial/CMakeFiles/structured-matrices.dir/structured-matrices.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/structured-matrices.dir/build.make examples/tutorial/CMakeFiles/structured-matrices.dir/structured-matrices.cpp.i
 .PHONY : structured-matrices.cpp.i
 
 structured-matrices.s: structured-matrices.cpp.s
@@ -1017,7 +1157,7 @@ structured-matrices.s: structured-matrices.cpp.s
 
 # target to generate assembly for a file
 structured-matrices.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/structured-matrices.dir/build.make examples/tutorial/CMakeFiles/structured-matrices.dir/structured-matrices.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/structured-matrices.dir/build.make examples/tutorial/CMakeFiles/structured-matrices.dir/structured-matrices.cpp.s
 .PHONY : structured-matrices.cpp.s
 
 vector-range.o: vector-range.cpp.o
@@ -1025,7 +1165,7 @@ vector-range.o: vector-range.cpp.o
 
 # target to build an object file
 vector-range.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/vector-range.dir/build.make examples/tutorial/CMakeFiles/vector-range.dir/vector-range.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/vector-range.dir/build.make examples/tutorial/CMakeFiles/vector-range.dir/vector-range.cpp.o
 .PHONY : vector-range.cpp.o
 
 vector-range.i: vector-range.cpp.i
@@ -1033,7 +1173,7 @@ vector-range.i: vector-range.cpp.i
 
 # target to preprocess a source file
 vector-range.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/vector-range.dir/build.make examples/tutorial/CMakeFiles/vector-range.dir/vector-range.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/vector-range.dir/build.make examples/tutorial/CMakeFiles/vector-range.dir/vector-range.cpp.i
 .PHONY : vector-range.cpp.i
 
 vector-range.s: vector-range.cpp.s
@@ -1041,7 +1181,7 @@ vector-range.s: vector-range.cpp.s
 
 # target to generate assembly for a file
 vector-range.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/vector-range.dir/build.make examples/tutorial/CMakeFiles/vector-range.dir/vector-range.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/vector-range.dir/build.make examples/tutorial/CMakeFiles/vector-range.dir/vector-range.cpp.s
 .PHONY : vector-range.cpp.s
 
 viennacl-info.o: viennacl-info.cpp.o
@@ -1049,7 +1189,7 @@ viennacl-info.o: viennacl-info.cpp.o
 
 # target to build an object file
 viennacl-info.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/viennacl-info.dir/build.make examples/tutorial/CMakeFiles/viennacl-info.dir/viennacl-info.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/viennacl-info.dir/build.make examples/tutorial/CMakeFiles/viennacl-info.dir/viennacl-info.cpp.o
 .PHONY : viennacl-info.cpp.o
 
 viennacl-info.i: viennacl-info.cpp.i
@@ -1057,7 +1197,7 @@ viennacl-info.i: viennacl-info.cpp.i
 
 # target to preprocess a source file
 viennacl-info.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/viennacl-info.dir/build.make examples/tutorial/CMakeFiles/viennacl-info.dir/viennacl-info.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/viennacl-info.dir/build.make examples/tutorial/CMakeFiles/viennacl-info.dir/viennacl-info.cpp.i
 .PHONY : viennacl-info.cpp.i
 
 viennacl-info.s: viennacl-info.cpp.s
@@ -1065,7 +1205,7 @@ viennacl-info.s: viennacl-info.cpp.s
 
 # target to generate assembly for a file
 viennacl-info.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/viennacl-info.dir/build.make examples/tutorial/CMakeFiles/viennacl-info.dir/viennacl-info.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/viennacl-info.dir/build.make examples/tutorial/CMakeFiles/viennacl-info.dir/viennacl-info.cpp.s
 .PHONY : viennacl-info.cpp.s
 
 wrap-host-buffer.o: wrap-host-buffer.cpp.o
@@ -1073,7 +1213,7 @@ wrap-host-buffer.o: wrap-host-buffer.cpp.o
 
 # target to build an object file
 wrap-host-buffer.cpp.o:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/wrap-host-buffer.dir/build.make examples/tutorial/CMakeFiles/wrap-host-buffer.dir/wrap-host-buffer.cpp.o
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/wrap-host-buffer.dir/build.make examples/tutorial/CMakeFiles/wrap-host-buffer.dir/wrap-host-buffer.cpp.o
 .PHONY : wrap-host-buffer.cpp.o
 
 wrap-host-buffer.i: wrap-host-buffer.cpp.i
@@ -1081,7 +1221,7 @@ wrap-host-buffer.i: wrap-host-buffer.cpp.i
 
 # target to preprocess a source file
 wrap-host-buffer.cpp.i:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/wrap-host-buffer.dir/build.make examples/tutorial/CMakeFiles/wrap-host-buffer.dir/wrap-host-buffer.cpp.i
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/wrap-host-buffer.dir/build.make examples/tutorial/CMakeFiles/wrap-host-buffer.dir/wrap-host-buffer.cpp.i
 .PHONY : wrap-host-buffer.cpp.i
 
 wrap-host-buffer.s: wrap-host-buffer.cpp.s
@@ -1089,7 +1229,7 @@ wrap-host-buffer.s: wrap-host-buffer.cpp.s
 
 # target to generate assembly for a file
 wrap-host-buffer.cpp.s:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/wrap-host-buffer.dir/build.make examples/tutorial/CMakeFiles/wrap-host-buffer.dir/wrap-host-buffer.cpp.s
+	cd /home/denis/ViennaCL-1.5.2/build && $(MAKE) -f examples/tutorial/CMakeFiles/wrap-host-buffer.dir/build.make examples/tutorial/CMakeFiles/wrap-host-buffer.dir/wrap-host-buffer.cpp.s
 .PHONY : wrap-host-buffer.cpp.s
 
 # Help Target
@@ -1101,8 +1241,11 @@ help:
 	@echo "... amg"
 	@echo "... bandwidth-reduction"
 	@echo "... blas1"
+	@echo "... blas1-cuda"
 	@echo "... blas2"
+	@echo "... blas2-cuda"
 	@echo "... blas3"
+	@echo "... blas3-cuda"
 	@echo "... custom-context"
 	@echo "... custom-kernels"
 	@echo "... edit_cache"
@@ -1111,23 +1254,32 @@ help:
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... iterative"
+	@echo "... iterative-cuda"
 	@echo "... iterative-ublas"
 	@echo "... lanczos"
 	@echo "... least-squares"
+	@echo "... least-squares-cuda"
 	@echo "... libviennacl-tutorial"
 	@echo "... list_install_components"
 	@echo "... matrix-range"
+	@echo "... matrix-range-cuda"
 	@echo "... multithreaded"
 	@echo "... multithreaded_cg"
 	@echo "... power-iter"
+	@echo "... power-iter-cuda"
 	@echo "... qr"
+	@echo "... qr-cuda"
 	@echo "... rebuild_cache"
 	@echo "... scheduler"
 	@echo "... spai"
 	@echo "... sparse"
+	@echo "... sparse-cuda"
 	@echo "... structured-matrices"
+	@echo "... test"
 	@echo "... vector-range"
+	@echo "... vector-range-cuda"
 	@echo "... viennacl-info"
+	@echo "... wrap-cuda-buffer-cuda"
 	@echo "... wrap-host-buffer"
 	@echo "... amg.o"
 	@echo "... amg.i"
@@ -1165,9 +1317,6 @@ help:
 	@echo "... least-squares.o"
 	@echo "... least-squares.i"
 	@echo "... least-squares.s"
-	@echo "... libviennacl.o"
-	@echo "... libviennacl.i"
-	@echo "... libviennacl.s"
 	@echo "... matrix-range.o"
 	@echo "... matrix-range.i"
 	@echo "... matrix-range.s"
@@ -1215,6 +1364,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/denis/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

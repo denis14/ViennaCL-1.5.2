@@ -1381,7 +1381,7 @@ namespace viennacl
                        //Q(k,   i) = tmp1[i] * Q(k, i) - tmp2[i]*h;
                        data_Q[viennacl::row_major::mem_index(k  * Q_inc1 + Q_start1, i * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp1[start1 + inc1 * i] *
                            data_Q[viennacl::row_major::mem_index(k  * Q_inc1 + Q_start1, i * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] - tmp2[start2 + inc2 * i]*h;
-                     }
+                   }
                  }
            }
            else       // column_major
@@ -1404,7 +1404,7 @@ namespace viennacl
                         //Q(k,   i) = tmp1[i] * Q(k, i) - tmp2[i]*h;
                         data_Q[viennacl::column_major::mem_index(k  * Q_inc1 + Q_start1, i * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp1[start1 + inc1 * i] *
                             data_Q[viennacl::column_major::mem_index(k  * Q_inc1 + Q_start1, i * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] - tmp2[start2 + inc2 * i]*h;
-                                           }
+                      }
                  }
              }
 

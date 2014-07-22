@@ -56,18 +56,18 @@ endif()
 
 # Set these up as variables to make reading the generated file easier
 set(CMAKE_COMMAND "/usr/bin/cmake") # path
-set(source_file "/home/andi/git/ViennaCL-1.5.2/libviennacl/src/blas2.cu") # path
-set(NVCC_generated_dependency_file "/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2.cu.o.NVCC-depend") # path
-set(cmake_dependency_file "/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2.cu.o.depend") # path
+set(source_file "/home/denis/ViennaCL-1.5.2/libviennacl/src/blas2.cu") # path
+set(NVCC_generated_dependency_file "/home/denis/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2.cu.o.NVCC-depend") # path
+set(cmake_dependency_file "/home/denis/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/viennacl_generated_blas2.cu.o.depend") # path
 set(CUDA_make2cmake "/usr/share/cmake-2.8/Modules/FindCUDA/make2cmake.cmake") # path
 set(CUDA_parse_cubin "/usr/share/cmake-2.8/Modules/FindCUDA/parse_cubin.cmake") # path
 set(build_cubin OFF) # bool
 set(CUDA_HOST_COMPILER "/usr/bin/cc") # bool
 # We won't actually use these variables for now, but we need to set this, in
 # order to force this file to be run again if it changes.
-set(generated_file_path "/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/.") # path
-set(generated_file_internal "/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2.cu.o") # path
-set(generated_cubin_file_internal "/home/andi/git/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2.cu.o.cubin.txt") # path
+set(generated_file_path "/home/denis/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/.") # path
+set(generated_file_internal "/home/denis/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2.cu.o") # path
+set(generated_cubin_file_internal "/home/denis/ViennaCL-1.5.2/build/libviennacl/CMakeFiles/viennacl.dir/src/./viennacl_generated_blas2.cu.o.cubin.txt") # path
 
 set(CUDA_NVCC_EXECUTABLE "/usr/bin/nvcc") # path
 set(CUDA_NVCC_FLAGS -arch=sm_13;-DVIENNACL_WITH_CUDA;-DVIENNACL_WITH_OPENCL ;; ) # list
@@ -76,8 +76,8 @@ set(CUDA_NVCC_FLAGS_DEBUG  ; )
 set(CUDA_NVCC_FLAGS_MINSIZEREL  ; )
 set(CUDA_NVCC_FLAGS_RELEASE  ; )
 set(CUDA_NVCC_FLAGS_RELWITHDEBINFO  ; )
-set(nvcc_flags -m32;-Dviennacl_EXPORTS) # list
-set(CUDA_NVCC_INCLUDE_ARGS "-I/usr/include;-I/home/andi/git/ViennaCL-1.5.2;-I/usr/include;-I/home/andi/git/ViennaCL-1.5.2/libviennacl/include") # list (needs to be in quotes to handle spaces properly).
+set(nvcc_flags -m64;-Dviennacl_EXPORTS) # list
+set(CUDA_NVCC_INCLUDE_ARGS "-I/usr/include;-I/home/denis/ViennaCL-1.5.2;-I/usr/include;-I/home/denis/ViennaCL-1.5.2/libviennacl/include") # list (needs to be in quotes to handle spaces properly).
 set(format_flag "-c") # string
 
 if(build_cubin AND NOT generated_cubin_file)
@@ -86,7 +86,7 @@ endif()
 
 # This is the list of host compilation flags.  It C or CXX should already have
 # been chosen by FindCUDA.cmake.
-set(CMAKE_HOST_FLAGS  -fPIC)
+set(CMAKE_HOST_FLAGS  -fopenmp -DVIENNACL_WITH_OPENMP -fPIC)
 set(CMAKE_HOST_FLAGS_DEBUG -g)
 set(CMAKE_HOST_FLAGS_MINSIZEREL -Os -DNDEBUG)
 set(CMAKE_HOST_FLAGS_RELEASE -O3 -DNDEBUG)

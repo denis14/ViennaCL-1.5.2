@@ -1,4 +1,4 @@
-# Install script for directory: /home/andi/git/ViennaCL-1.5.2/examples
+# Install script for directory: /home/denis/ViennaCL-1.5.2/examples
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,9 +34,9 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/home/andi/git/ViennaCL-1.5.2/build/examples/tutorial/cmake_install.cmake")
-  INCLUDE("/home/andi/git/ViennaCL-1.5.2/build/examples/autotuner/cmake_install.cmake")
-  INCLUDE("/home/andi/git/ViennaCL-1.5.2/build/examples/benchmarks/cmake_install.cmake")
+  INCLUDE("/home/denis/ViennaCL-1.5.2/build/examples/tutorial/cmake_install.cmake")
+  INCLUDE("/home/denis/ViennaCL-1.5.2/build/examples/autotuner/cmake_install.cmake")
+  INCLUDE("/home/denis/ViennaCL-1.5.2/build/examples/benchmarks/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /home/andi/git/ViennaCL-1.5.2/tests
-# Build directory: /home/andi/git/ViennaCL-1.5.2/build/tests
+# Source directory: /home/denis/ViennaCL-1.5.2/tests
+# Build directory: /home/denis/ViennaCL-1.5.2/build/tests
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
@@ -30,8 +30,10 @@ ADD_TEST(vector_double-cpu "vector_double-test-cpu")
 ADD_TEST(vector_int-cpu "vector_int-test-cpu")
 ADD_TEST(vector_uint-cpu "vector_uint-test-cpu")
 ADD_TEST(vector_multi_inner_prod-cpu "vector_multi_inner_prod-test-cpu")
-ADD_TEST(bidiag_test-cpu "bidiag_test-test-cpu")
+ADD_TEST(a_bidiag_pack-cpu "a_bidiag_pack-test-cpu")
+ADD_TEST(a_house_update_A_left-cpu "a_house_update_A_left-test-cpu")
 ADD_TEST(qr_method-cpu "qr_method-test-cpu")
+ADD_TEST(a_qr_method_test-cpu "a_qr_method_test-test-cpu")
 ADD_TEST(spmdm-cpu "spmdm-test-cpu")
 ADD_TEST(blas3_prod_float-opencl "blas3_prod_float-test-opencl")
 ADD_TEST(blas3_prod_double-opencl "blas3_prod_double-test-opencl")
@@ -53,6 +55,9 @@ ADD_TEST(matrix_col_double-opencl "matrix_col_double-test-opencl")
 ADD_TEST(matrix_col_int-opencl "matrix_col_int-test-opencl")
 ADD_TEST(nmf-opencl "nmf-test-opencl")
 ADD_TEST(qr_method-opencl "qr_method-test-opencl")
+ADD_TEST(a_bidiag_pack-opencl "a_bidiag_pack-test-opencl")
+ADD_TEST(a_house_update_A_left-opencl "a_house_update_A_left-test-opencl")
+ADD_TEST(a_qr_method_test-opencl "a_qr_method_test-test-opencl")
 ADD_TEST(scalar-opencl "scalar-test-opencl")
 ADD_TEST(sparse-opencl "sparse-test-opencl")
 ADD_TEST(structured-matrices-opencl "structured-matrices-test-opencl")

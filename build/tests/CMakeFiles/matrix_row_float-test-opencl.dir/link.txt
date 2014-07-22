@@ -1,1 +1,1 @@
-/usr/bin/c++   -g    CMakeFiles/matrix_row_float-test-opencl.dir/src/matrix_row_float.cpp.o  -o matrix_row_float-test-opencl -rdynamic -lOpenCL -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/matrix_row_float-test-opencl.dir/src/matrix_row_float.cpp.o  -o matrix_row_float-test-opencl -rdynamic -lOpenCL -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

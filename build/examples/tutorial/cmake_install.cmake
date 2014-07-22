@@ -1,4 +1,4 @@
-# Install script for directory: /home/andi/git/ViennaCL-1.5.2/examples/tutorial
+# Install script for directory: /home/denis/ViennaCL-1.5.2/examples/tutorial
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

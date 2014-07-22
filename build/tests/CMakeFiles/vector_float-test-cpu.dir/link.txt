@@ -1,1 +1,1 @@
-/usr/bin/c++   -g    CMakeFiles/vector_float-test-cpu.dir/src/vector_float.cpp.o  -o vector_float-test-cpu -rdynamic -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/vector_float-test-cpu.dir/src/vector_float.cpp.o  -o vector_float-test-cpu -rdynamic -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 
