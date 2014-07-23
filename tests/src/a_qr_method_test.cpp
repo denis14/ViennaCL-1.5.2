@@ -56,7 +56,7 @@
 #include "viennacl/linalg/host_based/matrix_operations.hpp"
 #include "Random.hpp"
 
-#define EPS 10.0e-6
+#define EPS 10.0e-4
 
 
 
@@ -118,7 +118,7 @@ void matrix_print(ublas::matrix<ScalarType>& A)
 void vector_print(ublas::vector<ScalarType>& v )
 {
     for (unsigned int i = 0; i < v.size(); i++)
-      std::cout << std::setprecision(6) << std::fixed << v(i) << "\t";
+      std::cout << std::setprecision(6) << std::fixed << v(i) << ",\t";
     std::cout << "\n";
 }
 
@@ -178,36 +178,35 @@ bool check_for_equality(VectorType const & ublas_A, VectorType const & ublas_B)
 void fill_vector(ublas::vector<ScalarType>& v)
 {
     for (unsigned int i = 0; i < v.size(); ++i)
-      v[i] = random<ScalarType>();
+      v[i] =  random<ScalarType>();
+      //v[i] =  i % 10 + 1;
 }
 
 /*
  *
- * Functions to be tested
+ * ------------Functions to be tested---------------
  *
  */
+
+
 
 template <typename NumericT>
 void house_update_A_left(ublas::matrix<NumericT> & A,
                          ublas::vector<NumericT> D,
                          unsigned int start)
 {
-  NumericT temp = 0;
-  NumericT beta = 0;
-  ublas::vector<ScalarType> w;
-  temp = ublas::inner_prod(D, D);
-  beta = 2;//temp;
+  NumericT ss = 0;
 
-  w = beta*ublas::prod(trans(A), D);
+  uint row_start = start + 1;
+  for(uint i = 0; i < A.size2(); i++)
+    {
+      ss = 0;
+      for(uint j = row_start; j < A.size1(); j++)
+          ss = ss +(D[j] * A(j, i));
 
-  //scaled rank 1 update
-  for(uint i = 0; i < A.size1(); i++)
-  {
-      for(uint j = 0; j < A.size2(); j++)
-      {
-          A(i, j) = A(i, j) - D[i] * w[j];
-      }
-  }
+      for(uint j = row_start; j < A.size1(); j++)
+          A(j, i) = A(j, i) - (2 * D[j] * ss);
+    }
 }
 
 template <typename NumericT>
@@ -215,23 +214,21 @@ void house_update_A_right(ublas::matrix<NumericT> & A,
                           ublas::vector<NumericT> D,
                           unsigned int start)
 {
-  NumericT temp = 0;
-  NumericT beta = 0;
-  ublas::vector<ScalarType> w;
-
-  temp = ublas::inner_prod(D, D);
-  beta = 2;
-
-  w = beta*ublas::prod(A, D);
-  //scaled rank 1 update
+  NumericT ss = 0;
+  
   for(uint i = 0; i < A.size1(); i++)
-  {
+    {
+      ss = 0;
       for(uint j = 0; j < A.size2(); j++)
-      {
-          A(i, j) = A(i, j) - w[i] * D[j];
-      }
-  }
+          ss = ss + (D[j] * A(i, j));
+
+      NumericT sum_Av = ss;
+
+      for(uint j = 0; j < A.size2(); j++)
+          A(i, j) = A(i, j) - (2 * D[j] * sum_Av);
+    }
 }
+
 
 template <typename NumericT>
 void house_update_QL(ublas::matrix<NumericT> & A,
@@ -265,7 +262,7 @@ void house_update_QL(ublas::matrix<NumericT> & A,
           ubl_P(i, j) = I(i, j) - beta * (D[i] * D[j]);
       }
   }
-  Q = ublas::prod(Q_temp, ubl_P);  //P wurde korrekt berechnet - ueberprueft
+  Q = ublas::prod(Q_temp, ubl_P);
 }
 
 template <typename NumericT>
@@ -323,7 +320,7 @@ void bidiag_pack(ublas::matrix<NumericT> & A,
       D[i] = A(i, i);
       S[i + 1] = A(i, i + 1);
   }
-  D[i] = A(i, i);
+  D[size - 1] = A(size - 1, size - 1);
 }
 
 
@@ -338,7 +335,7 @@ int main()
   std::size_t sz;
 
   // read file
-  std::fstream f("../../examples/testdata/eigen/symm1.example", std::fstream::in);
+  std::fstream f("../../examples/testdata/eigen/symm3.example", std::fstream::in);
   //read size of input matrix
   read_matrix_size(f, sz);
 
@@ -355,14 +352,11 @@ int main()
   f.close();
   viennacl::copy(vcl_A, ubl_A);
 
-  ubl_D[0] = 0;
-  ubl_D[1] = -0.57735;
-  ubl_D[2] = -0.57735;
-  ubl_D[3] =  3.57735;
-
+  fill_vector(ubl_D);
   copy(ubl_D, vcl_D);
 //--------------------------------------------------------
   std::cout << "\nTesting house_update_left...\n";
+ /*
   std::cout << "vcl_D: \n";
   vector_print(vcl_D);
 
@@ -374,26 +368,16 @@ int main()
 
   std::cout << "ublas_A: \n";
   matrix_print(ubl_A);
-
+*/
   viennacl::linalg::house_update_A_left(vcl_A, vcl_D, 0);
   house_update_A_left(ubl_A, ubl_D, 0);
-
-  std::cout << "vcl_D: \n";
-  vector_print(vcl_D);
-
-  std::cout << "ubl_D: \n";
-  vector_print(ubl_D);
-
-  std::cout << "vcl_A: \n";
-  matrix_print(vcl_A);
-
-  std::cout << "ublas_A: \n";
-  matrix_print(ubl_A);
 
   if(!check_for_equality(ubl_A, vcl_A))
     ;//return EXIT_FAILURE;
 //--------------------------------------------------------
   std::cout << "\nTesting house_update_right...\n";
+  copy(ubl_A, vcl_A);
+  copy(ubl_D, vcl_D);
   viennacl::linalg::house_update_A_right(vcl_A, vcl_D, 0);
   house_update_A_right(ubl_A, ubl_D, 0);
 
@@ -417,10 +401,8 @@ int main()
   fill_vector(ubl_F);
   copy(ubl_E, vcl_E);
   copy(ubl_F, vcl_F);
-  viennacl::linalg::givens_next(vcl_Q, vcl_E, vcl_F, 0, 3);  //beim testen nicht gleich givens next
-  matrix_print(vcl_Q);
+  viennacl::linalg::givens_next(vcl_Q, vcl_E, vcl_F, 0, 3);
   givens_next(ubl_Q, ubl_E, ubl_F, 0, 3);
-  matrix_print(ubl_Q);
   if(!check_for_equality(ubl_Q, vcl_Q))
       ;//return EXIT_FAILURE;
 //--------------------------------------------------------

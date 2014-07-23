@@ -891,8 +891,7 @@ namespace viennacl
               std::cout << D[i] << "\n";
 */
             std::cout << "start: " << start << std::endl;
-            {
-              viennacl::linalg::house_update_A_left(A, D, start);
+            viennacl::linalg::house_update_A_left(A, D, start);
              // std::cout << "\nMatrix A nach left \n";
              // std::cout << A;
 
@@ -911,11 +910,8 @@ namespace viennacl
                                       ));
                                       */
 
-            }
 
-
-            {
-              viennacl::linalg::house_update_A_right(A, D, 0);
+             viennacl::linalg::house_update_A_right(A, D, 0);
           //    std::cout << "\nMatrix A nach right\n";
             //  std::cout << A;
 
@@ -933,10 +929,7 @@ namespace viennacl
                                               static_cast<cl_uint>(A.internal_size2()),
                                               viennacl::ocl::local_mem(static_cast<cl_uint>(128 * sizeof(SCALARTYPE)))
                                       ));
-                                      */
-            }
-
-            {
+                                      */        
               viennacl::linalg::house_update_QL(A, Q, D);
 
               /*
@@ -951,7 +944,6 @@ namespace viennacl
                                                 viennacl::ocl::local_mem(static_cast<cl_uint>(128 * sizeof(SCALARTYPE)))
                                             ));   
                                             */
-            }
 
             return true;
         }
@@ -980,6 +972,7 @@ namespace viennacl
         {
 
             assert(A.size1() == A.size2() && bool("Input matrix must be square for QR method!"));
+           // assert(! detail::is_row_major(typename F::orientation_category()) && bool("qr_method for non-symmetric column-major matrices not implemented yet!"));
             D.resize(A.size1());
             E.resize(A.size1());
 
@@ -988,9 +981,8 @@ namespace viennacl
             Q = viennacl::identity_matrix<SCALARTYPE>(Q.size1());
 
             // reduce to tridiagonal form
-            //std::cout << "tridiagonal_reduction start!\n";
             detail::tridiagonal_reduction(A, Q);
-            std::cout << "tridiagonal_reduction fertig!\n";
+            //std::cout << "tridiagonal_reduction fertig!\n";
 /*
             std::cout << "Matrix A: \n";
             matrix_print(A);
@@ -1003,22 +995,13 @@ namespace viennacl
             std::cout << "Start bidiag_pack\n";
             viennacl::linalg::bidiag_pack(A, D, E);     // in matrix_operations.hpp
 
-            std::cout <<"\nprint diagonal:\n";
-            vector_print(D);
-            std::cout << "\nprint superdiagonal:\n";
-            vector_print(E);
-
             // find eigenvalues
             if(is_symmetric)
-            {
-
                 detail::tql2(Q, D, E);
-                //Q = trans(Q);                   //geaendert !!!
-                //transpose(Q);
-            }
+
             else
             {
-                //detail::hqr2(A, Q, D, E);
+                  //detail::hqr2(A, Q, D, E);
             }
 
 
