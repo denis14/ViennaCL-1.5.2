@@ -16,52 +16,34 @@
 ============================================================================= */
 
 /*
-*
-*   Test file for qr-method
-*
-*/
+Solutions for testdata were generated with Scilab line:
 
-// include necessary system headers
-#include <iostream>
+M=fscanfMat('nsm1.example');e=spec(M);e=gsort(e);rr=real(e);ii=imag(e);e=cat(1, rr, ii); s=strcat(string(e), ' ');write('tmp', s);
+*/
 
 #ifndef NDEBUG
   #define NDEBUG
 #endif
 
-#define VIENNACL_WITH_UBLAS
-
-//include basic scalar and vector types of ViennaCL
-#include "viennacl/scalar.hpp"
-#include "viennacl/vector.hpp"
-#include "viennacl/compressed_matrix.hpp"
-
-
-#include "viennacl/linalg/lanczos.hpp"
-#include "viennacl/io/matrix_market.hpp"
-// Some helper functions for this tutorial:
+//#define VIENNACL_DEBUG_ALL
 #include <iostream>
 #include <fstream>
-#include <limits>
-#include <string>
-#include <iomanip>
+#include <stdexcept>
+#include <vector>
 
-#include <boost/numeric/ublas/matrix.hpp>
-#include <boost/numeric/ublas/matrix_proxy.hpp>
-#include <boost/numeric/ublas/matrix_expression.hpp>
-#include <boost/numeric/ublas/matrix_sparse.hpp>
+#include "viennacl/linalg/prod.hpp"
+#include "viennacl/linalg/qr-method.hpp"
+
+#include <examples/benchmarks/benchmark-utils.hpp>
+
 #include <boost/numeric/ublas/vector.hpp>
-#include <boost/numeric/ublas/operation.hpp>
-#include <boost/numeric/ublas/vector_expression.hpp>
-#include "viennacl/linalg/qr-method-common.hpp"
-#include "viennacl/linalg/host_based/matrix_operations.hpp"
-#include "Random.hpp"
-
-#define EPS 10.0e-6
-
-
+#include <boost/numeric/ublas/matrix.hpp>
 
 namespace ublas = boost::numeric::ublas;
-typedef float     ScalarType;
+
+typedef float ScalarType;
+
+const ScalarType EPS = 0.0001f;
 
 void read_matrix_size(std::fstream& f, std::size_t& sz)
 {
@@ -73,7 +55,8 @@ void read_matrix_size(std::fstream& f, std::size_t& sz)
     f >> sz;
 }
 
-void read_matrix_body(std::fstream& f, viennacl::matrix<ScalarType>& A)
+template <typename MatrixLayout>
+void read_matrix_body(std::fstream& f, viennacl::matrix<ScalarType, MatrixLayout>& A)
 {
     if(!f.is_open())
     {
@@ -93,344 +76,233 @@ void read_matrix_body(std::fstream& f, viennacl::matrix<ScalarType>& A)
     viennacl::copy(h_A, A);
 }
 
-void matrix_print(viennacl::matrix<ScalarType>& A_orig)
+void read_vector_body(std::fstream& f, ublas::vector<ScalarType>& v) {
+    if(!f.is_open())
+        throw std::invalid_argument("File is not opened");
+
+    for(std::size_t i = 0; i < v.size(); i++)
+    {
+            ScalarType val = 0.0;
+            f >> val;
+            v[i] = val;
+    }
+}
+
+template <typename MatrixLayout>
+bool check_tridiag(viennacl::matrix<ScalarType, MatrixLayout>& A_orig)
 {
     ublas::matrix<ScalarType> A(A_orig.size1(), A_orig.size2());
     viennacl::copy(A_orig, A);
+
     for (unsigned int i = 0; i < A.size1(); i++) {
-        for (unsigned int j = 0; j < A.size2(); j++)
-           std::cout << std::setprecision(6) << std::fixed << A(i, j) << "\t";
-        std::cout << "\n";
+        for (unsigned int j = 0; j < A.size2(); j++) {
+            if ((std::abs(A(i, j)) > EPS) && ((i - 1) != j) && (i != j) && ((i + 1) != j))
+            {
+                // std::cout << "Failed at " << i << " " << j << " " << A(i, j) << "\n";
+                return false;
+            }
+        }
     }
-    std::cout << "\n";
+    return true;
 }
 
-void matrix_print(ublas::matrix<ScalarType>& A)
+template <typename MatrixLayout>
+bool check_hessenberg(viennacl::matrix<ScalarType, MatrixLayout>& A_orig)
 {
-    for (unsigned int i = 0; i < A.size1(); i++) {
-        for (unsigned int j = 0; j < A.size2(); j++)
-           std::cout << std::setprecision(6) << std::fixed << A(i, j) << "\t";
-        std::cout << "\n";
+    ublas::matrix<ScalarType> A(A_orig.size1(), A_orig.size2());
+    viennacl::copy(A_orig, A);
+
+    for (std::size_t i = 0; i < A.size1(); i++) {
+        for (std::size_t j = 0; j < A.size2(); j++) {
+            if ((std::abs(A(i, j)) > EPS) && (i > (j + 1)))
+            {
+                // std::cout << "Failed at " << i << " " << j << " " << A(i, j) << "\n";
+                return false;
+            }
+        }
     }
-    std::cout << "\n";
+    return true;
 }
 
-void vector_print(ublas::vector<ScalarType>& v )
+ScalarType matrix_compare(ublas::matrix<ScalarType>& res,
+                            ublas::matrix<ScalarType>& ref)
 {
-    for (unsigned int i = 0; i < v.size(); i++)
-      std::cout << std::setprecision(6) << std::fixed << v(i) << "\t";
-    std::cout << "\n";
-}
+    ScalarType diff = 0.0;
+    ScalarType mx = 0.0;
 
-void vector_print(viennacl::vector<ScalarType>& v )
-{
-  ublas::vector<ScalarType> v_ublas = ublas::vector<ScalarType>(v.size(), 0);
-  copy(v, v_ublas);
-
-  for (unsigned int i = 0; i < v.size(); i++)
-      std::cout << std::setprecision(6) << std::fixed << v_ublas(i) << "\t";
-    std::cout << "\n";
-}
-
-
-template <typename MatrixType, typename VCLMatrixType>
-bool check_for_equality(MatrixType const & ublas_A, VCLMatrixType const & vcl_A)
-{
-  typedef typename MatrixType::value_type   value_type;
-
-  ublas::matrix<value_type> vcl_A_cpu(vcl_A.size1(), vcl_A.size2());
-  viennacl::backend::finish();  //workaround for a bug in APP SDK 2.7 on Trinity APUs (with Catalyst 12.8)
-  viennacl::copy(vcl_A, vcl_A_cpu);
-
-  for (std::size_t i=0; i<ublas_A.size1(); ++i)
-  {
-    for (std::size_t j=0; j<ublas_A.size2(); ++j)
+    for(std::size_t i = 0; i < res.size1(); i++)
     {
-      if (std::abs(ublas_A(i,j) - vcl_A_cpu(i,j)) > EPS)
-      {
-        std::cout << "Error at index (" << i << ", " << j << "): " << ublas_A(i,j) << " vs " << vcl_A_cpu(i,j) << std::endl;
-        std::cout << std::endl << "TEST failed!" << std::endl;
-        return false;
-      }
+        for(std::size_t j = 0; j < res.size2(); j++)
+        {
+            diff = std::max(diff, std::abs(res(i, j) - ref(i, j)));
+            mx = std::max(mx, res(i, j));
+        }
     }
-  }
-  std::cout << "PASSED!" << std::endl;
-  return true;
+
+    return diff / mx;
 }
 
-template <typename VectorType>
-bool check_for_equality(VectorType const & ublas_A, VectorType const & ublas_B)
+ScalarType vector_compare(ublas::vector<ScalarType>& res,
+                          ublas::vector<ScalarType>& ref)
 {
+    std::sort(ref.begin(), ref.end());
+    std::sort(res.begin(), res.end());
 
-  for (std::size_t i=0; i<ublas_A.size(); ++i)
-  {
-      if (std::abs(ublas_A(i) - ublas_B(i)) > EPS)
-      {
-        std::cout << "Error at index (" << i << "): " << ublas_A(i) << " vs " <<ublas_B(i) << std::endl;
-        std::cout << std::endl << "TEST failed!" << std::endl;
-        return false;
-      }
-  }
-  std::cout << "PASSED!" << std::endl;
-  return true;
+    ScalarType diff = 0.0;
+    ScalarType mx = 0.0;
+    for(size_t i = 0; i < ref.size(); i++)
+    {
+        diff = std::max(diff, std::abs(res[i] - ref[i]));
+        mx = std::max(mx, res[i]);
+    }
+
+    return diff / mx;
 }
 
-void fill_vector(ublas::vector<ScalarType>& v)
+template <typename MatrixLayout>
+void matrix_print(viennacl::matrix<ScalarType, MatrixLayout>& A_orig)
 {
-    for (unsigned int i = 0; i < v.size(); ++i)
-      v[i] = random<ScalarType>();
+    ublas::matrix<ScalarType> A(A_orig.size1(), A_orig.size2());
+    viennacl::copy(A_orig, A);
+    std::cout << "matrix_print!\n";
+    for (unsigned int i = 0; i < A.size1(); i++) {
+        for (unsigned int j = 0; j < A.size2(); j++)
+           std::cout << A(i, j) << "\t";
+        std::cout << "\n";
+    }
 }
 
-/*
- *
- * Functions to be tested
- *
- */
-
-template <typename NumericT>
-void house_update_A_left(ublas::matrix<NumericT> & A,
-                         ublas::vector<NumericT> D,
-                         unsigned int start)
+template <typename MatrixLayout>
+void test_eigen(const std::string& fn, bool is_symm)
 {
-  NumericT temp = 0;
-  NumericT beta = 0;
-  ublas::vector<ScalarType> w;
-  temp = ublas::inner_prod(D, D);
-  beta = 2/temp;
+    std::cout << "Reading..." << "\n";
+    std::size_t sz;
+    // read file
+    std::fstream f(fn.c_str(), std::fstream::in);
+    //read size of input matrix
+    read_matrix_size(f, sz);
+    std::cout << "Testing matrix of size " << sz << "-by-" << sz << std::endl;
 
-  w = beta*ublas::prod(trans(A), D);
+    viennacl::matrix<ScalarType, MatrixLayout> A_input(sz, sz), A_ref(sz, sz), Q(sz, sz);
+    ublas::vector<ScalarType> eigen_ref_re = ublas::scalar_vector<ScalarType>(sz, 0);
+    ublas::vector<ScalarType> eigen_ref_im = ublas::scalar_vector<ScalarType>(sz, 0);
+    ublas::vector<ScalarType> eigen_re = ublas::scalar_vector<ScalarType>(sz, 0);
+    ublas::vector<ScalarType> eigen_im = ublas::scalar_vector<ScalarType>(sz, 0);
 
-  //scaled rank 1 update
-  for(uint i = 0; i < A.size1(); i++)
-  {
-      for(uint j = 0; j < A.size2(); j++)
+    read_matrix_body(f, A_input);
+
+    //matrix_print(A_input);
+
+    read_vector_body(f, eigen_ref_re);
+
+    if(!is_symm)
+        read_vector_body(f, eigen_ref_im);
+
+    f.close();
+
+    A_ref = A_input;
+
+    std::cout << "Calculation..." << "\n";
+
+    Timer timer;
+    timer.start();
+
+    if(is_symm)
+        viennacl::linalg::qr_method_sym(A_input, Q, eigen_re);
+    else
+        viennacl::linalg::qr_method_nsm(A_input, Q, eigen_re, eigen_im);
+
+    /*
+    std::cout << "\n\n Matrix A: \n\n";
+    matrix_print(A_input);
+    std::cout << "\n\n";
+
+    std::cout << "\n\n Matrix Q: \n\n";
+    matrix_print(Q);
+    std::cout << "\n\n";
+    */
+
+    viennacl::backend::finish();
+
+    double time_spend = timer.get();
+
+    std::cout << "Verification..." << "\n";
+
+    bool is_hessenberg = check_hessenberg(A_input);
+    bool is_tridiag = check_tridiag(A_input);
+
+    ublas::matrix<ScalarType> A_ref_ublas(sz, sz), A_input_ublas(sz, sz), Q_ublas(sz, sz), result1(sz, sz), result2(sz, sz);
+    viennacl::copy(A_ref, A_ref_ublas);
+    viennacl::copy(A_input, A_input_ublas);
+    viennacl::copy(Q, Q_ublas);
+
+    // compute result1 = ublas::prod(Q_ublas, A_input_ublas);   (terribly slow when using ublas directly)
+    for (std::size_t i=0; i<result1.size1(); ++i)
+      for (std::size_t j=0; j<result1.size2(); ++j)
       {
-          A(i, j) = A(i, j) - D[i] * w[j];
+        ScalarType value = 0;
+        for (std::size_t k=0; k<Q_ublas.size2(); ++k)
+          value += Q_ublas(i, k) * A_input_ublas(k, j);
+        result1(i,j) = value;
       }
-  }
+    // compute result2 = ublas::prod(A_ref_ublas, Q_ublas);   (terribly slow when using ublas directly)
+    for (std::size_t i=0; i<result2.size1(); ++i)
+      for (std::size_t j=0; j<result2.size2(); ++j)
+      {
+        ScalarType value = 0;
+        for (std::size_t k=0; k<A_ref_ublas.size2(); ++k)
+          value += A_ref_ublas(i, k) * Q_ublas(k, j);
+        result2(i,j) = value;
+      }
+
+    ScalarType prods_diff = matrix_compare(result1, result2);
+    ScalarType eigen_diff = vector_compare(eigen_ref_re, eigen_re);
+
+    bool is_ok = is_hessenberg;
+
+    if(is_symm)
+        is_ok = is_ok && is_tridiag;
+
+    is_ok = is_ok && (eigen_diff < EPS);
+    is_ok = is_ok && (prods_diff < EPS);
+
+    // std::cout << A_ref << "\n";
+    // std::cout << A_input << "\n";
+    // std::cout << Q << "\n";
+    // std::cout << eigen_re << "\n";
+    // std::cout << eigen_im << "\n";
+    // std::cout << eigen_ref_re << "\n";
+    // std::cout << eigen_ref_im << "\n";
+
+    // std::cout << result1 << "\n";
+    // std::cout << result2 << "\n";
+    // std::cout << eigen_ref << "\n";
+    // std::cout << eigen << "\n";
+
+    printf("%6s [%dx%d] %40s time = %.4f\n", is_ok?"[[OK]]":"[FAIL]", (int)A_ref.size1(), (int)A_ref.size2(), fn.c_str(), time_spend);
+    printf("tridiagonal = %d, hessenberg = %d prod-diff = %f eigen-diff = %f\n", is_tridiag, is_hessenberg, prods_diff, eigen_diff);
+
+    if (!is_ok)
+      exit(EXIT_FAILURE);
+
 }
-
-template <typename NumericT>
-void house_update_A_right(ublas::matrix<NumericT> & A,
-                          ublas::vector<NumericT> D,
-                          unsigned int start)
-{
-  NumericT temp = 0;
-  NumericT beta = 0;
-  ublas::vector<ScalarType> w;
-
-  temp = ublas::inner_prod(D, D);
-  beta = 2/temp;
-
-  w = beta*ublas::prod(A, D);
-  //scaled rank 1 update
-  for(uint i = 0; i < A.size1(); i++)
-  {
-      for(uint j = 0; j < A.size2(); j++)
-      {
-          A(i, j) = A(i, j) - w[i] * D[j];
-      }
-  }
-}
-
-template <typename NumericT>
-void house_update_QL(ublas::matrix<NumericT> & A,
-                     ublas::matrix<NumericT> & Q,
-                     ublas::vector<NumericT> D)
-
-{
-  NumericT temp, beta = 0;
-  ublas::matrix<NumericT> ubl_P(A.size1(), A.size2());
-  ublas::matrix<ScalarType> I = ublas::identity_matrix<ScalarType>(Q.size1());
-  ublas::matrix<NumericT> Q_temp(Q.size1(), Q.size2());
-
-  for(unsigned int i = 0; i < Q.size1(); i++)
-  {
-      for(unsigned int j = 0; j < Q.size2(); j++)
-      {
-          Q_temp(i, j) = Q(i, j);
-      }
-  }
-
-  ubl_P = ublas::identity_matrix<NumericT>(A.size1());
-
-  temp = ublas::inner_prod(D, D);
-  beta = 2/temp;
-
-  //scaled_rank_1 update
-  for(unsigned int i = 0; i < A.size1(); i++)
-  {
-      for(unsigned int j = 0; j < A.size2(); j++)
-      {
-          ubl_P(i, j) = I(i, j) - beta * (D[i] * D[j]);
-      }
-  }
-  Q = ublas::prod(Q_temp, ubl_P);  //P wurde korrekt berechnet - ueberprueft
-}
-
-template <typename NumericT>
-void givens_next(ublas::matrix<NumericT> & Q,
-                 ublas::vector<NumericT> & tmp1,
-                 ublas::vector<NumericT> & tmp2,
-                 int l,
-                 int m)
-{
-    for(int i = m - 1; i >= l; i--)
-      {
-        for(uint k = 0; k < Q.size1(); k++)
-          {
-            NumericT h = Q(k, i+1);
-            Q(k, i+1) = tmp2[i] * Q(k, i) + tmp1[i]*h;
-            Q(k, i) = tmp1[i] * Q(k, i) - tmp2[i]*h;
-          }
-      }
-}
-
-
-template <typename NumericT>
-void copy_vec(ublas::matrix<NumericT>& A,
-              ublas::vector<NumericT> & V,
-              std::size_t row_start,
-              std::size_t col_start,
-              bool copy_col)
-{
-  if(copy_col)
-  {
-      for(std::size_t i = row_start; i < A.size1(); i++)
-      {
-         V[i - row_start] = A(i, col_start);
-      }
-  }
-  else
-  {
-      for(std::size_t i = col_start; i < A.size1(); i++)
-      {
-         V[i - col_start] = A(row_start, i);
-      }
-  }
-}
-
-template <typename NumericT>
-void bidiag_pack(ublas::matrix<NumericT> & A,
-                 ublas::vector<NumericT> & D,
-                 ublas::vector<NumericT> & S)
-
-{
-  std::size_t size = std::min(D.size(), S.size());
-  std::size_t i = 0;
-  for(i = 0;  i < size - 1; i++)
-  {
-      D[i] = A(i, i);
-      S[i + 1] = A(i, i + 1);
-  }
-  D[i] = A(i, i);
-}
-
 
 int main()
 {
-/*
- *
- *
- */
 
-  std::cout << "Reading..." << "\n";
-  std::size_t sz;
+  test_eigen<viennacl::row_major>("../../examples/testdata/eigen/symm1.example", true);
+  test_eigen<viennacl::column_major>("../../examples/testdata/eigen/symm2.example", true);
+  //test_eigen("../../examples/testdata/eigen/symm3.example", true);
 
-  // read file
-  std::fstream f("../../examples/testdata/eigen/symm1.example", std::fstream::in);
-  //read size of input matrix
-  read_matrix_size(f, sz);
+  //test_eigen("../../examples/testdata/eigen/nsm1.example", false);
+  //test_eigen("../../examples/testdata/eigen/nsm2.example", false);
+  //test_eigen("../../examples/testdata/eigen/nsm3.example", false);
+  //test_eigen("../../examples/testdata/eigen/nsm4.example", false); //Note: This test suffers from round-off errors in single precision, hence disabled
 
-  ublas::vector<ScalarType> ubl_D(sz), ubl_E(sz), ubl_F(sz), ubl_G(sz), ubl_H(sz);
-  ublas::matrix<ScalarType> ubl_A(sz, sz), ubl_Q(sz, sz);
-  viennacl::matrix<ScalarType> vcl_A(sz, sz), vcl_Q(sz, sz);
-  viennacl::vector<ScalarType> vcl_D(sz), vcl_E(sz), vcl_F(sz);
+  std::cout << std::endl;
+  std::cout << "------- Test completed --------" << std::endl;
+  std::cout << std::endl;
 
-  std::cout << "Testing matrix of size " << sz << "-by-" << sz << std::endl << std::endl;
-
-
-
-  read_matrix_body(f, vcl_A);
-  f.close();
-  viennacl::copy(vcl_A, ubl_A);
-
-  ubl_D[0] = 0;
-  ubl_D[1] = -0.57735;
-  ubl_D[2] = -0.57735;
-  ubl_D[3] =  0.57735;
-
-  copy(ubl_D, vcl_D);
-//--------------------------------------------------------
-  std::cout << "\nTesting house_update_left...\n";
-
-
-  viennacl::linalg::house_update_A_left(vcl_A, vcl_D, 0);
-  house_update_A_left(ubl_A, ubl_D, 0);
-/*
-  std::cout << "vcl_D: \n";
-  vector_print(vcl_D);
-
-  std::cout << "ubl_D: \n";
-  vector_print(ubl_D);
-
-  std::cout << "vcl_A: \n";
-  matrix_print(vcl_A);
-
-  std::cout << "ublas_A: \n";
-  matrix_print(ubl_A);
-*/
-  if(!check_for_equality(ubl_A, vcl_A))
-    ;//return EXIT_FAILURE;
-//--------------------------------------------------------
-  std::cout << "\nTesting house_update_right...\n";
-  viennacl::linalg::house_update_A_right(vcl_A, vcl_D, 0);
-  house_update_A_right(ubl_A, ubl_D, 0);
-
-  if(!check_for_equality(ubl_A, vcl_A))
-     ;//return EXIT_FAILURE;
-//--------------------------------------------------------
-
-  std::cout << "\nTesting house_update_QL...\n";
-  ubl_Q = ublas::identity_matrix<ScalarType>(ubl_Q.size1());
-  copy(ubl_Q, vcl_Q);
-  copy(ubl_A, vcl_A);
-  copy(ubl_D, vcl_D);
-  viennacl::linalg::house_update_QL(vcl_A, vcl_Q, vcl_D);
-  house_update_QL(ubl_A, ubl_Q, ubl_D);
-  if(!check_for_equality(ubl_Q, vcl_Q))
-     ;//return EXIT_FAILURE;
-//--------------------------------------------------------
-
-  std::cout << "\nTesting givens next...\n";
-  fill_vector(ubl_E);
-  fill_vector(ubl_F);
-  copy(ubl_E, vcl_E);
-  copy(ubl_F, vcl_F);
-  viennacl::linalg::givens_next(vcl_Q, vcl_E, vcl_F, 0, 3);  //beim testen nicht gleich givens next
-  matrix_print(vcl_Q);
-  givens_next(ubl_Q, ubl_E, ubl_F, 0, 3);
-  matrix_print(ubl_Q);
-  if(!check_for_equality(ubl_Q, vcl_Q))
-      ;//return EXIT_FAILURE;
-//--------------------------------------------------------
-  std::cout << "\nTesting copy vec...\n";
-  viennacl::linalg::detail::copy_vec(vcl_A, vcl_D, 0, 2, 1);
-  copy_vec(ubl_A, ubl_D, 0, 2, 1);
-  copy(vcl_D, ubl_E); //check for equality only for ublas vectors
-  if(!check_for_equality(ubl_D, ubl_E))
-      return EXIT_FAILURE;
-
-//--------------------------------------------------------
-  std::cout << "\nTesting bidiag pack...\n";
-  viennacl::linalg::bidiag_pack(vcl_A, ubl_D, ubl_F);
-    ubl_F[0] = 0;  // first element not calculated in bidiag pack for minor diagonal!
-  bidiag_pack(ubl_A, ubl_G, ubl_H);
-  if(!check_for_equality(ubl_D, ubl_G))
-      return EXIT_FAILURE;
-  if(!check_for_equality(ubl_F, ubl_H))
-      return EXIT_FAILURE;
-//--------------------------------------------------------
-  std::cout <<"\nTEST COMPLETE!\n";
+  return EXIT_SUCCESS;
 }
 

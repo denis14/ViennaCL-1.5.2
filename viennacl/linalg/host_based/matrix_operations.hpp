@@ -1263,7 +1263,73 @@ namespace viennacl
                                 vector_base<NumericT> & D,
                                 vcl_size_t start)
        {         
-         //std::cout << "house_update_A_left host based started!!\n";
+         typedef NumericT        value_type;
+         NumericT ss = 0;
+         uint row_start = start + 1;
+
+         value_type * data_A  = detail::extract_raw_pointer<value_type>(A);
+         value_type * data_D = detail::extract_raw_pointer<value_type>(D);
+
+         vcl_size_t A_start1 = viennacl::traits::start1(A);
+         vcl_size_t A_start2 = viennacl::traits::start2(A);
+         vcl_size_t A_inc1   = viennacl::traits::stride1(A);
+         vcl_size_t A_inc2   = viennacl::traits::stride2(A);
+         vcl_size_t A_size1  = viennacl::traits::size1(A);
+         vcl_size_t A_size2  = viennacl::traits::size2(A);
+         vcl_size_t A_internal_size1  = viennacl::traits::internal_size1(A);
+         vcl_size_t A_internal_size2  = viennacl::traits::internal_size2(A);
+
+         vcl_size_t start1 = viennacl::traits::start(D);
+         vcl_size_t inc1   = viennacl::traits::stride(D);
+         vcl_size_t size1  = viennacl::traits::size(D);
+
+         if (detail::is_row_major(typename F::orientation_category()))
+           {
+             for(uint i = 0; i < A_size2; i++)
+               {
+                 ss = 0;
+#ifdef VIENNACL_WITH_OPENMP
+            #pragma omp parallel for
+#endif
+                 for(uint j = row_start; j < A_size1; j++)
+                     ss = ss + data_D[start1 + inc1 * j] * data_A[viennacl::row_major::mem_index((j) * A_inc1 + A_start1, (i) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
+#ifdef VIENNACL_WITH_OPENMP
+            #pragma omp parallel for
+#endif
+                 for(uint j = row_start; j < A_size1; j++)
+                     data_A[viennacl::row_major::mem_index((j) * A_inc1 + A_start1, (i) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)]=
+                         data_A[viennacl::row_major::mem_index((j) * A_inc1 + A_start1, (i) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)] -
+                         (2 * data_D[start1 + inc1 * j]* ss);
+               }
+           }
+         else
+           {
+             for(uint i = 0; i < A_size2; i++)
+               {
+                 ss = 0;
+#ifdef VIENNACL_WITH_OPENMP
+            #pragma omp parallel for
+#endif
+                 for(uint j = row_start; j < A_size1; j++)
+                     ss = ss + data_D[start1 + inc1 * j] * data_A[viennacl::column_major::mem_index((j) * A_inc1 + A_start1, (i) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
+#ifdef VIENNACL_WITH_OPENMP
+            #pragma omp parallel for
+#endif
+                 for(uint j = row_start; j < A_size1; j++)
+                     data_A[viennacl::column_major::mem_index((j) * A_inc1 + A_start1, (i) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)]=
+                         data_A[viennacl::column_major::mem_index((j) * A_inc1 + A_start1, (i) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)] -
+                         (2 * data_D[start1 + inc1 * j]* ss);
+               }
+           }
+
+       }
+       /*
+       template <typename NumericT, typename F>
+       void house_update_A_left(matrix_base<NumericT, F>& A,
+                                vector_base<NumericT> & D,
+                                vcl_size_t start)
+       {
+
          NumericT temp = 0;
          NumericT beta = 0;
 
@@ -1277,26 +1343,75 @@ namespace viennacl
          vcl_w = beta*viennacl::linalg::prod(trans(A), vcl_D);
          viennacl::linalg::host_based::scaled_rank_1_update(A, 1, 1, 0, 1, vcl_D, vcl_w);
        }
+       */
 
        template <typename NumericT, typename F>
        void house_update_A_right(matrix_base<NumericT, F>& A,
                                  vector_base<NumericT> & D,
                                  vcl_size_t start)
        {
-         //std::cout << "house_update_A_right host based started!!\n";
+         typedef NumericT        value_type;
+         NumericT ss = 0;
+         uint row_start = start + 1;
 
-         NumericT temp = 0;
-         NumericT beta = 0;
+         value_type * data_A  = detail::extract_raw_pointer<value_type>(A);
+         value_type * data_D = detail::extract_raw_pointer<value_type>(D);
 
-         viennacl::vector<NumericT> vcl_w(D.size());
-         viennacl::vector<NumericT> vcl_D(D.size());
-         viennacl::copy(D, vcl_D);
+         vcl_size_t A_start1 = viennacl::traits::start1(A);
+         vcl_size_t A_start2 = viennacl::traits::start2(A);
+         vcl_size_t A_inc1   = viennacl::traits::stride1(A);
+         vcl_size_t A_inc2   = viennacl::traits::stride2(A);
+         vcl_size_t A_size1  = viennacl::traits::size1(A);
+         vcl_size_t A_size2  = viennacl::traits::size2(A);
+         vcl_size_t A_internal_size1  = viennacl::traits::internal_size1(A);
+         vcl_size_t A_internal_size2  = viennacl::traits::internal_size2(A);
 
-         temp = inner_prod(vcl_D, vcl_D);
-         beta = 2/temp;
+         vcl_size_t start1 = viennacl::traits::start(D);
+         vcl_size_t inc1   = viennacl::traits::stride(D);
+         vcl_size_t size1  = viennacl::traits::size(D);
 
-         vcl_w = beta*viennacl::linalg::prod(A, vcl_D);
-         viennacl::linalg::host_based::scaled_rank_1_update(A, 1, 1, 0, 1, vcl_w, vcl_D);
+         if (detail::is_row_major(typename F::orientation_category()))
+           {
+             for(uint i = 0; i < A_size1; i++)
+               {
+                 ss = 0;
+#ifdef VIENNACL_WITH_OPENMP
+            #pragma omp parallel for
+#endif
+                 for(uint j = 0; j < A_size2; j++) // ss = ss + D[j] * A(i, j)
+                     ss = ss + (data_D[start1 + inc1 * j] * data_A[viennacl::row_major::mem_index((i) * A_inc1 + A_start1, (j) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)]);
+
+                 NumericT sum_Av = ss;
+#ifdef VIENNACL_WITH_OPENMP
+            #pragma omp parallel for
+#endif
+                 for(uint j = 0; j < A_size2; j++) // A(i, j) = A(i, j) - 2 * D[j] * sum_Av
+                     data_A[viennacl::row_major::mem_index((i) * A_inc1 + A_start1, (j) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)]  =
+                         data_A[viennacl::row_major::mem_index((i) * A_inc1 + A_start1, (j) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)] - (2 * data_D[start1 + inc1 * j] * sum_Av);
+               }
+           }
+         else
+           {
+             for(uint i = 0; i < A_size1; i++)
+               {
+                 ss = 0;
+#ifdef VIENNACL_WITH_OPENMP
+            #pragma omp parallel for
+#endif
+                 for(uint j = 0; j < A_size2; j++) // ss = ss + D[j] * A(i, j)
+                     ss = ss + (data_D[start1 + inc1 * j] * data_A[viennacl::column_major::mem_index((i) * A_inc1 + A_start1, (j) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)]);
+
+                 NumericT sum_Av = ss;
+#ifdef VIENNACL_WITH_OPENMP
+            #pragma omp parallel for
+#endif
+                 for(uint j = 0; j < A_size2; j++) // A(i, j) = A(i, j) - 2 * D[j] * sum_Av
+                     data_A[viennacl::column_major::mem_index((i) * A_inc1 + A_start1, (j) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)]  =
+                         data_A[viennacl::column_major::mem_index((i) * A_inc1 + A_start1, (j) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)] - (2 * data_D[start1 + inc1 * j] * sum_Av);
+               }
+           }
+
+
        }
 
 
