@@ -146,7 +146,7 @@ bool check_for_equality(MatrixType const & ublas_A, VCLMatrixType const & vcl_A)
   {
     for (std::size_t j=0; j<ublas_A.size2(); ++j)
     {
-      if (std::abs(ublas_A(i,j) - vcl_A_cpu(i,j)) > EPS * std::abs(ublas_A(i, i)))
+      if (std::abs(ublas_A(i,j) - vcl_A_cpu(i,j)) > EPS)
       {
         std::cout << "Error at index (" << i << ", " << j << "): " << ublas_A(i,j) << " vs " << vcl_A_cpu(i,j) << std::endl;
         std::cout << std::endl << "TEST failed!" << std::endl;
@@ -196,7 +196,7 @@ void house_update_A_left(ublas::matrix<NumericT> & A,
   NumericT beta = 0;
   ublas::vector<ScalarType> w;
   temp = ublas::inner_prod(D, D);
-  beta = 2;//temp;
+  beta = 2/temp;
 
   w = beta*ublas::prod(trans(A), D);
 
@@ -220,7 +220,7 @@ void house_update_A_right(ublas::matrix<NumericT> & A,
   ublas::vector<ScalarType> w;
 
   temp = ublas::inner_prod(D, D);
-  beta = 2;
+  beta = 2/temp;
 
   w = beta*ublas::prod(A, D);
   //scaled rank 1 update
@@ -254,8 +254,8 @@ void house_update_QL(ublas::matrix<NumericT> & A,
 
   ubl_P = ublas::identity_matrix<NumericT>(A.size1());
 
-  //temp = ublas::inner_prod(D, D);
-  beta = 2;
+  temp = ublas::inner_prod(D, D);
+  beta = 2/temp;
 
   //scaled_rank_1 update
   for(unsigned int i = 0; i < A.size1(); i++)
@@ -358,26 +358,16 @@ int main()
   ubl_D[0] = 0;
   ubl_D[1] = -0.57735;
   ubl_D[2] = -0.57735;
-  ubl_D[3] =  3.57735;
+  ubl_D[3] =  0.57735;
 
   copy(ubl_D, vcl_D);
 //--------------------------------------------------------
   std::cout << "\nTesting house_update_left...\n";
-  std::cout << "vcl_D: \n";
-  vector_print(vcl_D);
 
-  std::cout << "ubl_D: \n";
-  vector_print(ubl_D);
-
-  std::cout << "vcl_A: \n";
-  matrix_print(vcl_A);
-
-  std::cout << "ublas_A: \n";
-  matrix_print(ubl_A);
 
   viennacl::linalg::house_update_A_left(vcl_A, vcl_D, 0);
   house_update_A_left(ubl_A, ubl_D, 0);
-
+/*
   std::cout << "vcl_D: \n";
   vector_print(vcl_D);
 
@@ -389,7 +379,7 @@ int main()
 
   std::cout << "ublas_A: \n";
   matrix_print(ubl_A);
-
+*/
   if(!check_for_equality(ubl_A, vcl_A))
     ;//return EXIT_FAILURE;
 //--------------------------------------------------------
@@ -443,3 +433,4 @@ int main()
 //--------------------------------------------------------
   std::cout <<"\nTEST COMPLETE!\n";
 }
+

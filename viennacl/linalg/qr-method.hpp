@@ -205,7 +205,7 @@ namespace viennacl
                         {
                             viennacl::copy(cs, tmp1);
                             viennacl::copy(ss, tmp2);
-                            //std::cout << "Givens next:\n";
+
                             givens_next(Q, tmp1, tmp2, l, m);
                             /*
                             for( int i = m - 1; i >= l; i--)
@@ -893,7 +893,8 @@ namespace viennacl
             std::cout << "start: " << start << std::endl;
             {
               viennacl::linalg::house_update_A_left(A, D, start);
-
+             // std::cout << "\nMatrix A nach left \n";
+             // std::cout << A;
 
 /*
               viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE>::program_name(), SVD_HOUSEHOLDER_UPDATE_A_LEFT_KERNEL);
@@ -912,8 +913,11 @@ namespace viennacl
 
             }
 
+
             {
               viennacl::linalg::house_update_A_right(A, D, 0);
+          //    std::cout << "\nMatrix A nach right\n";
+            //  std::cout << A;
 
               /*
 
@@ -934,6 +938,7 @@ namespace viennacl
 
             {
               viennacl::linalg::house_update_QL(A, Q, D);
+
               /*
                 viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE>::program_name(), SVD_HOUSEHOLDER_UPDATE_QL_KERNEL);
 

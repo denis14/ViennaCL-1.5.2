@@ -32,7 +32,6 @@ namespace viennacl
           source.append("    S[0] = 0; \n");
           if(is_row_major)
             {
-              std::cout << "is row major ist aktiv!\n";
               source.append("  for(uint i = get_global_id(0); i < size ; i += get_global_size(0)) { \n");
               source.append("    D[i] = A[i*stride + i]; \n");
               source.append("    S[i + 1] = (i + 1 < size2) ? A[i*stride + (i + 1)] : 0; \n");
