@@ -72,8 +72,8 @@ void read_matrix_size(std::fstream& f, std::size_t& sz)
 
     f >> sz;
 }
-
-void read_matrix_body(std::fstream& f, viennacl::matrix<ScalarType>& A)
+template <typename MatrixLayout>
+void read_matrix_body(std::fstream& f, viennacl::matrix<ScalarType, MatrixLayout>& A)
 {
     if(!f.is_open())
     {
@@ -146,9 +146,9 @@ bool check_for_equality(MatrixType const & ublas_A, VCLMatrixType const & vcl_A)
   {
     for (std::size_t j=0; j<ublas_A.size2(); ++j)
     {
-      if (std::abs(ublas_A(i,j) - vcl_A_cpu(i,j)) > EPS * std::abs(ublas_A(i, i)))
+      if (std::abs(ublas_A(i,j) - vcl_A_cpu(i,j)) > EPS * std::max(std::abs(ublas_A(i, j)), std::abs(vcl_A_cpu(i, j))))
       {
-        std::cout << "Error at index (" << i << ", " << j << "): " << ublas_A(i,j) << " vs " << vcl_A_cpu(i,j) << std::endl;
+        std::cout << "Error at index (" << i << ", " << j << "): " << ublas_A(i,j) << " vs. " << vcl_A_cpu(i,j) << std::endl;
         std::cout << std::endl << "TEST failed!" << std::endl;
         return false;
       }
@@ -250,8 +250,6 @@ void house_update_QL(ublas::matrix<NumericT> & A,
   }
 
   ubl_P = ublas::identity_matrix<NumericT>(A.size1());
-
-  //temp = ublas::inner_prod(D, D);
   beta = 2;
 
   //scaled_rank_1 update
@@ -324,25 +322,22 @@ void bidiag_pack(ublas::matrix<NumericT> & A,
 }
 
 
-int main()
+template <typename MatrixLayout>
+bool test_qr_method_sym(const std::string& fn)
 {
-/*
- *
- *
- */
-
   std::cout << "Reading..." << "\n";
   std::size_t sz;
 
   // read file
-  std::fstream f("../../examples/testdata/eigen/symm3.example", std::fstream::in);
+  std::fstream f(fn.c_str(), std::fstream::in);
   //read size of input matrix
   read_matrix_size(f, sz);
 
+  viennacl::matrix<ScalarType, MatrixLayout> vcl_A(sz, sz), vcl_Q(sz, sz);
+  viennacl::vector<ScalarType> vcl_D(sz), vcl_E(sz), vcl_F(sz);
   ublas::vector<ScalarType> ubl_D(sz), ubl_E(sz), ubl_F(sz), ubl_G(sz), ubl_H(sz);
   ublas::matrix<ScalarType> ubl_A(sz, sz), ubl_Q(sz, sz);
-  viennacl::matrix<ScalarType> vcl_A(sz, sz), vcl_Q(sz, sz);
-  viennacl::vector<ScalarType> vcl_D(sz), vcl_E(sz), vcl_F(sz);
+
 
   std::cout << "Testing matrix of size " << sz << "-by-" << sz << std::endl << std::endl;
 
@@ -373,7 +368,7 @@ int main()
   house_update_A_left(ubl_A, ubl_D, 0);
 
   if(!check_for_equality(ubl_A, vcl_A))
-    ;//return EXIT_FAILURE;
+    exit(EXIT_FAILURE);
 //--------------------------------------------------------
   std::cout << "\nTesting house_update_right...\n";
   copy(ubl_A, vcl_A);
@@ -382,7 +377,7 @@ int main()
   house_update_A_right(ubl_A, ubl_D, 0);
 
   if(!check_for_equality(ubl_A, vcl_A))
-     ;//return EXIT_FAILURE;
+     exit(EXIT_FAILURE);
 //--------------------------------------------------------
 
   std::cout << "\nTesting house_update_QL...\n";
@@ -393,7 +388,7 @@ int main()
   viennacl::linalg::house_update_QL(vcl_A, vcl_Q, vcl_D);
   house_update_QL(ubl_A, ubl_Q, ubl_D);
   if(!check_for_equality(ubl_Q, vcl_Q))
-     ;//return EXIT_FAILURE;
+     exit(EXIT_FAILURE);
 //--------------------------------------------------------
 
   std::cout << "\nTesting givens next...\n";
@@ -401,17 +396,19 @@ int main()
   fill_vector(ubl_F);
   copy(ubl_E, vcl_E);
   copy(ubl_F, vcl_F);
+  copy(ubl_Q, vcl_Q);
+  copy(ubl_A, vcl_A);
   viennacl::linalg::givens_next(vcl_Q, vcl_E, vcl_F, 0, 3);
   givens_next(ubl_Q, ubl_E, ubl_F, 0, 3);
   if(!check_for_equality(ubl_Q, vcl_Q))
-      ;//return EXIT_FAILURE;
+      exit(EXIT_FAILURE);
 //--------------------------------------------------------
   std::cout << "\nTesting copy vec...\n";
   viennacl::linalg::detail::copy_vec(vcl_A, vcl_D, 0, 2, 1);
   copy_vec(ubl_A, ubl_D, 0, 2, 1);
   copy(vcl_D, ubl_E); //check for equality only for ublas vectors
   if(!check_for_equality(ubl_D, ubl_E))
-      return EXIT_FAILURE;
+      exit(EXIT_FAILURE);
 
 //--------------------------------------------------------
   std::cout << "\nTesting bidiag pack...\n";
@@ -419,9 +416,20 @@ int main()
     ubl_F[0] = 0;  // first element not calculated in bidiag pack for minor diagonal!
   bidiag_pack(ubl_A, ubl_G, ubl_H);
   if(!check_for_equality(ubl_D, ubl_G))
-      return EXIT_FAILURE;
+      exit(EXIT_FAILURE);
   if(!check_for_equality(ubl_F, ubl_H))
-      return EXIT_FAILURE;
+      exit(EXIT_FAILURE);
 //--------------------------------------------------------
-  std::cout <<"\nTEST COMPLETE!\n";
+}
+
+int main()
+{
+/*
+ *
+ *
+ */
+
+  test_qr_method_sym<viennacl::row_major>("../../examples/testdata/eigen/symm3.example");
+
+  std::cout <<"\n--------TEST SUCESSFULLY COMPLETED----------\n";
 }

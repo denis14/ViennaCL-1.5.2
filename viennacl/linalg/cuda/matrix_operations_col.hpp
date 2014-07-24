@@ -1759,7 +1759,7 @@ namespace viennacl
               ss = 0;
               for(uint j = threadIdx.x; j < size2; j+= blockDim.x)
                   ss = ss + (V[j] * A[i + j * stride]);
-              sums[threadIdx.x] = ss; //no effect
+              sums[threadIdx.x] = ss;
 
               __syncthreads();
               col_reduce_lcl_array(sums, threadIdx.x, blockDim.x);

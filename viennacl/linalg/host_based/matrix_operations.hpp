@@ -1289,7 +1289,7 @@ namespace viennacl
                {
                  ss = 0;
 #ifdef VIENNACL_WITH_OPENMP
-            #pragma omp parallel for
+            //#pragma omp parallel for
 #endif
                  for(uint j = row_start; j < A_size1; j++)
                      ss = ss + data_D[start1 + inc1 * j] * data_A[viennacl::row_major::mem_index((j) * A_inc1 + A_start1, (i) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
@@ -1308,7 +1308,7 @@ namespace viennacl
                {
                  ss = 0;
 #ifdef VIENNACL_WITH_OPENMP
-            #pragma omp parallel for
+            //#pragma omp parallel for
 #endif
                  for(uint j = row_start; j < A_size1; j++)
                      ss = ss + data_D[start1 + inc1 * j] * data_A[viennacl::column_major::mem_index((j) * A_inc1 + A_start1, (i) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
@@ -1352,7 +1352,6 @@ namespace viennacl
        {
          typedef NumericT        value_type;
          NumericT ss = 0;
-         uint row_start = start + 1;
 
          value_type * data_A  = detail::extract_raw_pointer<value_type>(A);
          value_type * data_D = detail::extract_raw_pointer<value_type>(D);
@@ -1376,7 +1375,7 @@ namespace viennacl
                {
                  ss = 0;
 #ifdef VIENNACL_WITH_OPENMP
-            #pragma omp parallel for
+            //#pragma omp parallel for
 #endif
                  for(uint j = 0; j < A_size2; j++) // ss = ss + D[j] * A(i, j)
                      ss = ss + (data_D[start1 + inc1 * j] * data_A[viennacl::row_major::mem_index((i) * A_inc1 + A_start1, (j) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)]);
@@ -1396,7 +1395,7 @@ namespace viennacl
                {
                  ss = 0;
 #ifdef VIENNACL_WITH_OPENMP
-            #pragma omp parallel for
+           // #pragma omp parallel for
 #endif
                  for(uint j = 0; j < A_size2; j++) // ss = ss + D[j] * A(i, j)
                      ss = ss + (data_D[start1 + inc1 * j] * data_A[viennacl::column_major::mem_index((i) * A_inc1 + A_start1, (j) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)]);
@@ -1421,35 +1420,28 @@ namespace viennacl
                             vector_base<NumericT> & D)
 
        {
-         //std::cout << "house_update_QL host based started!!\n";
-         NumericT temp, beta = 0;
+         NumericT beta = 0;
          viennacl::matrix<NumericT> vcl_P(A.size1(), A.size2());
-
-         //viennacl::matrix<NumericT> I(A.size1(), A.size2());
          viennacl::matrix<NumericT> Q_temp(Q.size1(), Q.size2());
-         copy(Q, Q_temp);
-         //std::cout << D << std::endl;
          vcl_P = viennacl::identity_matrix<NumericT>(A.size1());
-         //I     = viennacl::identity_matrix<NumericT>(A.size1());
+         copy(Q, Q_temp);
+
          viennacl::vector<NumericT> vcl_D(D.size());
          viennacl::copy(D, vcl_D);
 
-         temp = inner_prod(vcl_D, vcl_D);
-         beta = 2/temp;
-         //std::cout << beta << std::endl;
+         beta = 2;
 
-         viennacl::linalg::host_based::scaled_rank_1_update(vcl_P, beta, 1, 0, 1, vcl_D, vcl_D);  //scaled_rank_1_update in linalg/matrix_operations.hpp beschrieben
-         //std::cout << "\n\nMatrix Q_temp:\n" << Q_temp << std::endl;
-         Q = prod(Q_temp, vcl_P);  //P wurde korrekt berechnet - ueberprueft
+         viennacl::linalg::host_based::scaled_rank_1_update(vcl_P, beta, 1, 0, 1, vcl_D, vcl_D);
+         Q = prod(Q_temp, vcl_P);
 
        }
 
        template<typename NumericT, typename F>
          void givens_next(matrix_base<NumericT, F>& Q,
-                         vector_base<NumericT> & tmp1,    //cs
-                         vector_base<NumericT> & tmp2,    //ss
-                         int l,                           //start_i
-                         int m                            //end_i+1
+                         vector_base<NumericT> & tmp1,
+                         vector_base<NumericT> & tmp2,
+                         int l,
+                         int m
                        )
          {
            typedef NumericT        value_type;
