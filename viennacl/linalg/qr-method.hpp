@@ -414,12 +414,16 @@ namespace viennacl
         // Nonsymmetric reduction from Hessenberg to real Schur form.
         // This is derived from the Algol procedure hqr2, by Martin and Wilkinson, Handbook for Auto. Comp.,
         // Vol.ii-Linear Algebra, and the corresponding  Fortran subroutine in EISPACK.
-        template <typename SCALARTYPE, unsigned int ALIGNMENT>
-        void hqr2(viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& vcl_H,
-                    viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& V,
+        template <typename SCALARTYPE, typename F, unsigned int ALIGNMENT>
+        void hqr2(viennacl::matrix<SCALARTYPE, F, ALIGNMENT>& vcl_H,
+                    viennacl::matrix<SCALARTYPE, F, ALIGNMENT>& V,
                     boost::numeric::ublas::vector<SCALARTYPE>& d,
                     boost::numeric::ublas::vector<SCALARTYPE>& e)
         {
+            if (viennacl::is_row_major<F>::value)
+              {
+;
+              }
             transpose(V);
 
             int nn = static_cast<int>(vcl_H.size1());
@@ -864,7 +868,7 @@ namespace viennacl
             viennacl::fast_copy(H.begin(), H.end(),  vcl_H);
             // viennacl::fast_copy(V.begin(), V.end(),  vcl_V);
 
-            viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT> tmp = V;
+            viennacl::matrix<SCALARTYPE, F, ALIGNMENT> tmp = V;
 
             V = viennacl::linalg::prod(trans(tmp), vcl_H);
         }
@@ -969,7 +973,11 @@ namespace viennacl
         {
 
             assert(A.size1() == A.size2() && bool("Input matrix must be square for QR method!"));
-           // assert(! detail::is_row_major(typename F::orientation_category()) && bool("qr_method for non-symmetric column-major matrices not implemented yet!"));
+            if (!viennacl::is_row_major<F>::value && !is_symmetric)
+            {
+              std::cout << "qr_method for non-symmetric column-major matrices not implemented yet!\n";
+              exit(EXIT_FAILURE);
+            }
             D.resize(A.size1());
             E.resize(A.size1());
 
@@ -997,7 +1005,7 @@ namespace viennacl
 
             else
             {
-                  //detail::hqr2(A, Q, D, E);
+                  detail::hqr2(A, Q, D, E);
             }
 
 
