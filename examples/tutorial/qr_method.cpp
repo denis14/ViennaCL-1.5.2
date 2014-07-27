@@ -129,8 +129,9 @@ void test_eigen(const std::string& fn)
     read_matrix_size(f, sz);
     std::cout << "Testing matrix of size " << sz << "-by-" << sz << std::endl;
 
-    viennacl::matrix<ScalarType, MatrixLayout> A_input(sz, sz), A_ref(sz, sz), Q(sz, sz);
-    ublas::vector<ScalarType> eigen_re = ublas::scalar_vector<ScalarType>(sz, 0);
+    viennacl::matrix<ScalarType, MatrixLayout> A_input(sz, sz), Q(sz, sz);
+    ublas::vector<ScalarType> eigenvalues = ublas::scalar_vector<ScalarType>(sz, 0);
+    ublas::vector<ScalarType> eigenvalues_ref = ublas::scalar_vector<ScalarType>(sz, 0);
 
 
     read_matrix_body(f, A_input);
@@ -138,21 +139,19 @@ void test_eigen(const std::string& fn)
     std::cout <<"\nInput matrix: \n";
     matrix_print(A_input);
 
-    read_vector_body(f, eigen_re);
-
-    std::cout <<"\n Input vector: \n";
-    vector_print(eigen_re);
-
+    read_vector_body(f, eigenvalues_ref);
     f.close();
 
-    A_ref = A_input;
 
     std::cout << "\nStarting QR-method \n";
     std::cout << "Calculation..." << "\n";
-    viennacl::linalg::qr_method_sym(A_input, Q, eigen_re);
-    std::cout <<"\nEigenvalues - in the main diagonal\n";
-    matrix_print(A_input);
-    std::cout <<"\nEigenvectors - each column is one eigenvector\n";
+    viennacl::linalg::qr_method_sym(A_input, Q, eigenvalues);
+
+    std::cout <<"\nEigenvalues:\n";
+    vector_print(eigenvalues);
+    std::cout <<"\nReference eigenvalues: \n";
+    vector_print(eigenvalues_ref);
+    std::cout <<"\nEigenvectors - each column is an eigenvector\n";
     matrix_print(Q);
 
 }

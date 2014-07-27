@@ -102,11 +102,8 @@ namespace viennacl
                   boost::numeric::ublas::vector<SCALARTYPE> & d,
                   boost::numeric::ublas::vector<SCALARTYPE> & e)
         {
-           // Q = trans(Q);
             int n = static_cast<int>(viennacl::traits::size1(Q));
 
-            std::cout << "tql2: \n";
-            //matrix_print(Q);
             boost::numeric::ublas::vector<SCALARTYPE> cs(n), ss(n);
             viennacl::vector<SCALARTYPE> tmp1(n), tmp2(n);
 
@@ -117,8 +114,8 @@ namespace viennacl
 
             SCALARTYPE f = 0;
             SCALARTYPE tst1 = 0;
-            SCALARTYPE eps = 2 * static_cast<SCALARTYPE>(EPS);
-            //SCALARTYPE eps = static_cast<SCALARTYPE>(EPS);
+            //SCALARTYPE eps = 2 * static_cast<SCALARTYPE>(EPS);
+            SCALARTYPE eps = static_cast<SCALARTYPE>(EPS);
 
             for (int l = 0; l < n; l++)
             {
@@ -890,7 +887,7 @@ namespace viennacl
             for(uint i = 0; i<A.size1(); i++)
               std::cout << D[i] << "\n";
 */
-            std::cout << "start: " << start << std::endl;
+            //std::cout << "start: " << start << std::endl;
             viennacl::linalg::house_update_A_left(A, D, start);
              // std::cout << "\nMatrix A nach left \n";
              // std::cout << A;
@@ -911,7 +908,7 @@ namespace viennacl
                                       */
 
 
-             viennacl::linalg::house_update_A_right(A, D, 0);
+             viennacl::linalg::house_update_A_right(A, D);
           //    std::cout << "\nMatrix A nach right\n";
             //  std::cout << A;
 
@@ -992,7 +989,6 @@ namespace viennacl
 
             // pack diagonal and super-diagonal
             // ublas::vector<SCALARTYPE> D(A.size1()), E(A.size1());
-            std::cout << "Start bidiag_pack\n";
             viennacl::linalg::bidiag_pack(A, D, E);     // in matrix_operations.hpp
 
             // find eigenvalues

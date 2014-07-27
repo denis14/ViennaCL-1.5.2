@@ -848,23 +848,22 @@ namespace viennacl
 
     template <typename NumericT, typename F>
     void house_update_A_right(matrix_base<NumericT, F>& A,
-                              vector_base<NumericT>   & D,
-                              vcl_size_t start)
+                              vector_base<NumericT>   & D)
     {
       switch (viennacl::traits::handle(A).get_active_handle_id())
       {
         case viennacl::MAIN_MEMORY:
-          viennacl::linalg::host_based::house_update_A_right(A, D, start);
+          viennacl::linalg::host_based::house_update_A_right(A, D);
           break;
 #ifdef VIENNACL_WITH_OPENCL
         case viennacl::OPENCL_MEMORY:
-          viennacl::linalg::opencl::house_update_A_right(A, D, start);
+          viennacl::linalg::opencl::house_update_A_right(A, D);
           break;
 #endif
 
 #ifdef VIENNACL_WITH_CUDA
         case viennacl::CUDA_MEMORY:
-          viennacl::linalg::cuda::house_update_A_right(A, D, start);
+          viennacl::linalg::cuda::house_update_A_right(A, D);
           break;
 #endif
 

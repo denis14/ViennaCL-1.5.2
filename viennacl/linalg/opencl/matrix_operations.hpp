@@ -1008,7 +1008,6 @@ namespace viennacl
                        VectorType & sh
                       )
       {
-        std::cout << "Bidiag_pack started with OpenCL !!\n";
         viennacl::vector<NumericT> D(dh.size());
         viennacl::vector<NumericT> S(sh.size());
 
@@ -1055,8 +1054,7 @@ namespace viennacl
 
       template <typename NumericT, typename F>
       void house_update_A_right(matrix_base<NumericT, F> & A,
-                                vector_base<NumericT> & D,
-                                vcl_size_t start)
+                                vector_base<NumericT> & D)
       {
           viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(A).context());
           viennacl::linalg::opencl::kernels::svd<NumericT, F>::init(ctx);                    // neu hinzugefuegt

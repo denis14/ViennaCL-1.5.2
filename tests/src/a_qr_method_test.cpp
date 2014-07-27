@@ -56,7 +56,7 @@
 #include "viennacl/linalg/host_based/matrix_operations.hpp"
 #include "Random.hpp"
 
-#define EPS 10.0e-4
+#define EPS 10.0e-5
 
 
 
@@ -211,8 +211,7 @@ void house_update_A_left(ublas::matrix<NumericT> & A,
 
 template <typename NumericT>
 void house_update_A_right(ublas::matrix<NumericT> & A,
-                          ublas::vector<NumericT> D,
-                          unsigned int start)
+                          ublas::vector<NumericT> D)
 {
   NumericT ss = 0;
   
@@ -236,7 +235,7 @@ void house_update_QL(ublas::matrix<NumericT> & A,
                      ublas::vector<NumericT> D)
 
 {
-  NumericT temp, beta = 0;
+  NumericT beta = 2;
   ublas::matrix<NumericT> ubl_P(A.size1(), A.size2());
   ublas::matrix<ScalarType> I = ublas::identity_matrix<ScalarType>(Q.size1());
   ublas::matrix<NumericT> Q_temp(Q.size1(), Q.size2());
@@ -250,7 +249,6 @@ void house_update_QL(ublas::matrix<NumericT> & A,
   }
 
   ubl_P = ublas::identity_matrix<NumericT>(A.size1());
-  beta = 2;
 
   //scaled_rank_1 update
   for(unsigned int i = 0; i < A.size1(); i++)
@@ -323,7 +321,7 @@ void bidiag_pack(ublas::matrix<NumericT> & A,
 
 
 template <typename MatrixLayout>
-bool test_qr_method_sym(const std::string& fn)
+void test_qr_method_sym(const std::string& fn)
 {
   std::cout << "Reading..." << "\n";
   std::size_t sz;
@@ -373,8 +371,8 @@ bool test_qr_method_sym(const std::string& fn)
   std::cout << "\nTesting house_update_right...\n";
   copy(ubl_A, vcl_A);
   copy(ubl_D, vcl_D);
-  viennacl::linalg::house_update_A_right(vcl_A, vcl_D, 0);
-  house_update_A_right(ubl_A, ubl_D, 0);
+  viennacl::linalg::house_update_A_right(vcl_A, vcl_D);
+  house_update_A_right(ubl_A, ubl_D);
 
   if(!check_for_equality(ubl_A, vcl_A))
      exit(EXIT_FAILURE);
@@ -413,8 +411,9 @@ bool test_qr_method_sym(const std::string& fn)
 //--------------------------------------------------------
   std::cout << "\nTesting bidiag pack...\n";
   viennacl::linalg::bidiag_pack(vcl_A, ubl_D, ubl_F);
-    ubl_F[0] = 0;  // first element not calculated in bidiag pack for minor diagonal!
+  ubl_F[0] = 0;  // first element in superdiagonal is irrelevant.
   bidiag_pack(ubl_A, ubl_G, ubl_H);
+  ubl_H[0] = 0;
   if(!check_for_equality(ubl_D, ubl_G))
       exit(EXIT_FAILURE);
   if(!check_for_equality(ubl_F, ubl_H))
@@ -429,7 +428,7 @@ int main()
  *
  */
 
-  test_qr_method_sym<viennacl::row_major>("../../examples/testdata/eigen/symm3.example");
+  test_qr_method_sym<viennacl::row_major>("../../examples/testdata/eigen/symm5.example");
 
   std::cout <<"\n--------TEST SUCESSFULLY COMPLETED----------\n";
 }

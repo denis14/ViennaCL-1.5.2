@@ -1776,8 +1776,7 @@ namespace viennacl
 
       template <typename NumericT, typename F>
       void house_update_A_right(matrix_base<NumericT, F> & A,
-                               vector_base<NumericT> & D,
-                               vcl_size_t start)
+                               vector_base<NumericT> & D)
       {
         if (viennacl::is_row_major<F>::value)
           {

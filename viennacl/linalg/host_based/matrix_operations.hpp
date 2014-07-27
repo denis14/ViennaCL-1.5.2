@@ -1173,15 +1173,20 @@ namespace viennacl
         }
       }
 
+      /** @brief This function stores the diagonal and the superdiagonal of a matrix in two vectors.
+      *
+      *
+      * @param A    The matrix from which the vectors will be extracted of.
+      * @param D    The vector in which the diagonal of the matrix will be stored in.
+      * @param S    The vector in which the superdiagonal of the matrix will be stored in.
+      */
       template <typename NumericT, typename F, typename S1>
-       void bidiag_pack_kernel(matrix_base<NumericT, F> & A,
+       void bidiag_pack_impl(matrix_base<NumericT, F> & A,
                         vector_base<S1> & D,
                         vector_base<S1> & S
                         )
 
        {
-         //std::cout << "Bidiag_pack host based!!\n";
-
          typedef NumericT        value_type;
 
          value_type * data_A  = detail::extract_raw_pointer<value_type>(A);
@@ -1243,21 +1248,24 @@ namespace viennacl
                          VectorType & sh
                         )
         {
-          std::cout << "bidiag_pack!\n";
           viennacl::vector<NumericT> D(dh.size());
           viennacl::vector<NumericT> S(sh.size());
           viennacl::copy(dh, D);
           viennacl::copy(sh, S);
 
-          viennacl::linalg::host_based::bidiag_pack_kernel(A, D, S);
+          viennacl::linalg::host_based::bidiag_pack_impl(A, D, S);
 
           viennacl::copy(D, dh);
           viennacl::copy(S, sh);
 
         }
 
-
-
+        /** @brief This function applies a householder transformation to a matrix. A <- P * A with a householder reflection P
+        *
+        * @param A       The matrix to be updated.
+        * @param D       The householder vector. It has to be normalied.
+        * @param start   The repetition counter.
+        */
        template <typename NumericT, typename F>
        void house_update_A_left(matrix_base<NumericT, F>& A,
                                 vector_base<NumericT> & D,
@@ -1345,10 +1353,15 @@ namespace viennacl
        }
        */
 
+       /** @brief This function applies a householder transformation to a matrix: A <- A * P with a householder reflection P
+       *
+       *
+       * @param A        The matrix to be updated.
+       * @param D        The householder vector. It has to be normalized.
+       */
        template <typename NumericT, typename F>
        void house_update_A_right(matrix_base<NumericT, F>& A,
-                                 vector_base<NumericT> & D,
-                                 vcl_size_t start)
+                                 vector_base<NumericT> & D)
        {
          typedef NumericT        value_type;
          NumericT ss = 0;
@@ -1374,9 +1387,6 @@ namespace viennacl
              for(uint i = 0; i < A_size1; i++)
                {
                  ss = 0;
-#ifdef VIENNACL_WITH_OPENMP
-            //#pragma omp parallel for
-#endif
                  for(uint j = 0; j < A_size2; j++) // ss = ss + D[j] * A(i, j)
                      ss = ss + (data_D[start1 + inc1 * j] * data_A[viennacl::row_major::mem_index((i) * A_inc1 + A_start1, (j) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)]);
 
@@ -1394,9 +1404,6 @@ namespace viennacl
              for(uint i = 0; i < A_size1; i++)
                {
                  ss = 0;
-#ifdef VIENNACL_WITH_OPENMP
-           // #pragma omp parallel for
-#endif
                  for(uint j = 0; j < A_size2; j++) // ss = ss + D[j] * A(i, j)
                      ss = ss + (data_D[start1 + inc1 * j] * data_A[viennacl::column_major::mem_index((i) * A_inc1 + A_start1, (j) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)]);
 
@@ -1413,7 +1420,12 @@ namespace viennacl
 
        }
 
-
+       /** @brief This function updates the matrix Q, which is needed for the computation of the eigenvectors.
+       *
+       * @param A     Matrix which is needed to update Q
+       * @param Q     The matrix to be updated.
+       * @param D     The householder vector.
+       */
        template <typename NumericT, typename F>
        void house_update_QL(matrix_base<NumericT, F>& A,
                             matrix_base<NumericT, F>& Q,
@@ -1436,6 +1448,15 @@ namespace viennacl
 
        }
 
+       /** @brief This function updates the matrix Q. It is part of the tql2 algorithm.
+       *
+       *
+       * @param Q       The matrix to be updated.
+       * @param tmp1    Vector with data from the tql2 algorithm.
+       * @param tmp2    Vector with data from the tql2 algorithm.
+       * @param l       Data from the tql2 algorithm.
+       * @param m       Data from the tql2 algorithm.
+       */
        template<typename NumericT, typename F>
          void givens_next(matrix_base<NumericT, F>& Q,
                          vector_base<NumericT> & tmp1,
@@ -1478,14 +1499,14 @@ namespace viennacl
                    for(uint k = 0; k < Q_size1; k++)
                      {
 
-                      // h = data_Q(k, i+1);
+                       // h = data_Q(k, i+1);
                        NumericT h = data_Q[viennacl::row_major::mem_index(k * Q_inc1 + Q_start1, (i + 1) * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)];
 
-                       //Q(k, i+1) = tmp2[i] * Q(k, i) + tmp1[i]*h;
+                       // Q(k, i+1) = tmp2[i] * Q(k, i) + tmp1[i]*h;
                        data_Q[viennacl::row_major::mem_index(k * Q_inc1 + Q_start1, (i + 1) * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp2[start2 + inc2 * i] *
                            data_Q[viennacl::row_major::mem_index(k  * Q_inc1 + Q_start1, i * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] + tmp1[start1 + inc1 * i] * h;
 
-                       //Q(k,   i) = tmp1[i] * Q(k, i) - tmp2[i]*h;
+                       // Q(k,   i) = tmp1[i] * Q(k, i) - tmp2[i]*h;
                        data_Q[viennacl::row_major::mem_index(k  * Q_inc1 + Q_start1, i * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp1[start1 + inc1 * i] *
                            data_Q[viennacl::row_major::mem_index(k  * Q_inc1 + Q_start1, i * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] - tmp2[start2 + inc2 * i]*h;
                      }
@@ -1501,25 +1522,32 @@ namespace viennacl
                    for(uint k = 0; k < Q_size1; k++)
                      {
 
-                      // h = data_Q(k, i+1);
+                        // h = data_Q(k, i+1);
                         NumericT h = data_Q[viennacl::column_major::mem_index(k * Q_inc1 + Q_start1, (i + 1) * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)];
 
-                         //Q(k, i+1) = tmp2[i] * Q(k, i) + tmp1[i]*h;
+                         // Q(k, i+1) = tmp2[i] * Q(k, i) + tmp1[i]*h;
                         data_Q[viennacl::column_major::mem_index(k * Q_inc1 + Q_start1, (i + 1) * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp2[start2 + inc2 * i] *
                             data_Q[viennacl::column_major::mem_index(k  * Q_inc1 + Q_start1, i * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] + tmp1[start1 + inc1 * i] * h;
 
-                        //Q(k,   i) = tmp1[i] * Q(k, i) - tmp2[i]*h;
+                        // Q(k,   i) = tmp1[i] * Q(k, i) - tmp2[i]*h;
                         data_Q[viennacl::column_major::mem_index(k  * Q_inc1 + Q_start1, i * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] = tmp1[start1 + inc1 * i] *
                             data_Q[viennacl::column_major::mem_index(k  * Q_inc1 + Q_start1, i * Q_inc2 + Q_start2, Q_internal_size1, Q_internal_size2)] - tmp2[start2 + inc2 * i]*h;
-                                           }
+                     }
                  }
              }
 
          }
 
 
-
-
+         /** @brief This function copies a row or a column from a matrix to a vector.
+         *
+         *
+         * @param A          The matrix where to copy from.
+         * @param V          The vector to fill with data.
+         * @param row_start  The number of the first row to copy.
+         * @param col_start  The number of the first column to copy.
+         * @param copy_col   Set to TRUE to copy a column, FALSE to copy a row.
+         */
          template <typename NumericT, typename F, typename S1>
          void copy_vec(matrix_base<NumericT, F>& A,
                        vector_base<S1> & V,
