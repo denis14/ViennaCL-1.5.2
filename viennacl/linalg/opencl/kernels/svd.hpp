@@ -436,7 +436,6 @@ namespace viennacl
           source.append("                        __global "); source.append(numeric_string); source.append("* QL, \n");
           source.append("                        __constant "); source.append(numeric_string); source.append("* V, \n"); //householder vector
           source.append("                        uint size1, \n");
-          source.append("                        uint size2, \n");
           source.append("                        uint strideQ, \n");
           source.append("                        __local "); source.append(numeric_string); source.append("* sums \n");
           source.append("                        ) { \n");
@@ -450,7 +449,7 @@ namespace viennacl
           source.append("    uint lcl_sz = get_local_size(0); \n");
 
           source.append("    "); source.append(numeric_string); source.append(" ss = 0; \n");
-              // update of left matrix
+
           if(is_row_major)
             {
               source.append("    for(uint i = grp_id; i < size1; i += grp_nm) { \n");

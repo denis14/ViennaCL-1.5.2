@@ -230,13 +230,13 @@ void house_update_A_right(ublas::matrix<NumericT> & A,
 
 
 template <typename NumericT>
-void house_update_QL(ublas::matrix<NumericT> & A,
-                     ublas::matrix<NumericT> & Q,
-                     ublas::vector<NumericT> D)
+void house_update_QL(ublas::matrix<NumericT> & Q,
+                     ublas::vector<NumericT> D,
+                     unsigned int A_size1)
 
 {
   NumericT beta = 2;
-  ublas::matrix<NumericT> ubl_P(A.size1(), A.size2());
+  ublas::matrix<NumericT> ubl_P(A_size1, A_size1);
   ublas::matrix<ScalarType> I = ublas::identity_matrix<ScalarType>(Q.size1());
   ublas::matrix<NumericT> Q_temp(Q.size1(), Q.size2());
 
@@ -248,12 +248,12 @@ void house_update_QL(ublas::matrix<NumericT> & A,
       }
   }
 
-  ubl_P = ublas::identity_matrix<NumericT>(A.size1());
+  ubl_P = ublas::identity_matrix<NumericT>(A_size1);
 
   //scaled_rank_1 update
-  for(unsigned int i = 0; i < A.size1(); i++)
+  for(unsigned int i = 0; i < A_size1; i++)
   {
-      for(unsigned int j = 0; j < A.size2(); j++)
+      for(unsigned int j = 0; j < A_size1; j++)
       {
           ubl_P(i, j) = I(i, j) - beta * (D[i] * D[j]);
       }
@@ -324,20 +324,19 @@ template <typename MatrixLayout>
 void test_qr_method_sym(const std::string& fn)
 {
   std::cout << "Reading..." << "\n";
-  std::size_t sz = 4;
+  std::size_t sz;
 
   // read file
- // std::fstream f(fn.c_str(), std::fstream::in);
+  std::fstream f(fn.c_str(), std::fstream::in);
   //read size of input matrix
- // read_matrix_size(f, sz);
+  read_matrix_size(f, sz);
 
-  viennacl::matrix<ScalarType> vcl_A = viennacl::matrix<ScalarType>(sz, sz);
-  //viennacl::matrix<ScalarType, MatrixLayout> vcl_A(sz, sz), vcl_Q(sz, sz);
-  //viennacl::vector<ScalarType> vcl_D(sz), vcl_E(sz), vcl_F(sz);
+  viennacl::matrix<ScalarType, MatrixLayout> vcl_A(sz, sz), vcl_Q(sz, sz);
+  viennacl::vector<ScalarType> vcl_D(sz), vcl_E(sz), vcl_F(sz);
   ublas::vector<ScalarType> ubl_D(sz), ubl_E(sz), ubl_F(sz), ubl_G(sz), ubl_H(sz);
   ublas::matrix<ScalarType> ubl_A(sz, sz), ubl_Q(sz, sz);
 
-/*
+
   std::cout << "Testing matrix of size " << sz << "-by-" << sz << std::endl << std::endl;
 
 
@@ -347,7 +346,7 @@ void test_qr_method_sym(const std::string& fn)
   viennacl::copy(vcl_A, ubl_A);
 
   fill_vector(ubl_D);
-  copy(ubl_D, vcl_D); */
+  copy(ubl_D, vcl_D);
 //--------------------------------------------------------
   std::cout << "\nTesting house_update_left...\n";
  /*
@@ -363,7 +362,7 @@ void test_qr_method_sym(const std::string& fn)
   std::cout << "ublas_A: \n";
   matrix_print(ubl_A);
 */
-/*  viennacl::linalg::house_update_A_left(vcl_A, vcl_D, 0);
+  viennacl::linalg::house_update_A_left(vcl_A, vcl_D, 0);
   house_update_A_left(ubl_A, ubl_D, 0);
 
   if(!check_for_equality(ubl_A, vcl_A))
@@ -384,8 +383,8 @@ void test_qr_method_sym(const std::string& fn)
   copy(ubl_Q, vcl_Q);
   copy(ubl_A, vcl_A);
   copy(ubl_D, vcl_D);
-  viennacl::linalg::house_update_QL(vcl_A, vcl_Q, vcl_D);
-  house_update_QL(ubl_A, ubl_Q, ubl_D);
+  viennacl::linalg::house_update_QL(vcl_Q, vcl_D, vcl_A.size1());
+  house_update_QL(ubl_Q, ubl_D, ubl_A.size1());
   if(!check_for_equality(ubl_Q, vcl_Q))
      exit(EXIT_FAILURE);
 //--------------------------------------------------------
@@ -419,7 +418,6 @@ void test_qr_method_sym(const std::string& fn)
       exit(EXIT_FAILURE);
   if(!check_for_equality(ubl_F, ubl_H))
       exit(EXIT_FAILURE);
-      */
 //--------------------------------------------------------
 }
 
@@ -430,7 +428,7 @@ int main()
  *
  */
 
-  test_qr_method_sym<viennacl::row_major>("../../examples/testdata/eigen/symm3.example");
+  test_qr_method_sym<viennacl::row_major>("../../examples/testdata/eigen/symm5.example");
 
   std::cout <<"\n--------TEST SUCESSFULLY COMPLETED----------\n";
 }

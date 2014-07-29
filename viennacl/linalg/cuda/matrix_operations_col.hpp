@@ -1465,7 +1465,6 @@ namespace viennacl
                        VectorType & sh
                       )
       {
-        std::cout << "Bidiag_pack started in CUDA !!\n";
         viennacl::vector<NumericT> D(dh.size());
         viennacl::vector<NumericT> S(sh.size());
         if (viennacl::is_row_major<F>::value)
@@ -1627,7 +1626,7 @@ namespace viennacl
       template<typename T>
       __global__ void house_update_A_left_row_major_kernel(
               T * A,
-              T * V,        //housholder vector
+              T * V,        //householder vector
               uint row_start,
               uint col_start,
               uint size1,
@@ -1653,7 +1652,7 @@ namespace viennacl
       template<typename T>
       __global__ void house_update_A_left_column_major_kernel(
               T * A,
-              T * V,        //housholder vector
+              T * V,        //householder vector
               uint row_start,
               uint col_start,
               uint size1,
@@ -1713,7 +1712,7 @@ namespace viennacl
       template<typename T>
       __global__ void house_update_A_right_row_major_kernel(
               T * A,
-              T * V,  //housholder vector
+              T * V,  //householder vector
               uint row_start,
               uint col_start,
               uint size1,
@@ -1728,7 +1727,7 @@ namespace viennacl
               ss = 0;
               for(uint j = threadIdx.x; j < size2; j+= blockDim.x)
                   ss = ss + (V[j] * A[i * stride + j]);
-              sums[threadIdx.x] = ss; //no effect
+              sums[threadIdx.x] = ss;
 
               __syncthreads();
               col_reduce_lcl_array(sums, threadIdx.x, blockDim.x);
@@ -1744,7 +1743,7 @@ namespace viennacl
       template<typename T>
       __global__ void house_update_A_right_column_major_kernel(
               T * A,
-              T * V,  //housholder vector
+              T * V,  //householder vector
               uint row_start,
               uint col_start,
               uint size1,
@@ -1828,7 +1827,6 @@ namespace viennacl
               T * QL,
               T * V,
               uint size1,
-              uint size2,
               uint strideQ)
       {
           __shared__ T sums[128];
@@ -1856,7 +1854,6 @@ namespace viennacl
               T * QL,
               T * V,
               uint size1,
-              uint size2,
               uint strideQ)
       {
           __shared__ T sums[128];
@@ -1881,25 +1878,23 @@ namespace viennacl
 
 
       template <typename NumericT, typename F>
-      void house_update_QL(matrix_base<NumericT, F> & A,
-                           matrix_base<NumericT, F> & Q,
-                           vector_base<NumericT> & D)
+      void house_update_QL(matrix_base<NumericT, F> & Q,
+                           vector_base<NumericT> & D,
+                           vcl_size_t A_size1)
 
       {
         if (viennacl::is_row_major<F>::value)
           {
             house_update_QL_row_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(Q),
                                                  detail::cuda_arg<NumericT>(D),
-                                                 static_cast<unsigned int>(viennacl::traits::size1(A)),
-                                                 static_cast<unsigned int>(viennacl::traits::size2(A)),
+                                                 static_cast<unsigned int>(A_size1),
                                                  static_cast<unsigned int>(viennacl::traits::internal_size2(Q)));
           }
         else
           {
             house_update_QL_column_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(Q),
                                                  detail::cuda_arg<NumericT>(D),
-                                                 static_cast<unsigned int>(viennacl::traits::size1(A)),
-                                                 static_cast<unsigned int>(viennacl::traits::size2(A)),
+                                                 static_cast<unsigned int>(A_size1),
                                                  static_cast<unsigned int>(viennacl::traits::internal_size1(Q)));
           }
 

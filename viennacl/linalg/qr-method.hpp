@@ -36,223 +36,142 @@ namespace viennacl
 {
   namespace linalg
   {
-    namespace detail
+
+    // Symmetric tridiagonal QL algorithm.
+    // This is derived from the Algol procedures tql2, by Bowdler, Martin, Reinsch, and Wilkinson,
+    // Handbook for Auto. Comp., Vol.ii-Linear Algebra, and the corresponding Fortran subroutine in EISPACK.
+    template <typename SCALARTYPE, typename F>
+    void tql2(matrix_base<SCALARTYPE, F> & Q,
+              boost::numeric::ublas::vector<SCALARTYPE> & d,
+              boost::numeric::ublas::vector<SCALARTYPE> & e)
     {
+        int n = static_cast<int>(viennacl::traits::size1(Q));
 
-      template <typename ScalarType, typename F>
-      void matrix_print(viennacl::matrix<ScalarType, F>& A_orig)
-      {
-          boost::numeric::ublas::matrix<ScalarType> A(A_orig.size1(), A_orig.size2());
-          viennacl::copy(A_orig, A);
-          for (unsigned int i = 0; i < A.size1(); i++) {
-              for (unsigned int j = 0; j < A.size2(); j++)
-                 std::cout << std::fixed << A(i, j) << "\t";
-              std::cout << "\n";
-          }
-      }
+        boost::numeric::ublas::vector<SCALARTYPE> cs(n), ss(n);
+        viennacl::vector<SCALARTYPE> tmp1(n), tmp2(n);
 
-      template <typename ScalarType>
-      void vector_print(boost::numeric::ublas::vector<ScalarType>& A)
-      {
-          for (unsigned int i = 0; i < A.size(); i++)
-            std::cout << std::fixed << A(i) << "\t";
-          std::cout << "\n";
+        for (int i = 1; i < n; i++)
+            e(i - 1) = e(i);
 
-      }
+        e(n - 1) = 0;
 
+        SCALARTYPE f = 0;
+        SCALARTYPE tst1 = 0;
+        //SCALARTYPE eps = 2 * static_cast<SCALARTYPE>(EPS);
+        SCALARTYPE eps = static_cast<SCALARTYPE>(viennacl::linalg::detail::EPS);
 
-
-/*
-      template<typename MatrixType, typename VectorType>
-        void givens_next(MatrixType& matrix,
-                        VectorType& tmp1,
-                        VectorType& tmp2,
-                        int l,
-                        int m
-                      )
+        for (int l = 0; l < n; l++)
         {
-          viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(matrix).context());
-
-          typedef typename MatrixType::value_type                                   ScalarType;
-          typedef typename viennacl::result_of::cpu_value_type<ScalarType>::type    CPU_ScalarType;
-
-          viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<CPU_ScalarType>::program_name(), SVD_GIVENS_NEXT_KERNEL);
-
-          kernel.global_work_size(0, viennacl::tools::align_to_multiple<cl_uint>(cl_uint(viennacl::traits::size1(matrix)), 256));
-          kernel.local_work_size(0, 256);
-
-          viennacl::ocl::enqueue(kernel(
-                                        matrix,
-                                        tmp1,
-                                        tmp2,
-                                        static_cast<cl_uint>(matrix.size1()),
-                                        static_cast<cl_uint>(matrix.internal_size2()),
-                                        static_cast<cl_uint>(l),
-                                        static_cast<cl_uint>(m - 1)
-                                ));
-        }
-
-*/
-
-        // Symmetric tridiagonal QL algorithm.
-        // This is derived from the Algol procedures tql2, by Bowdler, Martin, Reinsch, and Wilkinson,
-        // Handbook for Auto. Comp., Vol.ii-Linear Algebra, and the corresponding Fortran subroutine in EISPACK.
-        template <typename SCALARTYPE, typename F>
-        void tql2(matrix_base<SCALARTYPE, F> & Q,
-                  boost::numeric::ublas::vector<SCALARTYPE> & d,
-                  boost::numeric::ublas::vector<SCALARTYPE> & e)
-        {
-            int n = static_cast<int>(viennacl::traits::size1(Q));
-
-            boost::numeric::ublas::vector<SCALARTYPE> cs(n), ss(n);
-            viennacl::vector<SCALARTYPE> tmp1(n), tmp2(n);
-
-            for (int i = 1; i < n; i++)
-                e(i - 1) = e(i);
-
-            e(n - 1) = 0;
-
-            SCALARTYPE f = 0;
-            SCALARTYPE tst1 = 0;
-            //SCALARTYPE eps = 2 * static_cast<SCALARTYPE>(EPS);
-            SCALARTYPE eps = static_cast<SCALARTYPE>(EPS);
-
-            for (int l = 0; l < n; l++)
+            // Find small subdiagonal element.
+            tst1 = std::max<SCALARTYPE>(tst1, std::fabs(d(l)) + std::fabs(e(l)));
+            int m = l;
+            while (m < n)
             {
-                // Find small subdiagonal element.
-                tst1 = std::max<SCALARTYPE>(tst1, std::fabs(d(l)) + std::fabs(e(l)));
-                int m = l;
-                while (m < n)
-                {
-                    if (std::fabs(e(m)) <= eps * tst1)
-                        break;
-                    m++;
-                }
-
-                // If m == l, d(l) is an eigenvalue, otherwise, iterate.
-                if (m > l)
-                {
-                    int iter = 0;
-                    do
-                    {
-                        iter = iter + 1;  // (Could check iteration count here.)
-
-                        // Compute implicit shift
-                        SCALARTYPE g = d(l);
-                        SCALARTYPE p = (d(l + 1) - g) / (2 * e(l));
-                        SCALARTYPE r = pythag<SCALARTYPE>(p, 1);
-                        if (p < 0)
-                        {
-                            r = -r;
-                        }
-
-                        d(l) = e(l) / (p + r);
-                        d(l + 1) = e(l) * (p + r);
-                        SCALARTYPE dl1 = d(l + 1);
-                        SCALARTYPE h = g - d(l);
-                        for (int i = l + 2; i < n; i++)
-                        {
-                            d(i) -= h;
-                        }
-
-                        f = f + h;
-
-                        // Implicit QL transformation.
-                        p = d(m);
-                        SCALARTYPE c = 1;
-                        SCALARTYPE c2 = c;
-                        SCALARTYPE c3 = c;
-                        SCALARTYPE el1 = e(l + 1);
-                        SCALARTYPE s = 0;
-                        SCALARTYPE s2 = 0;
-                        for (int i = m - 1; i >= l; i--)
-                        {
-                            c3 = c2;
-                            c2 = c;
-                            s2 = s;
-                            g = c * e(i);
-                            h = c * p;
-                            r = pythag(p, e(i));
-                            e(i + 1) = s * r;
-                            s = e(i) / r;
-                            c = p / r;
-                            p = c * d(i) - s * g;
-                            d(i + 1) = h + s * (c * g + s * d(i));
-
-                            //Accumulate transformation
-/*
-                            for(uint k = 0; k < n; k++)
-                              {
-                                //const unsigned int off_k = k * n;
-                                h = Q(k, i+1);
-                                Q(k, i+1) = s * Q(k, i) + c * h;
-                                Q(k,   i) = c * Q(k, i) - s * h;
-                              }
-*/
-
-                            cs[i] = c;
-                            ss[i] = s;
-                        }
-
-
-                        p = -s * s2 * c3 * el1 * e(l) / dl1;
-                        e(l) = s * p;
-                        d(l) = c * p;
-
-                        {
-                            viennacl::copy(cs, tmp1);
-                            viennacl::copy(ss, tmp2);
-
-                            givens_next(Q, tmp1, tmp2, l, m);
-                            /*
-                            for( int i = m - 1; i >= l; i--)
-                              {
-                                for(uint k = 0; k < n; k++)
-                                  {
-                                    //const unsigned int off_k = k * n;
-                                    h = Q(i+1, k);
-                                    Q(i+1, k) = tmp2[i] * Q(i, k) + tmp1[i]*h;
-                                    Q(i,   k) = tmp1[i] * Q(i, k) - tmp2[i]*h;
-                                  }
-                              }
-                            */
-
-                        }
-
-                        // Check for convergence.
-                    }
-                    while (std::fabs(e(l)) > eps * tst1);
-                }
-                d(l) = d(l) + f;
-                e(l) = 0;
+                if (std::fabs(e(m)) <= eps * tst1)
+                    break;
+                m++;
             }
 
-            // Sort eigenvalues and corresponding vectors.
-/*
-               for (int i = 0; i < n-1; i++) {
-                  int k = i;
-                  SCALARTYPE p = d(i);
-                  for (int j = i+1; j < n; j++) {
-                     if (d(j) > p) {
-                        k = j;
-                        p = d(j);
-                     }
-                  }
-                  if (k != i) {
-                     d(k) = d(i);
-                     d(i) = p;
-                     for (int j = 0; j < n; j++) {
-                        //const Int_t off_j = j*n;
-                        p = Q(j, i);
-                        Q(j, i) = Q(j, k);
-                        Q(j, k) = p;
-                     }
-                  }
-               }
-               */
+            // If m == l, d(l) is an eigenvalue, otherwise, iterate.
+            if (m > l)
+            {
+                int iter = 0;
+                do
+                {
+                    iter = iter + 1;  // (Could check iteration count here.)
+
+                    // Compute implicit shift
+                    SCALARTYPE g = d(l);
+                    SCALARTYPE p = (d(l + 1) - g) / (2 * e(l));
+                    SCALARTYPE r = viennacl::linalg::detail::pythag<SCALARTYPE>(p, 1);
+                    if (p < 0)
+                    {
+                        r = -r;
+                    }
+
+                    d(l) = e(l) / (p + r);
+                    d(l + 1) = e(l) * (p + r);
+                    SCALARTYPE dl1 = d(l + 1);
+                    SCALARTYPE h = g - d(l);
+                    for (int i = l + 2; i < n; i++)
+                    {
+                        d(i) -= h;
+                    }
+
+                    f = f + h;
+
+                    // Implicit QL transformation.
+                    p = d(m);
+                    SCALARTYPE c = 1;
+                    SCALARTYPE c2 = c;
+                    SCALARTYPE c3 = c;
+                    SCALARTYPE el1 = e(l + 1);
+                    SCALARTYPE s = 0;
+                    SCALARTYPE s2 = 0;
+                    for (int i = m - 1; i >= l; i--)
+                    {
+                        c3 = c2;
+                        c2 = c;
+                        s2 = s;
+                        g = c * e(i);
+                        h = c * p;
+                        r = viennacl::linalg::detail::pythag(p, e(i));
+                        e(i + 1) = s * r;
+                        s = e(i) / r;
+                        c = p / r;
+                        p = c * d(i) - s * g;
+                        d(i + 1) = h + s * (c * g + s * d(i));
 
 
+                        cs[i] = c;
+                        ss[i] = s;
+                    }
+
+
+                    p = -s * s2 * c3 * el1 * e(l) / dl1;
+                    e(l) = s * p;
+                    d(l) = c * p;
+
+                    viennacl::copy(cs, tmp1);
+                    viennacl::copy(ss, tmp2);
+                    viennacl::linalg::givens_next(Q, tmp1, tmp2, l, m);
+
+                    // Check for convergence.
+                }
+                while (std::fabs(e(l)) > eps * tst1);
+            }
+            d(l) = d(l) + f;
+            e(l) = 0;
         }
+
+        // Sort eigenvalues and corresponding vectors.
+/*
+           for (int i = 0; i < n-1; i++) {
+              int k = i;
+              SCALARTYPE p = d(i);
+              for (int j = i+1; j < n; j++) {
+                 if (d(j) > p) {
+                    k = j;
+                    p = d(j);
+                 }
+              }
+              if (k != i) {
+                 d(k) = d(i);
+                 d(i) = p;
+                 for (int j = 0; j < n; j++) {
+                    p = Q(j, i);
+                    Q(j, i) = Q(j, k);
+                    Q(j, k) = p;
+                 }
+              }
+           }
+*/
+
+
+    }
+
+    namespace detail
+    {
 
         template <typename SCALARTYPE, typename F>
         void final_iter_update_gpu(matrix_base<SCALARTYPE, F> & A,
@@ -880,71 +799,14 @@ namespace viennacl
                             vector_base<SCALARTYPE>& D,
                             vcl_size_t start)
         {
-            //viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(A).context());
             vcl_size_t A_size1 = static_cast<vcl_size_t>(viennacl::traits::size1(A));
             if(start + 2 >= A_size1)
                 return false;
 
             prepare_householder_vector(A, D, A_size1, start + 1, start, start + 1, true);
-/*
-            std::cout << "\nprint householder_vector:\n";
-            for(uint i = 0; i<A.size1(); i++)
-              std::cout << D[i] << "\n";
-*/
-            //std::cout << "start: " << start << std::endl;
             viennacl::linalg::house_update_A_left(A, D, start);
-             // std::cout << "\nMatrix A nach left \n";
-             // std::cout << A;
-
-/*
-              viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE>::program_name(), SVD_HOUSEHOLDER_UPDATE_A_LEFT_KERNEL);
-
-                viennacl::ocl::enqueue(kernel(
-                                              A,
-                                              D,
-                                              static_cast<cl_uint>(start + 1),
-                                              static_cast<cl_uint>(start),
-                                              static_cast<cl_uint>(A.size1()),
-                                              static_cast<cl_uint>(A.size2()),
-                                              static_cast<cl_uint>(A.internal_size2()),
-                                              viennacl::ocl::local_mem(static_cast<cl_uint>(128 * 4))
-                                      ));
-                                      */
-
-
-             viennacl::linalg::house_update_A_right(A, D);
-          //    std::cout << "\nMatrix A nach right\n";
-            //  std::cout << A;
-
-              /*
-
-              viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE>::program_name(), SVD_HOUSEHOLDER_UPDATE_A_RIGHT_KERNEL);
-
-                viennacl::ocl::enqueue(kernel(
-                                              A,
-                                              D,
-                                              static_cast<cl_uint>(0),
-                                              static_cast<cl_uint>(0),
-                                              static_cast<cl_uint>(A.size1()),
-                                              static_cast<cl_uint>(A.size2()),
-                                              static_cast<cl_uint>(A.internal_size2()),
-                                              viennacl::ocl::local_mem(static_cast<cl_uint>(128 * sizeof(SCALARTYPE)))
-                                      ));
-                                      */        
-              viennacl::linalg::house_update_QL(A, Q, D);
-
-              /*
-                viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE>::program_name(), SVD_HOUSEHOLDER_UPDATE_QL_KERNEL);
-
-                viennacl::ocl::enqueue(kernel(
-                                                Q,
-                                                D,
-                                                static_cast<cl_uint>(A.size1()),
-                                                static_cast<cl_uint>(A.size2()),
-                                                static_cast<cl_uint>(Q.internal_size2()),
-                                                viennacl::ocl::local_mem(static_cast<cl_uint>(128 * sizeof(SCALARTYPE)))
-                                            ));   
-                                            */
+            viennacl::linalg::house_update_A_right(A, D);
+            viennacl::linalg::house_update_QL(Q, D, A_size1);
 
             return true;
         }
@@ -987,21 +849,13 @@ namespace viennacl
 
             // reduce to tridiagonal form
             detail::tridiagonal_reduction(A, Q);
-            //std::cout << "tridiagonal_reduction fertig!\n";
-/*
-            std::cout << "Matrix A: \n";
-            matrix_print(A);
-            std::cout << "\nMatrix Q: \n";
-            matrix_print(Q);
-*/
 
             // pack diagonal and super-diagonal
-            // ublas::vector<SCALARTYPE> D(A.size1()), E(A.size1());
-            viennacl::linalg::bidiag_pack(A, D, E);     // in matrix_operations.hpp
+            viennacl::linalg::bidiag_pack(A, D, E);
 
             // find eigenvalues
             if(is_symmetric)
-                detail::tql2(Q, D, E);
+                viennacl::linalg::tql2(Q, D, E);
 
             else
             {

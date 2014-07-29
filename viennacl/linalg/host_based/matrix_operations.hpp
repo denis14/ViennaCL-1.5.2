@@ -1296,9 +1296,6 @@ namespace viennacl
              for(uint i = 0; i < A_size2; i++)
                {
                  ss = 0;
-#ifdef VIENNACL_WITH_OPENMP
-            //#pragma omp parallel for
-#endif
                  for(uint j = row_start; j < A_size1; j++)
                      ss = ss + data_D[start1 + inc1 * j] * data_A[viennacl::row_major::mem_index((j) * A_inc1 + A_start1, (i) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
 #ifdef VIENNACL_WITH_OPENMP
@@ -1315,9 +1312,6 @@ namespace viennacl
              for(uint i = 0; i < A_size2; i++)
                {
                  ss = 0;
-#ifdef VIENNACL_WITH_OPENMP
-            //#pragma omp parallel for
-#endif
                  for(uint j = row_start; j < A_size1; j++)
                      ss = ss + data_D[start1 + inc1 * j] * data_A[viennacl::column_major::mem_index((j) * A_inc1 + A_start1, (i) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
 #ifdef VIENNACL_WITH_OPENMP
@@ -1331,27 +1325,6 @@ namespace viennacl
            }
 
        }
-       /*
-       template <typename NumericT, typename F>
-       void house_update_A_left(matrix_base<NumericT, F>& A,
-                                vector_base<NumericT> & D,
-                                vcl_size_t start)
-       {
-
-         NumericT temp = 0;
-         NumericT beta = 0;
-
-         viennacl::vector<NumericT> vcl_w(D.size());
-         viennacl::vector<NumericT> vcl_D(D.size());
-         viennacl::copy(D, vcl_D);
-
-         temp = inner_prod(vcl_D, vcl_D);
-         beta = 2/temp;
-
-         vcl_w = beta*viennacl::linalg::prod(trans(A), vcl_D);
-         viennacl::linalg::host_based::scaled_rank_1_update(A, 1, 1, 0, 1, vcl_D, vcl_w);
-       }
-       */
 
        /** @brief This function applies a householder transformation to a matrix: A <- A * P with a householder reflection P
        *
@@ -1422,26 +1395,20 @@ namespace viennacl
 
        /** @brief This function updates the matrix Q, which is needed for the computation of the eigenvectors.
        *
-       * @param A     Matrix which is needed to update Q
-       * @param Q     The matrix to be updated.
-       * @param D     The householder vector.
+       * @param Q        The matrix to be updated.
+       * @param D        The householder vector.
+       * @param A_size1  size1 of matrix A
        */
        template <typename NumericT, typename F>
-       void house_update_QL(matrix_base<NumericT, F>& A,
-                            matrix_base<NumericT, F>& Q,
-                            vector_base<NumericT> & D)
+       void house_update_QL(matrix_base<NumericT, F>& Q,
+                            vector_base<NumericT> & D,
+                            vcl_size_t A_size1)
 
        {
-         NumericT beta = 0;
-         viennacl::matrix<NumericT> vcl_P(A.size1(), A.size2());
-         viennacl::matrix<NumericT> Q_temp(Q.size1(), Q.size2());
-         vcl_P = viennacl::identity_matrix<NumericT>(A.size1());
-         copy(Q, Q_temp);
-
-         viennacl::vector<NumericT> vcl_D(D.size());
-         viennacl::copy(D, vcl_D);
-
-         beta = 2;
+         NumericT beta = 2;
+         viennacl::matrix<NumericT> vcl_P = viennacl::identity_matrix<NumericT>(A_size1);
+         viennacl::matrix<NumericT> Q_temp = Q;
+         viennacl::vector<NumericT> vcl_D = D;
 
          viennacl::linalg::host_based::scaled_rank_1_update(vcl_P, beta, 1, 0, 1, vcl_D, vcl_D);
          Q = prod(Q_temp, vcl_P);

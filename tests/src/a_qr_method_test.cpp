@@ -230,13 +230,13 @@ void house_update_A_right(ublas::matrix<NumericT> & A,
 
 
 template <typename NumericT>
-void house_update_QL(ublas::matrix<NumericT> & A,
-                     ublas::matrix<NumericT> & Q,
-                     ublas::vector<NumericT> D)
+void house_update_QL(ublas::matrix<NumericT> & Q,
+                     ublas::vector<NumericT> D,
+                     unsigned int A_size1)
 
 {
   NumericT beta = 2;
-  ublas::matrix<NumericT> ubl_P(A.size1(), A.size2());
+  ublas::matrix<NumericT> ubl_P(A_size1, A_size1);
   ublas::matrix<ScalarType> I = ublas::identity_matrix<ScalarType>(Q.size1());
   ublas::matrix<NumericT> Q_temp(Q.size1(), Q.size2());
 
@@ -248,12 +248,12 @@ void house_update_QL(ublas::matrix<NumericT> & A,
       }
   }
 
-  ubl_P = ublas::identity_matrix<NumericT>(A.size1());
+  ubl_P = ublas::identity_matrix<NumericT>(A_size1);
 
   //scaled_rank_1 update
-  for(unsigned int i = 0; i < A.size1(); i++)
+  for(unsigned int i = 0; i < A_size1; i++)
   {
-      for(unsigned int j = 0; j < A.size2(); j++)
+      for(unsigned int j = 0; j < A_size1; j++)
       {
           ubl_P(i, j) = I(i, j) - beta * (D[i] * D[j]);
       }
@@ -383,8 +383,8 @@ void test_qr_method_sym(const std::string& fn)
   copy(ubl_Q, vcl_Q);
   copy(ubl_A, vcl_A);
   copy(ubl_D, vcl_D);
-  viennacl::linalg::house_update_QL(vcl_A, vcl_Q, vcl_D);
-  house_update_QL(ubl_A, ubl_Q, ubl_D);
+  viennacl::linalg::house_update_QL(vcl_Q, vcl_D, vcl_A.size1());
+  house_update_QL(ubl_Q, ubl_D, ubl_A.size1());
   if(!check_for_equality(ubl_Q, vcl_Q))
      exit(EXIT_FAILURE);
 //--------------------------------------------------------

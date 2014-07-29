@@ -1012,7 +1012,7 @@ namespace viennacl
         viennacl::vector<NumericT> S(sh.size());
 
         viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(A).context());
-        viennacl::linalg::opencl::kernels::svd<NumericT, F>::init(ctx);                    // neu hinzugefuegt
+        viennacl::linalg::opencl::kernels::svd<NumericT, F>::init(ctx);
         viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT, F>::program_name(), SVD_BIDIAG_PACK_KERNEL);
 
         viennacl::ocl::enqueue(kernel(
@@ -1036,7 +1036,7 @@ namespace viennacl
       {
 
           viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(A).context());
-          viennacl::linalg::opencl::kernels::svd<NumericT, F>::init(ctx);                    // neu hinzugefuegt
+          viennacl::linalg::opencl::kernels::svd<NumericT, F>::init(ctx);
           viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT, F>::program_name(), SVD_HOUSEHOLDER_UPDATE_A_LEFT_KERNEL);
 
           viennacl::ocl::enqueue(kernel(
@@ -1057,7 +1057,7 @@ namespace viennacl
                                 vector_base<NumericT> & D)
       {
           viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(A).context());
-          viennacl::linalg::opencl::kernels::svd<NumericT, F>::init(ctx);                    // neu hinzugefuegt
+          viennacl::linalg::opencl::kernels::svd<NumericT, F>::init(ctx);
           viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT, F>::program_name(), SVD_HOUSEHOLDER_UPDATE_A_RIGHT_KERNEL);
 
           viennacl::ocl::enqueue(kernel(
@@ -1075,20 +1075,19 @@ namespace viennacl
 
 
       template <typename NumericT, typename F>
-      void house_update_QL(matrix_base<NumericT, F> & A,
-                           matrix_base<NumericT, F> & Q,
-                           vector_base<NumericT> & D)
+      void house_update_QL(matrix_base<NumericT, F> & Q,
+                           vector_base<NumericT> & D,
+                           vcl_size_t A_size1)
 
       {
-          viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(A).context());
-          viennacl::linalg::opencl::kernels::svd<NumericT, F>::init(ctx);                    // neu hinzugefuegt
+          viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(Q).context());
+          viennacl::linalg::opencl::kernels::svd<NumericT, F>::init(ctx);
           viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT, F>::program_name(), SVD_HOUSEHOLDER_UPDATE_QL_KERNEL);
 
           viennacl::ocl::enqueue(kernel(
                                           Q,
                                           D,
-                                          cl_uint(viennacl::traits::size1(A)),
-                                          cl_uint(viennacl::traits::size2(A)),
+                                          cl_uint(A_size1),
                                           cl_uint(viennacl::traits::internal_size2(Q)),
                                           viennacl::ocl::local_mem(static_cast<cl_uint>(128 * sizeof(NumericT)))
                                       ));
@@ -1104,12 +1103,8 @@ namespace viennacl
                       )
         {
           viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(matrix).context());
-
-        //  typedef typename MatrixType::value_type                                   ScalarType;
-        //  typedef typename viennacl::result_of::cpu_value_type<ScalarType>::type    CPU_ScalarType;
-          viennacl::linalg::opencl::kernels::svd<NumericT, F>::init(ctx);                    // neu hinzugefuegt
+          viennacl::linalg::opencl::kernels::svd<NumericT, F>::init(ctx);
           viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT, F>::program_name(), SVD_GIVENS_NEXT_KERNEL);
-          //matrix = trans(matrix);
           kernel.global_work_size(0, viennacl::tools::align_to_multiple<cl_uint>(cl_uint(viennacl::traits::size1(matrix)), 256));
           kernel.local_work_size(0, 256);
 
@@ -1122,7 +1117,6 @@ namespace viennacl
                                         static_cast<cl_uint>(l),
                                         static_cast<cl_uint>(m - 1)
                                 ));
-          //matrix = trans(matrix);
         }
 
         template <typename NumericT, typename F>
@@ -1137,7 +1131,7 @@ namespace viennacl
 
           std::string kernel_name = copy_col ? SVD_COPY_COL_KERNEL : SVD_COPY_ROW_KERNEL;
           viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(A).context());
-          viennacl::linalg::opencl::kernels::svd<NumericT, F>::init(ctx);                    // neu hinzugefuegt !
+          viennacl::linalg::opencl::kernels::svd<NumericT, F>::init(ctx);
           viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT, F>::program_name(), kernel_name);
 
           viennacl::ocl::enqueue(kernel(

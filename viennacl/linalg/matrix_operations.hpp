@@ -877,24 +877,24 @@ namespace viennacl
 
 
     template <typename NumericT, typename F>
-    void house_update_QL(matrix_base<NumericT, F> & A,
-                         matrix_base<NumericT, F> & Q,
-                         vector_base<NumericT>    & D)
+    void house_update_QL(matrix_base<NumericT, F> & Q,
+                         vector_base<NumericT>    & D,
+                         vcl_size_t A_size1)
     {
-      switch (viennacl::traits::handle(A).get_active_handle_id())
+      switch (viennacl::traits::handle(Q).get_active_handle_id())
       {
         case viennacl::MAIN_MEMORY:
-          viennacl::linalg::host_based::house_update_QL(A, Q, D);
+          viennacl::linalg::host_based::house_update_QL(Q, D, A_size1);
           break;
 #ifdef VIENNACL_WITH_OPENCL
         case viennacl::OPENCL_MEMORY:
-          viennacl::linalg::opencl::house_update_QL(A, Q, D);
+          viennacl::linalg::opencl::house_update_QL(Q, D, A_size1);
           break;
 #endif
 
 #ifdef VIENNACL_WITH_CUDA
         case viennacl::CUDA_MEMORY:
-          viennacl::linalg::cuda::house_update_QL(A, Q, D);
+          viennacl::linalg::cuda::house_update_QL(Q, D, A_size1);
           break;
 #endif
 
@@ -936,8 +936,6 @@ namespace viennacl
           throw memory_exception("not implemented");
       }
     }
-
-
 
   } //namespace linalg
 
