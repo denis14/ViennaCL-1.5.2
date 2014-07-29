@@ -22,10 +22,18 @@
 #endif
 
 //#define VIENNACL_DEBUG_ALL
-#include "vec_mat_io.hpp"
+#include <iostream>
+#include <fstream>
+#include <stdexcept>
+#include <vector>
 
-
+//#include "viennacl/linalg/prod.hpp"
 #include "viennacl/linalg/qr-method.hpp"
+
+//#include <examples/benchmarks/benchmark-utils.hpp>
+
+#include <boost/numeric/ublas/vector.hpp>
+#include <boost/numeric/ublas/matrix.hpp>
 
 namespace ublas = boost::numeric::ublas;
 
@@ -33,6 +41,9 @@ typedef float ScalarType;
 
 template <typename MatrixLayout>
 void initialize(viennacl::matrix<ScalarType, MatrixLayout>& A, ublas::vector<ScalarType>& v);
+void vector_print(ublas::vector<ScalarType>& v_ublas );
+template <typename MatrixLayout>
+void matrix_print(viennacl::matrix<ScalarType, MatrixLayout>& A_orig);
 
 
 
@@ -113,4 +124,23 @@ void initialize(viennacl::matrix<ScalarType, MatrixLayout>& A, ublas::vector<Sca
 
     for(int i = 0; i < 9; i++)
         v[i] = V[i];
+}
+
+template <typename MatrixLayout>
+void matrix_print(viennacl::matrix<ScalarType, MatrixLayout>& A_orig)
+{
+    ublas::matrix<ScalarType> A(A_orig.size1(), A_orig.size2());
+    viennacl::copy(A_orig, A);
+    for (unsigned int i = 0; i < A.size1(); i++) {
+        for (unsigned int j = 0; j < A.size2(); j++)
+           std::cout << A(i, j) << "\t";
+        std::cout << "\n";
+    }
+}
+
+void vector_print(ublas::vector<ScalarType>& v_ublas )
+{
+  for (unsigned int i = 0; i < v_ublas.size(); i++)
+      std::cout << std::setprecision(6) << std::fixed << v_ublas(i) << "\t";
+    std::cout << "\n";
 }
