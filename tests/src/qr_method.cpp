@@ -287,7 +287,7 @@ void test_eigen(const std::string& fn, bool is_symm)
 int main()
 {
 
-  test_eigen<viennacl::row_major>("../../examples/testdata/eigen/symm5.example", true);
+  test_eigen<viennacl::row_major>("../../examples/testdata/eigen/symm3.example", true);
   //test_eigen<viennacl::row_major>("../../examples/testdata/eigen/symm2.example", true);
   //test_eigen("../../examples/testdata/eigen/symm3.example", true);
 

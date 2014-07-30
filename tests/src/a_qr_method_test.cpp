@@ -100,9 +100,9 @@ void matrix_print(viennacl::matrix<ScalarType>& A_orig)
     for (unsigned int i = 0; i < A.size1(); i++) {
         for (unsigned int j = 0; j < A.size2(); j++)
            std::cout << std::setprecision(6) << std::fixed << A(i, j) << "\t";
-        std::cout << "\n";
+        std::cout << std::endl;
     }
-    std::cout << "\n";
+    std::cout << std::endl;
 }
 
 void matrix_print(ublas::matrix<ScalarType>& A)
@@ -110,9 +110,9 @@ void matrix_print(ublas::matrix<ScalarType>& A)
     for (unsigned int i = 0; i < A.size1(); i++) {
         for (unsigned int j = 0; j < A.size2(); j++)
            std::cout << std::setprecision(6) << std::fixed << A(i, j) << "\t";
-        std::cout << "\n";
+        std::cout << std::endl;
     }
-    std::cout << "\n";
+    std::cout << std::endl;
 }
 
 void vector_print(ublas::vector<ScalarType>& v )
@@ -187,7 +187,6 @@ void fill_vector(ublas::vector<ScalarType>& v)
  * ------------Functions to be tested---------------
  *
  */
-
 
 
 template <typename NumericT>
@@ -323,7 +322,7 @@ void bidiag_pack(ublas::matrix<NumericT> & A,
 template <typename MatrixLayout>
 void test_qr_method_sym(const std::string& fn)
 {
-  std::cout << "Reading..." << "\n";
+  std::cout << "Reading..." << std::endl;
   std::size_t sz;
 
   // read file
@@ -348,18 +347,18 @@ void test_qr_method_sym(const std::string& fn)
   fill_vector(ubl_D);
   copy(ubl_D, vcl_D);
 //--------------------------------------------------------
-  std::cout << "\nTesting house_update_left...\n";
+  std::cout << std::endl << "Testing house_update_left..." << std::endl;
  /*
-  std::cout << "vcl_D: \n";
+  std::cout << "vcl_D: " << std::endl;
   vector_print(vcl_D);
 
-  std::cout << "ubl_D: \n";
+  std::cout << "ubl_D: " << std::endl;
   vector_print(ubl_D);
 
-  std::cout << "vcl_A: \n";
+  std::cout << "vcl_A: " << std::endl;
   matrix_print(vcl_A);
 
-  std::cout << "ublas_A: \n";
+  std::cout << "ublas_A: " << std::endl;
   matrix_print(ubl_A);
 */
   viennacl::linalg::house_update_A_left(vcl_A, vcl_D, 0);
@@ -368,7 +367,7 @@ void test_qr_method_sym(const std::string& fn)
   if(!check_for_equality(ubl_A, vcl_A))
     exit(EXIT_FAILURE);
 //--------------------------------------------------------
-  std::cout << "\nTesting house_update_right...\n";
+  std::cout << std::endl << "Testing house_update_right..." << std::endl;
   copy(ubl_A, vcl_A);
   copy(ubl_D, vcl_D);
   viennacl::linalg::house_update_A_right(vcl_A, vcl_D);
@@ -378,7 +377,7 @@ void test_qr_method_sym(const std::string& fn)
      exit(EXIT_FAILURE);
 //--------------------------------------------------------
 
-  std::cout << "\nTesting house_update_QL...\n";
+  std::cout << std::endl << "Testing house_update_QL..." << std::endl;
   ubl_Q = ublas::identity_matrix<ScalarType>(ubl_Q.size1());
   copy(ubl_Q, vcl_Q);
   copy(ubl_A, vcl_A);
@@ -389,7 +388,7 @@ void test_qr_method_sym(const std::string& fn)
      exit(EXIT_FAILURE);
 //--------------------------------------------------------
 
-  std::cout << "\nTesting givens next...\n";
+  std::cout << std::endl << "Testing givens next..." << std::endl;
   fill_vector(ubl_E);
   fill_vector(ubl_F);
   copy(ubl_E, vcl_E);
@@ -401,7 +400,7 @@ void test_qr_method_sym(const std::string& fn)
   if(!check_for_equality(ubl_Q, vcl_Q))
       exit(EXIT_FAILURE);
 //--------------------------------------------------------
-  std::cout << "\nTesting copy vec...\n";
+  std::cout << std::endl << "Testing copy vec..." << std::endl;
   viennacl::linalg::detail::copy_vec(vcl_A, vcl_D, 0, 2, 1);
   copy_vec(ubl_A, ubl_D, 0, 2, 1);
   copy(vcl_D, ubl_E); //check for equality only for ublas vectors
@@ -409,7 +408,7 @@ void test_qr_method_sym(const std::string& fn)
       exit(EXIT_FAILURE);
 
 //--------------------------------------------------------
-  std::cout << "\nTesting bidiag pack...\n";
+  std::cout << std::endl << "Testing bidiag pack..." << std::endl;
   viennacl::linalg::bidiag_pack(vcl_A, ubl_D, ubl_F);
   ubl_F[0] = 0;  // first element in superdiagonal is irrelevant.
   bidiag_pack(ubl_A, ubl_G, ubl_H);
@@ -423,12 +422,14 @@ void test_qr_method_sym(const std::string& fn)
 
 int main()
 {
-/*
- *
- *
- */
 
+  std::cout << std::endl << "Test qr_method_sym for column_major matrix" << std::endl;
+  test_qr_method_sym<viennacl::column_major>("../../examples/testdata/eigen/symm5.example");
+
+  std::cout << std::endl << "Test qr_method_sym for row_major matrix" << std::endl;
   test_qr_method_sym<viennacl::row_major>("../../examples/testdata/eigen/symm5.example");
 
-  std::cout <<"\n--------TEST SUCESSFULLY COMPLETED----------\n";
+
+
+  std::cout << std::endl <<"--------TEST SUCESSFULLY COMPLETED----------" << std::endl;
 }

@@ -837,7 +837,7 @@ namespace viennacl
             assert(A.size1() == A.size2() && bool("Input matrix must be square for QR method!"));
             if (!viennacl::is_row_major<F>::value && !is_symmetric)
             {
-              std::cout << "qr_method for non-symmetric column-major matrices not implemented yet!\n";
+              std::cout << "qr_method for non-symmetric column-major matrices not implemented yet!" << std::endl;
               exit(EXIT_FAILURE);
             }
             D.resize(A.size1());
@@ -853,7 +853,7 @@ namespace viennacl
             // pack diagonal and super-diagonal
             viennacl::linalg::bidiag_pack(A, D, E);
 
-            // find eigenvalues
+            // find eigenvalues of symmetric tridiagonal matrix
             if(is_symmetric)
                 viennacl::linalg::tql2(Q, D, E);
 

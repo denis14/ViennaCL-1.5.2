@@ -629,7 +629,7 @@ namespace viennacl
         {
           static std::string program_name()
           {
-            return viennacl::ocl::type_to_string<NumericT>::apply() + "_svd";
+            return (viennacl::ocl::type_to_string<NumericT>::apply() + "_svd_") + (viennacl::is_row_major<F>::value ? "_row" : "col");
           }
 
           static void init(viennacl::ocl::context & ctx)
@@ -637,11 +637,12 @@ namespace viennacl
             viennacl::ocl::DOUBLE_PRECISION_CHECKER<NumericT>::apply(ctx);
             std::string numeric_string = viennacl::ocl::type_to_string<NumericT>::apply();
             bool is_row_major = viennacl::is_row_major<F>::value;
-            //std::cout << "is row major = "<< (is_row_major ? "TRUE\n" :"FALSE\n");
+           // static bool is_row_major_temp;
 
             static std::map<cl_context, bool> init_done;
             if (!init_done[ctx.handle().get()])
             {
+              //std::cout << "is row major = "<< (is_row_major ? "TRUE\n" :"FALSE\n");
               std::string source;
               source.reserve(1024);
 
@@ -650,7 +651,7 @@ namespace viennacl
               // only generate for floating points (forces error for integers)
               if (numeric_string == "float" || numeric_string == "double")
               {
-                //helper function used by multiple kernels:
+                  //helper function used by multiple kernels:
                 generate_svd_col_reduce_lcl_array(source, numeric_string);
 
                 //kernels:
@@ -675,6 +676,7 @@ namespace viennacl
               #endif
               ctx.add_program(source, prog_name);
               init_done[ctx.handle().get()] = true;
+
             } //if
           } //init
         };

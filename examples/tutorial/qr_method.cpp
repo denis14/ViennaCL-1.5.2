@@ -67,14 +67,12 @@ void qr_method()
 
     initialize(A_input, eigenvalues_ref);  //initialize with data for tutorial
 
-    std::cout <<"Input matrix: \n";
+    std::cout << std::endl <<"Input matrix: " << std::endl;
     matrix_print(A_input);
 
-    std::cout <<"\nEigenvalues of input matrix: \n";
-    vector_print(eigenvalues_ref);
 
-    std::cout << "\nStarting QR-method \n";
-    std::cout << "Calculation..." << "\n";
+    std::cout << std::endl << "Starting QR-method" << std::endl;
+    std::cout << "Calculation..." << std::endl;
 
     /*
      * Call function qr_method_sym to calculate eigenvalues and eigenvectors
@@ -86,11 +84,11 @@ void qr_method()
 
     viennacl::linalg::qr_method_sym(A_input, Q, eigenvalues);
 
-    std::cout <<"\nEigenvalues:\n";
+    std::cout << std::endl << "Eigenvalues:" << std::endl;
     vector_print(eigenvalues);
-    std::cout <<"\nReference eigenvalues: \n";
+    std::cout << std::endl << "Reference eigenvalues:" << std::endl;
     vector_print(eigenvalues_ref);
-    std::cout <<"\nEigenvectors - each column is an eigenvector\n";
+    std::cout << std::endl << "Eigenvectors - each column is an eigenvector" << std::endl;
 
     matrix_print(Q);
 
@@ -134,7 +132,7 @@ void matrix_print(viennacl::matrix<ScalarType, MatrixLayout>& A_orig)
     for (unsigned int i = 0; i < A.size1(); i++) {
         for (unsigned int j = 0; j < A.size2(); j++)
            std::cout << A(i, j) << "\t";
-        std::cout << "\n";
+        std::cout << std::endl;
     }
 }
 
@@ -142,5 +140,5 @@ void vector_print(ublas::vector<ScalarType>& v_ublas )
 {
   for (unsigned int i = 0; i < v_ublas.size(); i++)
       std::cout << std::setprecision(6) << std::fixed << v_ublas(i) << "\t";
-    std::cout << "\n";
+    std::cout << std::endl;
 }

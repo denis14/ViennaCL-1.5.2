@@ -1406,9 +1406,10 @@ namespace viennacl
 
        {
          NumericT beta = 2;
-         viennacl::matrix<NumericT> vcl_P = viennacl::identity_matrix<NumericT>(A_size1);
-         viennacl::matrix<NumericT> Q_temp = Q;
+         viennacl::matrix<NumericT, F> vcl_P = viennacl::identity_matrix<NumericT>(A_size1);
+         viennacl::matrix<NumericT, F> Q_temp = Q;
          viennacl::vector<NumericT> vcl_D = D;
+
 
          viennacl::linalg::host_based::scaled_rank_1_update(vcl_P, beta, 1, 0, 1, vcl_D, vcl_D);
          Q = prod(Q_temp, vcl_P);
