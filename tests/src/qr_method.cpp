@@ -223,9 +223,9 @@ void test_eigen(const std::string& fn, bool is_symm)
     matrix_print(Q);
     std::cout << "\n\n";
 */
-/*
-    viennacl::backend::finish();
 
+    viennacl::backend::finish();
+/*
     double time_spend = timer.get();
 
     std::cout << "Verification..." << "\n";
