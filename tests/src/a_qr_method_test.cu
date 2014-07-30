@@ -361,6 +361,7 @@ void test_qr_method_sym(const std::string& fn)
   std::cout << "ublas_A: " << std::endl;
   matrix_print(ubl_A);
 */
+/*
   viennacl::linalg::house_update_A_left(vcl_A, vcl_D, 0);
   house_update_A_left(ubl_A, ubl_D, 0);
 
@@ -375,6 +376,7 @@ void test_qr_method_sym(const std::string& fn)
 
   if(!check_for_equality(ubl_A, vcl_A))
      exit(EXIT_FAILURE);
+     */
 //--------------------------------------------------------
 
   std::cout << std::endl << "Testing house_update_QL..." << std::endl;
