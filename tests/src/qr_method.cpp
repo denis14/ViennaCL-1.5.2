@@ -225,7 +225,7 @@ void test_eigen(const std::string& fn, bool is_symm)
 */
 
     viennacl::backend::finish();
-/*
+
     double time_spend = timer.get();
 
     std::cout << "Verification..." << "\n";
@@ -286,7 +286,7 @@ void test_eigen(const std::string& fn, bool is_symm)
 
     if (!is_ok)
       exit(EXIT_FAILURE);
-*/
+
 }
 
 int main()
