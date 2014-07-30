@@ -1,1 +1,0 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/gemv_autotuning.dir/gemv_autotuning.cpp.o  -o gemv_autotuning -rdynamic -lOpenCL 

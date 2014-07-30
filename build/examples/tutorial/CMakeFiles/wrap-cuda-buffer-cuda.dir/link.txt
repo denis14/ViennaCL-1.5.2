@@ -1,1 +1,0 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/wrap-cuda-buffer-cuda.dir/./wrap-cuda-buffer-cuda_generated_wrap-cuda-buffer.cu.o  -o wrap-cuda-buffer-cuda -rdynamic -lcudart 

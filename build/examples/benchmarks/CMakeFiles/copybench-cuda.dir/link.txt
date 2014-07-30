@@ -1,1 +1,0 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/copybench-cuda.dir/./copybench-cuda_generated_copy.cu.o  -o copybench-cuda -rdynamic -lcudart 

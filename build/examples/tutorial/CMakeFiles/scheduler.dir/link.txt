@@ -1,1 +1,0 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/scheduler.dir/scheduler.cpp.o  -o scheduler -rdynamic -lOpenCL 

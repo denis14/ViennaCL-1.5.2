@@ -1,1 +1,0 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/viennacl-info.dir/viennacl-info.cpp.o  -o viennacl-info -rdynamic -lOpenCL 

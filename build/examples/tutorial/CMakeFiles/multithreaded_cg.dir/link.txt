@@ -1,1 +1,0 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/multithreaded_cg.dir/multithreaded_cg.cpp.o  -o multithreaded_cg -rdynamic -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread -lOpenCL -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread -lOpenCL 

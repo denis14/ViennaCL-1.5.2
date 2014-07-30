@@ -1,1 +1,0 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/openclbench-opencl.dir/opencl.cpp.o  -o openclbench-opencl -rdynamic -lOpenCL 

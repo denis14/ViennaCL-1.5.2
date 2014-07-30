@@ -1,1 +1,0 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP     CMakeFiles/least-squares-cuda.dir/./least-squares-cuda_generated_least-squares.cu.o  -o least-squares-cuda -rdynamic -lcudart -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

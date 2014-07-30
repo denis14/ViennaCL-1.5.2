@@ -1,1 +1,0 @@
-/usr/bin/c++   -g    CMakeFiles/spmdm-test-opencl.dir/src/spmdm.cpp.o  -o spmdm-test-opencl -rdynamic -lOpenCL -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

@@ -1,1 +1,0 @@
-/usr/bin/c++   -g    CMakeFiles/libviennacl_blas3-test.dir/src/./libviennacl_blas3-test_generated_libviennacl_blas3.cu.o  -o libviennacl_blas3-test -rdynamic -lcudart ../libviennacl/libviennacl.so -lOpenCL -lcudart -lOpenCL -Wl,-rpath,/home/andi/git/ViennaCL-1.5.2/build/libviennacl 

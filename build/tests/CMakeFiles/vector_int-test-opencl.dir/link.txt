@@ -1,1 +1,0 @@
-/usr/bin/c++   -g    CMakeFiles/vector_int-test-opencl.dir/src/vector_int.cpp.o  -o vector_int-test-opencl -rdynamic -lOpenCL -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

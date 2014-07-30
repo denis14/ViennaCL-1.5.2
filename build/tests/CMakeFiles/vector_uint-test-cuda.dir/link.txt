@@ -1,1 +1,0 @@
-/usr/bin/c++   -g    CMakeFiles/vector_uint-test-cuda.dir/src/./vector_uint-test-cuda_generated_vector_uint.cu.o  -o vector_uint-test-cuda -rdynamic -lcudart -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 
