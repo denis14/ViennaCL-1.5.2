@@ -56,7 +56,7 @@
 #include "viennacl/linalg/host_based/matrix_operations.hpp"
 #include "Random.hpp"
 
-#define EPS 10.0e-5
+#define EPS 10.0e-6
 
 
 
