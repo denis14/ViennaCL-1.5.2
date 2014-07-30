@@ -160,14 +160,11 @@ ScalarType vector_compare(ublas::vector<ScalarType>& res,
 }
 
 template <typename MatrixLayout>
-void matrix_print(viennacl::matrix<ScalarType, MatrixLayout>& A_orig)
+void matrix_print(viennacl::matrix<ScalarType, MatrixLayout>& A)
 {
-    ublas::matrix<ScalarType> A(A_orig.size1(), A_orig.size2());
-    viennacl::copy(A_orig, A);
-    std::cout << "matrix_print!\n";
     for (unsigned int i = 0; i < A.size1(); i++) {
         for (unsigned int j = 0; j < A.size2(); j++)
-           std::cout << A(i, j) << "\t";
+           std::cout << std::fixed << A(i, j) << "\t";
         std::cout << "\n";
     }
 }
@@ -206,13 +203,18 @@ void test_eigen(const std::string& fn, bool is_symm)
 
     Timer timer;
     timer.start();
-
+    // Start the calculation
     if(is_symm)
         viennacl::linalg::qr_method_sym(A_input, Q, eigen_re);
     else
         viennacl::linalg::qr_method_nsm(A_input, Q, eigen_re, eigen_im);
 
-  /*  
+    for(unsigned int i = 0; i< 10; i++)
+      {
+        std::cout << Q(i, 5) << std::endl;
+      }
+/*
+
     std::cout << "\n\n Matrix A: \n\n";
     matrix_print(A_input);
     std::cout << "\n\n";
@@ -220,8 +222,8 @@ void test_eigen(const std::string& fn, bool is_symm)
     std::cout << "\n\n Matrix Q: \n\n";
     matrix_print(Q);
     std::cout << "\n\n";
-
 */
+/*
     viennacl::backend::finish();
 
     double time_spend = timer.get();
@@ -284,7 +286,7 @@ void test_eigen(const std::string& fn, bool is_symm)
 
     if (!is_ok)
       exit(EXIT_FAILURE);
-
+*/
 }
 
 int main()
@@ -294,7 +296,7 @@ int main()
   //test_eigen<viennacl::row_major>("../../examples/testdata/eigen/symm2.example", true);
   //test_eigen("../../examples/testdata/eigen/symm3.example", true);
 
-  //test_eigen("../../examples/testdata/eigen/nsm1.example", false);
+  //test_eigen<viennacl::row_major>("../../examples/testdata/eigen/symm5.example", false);
   //test_eigen("../../examples/testdata/eigen/nsm2.example", false);
   //test_eigen("../../examples/testdata/eigen/nsm3.example", false);
   //test_eigen("../../examples/testdata/eigen/nsm4.example", false); //Note: This test suffers from round-off errors in single precision, hence disabled

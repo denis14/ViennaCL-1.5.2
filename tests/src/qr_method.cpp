@@ -208,6 +208,11 @@ void test_eigen(const std::string& fn, bool is_symm)
         viennacl::linalg::qr_method_sym(A_input, Q, eigen_re);
     else
         viennacl::linalg::qr_method_nsm(A_input, Q, eigen_re, eigen_im);
+
+    for(unsigned int i = 0; i< 10; i++)
+      {
+        std::cout << Q(i, 5) << std::endl;
+      }
 /*
 
     std::cout << "\n\n Matrix A: \n\n";
@@ -218,7 +223,7 @@ void test_eigen(const std::string& fn, bool is_symm)
     matrix_print(Q);
     std::cout << "\n\n";
 */
-
+/*
     viennacl::backend::finish();
 
     double time_spend = timer.get();
@@ -281,7 +286,7 @@ void test_eigen(const std::string& fn, bool is_symm)
 
     if (!is_ok)
       exit(EXIT_FAILURE);
-
+*/
 }
 
 int main()
