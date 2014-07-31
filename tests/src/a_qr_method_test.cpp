@@ -56,7 +56,7 @@
 #include "viennacl/linalg/host_based/matrix_operations.hpp"
 #include "Random.hpp"
 
-#define EPS 10.0e-5
+#define EPS 10.0e-3
 
 
 
@@ -395,8 +395,8 @@ void test_qr_method_sym(const std::string& fn)
   copy(ubl_F, vcl_F);
   copy(ubl_Q, vcl_Q);
   copy(ubl_A, vcl_A);
-  viennacl::linalg::givens_next(vcl_Q, vcl_E, vcl_F, 0, 3);
-  givens_next(ubl_Q, ubl_E, ubl_F, 0, 3);
+  viennacl::linalg::givens_next(vcl_Q, vcl_E, vcl_F, 2, 5);
+  givens_next(ubl_Q, ubl_E, ubl_F, 2, 5);
   if(!check_for_equality(ubl_Q, vcl_Q))
       exit(EXIT_FAILURE);
 //--------------------------------------------------------
@@ -423,12 +423,11 @@ void test_qr_method_sym(const std::string& fn)
 int main()
 {
 
-  std::cout << std::endl << "Test qr_method_sym for column_major matrix" << std::endl;
-  test_qr_method_sym<viennacl::column_major>("../../examples/testdata/eigen/symm5.example");
-
   std::cout << std::endl << "Test qr_method_sym for row_major matrix" << std::endl;
-  test_qr_method_sym<viennacl::row_major>("../../examples/testdata/eigen/symm5.example");
+  test_qr_method_sym<viennacl::row_major>("../../examples/testdata/eigen/symm3.example");
 
+  std::cout << std::endl << "Test qr_method_sym for column_major matrix" << std::endl;
+  test_qr_method_sym<viennacl::column_major>("../../examples/testdata/eigen/symm3.example");
 
 
   std::cout << std::endl <<"--------TEST SUCESSFULLY COMPLETED----------" << std::endl;

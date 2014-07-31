@@ -208,11 +208,6 @@ void test_eigen(const std::string& fn, bool is_symm)
         viennacl::linalg::qr_method_sym(A_input, Q, eigen_re);
     else
         viennacl::linalg::qr_method_nsm(A_input, Q, eigen_re, eigen_im);
-
-    for(unsigned int i = 0; i< 10; i++)
-      {
-        std::cout << Q(i, 5) << std::endl;
-      }
 /*
 
     std::cout << "\n\n Matrix A: \n\n";
@@ -292,9 +287,13 @@ void test_eigen(const std::string& fn, bool is_symm)
 int main()
 {
 
+  test_eigen<viennacl::row_major>("../../examples/testdata/eigen/symm5.example", true);
   test_eigen<viennacl::row_major>("../../examples/testdata/eigen/symm3.example", true);
-  //test_eigen<viennacl::row_major>("../../examples/testdata/eigen/symm2.example", true);
-  //test_eigen("../../examples/testdata/eigen/symm3.example", true);
+
+  test_eigen<viennacl::column_major>("../../examples/testdata/eigen/symm5.example", true);
+  test_eigen<viennacl::column_major>("../../examples/testdata/eigen/symm3.example", true);
+
+
 
   //test_eigen<viennacl::row_major>("../../examples/testdata/eigen/symm5.example", false);
   //test_eigen("../../examples/testdata/eigen/nsm2.example", false);

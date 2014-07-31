@@ -134,6 +134,7 @@ namespace viennacl
 
                     viennacl::copy(cs, tmp1);
                     viennacl::copy(ss, tmp2);
+
                     viennacl::linalg::givens_next(Q, tmp1, tmp2, l, m);
 
                     // Check for convergence.
@@ -861,7 +862,6 @@ namespace viennacl
             {
                   detail::hqr2(A, Q, D, E);
             }
-
 
 
             boost::numeric::ublas::matrix<float> eigen_values(A.size1(), A.size1());

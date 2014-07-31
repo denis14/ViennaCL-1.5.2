@@ -1925,15 +1925,15 @@ namespace viennacl
 
               if(threadIdx.x < to)
               {
-                  cs_lcl[threadIdx.x] = cs[end_i - (threadIdx.x + block_id * threadIdx.x)];
-                  ss_lcl[threadIdx.x] = ss[end_i - (threadIdx.x + block_id * threadIdx.x)];
+                  cs_lcl[threadIdx.x] = cs[end_i - (threadIdx.x + block_id * blockDim.x)];
+                  ss_lcl[threadIdx.x] = ss[end_i - (threadIdx.x + block_id * blockDim.x)];
               }
               __syncthreads();
               if(j < size)
               {
                   for(uint ind = 0; ind < to; ind++)
                   {
-                      uint i = end_i - (ind + block_id * threadIdx.x);
+                      uint i = end_i - (ind + block_id * blockDim.x);
                       T z = matr[i + j * stride];
                       T cs_val = cs_lcl[ind];
                       T ss_val = ss_lcl[ind];
@@ -1972,15 +1972,15 @@ namespace viennacl
 
               if(threadIdx.x < to)
               {
-                  cs_lcl[threadIdx.x] = cs[end_i - (threadIdx.x + block_id * threadIdx.x)];
-                  ss_lcl[threadIdx.x] = ss[end_i - (threadIdx.x + block_id * threadIdx.x)];
+                  cs_lcl[threadIdx.x] = cs[end_i - (threadIdx.x + block_id * blockDim.x)];
+                  ss_lcl[threadIdx.x] = ss[end_i - (threadIdx.x + block_id * blockDim.x)];
               }
               __syncthreads();
               if(j < size)
               {
                   for(uint ind = 0; ind < to; ind++)
                   {
-                      uint i = end_i - (ind + block_id * threadIdx.x);
+                      uint i = end_i - (ind + block_id * blockDim.x);
                       T z = matr[i *stride + j];
                       T cs_val = cs_lcl[ind];
                       T ss_val = ss_lcl[ind];
@@ -2002,25 +2002,23 @@ namespace viennacl
                         int m)
         {
         if (viennacl::is_row_major<F>::value)
-          {
-            givens_next_row_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(matrix),
+          givens_next_row_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(matrix),
                                            detail::cuda_arg<NumericT>(tmp1),
                                            detail::cuda_arg<NumericT>(tmp2),
                                            static_cast<unsigned int>(viennacl::traits::size1(matrix)),
                                            static_cast<unsigned int>(viennacl::traits::internal_size2(matrix)),
                                            static_cast<unsigned int>(l),
                                            static_cast<unsigned int>(m - 1));
-          }
+
         else
-          {
-            givens_next_column_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(matrix),
+          givens_next_column_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(matrix),
                                            detail::cuda_arg<NumericT>(tmp1),
                                            detail::cuda_arg<NumericT>(tmp2),
                                            static_cast<unsigned int>(viennacl::traits::size1(matrix)),
                                            static_cast<unsigned int>(viennacl::traits::internal_size1(matrix)),
                                            static_cast<unsigned int>(l),
                                            static_cast<unsigned int>(m - 1));
-          }
+
 
       }
 
