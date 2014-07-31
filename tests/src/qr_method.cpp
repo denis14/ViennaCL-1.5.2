@@ -178,7 +178,11 @@ void test_eigen(const std::string& fn, bool is_symm)
     std::fstream f(fn.c_str(), std::fstream::in);
     //read size of input matrix
     read_matrix_size(f, sz);
-    std::cout << "Testing matrix of size " << sz << "-by-" << sz << std::endl;
+
+    if (viennacl::is_row_major<MatrixLayout>::value)
+      std::cout << "Testing row-major matrix of size " << sz << "-by-" << sz << std::endl;
+    else
+      std::cout << "Testing column-major matrix of size " << sz << "-by-" << sz << std::endl;
 
     viennacl::matrix<ScalarType, MatrixLayout> A_input(sz, sz), A_ref(sz, sz), Q(sz, sz);
     ublas::vector<ScalarType> eigen_ref_re = ublas::scalar_vector<ScalarType>(sz, 0);
