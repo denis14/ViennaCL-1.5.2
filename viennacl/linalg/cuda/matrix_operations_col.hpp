@@ -1995,11 +1995,11 @@ namespace viennacl
       }
 
       template<typename NumericT, typename F>
-        void givens_next(matrix_base<NumericT, F> & matrix,
-                        vector_base<NumericT>& tmp1,
-                        vector_base<NumericT>& tmp2,
-                        int l,
-                        int m)
+      void givens_next(matrix_base<NumericT, F> & matrix,
+                       vector_base<NumericT>& tmp1,
+                       vector_base<NumericT>& tmp2,
+                       int l,
+                       int m)
         {
         if (viennacl::is_row_major<F>::value)
           givens_next_row_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(matrix),
@@ -2021,6 +2021,47 @@ namespace viennacl
 
 
       }
+
+      template <typename T>
+      __global__ void inclusive_scan_kernel(
+                                             T * X,
+                                             T * Y,
+                                             uint InputeSize)
+      {
+        __shared__ float XY[128];
+        int i = blockIdx.x * blockDim.x + threadIdx.x;
+        if(i < InputeSize)
+          XY[threadIdx.x] = X[i];
+
+        for(unsigned int stride = 1; stride < blockDim.x; stride *= 2)
+          {
+            __syncthreads();
+            int index = (threadIdx.x + 1) * 2 * stride - 1;
+            if(index < blockDim.x)
+              XY[index] += XY[index - stride];
+            }
+
+        for(int stride = 128 / 4; stride > 0; stride /= 2)
+          {
+            __syncthreads();
+            int index = (threadIdx.x + 1) * 2 * stride - 1;
+            if(index + stride < 128)
+              XY[index + stride] += XY[index];
+          }
+        __syncthreads();
+        Y[i] = XY[threadIdx.x];
+      }
+
+
+      template<typename NumericT, typename F>
+      void inclusive_scan(vector_base<NumericT, F>& vec1,
+                          vector_base<NumericT, F>& vec2)
+        {
+          std::cout << "exclusive scan started!\n";
+          inclusive_scan_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(vec1),
+                                              detail::cuda_arg<NumericT>(vec2),
+                                              static_cast<unsigned int>(viennacl::traits::size(vec1)));
+        }
 
     } // namespace cuda
   } //namespace linalg
