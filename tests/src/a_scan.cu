@@ -60,7 +60,7 @@
 namespace ublas = boost::numeric::ublas;
 typedef float     ScalarType;
 
-#define EPS 0.00001
+#define EPS 0.000001
 
 void matrix_print(viennacl::matrix<ScalarType>& A_orig)
 {
