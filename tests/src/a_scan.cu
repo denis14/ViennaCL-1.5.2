@@ -139,7 +139,7 @@ void test_values(viennacl::vector<ScalarType> & vec)
 void test_scan()
 {
   std::cout << "test started..." << std::endl;
-  unsigned int sz = 2097152 ; // funktioniert bis 16512
+  unsigned int sz = 4194304 ; // funktioniert bis 16512
   
   //(6,22,38,54,70,86,102,118,134,150,166,182,198,214,230,246)
   // 6,28,66,120,190,276,378,496,630,
