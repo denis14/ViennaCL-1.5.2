@@ -2021,7 +2021,7 @@ namespace viennacl
 
       }
 
- #define SECTION_SIZE 512
+ #define SECTION_SIZE 1024
       template <typename T>
       __global__ void inclusive_scan_kernel_1(
                                              T * X,
