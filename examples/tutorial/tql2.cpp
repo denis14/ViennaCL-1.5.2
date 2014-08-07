@@ -35,23 +35,14 @@
 #include "viennacl/vector.hpp"
 #include "viennacl/compressed_matrix.hpp"
 
-
-//#include "viennacl/linalg/lanczos.hpp"
 #include "viennacl/io/matrix_market.hpp"
-// Some helper functions for this tutorial:
+
 #include <iostream>
 #include <fstream>
 #include <limits>
 #include <string>
 #include <iomanip>
 
-#include <boost/numeric/ublas/matrix.hpp>
-#include <boost/numeric/ublas/matrix_proxy.hpp>
-#include <boost/numeric/ublas/matrix_expression.hpp>
-#include <boost/numeric/ublas/matrix_sparse.hpp>
-#include <boost/numeric/ublas/vector.hpp>
-#include <boost/numeric/ublas/operation.hpp>
-#include <boost/numeric/ublas/vector_expression.hpp>
 #include "viennacl/linalg/qr-method.hpp"
 #include "viennacl/linalg/qr-method-common.hpp"
 #include "viennacl/linalg/host_based/matrix_operations.hpp"
