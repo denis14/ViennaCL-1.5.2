@@ -780,10 +780,10 @@ namespace viennacl
 
 
 
-      template <typename NumericT, typename F, typename VectorType>
+      template <typename NumericT, typename F>
       void bidiag_pack(matrix_base<NumericT, F> & A,
-                       VectorType & dh,
-                       VectorType & sh
+                       std::vector<NumericT> & dh,
+                       std::vector<NumericT> & sh
                       )
       {
         switch (viennacl::traits::handle(A).get_active_handle_id())

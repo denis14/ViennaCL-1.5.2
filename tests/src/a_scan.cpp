@@ -17,137 +17,122 @@
 
 /*
 *
-*   Test file for qr-method
+*   Test file for inclusive and exclusive scan
 *
 */
 
-// include necessary system headers
-#include <iostream>
 
 #ifndef NDEBUG
   #define NDEBUG
 #endif
 
-//#define VIENNACL_WITH_UBLAS
-
 //include basic scalar and vector types of ViennaCL
 #include "viennacl/scalar.hpp"
 #include "viennacl/vector.hpp"
 #include "viennacl/compressed_matrix.hpp"
+#include "viennacl/linalg/matrix_operations.hpp"
 
-
-#include "viennacl/linalg/lanczos.hpp"
-#include "viennacl/io/matrix_market.hpp"
 // Some helper functions for this tutorial:
 #include <iostream>
-#include <fstream>
 #include <limits>
 #include <string>
 #include <iomanip>
 
-//#include <boost/numeric/ublas/matrix.hpp>
-//#include <boost/numeric/ublas/matrix_proxy.hpp>
-//#include <boost/numeric/ublas/matrix_expression.hpp>
-//#include <boost/numeric/ublas/matrix_sparse.hpp>
-//#include <boost/numeric/ublas/vector.hpp>
-//#include <boost/numeric/ublas/operation.hpp>
-//#include <boost/numeric/ublas/vector_expression.hpp>
-#include "viennacl/linalg/qr-method-common.hpp"
-#include "viennacl/linalg/host_based/matrix_operations.hpp"
-#include "Random.hpp"
 
-#define EPS 10.0e-3
-
-
-
-namespace ublas = boost::numeric::ublas;
 typedef float     ScalarType;
 
-
-
-void matrix_print(viennacl::matrix<ScalarType>& A_orig)
-{
-    ublas::matrix<ScalarType> A(A_orig.size1(), A_orig.size2());
-    viennacl::copy(A_orig, A);
-    for (unsigned int i = 0; i < A.size1(); i++) {
-        for (unsigned int j = 0; j < A.size2(); j++)
-           std::cout << std::setprecision(6) << std::fixed << A(i, j) << "\t";
-        std::cout << std::endl;
-    }
-    std::cout << std::endl;
-}
-
+#define EPS 0.0001
 
 
 void vector_print(viennacl::vector<ScalarType>& v )
 {
-  ublas::vector<ScalarType> v_ublas = ublas::vector<ScalarType>(v.size(), 0);
-  copy(v, v_ublas);
-
   for (unsigned int i = 0; i < v.size(); i++)
-      std::cout << std::setprecision(6) << std::fixed << v_ublas(i) << "\t";
+      std::cout << std::setprecision(0) << std::fixed << v(i) << "\t";
     std::cout << "\n";
 }
 
 
-void fill_vector(viennacl::vector<ScalarType>& v)
+void init_vector(viennacl::vector<ScalarType>& v)
 {
-   // for (unsigned int i = 0; i < v.size(); ++i)
-      //v[i] =  random<ScalarType>();
-      //v[i] =  i;
-      v[0]  = 2;
-      v[1]  = 1;
-      v[2]  = 3;
-      v[3]  = 1;
-      v[4]  = 0;
-      v[5]  = 4;
-      v[6]  = 1;
-      v[7]  = 2;
-      v[8]  = 0;
-      v[9]  = 3;
-      v[10] = 1;
-      v[11] = 2;
-      v[12] = 5;
-      v[13] = 3;
-      v[14] = 1;
-      v[15] = 2;
+    for (unsigned int i = 0; i < v.size(); ++i)
+      v[i] =  i;
+}
+
+void test_inclusive_scan_values(viennacl::vector<ScalarType> & vec)
+{
+  for(int i = 1; i < vec.size(); i++)
+  {
+    ScalarType abs_error = std::fabs((float)i* ((float)i + 1.) / 2. - vec[i]);
+    if (abs_error > EPS * vec[i])
+    {
+      std::cout << "Fail at vector index " << i << " Absolute error:  " << abs_error;
+      std::cout << "\t Relative error:  " << std::setprecision(7) << abs_error / vec[i] * 100 << "%"<< std::endl;
+      std::cout << "vec[" << i << "] = " << vec[i] << std::endl;
+      exit(EXIT_FAILURE);
+    }
+  }
+
 }
 
 
-/*
- *
- * ------------Functions to be tested---------------
- *
- */
-
-
-
-void test_scan()
+void test_exclusive_scan_values(viennacl::vector<ScalarType> & vec)
 {
-  std::cout << "test started..." << std::endl;
-  unsigned int sz = 16;
+  for(int i = 1; i < vec.size() - 1; i++)
+  {
+    ScalarType abs_error = std::fabs((float)i* ((float)i + 1.) / 2. - vec[i + 1]);
+    if (abs_error > EPS * vec[i])
+     {
+      std::cout << "Fail at vector index " << i << " Absolute error:  " << abs_error;
+      std::cout << "\t Relative error:  " << std::setprecision(7) << abs_error / vec[i] * 100 << "%"<< std::endl;
+      std::cout << "vec[" << i << "] = " << vec[i] << std::endl;
+      exit(EXIT_FAILURE);
+    }
+  }
+
+}
 
 
 
-
+void test_scans()
+{
+  unsigned int sz = 100000;//1048576;
   viennacl::vector<ScalarType> vec1(sz), vec2(sz);
 
-  fill_vector(vec1);
-  viennacl::linalg::cuda::inclusive_scan(vec1, vec2);
 
-  vector_print(vec1);
-  vector_print(vec2);
+  std::cout << "Initialize vector..." << std::endl;
+  init_vector(vec1);
 
-//--------------------------------------------------------
 
-//--------------------------------------------------------
+  // INCLUSIVE SCAN
+  std::cout << "Inclusive scan started!" << std::endl;
+  viennacl::linalg::inclusive_scan(vec1, vec2);
+  std::cout << "Inclusive scan finished!" << std::endl;
+  //vector_print(vec2);
+  std::cout << "Testing inclusive scan results..." << std::endl;
+  test_inclusive_scan_values(vec2);
+  std::cout << "Inclusive scan tested successfully!" << std::endl << std::endl;
+
+
+
+  std::cout << "Initialize vector..." << std::endl;
+  init_vector(vec1);
+
+  // EXCLUSIVE SCAN
+  std::cout << "Exlusive scan started!" << std::endl;
+  viennacl::linalg::exclusive_scan(vec1, vec2);
+  std::cout << "Exclusive scan finished!" << std::endl;
+  //vector_print(vec2);
+  std::cout << "Testing exclusive scan results..."  << std::endl;
+  test_exclusive_scan_values(vec2);
+  std::cout << "Exclusive scan tested successfully!" << std::endl << std::endl;
+
 }
 
 int main()
 {
 
-  std::cout << std::endl << "Test scan" << std::endl;
-  test_scan();
+  std::cout << std::endl << "----TEST INCLUSIVE and EXCLUSIVE SCAN----" << std::endl << std::endl;
+  test_scans();
 
   std::cout << std::endl <<"--------TEST SUCCESSFULLY COMPLETED----------" << std::endl;
 }
