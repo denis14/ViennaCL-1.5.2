@@ -282,6 +282,7 @@ void test_eigen(const std::string& fn, bool is_symm)
 
     printf("%6s [%dx%d] %40s time = %.4f\n", is_ok?"[[OK]]":"[FAIL]", (int)A_ref.size1(), (int)A_ref.size2(), fn.c_str(), time_spend);
     printf("tridiagonal = %d, hessenberg = %d prod-diff = %f eigen-diff = %f\n", is_tridiag, is_hessenberg, prods_diff, eigen_diff);
+    std::cout << std::endl << std::endl;
 
     if (!is_ok)
       exit(EXIT_FAILURE);

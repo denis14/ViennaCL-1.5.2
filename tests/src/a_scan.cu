@@ -41,7 +41,7 @@
 
 typedef float     ScalarType;
 
-#define EPS 0.000001
+#define EPS 0.001
 
 
 void vector_print(viennacl::vector<ScalarType>& v )
@@ -54,8 +54,10 @@ void vector_print(viennacl::vector<ScalarType>& v )
 
 void init_vector(viennacl::vector<ScalarType>& v)
 {
+    std::vector<ScalarType> v_std(v.size());
     for (unsigned int i = 0; i < v.size(); ++i)
-      v[i] =  i;
+      v_std[i] =  i;
+    copy(v_std, v);
      /* v[0]  = 2;
       v[1]  = 1;
       v[2]  = 3;
@@ -112,7 +114,7 @@ void test_exclusive_scan_values(viennacl::vector<ScalarType> & vec)
 
 void test_scans()
 {
-  unsigned int sz = 128;
+  unsigned int sz = 32000000;
   viennacl::vector<ScalarType> vec1(sz), vec2(sz);
 
 
@@ -124,8 +126,9 @@ void test_scans()
   std::cout << "Inclusive scan started!" << std::endl;
   viennacl::linalg::inclusive_scan(vec1, vec2);
   std::cout << "Inclusive scan finished!" << std::endl;
-  vector_print(vec2);
+ // vector_print(vec2);
   std::cout << "Testing inclusive scan results..." << std::endl;
+  std::cout << "last element: " << std::setprecision(8) << vec2[sz - 1] << std::endl;
   test_inclusive_scan_values(vec2);
   std::cout << "Inclusive scan tested successfully!" << std::endl << std::endl;
 
@@ -138,7 +141,7 @@ void test_scans()
   std::cout << "Exlusive scan started!" << std::endl;
   viennacl::linalg::cuda::exclusive_scan(vec1, vec2);
   std::cout << "Exclusive scan finished!" << std::endl;
-  vector_print(vec2);
+//  vector_print(vec2);
   std::cout << "Testing exclusive scan results..."  << std::endl;
   test_exclusive_scan_values(vec2);
   std::cout << "Exclusive scan tested successfully!" << std::endl << std::endl;

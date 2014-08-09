@@ -1180,14 +1180,13 @@ namespace viennacl
       * @param D    The vector in which the diagonal of the matrix will be stored in.
       * @param S    The vector in which the superdiagonal of the matrix will be stored in.
       */
-      template <typename NumericT, typename F>
+      template <typename NumericT, typename F, typename S1>
        void bidiag_pack_impl(matrix_base<NumericT, F> & A,
-                        vector_base<NumericT> & D,
-                        vector_base<NumericT> & S
+                        vector_base<S1> & D,
+                        vector_base<S1> & S
                         )
 
        {
-
          typedef NumericT        value_type;
 
          value_type * data_A  = detail::extract_raw_pointer<value_type>(A);
@@ -1212,7 +1211,6 @@ namespace viennacl
          vcl_size_t size2  = viennacl::traits::size(S);
 
          vcl_size_t size = std::min(size1, size2);
-
          if (detail::is_row_major(typename F::orientation_category()))
          {
 #ifdef VIENNACL_WITH_OPENMP
@@ -1227,7 +1225,6 @@ namespace viennacl
              data_D[start1 + inc1 * (size-1)] = data_A[viennacl::row_major::mem_index((size-1) * A_inc1 + A_start1, (size-1) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
 
           }
-
          else
            {
 #ifdef VIENNACL_WITH_OPENMP
@@ -1240,27 +1237,23 @@ namespace viennacl
                }
              data_D[start1 + inc1 * (size-1)] = data_A[viennacl::column_major::mem_index((size-1) * A_inc1 + A_start1, (size-1) * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
            }
+
        }
 
 
 
-        template <typename NumericT, typename F>
+       template <typename NumericT, typename F, typename VectorType>
         void bidiag_pack(matrix_base<NumericT, F> & A,
-                         std::vector<NumericT> & dh,
-                         std::vector<NumericT> & sh
+                         VectorType & dh,
+                         VectorType & sh
                         )
         {
           viennacl::vector<NumericT> D(dh.size());
           viennacl::vector<NumericT> S(sh.size());
-          viennacl::vector<NumericT> D1(dh.size());
-          viennacl::vector<NumericT> S1(sh.size());
           viennacl::copy(dh, D);
           viennacl::copy(sh, S);
-          viennacl::copy(D, D1);
-          viennacl::copy(S, S1);
 
-
-          viennacl::linalg::host_based::bidiag_pack_impl(A, D1, S1);
+          viennacl::linalg::host_based::bidiag_pack_impl(A, D, S);
 
           viennacl::copy(D, dh);
           viennacl::copy(S, sh);
@@ -1596,6 +1589,46 @@ namespace viennacl
                    }
                }
             }
+         }
+
+         template<typename NumericT>
+         void inclusive_scan(vector_base<NumericT>& vec1,
+                             vector_base<NumericT>& vec2)
+         {
+           vcl_size_t start1 = viennacl::traits::start(vec1);
+           vcl_size_t inc1   = viennacl::traits::stride(vec1);
+           vcl_size_t size1  = viennacl::traits::size(vec1);
+
+           vcl_size_t start2 = viennacl::traits::start(vec2);
+           vcl_size_t inc2   = viennacl::traits::stride(vec2);
+           vcl_size_t size2  = viennacl::traits::size(vec2);
+
+           vec2[start2] = vec1[start1];
+           for(vcl_size_t i = 1; i < size1; i++)
+           {
+             vec2[i * inc2 + start2] = vec2[(i - 1) * inc2 + start2] + vec1[i * inc1 + start1];
+
+           }
+         }
+
+         template<typename NumericT>
+         void exclusive_scan(vector_base<NumericT>& vec1,
+                             vector_base<NumericT>& vec2)
+         {
+           vcl_size_t start1 = viennacl::traits::start(vec1);
+           vcl_size_t inc1   = viennacl::traits::stride(vec1);
+           vcl_size_t size1  = viennacl::traits::size(vec1);
+
+           vcl_size_t start2 = viennacl::traits::start(vec2);
+           vcl_size_t inc2   = viennacl::traits::stride(vec2);
+
+
+           vec2[start2] = 0;
+           for(vcl_size_t i = 1; i < size1; i++)
+           {
+             vec2[i * inc2 + start2] = vec2[(i - 1) * inc2 + start2] + vec1[(i - 1) * inc1 + start1];
+
+           }
          }
 
 

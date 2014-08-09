@@ -780,10 +780,10 @@ namespace viennacl
 
 
 
-      template <typename NumericT, typename F>
+      template <typename NumericT, typename F, typename VectorType>
       void bidiag_pack(matrix_base<NumericT, F> & A,
-                       std::vector<NumericT> & dh,
-                       std::vector<NumericT> & sh
+                       VectorType & dh,
+                       VectorType & sh
                       )
       {
         switch (viennacl::traits::handle(A).get_active_handle_id())
@@ -927,6 +927,67 @@ namespace viennacl
 #ifdef VIENNACL_WITH_CUDA
         case viennacl::CUDA_MEMORY:
           viennacl::linalg::cuda::givens_next(matrix, tmp1, tmp2, l, m);
+          break;
+#endif
+
+        case viennacl::MEMORY_NOT_INITIALIZED:
+          throw memory_exception("not initialised!");
+        default:
+          throw memory_exception("not implemented");
+      }
+    }
+
+    template<typename NumericT>
+    void inclusive_scan(
+                        vector_base<NumericT> & vec1,
+                        vector_base<NumericT> & vec2
+                  )
+    {
+      switch (viennacl::traits::handle(vec1).get_active_handle_id())
+      {
+        case viennacl::MAIN_MEMORY:
+          viennacl::linalg::host_based::inclusive_scan(vec1, vec2);
+          break;
+#ifdef VIENNACL_WITH_OPENCL
+        case viennacl::OPENCL_MEMORY:
+//          viennacl::linalg::opencl::inclusive_scan(vec1, vec2);
+          break;
+#endif
+
+#ifdef VIENNACL_WITH_CUDA
+        case viennacl::CUDA_MEMORY:
+          viennacl::linalg::cuda::inclusive_scan(vec1, vec2);
+          break;
+#endif
+
+        case viennacl::MEMORY_NOT_INITIALIZED:
+          throw memory_exception("not initialised!");
+        default:
+          throw memory_exception("not implemented");
+      }
+    }
+
+
+    template<typename NumericT>
+    void exclusive_scan(
+                        vector_base<NumericT> & vec1,
+                        vector_base<NumericT> & vec2
+                  )
+    {
+      switch (viennacl::traits::handle(vec1).get_active_handle_id())
+      {
+        case viennacl::MAIN_MEMORY:
+          viennacl::linalg::host_based::exclusive_scan(vec1, vec2);
+          break;
+#ifdef VIENNACL_WITH_OPENCL
+        case viennacl::OPENCL_MEMORY:
+//          viennacl::linalg::opencl::exclusive_scan(vec1, vec2);
+          break;
+#endif
+
+#ifdef VIENNACL_WITH_CUDA
+        case viennacl::CUDA_MEMORY:
+          viennacl::linalg::cuda::exclusive_scan(vec1, vec2);
           break;
 #endif
 
