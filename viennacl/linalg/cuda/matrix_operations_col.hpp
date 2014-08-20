@@ -2024,16 +2024,24 @@ namespace viennacl
  #define SECTION_SIZE 512
       template <typename T>
       __global__ void inclusive_scan_kernel_1(
-                                             T * X,
-                                             T * Y,
-                                             uint InputSize,
-                                             T * S)
+                                              T * X,
+                                              unsigned int startX,
+                                              unsigned int incX,
+                                              unsigned int InputSize,
+
+                                              T * Y,
+                                              unsigned int startY,
+                                              unsigned int incY,
+
+                                              T * S,
+                                              unsigned int startS,
+                                              unsigned int incS)
       {
 
-        __shared__ float XY[SECTION_SIZE];
+        __shared__ T XY[SECTION_SIZE];
         int i = blockIdx.x * blockDim.x + threadIdx.x;
         if(i < InputSize)
-          XY[threadIdx.x] = X[i];
+          XY[threadIdx.x] = X[i * incX + startX];
 
         for(unsigned int stride = 1; stride < blockDim.x; stride *= 2)
         {
@@ -2051,26 +2059,34 @@ namespace viennacl
             XY[index + stride] += XY[index];
         }
         __syncthreads();
-        Y[i] = XY[threadIdx.x];
+        Y[i * incY + startY] = XY[threadIdx.x];
         __syncthreads();
         if(threadIdx.x == 0)
         {
-          S[blockIdx.x] = XY[SECTION_SIZE - 1];
+          S[blockIdx.x * incS + startS] = XY[SECTION_SIZE - 1];
         }
       }
 
       template <typename T>
       __global__ void exclusive_scan_kernel_1(
                                              T * X,
+                                             unsigned int startX,
+                                             unsigned int incX,
+                                             unsigned int InputSize,
+
                                              T * Y,
-                                             uint InputSize,
-                                             T * S)
+                                             unsigned int startY,
+                                             unsigned int incY,
+
+                                             T * S,
+                                             unsigned int startS,
+                                             unsigned int incS)
       {
 
-        __shared__ float XY[SECTION_SIZE];
+        __shared__ T XY[SECTION_SIZE];
         int i = blockIdx.x * blockDim.x + threadIdx.x;
         if(i < InputSize + 1 && i != 0)
-          XY[threadIdx.x] = X[i - 1];
+          XY[threadIdx.x] = X[(i - 1) * incX + startX];
         if(i == 0)
           XY[0] = 0;
 
@@ -2091,28 +2107,34 @@ namespace viennacl
         }
         __syncthreads();
 
-        Y[i] = XY[threadIdx.x];
+        Y[i * incY + startY] = XY[threadIdx.x];
 
         __syncthreads();
         if(threadIdx.x == 0)
         {
-          S[blockIdx.x] = XY[SECTION_SIZE - 1];
+          S[blockIdx.x * incS + startS] = XY[SECTION_SIZE - 1];
 
         }
       }
 
       template <typename T>
-      __global__ void inclusive_scan_kernel_2(
-                                             T * S_ref,
-                                             T * S,
-                                             uint InputSize)
+      __global__ void scan_kernel_2(
+                                    T * S_ref,
+                                    unsigned int startS_ref,
+                                    unsigned int incS_ref,
+
+                                    T * S,
+                                    unsigned int startS,
+                                    unsigned int incS,
+                                    unsigned int InputSize)
 
       {
 
-        __shared__ float XY[SECTION_SIZE];
+        __shared__ T XY[SECTION_SIZE];
+
         int i = blockIdx.x * blockDim.x + threadIdx.x;
         if(i < InputSize)
-          XY[threadIdx.x] = S[i];
+          XY[threadIdx.x] = S[i * incS + startS];
 
         for(unsigned int stride = 1; stride < blockDim.x; stride *= 2)
          {
@@ -2130,31 +2152,46 @@ namespace viennacl
             XY[index + stride] += XY[index];
         }
         __syncthreads();
-        S[i] = XY[threadIdx.x];
-        S_ref[i] = XY[threadIdx.x];
-        __syncthreads();
-
-        for(int j = 1; j <= blockIdx.x; j++)
-          {
-            S[i] += S_ref[j * blockDim.x - 1];
-          }
-
-
+        S[i * incS + startS]             = XY[threadIdx.x];
+        S_ref[i * incS_ref + startS_ref] = XY[threadIdx.x];
         }
+
+      template <typename T>
+      __global__ void scan_kernel_3(
+                                    T * S_ref,
+                                    unsigned int startS_ref,
+                                    unsigned int incS_ref,
+
+                                    T * S,
+                                    unsigned int startS,
+                                    unsigned int incS)
+
+      {
+        int i = blockIdx.x * blockDim.x + threadIdx.x;
+        for(int j = 1; j <= blockIdx.x; j++)
+        {
+          S[i * incS + startS] += S_ref[(j * blockDim.x - 1) * incS_ref + startS_ref];
+        }
+      }
 
 
       template <typename T>
-      __global__ void inclusive_scan_kernel_3(
-                                             T * S,
-                                             T * Y,
-                                             uint OutputSize)
+      __global__ void scan_kernel_4(
+                                  T * S,
+                                  unsigned int startS,
+                                  unsigned int incS,
+
+                                  T * Y,
+                                  unsigned int startY,
+                                  unsigned int incY,
+                                  unsigned int OutputSize)
 
       {
         __syncthreads();
         unsigned int i = (blockIdx.x + 1) * blockDim.x + threadIdx.x;
 
         if(i < OutputSize)
-          Y[i] += S[blockIdx.x];
+          Y[i * incY + startY] += S[blockIdx.x * incS + startS];
 
       }
 
@@ -2164,27 +2201,49 @@ namespace viennacl
       void inclusive_scan(vector_base<NumericT>& vec1,
                           vector_base<NumericT>& vec2)
         {
-          viennacl::vector<NumericT> S(std::ceil(vec1.size() / (float)SECTION_SIZE)), S_ref(std::ceil(vec1.size() / (float)SECTION_SIZE));
+          viennacl::vector<NumericT> S( std::ceil(vec1.size() / static_cast<float>(SECTION_SIZE)) ), S_ref( std::ceil(vec1.size() / static_cast<float>(SECTION_SIZE)) );
           inclusive_scan_kernel_1<<<S.size(), SECTION_SIZE>>>(
-                                              detail::cuda_arg<NumericT>(vec1),
-                                              detail::cuda_arg<NumericT>(vec2),
-                                              static_cast<unsigned int>(viennacl::traits::size(vec1)),
-                                              detail::cuda_arg<NumericT>(S)
-                                              );
+                                            detail::cuda_arg<NumericT>(vec1),
+                                            static_cast<unsigned int>(viennacl::traits::start(vec1)),
+                                            static_cast<unsigned int>(viennacl::traits::stride(vec1)),
+                                            static_cast<unsigned int>(viennacl::traits::size(vec1)),
 
-          //copy(S, S_ref);
-          inclusive_scan_kernel_2<<<std::ceil(S.size()/(float)SECTION_SIZE), SECTION_SIZE>>>(
-                                              detail::cuda_arg<NumericT>(S_ref),
-                                              detail::cuda_arg<NumericT>(S),
-                                              static_cast<unsigned int>(viennacl::traits::size(S)));
+                                            detail::cuda_arg<NumericT>(vec2),
+                                            static_cast<unsigned int>(viennacl::traits::start(vec2)),
+                                            static_cast<unsigned int>(viennacl::traits::stride(vec2)),
 
+                                            detail::cuda_arg<NumericT>(S),
+                                            static_cast<unsigned int>(viennacl::traits::start(S)),
+                                            static_cast<unsigned int>(viennacl::traits::stride(S)));
 
+          scan_kernel_2<<<std::ceil(S.size()/static_cast<float>(SECTION_SIZE)), SECTION_SIZE>>>(
+                                             detail::cuda_arg<NumericT>(S_ref),
+                                             static_cast<unsigned int>(viennacl::traits::start(S_ref)),
+                                             static_cast<unsigned int>(viennacl::traits::stride(S_ref)),
 
+                                             detail::cuda_arg<NumericT>(S),
+                                             static_cast<unsigned int>(viennacl::traits::start(S)),
+                                             static_cast<unsigned int>(viennacl::traits::stride(S)),
+                                             static_cast<unsigned int>(viennacl::traits::size(S)));
 
-          inclusive_scan_kernel_3<<<S.size(), SECTION_SIZE>>>(
-                                              detail::cuda_arg<NumericT>(S),
-                                              detail::cuda_arg<NumericT>(vec2),
-                                              static_cast<unsigned int>(viennacl::traits::size(vec2)));
+          scan_kernel_3<<<std::ceil(S.size()/static_cast<float>(SECTION_SIZE)), SECTION_SIZE>>>(
+                                             detail::cuda_arg<NumericT>(S_ref),
+                                             static_cast<unsigned int>(viennacl::traits::start(S_ref)),
+                                             static_cast<unsigned int>(viennacl::traits::stride(S_ref)),
+
+                                             detail::cuda_arg<NumericT>(S),
+                                             static_cast<unsigned int>(viennacl::traits::start(S)),
+                                             static_cast<unsigned int>(viennacl::traits::stride(S)));
+
+          scan_kernel_4<<<S.size(), SECTION_SIZE>>>(
+                                            detail::cuda_arg<NumericT>(S),
+                                            static_cast<unsigned int>(viennacl::traits::start(S)),
+                                            static_cast<unsigned int>(viennacl::traits::stride(S)),
+
+                                            detail::cuda_arg<NumericT>(vec2),
+                                            static_cast<unsigned int>(viennacl::traits::start(vec2)),
+                                            static_cast<unsigned int>(viennacl::traits::stride(vec2)),
+                                            static_cast<unsigned int>(viennacl::traits::size(vec2)));
       }
 
 
@@ -2194,23 +2253,49 @@ namespace viennacl
         {
           viennacl::vector<NumericT> S(std::ceil(vec1.size() / (float)SECTION_SIZE)), S_ref(std::ceil(vec1.size() / (float)SECTION_SIZE));
           exclusive_scan_kernel_1<<<S.size(), SECTION_SIZE>>>(
-                                              detail::cuda_arg<NumericT>(vec1),
-                                              detail::cuda_arg<NumericT>(vec2),
-                                              static_cast<unsigned int>(viennacl::traits::size(vec1)),
-                                              detail::cuda_arg<NumericT>(S)
-                                              );
+                                            detail::cuda_arg<NumericT>(vec1),
+                                            static_cast<unsigned int>(viennacl::traits::start(vec1)),
+                                            static_cast<unsigned int>(viennacl::traits::stride(vec1)),
+                                            static_cast<unsigned int>(viennacl::traits::size(vec1)),
 
-          inclusive_scan_kernel_2<<<std::ceil(S.size()/(float)SECTION_SIZE), SECTION_SIZE>>>(
-                                              detail::cuda_arg<NumericT>(S_ref),
-                                              detail::cuda_arg<NumericT>(S),
-                                              static_cast<unsigned int>(viennacl::traits::size(S)));
+                                            detail::cuda_arg<NumericT>(vec2),
+                                            static_cast<unsigned int>(viennacl::traits::start(vec2)),
+                                            static_cast<unsigned int>(viennacl::traits::stride(vec2)),
 
+                                            detail::cuda_arg<NumericT>(S),
+                                            static_cast<unsigned int>(viennacl::traits::start(S)),
+                                            static_cast<unsigned int>(viennacl::traits::stride(S)));
 
-          inclusive_scan_kernel_3<<<S.size(), SECTION_SIZE>>>(
-                                              detail::cuda_arg<NumericT>(S),
-                                              detail::cuda_arg<NumericT>(vec2),
-                                              static_cast<unsigned int>(viennacl::traits::size(vec2)));
+          scan_kernel_2<<<std::ceil(S.size()/static_cast<float>(SECTION_SIZE)), SECTION_SIZE>>>(
+                                             detail::cuda_arg<NumericT>(S_ref),
+                                             static_cast<unsigned int>(viennacl::traits::start(S_ref)),
+                                             static_cast<unsigned int>(viennacl::traits::stride(S_ref)),
+
+                                             detail::cuda_arg<NumericT>(S),
+                                             static_cast<unsigned int>(viennacl::traits::start(S)),
+                                             static_cast<unsigned int>(viennacl::traits::stride(S)),
+                                             static_cast<unsigned int>(viennacl::traits::size(S)));
+
+          scan_kernel_3<<<std::ceil(S.size()/static_cast<float>(SECTION_SIZE)), SECTION_SIZE>>>(
+                                             detail::cuda_arg<NumericT>(S_ref),
+                                             static_cast<unsigned int>(viennacl::traits::start(S_ref)),
+                                             static_cast<unsigned int>(viennacl::traits::stride(S_ref)),
+
+                                             detail::cuda_arg<NumericT>(S),
+                                             static_cast<unsigned int>(viennacl::traits::start(S)),
+                                             static_cast<unsigned int>(viennacl::traits::stride(S)));
+
+          scan_kernel_4<<<S.size(), SECTION_SIZE>>>(
+                                            detail::cuda_arg<NumericT>(S),
+                                            static_cast<unsigned int>(viennacl::traits::start(S)),
+                                            static_cast<unsigned int>(viennacl::traits::stride(S)),
+
+                                            detail::cuda_arg<NumericT>(vec2),
+                                            static_cast<unsigned int>(viennacl::traits::start(vec2)),
+                                            static_cast<unsigned int>(viennacl::traits::stride(vec2)),
+                                            static_cast<unsigned int>(viennacl::traits::size(vec2)));
       }
+
     } // namespace cuda
   } //namespace linalg
 } //namespace viennacl

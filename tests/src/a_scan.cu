@@ -41,7 +41,7 @@
 
 typedef float     ScalarType;
 
-#define EPS 0.001
+#define EPS 0.0001
 
 
 void vector_print(viennacl::vector<ScalarType>& v )
@@ -52,41 +52,26 @@ void vector_print(viennacl::vector<ScalarType>& v )
 }
 
 
-void init_vector(viennacl::vector<ScalarType>& v)
+void init_vector(viennacl::vector<ScalarType>& vcl_v)
 {
-    std::vector<ScalarType> v_std(v.size());
+    std::vector<ScalarType> v(vcl_v.size());
     for (unsigned int i = 0; i < v.size(); ++i)
-      v_std[i] =  i;
-    copy(v_std, v);
-     /* v[0]  = 2;
-      v[1]  = 1;
-      v[2]  = 3;
-      v[3]  = 1;
-      v[4]  = 0;
-      v[5]  = 4;
-      v[6]  = 1;
-      v[7]  = 2;
-      v[8]  = 0;
-      v[9]  = 3;
-      v[10] = 1;
-      v[11] = 2;
-      v[12] = 5;
-      v[13] = 3;
-      v[14] = 1;
-      v[15] = 2;
-*/
+      v[i] =  i;
+    viennacl::copy(v, vcl_v);
 }
 
-void test_inclusive_scan_values(viennacl::vector<ScalarType> & vec)
+void test_inclusive_scan_values(viennacl::vector<ScalarType> & vcl_vec)
 {
-  for(uint i = 1; i < vec.size(); i++)
+  std::vector<ScalarType> vec(vcl_vec.size());
+  viennacl::copy(vcl_vec, vec);
+  for(int i = 1; i < vec.size(); i++)
   {
     ScalarType abs_error = std::fabs((float)i* ((float)i + 1.) / 2. - vec[i]);
     if (abs_error > EPS * vec[i])
     {
       std::cout << "Fail at vector index " << i << " Absolute error:  " << abs_error;
       std::cout << "\t Relative error:  " << std::setprecision(7) << abs_error / vec[i] * 100 << "%"<< std::endl;
-      std::cout << "vec[i] = " << vec[i] << std::endl;
+      std::cout << "vec[" << i << "] = " << vec[i] << std::endl;
       exit(EXIT_FAILURE);
     }
   }
@@ -94,8 +79,10 @@ void test_inclusive_scan_values(viennacl::vector<ScalarType> & vec)
 }
 
 
-void test_exclusive_scan_values(viennacl::vector<ScalarType> & vec)
+void test_exclusive_scan_values(viennacl::vector<ScalarType> & vcl_vec)
 {
+  std::vector<ScalarType> vec(vcl_vec.size());
+  viennacl::copy(vcl_vec, vec);
   for(int i = 1; i < vec.size() - 1; i++)
   {
     ScalarType abs_error = std::fabs((float)i* ((float)i + 1.) / 2. - vec[i + 1]);
@@ -103,7 +90,7 @@ void test_exclusive_scan_values(viennacl::vector<ScalarType> & vec)
      {
       std::cout << "Fail at vector index " << i << " Absolute error:  " << abs_error;
       std::cout << "\t Relative error:  " << std::setprecision(7) << abs_error / vec[i] * 100 << "%"<< std::endl;
-      std::cout << "vec[i] = " << vec[i] << std::endl;
+      std::cout << "vec[" << i << "] = " << vec[i] << std::endl;
       exit(EXIT_FAILURE);
     }
   }
@@ -114,7 +101,7 @@ void test_exclusive_scan_values(viennacl::vector<ScalarType> & vec)
 
 void test_scans()
 {
-  unsigned int sz = 32000000;
+  unsigned int sz = 1048576 * 16;
   viennacl::vector<ScalarType> vec1(sz), vec2(sz);
 
 
@@ -126,9 +113,8 @@ void test_scans()
   std::cout << "Inclusive scan started!" << std::endl;
   viennacl::linalg::inclusive_scan(vec1, vec2);
   std::cout << "Inclusive scan finished!" << std::endl;
- // vector_print(vec2);
+  //vector_print(vec2);
   std::cout << "Testing inclusive scan results..." << std::endl;
-  std::cout << "last element: " << std::setprecision(8) << vec2[sz - 1] << std::endl;
   test_inclusive_scan_values(vec2);
   std::cout << "Inclusive scan tested successfully!" << std::endl << std::endl;
 
@@ -139,9 +125,9 @@ void test_scans()
 
   // EXCLUSIVE SCAN
   std::cout << "Exlusive scan started!" << std::endl;
-  viennacl::linalg::cuda::exclusive_scan(vec1, vec2);
+  viennacl::linalg::exclusive_scan(vec1, vec2);
   std::cout << "Exclusive scan finished!" << std::endl;
-//  vector_print(vec2);
+  //vector_print(vec2);
   std::cout << "Testing exclusive scan results..."  << std::endl;
   test_exclusive_scan_values(vec2);
   std::cout << "Exclusive scan tested successfully!" << std::endl << std::endl;

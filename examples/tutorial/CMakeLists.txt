@@ -4,7 +4,7 @@
 #
 # Part 1: Tutorials which work without OpenCL as well:
 #
-foreach(tut bandwidth-reduction blas1 scheduler wrap-host-buffer qr_method tql2)
+foreach(tut bandwidth-reduction blas1 scheduler wrap-host-buffer qr_method)
    add_executable(${tut} ${tut}.cpp)
    if (ENABLE_OPENCL)
      target_link_libraries(${tut} ${OPENCL_LIBRARIES})
@@ -14,7 +14,7 @@ endforeach()
 
 if(ENABLE_UBLAS)
    include_directories(${Boost_INCLUDE_DIRS})
-   foreach(tut blas2 blas3 iterative-ublas lanczos least-squares matrix-range power-iter qr sparse vector-range)
+   foreach(tut blas2 blas3 iterative-ublas lanczos least-squares matrix-range power-iter qr sparse vector-range tql2)
       add_executable(${tut} ${tut}.cpp)
       target_link_libraries(${tut} ${Boost_LIBRARIES})
       if (ENABLE_OPENCL)

@@ -52,14 +52,18 @@ void vector_print(viennacl::vector<ScalarType>& v )
 }
 
 
-void init_vector(viennacl::vector<ScalarType>& v)
+void init_vector(viennacl::vector<ScalarType>& vcl_v)
 {
+    std::vector<ScalarType> v(vcl_v.size());
     for (unsigned int i = 0; i < v.size(); ++i)
       v[i] =  i;
+    viennacl::copy(v, vcl_v);
 }
 
-void test_inclusive_scan_values(viennacl::vector<ScalarType> & vec)
+void test_inclusive_scan_values(viennacl::vector<ScalarType> & vcl_vec)
 {
+  std::vector<ScalarType> vec(vcl_vec.size());
+  viennacl::copy(vcl_vec, vec);
   for(int i = 1; i < vec.size(); i++)
   {
     ScalarType abs_error = std::fabs((float)i* ((float)i + 1.) / 2. - vec[i]);
@@ -75,8 +79,10 @@ void test_inclusive_scan_values(viennacl::vector<ScalarType> & vec)
 }
 
 
-void test_exclusive_scan_values(viennacl::vector<ScalarType> & vec)
+void test_exclusive_scan_values(viennacl::vector<ScalarType> & vcl_vec)
 {
+  std::vector<ScalarType> vec(vcl_vec.size());
+  viennacl::copy(vcl_vec, vec);
   for(int i = 1; i < vec.size() - 1; i++)
   {
     ScalarType abs_error = std::fabs((float)i* ((float)i + 1.) / 2. - vec[i + 1]);
@@ -95,7 +101,7 @@ void test_exclusive_scan_values(viennacl::vector<ScalarType> & vec)
 
 void test_scans()
 {
-  unsigned int sz = 100000;//1048576;
+  unsigned int sz = 1048576 * 16;
   viennacl::vector<ScalarType> vec1(sz), vec2(sz);
 
 

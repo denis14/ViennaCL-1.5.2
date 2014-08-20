@@ -1263,7 +1263,7 @@ namespace viennacl
         /** @brief This function applies a householder transformation to a matrix. A <- P * A with a householder reflection P
         *
         * @param A       The matrix to be updated.
-        * @param D       The householder vector. It has to be normalied.
+        * @param D       The normalized householder vector.
         * @param start   The repetition counter.
         */
        template <typename NumericT, typename F>
@@ -1330,7 +1330,7 @@ namespace viennacl
        *
        *
        * @param A        The matrix to be updated.
-       * @param D        The householder vector. It has to be normalized.
+       * @param D        The normalized householder vector.
        */
        template <typename NumericT, typename F>
        void house_update_A_right(matrix_base<NumericT, F>& A,
@@ -1545,39 +1545,39 @@ namespace viennacl
 
            if(copy_col)
            {
-               if (detail::is_row_major(typename F::orientation_category()))
-               {
+             if (detail::is_row_major(typename F::orientation_category()))
+             {
 #ifdef VIENNACL_WITH_OPENMP
-               #pragma omp parallel for
+             #pragma omp parallel for
 #endif
-                   for(vcl_size_t i = row_start; i < A_size1; i++)
-                   {
-                      data_V[i - row_start] = data_A[viennacl::row_major::mem_index(i * A_inc1 + A_start1, col_start * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
-                   }
-               }
-               else
+               for(vcl_size_t i = row_start; i < A_size1; i++)
                {
-#ifdef VIENNACL_WITH_OPENMP
-               #pragma omp parallel for
-#endif
-                   for(vcl_size_t i = row_start; i < A_size1; i++)
-                   {
-                      data_V[i - row_start] = data_A[viennacl::column_major::mem_index(i * A_inc1 + A_start1, col_start * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
-                   }
+                 data_V[i - row_start] = data_A[viennacl::row_major::mem_index(i * A_inc1 + A_start1, col_start * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
                }
-           }
-           else
-           {
-               if (detail::is_row_major(typename F::orientation_category()))
-               {
+              }
+              else
+              {
 #ifdef VIENNACL_WITH_OPENMP
-               #pragma omp parallel for
+              #pragma omp parallel for
 #endif
-                   for(vcl_size_t i = col_start; i < A_size1; i++)
-                   {
-                      data_V[i - col_start] = data_A[viennacl::row_major::mem_index(row_start * A_inc1 + A_start1, i * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
-                   }
-               }
+                for(vcl_size_t i = row_start; i < A_size1; i++)
+                {
+                  data_V[i - row_start] = data_A[viennacl::column_major::mem_index(i * A_inc1 + A_start1, col_start * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
+                }
+             }
+            }
+            else
+            {
+              if (detail::is_row_major(typename F::orientation_category()))
+              {
+#ifdef VIENNACL_WITH_OPENMP
+              #pragma omp parallel for
+#endif
+                 for(vcl_size_t i = col_start; i < A_size1; i++)
+                 {
+                    data_V[i - col_start] = data_A[viennacl::row_major::mem_index(row_start * A_inc1 + A_start1, i * A_inc2 + A_start2, A_internal_size1, A_internal_size2)];
+                 }
+             }
                else
                {
 #ifdef VIENNACL_WITH_OPENMP
@@ -1591,6 +1591,12 @@ namespace viennacl
             }
          }
 
+         /** @brief This function implements an inclusive scan.
+         *
+         *
+         * @param vec1       Input vector: Gets overwritten by the routine.
+         * @param vec2       The output vector.
+         */
          template<typename NumericT>
          void inclusive_scan(vector_base<NumericT>& vec1,
                              vector_base<NumericT>& vec2)
@@ -1601,7 +1607,6 @@ namespace viennacl
 
            vcl_size_t start2 = viennacl::traits::start(vec2);
            vcl_size_t inc2   = viennacl::traits::stride(vec2);
-           vcl_size_t size2  = viennacl::traits::size(vec2);
 
            vec2[start2] = vec1[start1];
            for(vcl_size_t i = 1; i < size1; i++)
@@ -1611,6 +1616,12 @@ namespace viennacl
            }
          }
 
+         /** @brief This function implements an exclusive scan.
+         *
+         *
+         * @param vec1       Input vector: Gets overwritten by the routine.
+         * @param vec2       The output vector.
+         */
          template<typename NumericT>
          void exclusive_scan(vector_base<NumericT>& vec1,
                              vector_base<NumericT>& vec2)

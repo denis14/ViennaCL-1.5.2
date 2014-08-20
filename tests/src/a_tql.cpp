@@ -33,22 +33,8 @@
 //include basic scalar and vector types of ViennaCL
 #include "viennacl/scalar.hpp"
 #include "viennacl/vector.hpp"
-#include "viennacl/compressed_matrix.hpp"
-
-
-//#include "viennacl/linalg/lanczos.hpp"
-#include "viennacl/io/matrix_market.hpp"
-
-#include <iostream>
-#include <fstream>
-#include <limits>
-#include <string>
-#include <iomanip>
 
 #include "viennacl/linalg/qr-method.hpp"
-#include "viennacl/linalg/qr-method-common.hpp"
-#include "viennacl/linalg/host_based/matrix_operations.hpp"
-#include "Random.hpp"
 
 #define EPS 10.0e-5
 
@@ -60,7 +46,7 @@ typedef float     ScalarType;
 
 // Test the eigenvectors
 // Perform the multiplication (T - lambda * I) * Q, with the original tridiagonal matrx T, the
-// eigenvalues lambda and the eigenvectors in Q. The result has to be 0.
+// eigenvalues lambda and the eigenvectors in Q. Result has to be 0.
 
 template <typename MatrixLayout>
 bool test_eigen_val_vec(viennacl::matrix<ScalarType, MatrixLayout> & Q,
