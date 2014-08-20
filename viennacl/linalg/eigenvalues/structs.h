@@ -32,7 +32,7 @@ class InputData
   ////////////////////////////////////////////////////////////////////////////////
 
   InputData(char *exec_path, const unsigned int sz, const unsigned int user_defined) :
-              std_a(sz),  vcl_a(sz), std_b(sz), vcl_b(sz), vcl_b_raw(sz - 1),  std_b_raw(sz - 1), vcl_eigenvalues(sz)
+              std_a(sz),  vcl_a(sz), std_b(sz), vcl_b(sz), vcl_b_raw(sz),  std_b_raw(sz), vcl_eigenvalues(sz)
     {
         // allocate memory
       const unsigned int mat_size = sz;
@@ -59,13 +59,13 @@ class InputData
            for(unsigned int i = 0; i < mat_size; ++i)
            {
              std_a[i] = i % 11 + 4;
-             std_b[i] = i % 9 + 2;
+             std_b_raw[i] = i % 9 + 2;
 
              if(std_a[i] == 0)
                std_a[i] = 3;
 
              if(std_b[i] == 0)
-               std_b[i] = 4;
+               std_b_raw[i] = 4;
            }
           
           // the first element of s is used as padding on the device (thus the
@@ -98,9 +98,10 @@ class InputData
 
       // copy data to device
       copy(std_a, vcl_a);
-      copy(std_b, vcl_b);
-      copy(std_b.begin() + 1,  std_b.end(),  vcl_b_raw.begin());
-      copy(std_b.begin() + 1,  std_b.end(),  std_b_raw.begin());
+    //  copy(std_b.raw() + 0,  std_b_raw.end(),  vcl_b_raw.begin());
+      
+      copy(std_b_raw.begin() + 1,  std_b_raw.end(),  std_b.begin());
+      copy(std_b_raw.begin() + 1,  std_b_raw.end(),  vcl_b.begin());
       
       copy(std_a.begin(), std_a.end(), a);
       copy(std_b.begin(), std_b.end(), b);
