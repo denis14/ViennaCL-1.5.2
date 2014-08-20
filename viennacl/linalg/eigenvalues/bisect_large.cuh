@@ -27,7 +27,7 @@ extern "C" {
     //! @param  iterations  number of iterations (for timing)
     ////////////////////////////////////////////////////////////////////////////////
     void
-    computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &result,
+    computeEigenvaluesLargeMatrix(const InputData &input, ResultDataLarge &result,
                                   const unsigned int mat_size, const float precision,
                                   const float lg, const float ug,
                                   const unsigned int iterations);

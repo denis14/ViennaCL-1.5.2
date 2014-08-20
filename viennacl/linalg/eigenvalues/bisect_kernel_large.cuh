@@ -249,12 +249,12 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
         // memory
         // use s_left and s_right as scratch space for diagonal and
         // superdiagonal of matrix
-        mid_count = computeNumSmallerEigenvalsLarge(g_d, g_s, n,
+    /*    mid_count = computeNumSmallerEigenvalsLarge(g_d, g_s, n,
                                                     mid, threadIdx.x,
                                                     num_threads_active,
                                                     s_left, s_right,
                                                     (left == right));
-
+*/
         __syncthreads();
 
         // store intervals
