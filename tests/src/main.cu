@@ -69,7 +69,7 @@ runTest(int argc, char **argv)
 {
     bool bCompareResult = false;
     // default
-    unsigned int mat_size = 500;
+    unsigned int mat_size = 100;
     // flag if the matrix size is due to explicit user request
     unsigned int user_defined = 0;
     // desired precision of eigenvalues
@@ -83,7 +83,8 @@ runTest(int argc, char **argv)
     // compute Gerschgorin interval
     float lg = FLT_MAX;
     float ug = -FLT_MAX;
-    computeGerschgorin(input.std_a, input.std_b_raw, mat_size, lg, ug);
+    computeGerschgorin(input.a, input.b + 1, mat_size, lg, ug);
+    //computeGerschgorin(input.std_a, input.std_b_raw, mat_size, lg, ug);
     printf("Gerschgorin interval: %f / %f\n", lg, ug);
 
 

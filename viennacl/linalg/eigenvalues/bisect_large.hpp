@@ -303,7 +303,7 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
     for (unsigned int i = 0; i < sum_blocks_mult; ++i)
     {
 
-      result.std_eigenvalues[pos_mult[i] - 1] = lambda_mult[i];
+      //result.std_eigenvalues[pos_mult[i] - 1] = lambda_mult[i];
     }
 
     // singleton intervals generated in the first step
@@ -312,16 +312,16 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
     for (unsigned int i = 0; i < num_one_intervals; ++i, ++index)
     {
 
-      result.std_eigenvalues[pos_one[i] - 1] = left_one[i];
+     // result.std_eigenvalues[pos_one[i] - 1] = left_one[i];
     }
 
     for( unsigned int i = 0; i < (mat_size < 15 ? mat_size : 15); ++i)
-      std::cout << "Eigenvalue " << i << "= " << result.std_eigenvalues[i] << std::endl;
+     ;// std::cout << "Eigenvalue " << i << "= " << result.std_eigenvalues[i] << std::endl;
 
     if (0 == user_defined)
     {
         // store result
-        writeTridiagSymMatlab(filename, input.vcl_a, input.vcl_b, result.std_eigenvalues, mat_size);
+    //    writeTridiagSymMatlab(filename, input.vcl_a, input.vcl_b, result.std_eigenvalues, mat_size);
         // getLastCudaError( sdkWriteFilef( filename, eigenvals, mat_size, 0.0f));
 
         printf("skipping self-check!\n");

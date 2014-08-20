@@ -29,7 +29,8 @@
 //! @param  ug  upper limit of Gerschgorin interval
 ////////////////////////////////////////////////////////////////////////////////
 void
-computeGerschgorin(std::vector<float> & d, std::vector<float> & s, unsigned int n, float &lg, float &ug)
+//computeGerschgorin(std::vector<float> & d, std::vector<float> & s, unsigned int n, float &lg, float &ug)
+computeGerschgorin(float *d, float *s, unsigned int n, float &lg, float &ug)
 {
 /*
     lg = FLT_MAX;
