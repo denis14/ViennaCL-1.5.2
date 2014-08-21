@@ -206,7 +206,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     s_right_count[tid] = 0;
 
     __syncthreads();
-#if 0
+#if 1
     // set up initial configuration
     if (0 == tid)
     {
