@@ -206,7 +206,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     s_right_count[tid] = 0;
 
     __syncthreads();
-
+#if 0
     // set up initial configuration
     if (0 == tid)
     {
@@ -228,7 +228,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     // for all active threads read intervals from the last level
     // the number of (worst case) active threads per level l is 2^l
-    while (true == 0)
+    while (true)
     {
 
         subdivideActiveInterval(tid, s_left, s_right, s_left_count, s_right_count,
@@ -509,6 +509,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
                 s_left, s_right, s_left_count, s_right_count,
                 g_blocks_mult, g_blocks_mult_sum,
                 s_compaction_list, s_cl_helper, offset_mult_lambda);
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////
