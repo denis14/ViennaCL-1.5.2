@@ -313,7 +313,12 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
     for (unsigned int i = 0; i < num_one_intervals; ++i, ++index)
     {
 
-      result.std_eigenvalues[pos_one[i] - 1] = left_one[i];
+        if(pos_one[i] - 1 > mat_size)
+          {
+            std::cout << "pos_one = " << pos_one[i] - 1 << std::endl;
+            break;
+          }
+        result.std_eigenvalues[pos_one[i] - 1] = left_one[i];
     }
 
     for( unsigned int i = 0; i < (mat_size < 15 ? mat_size : 15); ++i)
