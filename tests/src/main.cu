@@ -30,10 +30,10 @@
 #include "viennacl/matrix.hpp"
 #include "viennacl/compressed_matrix.hpp"
 
-#include "viennacl/linalg/eigenvalues/config.h"
-#include "viennacl/linalg/eigenvalues/structs.h"
-#include "viennacl/linalg/eigenvalues/matlab.h"
-#include "viennacl/linalg/eigenvalues/util.h"
+#include "viennacl/linalg/eigenvalues/config.hpp"
+#include "viennacl/linalg/eigenvalues/structs.hpp"
+#include "viennacl/linalg/eigenvalues/matlab.hpp"
+#include "viennacl/linalg/eigenvalues/util.hpp"
 #include "viennacl/linalg/eigenvalues/gerschgorin.hpp"
 #include "viennacl/linalg/eigenvalues/bisect_large.hpp"
 
@@ -69,7 +69,7 @@ runTest(int argc, char **argv)
 {
     bool bCompareResult = false;
     // default
-    unsigned int mat_size = 100;
+    unsigned int mat_size = 10;
     // flag if the matrix size is due to explicit user request
     unsigned int user_defined = 0;
     // desired precision of eigenvalues

@@ -17,7 +17,7 @@
 
 #include "viennacl/vector.hpp"
 #include "viennacl/matrix.hpp"
-#include "viennacl/linalg/eigenvalues/util.h"
+#include "viennacl/linalg/eigenvalues/util.hpp"
 
 class InputData
 {
@@ -43,18 +43,18 @@ class InputData
 
       if (0 == user_defined)
       {
+          
+           std_a[0] = 1;  std_b_raw[0] = 0;
+           std_a[1] = 2;  std_b_raw[1] = 4;
+           std_a[2] =-4;  std_b_raw[2] = 5;
+           std_a[3] = 6;  std_b_raw[3] = 1;
+           std_a[4] = 3;  std_b_raw[4] = 2;
+           std_a[5] = 4;  std_b_raw[5] =-3;
+           std_a[6] = 7;  std_b_raw[6] = 5;
+           std_a[7] = 9;  std_b_raw[7] = 1;
+           std_a[8] = 3;  std_b_raw[8] = 5;
+           std_a[9] = 8;  std_b_raw[9] = 2;
           /*
-           std_a[0] = 1;  std_b[0] = 0;
-           std_a[1] = 2;  std_b[1] = 4;
-           std_a[2] =-4;  std_b[2] = 5;
-           std_a[3] = 6;  std_b[3] = 1;
-           std_a[4] = 3;  std_b[4] = 2;
-           std_a[5] = 4;  std_b[5] =-3;
-           std_a[6] = 7;  std_b[6] = 5;
-           std_a[7] = 9;  std_b[7] = 1;
-           std_a[8] = 3;  std_b[8] = 5;
-           std_a[9] = 8;  std_b[9] = 2;
-          */
            
            for(unsigned int i = 0; i < mat_size; ++i)
            {
@@ -64,12 +64,12 @@ class InputData
              b[i] = i % 9 + 2;
 
            }
-          
+          */
           // the first element of s is used as padding on the device (thus the
           // whole vector is copied to the device but the kernels are launched
           // with (s+1) as start address
-           std_b[0] = 0.0f;
-           b[0] = 0.0f;
+           std_b_raw[0] = 0.0f;
+           //b[0] = 0.0f;
       }
       else
       {
@@ -94,14 +94,14 @@ class InputData
       checkCudaErrors(cudaMalloc((void **) &( g_b_raw), sizeof(float) * mat_size));
 
       // copy data to device
-    //  copy(std_a, vcl_a);
-    //  copy(std_b.raw() + 0,  std_b_raw.end(),  vcl_b_raw.begin());
+      copy(std_a, vcl_a);
+      copy(std_b_raw, vcl_b_raw);
       
-     // copy(std_b_raw.begin() + 1,  std_b_raw.end(),  std_b.begin());
-     // copy(std_b_raw.begin() + 1,  std_b_raw.end(),  vcl_b.begin());
+      copy(std_b_raw.begin() + 0,  std_b_raw.end(),  std_b.begin());
+      copy(std_b_raw.begin() + 1,  std_b_raw.end(),  vcl_b.begin());
       
-      //copy(std_a.begin(), std_a.end(), a);
-      //copy(std_b.begin(), std_b.end(), b);
+      copy(std_a.begin(), std_a.end(), a);
+      copy(std_b.begin(), std_b.end(), b);
       
       checkCudaErrors(cudaMemcpy(g_a    , a, sizeof(float) * mat_size, cudaMemcpyHostToDevice));
       checkCudaErrors(cudaMemcpy(g_b_raw, b, sizeof(float) * mat_size, cudaMemcpyHostToDevice));
@@ -142,7 +142,6 @@ class InputData
     viennacl::vector<float> vcl_b_raw;
     std::vector<float> std_b_raw;
     
-    //viennacl::vector<float> vcl_eigenvalues;
     //! host side representation superdiagonal
     float  *b;
 

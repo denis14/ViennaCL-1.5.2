@@ -16,7 +16,7 @@
 #include <cmath>
 #include <cfloat>
 
-#include "util.h"
+#include "util.hpp"
 
 #include "viennacl/vector.hpp"
 

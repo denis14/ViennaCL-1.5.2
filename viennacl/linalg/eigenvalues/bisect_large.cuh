@@ -16,22 +16,7 @@
 
 extern "C" {
 
-    ////////////////////////////////////////////////////////////////////////////////
-    //! Run the kernels to compute the eigenvalues for large matrices
-    //! @param  input   handles to input data
-    //! @param  result  handles to result data
-    //! @param  mat_size  matrix size
-    //! @param  precision  desired precision of eigenvalues
-    //! @param  lg  lower limit of Gerschgorin interval
-    //! @param  ug  upper limit of Gerschgorin interval
-    //! @param  iterations  number of iterations (for timing)
-    ////////////////////////////////////////////////////////////////////////////////
-    void
-    computeEigenvaluesLargeMatrix(const InputData &input, ResultDataLarge &result,
-                                  const unsigned int mat_size, const float precision,
-                                  const float lg, const float ug,
-                                  const unsigned int iterations);
-
+   
     ////////////////////////////////////////////////////////////////////////////////
     //! Initialize variables and memory for result
     //! @param  result handles to memory
