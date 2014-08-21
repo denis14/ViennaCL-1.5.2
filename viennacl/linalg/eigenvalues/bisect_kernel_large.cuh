@@ -228,7 +228,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     // for all active threads read intervals from the last level
     // the number of (worst case) active threads per level l is 2^l
-    while (true)
+    while (true == 0)
     {
 
         subdivideActiveInterval(tid, s_left, s_right, s_left_count, s_right_count,
