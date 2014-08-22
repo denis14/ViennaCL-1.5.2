@@ -181,13 +181,13 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
 
     std::cout << " Start computation of the eigenvalues! " << std::endl;
 
-<<<<<<< HEAD
+
     for( unsigned int i = 0; i < 10; ++i)
       std::cout << "a " << i << "= " << input.a[i] << std::endl;
-=======
+
     for( unsigned int i = 0; i < 5; ++i)
       std::cout << "b " << i << "= " << input.b[i] << std::endl;
->>>>>>> 03479c0f0731c72607bdd266749cdefdb70931d3
+
 
     // do for multiple iterations to improve timing accuracy
     for (unsigned int iter = 0; iter < iterations; ++iter)
@@ -263,11 +263,6 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
          result.g_lambda_mult, result.g_pos_mult,
          precision
         );
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 03479c0f0731c72607bdd266749cdefdb70931d3
         viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
         checkCudaErrors(cudaDeviceSynchronize());
 
