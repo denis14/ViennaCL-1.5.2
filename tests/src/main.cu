@@ -97,12 +97,12 @@ runTest(int argc, char **argv)
     computeEigenvaluesLargeMatrix(input, result, mat_size,
                                   precision, lg, ug,
                                   iters_timing);
-
+*/
     // get the result from the device and do some sanity checks
     // save the result if user specified matrix size
     bCompareResult = processResultDataLargeMatrix(input, result, mat_size, result_file,
                                                   user_defined, argv[0]);
-*/
+
     // cleanup
     std::cout << "CleanupResultDataLargeMatrix!" << std::endl;
     cleanupResultDataLargeMatrix(result);
