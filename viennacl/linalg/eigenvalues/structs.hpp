@@ -94,7 +94,7 @@ class InputData
       checkCudaErrors(cudaMalloc((void **) &( g_b_raw), sizeof(float) * mat_size));
 
       // copy data to device
-      copy(std_a, vcl_a);
+      //copy(std_a, vcl_a);
      // copy(std_b_raw, vcl_b_raw);
       
       copy(std_b_raw.begin() + 0,  std_b_raw.end(),  std_b.begin());
@@ -132,7 +132,7 @@ class InputData
     
     //! host/device side representation of diagonal
     float  *a;
-    viennacl::vector<float> vcl_a;
+   // viennacl::vector<float> vcl_a;
     std::vector<float> std_a;
     //! host/device side representation superdiagonal
     //viennacl::vector<float> vcl_b;
