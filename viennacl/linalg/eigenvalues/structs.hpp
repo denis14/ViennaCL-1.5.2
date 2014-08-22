@@ -118,16 +118,16 @@ class InputData
     void
     cleanupInputData(void)
     {
-
-        freePtr(a);
+;
+       /* freePtr(a);
         freePtr(b);
 
-        //checkCudaErrors(cudaFree(g_a));
+        checkCudaErrors(cudaFree(g_a));
         g_a = NULL;
-        //checkCudaErrors(cudaFree(g_b_raw));
+        checkCudaErrors(cudaFree(g_b_raw));
         g_b_raw = NULL;
         g_b = NULL;
-
+*/
     }
     
     
