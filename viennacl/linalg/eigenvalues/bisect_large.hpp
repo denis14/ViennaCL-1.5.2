@@ -34,6 +34,28 @@
 #include "bisect_kernel_large_multi.cuh"
 
 
+
+#include "viennacl/forwards.h"
+#include "viennacl/scalar.hpp"
+#include "viennacl/vector.hpp"
+#include "viennacl/vector_proxy.hpp"
+#include "viennacl/tools/tools.hpp"
+#include "viennacl/meta/enable_if.hpp"
+#include "viennacl/meta/predicate.hpp"
+#include "viennacl/meta/result_of.hpp"
+#include "viennacl/traits/size.hpp"
+#include "viennacl/traits/start.hpp"
+#include "viennacl/traits/handle.hpp"
+#include "viennacl/traits/stride.hpp"
+
+#include "viennacl/linalg/cuda/common.hpp"
+
+#include "viennacl/linalg/cuda/vector_operations.hpp"
+#include "viennacl/linalg/cuda/matrix_operations_row.hpp"
+#include "viennacl/linalg/cuda/matrix_operations_col.hpp"
+#include "viennacl/linalg/cuda/matrix_operations_prod.hpp"
+#include "viennacl/linalg/cuda/matrix_operations_prod.hpp"
+
 ////////////////////////////////////////////////////////////////////////////////
 //! Initialize variables and memory for result
 //! @param  result handles to memory
@@ -160,7 +182,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
     std::cout << " Start computation of the eigenvalues! " << std::endl;
 
     for( unsigned int i = 0; i < 5; ++i)
-      std::cout << "a " << i << "= " << input.a[i] << std::endl;
+      std::cout << "b " << i << "= " << input.b[i] << std::endl;
 
     // do for multiple iterations to improve timing accuracy
     for (unsigned int iter = 0; iter < iterations; ++iter)
@@ -176,7 +198,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
          result.g_blocks_mult, result.g_blocks_mult_sum
         );
 
-       // getLastCudaError("Kernel launch failed.");
+        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
         checkCudaErrors(cudaDeviceSynchronize());
 
 
@@ -204,7 +226,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
          precision
         );
 
-       // getLastCudaError("bisectKernelLarge_OneIntervals() FAILED.");
+        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_OneIntervals() FAILED.");
         checkCudaErrors(cudaDeviceSynchronize());
 
         // process intervals that contained more than one eigenvalue after
@@ -230,11 +252,8 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
          result.g_lambda_mult, result.g_pos_mult,
          precision
         );
-
-
-       // getLastCudaError("bisectKernelLarge_MultIntervals() FAILED.");
+        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
         checkCudaErrors(cudaDeviceSynchronize());
-
 
     }
 
@@ -298,7 +317,7 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
                                cudaMemcpyDeviceToHost));
 
     // extract eigenvalues
-   // viennacl::vector<float> eigenvals(mat_size); ??? laesst sich nicht initialisieren !!
+   // viennacl::vector<float> eigenvals(mat_size);
 
     // singleton intervals generated in the second step
     for (unsigned int i = 0; i < sum_blocks_mult; ++i)
