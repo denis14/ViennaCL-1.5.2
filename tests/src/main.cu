@@ -90,6 +90,7 @@ runTest(int argc, char **argv)
 
     // initialize memory for result
     ResultDataLarge result(mat_size);
+    std::cout << "now initResultDataLargeMatrix" << std::endl;
     initResultDataLargeMatrix(result, mat_size);
 /*
     // run the kernel
@@ -103,9 +104,10 @@ runTest(int argc, char **argv)
                                                   user_defined, argv[0]);
 */
     // cleanup
+    std::cout << "CleanupResultDataLargeMatrix!" << std::endl;
     cleanupResultDataLargeMatrix(result);
 
-
+    std::cout << "cleanupInputData" << std::endl;
     input.cleanupInputData();
 
     // cudaDeviceReset causes the driver to clean up all state. While
