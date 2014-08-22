@@ -32,7 +32,7 @@ class InputData
   ////////////////////////////////////////////////////////////////////////////////
 
   InputData(char *exec_path, const unsigned int sz, const unsigned int user_defined) :
-              std_a(sz),  vcl_a(sz), std_b(sz), vcl_b(sz), vcl_b_raw(sz),  std_b_raw(sz)
+              std_a(sz),  vcl_a(sz), std_b(sz), vcl_b_raw(sz),  std_b_raw(sz)
     {
         // allocate memory
       const unsigned int mat_size = sz;
@@ -98,8 +98,7 @@ class InputData
       copy(std_b_raw, vcl_b_raw);
       
       copy(std_b_raw.begin() + 0,  std_b_raw.end(),  std_b.begin());
-      copy(std_b_raw.begin() + 1,  std_b_raw.end(),  vcl_b.begin());
-      
+
       copy(std_a.begin(), std_a.end(), a);
       copy(std_b.begin(), std_b.end(), b);
       
