@@ -185,7 +185,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
     for( unsigned int i = 0; i < 10; ++i)
       std::cout << "a " << i << "= " << input.a[i] << std::endl;
 
-    for( unsigned int i = 0; i < 5; ++i)
+    for( unsigned int i = 0; i < 10; ++i)
       std::cout << "b " << i << "= " << input.b[i] << std::endl;
 
 
@@ -193,6 +193,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
     for (unsigned int iter = 0; iter < iterations; ++iter)
     {
 
+        std::cout << "Start bisectKernelLarge" << std::endl;
         bisectKernelLarge<<< blocks, threads >>>
         (input.g_a, input.g_b, mat_size,
          lg, ug, 0, mat_size, precision,
@@ -227,7 +228,8 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
          grid_onei.x = 1;
          std::cout << "grid_onei.x, y, z: " << grid_onei.x << "  " << grid_onei.y << "  " << grid_onei.z << std::endl;
         std::cout << "thread_onei.x, y, z: " << threads_onei.x << "  " << threads_onei.y << "  " << threads_onei.z << std::endl;
-
+        
+        std::cout << "Start bisectKernelLarge_OneIntervals" << std::endl;
         bisectKernelLarge_OneIntervals<<< grid_onei , threads_onei >>>
         (input.g_a, input.g_b, mat_size, num_one_intervals,
          result.g_left_one, result.g_right_one, result.g_pos_one,
@@ -255,6 +257,8 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
         grid_mult.x = 1;
         std::cout << "grid_mult.x, y, z: " << grid_mult.x << "  " << grid_mult.y << "  " << grid_mult.z << std::endl;
        std::cout << "thread_mult.x, y, z: " << threads_mult.x << "  " << threads_mult.y << "  " << threads_mult.z << std::endl;
+        
+        std::cout << "Start bisectKernelLarge_MultIntervals" << std::endl;
         bisectKernelLarge_MultIntervals<<< grid_mult, threads_mult >>>
         (input.g_a, input.g_b, mat_size,
          result.g_blocks_mult, result.g_blocks_mult_sum,
