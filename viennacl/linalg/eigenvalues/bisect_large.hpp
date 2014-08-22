@@ -159,7 +159,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
 
     std::cout << " Start computation of the eigenvalues! " << std::endl;
 
-    for( unsigned int i = 0; i < 5; ++i)
+    for( unsigned int i = 0; i < 10; ++i)
       std::cout << "a " << i << "= " << input.a[i] << std::endl;
 
     // do for multiple iterations to improve timing accuracy
@@ -176,7 +176,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
          result.g_blocks_mult, result.g_blocks_mult_sum
         );
 
-       // getLastCudaError("Kernel launch failed.");
+        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
         checkCudaErrors(cudaDeviceSynchronize());
 
 
@@ -197,6 +197,9 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
         // compute eigenvalues for intervals that contained only one eigenvalue
         // after the first processing step
 
+         grid_onei.x = 1;
+         std::cout << "grid_onei.x, y, z: " << grid_onei.x << "  " << grid_onei.y << "  " << grid_onei.z << std::endl;
+        std::cout << "thread_onei.x, y, z: " << threads_onei.x << "  " << threads_onei.y << "  " << threads_onei.z << std::endl;
 
         bisectKernelLarge_OneIntervals<<< grid_onei , threads_onei >>>
         (input.g_a, input.g_b, mat_size, num_one_intervals,
@@ -204,7 +207,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
          precision
         );
 
-       // getLastCudaError("bisectKernelLarge_OneIntervals() FAILED.");
+        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_OneIntervals() FAILED.");
         checkCudaErrors(cudaDeviceSynchronize());
 
         // process intervals that contained more than one eigenvalue after
@@ -222,6 +225,9 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
         dim3  grid_mult(num_blocks_mult, 1, 1);
         dim3  threads_mult(MAX_THREADS_BLOCK, 1, 1);
 
+        grid_mult.x = 1;
+        std::cout << "grid_mult.x, y, z: " << grid_mult.x << "  " << grid_mult.y << "  " << grid_mult.z << std::endl;
+       std::cout << "thread_mult.x, y, z: " << threads_mult.x << "  " << threads_mult.y << "  " << threads_mult.z << std::endl;
         bisectKernelLarge_MultIntervals<<< grid_mult, threads_mult >>>
         (input.g_a, input.g_b, mat_size,
          result.g_blocks_mult, result.g_blocks_mult_sum,
@@ -232,7 +238,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
         );
 
 
-       // getLastCudaError("bisectKernelLarge_MultIntervals() FAILED.");
+        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
         checkCudaErrors(cudaDeviceSynchronize());
 
 

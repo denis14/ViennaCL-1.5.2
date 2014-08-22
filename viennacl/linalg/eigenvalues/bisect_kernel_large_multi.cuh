@@ -54,7 +54,8 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                 float precision
                                )
 {
-    const unsigned int tid = threadIdx.x;
+#if 1
+  const unsigned int tid = threadIdx.x;
 
     // left and right limits of interval
     __shared__  float  s_left[2 * MAX_THREADS_BLOCK];
@@ -230,6 +231,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         g_lambda[addr]  = s_left[tid];
         g_pos[addr]   = s_right_count[tid];
     }
+#endif
 }
 
 #endif // #ifndef _BISECT_KERNEL_LARGE_MULTI_H_

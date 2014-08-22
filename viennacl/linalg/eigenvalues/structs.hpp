@@ -43,7 +43,7 @@ class InputData
 
       if (0 == user_defined)
       {
-          
+          /*
            std_a[0] = 1;  std_b_raw[0] = 0;
            std_a[1] = 2;  std_b_raw[1] = 4;
            std_a[2] =-4;  std_b_raw[2] = 5;
@@ -54,17 +54,17 @@ class InputData
            std_a[7] = 9;  std_b_raw[7] = 1;
            std_a[8] = 3;  std_b_raw[8] = 5;
            std_a[9] = 8;  std_b_raw[9] = 2;
-          /*
-           
+
+           */
            for(unsigned int i = 0; i < mat_size; ++i)
            {
-             //std_a[i] = i % 11 + 4;
-             //std_b_raw[i] = i % 9 + 2;
-             a[i] = i % 11 + 4;
-             b[i] = i % 9 + 2;
+             std_a[i] = i % 11 + 4;
+             std_b_raw[i] = i % 9 + 2;
+             //a[i] = i % 11 + 4;
+             //b[i] = i % 9 + 2;
 
            }
-          */
+
           // the first element of s is used as padding on the device (thus the
           // whole vector is copied to the device but the kernels are launched
           // with (s+1) as start address

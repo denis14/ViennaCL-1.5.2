@@ -69,7 +69,7 @@ runTest(int argc, char **argv)
 {
     bool bCompareResult = false;
     // default
-    unsigned int mat_size = 10;
+    unsigned int mat_size = 520;
     // flag if the matrix size is due to explicit user request
     unsigned int user_defined = 0;
     // desired precision of eigenvalues
@@ -91,7 +91,7 @@ runTest(int argc, char **argv)
     // initialize memory for result
     ResultDataLarge result(mat_size);
     initResultDataLargeMatrix(result, mat_size);
-
+/*
     // run the kernel
     computeEigenvaluesLargeMatrix(input, result, mat_size,
                                   precision, lg, ug,
@@ -101,7 +101,7 @@ runTest(int argc, char **argv)
     // save the result if user specified matrix size
     bCompareResult = processResultDataLargeMatrix(input, result, mat_size, result_file,
                                                   user_defined, argv[0]);
-
+*/
     // cleanup
     cleanupResultDataLargeMatrix(result);
 
