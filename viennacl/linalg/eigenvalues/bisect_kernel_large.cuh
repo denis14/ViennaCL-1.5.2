@@ -153,7 +153,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
                   unsigned int *g_blocks_mult_sum
                  )
 {
-#if 1
+#if 0
     const unsigned int tid = threadIdx.x;
 
     // intervals (store left and right because the subdivision tree is in general
