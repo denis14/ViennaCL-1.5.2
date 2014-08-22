@@ -54,7 +54,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                 float precision
                                )
 {
-#if 1
+#if 0
   const unsigned int tid = threadIdx.x;
 
     // left and right limits of interval
