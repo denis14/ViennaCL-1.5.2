@@ -357,7 +357,7 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
     if (0 == user_defined)
     {
         // store result
-        writeTridiagSymMatlab(filename, input.vcl_a, input.vcl_b, result.std_eigenvalues, mat_size);
+        //writeTridiagSymMatlab(filename, input.vcl_a, input.vcl_b, result.std_eigenvalues, mat_size);
         // getLastCudaError( sdkWriteFilef( filename, eigenvals, mat_size, 0.0f));
 
         printf("skipping self-check!\n");

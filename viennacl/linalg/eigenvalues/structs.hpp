@@ -32,7 +32,7 @@ class InputData
   ////////////////////////////////////////////////////////////////////////////////
 
   InputData(char *exec_path, const unsigned int sz, const unsigned int user_defined) :
-              std_a(sz),  vcl_a(sz), std_b(sz), vcl_b_raw(sz),  std_b_raw(sz)
+              std_a(sz), std_b(sz),  std_b_raw(sz)
     {
         // allocate memory
       const unsigned int mat_size = sz;
@@ -95,7 +95,7 @@ class InputData
 
       // copy data to device
       copy(std_a, vcl_a);
-      copy(std_b_raw, vcl_b_raw);
+     // copy(std_b_raw, vcl_b_raw);
       
       copy(std_b_raw.begin() + 0,  std_b_raw.end(),  std_b.begin());
 
@@ -135,10 +135,10 @@ class InputData
     viennacl::vector<float> vcl_a;
     std::vector<float> std_a;
     //! host/device side representation superdiagonal
-    viennacl::vector<float> vcl_b;
+    //viennacl::vector<float> vcl_b;
     std::vector<float> std_b;
     //! host/device side representation of helper vector
-    viennacl::vector<float> vcl_b_raw;
+    //viennacl::vector<float> vcl_b_raw;
     std::vector<float> std_b_raw;
     
     //! host side representation superdiagonal
