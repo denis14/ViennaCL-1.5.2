@@ -339,7 +339,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
         }
     }
 #endif
-#if 0
+#if 1
     __syncthreads();
 
     // generate two lists of intervals; one with intervals that contain one
