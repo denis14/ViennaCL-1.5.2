@@ -115,6 +115,8 @@ runTest(int argc, char **argv)
     // needed to ensure correct operation when the application is being
     // profiled. Calling cudaDeviceReset causes all profile data to be
     // flushed before the application exits
+    
+    std::cout << "cudaDeviceReset" << std::endl;
     cudaDeviceReset();
 
     return bCompareResult;
