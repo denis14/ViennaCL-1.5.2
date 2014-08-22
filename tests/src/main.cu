@@ -92,12 +92,12 @@ runTest(int argc, char **argv)
     ResultDataLarge result(mat_size);
     std::cout << "now initResultDataLargeMatrix" << std::endl;
     initResultDataLargeMatrix(result, mat_size);
-/*
+
     // run the kernel
     computeEigenvaluesLargeMatrix(input, result, mat_size,
                                   precision, lg, ug,
                                   iters_timing);
-*/
+
     // get the result from the device and do some sanity checks
     // save the result if user specified matrix size
     bCompareResult = processResultDataLargeMatrix(input, result, mat_size, result_file,
