@@ -153,7 +153,6 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
                   unsigned int *g_blocks_mult_sum
                  )
 {
-#if 1
     const unsigned int tid = threadIdx.x;
 
     // intervals (store left and right because the subdivision tree is in general
@@ -167,7 +166,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     __shared__  unsigned short  s_right_count[2 * MAX_THREADS_BLOCK + 1];
 
     // helper for stream compaction
-    __shared__  unsigned short  s_compaction_list[4 * MAX_THREADS_BLOCK + 1];
+    __shared__  unsigned short  s_compaction_list[2 * MAX_THREADS_BLOCK + 1];
 
     // state variables for whole block
     // if 0 then compaction of second chunk of child intervals is not necessary
@@ -311,7 +310,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
         {
 
             // create indices for compaction
-            createIndicesCompaction(s_compaction_list_exc, num_threads_compaction);
+            createIndicesCompaction(s_compaction_list, num_threads_compaction);
 
             compactIntervals(s_left, s_right, s_left_count, s_right_count,
                              mid, right, mid_count, right_count,
@@ -341,8 +340,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
             break;
         }
     }
-#endif
-#if 1
+
     __syncthreads();
 
     // generate two lists of intervals; one with intervals that contain one
@@ -514,7 +512,6 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
                 s_left, s_right, s_left_count, s_right_count,
                 g_blocks_mult, g_blocks_mult_sum,
                 s_compaction_list, s_cl_helper, offset_mult_lambda);
-#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////
