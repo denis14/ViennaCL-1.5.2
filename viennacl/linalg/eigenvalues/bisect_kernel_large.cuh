@@ -201,7 +201,9 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     // initialize lists
     s_compaction_list[tid] = 0;
-    s_compaction_list[tid*2] = 0;
+    s_compaction_list[tid + MAX_THREADS_BLOCK] = 0; //!selbst
+    if(tid == 0)                                     //
+      s_compaction_list[2 * MAX_THREADS_BLOCK] = 0;  //
     s_left[tid] = 0;
     s_right[tid] = 0;
     s_left_count[tid] = 0;
