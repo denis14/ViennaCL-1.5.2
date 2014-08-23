@@ -317,7 +317,8 @@ createIndicesCompaction(T *s_compaction_list_exc,
 
             s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
                                           + s_compaction_list_exc[ai];
-            printf("createInicesCompaction1: s_comp_list_exc[%i] = %i \n", bi, s_compaction_list_exc[bi]);
+            printf("createIndicesCompaction1: s_comp_list_exc[%i] = %i \t\t", bi, s_compaction_list_exc[bi]);
+            printf("tid = %i \n", tid);
 
         }
 
@@ -339,7 +340,7 @@ createIndicesCompaction(T *s_compaction_list_exc,
 
             s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
                                           + s_compaction_list_exc[ai];
-            printf("createInicesCompaction2: s_comp_list_exc[%i] = %i \n", bi, s_compaction_list_exc[bi]);
+            printf("createIndicesCompaction2: s_comp_list_exc[%i] = %i \n", bi, s_compaction_list_exc[bi]);
 
         }
     }
