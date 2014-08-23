@@ -315,20 +315,19 @@ createIndicesCompaction(T *s_compaction_list_exc,
             unsigned int  ai = offset*(2*tid+1)-1;
             unsigned int  bi = offset*(2*tid+2)-1;
             unsigned short temp = s_compaction_list_exc[bi];
-            if(bi < 130)
-            {
-               s_compaction_list_exc[bi] =   temp + s_compaction_list_exc[ai];
- 
+            
+            s_compaction_list_exc[bi] =   temp + s_compaction_list_exc[ai];
+    
          // s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
          //                             + s_compaction_list_exc[ai];
-              if(s_compaction_list_exc[bi] > 512 || bi > 127 || ai > 127)
-                {
-                  //printf("ai: %i  \t bi: %i \n", ai, bi);
-                  printf("CrInCo1: temp: %i \ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
-                    temp, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
-                  break;
-                }    
-            }
+            if(s_compaction_list_exc[bi] > 512 || bi > 127 || ai > 127)
+            {
+              //printf("ai: %i  \t bi: %i \n", ai, bi);
+                printf("CrInCo1: temp: %i \ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
+                temp, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
+                break;
+             }    
+            
            
         }
 
@@ -348,21 +347,21 @@ createIndicesCompaction(T *s_compaction_list_exc,
             unsigned int  ai = offset*(tid+1) - 1;
             unsigned int  bi = ai + (offset >> 1);
             
-            if(bi < 65)
+            if(bi < 80)
             {
                unsigned short temp = s_compaction_list_exc[bi];
-            s_compaction_list_exc[bi] =   temp + s_compaction_list_exc[ai];
+               s_compaction_list_exc[bi] =   temp + s_compaction_list_exc[ai];
  
-           // s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
-             //                             + s_compaction_list_exc[ai];
+               //s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
+               //                            + s_compaction_list_exc[ai];
              
-             if(s_compaction_list_exc[bi] > 512 || bi > 127 || ai > 127)
-            {
-              //printf("ai: %i  \t bi: %i \n", ai, bi);
-              printf("CrInCo2: temp: %i \ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
-                temp, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
-              break;
-            }
+                if(s_compaction_list_exc[bi] > 512 || bi > 127 || ai > 127)
+                {
+                   //printf("ai: %i  \t bi: %i \n", ai, bi);
+                   printf("CrInCo2: temp: %i \ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
+                   temp, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
+                   break;
+                }
             
             }
             
