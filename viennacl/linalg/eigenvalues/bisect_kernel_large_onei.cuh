@@ -45,7 +45,7 @@ bisectKernelLarge_OneIntervals(float *g_d, float *g_s, const unsigned int n,
                                unsigned int *g_pos,
                                float  precision)
 {
-#if 0
+#if 1
     const unsigned int gtid = (blockDim.x * blockIdx.x) + threadIdx.x;
 
     __shared__  float  s_left_scratch[MAX_THREADS_BLOCK];
