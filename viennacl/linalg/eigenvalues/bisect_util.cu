@@ -315,10 +315,11 @@ createIndicesCompaction(T *s_compaction_list_exc,
             unsigned int  ai = offset*(2*tid+1)-1;
             unsigned int  bi = offset*(2*tid+2)-1;
 
-         if(s_compaction_list_exc[bi] > 512 || bi > 256 || ai > 256)
+         if(s_compaction_list_exc[bi] > 512 || bi > 255 || ai > 255)
             {
-              printf("crInCo1: num_threads_comp: %i \ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
-                num_threads_compaction, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
+              printf("ai: %i \t bi: %ib \n", ai, bi);
+              //printf("crInCo1: num_threads_comp: %i \ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
+                //num_threads_compaction, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
               break;
             }       
         s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
@@ -342,10 +343,11 @@ createIndicesCompaction(T *s_compaction_list_exc,
             unsigned int  ai = offset*(tid+1) - 1;
             unsigned int  bi = ai + (offset >> 1);
             
-            if(s_compaction_list_exc[bi] > 512 || bi > 256 || ai > 256)
+            if(s_compaction_list_exc[bi] > 512 || bi > 255 || ai > 255)
             {
-              printf("crInCo2: num_threads_comp: %i \ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
-                num_threads_compaction, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
+              printf("ai: %i \t bi: %ib \n", ai, bi);
+              //printf("crInCo2: num_threads_comp: %i \ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
+                //num_threads_compaction, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
               break;
             }      
             s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
