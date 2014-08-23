@@ -319,7 +319,7 @@ createIndicesCompaction(T *s_compaction_list_exc,
                                           + s_compaction_list_exc[ai];
             if(tid == 0)
             {
-              printf("num_thread_compaction = %i\n", num_thread_compaction);
+              printf("num_thread_compaction = %i\n", num_threads_compaction);
               printf("createIndicesCompaction1: tid: %i \ts_comp_list_exc[%i] = %i \n",tid, bi, s_compaction_list_exc[bi]);
 
             }
