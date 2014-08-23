@@ -322,8 +322,8 @@ createIndicesCompaction(T *s_compaction_list_exc,
                 //num_threads_compaction, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
               break;
             }       
-        s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
-                                      + s_compaction_list_exc[ai];
+       // s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
+         //                             + s_compaction_list_exc[ai];
            
         }
 
@@ -350,8 +350,8 @@ createIndicesCompaction(T *s_compaction_list_exc,
                 //num_threads_compaction, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
               break;
             }      
-            s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
-                                          + s_compaction_list_exc[ai];
+           // s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
+             //                             + s_compaction_list_exc[ai];
  
         }
     }
