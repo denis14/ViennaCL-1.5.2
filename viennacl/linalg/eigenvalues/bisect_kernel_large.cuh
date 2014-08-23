@@ -167,7 +167,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     __shared__  unsigned short  s_right_count[2 * MAX_THREADS_BLOCK + 1];
 
     // helper for stream compaction
-    __shared__  unsigned short  s_compaction_list[2 * MAX_THREADS_BLOCK + 1];
+    __shared__  unsigned short  s_compaction_list[4 * MAX_THREADS_BLOCK + 1];
 
     // state variables for whole block
     // if 0 then compaction of second chunk of child intervals is not necessary
