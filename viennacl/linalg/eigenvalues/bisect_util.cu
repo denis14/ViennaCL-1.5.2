@@ -309,7 +309,6 @@ createIndicesCompaction(T *s_compaction_list_exc,
     {
 
         __syncthreads();
-
         if (tid < d)
         {
 
@@ -318,6 +317,8 @@ createIndicesCompaction(T *s_compaction_list_exc,
 
             s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
                                           + s_compaction_list_exc[ai];
+            printf("createInicesCompaction1: s_comp_list_exc[%i] = %i \n", bi, s_compatcion_list_exc[bi]);
+
         }
 
         offset <<= 1;
@@ -338,6 +339,8 @@ createIndicesCompaction(T *s_compaction_list_exc,
 
             s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
                                           + s_compaction_list_exc[ai];
+            printf("createInicesCompaction2: s_comp_list_exc[%i] = %i \n", bi, s_compatcion_list_exc[bi]);
+
         }
     }
 
