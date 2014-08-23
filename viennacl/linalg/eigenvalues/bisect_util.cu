@@ -315,7 +315,7 @@ createIndicesCompaction(T *s_compaction_list_exc,
             unsigned int  ai = offset*(2*tid+1)-1;
             unsigned int  bi = offset*(2*tid+2)-1;
             unsigned short temp = s_compaction_list_exc[bi];
-            if(bi < 65)
+            if(bi < 130)
             {
                s_compaction_list_exc[bi] =   temp + s_compaction_list_exc[ai];
  
