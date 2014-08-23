@@ -322,8 +322,8 @@ createIndicesCompaction(T *s_compaction_list_exc,
               if(s_compaction_list_exc[bi] > 512 || bi > 127 || ai > 127)
                 {
                   //printf("ai: %i  \t bi: %i \n", ai, bi);
-                  printf("crInCo1: num_threads_comp: %i \ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
-                    num_threads_compaction, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
+                  printf("CrInCo1: temp: %i \ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
+                    temp, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
                   break;
                 }    
         }
@@ -354,8 +354,8 @@ createIndicesCompaction(T *s_compaction_list_exc,
              if(s_compaction_list_exc[bi] > 512 || bi > 127 || ai > 127)
             {
               //printf("ai: %i  \t bi: %i \n", ai, bi);
-              printf("crInCo2: num_threads_comp: %i \ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
-                num_threads_compaction, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
+              printf("CrInCo2: temp: %i \ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
+                temp, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
               break;
             }
  
