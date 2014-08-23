@@ -317,10 +317,10 @@ createIndicesCompaction(T *s_compaction_list_exc,
 
             s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
                                           + s_compaction_list_exc[ai];
-            if(tid == 0)
+            if(s_compaction_list_exc[bi] > 512)
             {
               printf("createIndicesCompaction1: num_threads_comp: %i \ts_comp_list_exc[%i] = %i \n",num_threads_compaction, bi, s_compaction_list_exc[bi]);
-
+              break;
             }
         }
 
@@ -342,8 +342,11 @@ createIndicesCompaction(T *s_compaction_list_exc,
 
             s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
                                           + s_compaction_list_exc[ai];
-             if(tid == 0)
-              printf("createIndicesCompaction2: tid: %i \ts_comp_list_exc[%i] = %i \n",tid, bi, s_compaction_list_exc[bi]);
+            if(s_compaction_list_exc[bi] > 512)
+            {
+              printf("createIndicesCompaction1: num_threads_comp: %i \ts_comp_list_exc[%i] = %i \n",num_threads_compaction, bi, s_compaction_list_exc[bi]);
+              break;
+            }       
         }
     }
 
