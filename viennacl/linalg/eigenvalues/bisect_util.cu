@@ -319,7 +319,7 @@ createIndicesCompaction(T *s_compaction_list_exc,
                                           + s_compaction_list_exc[ai];
             if(s_compaction_list_exc[bi] > 512 || bi > 256 || ai > 256)
             {
-              printf("crInCo2: num_threads_comp: %i \ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
+              printf("crInCo1: num_threads_comp: %i \ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
                 num_threads_compaction, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
               break;
             }       
