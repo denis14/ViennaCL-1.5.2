@@ -325,7 +325,7 @@ createIndicesCompaction(T *s_compaction_list_exc,
               //printf("ai: %i  \t bi: %i \n", ai, bi);
                 printf("CrInCo1: tid = %i temp: %i \ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
                 tid, temp, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
-                break;
+                //break;
              }    
             
            
@@ -360,7 +360,7 @@ createIndicesCompaction(T *s_compaction_list_exc,
                    //printf("ai: %i  \t bi: %i \n", ai, bi);
                    printf("CrInCo2: temp: %i \ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
                    temp, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
-                   break;
+                   //break;
                 }
             
             }
