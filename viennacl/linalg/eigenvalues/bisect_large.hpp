@@ -364,7 +364,7 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
         bCompareResult = true;
     }
 
-    freePtr(eigenvals);
+    freePtr(eigenvalues);
     freePtr(lambda_mult);
     freePtr(pos_mult);
     freePtr(blocks_mult_sum);
