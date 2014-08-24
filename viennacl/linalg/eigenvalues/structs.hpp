@@ -78,9 +78,9 @@ class InputData
         // srand( clock());
         for (unsigned int i = 0; i < mat_size; ++i)
         {
-            a[i] = (float)(2.0 * (((double)rand()
+            a[i] = (float)(12.0 * (((double)rand()
                                          / (double) RAND_MAX) - 0.5));
-            b[i] = (float)(2.0 * (((double)rand()
+            b[i] = (float)(12.0 * (((double)rand()
                                          / (double) RAND_MAX) - 0.5));
         }
 
