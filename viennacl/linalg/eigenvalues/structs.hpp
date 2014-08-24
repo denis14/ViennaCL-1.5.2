@@ -14,6 +14,12 @@
 #ifndef _STRUCTS_H_
 #define _STRUCTS_H_
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <float.h>
+#include <assert.h>
 
 #include "viennacl/vector.hpp"
 #include "viennacl/matrix.hpp"
@@ -64,6 +70,18 @@ class InputData
              b[i] = i % 9 + 2;
 
            }
+           
+           // initialize diagonal and superdiagonal entries with random values
+        srand(278217421);
+
+        // srand( clock());
+        for (unsigned int i = 0; i < mat_size; ++i)
+        {
+            input.a[i] = (float)(2.0 * (((double)rand()
+                                         / (double) RAND_MAX) - 0.5));
+            input.b[i] = (float)(2.0 * (((double)rand()
+                                         / (double) RAND_MAX) - 0.5));
+        }
 
           // the first element of s is used as padding on the device (thus the
           // whole vector is copied to the device but the kernels are launched
