@@ -314,10 +314,6 @@ createIndicesCompaction(T *s_compaction_list_exc,
 
             unsigned int  ai = offset*(2*tid+1)-1;
             unsigned int  bi = offset*(2*tid+2)-1;
-            //unsigned short temp = s_compaction_list_exc[bi];
-            
-            //s_compaction_list_exc[bi] =   temp + s_compaction_list_exc[ai];
-    
            s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
                                        + s_compaction_list_exc[ai];
             if(s_compaction_list_exc[bi] > 512)
@@ -344,23 +340,16 @@ createIndicesCompaction(T *s_compaction_list_exc,
 
             unsigned int  ai = offset*(tid+1) - 1;
             unsigned int  bi = ai + (offset >> 1);
-            
-            if(true)
-            {
-               //unsigned short temp = s_compaction_list_exc[bi];
-               //s_compaction_list_exc[bi] =   temp + s_compaction_list_exc[ai];
- 
-               s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
-                                           + s_compaction_list_exc[ai];
+            s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
+                                        + s_compaction_list_exc[ai];
              
-                if(s_compaction_list_exc[bi] > 512)
-                {
-                   //printf("ai: %i  \t bi: %i \n", ai, bi);
-                   printf("CrInCo2:\ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
-                   bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
-                }
-            
+            if(s_compaction_list_exc[bi] > 512)
+            {
+               printf("CrInCo2:\ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
+               bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
             }
+            
+            
             
            
  
@@ -409,7 +398,6 @@ compactIntervals(float *s_left, float *s_right,
         //printf("num_thread_actice: %i \n", num_threads_active);
         //printf("s_comp_list[%i]: %i \n", tid, s_compaction_list[tid]);
         //printf("addr_w = %i\n", addr_w);
-        addr_w = addr_w % 256;
         s_left[addr_w] = mid;
         s_right[addr_w] = right;
         s_left_count[addr_w] = mid_count;
