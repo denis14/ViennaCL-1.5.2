@@ -101,7 +101,7 @@ runTest(int argc, char **argv)
                                   */
                                   
     std::cout << "Start bisectKernelLarge" << std::endl;
-        bisectKernelLarge<<< 1, 128 >>>
+        bisectKernelLarge<<< 1, 256 >>>
         (input.g_a, input.g_b, mat_size,
          lg, ug, 0, mat_size, precision,
          result.g_num_one, result.g_num_blocks_mult,
