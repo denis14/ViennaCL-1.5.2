@@ -409,6 +409,7 @@ compactIntervals(float *s_left, float *s_right,
         //printf("num_thread_actice: %i \n", num_threads_active);
         //printf("s_comp_list[%i]: %i \n", tid, s_compaction_list[tid]);
         //printf("addr_w = %i\n", addr_w);
+        addr_w = addr_w % 256;
         s_left[addr_w] = mid;
         s_right[addr_w] = right;
         s_left_count[addr_w] = mid_count;
