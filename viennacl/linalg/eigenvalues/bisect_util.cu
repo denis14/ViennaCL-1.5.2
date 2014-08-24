@@ -404,7 +404,7 @@ compactIntervals(float *s_left, float *s_right,
     {
         unsigned int addr_w = num_threads_active + s_compaction_list[tid];
         //printf("num_thread_actice: %i \n", num_threads_active);
-        if(s_comp_list[tid] > 512)
+        if(s_compaction_list[tid] > 512)
           printf("s_comp_list[%i]: %i \n", tid, s_compaction_list[tid]);
         //printf("addr_w = %i\n", addr_w);
         s_left[addr_w] = mid;
