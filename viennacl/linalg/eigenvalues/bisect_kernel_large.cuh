@@ -282,7 +282,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
                                             epsilon, compact_second_chunk,
                                             s_compaction_list_exc,
                                             is_active_second);
-                 printf("s_comp_list %i:  %i\n", tid, s_compaction_list_exc[tid]);
+               //  printf("s_comp_list %i:  %i\n", tid, s_compaction_list_exc[tid]);
             }
             else
             {
