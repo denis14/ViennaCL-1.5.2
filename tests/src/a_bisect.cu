@@ -111,7 +111,7 @@ runTest(int argc, char **argv)
          result.g_blocks_mult, result.g_blocks_mult_sum
         );
 
-      //  viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
+        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
 
     // get the result from the device and do some sanity checks
     // save the result if user specified matrix size
