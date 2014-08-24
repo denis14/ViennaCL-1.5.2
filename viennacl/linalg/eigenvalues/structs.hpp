@@ -37,8 +37,8 @@ class InputData
   //!                      0 if the default size
   ////////////////////////////////////////////////////////////////////////////////
 
-  InputData(char *exec_path, const unsigned int sz, const unsigned int user_defined)// :
-         //     std_a(sz), std_b(sz),  std_b_raw(sz)
+  InputData(char *exec_path, const unsigned int sz, const unsigned int user_defined) :
+              std_a(sz), std_b(sz),  std_b_raw(sz)
     {
         // allocate memory
       const unsigned int mat_size = sz;
@@ -136,13 +136,13 @@ class InputData
     //! host/device side representation of diagonal
     float  *a;
    // viennacl::vector<float> vcl_a;
-   // std::vector<float> std_a;
+    std::vector<float> std_a;
     //! host/device side representation superdiagonal
     //viennacl::vector<float> vcl_b;
-   // std::vector<float> std_b;
+    std::vector<float> std_b;
     //! host/device side representation of helper vector
     //viennacl::vector<float> vcl_b_raw;
-   // std::vector<float> std_b_raw;
+    std::vector<float> std_b_raw;
     
     //! host side representation superdiagonal
     float  *b;
