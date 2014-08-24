@@ -62,6 +62,7 @@ class InputData
            std_a[9] = 8;  std_b_raw[9] = 2;
 
            */
+           /*
            for(unsigned int i = 0; i < mat_size; ++i)
            {
              //std_a[i] = i % 11 + 4;
@@ -69,7 +70,7 @@ class InputData
              a[i] = i % 11 + 4;
              b[i] = i % 9 + 2;
 
-           }
+           }*/
            
            // initialize diagonal and superdiagonal entries with random values
         srand(278217421);
@@ -77,9 +78,9 @@ class InputData
         // srand( clock());
         for (unsigned int i = 0; i < mat_size; ++i)
         {
-            input.a[i] = (float)(2.0 * (((double)rand()
+            a[i] = (float)(2.0 * (((double)rand()
                                          / (double) RAND_MAX) - 0.5));
-            input.b[i] = (float)(2.0 * (((double)rand()
+            b[i] = (float)(2.0 * (((double)rand()
                                          / (double) RAND_MAX) - 0.5));
         }
 
