@@ -31,8 +31,8 @@ class InputData
   //!                      0 if the default size
   ////////////////////////////////////////////////////////////////////////////////
 
-  InputData(char *exec_path, const unsigned int sz, const unsigned int user_defined) :
-              std_a(sz), std_b(sz),  std_b_raw(sz)
+  InputData(char *exec_path, const unsigned int sz, const unsigned int user_defined)// :
+         //     std_a(sz), std_b(sz),  std_b_raw(sz)
     {
         // allocate memory
       const unsigned int mat_size = sz;
@@ -58,36 +58,20 @@ class InputData
            */
            for(unsigned int i = 0; i < mat_size; ++i)
            {
-             std_a[i] = i % 11 + 4;
-             std_b_raw[i] = i % 9 + 2;
-             //a[i] = i % 11 + 4;
-             //b[i] = i % 9 + 2;
+             //std_a[i] = i % 11 + 4;
+             //std_b_raw[i] = i % 9 + 2;
+             a[i] = i % 11 + 4;
+             b[i] = i % 9 + 2;
 
            }
 
           // the first element of s is used as padding on the device (thus the
           // whole vector is copied to the device but the kernels are launched
           // with (s+1) as start address
-           std_b_raw[0] = 0.0f;
-           //b[0] = 0.0f;
+           //std_b_raw[0] = 0.0f;
+          b[0] = 0.0f;
       }
-      else
-      {
-  /*
-          // read default matrix
-          unsigned int input_data_size = mat_size;
-          char *diag_path = sdkFindFilePath("diagonal.dat", exec_path);
-          assert(NULL != diag_path);
-          sdkReadFile(diag_path, &( a), &input_data_size, false);
 
-          char *sdiag_path = sdkFindFilePath("superdiagonal.dat", exec_path);
-          assert(NULL != sdiag_path);
-          sdkReadFile(sdiag_path, &( b), &input_data_size, false);
-
-          free(diag_path);
-          free(sdiag_path);
-          */
-      }
 
       // allocate device memory for input
       checkCudaErrors(cudaMalloc((void **) &( g_a)    , sizeof(float) * mat_size));
@@ -97,11 +81,11 @@ class InputData
       //copy(std_a, vcl_a);
      // copy(std_b_raw, vcl_b_raw);
       
-      copy(std_b_raw.begin() + 0,  std_b_raw.end(),  std_b.begin());
+     /* copy(std_b_raw.begin() + 0,  std_b_raw.end(),  std_b.begin());
 
       copy(std_a.begin(), std_a.end(), a);
       copy(std_b.begin(), std_b.end(), b);
-      
+     */
       checkCudaErrors(cudaMemcpy(g_a    , a, sizeof(float) * mat_size, cudaMemcpyHostToDevice));
       checkCudaErrors(cudaMemcpy(g_b_raw, b, sizeof(float) * mat_size, cudaMemcpyHostToDevice));
 
@@ -133,13 +117,13 @@ class InputData
     //! host/device side representation of diagonal
     float  *a;
    // viennacl::vector<float> vcl_a;
-    std::vector<float> std_a;
+   // std::vector<float> std_a;
     //! host/device side representation superdiagonal
     //viennacl::vector<float> vcl_b;
-    std::vector<float> std_b;
+   // std::vector<float> std_b;
     //! host/device side representation of helper vector
     //viennacl::vector<float> vcl_b_raw;
-    std::vector<float> std_b_raw;
+   // std::vector<float> std_b_raw;
     
     //! host side representation superdiagonal
     float  *b;
@@ -160,12 +144,12 @@ class InputData
 class ResultDataLarge
 {
 public:
-    ResultDataLarge(unsigned int sz) : std_eigenvalues(sz)
+    ResultDataLarge(unsigned int sz) //: std_eigenvalues(sz)
     {
     }
     
     //! eigenvalues
-    std::vector<float> std_eigenvalues;
+   // std::vector<float> std_eigenvalues;
     
     //! number of intervals containing one eigenvalue after the first step
     unsigned int *g_num_one;
