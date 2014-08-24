@@ -308,7 +308,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
         {
 
             // create indices for compaction
-            printf("s_comp_list: %i\n", s_compaction_list_exc[tid]);
+            printf("s_comp_list %i:  %i\n", tid, s_compaction_list_exc[tid]);
             createIndicesCompaction(s_compaction_list_exc, num_threads_compaction);
 
             compactIntervals(s_left, s_right, s_left_count, s_right_count,
