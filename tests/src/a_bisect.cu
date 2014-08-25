@@ -69,16 +69,16 @@ runTest(int argc, char **argv)
 {
     bool bCompareResult = false;
     // default
-    unsigned int mat_size = 10000;
+    unsigned int mat_size = 520;
     // flag if the matrix size is due to explicit user request
     unsigned int user_defined = 0;
     // desired precision of eigenvalues
     float  precision = 0.00001f;
-    unsigned int iters_timing = 100;
+    unsigned int iters_timing = 1;
     char  *result_file = "eigenvalues.dat";
 
-    // set up input
     {
+    // set up input
     InputData input(argv[0], mat_size, user_defined);
 
     // compute Gerschgorin interval
@@ -91,43 +91,41 @@ runTest(int argc, char **argv)
 
     // initialize memory for result
     ResultDataLarge result(mat_size);
-    std::cout << "now initResultDataLargeMatrix" << std::endl;
+    std::cout << "initResultDataLargeMatrix" << std::endl;
     initResultDataLargeMatrix(result, mat_size);
-
+/*
     // run the kernel
-    /*
     computeEigenvaluesLargeMatrix(input, result, mat_size,
                                   precision, lg, ug,
                                   iters_timing);
-                                  */
-                                  
-    dim3  blocks(1, 1, 1);
-    dim3  threads(256, 1, 1);
-    std::cout << "Start bisectKernelLarge" << std::endl;
-        bisectKernelLarge<<< blocks, threads >>>
-        (input.g_a, input.g_b, mat_size,
-         lg, ug, 0, mat_size, precision,
-         result.g_num_one, result.g_num_blocks_mult,
-         result.g_left_one, result.g_right_one, result.g_pos_one,
-         result.g_left_mult, result.g_right_mult,
-         result.g_left_count_mult, result.g_right_count_mult,
-         result.g_blocks_mult, result.g_blocks_mult_sum
-        );
-
-        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
 
     // get the result from the device and do some sanity checks
     // save the result if user specified matrix size
-   /* bCompareResult = processResultDataLargeMatrix(input, result, mat_size, result_file,
+    bCompareResult = processResultDataLargeMatrix(input, result, mat_size, result_file,
                                                   user_defined, argv[0]);
+
 */
+     std::cout << "Start bisectKernelLarge\t iter = " << iter << std::endl;
+            bisectKernelLarge<<< blocks, threads >>>
+            (input.g_a, input.g_b, mat_size,
+              lg, ug, 0, mat_size, precision,
+             result.g_num_one, result.g_num_blocks_mult,
+             result.g_left_one, result.g_right_one, result.g_pos_one,
+             result.g_left_mult, result.g_right_mult,
+             result.g_left_count_mult, result.g_right_count_mult,
+             result.g_blocks_mult, result.g_blocks_mult_sum
+            );
+
+    viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
+    checkCudaErrors(cudaDeviceSynchronize());
+    
     // cleanup
     std::cout << "CleanupResultDataLargeMatrix!" << std::endl;
     cleanupResultDataLargeMatrix(result);
 
     std::cout << "cleanupInputData" << std::endl;
     input.cleanupInputData();
-}
+    }
     // cudaDeviceReset causes the driver to clean up all state. While
     // not mandatory in normal operation, it is good practice.  It is also
     // needed to ensure correct operation when the application is being
