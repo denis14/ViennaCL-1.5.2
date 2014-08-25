@@ -210,7 +210,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
 
         // get the number of intervals containing one eigenvalue after the first
         // processing step
-        unsigned int num_one_intervals;
+        unsigned int num_one_intervals  = 42;
         checkCudaErrors(cudaMemcpy(&num_one_intervals, result.g_num_one,
                                    sizeof(unsigned int),
                                    cudaMemcpyDeviceToHost));
