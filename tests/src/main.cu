@@ -77,6 +77,7 @@ runTest(int argc, char **argv)
     unsigned int iters_timing = 100;
     char  *result_file = "eigenvalues.dat";
 
+    {
     // set up input
     InputData input(argv[0], mat_size, user_defined);
 
@@ -109,7 +110,7 @@ runTest(int argc, char **argv)
 
     std::cout << "cleanupInputData" << std::endl;
     input.cleanupInputData();
-
+    }
     // cudaDeviceReset causes the driver to clean up all state. While
     // not mandatory in normal operation, it is good practice.  It is also
     // needed to ensure correct operation when the application is being
