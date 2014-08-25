@@ -351,9 +351,9 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
         eigenvalues[pos_one[i] - 1] = left_one[i];
     }
 
-   /* for( unsigned int i = 0; i < (mat_size < 15 ? mat_size : 15); ++i)
-      std::cout << "Eigenvalue " << i << "= " << result.std_eigenvalues[i] << std::endl;
-*/
+    for( unsigned int i = 0; i < (mat_size < 15 ? mat_size : 15); ++i)
+      std::cout << "Eigenvalue " << i << "= " << eigenvalues[i] << std::endl;
+
     if (0 == user_defined)
     {
         // store result
