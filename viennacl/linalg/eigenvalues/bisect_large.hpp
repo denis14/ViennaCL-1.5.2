@@ -193,10 +193,10 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
     for (unsigned int iter = 0; iter < iterations; ++iter)
     {
 
-        std::cout << "Start bisectKernelLarge" << std::endl;
+        std::cout << "Start bisectKernelLarge\t iter = " << iter << std::endl;
         bisectKernelLarge<<< blocks, threads >>>
         (input.g_a, input.g_b, mat_size,
-         lg, ug, 0, mat_size, precision,
+          lg, ug, 0, mat_size, precision,
          result.g_num_one, result.g_num_blocks_mult,
          result.g_left_one, result.g_right_one, result.g_pos_one,
          result.g_left_mult, result.g_right_mult,
