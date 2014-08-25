@@ -297,7 +297,7 @@ storeNonEmptyIntervals(unsigned int addr,
 template<class T>
 __device__
 void
-createIndicesCompaction(T *s_compaction_list_exc, T *s_compaction_list_exc_temp,
+createIndicesCompaction(T *s_compaction_list_exc,
                         unsigned int num_threads_compaction)
 {
 
