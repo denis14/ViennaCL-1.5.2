@@ -63,6 +63,7 @@ class InputData
 
            */
             srand(278217421);
+            /*
            for(unsigned int i = 0; i < mat_size; ++i)
            {
              //std_a[i] = i % 11 + 4;
@@ -70,20 +71,20 @@ class InputData
              a[i] = ((float)(i % 11)) - 4.5f;
              b[i] = ((float)(i % 9)) - 4.5f;
 
-           }
+           }*/
            
            // initialize diagonal and superdiagonal entries with random values
        
 
         // srand( clock());
-        /*
+        
         for (unsigned int i = 0; i < mat_size; ++i)
         {
-            a[i] = (float)(12.0 * (((double)rand()
-                                         / (double) RAND_MAX) - 0.5));
-            b[i] = (float)(12.0 * (((double)rand()
-                                         / (double) RAND_MAX) - 0.5));
-        }*/
+            a[i] = (float)(12.0 * (((float)rand()
+                                         / (float) RAND_MAX) - 0.5));
+            b[i] = (float)(12.0 * (((float)rand()
+                                         / (float) RAND_MAX) - 0.5));
+        }
 
           // the first element of s is used as padding on the device (thus the
           // whole vector is copied to the device but the kernels are launched
