@@ -319,8 +319,10 @@ createIndicesCompaction(T *s_compaction_list_exc, T *s_compaction_list_exc_temp,
             //__syncthreads();
            // s_compaction_list_exc[bi] =   temp + s_compaction_list_exc[ai];
     
-           s_compaction_list_exc[bi] =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
-             
+            unsigned short temp =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
+            __syncthreads();
+            s_compaction_list_exc[bi] = temp
+            
             if(s_compaction_list_exc[bi] > 512)
             {
                 printf("CrInCo1: tid = %u\ts_comp_list_exc[%i] = %u \t ai: s_com_list[%i] = %u\n",
