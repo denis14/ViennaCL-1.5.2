@@ -322,7 +322,7 @@ createIndicesCompaction(T *s_compaction_list_exc,
              
             if(s_compaction_list_exc[bi] > 512)
             {
-                printf("CrInCo1: tid = %i\ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
+                printf("CrInCo1: tid = %u\ts_comp_list_exc[%i] = %u \t ai: s_com_list[%i] = %u\n",
                 tid, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
              }    
             
@@ -353,7 +353,7 @@ createIndicesCompaction(T *s_compaction_list_exc,
              
             if(s_compaction_list_exc[bi] > 512)
             {
-               printf("CrInCo2:\ts_comp_list_exc[%i] = %i \t ai: s_com_list[%i] = %i\n",
+               printf("CrInCo2:\ts_comp_list_exc[%u] = %u \t ai: s_com_list[%u] = %u\n",
                bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
             }
             
