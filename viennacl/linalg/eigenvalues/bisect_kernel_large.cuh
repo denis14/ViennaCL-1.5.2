@@ -167,7 +167,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     // helper for stream compaction
     __shared__  unsigned short  s_compaction_list[2 * MAX_THREADS_BLOCK + 1];
-
+    __shared__  unsigned short  s_compaction_list_temp[2 * MAX_THREADS_BLOCK + 1];
     // state variables for whole block
     // if 0 then compaction of second chunk of child intervals is not necessary
     // (because all intervals had exactly one non-dead child)
@@ -183,6 +183,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     // helper for exclusive scan
     unsigned short *s_compaction_list_exc = s_compaction_list + 1;
+    unsigned short *s_compaction_list_exc_temp = s_compaction_list_temp + 1;
 
 
     // variables for currently processed interval
