@@ -101,7 +101,7 @@ runTest(int argc, char **argv)
                                   */
                                   
     dim3  blocks(1, 1, 1);
-    dim3  threads(MAX_THREADS_BLOCK, 1, 1);
+    dim3  threads(16, 1, 1);
     std::cout << "Start bisectKernelLarge" << std::endl;
         bisectKernelLarge<<< blocks, threads >>>
         (input.g_a, input.g_b, mat_size,
