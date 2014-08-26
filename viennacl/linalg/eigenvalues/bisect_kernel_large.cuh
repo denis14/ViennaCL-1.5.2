@@ -181,8 +181,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     // number of threads to use for stream compaction
     __shared__  unsigned int num_threads_compaction;
     
-    unsigned int iter = 0;                                          // selbst hinzugefuegt 
-
+   
     // helper for exclusive scan
     unsigned short *s_compaction_list_exc = s_compaction_list + 1;
    
@@ -231,21 +230,13 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     // for all active threads read intervals from the last level
     // the number of (worst case) active threads per level l is 2^l
-    while (true)
-    {
-        printf("iter_%u\n", iter);
+
         subdivideActiveInterval(tid, s_left, s_right, s_left_count, s_right_count,
                                 num_threads_active,
                                 left, right, left_count, right_count,
                                 mid, all_threads_converged);
 
         __syncthreads();
-
-        // check if done
-        if (1 == all_threads_converged)
-        {
-            break;
-        }
 
         // compute number of eigenvalues smaller than mid
         // use all threads for reading the necessary matrix data from global
@@ -336,13 +327,6 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
             all_threads_converged = 1;
         }
 
-        __syncthreads();
-
-        if (num_threads_compaction > blockDim.x)
-        {
-            break;
-        }
-    }
 
     __syncthreads();
 /*
