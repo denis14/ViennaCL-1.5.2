@@ -134,7 +134,65 @@ storeInterval(unsigned int addr,
     }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//! Compute number of eigenvalues that are smaller than x given a symmetric,
+//! real, and tridiagonal matrix
+//! @param  g_d  diagonal elements stored in global memory
+//! @param  g_s  superdiagonal elements stored in global memory
+//! @param  n    size of matrix
+//! @param  x    value for which the number of eigenvalues that are smaller is
+//!              seeked
+//! @param  tid  thread identified (e.g. threadIdx.x or gtid)
+//! @param  num_intervals_active  number of active intervals / threads that
+//!                               currently process an interval
+//! @param  s_d  scratch space to store diagonal entries of the tridiagonal
+//!              matrix in shared memory
+//! @param  s_s  scratch space to store superdiagonal entries of the tridiagonal
+//!              matrix in shared memory
+//! @param  converged  flag if the current thread is already converged (that
+//!         is count does not have to be computed)
+////////////////////////////////////////////////////////////////////////////////
+__device__
+inline unsigned int
+computeNumSmallerEigenvals(float *g_d, float *g_s, const unsigned int n,
+                           const float x,
+                           const unsigned int tid,
+                           const unsigned int num_intervals_active,
+                           float *s_d, float *s_s,
+                           unsigned int converged
+                          )
+{
 
+    float  delta = 1.0f;
+    unsigned int count = 0;
+
+    __syncthreads();
+
+    // read data into shared memory
+    if (threadIdx.x < n)
+    {
+        s_d[threadIdx.x] = *(g_d + threadIdx.x);
+        s_s[threadIdx.x] = *(g_s + threadIdx.x - 1);
+    }
+
+    __syncthreads();
+
+    // perform loop only for active threads
+    if ((tid < num_intervals_active) && (0 == converged))
+    {
+
+        // perform (optimized) Gaussian elimination to determine the number
+        // of eigenvalues that are smaller than n
+        for (unsigned int k = 0; k < n; ++k)
+        {
+            delta = s_d[k] - x - (s_s[k] * s_s[k]) / delta;
+            count += (delta < 0) ? 1 : 0;
+        }
+
+    }  // end if thread currently processing an interval
+
+    return count;
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Compute number of eigenvalues that are smaller than x given a symmetric,
@@ -303,33 +361,21 @@ createIndicesCompaction(T *s_compaction_list_exc,
 
     unsigned int offset = 1;
     const unsigned int tid = threadIdx.x;
-   // if( tid == 0 )
-    //  printf("num_threads_comp: %u \n", num_threads_compaction);
+
     // higher levels of scan tree
     for (int d = (num_threads_compaction >> 1); d > 0; d >>= 1)
     {
 
         __syncthreads();
+
         if (tid < d)
         {
 
             unsigned int  ai = offset*(2*tid+1)-1;
             unsigned int  bi = offset*(2*tid+2)-1;
-            
-            //s_compaction_list_exc[bi] =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
-            unsigned short temp =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
-           // __syncthreads();
-          // printf("1.for: scl[%u] + scl[%u] \t= %u + %u \t= %u\n", 
-            // bi, ai, s_compaction_list_exc[bi], s_compaction_list_exc[ai], temp);  
-            s_compaction_list_exc[bi] = temp;
-            
-           /* if(s_compaction_list_exc[bi] > 512)
-            {
-                printf("CrInCo1: tid = %u\ts_comp_list_exc[%i] = %u \t ai: s_com_list[%i] = %u\n",
-                tid, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
-             }   */ 
-            
-           
+
+            s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
+                                          + s_compaction_list_exc[ai];
         }
 
         offset <<= 1;
@@ -347,21 +393,9 @@ createIndicesCompaction(T *s_compaction_list_exc,
 
             unsigned int  ai = offset*(tid+1) - 1;
             unsigned int  bi = ai + (offset >> 1);
-            //s_compaction_list_exc[bi] =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
- 
-            unsigned short temp =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
-           // __syncthreads();
-            
-           // printf("2.for: scl[%u] + scl[%u] \t= %u + %u \t= %u\n", 
-        //     bi, ai, s_compaction_list_exc[bi], s_compaction_list_exc[ai], temp);  
-            s_compaction_list_exc[bi] = temp;
-             /*
-            if(s_compaction_list_exc[bi] > 512)
-            {
-               printf("CrInCo2:\ts_comp_list_exc[%u] = %u \t ai: s_com_list[%u] = %u\n",
-               bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
-            }
-            */
+
+            s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
+                                          + s_compaction_list_exc[ai];
         }
     }
 
@@ -404,9 +438,7 @@ compactIntervals(float *s_left, float *s_right,
     if ((tid < num_threads_active) && (1 == is_active_second))
     {
         unsigned int addr_w = num_threads_active + s_compaction_list[tid];
-        //printf("num_thread_actice: %i \n", num_threads_active);
-        if(addr_w > 511)
-          printf("tid: %u addr_w = %u\n",tid, addr_w);
+
         s_left[addr_w] = mid;
         s_right[addr_w] = right;
         s_left_count[addr_w] = mid_count;
@@ -590,5 +622,4 @@ subdivideActiveInterval(const unsigned int tid,
 
 
 #endif // #ifndef _BISECT_UTIL_H_
-
 
