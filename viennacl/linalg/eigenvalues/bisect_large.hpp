@@ -217,10 +217,11 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
 
         dim3 grid_onei;
         grid_onei.x = getNumBlocksLinear(num_one_intervals, MAX_THREADS_BLOCK);
-        dim3 threads_onei;
+        grid_onei.y = 1, grid_onei.z = 1;
+        dim3 threads_onei(MAX_THREADS_BLOCK, 1, 1);
         // use always max number of available threads to better balance load times
         // for matrix data
-        threads_onei.x = MAX_THREADS_BLOCK;
+        //threads_onei.x = MAX_THREADS_BLOCK;
 
         // compute eigenvalues for intervals that contained only one eigenvalue
         // after the first processing step
