@@ -224,6 +224,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
         num_threads_compaction = 1;
 
         all_threads_converged = 1;
+        s_compaction_list_exc[MAX_THREADS_BLOCK - 1];                       // selbst hinzugefuegt
     }
 
     __syncthreads();
