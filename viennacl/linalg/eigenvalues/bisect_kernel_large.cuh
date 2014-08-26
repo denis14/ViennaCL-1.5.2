@@ -425,6 +425,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     scanInitial(tid, tid_2, num_threads_active, num_threads_compaction,
                 s_cl_one, s_cl_mult, s_cl_blocking, s_cl_helper);
+    printf("s_cl_one[%u]: %u\n", tid, s_cl_one[tid]);
 
     scanSumBlocks(tid, tid_2, num_threads_active,
                   num_threads_compaction, s_cl_blocking, s_cl_helper);
