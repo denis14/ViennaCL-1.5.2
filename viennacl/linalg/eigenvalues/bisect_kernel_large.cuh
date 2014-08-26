@@ -634,7 +634,7 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
             : s_cl_mult[tid] + offset_mult_lambda;
     
     if ( ptr_w > 512 )
-      printf("ptr_w = %u \t is_one_lambda = %u \n", ptw_w, is_one_lambda);
+      printf("ptr_w = %u \t is_one_lambda = %u \n", ptr_w, is_one_lambda);
       
     if (0 != c_block_iend)
     {
