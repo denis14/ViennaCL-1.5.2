@@ -373,6 +373,8 @@ createIndicesCompaction(T *s_compaction_list_exc,
 
             unsigned int  ai = offset*(2*tid+1)-1;
             unsigned int  bi = offset*(2*tid+2)-1;
+            if( bi > 512 || ai > 512)
+            printf("ai = %u\t bi = %u\n", ai, bi);
 
             s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
                                           + s_compaction_list_exc[ai];
