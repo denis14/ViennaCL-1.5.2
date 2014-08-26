@@ -857,9 +857,9 @@ scanInitial(const unsigned int tid, const unsigned int tid_2,
             //s_cl_one[bi] = s_cl_one[bi] + s_cl_one[ai - 1];
             //s_cl_mult[bi] = s_cl_mult[bi] + s_cl_mult[ai - 1];
 
-            unsigned short temp_one  = s_cl_one[bi] + s_cl_one[ai - 1];
+            unsigned short temp_one  = s_cl_one[bi] + s_cl_one[ai - 1];            // selbst hinzugefuegt
             unsigned short temp_mult = s_cl_mult[bi] + s_cl_mult[ai - 1];
-            __syncthreads();
+           // __syncthreads();
             s_cl_one[bi]  = temp_one;
             s_cl_mult[bi] = temp_mult;
             
@@ -928,9 +928,9 @@ scanInitial(const unsigned int tid, const unsigned int tid_2,
             //s_cl_one[bi] = s_cl_one[bi] + s_cl_one[ai];
             //s_cl_mult[bi] = s_cl_mult[bi] + s_cl_mult[ai];
             
-            unsigned short temp_one  = s_cl_one[bi] + s_cl_one[ai];
+            unsigned short temp_one  = s_cl_one[bi] + s_cl_one[ai];           // selbst hinzugefuegt
             unsigned short temp_mult = s_cl_mult[bi] + s_cl_mult[ai];
-            __syncthreads();
+          //  __syncthreads();
             s_cl_one[bi]  = temp_one;
             s_cl_mult[bi] = temp_mult;
         }
