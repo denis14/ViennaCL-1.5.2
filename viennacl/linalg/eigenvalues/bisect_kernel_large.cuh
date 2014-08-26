@@ -478,7 +478,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
         printf("num_threads_active = %u\n", num_threads_active);          // selbst hinzugefuegt
         num_blocks_mult = s_cl_blocking[num_threads_active - 1];
         offset_mult_lambda = s_cl_one[num_threads_active - 1];
-        offset_mult_lambda = 0;                                           // selbst hinzugefuegt
+       // offset_mult_lambda = 0;                                           // selbst hinzugefuegt
         num_mult = s_cl_mult[num_threads_active - 1];
 
         *g_num_one = offset_mult_lambda;
