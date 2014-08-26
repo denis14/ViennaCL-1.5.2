@@ -319,13 +319,15 @@ createIndicesCompaction(T *s_compaction_list_exc,
             //s_compaction_list_exc[bi] =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
             unsigned short temp =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
            // __syncthreads();
+           printf("1.for: scl[%u] + scl[%u] \t= %u + %u \n= %u\n", 
+             bi, ai, s_compaction_list_exc[bi], s_compaction_list_exc[ai], temp);  
             s_compaction_list_exc[bi] = temp;
             
-            if(s_compaction_list_exc[bi] > 512)
+           /* if(s_compaction_list_exc[bi] > 512)
             {
                 printf("CrInCo1: tid = %u\ts_comp_list_exc[%i] = %u \t ai: s_com_list[%i] = %u\n",
                 tid, bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
-             }    
+             }   */ 
             
            
         }
@@ -345,24 +347,21 @@ createIndicesCompaction(T *s_compaction_list_exc,
 
             unsigned int  ai = offset*(tid+1) - 1;
             unsigned int  bi = ai + (offset >> 1);
-            
+            //s_compaction_list_exc[bi] =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
  
             unsigned short temp =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
            // __syncthreads();
-            s_compaction_list_exc[bi] = temp;
-             
-            //s_compaction_list_exc[bi] =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
             
+            printf("2.for: scl[%u] + scl[%u] \t= %u + %u \n= %u\n", 
+             bi, ai, s_compaction_list_exc[bi], s_compaction_list_exc[ai], temp);  
+            s_compaction_list_exc[bi] = temp;
+             /*
             if(s_compaction_list_exc[bi] > 512)
             {
                printf("CrInCo2:\ts_comp_list_exc[%u] = %u \t ai: s_com_list[%u] = %u\n",
                bi, s_compaction_list_exc[bi], ai, s_compaction_list_exc[ai]);
             }
-            
-            
-            
-           
- 
+            */
         }
     }
 
