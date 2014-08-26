@@ -86,7 +86,7 @@ bisectKernelLarge_OneIntervals(float *g_d, float *g_s, const unsigned int n,
 
     // process until all threads converged to an eigenvalue
     // while( 0 == converged_all_threads) {
-    for (unsigned int i = 0; i < 2000; ++i)
+    for (unsigned int i = 0; i < 50; ++i)
     //while (true)
     {
 
