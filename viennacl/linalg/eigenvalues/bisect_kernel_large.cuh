@@ -632,7 +632,10 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
 
     ptr_w = (1 == is_one_lambda) ? s_cl_one[tid]
             : s_cl_mult[tid] + offset_mult_lambda;
-
+    
+    if ( ptr_w > 512 )
+      printf("ptr_w = %u \t is_one_lambda = %u \n", ptw_w, is_one_lambda);
+      
     if (0 != c_block_iend)
     {
         ptr_blocking_w = s_cl_blocking[tid];
