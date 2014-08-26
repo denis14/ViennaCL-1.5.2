@@ -425,7 +425,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     scanInitial(tid, tid_2, num_threads_active, num_threads_compaction,
                 s_cl_one, s_cl_mult, s_cl_blocking, s_cl_helper);
-    printf("s_cl_one[%u]: %u\n", tid, s_cl_one[tid]);
+    
 
     scanSumBlocks(tid, tid_2, num_threads_active,
                   num_threads_compaction, s_cl_blocking, s_cl_helper);
@@ -471,7 +471,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     if (0 == tid)
     {
-
+        printf("num_threads_active = %u\n", num_threads_active);
         num_blocks_mult = s_cl_blocking[num_threads_active - 1];
         offset_mult_lambda = s_cl_one[num_threads_active - 1];
         num_mult = s_cl_mult[num_threads_active - 1];
@@ -480,6 +480,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
         *g_num_blocks_mult = num_blocks_mult;
     }
 
+    printf("s_cl_one[%u]: %u\n", tid, s_cl_one[tid]);
     __syncthreads();
 
     float left_2, right_2;
