@@ -224,7 +224,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
         num_threads_compaction = 1;
 
         all_threads_converged = 1;
-        s_compaction_list_exc[MAX_THREADS_BLOCK - 1];                       // selbst hinzugefuegt
+        
     }
 
     __syncthreads();
@@ -233,6 +233,9 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     // the number of (worst case) active threads per level l is 2^l
      for(unsigned int i = 0; i < 8; ++i)
      {
+        s_compaction_list[tid] = 0;
+        s_compaction_list[tid + MAX_THREADS_BLOCK] = 0;
+        s_compaction_list_exc[MAX_THREADS_BLOCK * 2];                       // selbst hinzugefuegt
         subdivideActiveInterval(tid, s_left, s_right, s_left_count, s_right_count,
                                 num_threads_active,
                                 left, right, left_count, right_count,
