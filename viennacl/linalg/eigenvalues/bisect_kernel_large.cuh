@@ -324,7 +324,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
         // update state variables
         if (0 == tid)
         {
-
+            printf("1. num_threads_active = %u\n", num_threads_active);
             // update number of active threads with result of reduction
             num_threads_active += s_compaction_list[num_threads_active];
             num_threads_compaction = ceilPow2(num_threads_active);
@@ -379,6 +379,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     if (0 == tid)
     {
+        printf("2. num_threads_active = %u\n", num_threads_active);
         // set to 0 for exclusive scan
         s_left_count[0] = 0;
         s_right_count[0] = 0;
