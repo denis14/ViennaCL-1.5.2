@@ -226,8 +226,8 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
         // after the first processing step
 
          //grid_onei.x = 1;
-         std::cout << "grid_onei.x, y, z: " << grid_onei.x << "  " << grid_onei.y << "  " << grid_onei.z << std::endl;
-        std::cout << "thread_onei.x, y, z: " << threads_onei.x << "  " << threads_onei.y << "  " << threads_onei.z << std::endl;
+        // std::cout << "grid_onei.x, y, z: " << grid_onei.x << "  " << grid_onei.y << "  " << grid_onei.z << std::endl;
+        //std::cout << "thread_onei.x, y, z: " << threads_onei.x << "  " << threads_onei.y << "  " << threads_onei.z << std::endl;
         
         std::cout << "Start bisectKernelLarge_OneIntervals" << std::endl;
         bisectKernelLarge_OneIntervals<<< grid_onei , threads_onei >>>
@@ -255,8 +255,8 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
         dim3  threads_mult(MAX_THREADS_BLOCK, 1, 1);
 
         //grid_mult.x = 1;
-        std::cout << "grid_mult.x, y, z: " << grid_mult.x << "  " << grid_mult.y << "  " << grid_mult.z << std::endl;
-       std::cout << "thread_mult.x, y, z: " << threads_mult.x << "  " << threads_mult.y << "  " << threads_mult.z << std::endl;
+      //  std::cout << "grid_mult.x, y, z: " << grid_mult.x << "  " << grid_mult.y << "  " << grid_mult.z << std::endl;
+    //   std::cout << "thread_mult.x, y, z: " << threads_mult.x << "  " << threads_mult.y << "  " << threads_mult.z << std::endl;
         
         std::cout << "Start bisectKernelLarge_MultIntervals" << std::endl;
         bisectKernelLarge_MultIntervals<<< grid_mult, threads_mult >>>
