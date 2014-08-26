@@ -318,7 +318,7 @@ createIndicesCompaction(T *s_compaction_list_exc,
             
             //s_compaction_list_exc[bi] =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
             unsigned short temp =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
-            __syncthreads();
+           // __syncthreads();
             s_compaction_list_exc[bi] = temp;
             
             if(s_compaction_list_exc[bi] > 512)
@@ -348,7 +348,7 @@ createIndicesCompaction(T *s_compaction_list_exc,
             
  
             unsigned short temp =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
-            __syncthreads();
+           // __syncthreads();
             s_compaction_list_exc[bi] = temp;
              
             //s_compaction_list_exc[bi] =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
