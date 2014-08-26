@@ -312,6 +312,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
             // create indices for compaction
            
             createIndicesCompaction(s_compaction_list_exc, num_threads_compaction);
+            printf("s_compaction_list_exc[%u]: %u\n", tid, s_compaction_list_exc[tid]);
 
             compactIntervals(s_left, s_right, s_left_count, s_right_count,
                              mid, right, mid_count, right_count,
@@ -342,7 +343,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     }
 
     __syncthreads();
-
+/*
     // generate two lists of intervals; one with intervals that contain one
     // eigenvalue (or are converged), and one with intervals that need further
     // subdivision
@@ -473,7 +474,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     __shared__  unsigned int num_mult;
     __shared__  unsigned int offset_mult_lambda;
 
-    if (64 == tid)    //original: (0 == tid)
+    if (0 == tid)
     {
         printf("num_threads_active = %u\n", num_threads_active);          // selbst hinzugefuegt
         num_blocks_mult = s_cl_blocking[num_threads_active - 1];
@@ -519,6 +520,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
                 s_left, s_right, s_left_count, s_right_count,
                 g_blocks_mult, g_blocks_mult_sum,
                 s_compaction_list, s_cl_helper, offset_mult_lambda);
+                */
 }
 
 ////////////////////////////////////////////////////////////////////////////////
