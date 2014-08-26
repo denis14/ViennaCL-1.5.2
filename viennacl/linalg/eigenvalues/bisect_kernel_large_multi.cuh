@@ -192,7 +192,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         if (1 == compact_second_chunk)
         {
 
-           // createIndicesCompaction(s_compaction_list_exc, num_threads_compaction);
+            createIndicesCompaction(s_compaction_list_exc, num_threads_compaction);
 
             compactIntervals(s_left, s_right, s_left_count, s_right_count,
                              mid, right, mid_count, right_count,
