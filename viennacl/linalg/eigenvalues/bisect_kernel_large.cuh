@@ -16,8 +16,8 @@
 #define _BISECT_KERNEL_LARGE_H_
 
 // includes, project
-#include "config.h"
-#include "util.h"
+#include "config.hpp"
+#include "util.hpp"
 
 // additional kernel
 #include "bisect_util.cu"
