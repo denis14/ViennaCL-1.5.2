@@ -16,8 +16,8 @@
 #define _BISECT_KERNEL_LARGE_H_
 
 // includes, project
-#include "config.hpp"
-#include "util.hpp"
+#include "config.h"
+#include "util.h"
 
 // additional kernel
 #include "bisect_util.cu"
@@ -167,7 +167,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     // helper for stream compaction
     __shared__  unsigned short  s_compaction_list[2 * MAX_THREADS_BLOCK + 1];
-    
+
     // state variables for whole block
     // if 0 then compaction of second chunk of child intervals is not necessary
     // (because all intervals had exactly one non-dead child)
@@ -180,11 +180,9 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     // number of threads to use for stream compaction
     __shared__  unsigned int num_threads_compaction;
-    
-   
+
     // helper for exclusive scan
     unsigned short *s_compaction_list_exc = s_compaction_list + 1;
-   
 
 
     // variables for currently processed interval
@@ -224,24 +222,29 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
         num_threads_compaction = 1;
 
         all_threads_converged = 1;
-        
     }
 
     __syncthreads();
 
     // for all active threads read intervals from the last level
     // the number of (worst case) active threads per level l is 2^l
-     for(unsigned int i = 0; i < 8; ++i)
-     {
+    while (true)
+    {
         s_compaction_list[tid] = 0;
         s_compaction_list[tid + MAX_THREADS_BLOCK] = 0;
-        s_compaction_list_exc[MAX_THREADS_BLOCK * 2];                       // selbst hinzugefuegt
+        s_compaction_list[2 * MAX_THREADS_BLOCK] = 0;
         subdivideActiveInterval(tid, s_left, s_right, s_left_count, s_right_count,
                                 num_threads_active,
                                 left, right, left_count, right_count,
                                 mid, all_threads_converged);
 
         __syncthreads();
+
+        // check if done
+        if (1 == all_threads_converged)
+        {
+            break;
+        }
 
         // compute number of eigenvalues smaller than mid
         // use all threads for reading the necessary matrix data from global
@@ -281,7 +284,6 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
                                             epsilon, compact_second_chunk,
                                             s_compaction_list_exc,
                                             is_active_second);
-               //  printf("s_comp_list %i:  %i\n", tid, s_compaction_list_exc[tid]);
             }
             else
             {
@@ -297,7 +299,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
                 is_active_second = 0;
             }
         }
-        printf("s_compaction_list_exc[%u]: %u\n", tid, s_compaction_list_exc[tid]);
+
         // necessary so that compact_second_chunk is up-to-date
         __syncthreads();
 
@@ -308,15 +310,12 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
         {
 
             // create indices for compaction
-           
             createIndicesCompaction(s_compaction_list_exc, num_threads_compaction);
-            
-/*
+
             compactIntervals(s_left, s_right, s_left_count, s_right_count,
                              mid, right, mid_count, right_count,
                              s_compaction_list, num_threads_active,
                              is_active_second);
-                             */
         }
 
         __syncthreads();
@@ -324,7 +323,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
         // update state variables
         if (0 == tid)
         {
-            //printf("1. !!! num_threads_active = %u\n", num_threads_active);         // selbst hinzugefuegt
+
             // update number of active threads with result of reduction
             num_threads_active += s_compaction_list[num_threads_active];
             num_threads_compaction = ceilPow2(num_threads_active);
@@ -333,17 +332,20 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
             all_threads_converged = 1;
         }
 
+        __syncthreads();
+
+        if (num_threads_compaction > blockDim.x)
+        {
+            break;
+        }
+    }
 
     __syncthreads();
-    }
-/*
+
     // generate two lists of intervals; one with intervals that contain one
     // eigenvalue (or are converged), and one with intervals that need further
     // subdivision
 
-     if (0 == tid) // selbst hinzugefuegt
-        printf("2. !!! num_threads_active = %u\n", num_threads_active);     // selbst hinzugefuegt
-  
     // perform two scans in parallel
 
     unsigned int left_count_2;
@@ -376,7 +378,6 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     if (0 == tid)
     {
-        printf("3. !!! num_threads_active = %u\n", num_threads_active);     // selbst hinzugefuegt
         // set to 0 for exclusive scan
         s_left_count[0] = 0;
         s_right_count[0] = 0;
@@ -423,7 +424,6 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     scanInitial(tid, tid_2, num_threads_active, num_threads_compaction,
                 s_cl_one, s_cl_mult, s_cl_blocking, s_cl_helper);
-    
 
     scanSumBlocks(tid, tid_2, num_threads_active,
                   num_threads_compaction, s_cl_blocking, s_cl_helper);
@@ -469,17 +469,15 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     if (0 == tid)
     {
-        printf("num_threads_active = %u\n", num_threads_active);          // selbst hinzugefuegt
+
         num_blocks_mult = s_cl_blocking[num_threads_active - 1];
         offset_mult_lambda = s_cl_one[num_threads_active - 1];
-       // offset_mult_lambda = 0;                                           // selbst hinzugefuegt
         num_mult = s_cl_mult[num_threads_active - 1];
 
         *g_num_one = offset_mult_lambda;
         *g_num_blocks_mult = num_blocks_mult;
     }
 
-    printf("s_cl_one[%u]: %u\t offset_mult_lambda = %i\n", tid, s_cl_one[tid], offset_mult_lambda); //selbst hinzugefuegt
     __syncthreads();
 
     float left_2, right_2;
@@ -513,7 +511,6 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
                 s_left, s_right, s_left_count, s_right_count,
                 g_blocks_mult, g_blocks_mult_sum,
                 s_compaction_list, s_cl_helper, offset_mult_lambda);
-                */
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -634,10 +631,7 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
 
     ptr_w = (1 == is_one_lambda) ? s_cl_one[tid]
             : s_cl_mult[tid] + offset_mult_lambda;
-    
-    if ( ptr_w > 512 )
-      printf("s_cl_mult[%u] = %u\t offset_mult_lambda = %i \n", tid, s_cl_mult[tid], offset_mult_lambda);
-      
+
     if (0 != c_block_iend)
     {
         ptr_blocking_w = s_cl_blocking[tid];
@@ -849,15 +843,9 @@ scanInitial(const unsigned int tid, const unsigned int tid_2,
             unsigned int  ai = offset*(2*tid+1);
             unsigned int  bi = offset*(2*tid+2)-1;
 
-            //s_cl_one[bi] = s_cl_one[bi] + s_cl_one[ai - 1];
-            //s_cl_mult[bi] = s_cl_mult[bi] + s_cl_mult[ai - 1];
+            s_cl_one[bi] = s_cl_one[bi] + s_cl_one[ai - 1];
+            s_cl_mult[bi] = s_cl_mult[bi] + s_cl_mult[ai - 1];
 
-            unsigned short temp_one  = s_cl_one[bi] + s_cl_one[ai - 1];            // selbst hinzugefuegt
-            unsigned short temp_mult = s_cl_mult[bi] + s_cl_mult[ai - 1];
-           // __syncthreads();
-            s_cl_one[bi]  = temp_one;
-            s_cl_mult[bi] = temp_mult;
-            
             // s_cl_helper is binary and zero for an internal node and 1 for a
             // root node of a tree corresponding to a block
             // s_cl_blocking contains the number of nodes in each sub-tree at each
@@ -920,14 +908,8 @@ scanInitial(const unsigned int tid, const unsigned int tid_2,
             unsigned int  ai = offset*(tid+1) - 1;
             unsigned int  bi = ai + (offset >> 1);
 
-            //s_cl_one[bi] = s_cl_one[bi] + s_cl_one[ai];
-            //s_cl_mult[bi] = s_cl_mult[bi] + s_cl_mult[ai];
-            
-            unsigned short temp_one  = s_cl_one[bi] + s_cl_one[ai];           // selbst hinzugefuegt
-            unsigned short temp_mult = s_cl_mult[bi] + s_cl_mult[ai];
-          //  __syncthreads();
-            s_cl_one[bi]  = temp_one;
-            s_cl_mult[bi] = temp_mult;
+            s_cl_one[bi] = s_cl_one[bi] + s_cl_one[ai];
+            s_cl_mult[bi] = s_cl_mult[bi] + s_cl_mult[ai];
         }
     }
 
