@@ -319,7 +319,7 @@ createIndicesCompaction(T *s_compaction_list_exc,
             //s_compaction_list_exc[bi] =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
             unsigned short temp =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
            // __syncthreads();
-           printf("1.for: scl[%u] + scl[%u] \t= %u + %u \n= %u\n", 
+           printf("1.for: scl[%u] + scl[%u] \t= %u + %u \t= %u\n", 
              bi, ai, s_compaction_list_exc[bi], s_compaction_list_exc[ai], temp);  
             s_compaction_list_exc[bi] = temp;
             
@@ -352,7 +352,7 @@ createIndicesCompaction(T *s_compaction_list_exc,
             unsigned short temp =   s_compaction_list_exc[bi] + s_compaction_list_exc[ai];
            // __syncthreads();
             
-            printf("2.for: scl[%u] + scl[%u] \t= %u + %u \n= %u\n", 
+            printf("2.for: scl[%u] + scl[%u] \t= %u + %u \t= %u\n", 
              bi, ai, s_compaction_list_exc[bi], s_compaction_list_exc[ai], temp);  
             s_compaction_list_exc[bi] = temp;
              /*
