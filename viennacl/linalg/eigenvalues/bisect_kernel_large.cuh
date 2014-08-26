@@ -472,16 +472,17 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     if (0 == tid)
     {
-        printf("num_threads_active = %u\n", num_threads_active);
+        printf("num_threads_active = %u\n", num_threads_active);          // !!!
         num_blocks_mult = s_cl_blocking[num_threads_active - 1];
         offset_mult_lambda = s_cl_one[num_threads_active - 1];
+        offset_mult_lambda = 0;                                            //!!!
         num_mult = s_cl_mult[num_threads_active - 1];
 
         *g_num_one = offset_mult_lambda;
         *g_num_blocks_mult = num_blocks_mult;
     }
 
-    printf("s_cl_one[%u]: %u\n", tid, s_cl_one[tid]);
+    printf("s_cl_one[%u]: %u\t offset_mult_lambda = %u\n", tid, s_cl_one[tid], offset_mult_lambda);
     __syncthreads();
 
     float left_2, right_2;
