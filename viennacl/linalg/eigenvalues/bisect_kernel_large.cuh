@@ -317,7 +317,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
                              s_compaction_list, num_threads_active,
                              is_active_second);
         }
-/*
+
         __syncthreads();
 
         // update state variables
@@ -338,7 +338,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
         {
             break;
         }
-*/
+
     }
 /*
     __syncthreads();
