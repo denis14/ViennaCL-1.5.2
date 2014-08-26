@@ -324,7 +324,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
         // update state variables
         if (0 == tid)
         {
-            printf("1. num_threads_active = %u\n", num_threads_active);
+            printf("1. !!! num_threads_active = %u\n", num_threads_active);         // selbst hinzugefuegt
             // update number of active threads with result of reduction
             num_threads_active += s_compaction_list[num_threads_active];
             num_threads_compaction = ceilPow2(num_threads_active);
@@ -347,6 +347,9 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     // eigenvalue (or are converged), and one with intervals that need further
     // subdivision
 
+     if (0 == tid) // selbst hinzugefuegt
+        printf("2. !!! num_threads_active = %u\n", num_threads_active);     // selbst hinzugefuegt
+  
     // perform two scans in parallel
 
     unsigned int left_count_2;
@@ -379,7 +382,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     if (0 == tid)
     {
-        printf("2. num_threads_active = %u\n", num_threads_active);
+        printf("3. !!! num_threads_active = %u\n", num_threads_active);     // selbst hinzugefuegt
         // set to 0 for exclusive scan
         s_left_count[0] = 0;
         s_right_count[0] = 0;
@@ -470,7 +473,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     __shared__  unsigned int num_mult;
     __shared__  unsigned int offset_mult_lambda;
 
-    if (64 == tid)
+    if (64 == tid)    //original: (0 == tid)
     {
         printf("num_threads_active = %u\n", num_threads_active);          // selbst hinzugefuegt
         num_blocks_mult = s_cl_blocking[num_threads_active - 1];
