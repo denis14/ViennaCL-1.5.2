@@ -923,7 +923,7 @@ scanInitial(const unsigned int tid, const unsigned int tid_2,
             
             unsigned short temp_one  = s_cl_one[bi] + s_cl_one[ai];
             unsigned short temp_mult = s_cl_mult[bi] + s_cl_mult[ai];
-            __synchthreads();
+            __syncthreads();
             s_cl_one[bi]  = temp_one;
             s_cl_mult[bi] = temp_mult;
         }
