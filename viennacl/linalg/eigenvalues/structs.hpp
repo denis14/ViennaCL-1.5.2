@@ -80,9 +80,9 @@ class InputData
         
         for (unsigned int i = 0; i < mat_size; ++i)
         {
-            a[i] = (float)(12.0 * (((float)rand()
+            a[i] = (double)(12.0 * (((double)rand()
                                          / (float) RAND_MAX) - 0.5));
-            b[i] = (float)(12.0 * (((float)rand()
+            b[i] = (double)(12.0 * (((double)rand()
                                          / (float) RAND_MAX) - 0.5));
         }
 
