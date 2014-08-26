@@ -847,9 +847,15 @@ scanInitial(const unsigned int tid, const unsigned int tid_2,
             unsigned int  ai = offset*(2*tid+1);
             unsigned int  bi = offset*(2*tid+2)-1;
 
-            s_cl_one[bi] = s_cl_one[bi] + s_cl_one[ai - 1];
-            s_cl_mult[bi] = s_cl_mult[bi] + s_cl_mult[ai - 1];
+            //s_cl_one[bi] = s_cl_one[bi] + s_cl_one[ai - 1];
+            //s_cl_mult[bi] = s_cl_mult[bi] + s_cl_mult[ai - 1];
 
+            unsigned short temp_one  = s_cl_one[bi] + s_cl_one[ai - 1];
+            unsigned short temp_mult = s_cl_mult[bi] + s_cl_mult[ai - 1];
+            __syncthreads();
+            s_cl_one[bi]  = temp_one;
+            s_cl_mult[bi] = temp_mult;
+            
             // s_cl_helper is binary and zero for an internal node and 1 for a
             // root node of a tree corresponding to a block
             // s_cl_blocking contains the number of nodes in each sub-tree at each
@@ -912,8 +918,14 @@ scanInitial(const unsigned int tid, const unsigned int tid_2,
             unsigned int  ai = offset*(tid+1) - 1;
             unsigned int  bi = ai + (offset >> 1);
 
-            s_cl_one[bi] = s_cl_one[bi] + s_cl_one[ai];
-            s_cl_mult[bi] = s_cl_mult[bi] + s_cl_mult[ai];
+            //s_cl_one[bi] = s_cl_one[bi] + s_cl_one[ai];
+            //s_cl_mult[bi] = s_cl_mult[bi] + s_cl_mult[ai];
+            
+            unsigned short temp_one  = s_cl_one[bi] + s_cl_one[ai];
+            unsigned short temp_mult = s_cl_mult[bi] + s_cl_mult[ai];
+            __synchthreads();
+            s_cl_one[bi]  = temp_one;
+            s_cl_mult[bi] = temp_mult;
         }
     }
 
