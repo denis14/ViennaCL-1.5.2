@@ -293,7 +293,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
                 is_active_second = 0;
             }
         }
-
+        printf("s_compaction_list_exc[%u]: %u\n", tid, s_compaction_list_exc[tid]);
         // necessary so that compact_second_chunk is up-to-date
         __syncthreads();
 
@@ -306,12 +306,13 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
             // create indices for compaction
            
             createIndicesCompaction(s_compaction_list_exc, num_threads_compaction);
-            printf("s_compaction_list_exc[%u]: %u\n", tid, s_compaction_list_exc[tid]);
-
+            
+/*
             compactIntervals(s_left, s_right, s_left_count, s_right_count,
                              mid, right, mid_count, right_count,
                              s_compaction_list, num_threads_active,
                              is_active_second);
+                             */
         }
 
         __syncthreads();
