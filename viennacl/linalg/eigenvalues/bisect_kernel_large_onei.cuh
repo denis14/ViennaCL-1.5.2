@@ -45,7 +45,7 @@ bisectKernelLarge_OneIntervals(float *g_d, float *g_s, const unsigned int n,
                                unsigned int *g_pos,
                                float  precision)
 {
-#if 1
+
     const unsigned int gtid = (blockDim.x * blockIdx.x) + threadIdx.x;
 
     __shared__  float  s_left_scratch[MAX_THREADS_BLOCK];
@@ -86,8 +86,8 @@ bisectKernelLarge_OneIntervals(float *g_d, float *g_s, const unsigned int n,
 
     // process until all threads converged to an eigenvalue
     // while( 0 == converged_all_threads) {
-    for (unsigned int i = 0; i < 5; ++i)
-    //while (true)
+    //for (unsigned int i = 0; i < 5; ++i)                        // selbst hinzugefuegt
+    while (true)
     {
 
         converged_all_threads = 1;
@@ -160,7 +160,6 @@ bisectKernelLarge_OneIntervals(float *g_d, float *g_s, const unsigned int n,
         // and identical to the eigenvalue
         g_left[gtid] = left;
     }
-#endif
 }
 
 #endif // #ifndef _BISECT_KERNEL_LARGE_ONEI_H_
