@@ -237,7 +237,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
 
         unsigned int addr = c_block_offset_output + tid;
         
-        printf("c_block_offset_output = %u\n", c_block_offset_output);        // selbst hinzugefuegt
+        printf("c_block_offset_output = %u\ts_r_c = %u\n", c_block_offset_output, s_right_count[tid]);        // selbst hinzugefuegt
         g_lambda[addr]  = s_left[tid];
         g_pos[addr]   = s_right_count[tid];
     }
