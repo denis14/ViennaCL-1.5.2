@@ -331,7 +331,7 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
                                cudaMemcpyDeviceToHost));
     checkCudaErrors(cudaMemcpy(pos_one, result.g_pos_one, mat_size_ui,
                                cudaMemcpyDeviceToHost));
-/*
+
     // extract eigenvalues
    // viennacl::vector<float> eigenvals(mat_size);
     // extract eigenvalues
@@ -351,7 +351,7 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
     {
         eigenvalues[pos_one[i] - 1] = left_one[i];
     }
-
+/*
     for( unsigned int i = 0; i < mat_size; ++i)
       std::cout << "Eigenvalue " << i << "= " << eigenvalues[i] << std::endl;
 
