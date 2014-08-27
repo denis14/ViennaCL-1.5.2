@@ -122,6 +122,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         s_right[tid] = g_right[c_block_start + tid];
         s_left_count[tid]  = g_left_count[c_block_start + tid];
         s_right_count[tid] = g_right_count[c_block_start + tid];
+        printf("1: s_r_c = %u\n", s_right_count[tid]);
     }
 
     __syncthreads();
