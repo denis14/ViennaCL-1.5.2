@@ -207,10 +207,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
         viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
         checkCudaErrors(cudaDeviceSynchronize());
         
-        for(unsigned int i = 0; i < mat_size; ++i)
-        {
-            printf("1. pos_mult[%u] = %u\n", i, pos_mult[i]);
-        }
+       
 
 
         // get the number of intervals containing one eigenvalue after the first
@@ -275,6 +272,11 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
         );
         viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
         checkCudaErrors(cudaDeviceSynchronize());
+        
+         for(unsigned int i = 0; i < mat_size; ++i)
+        {
+            printf("1. pos_mult[%u] = %u\n", i, result.g_pos_mult[i]);
+        }
 
     }
 
