@@ -221,7 +221,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         s_compaction_list_exc[threadIdx.x] = 0;
         s_compaction_list_exc[threadIdx.x + blockDim.x] = 0;
         
-        if (num_threads_compaction > blockDim.x)
+        if (num_threads_compaction > blockDim.x)              // selbst hinzugefuegt
         {
           break;
         }
