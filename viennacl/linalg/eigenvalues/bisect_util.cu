@@ -361,8 +361,8 @@ createIndicesCompaction(T *s_compaction_list_exc,
 
     unsigned int offset = 1;
     const unsigned int tid = threadIdx.x;
-    if(tid == 0)
-      printf("num_threads_compaction = %u\n", num_threads_compaction);
+   // if(tid == 0)
+     // printf("num_threads_compaction = %u\n", num_threads_compaction);
 
     // higher levels of scan tree
     for (int d = (num_threads_compaction >> 1); d > 0; d >>= 1)
