@@ -88,7 +88,7 @@ bool test_eigen_val_vec(viennacl::matrix<ScalarType, MatrixLayout> & Q,
 template <typename MatrixLayout>
 void test_qr_method_sym()
 {
-  std::size_t sz = 10;
+  std::size_t sz = 520;
 
   viennacl::matrix<ScalarType, MatrixLayout> Q = viennacl::identity_matrix<ScalarType>(sz);
   ublas::vector<ScalarType> d(sz), e(sz), d_ref(sz), e_ref(sz);
@@ -96,6 +96,7 @@ void test_qr_method_sym()
   std::cout << "Testing matrix of size " << sz << "-by-" << sz << std::endl << std::endl;
 
   // Initialize diagonal and superdiagonal elements
+  /*
   d[0] = 1; e[0] = 0;
   d[1] = 2; e[1] = 4;
   d[2] =-4; e[2] = 5;
@@ -106,7 +107,15 @@ void test_qr_method_sym()
   d[7] = 9; e[7] = 1;
   d[8] = 3; e[8] = 5;
   d[9] = 8; e[9] = 2;
-
+  */
+  for(unsigned int i = 0; i < sz; ++i)
+  {
+    //std_a[i] = i % 11 + 4;
+    //std_b_raw[i] = i % 9 + 2;
+    d[i] = ((float)(i % 9)) - 4.5f;
+    e[i] = ((float)(i % 5)) - 4.5f;
+  }
+  e[0] = 0.0f;
   d_ref = d;
   e_ref = e;
 
@@ -115,6 +124,9 @@ void test_qr_method_sym()
 
   if(!test_eigen_val_vec<MatrixLayout>(Q, d, d_ref, e_ref))
      exit(EXIT_FAILURE);
+
+  for( unsigned int i = 0; i < 519; ++i)
+    std::cout << "Eigenvalue " << i << "= " << d[i] << std::endl;
 }
 
 int main()
@@ -122,9 +134,9 @@ int main()
 
   std::cout << std::endl << "Testing QL algorithm for symmetric tridiagonal row-major matrices..." << std::endl;
   test_qr_method_sym<viennacl::row_major>();
-
+/*
   std::cout << std::endl << "Testing QL algorithm for symmetric tridiagonal column-major matrices..." << std::endl;
   test_qr_method_sym<viennacl::column_major>();
-
+*/
   std::cout << std::endl <<"--------TEST SUCCESSFULLY COMPLETED----------" << std::endl;
 }
