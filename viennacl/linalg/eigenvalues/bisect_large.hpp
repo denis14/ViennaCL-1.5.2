@@ -352,7 +352,7 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
     {
         eigenvalues[pos_one[i] - 1] = left_one[i];
     }
-/*
+
     for( unsigned int i = 0; i < mat_size; ++i)
       std::cout << "Eigenvalue " << i << "= " << eigenvalues[i] << std::endl;
 
@@ -375,6 +375,6 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
     freePtr(pos_one);
 
     return bCompareResult;
-    */
+    
 }
 
