@@ -175,6 +175,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                        precision, compact_second_chunk,
                                        s_compaction_list_exc,
                                        is_active_second);
+                printf("2: s_r_c = %u\n", s_right_count[tid]);
             }
             else
             {
@@ -185,6 +186,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                        s_compaction_list_exc, compact_second_chunk,
                                        num_threads_active,
                                        is_active_second);
+                 printf("3: s_r_c = %u\n", s_right_count[tid]);
 
             }
         }
@@ -202,6 +204,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                              mid, right, mid_count, right_count,
                              s_compaction_list, num_threads_active,
                              is_active_second);
+            printf("4: s_r_c = %u\n", s_right_count[tid]);
         }
 
         __syncthreads();
@@ -238,7 +241,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
 
         unsigned int addr = c_block_offset_output + tid;
         
-        printf("c_block_offset_output = %u\ts_r_c = %u\n", c_block_offset_output, s_right_count[tid]);        // selbst hinzugefuegt
+       // printf("c_block_offset_output = %u\ts_r_c = %u\n", c_block_offset_output, s_right_count[tid]);        // selbst hinzugefuegt
         g_lambda[addr]  = s_left[tid];
         g_pos[addr]   = s_right_count[tid];
     }
