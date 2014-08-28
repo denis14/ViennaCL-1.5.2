@@ -187,7 +187,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                        precision, compact_second_chunk,
                                        s_compaction_list_exc,
                                        is_active_second);
-               // printf("2!!!: s_r_c = %u\n", s_right_count[tid]);                       // selbst hinzugefuegt
+                printf("2!!!: left_count = %u \t right_count = \n", left_count, right_count);                       // selbst hinzugefuegt
             }
             else
             {
