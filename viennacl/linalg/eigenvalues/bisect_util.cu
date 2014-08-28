@@ -252,8 +252,8 @@ computeNumSmallerEigenvalsLarge(float *g_d, float *g_s, const unsigned int n,
             for (unsigned int k = 0; k < min(rem,blockDim.x); ++k)
             {
                 delta = s_d[k] - x - (s_s[k] * s_s[k]) / delta;
-                if( abs(delta) > 1000000.0f || abs( delta) < 0.000001f )               // selbst hinzugefuegt
-                  printf("Delta = %.10f\n", delta);
+            //    if( abs(delta) > 1000000.0f || abs( delta) < 0.000001f )               // selbst hinzugefuegt
+              //    printf("Delta = %.10f\n", delta);
                 // delta = (abs( delta) < (1.0e-10)) ? -(1.0e-10) : delta;
                 count += (delta < 0) ? 1 : 0;
             }
@@ -452,77 +452,6 @@ compactIntervals(float *s_left, float *s_right,
     }
 }
 
-///////////////////////////////////////////////////////////////////////////////
-//! Store intervals that have already converged (w.r.t. the desired precision),
-//! duplicating intervals that contain multiple eigenvalues
-//! @param  s_left  shared memory storage for left interval limits
-//! @param  s_right  shared memory storage for right interval limits
-//! @param  s_left_count  shared memory storage for number of eigenvalues less
-//!                       than left interval limits
-//! @param  s_right_count  shared memory storage for number of eigenvalues less
-//!                       than right interval limits
-//! @param  left   lower limit of interval
-//! @param  mid    midpoint of interval (updated if split is necessary)
-//! @param  right  upper limit of interval
-//! @param  left_count  eigenvalues less than \a left
-//! @param  mid_count  eigenvalues less than \a mid
-//! @param  right_count  eigenvalues less than \a right
-//! @param  s_compaction_list_exc  helper array for stream compaction, updated
-//!                                at tid if split is necessary
-//! @param  compact_second_chunk  shared mem flag if second chunk is used and
-//!                               ergo requires compaction
-//! @param  num_threads_active  number of active threads / intervals
-///////////////////////////////////////////////////////////////////////////////
-/*
-template<class T, class S>
-__device__
-void
-storeIntervalConverged(float *s_left, float *s_right,
-                       T *s_left_count, T *s_right_count,
-                       float &left, float &mid, float &right,
-                       S &left_count, S &mid_count, S &right_count,
-                       T *s_compaction_list_exc,
-                       unsigned int &compact_second_chunk,
-                       const unsigned int num_threads_active)
-{
-    const unsigned int tid = threadIdx.x;
-    const unsigned int multiplicity = right_count > left_count ? right_count - left_count : left_count - right_count; // selbst veraendert
-
-    // check multiplicity of eigenvalue
-    if (1 == multiplicity)
-    {
-
-        // just re-store intervals, simple eigenvalue
-        s_left[tid] = left;
-        s_right[tid] = right;
-        s_left_count[tid] = left_count;
-        s_right_count[tid] = right_count;
-
-        // mark that no second child / clear
-        s_right_count[tid + num_threads_active] = 0;
-        s_compaction_list_exc[tid] = 0;
-    }
-    else
-    {
-
-        // number of eigenvalues after the split less than mid
-        mid_count = left_count + (multiplicity >> 1);
-
-        // store left interval
-        s_left[tid] = left;
-        s_right[tid] = right;
-        s_left_count[tid] = left_count;
-        s_right_count[tid] = mid_count;
-
-        mid = left;
-
-        // mark that second child interval exists
-        s_right_count[tid + num_threads_active] = right_count;
-        s_compaction_list_exc[tid] = 1;
-        compact_second_chunk = 1;
-    }
-}
-*/
 template<class T, class S>
 __device__
 void
