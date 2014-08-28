@@ -344,13 +344,13 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
     // extract eigenvalues
     float *eigenvalues = (float *) malloc(mat_size_f);
 
-/*
+
     // singleton intervals generated in the second step
     for (unsigned int i = 0; i < sum_blocks_mult; ++i)
     {
       printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
       eigenvalues[pos_mult[i] - 1] = lambda_mult[i];
-    }*/
+    }
 
     // singleton intervals generated in the first step
     unsigned int index = 0;
