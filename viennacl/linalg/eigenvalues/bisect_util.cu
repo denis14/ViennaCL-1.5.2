@@ -610,6 +610,10 @@ subdivideActiveInterval(const unsigned int tid,
         right = s_right[tid];
         left_count = s_left_count[tid];
         right_count = s_right_count[tid];
+        if(left_count > 520 || right_count > 520)
+        {
+          printf("subdivideActiveInterval: STOP!!!\n");
+        }
 
         // check if thread already converged
         if (left != right)
