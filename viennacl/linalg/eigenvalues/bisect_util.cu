@@ -252,8 +252,8 @@ computeNumSmallerEigenvalsLarge(float *g_d, float *g_s, const unsigned int n,
             for (unsigned int k = 0; k < min(rem,blockDim.x); ++k)
             {
                 delta = s_d[k] - x - (s_s[k] * s_s[k]) / delta;
-                if( abs(delta) > 10000.0f || abs( delta) < 0.0001f )               // selbst hinzugefuegt
-                  printf("Delta = %f\n", delta);
+                if( abs(delta) > 1000000.0f || abs( delta) < 0.000001f )               // selbst hinzugefuegt
+                  printf("Delta = %.10f\n", delta);
                 // delta = (abs( delta) < (1.0e-10)) ? -(1.0e-10) : delta;
                 count += (delta < 0) ? 1 : 0;
             }
