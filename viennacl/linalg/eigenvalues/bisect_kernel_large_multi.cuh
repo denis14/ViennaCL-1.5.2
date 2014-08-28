@@ -211,6 +211,8 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                              s_compaction_list, num_threads_active,
                              is_active_second);
           //  printf("4: s_r_c = %u\n", s_right_count[tid]);                            // selbst hinzugefuegt
+          if(s_right_count[tid] > 520)
+            exit(0);
         }
 
         __syncthreads();
