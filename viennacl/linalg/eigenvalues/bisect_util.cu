@@ -626,6 +626,11 @@ subdivideActiveInterval(const unsigned int tid,
         }
 
     }  // end for all active threads
+    else
+    {
+      left_count  = 0.0f;
+      right_count = 0.0f;
+    }
 }
 
 
