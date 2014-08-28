@@ -180,7 +180,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                        precision, compact_second_chunk,
                                        s_compaction_list_exc,
                                        is_active_second);
-                printf("2!!!: s_r_c = %u\n", s_right_count[tid]);
+               // printf("2!!!: s_r_c = %u\n", s_right_count[tid]);                       // selbst hinzugefuegt
             }
             else
             {
@@ -191,7 +191,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                        s_compaction_list_exc, compact_second_chunk,
                                        num_threads_active,
                                        is_active_second);
-               //  printf("3: s_r_c = %u\n", s_right_count[tid]);
+               //  printf("3: s_r_c = %u\n", s_right_count[tid]);                       // selbst hinzugefuegt
 
             }
         }
@@ -209,7 +209,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                              mid, right, mid_count, right_count,
                              s_compaction_list, num_threads_active,
                              is_active_second);
-          //  printf("4: s_r_c = %u\n", s_right_count[tid]);
+          //  printf("4: s_r_c = %u\n", s_right_count[tid]);                            // selbst hinzugefuegt
         }
 
         __syncthreads();
