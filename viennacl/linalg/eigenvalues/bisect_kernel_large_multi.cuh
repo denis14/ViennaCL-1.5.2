@@ -147,7 +147,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                 num_threads_active,
                                 left, right, left_count, right_count,
                                 mid, all_threads_converged);
-       if(s_right_count[tid] > 520)
+       if(s_right_count[tid] > 520 || left_count > 520 || right_count > 520)
           {
             printf("1_break: s_r_c = %u\n", s_right_count[tid]);
             break;
