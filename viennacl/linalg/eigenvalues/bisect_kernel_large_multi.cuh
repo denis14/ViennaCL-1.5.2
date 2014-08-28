@@ -111,6 +111,11 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         compact_second_chunk = 0;
     }
 
+     s_left_count [tid] = 0.0f;
+     s_right_count[tid] = 0.0f;
+     s_left_count [tid + MAX_THREADS_BLOCK] = 0.0f;
+     s_right_count[tid + MAX_THREADS_BLOCK] = 0.0f;
+    
     __syncthreads();
     
 
