@@ -110,7 +110,7 @@ storeInterval(unsigned int addr,
 {
     s_left_count[addr] = left_count;
     s_right_count[addr] = right_count;
-    printf("store int: s_r_c[%u] = %u \n", addr, s_right_count[addr]);
+   // printf("store int: s_r_c[%u] = %u \n", addr, s_right_count[addr]);          // selbst hinzugefuegt
 
     // check if interval converged
     float t0 = abs(right - left);
@@ -610,11 +610,11 @@ subdivideActiveInterval(const unsigned int tid,
         right = s_right[tid];
         left_count = s_left_count[tid];
         right_count = s_right_count[tid];
-        if(left_count > 520 || right_count > 520)
+      /*  if(left_count > 520 || right_count > 520)                       // selbst hinzugefuegt
         {
           printf("subdivideActiveInterval: STOP!!!\n");
         }
-
+*/
         // check if thread already converged
         if (left != right)
         {
@@ -630,7 +630,7 @@ subdivideActiveInterval(const unsigned int tid,
         }
 
     }  // end for all active threads
-    else
+    else                                                              // selbst hinzugefuegt
     {
       left_count  = 0.0f;
       right_count = 0.0f;
