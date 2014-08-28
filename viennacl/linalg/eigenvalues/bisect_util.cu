@@ -484,7 +484,7 @@ storeIntervalConverged(float *s_left, float *s_right,
                        const unsigned int num_threads_active)
 {
     const unsigned int tid = threadIdx.x;
-    const unsigned int multiplicity = right_count - left_count;
+    const unsigned int multiplicity = right_count > left_count ? right_count - left_count : left_count - right_count; // selbst veraendert
 
     // check multiplicity of eigenvalue
     if (1 == multiplicity)
