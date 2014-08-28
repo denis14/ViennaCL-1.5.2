@@ -148,10 +148,11 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                 num_threads_active,
                                 left, right, left_count, right_count,
                                 mid, all_threads_converged);
-     /*  if(s_right_count[tid] > 520 || left_count > 520 || right_count > 520)
+       if( s_right_count[tid] < s_left_count[tid] )
           {
-            printf("1_break: left_count = %u\t right_count = %u \n", left_count, right_count);
-          } */
+            printf("1: left_count = %u\t right_count = %u \n", left_count, right_count);
+            break;
+          } 
          
 
         __syncthreads();
@@ -175,9 +176,6 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
 
         if (tid < num_threads_active)
         {
-
-            //printf("2!!!: left_count = %u \t right_count = %u\n", left_count, right_count);                       // selbst hinzugefuegt
-            
             // store intervals
             if (left != right)
             {
@@ -200,6 +198,11 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                        s_compaction_list_exc, compact_second_chunk,
                                        num_threads_active,
                                        is_active_second);
+            if( s_right_count[tid] < s_left_count[tid] )
+            {
+              printf("2: left_count = %u\t right_count = %u \n", left_count, right_count);
+              break;
+            }
               
 
             }
