@@ -54,7 +54,6 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                 float precision
                                )
 {
-#if 1
   const unsigned int tid = threadIdx.x;
 
     // left and right limits of interval
@@ -114,10 +113,6 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
 
     __syncthreads();
     
-    s_right_count[tid] = 0.0f;                 // selbst hinzugefuegt
-    s_left_count[tid] = 0.0f;                 // selbst hinzugefuegt   
-    s_right_count[tid + MAX_THREADS_BLOCK] = 0.0f;                 // selbst hinzugefuegt
-    s_left_count[ tid + MAX_THREADS_BLOCK] = 0.0f;                 // selbst hinzugefuegt   
 
     // read data into shared memory
     if (tid < num_threads_active)
@@ -129,7 +124,8 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         s_right_count[tid] = g_right_count[c_block_start + tid];
         
     }
-    printf("1: tid = %u s_r_c = %u \t s_l_c = %u\n", tid, s_right_count[tid], s_left_count[tid]);       // selbst hinzugefuegt
+    if( s_left_count[tid] > s_right_count[tid] ) 
+      printf("1: tid = %u s_r_c = %u \t s_l_c = %u\n", tid, s_right_count[tid], s_left_count[tid]);       // selbst hinzugefuegt
 
     __syncthreads();
 
@@ -147,12 +143,11 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                 num_threads_active,
                                 left, right, left_count, right_count,
                                 mid, all_threads_converged);
-       if(s_right_count[tid] > 520 || left_count > 520 || right_count > 520)
+     /*  if(s_right_count[tid] > 520 || left_count > 520 || right_count > 520)
           {
             printf("1_break: left_count = %u\t right_count = %u \n", left_count, right_count);
-            break;
-          } 
-          // werte von left_count, right_count, s_left_count und s_right_count stimmen bis hierhin
+          } */
+         
 
         __syncthreads();
 
@@ -176,7 +171,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         if (tid < num_threads_active)
         {
 
-            printf("2!!!: left_count = %u \t right_count = %u\n", left_count, right_count);                       // selbst hinzugefuegt
+            //printf("2!!!: left_count = %u \t right_count = %u\n", left_count, right_count);                       // selbst hinzugefuegt
             
             // store intervals
             if (left != right)
@@ -200,12 +195,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                        s_compaction_list_exc, compact_second_chunk,
                                        num_threads_active,
                                        is_active_second);
-               //  printf("3: s_r_c = %u\n", s_right_count[tid]);                       // selbst hinzugefuegt
-               if(s_right_count[tid] > 520)
-               {
-                  printf("2_break: s_r_c = %u\n", s_right_count[tid]);
-                  break;
-               }
+              
 
             }
         }
@@ -223,12 +213,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                              mid, right, mid_count, right_count,
                              s_compaction_list, num_threads_active,
                              is_active_second);
-          //  printf("4: s_r_c = %u\n", s_right_count[tid]);                            // selbst hinzugefuegt
-          if(s_right_count[tid] > 520)
-          {
-            printf("4_break: s_r_c = %u\n", s_right_count[tid]);
-            break;
-          }
+        
         }
 
         __syncthreads();
@@ -265,11 +250,9 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
 
         unsigned int addr = c_block_offset_output + tid;
         
-       // printf("c_block_offset_output = %u\ts_r_c = %u\n", c_block_offset_output, s_right_count[tid]);        // selbst hinzugefuegt
         g_lambda[addr]  = s_left[tid];
         g_pos[addr]   = s_right_count[tid];
     }
-#endif
 }
 
 #endif // #ifndef _BISECT_KERNEL_LARGE_MULTI_H_
