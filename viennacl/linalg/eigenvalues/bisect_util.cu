@@ -545,6 +545,7 @@ storeIntervalConverged(float *s_left, float *s_right,
         s_right[tid] = right;
         s_left_count[tid] = left_count;
         s_right_count[tid] = right_count;
+        printf("store_int_con:1 s_r_c[%u] = %u", tid, s_right_count[tid]);
 
         // mark that no second child / clear
         is_active_second = 0;
@@ -561,6 +562,7 @@ storeIntervalConverged(float *s_left, float *s_right,
         s_right[tid] = right;
         s_left_count[tid] = left_count;
         s_right_count[tid] = mid_count;
+        printf("store_int_con:2 s_r_c[%u] = %u", tid, s_right_count[tid]);
 
         mid = left;
 
