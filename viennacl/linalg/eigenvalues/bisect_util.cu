@@ -443,7 +443,7 @@ compactIntervals(float *s_left, float *s_right,
     if ((tid < num_threads_active) && (1 == is_active_second))
     {
         unsigned int addr_w = num_threads_active + s_compaction_list[tid];
-        printf("addr_w = %u \n", addr_w);                                          // selbst hinzugefuegt
+       
         s_left[addr_w] = mid;
         s_right[addr_w] = right;
         s_left_count[addr_w] = mid_count;
