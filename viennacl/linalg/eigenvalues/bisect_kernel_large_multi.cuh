@@ -115,7 +115,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
     __syncthreads();
     
     s_right_count[tid] = 0.0f;                 // selbst hinzugefuegt
-   
+    s_left_count[tid] = 0.0f;                 // selbst hinzugefuegt   
 
     // read data into shared memory
     if (tid < num_threads_active)
