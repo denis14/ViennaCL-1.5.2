@@ -116,9 +116,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
     
     s_right_count[tid] = 0.0f;                 // selbst hinzugefuegt
    
-    if( tid == 0 )  
-      printf("num_threads_active: %u\n", num_threads_active);
-    printf("Hallo !!!\n");
+
     // read data into shared memory
     if (tid < num_threads_active)
     {
