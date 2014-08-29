@@ -204,7 +204,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
          result.g_blocks_mult, result.g_blocks_mult_sum
         );
 
-        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
+       // viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
         checkCudaErrors(cudaDeviceSynchronize());
         
        
