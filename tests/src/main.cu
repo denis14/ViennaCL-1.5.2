@@ -69,12 +69,12 @@ runTest(int argc, char **argv)
 {
     bool bCompareResult = false;
     // default
-    unsigned int mat_size = 70520;
+    unsigned int mat_size = 60000;
     // flag if the matrix size is due to explicit user request
     unsigned int user_defined = 0;
     // desired precision of eigenvalues
     float  precision = 0.00001f;
-    unsigned int iters_timing = 3;         // original: 100
+    unsigned int iters_timing = 1;         // original: 100
     char  *result_file = "eigenvalues.dat";
 
     {
