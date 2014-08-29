@@ -129,8 +129,8 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         s_right_count[tid] = g_right_count[c_block_start + tid];
         
     }
-    if( s_left_count[tid] > s_right_count[tid] ) 
-      printf("1: tid = %u s_r_c = %u \t s_l_c = %u\n", tid, s_right_count[tid], s_left_count[tid]);       // selbst hinzugefuegt
+   // if( s_left_count[tid] > s_right_count[tid] ) 
+     // printf("1: tid = %u s_r_c = %u \t s_l_c = %u\n", tid, s_right_count[tid], s_left_count[tid]);       // selbst hinzugefuegt
 
     __syncthreads();
 
@@ -148,11 +148,11 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                 num_threads_active,
                                 left, right, left_count, right_count,
                                 mid, all_threads_converged);
-       if( s_right_count[tid] < s_left_count[tid] )
+    /*   if( s_right_count[tid] < s_left_count[tid] )
           {
             printf("2: left_count = %u\t right_count = %u \n", left_count, right_count);
             //break;
-          } 
+          } */
          
 
         __syncthreads();
@@ -172,8 +172,8 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                                     s_left, s_right,
                                                     (left == right));
                                                     
-        printf("left_count = %u\t mid_count = %u \t right_count = %u \n",
-          s_left_count[tid], mid_count, s_right_count[tid]);
+       // printf("left_count = %u\t mid_count = %u \t right_count = %u \n",
+         // s_left_count[tid], mid_count, s_right_count[tid]);
         __syncthreads();
 
         if (tid < num_threads_active)
@@ -200,11 +200,11 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                        s_compaction_list_exc, compact_second_chunk,
                                        num_threads_active,
                                        is_active_second);
-            if( s_right_count[tid] < s_left_count[tid] )
+        /*    if( s_right_count[tid] < s_left_count[tid] )
             {
               printf("3: left_count = %u\t right_count = %u \n", left_count, right_count);
              // break;
-            }
+            }*/
               
 
             }
