@@ -137,6 +137,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
     // do until all threads converged
     while (true)
     {
+        __syncthreads();
         iter++;
         //for (int iter=0; iter < 0; iter++) {
         s_compaction_list[threadIdx.x] = 0;
