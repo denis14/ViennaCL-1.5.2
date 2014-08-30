@@ -229,7 +229,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     // for all active threads read intervals from the last level
     // the number of (worst case) active threads per level l is 2^l
     //while (true)                                                       
-    for( unsigned int i = 0; i < 5; ++i )                                 // selbst hinzugefuegt
+    for( unsigned int i = 0; i < 100; ++i )                                 // selbst hinzugefuegt
     {
         s_compaction_list[tid] = 0;
         s_compaction_list[tid + MAX_THREADS_BLOCK] = 0;
