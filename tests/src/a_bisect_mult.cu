@@ -74,7 +74,6 @@ runTest(int argc, char **argv)
     unsigned int user_defined = 0;
     // desired precision of eigenvalues
     float  precision = 0.00001f;
-    unsigned int iters_timing = 1;
     char  *result_file = "eigenvalues.dat";
 
     {
