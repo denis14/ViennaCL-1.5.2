@@ -177,8 +177,6 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
 
         if (tid < num_threads_active)
         {
-            printf("left_count = %u  \t mid_count = %u \t right_count = %u \t iter = %u\t tid = %u\n",
-              s_left_count[num_threads_active + s_compaction_list[tid]], mid_count, s_right_count[num_threads_active + s_compaction_list[tid]], iter, tid);
             // store intervals
             if (left != right)
             {
@@ -224,6 +222,9 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                              mid, right, mid_count, right_count,
                              s_compaction_list, num_threads_active,
                              is_active_second);
+            printf("left_count = %u  \t mid_count = %u \t right_count = %u \t iter = %u\t tid = %u\n",
+              s_left_count[num_threads_active + s_compaction_list[tid]], mid_count, s_right_count[num_threads_active + s_compaction_list[tid]], iter, tid);
+
         
         }
 
