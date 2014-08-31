@@ -220,13 +220,14 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         {
 
             createIndicesCompaction(s_compaction_list_exc, num_threads_compaction);
-
+            unsigned int temp = left_count;
             compactIntervals(s_left, s_right, s_left_count, s_right_count,
                              mid, right, mid_count, right_count,
                              s_compaction_list, num_threads_active,
                              is_active_second);
-        //    printf("left_count = %u  \t mid_count = %u \t right_count = %u \t iter = %u\t tid = %u\n",
-          //    s_left_count[num_threads_active + s_compaction_list[tid]], mid_count, s_right_count[num_threads_active + s_compaction_list[tid]], iter, tid);
+            if(left_count > 10520)
+              printf("left_count = %u  \t temp = \tmid_count = %u \t right_count = %u \t iter = %u\t tid = %u\n",
+                left_count, temp, mid_count, right_count, iter, tid);
 
         
         }
