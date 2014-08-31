@@ -481,11 +481,11 @@ subdivideActiveInterval(const unsigned int tid,
         right = s_right[tid];
         left_count = s_left_count[tid];
         right_count = s_right_count[tid];
-      /*  if(left_count > 520 || right_count > 520)                       // selbst hinzugefuegt
+        if(left_count > 5020 || right_count > 520)                       // selbst hinzugefuegt
         {
-          printf("subdivideActiveInterval: STOP!!!\n");
+          printf("subdivideActiveInterval: left_count = %u\t tid = %u!!!\n", left_count, tid);
         }
-*/
+
         // check if thread already converged
         if (left != right)
         {
