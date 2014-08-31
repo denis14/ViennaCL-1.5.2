@@ -88,10 +88,10 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
     // number of eigenvalues smaller than \a mid
     unsigned int  mid_count = 0;
     // current interval parameter
-    float  left;
-    float  right;
-    unsigned int  left_count;
-    unsigned int  right_count;
+    float  left = 0.0f;
+    float  right = 0.0f;
+    unsigned int  left_count = 0;
+    unsigned int  right_count = 0;
     // helper for compaction, keep track which threads have a second child
     unsigned int  is_active_second = 0;
 
