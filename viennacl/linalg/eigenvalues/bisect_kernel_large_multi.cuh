@@ -139,10 +139,10 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
     {
         iter++;
         //for (int iter=0; iter < 0; iter++) {
-        s_compaction_list[threadIdx.x] = 0;
+     /*   s_compaction_list[threadIdx.x] = 0;
         s_compaction_list[threadIdx.x + blockDim.x] = 0;
         s_compaction_list[2 * MAX_THREADS_BLOCK] = 0;
-
+*/
         // subdivide interval if currently active and not already converged
         subdivideActiveInterval(tid, s_left, s_right,
                                 s_left_count, s_right_count,
