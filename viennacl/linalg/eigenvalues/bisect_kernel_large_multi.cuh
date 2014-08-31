@@ -95,6 +95,8 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
     // helper for compaction, keep track which threads have a second child
     unsigned int  is_active_second = 0;
 
+
+    __syncthreads();                                       // selbst hinzugefuegt
     // initialize common start conditions
     if (0 == tid)
     {
@@ -111,7 +113,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         compact_second_chunk = 0;
     }
 
-     s_left_count [tid] = 0;
+     s_left_count [tid] = 0;                                         // selbst hinzugefuegt
      s_right_count[tid] = 0;
      s_left_count [tid + MAX_THREADS_BLOCK] = 0;
      s_right_count[tid + MAX_THREADS_BLOCK] = 0;
@@ -183,7 +185,6 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
             if( s_right_count[tid] < s_left_count[tid] )
             {
               printf("3: left_count = %u\t right_count = %u \t tid = %u \n", left_count, right_count, tid);
-             // break;
             }
             
             // store intervals
