@@ -478,8 +478,8 @@ subdivideActiveInterval(const unsigned int tid,
         right_count = s_right_count[tid];
 
         // check if thread already converged
-        if( std::abs(left - right) > 0.00000001f )
-        //if (left != right)
+        //if( std::abs(left - right) > 0.00000001f )
+        if (left != right)
         {
 
             mid = computeMidpoint(left, right);
