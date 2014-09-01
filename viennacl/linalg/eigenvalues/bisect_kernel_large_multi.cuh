@@ -177,10 +177,9 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                                     s_left, s_right,
                                                     (left == right));
                                          
-        if (mid_count > 10520)
+        if (mid_count > 520)
         {
           printf("mid_count = %u\n", mid_count);
-          break;
         }
         __syncthreads();
 
