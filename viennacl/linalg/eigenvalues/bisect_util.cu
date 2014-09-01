@@ -192,8 +192,6 @@ computeNumSmallerEigenvalsLarge(float *g_d, float *g_s, const unsigned int n,
             for (unsigned int k = 0; k < min(rem,blockDim.x); ++k)
             {
                 delta = s_d[k] - x - (s_s[k] * s_s[k]) / delta;
-            //    if( abs(delta) > 1000000.0f || abs( delta) < 0.000001f )               // selbst hinzugefuegt
-              //    printf("Delta = %.10f\n", delta);
                 // delta = (abs( delta) < (1.0e-10)) ? -(1.0e-10) : delta;
                 count += (delta < 0) ? 1 : 0;
             }
@@ -248,10 +246,7 @@ storeNonEmptyIntervals(unsigned int addr,
                        unsigned int &is_active_second)
 {
     // check if both child intervals are valid
-    if(left_count > 10520 || right_count > 10520)                           // selbst hinzugefuegt
-    {
-      printf("storeNonEmptyIntervals: left_count = %u\t tid = %u!!!\n", left_count, threadIdx.x);
-    }
+   
     if ((left_count != mid_count) && (mid_count != right_count))
     {
 
@@ -388,11 +383,6 @@ compactIntervals(float *s_left, float *s_right,
     if ((tid < num_threads_active) && (1 == is_active_second))
     {
         unsigned int addr_w = num_threads_active + s_compaction_list[tid];
-         if(mid_count > 10520 || right_count > 10520) // selbst hinzugefuegt
-         {
-           printf("compactIntervals: mid_count = %u\t addr_w = %u!!!\n", mid_count, addr_w);
-         }
-       
         s_left[addr_w] = mid;
         s_right[addr_w] = right;
         s_left_count[addr_w] = mid_count;
@@ -441,9 +431,6 @@ storeIntervalConverged(float *s_left, float *s_right,
         s_right[tid] = right;
         s_left_count[tid] = left_count;
         s_right_count[tid] = mid_count;
-        //printf("store_int_con:2 s_l_c[%u] = %u\n", tid, s_left_count[tid]);
-        //printf("store_int_con:2 multiplicity: %u \ts_r_c[%u] = %u\n", multiplicity, tid, s_right_count[tid]);
-
         mid = left;
 
         // mark that second child interval exists
@@ -489,10 +476,6 @@ subdivideActiveInterval(const unsigned int tid,
         right = s_right[tid];
         left_count = s_left_count[tid];
         right_count = s_right_count[tid];
-        if(left_count > 10520 || right_count > 10520)                       // selbst hinzugefuegt
-        {
-          printf("subdivideActiveInterval: left_count = %u\t tid = %u!!!\n", left_count, tid);
-        }
 
         // check if thread already converged
         if (left != right)
