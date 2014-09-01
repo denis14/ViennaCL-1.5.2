@@ -177,10 +177,6 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                                     s_left, s_right,
                                                     (left == right));
                                          
-     /*   if (mid_count > 10000)
-        {
-          printf("!!!!!!!mid_count = %u\n", mid_count);
-        }*/
         __syncthreads();
 
         if (tid < num_threads_active)
@@ -213,10 +209,6 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                        s_compaction_list_exc, compact_second_chunk,
                                        num_threads_active,
                                        is_active_second);
-                 if (mid_count > 10000)
-                 {
-                   printf("!!!!!!!mid_count = %u\n", mid_count);
-                 }                        
             
             }
         }
