@@ -176,7 +176,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         if (tid < num_threads_active)
         {
             
-            if( s_right_count[tid] < s_left_count[tid] )
+            if( s_right_count[tid] < s_left_count[tid] && tid == 15)
             {
               printf("3: left_count = %u\t right_count = %u \t tid = %u \n", left_count, right_count, tid);
             }
