@@ -494,6 +494,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     --s_cl_mult;
     --s_cl_blocking;
     
+    printf("s_l[%3u] = %10.8f\n", tid, s_left[tid]);
     
     __syncthreads();                                                        // selbst hinzugefuegt
     compactStreamsFinal(tid, tid_2, num_threads_active, offset_mult_lambda,
