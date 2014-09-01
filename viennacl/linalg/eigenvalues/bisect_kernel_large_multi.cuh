@@ -106,6 +106,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         c_block_offset_output = blocks_mult_sum[blockIdx.x];
 
         num_threads_active = c_block_end - c_block_start;
+        printf("c_block_start = %u \t c_block_end = %u\n", c_block_start, c_block_end);
         s_compaction_list[0] = 0;
         num_threads_compaction = ceilPow2(num_threads_active);
 
