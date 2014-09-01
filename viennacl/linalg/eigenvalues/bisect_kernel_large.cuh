@@ -426,6 +426,8 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
 
     scanInitial(tid, tid_2, num_threads_active, num_threads_compaction,
                 s_cl_one, s_cl_mult, s_cl_blocking, s_cl_helper);
+    
+    __syncthreads();                                                     // selbst hinzugefuegt
 
     scanSumBlocks(tid, tid_2, num_threads_active,
                   num_threads_compaction, s_cl_blocking, s_cl_helper);
@@ -576,6 +578,8 @@ void writeToGmem(const unsigned int tid, const unsigned int tid_2,
         }
 
     } // end writing out data
+    
+    __syncthreads();                                                               // selbst hinzugefuegt
 
     // note that s_cl_blocking = s_compaction_list + 1;, that is by writing out
     // s_compaction_list we write the exclusive scan result
@@ -664,7 +668,8 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
         s_cl_blocking[ptr_blocking_w + 1] = c_block_iend - 1;
         s_cl_helper[ptr_blocking_w + 1] = c_sum_block;
     }
-
+    
+    __syncthreads();                                                    // selbst hinzugefuegt
     if (tid_2 < num_threads_active)
     {
 
