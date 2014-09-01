@@ -109,7 +109,7 @@ runTest(int argc, char **argv)
 
 // anfang von bisect.hpp
 
-    std::cout << "Start bisectKernelLarge\n" << std::endl;
+    std::cout << "Start bisectKernelLarge" << std::endl;
     bisectKernelLarge<<< blocks, threads >>>
     (input.g_a, input.g_b, mat_size,
       lg, ug, 0, mat_size, precision,
@@ -184,8 +184,8 @@ runTest(int argc, char **argv)
 
      // get the result from the device and do some sanity checks
     // save the result if user specified matrix size
-   // bCompareResult = processResultDataLargeMatrix(input, result, mat_size, result_file,
-     //                                             user_defined, argv[0]);
+    bCompareResult = processResultDataLargeMatrix(input, result, mat_size, result_file,
+                                                  user_defined, argv[0]);
                                                   
                                                   
     // cleanup
