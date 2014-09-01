@@ -154,10 +154,10 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                 left, right, left_count, right_count,
                                 mid, all_threads_converged);
 
-        if( s_right_count[tid] < s_left_count[tid] && tid == 15)
+      /*  if( s_right_count[tid] < s_left_count[tid] && tid == 15)
             {
               printf("2: iter = %u\tleft_count = %u\t right_count = %u \t tid = %u \n",iter, left_count, right_count, tid);
-            }
+            }*/
         __syncthreads();
 
         // stop if all eigenvalues have been found
