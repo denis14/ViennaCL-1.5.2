@@ -685,9 +685,10 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
     s_left_count[ptr_w] = left_count;
     s_right_count[ptr_w] = right_count;
 
-    __syncthreads();
-   // printf("s_l = %10.8f\t s_r = %10.8f\t s_l_c = %u\t s_r_c = %u\t tid = %u \t ptr_w = %u\n",
-     // s_left[ptr_w], s_right[ptr_w], s_left_count[ptr_w], s_right_count[ptr_w], tid, ptr_w);
+    __syncthreads();                                                       // selbst hinzugefuegt
+    if(tid == 1)
+      printf("s_l = %10.8f\t s_r = %10.8f\t s_l_c = %u\t s_r_c = %u\t tid = %u \t ptr_w = %u\n",
+        s_left[ptr_w], s_right[ptr_w], s_left_count[ptr_w], s_right_count[ptr_w], tid, ptr_w);
     if (0 != c_block_iend)
     {
         s_cl_blocking[ptr_blocking_w + 1] = c_block_iend - 1;
