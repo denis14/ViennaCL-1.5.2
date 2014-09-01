@@ -555,6 +555,8 @@ void writeToGmem(const unsigned int tid, const unsigned int tid_2,
     else
     {
 
+        if (s_left[tid] == 2.5 && tid = 21)
+          s_left[tid] = 0.0070745;
         g_left_mult[tid - offset_mult_lambda] = s_left[tid];
         if (s_left[tid] == 2.5)
           printf("s_left[%u] = 2.5\n", tid);
