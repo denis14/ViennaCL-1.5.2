@@ -496,7 +496,9 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     
     if(tid == 0)
     {
+      s_cl_one[0]  = 0;
       s_cl_mult[0] = 0;
+      s_cl_blocking[0] = 0;
     }
     
     __syncthreads();                                                        // selbst hinzugefuegt
