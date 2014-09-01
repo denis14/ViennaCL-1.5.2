@@ -189,7 +189,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
             if (left != right)
             {
 
-                storeNonEmptyIntervals(tid, num_threads_active,
+                storeNonEmptyIntervalsLarge(tid, num_threads_active,
                                        s_left, s_right, s_left_count, s_right_count,
                                        left, mid, right,
                                        left_count, mid_count, right_count,
