@@ -492,6 +492,8 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     --s_cl_one;
     --s_cl_mult;
     --s_cl_blocking;
+    
+    __syncthreads();
     compactStreamsFinal(tid, tid_2, num_threads_active, offset_mult_lambda,
                         s_left, s_right, s_left_count, s_right_count,
                         s_cl_one, s_cl_mult, s_cl_blocking, s_cl_helper,
