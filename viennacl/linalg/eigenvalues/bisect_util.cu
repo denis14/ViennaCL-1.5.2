@@ -248,6 +248,10 @@ storeNonEmptyIntervals(unsigned int addr,
                        unsigned int &is_active_second)
 {
     // check if both child intervals are valid
+    if(left_count > 10520 || right_count > 10520)                           // selbst hinzugefuegt
+    {
+      printf("storeNonEmptyIntervals: left_count = %u\t tid = %u!!!\n", left_count, tid);
+    }
     if ((left_count != mid_count) && (mid_count != right_count))
     {
 
