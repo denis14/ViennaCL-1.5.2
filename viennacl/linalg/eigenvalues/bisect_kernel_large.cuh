@@ -552,6 +552,8 @@ void writeToGmem(const unsigned int tid, const unsigned int tid_2,
     {
 
         g_left_mult[tid - offset_mult_lambda] = s_left[tid];
+        if (s_left[tid] == 2.5)
+          printf("s_left[%u] = 2.5\n", tid);
         g_right_mult[tid - offset_mult_lambda] = s_right[tid];
         g_left_count_mult[tid - offset_mult_lambda] = s_left_count[tid];
         g_right_count_mult[tid - offset_mult_lambda] = s_right_count[tid];
