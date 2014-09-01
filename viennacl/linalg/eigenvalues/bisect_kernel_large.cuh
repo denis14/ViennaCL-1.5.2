@@ -668,6 +668,8 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
 
     // store compactly in shared mem
     s_left[ptr_w] = left;
+    if( s_left[ptw_w] == 2.5 && ptw_w == 21 )
+      printf("s_left[21] = 2.5!!!\n");
     s_right[ptr_w] = right;
     s_left_count[ptr_w] = left_count;
     s_right_count[ptr_w] = right_count;
