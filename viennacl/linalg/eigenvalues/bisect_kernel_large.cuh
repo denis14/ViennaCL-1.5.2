@@ -664,10 +664,12 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
         }
     }
     
-    if( s_left[ptr_w] == 2.5 && ptr_w == 21 )
-      printf("s_left[21] = 2.5!!!\n");
+  
 
     __syncthreads();
+    
+      if( s_left[ptr_w] == 2.5 && ptr_w == 21  || 1)
+      printf("s_left[21] = 2.5!!!\n");
 
     // store compactly in shared mem
     s_left[ptr_w] = left;
