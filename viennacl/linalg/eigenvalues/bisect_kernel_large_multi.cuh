@@ -164,6 +164,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         // stop if all eigenvalues have been found
         if (1 == all_threads_converged)
         {
+            printf("converged break\n");
             break;
         }
 
@@ -252,6 +253,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         
         if (num_threads_compaction > blockDim.x)              // selbst hinzugefuegt
         {
+          printf("num_threads_compaction break\n");
           break;
         }
 
