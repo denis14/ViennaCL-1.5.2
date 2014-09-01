@@ -647,6 +647,7 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
 
     ptr_w = (1 == is_one_lambda) ? s_cl_one[tid]
             : s_cl_mult[tid] + offset_mult_lambda;
+    printf("s_cl_mult[%u] = %u\tlambda = %u\n", tid, s_cl_mult[tid], offset_mult_lambda);
 
     if (0 != c_block_iend)
     {
@@ -668,9 +669,9 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
 
     __syncthreads();
     
-      if( s_left[ptr_w] == 2.5 && ptr_w == 21  || 1)
+   /*   if( s_left[ptr_w] == 2.5 && ptr_w == 21  || 1)
       printf("s_left[21] = 2.5!!!\n");
-
+*/
     // store compactly in shared mem
     s_left[ptr_w] = left;
     s_right[ptr_w] = right;
