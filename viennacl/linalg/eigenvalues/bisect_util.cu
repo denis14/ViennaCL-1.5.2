@@ -388,6 +388,10 @@ compactIntervals(float *s_left, float *s_right,
     if ((tid < num_threads_active) && (1 == is_active_second))
     {
         unsigned int addr_w = num_threads_active + s_compaction_list[tid];
+         if(s_left_count[addr_w] > 10520 || s_right_count[addr_w] > 10520) // selbst hinzugefuegt
+         {
+           printf("compactIntervals: s_left_count = %u\t addr_w = %u!!!\n", s_left_count[addr_w], addr_w);
+         }
        
         s_left[addr_w] = mid;
         s_right[addr_w] = right;
