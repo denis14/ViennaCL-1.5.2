@@ -493,7 +493,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     --s_cl_mult;
     --s_cl_blocking;
     
-    __syncthreads();
+    __syncthreads();                                                        // selbst hinzugefuegt
     compactStreamsFinal(tid, tid_2, num_threads_active, offset_mult_lambda,
                         s_left, s_right, s_left_count, s_right_count,
                         s_cl_one, s_cl_mult, s_cl_blocking, s_cl_helper,
@@ -559,10 +559,10 @@ void writeToGmem(const unsigned int tid, const unsigned int tid_2,
 
         
         g_left_mult[tid - offset_mult_lambda] = s_left[tid];
-        if (s_left[tid] == 2.5)
+   /*     if (s_left[tid] == 2.5)
           printf("s_left[%u] = 2.5\n", tid);
         if (s_left[tid] == 2.5 && tid == 21)
-          g_left_mult[tid - offset_mult_lambda] = 0.007074;
+          g_left_mult[tid - offset_mult_lambda] = 0.007074;*/
         g_right_mult[tid - offset_mult_lambda] = s_right[tid];
         g_left_count_mult[tid - offset_mult_lambda] = s_left_count[tid];
         g_right_count_mult[tid - offset_mult_lambda] = s_right_count[tid];
@@ -649,7 +649,7 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
 
     ptr_w = (1 == is_one_lambda) ? s_cl_one[tid]
             : s_cl_mult[tid] + offset_mult_lambda;
-    printf("s_cl_mult[%u] = %u\tlambda = %u\n", tid, s_cl_mult[tid], offset_mult_lambda);
+  //  printf("s_cl_mult[%u] = %u\tlambda = %u\n", tid, s_cl_mult[tid], offset_mult_lambda);
 
     if (0 != c_block_iend)
     {
