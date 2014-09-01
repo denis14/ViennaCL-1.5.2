@@ -152,19 +152,13 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                 num_threads_active,
                                 left, right, left_count, right_count,
                                 mid, all_threads_converged);
-    /*   if( s_right_count[tid] < s_left_count[tid] )
-          {
-            printf("2: left_count = %u\t right_count = %u \n", left_count, right_count);
-            //break;
-          } */
-         
 
         __syncthreads();
 
         // stop if all eigenvalues have been found
         if (1 == all_threads_converged)
         {
-            printf("converged break\n");
+           
             break;
         }
 
@@ -182,10 +176,10 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         if (tid < num_threads_active)
         {
             
-            /*if( s_right_count[tid] < s_left_count[tid] )
+            if( s_right_count[tid] < s_left_count[tid] )
             {
               printf("3: left_count = %u\t right_count = %u \t tid = %u \n", left_count, right_count, tid);
-            }*/
+            }
             
             // store intervals
             if (left != right)
@@ -226,11 +220,6 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                              mid, right, mid_count, right_count,
                              s_compaction_list, num_threads_active,
                              is_active_second);
-            /*if(left_count > 10520)
-              printf("left_count = %u  \t temp = %u \tmid_count = %u \t right_count = %u \t iter = %u\t tid = %u\n",
-                left_count, temp, mid_count, right_count, iter, tid);
-
-        */
         }
 
         __syncthreads();
@@ -253,7 +242,6 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         
         if (num_threads_compaction > blockDim.x)              // selbst hinzugefuegt
         {
-          printf("num_threads_compaction break\n");
           break;
         }
 
