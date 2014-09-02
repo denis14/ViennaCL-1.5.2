@@ -351,7 +351,8 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
     for (unsigned int i = 0; i < sum_blocks_mult; ++i)
     {
       printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
-      eigenvalues[pos_mult[i] - 1] = lambda_mult[i];
+      if (pos_mult[i] != 0)
+        eigenvalues[pos_mult[i] - 1] = lambda_mult[i];
     }
 
     // singleton intervals generated in the first step
