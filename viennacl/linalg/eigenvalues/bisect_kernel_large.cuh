@@ -673,17 +673,7 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
         }
     }
     
-   __syncthreads();
-    if (0 == is_one_lambda)
-    {
-      ptr_w = s_cl_mult[tid] + offset_mult_lambda;
-      s_left[ptr_w] = left;
-      s_right[ptr_w] = right;
-      s_left_count[ptr_w] = left_count;
-      s_right_count[ptr_w] = right_count;
-      
-    }
-    s_left[tid] = s_left[tid] + 0.0f;
+   
     __syncthreads();
     
     // store compactly in shared mem
@@ -694,6 +684,17 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
       s_right[ptr_w] = right;
       s_left_count[ptr_w] = left_count;
       s_right_count[ptr_w] = right_count;
+    }
+    
+    __syncthreads();
+    if (1 != is_one_lambda)
+    {
+      ptr_w = s_cl_mult[tid] + offset_mult_lambda;
+      s_left[ptr_w] = left;
+      s_right[ptr_w] = right;
+      s_left_count[ptr_w] = left_count;
+      s_right_count[ptr_w] = right_count;
+      
     }
    
 
