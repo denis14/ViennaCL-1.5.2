@@ -252,7 +252,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         
         g_lambda[addr]  = s_left[tid];
         g_pos[addr]   = s_right_count[tid];
-        if (g_pos[addr] == 0)
+        if (g_pos[addr] < 10)
         {
           printf("g_pos[%u] = 0\n", addr);
         }
