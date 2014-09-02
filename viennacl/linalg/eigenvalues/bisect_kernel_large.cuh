@@ -654,7 +654,7 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
 
     ptr_w = (1 == is_one_lambda) ? s_cl_one[tid]
             : s_cl_mult[tid] + offset_mult_lambda;
-  //  printf("s_cl_mult[%u] = %u\tlambda = %u\n", tid, s_cl_mult[tid], offset_mult_lambda);
+    printf("tid = %u \t ptr_w = %u\n", tid, ptr_w);
 
     if (0 != c_block_iend)
     {
