@@ -687,7 +687,7 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
       s_right_count[ptr_w] = right_count;
     }
     __syncthreads();
-    if (0 == is_one_lamda)
+    if (0 == is_one_lambda)
     {
       ptr_w = s_cl_mult[tid] + offset_mult_lambda;
       s_left[ptr_w] = left;
