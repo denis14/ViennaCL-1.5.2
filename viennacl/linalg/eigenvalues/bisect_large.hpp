@@ -350,7 +350,7 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
     // singleton intervals generated in the second step
     for (unsigned int i = 0; i < sum_blocks_mult; ++i)
     {
-      printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
+    //  printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
       if (pos_mult[i] != 0)
         eigenvalues[pos_mult[i] - 1] = lambda_mult[i];
     }
@@ -363,9 +363,9 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
         eigenvalues[pos_one[i] - 1] = left_one[i];
     }
 
-    for( unsigned int i = 0; i < mat_size; ++i)
+ /*   for( unsigned int i = 0; i < mat_size; ++i)
       std::cout << "Eigenvalue " << i << "= " << std::setprecision(10) << eigenvalues[i] << std::endl;
-
+*/
     if (0 == user_defined)
     {
         // store result
