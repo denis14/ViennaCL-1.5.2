@@ -494,10 +494,6 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     --s_cl_mult;
     --s_cl_blocking;
     
-    //printf("s_l[%3u] = %10.8f\t s_r = %10.8f\t s_l_c = %3u\t s_r_c = %3u\n", 
-      //tid, s_left[tid], s_right[tid], s_left_count[tid], s_right_count[tid]);
-   // printf("tid = %u\t left = %10.8f\t right = %10.8f\n", tid, left, right);
-    
     __syncthreads();                                                        // selbst hinzugefuegt
     compactStreamsFinal(tid, tid_2, num_threads_active, offset_mult_lambda,
                         s_left, s_right, s_left_count, s_right_count,
@@ -564,10 +560,6 @@ void writeToGmem(const unsigned int tid, const unsigned int tid_2,
 
         
         g_left_mult[tid - offset_mult_lambda] = s_left[tid];
-   /*     if (s_left[tid] == 2.5)
-          printf("s_left[%u] = 2.5\n", tid);
-        if (s_left[tid] == 2.5 && tid == 21)
-          g_left_mult[tid - offset_mult_lambda] = 0.007074;*/
         g_right_mult[tid - offset_mult_lambda] = s_right[tid];
         g_left_count_mult[tid - offset_mult_lambda] = s_left_count[tid];
         g_right_count_mult[tid - offset_mult_lambda] = s_right_count[tid];
@@ -691,8 +683,8 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
       s_right[ptr_w] = right;
       s_left_count[ptr_w] = left_count;
       s_right_count[ptr_w] = right_count;
-      printf("s_l = %10.8f\t left = %10.8f\t s_r = %10.8f\t s_l_c = %u\t s_r_c = %u\t tid = %u \t ptr_w = %u\n",
-        s_left[ptr_w], left, s_right[ptr_w], s_left_count[ptr_w], s_right_count[ptr_w], tid, ptr_w);
+      //printf("s_l = %10.8f\t left = %10.8f\t s_r = %10.8f\t s_l_c = %u\t s_r_c = %u\t tid = %u \t ptr_w = %u\n",
+        //s_left[ptr_w], left, s_right[ptr_w], s_left_count[ptr_w], s_right_count[ptr_w], tid, ptr_w);
 
     
     }
@@ -702,7 +694,6 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
         s_cl_helper[ptr_blocking_w + 1] = c_sum_block;
     }
     
-  //  __syncthreads();                                                    // selbst hinzugefuegt
     if (tid_2 < num_threads_active)
     {
 
