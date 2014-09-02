@@ -12,6 +12,7 @@
 /* Computation of eigenvalues of a large symmetric, tridiagonal matrix */
 
 // includes, system
+#include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
