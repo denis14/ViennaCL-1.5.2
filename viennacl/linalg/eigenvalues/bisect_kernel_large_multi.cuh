@@ -111,6 +111,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
 
         all_threads_converged = 1;
         compact_second_chunk = 0;
+        printf("c_block_offset_output = %u\n", c_block_offset_output);
     }
 
      s_left_count [tid] = 42;                                         // selbst hinzugefuegt
