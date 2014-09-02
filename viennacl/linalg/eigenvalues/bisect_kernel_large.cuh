@@ -633,8 +633,8 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
                    )
 {
     // cache data before performing compaction
-    left = s_left[tid];
-    right = s_right[tid];
+   // left = s_left[tid];
+  //  right = s_right[tid];
 
     if (tid_2 < num_threads_active)
     {
