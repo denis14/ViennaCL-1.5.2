@@ -113,11 +113,11 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         compact_second_chunk = 0;
     }
 
-    /* s_left_count [tid] = 0;                                         // selbst hinzugefuegt
-     s_right_count[tid] = 0;
+     s_left_count [tid] = 42;                                         // selbst hinzugefuegt
+     s_right_count[tid] = 42;
      s_left_count [tid + MAX_THREADS_BLOCK] = 0;
      s_right_count[tid + MAX_THREADS_BLOCK] = 0;
-    */
+    
     __syncthreads();
     
 
