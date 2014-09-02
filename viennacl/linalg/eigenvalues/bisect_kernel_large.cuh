@@ -653,10 +653,10 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
     unsigned int ptr_blocking_w_2 = 0;
     
    
-/*
+
     ptr_w = (1 == is_one_lambda) ? s_cl_one[tid]
             : s_cl_mult[tid] + offset_mult_lambda;
-*/
+
     if (0 != c_block_iend)
     {
         ptr_blocking_w = s_cl_blocking[tid];
@@ -677,27 +677,10 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
     __syncthreads();
     
     // store compactly in shared mem
-    if (1 == is_one_lambda)
-    {
-      ptr_w = s_cl_one[tid];
       s_left[ptr_w] = left;
       s_right[ptr_w] = right;
       s_left_count[ptr_w] = left_count;
       s_right_count[ptr_w] = right_count;
-    }
-    
-    __syncthreads();
-    if (1 != is_one_lambda)
-    {
-      ptr_w = s_cl_mult[tid] + offset_mult_lambda;
-      s_left[ptr_w] = left;
-      s_right[ptr_w] = right;
-      s_left_count[ptr_w] = left_count;
-      s_right_count[ptr_w] = right_count;
-      
-    }
-   
-
     
     
 
@@ -711,7 +694,7 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
         s_cl_helper[ptr_blocking_w + 1] = c_sum_block;
     }
     
-    __syncthreads();                                                    // selbst hinzugefuegt
+  //  __syncthreads();                                                    // selbst hinzugefuegt
     if (tid_2 < num_threads_active)
     {
 
