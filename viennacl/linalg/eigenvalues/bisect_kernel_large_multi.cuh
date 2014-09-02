@@ -257,6 +257,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
           printf("g_pos[%u] = %u\t blockDim.x = %u\n", addr, g_pos[addr], blockDim.x);
         }
     }
+}
 
 
 #endif // #ifndef _BISECT_KERNEL_LARGE_MULTI_H_
