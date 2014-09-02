@@ -129,8 +129,8 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         s_right[tid] = g_right[c_block_start + tid];
         s_left_count[tid]  = g_left_count[c_block_start + tid];
         s_right_count[tid] = g_right_count[c_block_start + tid];
-        printf("1: tid = %u s_r = %10.8f \t s_l = %10.8f \t s_r_c = %u \t s_l_c = %u \t c_block_start + tid = %u\n", 
-          tid, s_right[tid], s_left[tid], s_right_count[tid], s_left_count[tid], c_block_start + tid);       // selbst hinzugefuegt
+        printf("1: tid = %u s_l = %10.8f \t s_r = %10.8f \t s_l_c = %u \t s_r_c = %u \t c_block_start + tid = %u\n", 
+          tid, s_left[tid], s_right[tid], s_left_count[tid], s_right_count[tid], c_block_start + tid);       // selbst hinzugefuegt
 
         
     }
@@ -152,11 +152,6 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
                                 num_threads_active,
                                 left, right, left_count, right_count,
                                 mid, all_threads_converged);
-
-      /*  if( s_right_count[tid] < s_left_count[tid] && tid == 15)
-            {
-              printf("2: iter = %u\tleft_count = %u\t right_count = %u \t tid = %u \n",iter, left_count, right_count, tid);
-            }*/
         __syncthreads();
 
         // stop if all eigenvalues have been found
@@ -179,11 +174,6 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
 
         if (tid < num_threads_active)
         {
-            
-           /* if( s_right_count[tid] < s_left_count[tid] && tid == 15)
-            {
-              printf("3: iter = %u\tleft_count = %u\t right_count = %u \t tid = %u \n",iter, left_count, right_count, tid);
-            }*/
             
             // store intervals
             if (left != right)
