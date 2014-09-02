@@ -78,7 +78,7 @@ class InputData
        
 
         // srand( clock());
-        
+     /*   
         for (unsigned int i = 0; i < mat_size; ++i)
         {
             a[i] = (double)(2.0 * (((double)rand()
@@ -86,7 +86,7 @@ class InputData
             b[i] = (double)(2.0 * (((double)rand()
                                          / (float) RAND_MAX) - 0.5));
         }
-
+*/
           // the first element of s is used as padding on the device (thus the
           // whole vector is copied to the device but the kernels are launched
           // with (s+1) as start address
