@@ -70,7 +70,7 @@ class InputData
              //std_b_raw[i] = i % 9 + 2;
              
              a[i] = ((float)(i % 9)) - 4.5f;
-             b[i] = ((float)(i % 5)) - 4.5f;
+             b[i] = ((float)(i % 15)) - 4.5f;
 
            }
            
