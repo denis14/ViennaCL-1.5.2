@@ -683,7 +683,7 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
       s_right_count[ptr_w] = right_count;
       
     }
-
+    s_left[tid] = s_left[tid] + 0.0f;
     __syncthreads();
     
     // store compactly in shared mem
