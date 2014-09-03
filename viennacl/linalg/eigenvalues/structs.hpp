@@ -38,7 +38,7 @@ class InputData
   ////////////////////////////////////////////////////////////////////////////////
 
   InputData(char *exec_path, const unsigned int sz, const unsigned int user_defined) :
-              std_a(sz), std_b(sz),  std_b_raw(sz), vcl_a(sz)
+              std_a(sz), std_b(sz),  std_b_raw(sz), vcl_a(sz), std_eigenvalues(sz)
     {
         // allocate memory
       const unsigned int mat_size = sz;
@@ -145,6 +145,7 @@ class InputData
     //! host/device side representation of helper vector
     //viennacl::vector<float> vcl_b_raw;
     std::vector<float> std_b_raw;
+    std::vector<float> std_eigenvalues;
     
     //! host side representation superdiagonal
     float  *b;
