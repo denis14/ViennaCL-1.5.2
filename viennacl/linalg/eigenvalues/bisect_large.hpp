@@ -364,7 +364,7 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
     }
 
     for( unsigned int i = 0; i < mat_size; ++i)
-      std::cout << "Eigenvalue " << i << "= " << std::setprecision(10) << eigenvalues[i] << std::endl;
+      std::cout << "Eigenvalue " << i << "= " << std::setprecision(10) << result.std_eigenvalues[i] << std::endl;
 
     if (0 == user_defined)
     {
