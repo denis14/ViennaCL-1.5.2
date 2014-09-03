@@ -231,16 +231,12 @@ runTest(int argc, char **argv)
     bCompareResult = processResultDataLargeMatrix(input, result, mat_size, result_file,
                                                   user_defined, argv[0]);
    
-   
-                                                  
-   std::size_t sz = 10;
+  viennacl::matrix<float, viennacl::row_major> Q = viennacl::identity_matrix<float>(mat_size);
+  ublas::vector<float> d(mat_size), e(mat_size), d_ref(mat_size), e_ref(mat_size); //d is major diagonal, e is minor diagonal
 
-  viennacl::matrix<float, viennacl::row_major> Q = viennacl::identity_matrix<float>(sz);
-  ublas::vector<float> d(sz), e(sz), d_ref(sz), e_ref(sz); //d is major diagonal, e is minor diagonal
+  std::cout << "Testing matrix of size " << mat_size << "-by-" << mat_size << std::endl << std::endl;
 
-  std::cout << "Testing matrix of size " << sz << "-by-" << sz << std::endl << std::endl;
-
-  for(unsigned int i = 0; i < sz; ++i)
+  for(unsigned int i = 0; i < mat_size; ++i)
   {
     //std_a[i] = i % 11 + 4;
     //std_b_raw[i] = i % 9 + 2;
