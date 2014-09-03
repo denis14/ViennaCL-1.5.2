@@ -352,7 +352,7 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
     {
     //  printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
       if (pos_mult[i] != 0)
-        eigenvalues[pos_mult[i] - 1] = lambda_mult[i];
+        result.std_eigenvalues[pos_mult[i] - 1] = lambda_mult[i];
     }
 
     // singleton intervals generated in the first step
@@ -360,12 +360,12 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
 
     for (unsigned int i = 0; i < num_one_intervals; ++i, ++index)
     {
-        eigenvalues[pos_one[i] - 1] = left_one[i];
+        result.std_eigenvalues[pos_one[i] - 1] = left_one[i];
     }
 
- /*   for( unsigned int i = 0; i < mat_size; ++i)
+    for( unsigned int i = 0; i < mat_size; ++i)
       std::cout << "Eigenvalue " << i << "= " << std::setprecision(10) << eigenvalues[i] << std::endl;
-*/
+
     if (0 == user_defined)
     {
         // store result
