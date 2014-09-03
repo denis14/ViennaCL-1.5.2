@@ -252,9 +252,8 @@ runTest(int argc, char **argv)
   
   for(uint i = 0; i < mat_size; i++)
   {
-     if(std::abs(result.std_eigenvalues[(mat_size - 1) - i] - d[i]) < EPS)
+     if(std::abs(result.std_eigenvalues[(mat_size - 1) - i] - d[i]) > EPS)
 	  return EXIT_FAILURE;
-	  std::cout << i;
   }
                                                   
                                                   
