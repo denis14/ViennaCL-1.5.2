@@ -71,9 +71,6 @@
 #endif
 
 #define VIENNACL_WITH_UBLAS
-#define MatrixLayout viennacl::row_major>()
-typedef float     ScalarType;
-
 
 
 #include "viennacl/linalg/qr-method.hpp"
@@ -238,8 +235,8 @@ runTest(int argc, char **argv)
                                                   
    std::size_t sz = 10;
 
-  viennacl::matrix<ScalarType, MatrixLayout> Q = viennacl::identity_matrix<ScalarType>(sz);
-  ublas::vector<ScalarType> d(sz), e(sz), d_ref(sz), e_ref(sz); //d is major diagonal, e is minor diagonal
+  viennacl::matrix<float, viennacl::row_major()> Q = viennacl::identity_matrix<float>(sz);
+  ublas::vector<float> d(sz), e(sz), d_ref(sz), e_ref(sz); //d is major diagonal, e is minor diagonal
 
   std::cout << "Testing matrix of size " << sz << "-by-" << sz << std::endl << std::endl;
 
