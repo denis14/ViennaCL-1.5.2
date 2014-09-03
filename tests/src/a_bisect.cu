@@ -61,6 +61,7 @@
 #include "viennacl/linalg/eigenvalues/bisect_large.hpp"
 
 #include "viennacl/linalg/eigenvalues/bisect_large.cuh"
+#include "viennacl/linalg/qr-method.hpp"
 
 // include necessary system headers
 #include <iostream>
