@@ -104,6 +104,11 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         c_block_start = blocks_mult[blockIdx.x];
         c_block_end = blocks_mult[blockIdx.x + 1];
         c_block_offset_output = blocks_mult_sum[blockIdx.x];
+        
+        for(unsigned int i = 0; i < gridDim.x; i++)
+        {
+          printf("blocks_mult_sum = %u\n", block_mult_sum[i]);
+        }
 
         num_threads_active = c_block_end - c_block_start;
         s_compaction_list[0] = 0;
@@ -111,7 +116,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
 
         all_threads_converged = 1;
         compact_second_chunk = 0;
-        printf("c_block_offset_output = %u\n", c_block_offset_output);
+       // printf("c_block_offset_output = %u\n", c_block_offset_output);
     }
 
      s_left_count [tid] = 42;                                         // selbst hinzugefuegt
