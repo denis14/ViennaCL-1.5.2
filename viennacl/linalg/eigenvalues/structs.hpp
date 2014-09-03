@@ -38,7 +38,7 @@ class InputData
   ////////////////////////////////////////////////////////////////////////////////
 
   InputData(char *exec_path, const unsigned int sz, const unsigned int user_defined) :
-              std_a(sz), std_b(sz),  std_b_raw(sz), vcl_a(sz), std_eigenvalues(sz)
+              std_a(sz), std_b(sz),  std_b_raw(sz), vcl_a(sz)
     {
         // allocate memory
       const unsigned int mat_size = sz;
@@ -145,7 +145,7 @@ class InputData
     //! host/device side representation of helper vector
     //viennacl::vector<float> vcl_b_raw;
     std::vector<float> std_b_raw;
-    std::vector<float> std_eigenvalues;
+  
     
     //! host side representation superdiagonal
     float  *b;
@@ -166,12 +166,12 @@ class InputData
 class ResultDataLarge
 {
 public:
-    ResultDataLarge(unsigned int sz) //: std_eigenvalues(sz)
+    ResultDataLarge(unsigned int sz) : std_eigenvalues(sz)
     {
     }
     
     //! eigenvalues
-   // std::vector<float> std_eigenvalues;
+    std::vector<float> std_eigenvalues;
     
     //! number of intervals containing one eigenvalue after the first step
     unsigned int *g_num_one;
