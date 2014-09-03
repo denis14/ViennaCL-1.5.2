@@ -230,10 +230,8 @@ runTest(int argc, char **argv)
     // save the result if user specified matrix size
     bCompareResult = processResultDataLargeMatrix(input, result, mat_size, result_file,
                                                   user_defined, argv[0]);
-   /**
-   * Test the tql2 algorithm for symmetric tridiagonal matrices.
-   */
-   /*
+   
+   
                                                   
    std::size_t sz = 10;
 
