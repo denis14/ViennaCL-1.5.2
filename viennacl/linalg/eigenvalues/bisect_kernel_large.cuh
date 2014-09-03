@@ -231,9 +231,9 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     //while (true)                                                       
     for( unsigned int i = 0; i < 35; ++i )                                 // selbst hinzugefuegt
     {
-        s_compaction_list[tid] = 0;
-        s_compaction_list[tid + MAX_THREADS_BLOCK] = 0;
-        s_compaction_list[2 * MAX_THREADS_BLOCK] = 0;
+      //  s_compaction_list[tid] = 0;
+    //    s_compaction_list[tid + MAX_THREADS_BLOCK] = 0;
+      //  s_compaction_list[2 * MAX_THREADS_BLOCK] = 0;
         subdivideActiveInterval(tid, s_left, s_right, s_left_count, s_right_count,
                                 num_threads_active,
                                 left, right, left_count, right_count,
