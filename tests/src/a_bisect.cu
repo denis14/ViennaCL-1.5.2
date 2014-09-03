@@ -254,6 +254,8 @@ runTest(int argc, char **argv)
   {
      if(std::abs(result.std_eigenvalues[(mat_size - 1) - i] - d[i]) > EPS)
 	  return EXIT_FAILURE;
+	  
+     std::cout <<result.std_eigenvalues[(mat_size - 1) - i] << "  == " << d[i] << "\n";	  	
   }
                                                   
                                                   
