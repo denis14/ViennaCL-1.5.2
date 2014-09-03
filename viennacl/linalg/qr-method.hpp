@@ -45,6 +45,7 @@ namespace viennacl
               boost::numeric::ublas::vector<SCALARTYPE> & d,
               boost::numeric::ublas::vector<SCALARTYPE> & e)
     {
+        std::cout << "lalalalalala";
         int n = static_cast<int>(viennacl::traits::size1(Q));
 
         boost::numeric::ublas::vector<SCALARTYPE> cs(n), ss(n);
