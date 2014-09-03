@@ -70,6 +70,8 @@
 #endif
 
 #define VIENNACL_WITH_UBLAS
+#define MatrixLayout viennacl::row_major>()
+typedef float     ScalarType;
 
 
 
