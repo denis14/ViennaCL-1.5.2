@@ -107,7 +107,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         
         for(unsigned int i = 0; i < gridDim.x; i++)
         {
-          printf("blocks_mult_sum = %u\n", block_mult_sum[i]);
+          printf("blocks_mult_sum = %u\n", blocks_mult_sum[i]);
         }
 
         num_threads_active = c_block_end - c_block_start;
