@@ -263,7 +263,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
       //  std::cout << "grid_mult.x, y, z: " << grid_mult.x << "  " << grid_mult.y << "  " << grid_mult.z << std::endl;
     //   std::cout << "thread_mult.x, y, z: " << threads_mult.x << "  " << threads_mult.y << "  " << threads_mult.z << std::endl;
         
-        std::cout << "Start bisectKernelLarge_MultIntervals" << std::endl;
+        std::cout << "Start bisectKernelLarge_MultIntervals: num_block_mult = " << num_blocks_mult << std::endl;
         bisectKernelLarge_MultIntervals<<< grid_mult, threads_mult >>>
         (input.g_a, input.g_b, mat_size,
          result.g_blocks_mult, result.g_blocks_mult_sum,
@@ -350,9 +350,13 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
     // singleton intervals generated in the second step
     for (unsigned int i = 0; i < sum_blocks_mult; ++i)
     {
-      printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
+      
+      
       if (pos_mult[i] != 0)
-        eigenvalues[pos_mult[i] - 1] = lambda_mult[i];
+        result.std_eigenvalues[pos_mult[i] - 1] = lambda_mult[i];
+      
+      else
+        printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
     }
 
     // singleton intervals generated in the first step
@@ -360,11 +364,11 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
 
     for (unsigned int i = 0; i < num_one_intervals; ++i, ++index)
     {
-        eigenvalues[pos_one[i] - 1] = left_one[i];
+        result.std_eigenvalues[pos_one[i] - 1] = left_one[i];
     }
 
     for( unsigned int i = 0; i < mat_size; ++i)
-      std::cout << "Eigenvalue " << i << "= " << std::setprecision(10) << eigenvalues[i] << std::endl;
+      std::cout << "Eigenvalue " << i << "= " << std::setprecision(10) << result.std_eigenvalues[i] << std::endl;
 
     if (0 == user_defined)
     {

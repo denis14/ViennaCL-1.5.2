@@ -69,7 +69,7 @@ runTest(int argc, char **argv)
 {
     bool bCompareResult = false;
     // default
-    unsigned int mat_size = 15025;
+    unsigned int mat_size = 12025;
     // flag if the matrix size is due to explicit user request
     unsigned int user_defined = 0;
     // desired precision of eigenvalues
@@ -168,7 +168,7 @@ runTest(int argc, char **argv)
     dim3  threads_mult(MAX_THREADS_BLOCK, 1, 1);
 
 
-    std::cout << "Start bisectKernelLarge_MultIntervals" << std::endl;
+    std::cout << "Start bisectKernelLarge_MultIntervals\t num_blocks_mult = " << num_blocks_mult << std::endl;
     bisectKernelLarge_MultIntervals<<< grid_mult, threads_mult >>>
     (input.g_a, input.g_b, mat_size,
      result.g_blocks_mult, result.g_blocks_mult_sum,

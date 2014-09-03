@@ -145,6 +145,7 @@ class InputData
     //! host/device side representation of helper vector
     //viennacl::vector<float> vcl_b_raw;
     std::vector<float> std_b_raw;
+  
     
     //! host side representation superdiagonal
     float  *b;
@@ -165,12 +166,12 @@ class InputData
 class ResultDataLarge
 {
 public:
-    ResultDataLarge(unsigned int sz) //: std_eigenvalues(sz)
+    ResultDataLarge(unsigned int sz) : std_eigenvalues(sz)
     {
     }
     
     //! eigenvalues
-   // std::vector<float> std_eigenvalues;
+    std::vector<float> std_eigenvalues;
     
     //! number of intervals containing one eigenvalue after the first step
     unsigned int *g_num_one;

@@ -229,7 +229,7 @@ bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
     // for all active threads read intervals from the last level
     // the number of (worst case) active threads per level l is 2^l
     //while (true)                                                       
-    for( unsigned int i = 0; i < 35; ++i )                                 // selbst hinzugefuegt
+    for( unsigned int i = 0; i < 65; ++i )                                 // selbst hinzugefuegt
     {
         s_compaction_list[tid] = 0;
         s_compaction_list[tid + MAX_THREADS_BLOCK] = 0;
@@ -683,8 +683,8 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
       s_right[ptr_w] = right;
       s_left_count[ptr_w] = left_count;
       s_right_count[ptr_w] = right_count;
-      printf("s_l = %10.8f\t left = %10.8f\t s_r = %10.8f\t s_l_c = %u\t s_r_c = %u\t tid = %u \t ptr_w = %u\n",
-        s_left[ptr_w], left, s_right[ptr_w], s_left_count[ptr_w], s_right_count[ptr_w], tid, ptr_w);
+      //printf("s_l = %10.8f\t left = %10.8f\t s_r = %10.8f\t s_l_c = %u\t s_r_c = %u\t tid = %u \t ptr_w = %u\n",
+        //s_left[ptr_w], left, s_right[ptr_w], s_left_count[ptr_w], s_right_count[ptr_w], tid, ptr_w);
 
     
     }
