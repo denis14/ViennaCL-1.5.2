@@ -113,7 +113,7 @@ runTest(int argc, char **argv)
 {
     bool bCompareResult = false;
     // default
-    unsigned int mat_size = 300;
+    unsigned int mat_size = 10000;
     // flag if the matrix size is due to explicit user request
     unsigned int user_defined = 0;
     // desired precision of eigenvalues
@@ -253,9 +253,10 @@ runTest(int argc, char **argv)
   for(uint i = 0; i < mat_size; i++)
   {
      if(std::abs(result.std_eigenvalues[(mat_size - 1) - i] - d[i]) > EPS)
+     { 
 	  return EXIT_FAILURE;
-	  
-     std::cout <<result.std_eigenvalues[(mat_size - 1) - i] << "  == " << d[i] << "\n";	  	
+	  std::cout <<result.std_eigenvalues[(mat_size - 1) - i] << "  != " << d[i] << "\n";
+     }  	
   }
                                                   
                                                   
