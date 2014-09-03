@@ -230,6 +230,31 @@ runTest(int argc, char **argv)
     // save the result if user specified matrix size
     bCompareResult = processResultDataLargeMatrix(input, result, mat_size, result_file,
                                                   user_defined, argv[0]);
+   /**
+   * Test the tql2 algorithm for symmetric tridiagonal matrices.
+   */
+   /*
+                                                  
+   std::size_t sz = 10;
+
+  viennacl::matrix<ScalarType, MatrixLayout> Q = viennacl::identity_matrix<ScalarType>(sz);
+  ublas::vector<ScalarType> d(sz), e(sz), d_ref(sz), e_ref(sz); //d is major diagonal, e is minor diagonal
+
+  std::cout << "Testing matrix of size " << sz << "-by-" << sz << std::endl << std::endl;
+
+  for(unsigned int i = 0; i < sz; ++i)
+  {
+    //std_a[i] = i % 11 + 4;
+    //std_b_raw[i] = i % 9 + 2;
+    d[i] = ((float)(i % 9)) - 4.5f;
+    e[i] = ((float)(i % 5)) - 4.5f;
+  }
+  e[0] = 0.0f;
+  d_ref = d;
+  e_ref = e;
+
+//--------------------------------------------------------
+  viennacl::linalg::tql2(Q, d, e);                                               
                                                   
                                                   
     // cleanup
@@ -250,53 +275,3 @@ runTest(int argc, char **argv)
 
     return bCompareResult;
 }
-
-
-
-/**
- * Test the tql2 algorithm for symmetric tridiagonal matrices.
- */
-/*
-template <typename MatrixLayout>
-void test_qr_method_sym()
-{
-  std::size_t sz = 10;
-
-  viennacl::matrix<ScalarType, MatrixLayout> Q = viennacl::identity_matrix<ScalarType>(sz);
-  ublas::vector<ScalarType> d(sz), e(sz), d_ref(sz), e_ref(sz); //d is major diagonal, e is minor diagonal
-
-  std::cout << "Testing matrix of size " << sz << "-by-" << sz << std::endl << std::endl;
-
-  for(unsigned int i = 0; i < sz; ++i)
-  {
-    //std_a[i] = i % 11 + 4;
-    //std_b_raw[i] = i % 9 + 2;
-    d[i] = ((float)(i % 9)) - 4.5f;
-    e[i] = ((float)(i % 5)) - 4.5f;
-  }
-  e[0] = 0.0f;
-  d_ref = d;
-  e_ref = e;
-
-//--------------------------------------------------------
-  viennacl::linalg::tql2(Q, d, e);
-
- // if(!test_eigen_val_vec<MatrixLayout>(Q, d, d_ref, e_ref))
-   //  exit(EXIT_FAILURE);
-
-  for( unsigned int i = 0; i < sz; ++i)
-    std::cout << "Eigenvalue " << i << "= " << d[i] << std::endl;
-}
-*/
-/*
-int main()
-{
-
-  std::cout << std::endl << "Testing tql2 algorithm for symmetric tridiagonal row-major matrices..." << std::endl;
-  test_qr_method_sym<viennacl::row_major>();
-/*
-  std::cout << std::endl << "Testing QL algorithm for symmetric tridiagonal column-major matrices..." << std::endl;
-  test_qr_method_sym<viennacl::column_major>();
-*/
-  //std::cout << std::endl <<"--------TEST SUCCESSFULLY COMPLETED----------" << std::endl;
-//}
