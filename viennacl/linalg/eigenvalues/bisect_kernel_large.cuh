@@ -683,8 +683,8 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
       s_right[ptr_w] = right;
       s_left_count[ptr_w] = left_count;
       s_right_count[ptr_w] = right_count;
-      printf("s_l = %10.8f\t left = %10.8f\t s_r = %10.8f\t s_l_c = %u\t s_r_c = %u\t tid = %u \t ptr_w = %u\n",
-        s_left[ptr_w], left, s_right[ptr_w], s_left_count[ptr_w], s_right_count[ptr_w], tid, ptr_w);
+      //printf("s_l = %10.8f\t left = %10.8f\t s_r = %10.8f\t s_l_c = %u\t s_r_c = %u\t tid = %u \t ptr_w = %u\n",
+        //s_left[ptr_w], left, s_right[ptr_w], s_left_count[ptr_w], s_right_count[ptr_w], tid, ptr_w);
 
     
     }
