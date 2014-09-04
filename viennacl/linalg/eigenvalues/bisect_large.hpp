@@ -355,8 +355,8 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
       if (pos_mult[i] != 0)
         result.std_eigenvalues[pos_mult[i] - 1] = lambda_mult[i];
       
-      else
-        printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
+     // else
+     //   printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
     }
 
     // singleton intervals generated in the first step
