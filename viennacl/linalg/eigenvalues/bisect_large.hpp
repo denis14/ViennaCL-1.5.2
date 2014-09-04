@@ -206,7 +206,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
          result.g_blocks_mult, result.g_blocks_mult_sum
         );
 
-       // viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
+        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
         checkCudaErrors(cudaDeviceSynchronize());
         
        
@@ -241,7 +241,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
          precision
         );
 
-       // viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_OneIntervals() FAILED.");
+        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_OneIntervals() FAILED.");
         checkCudaErrors(cudaDeviceSynchronize());
 
         // process intervals that contained more than one eigenvalue after
@@ -272,13 +272,8 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
          result.g_lambda_mult, result.g_pos_mult,
          precision
         );
-       // viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
+        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
         checkCudaErrors(cudaDeviceSynchronize());
-      /*  
-         for(unsigned int i = 0; i < mat_size; ++i)
-        {
-            printf("1. pos_mult[%u] = %u\n", i, result.g_pos_mult[i]);
-        }*/
 
     }
 
@@ -355,8 +350,8 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
       if (pos_mult[i] != 0)
         result.std_eigenvalues[pos_mult[i] - 1] = lambda_mult[i];
       
-     // else
-     //   printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
+      else
+        printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
     }
 
     // singleton intervals generated in the first step
@@ -366,10 +361,10 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
     {
         result.std_eigenvalues[pos_one[i] - 1] = left_one[i];
     }
-
+/*
     for( unsigned int i = 0; i < mat_size; ++i)
       std::cout << "Eigenvalue " << i << "= " << std::setprecision(10) << result.std_eigenvalues[i] << std::endl;
-
+*/
     if (0 == user_defined)
     {
         // store result
