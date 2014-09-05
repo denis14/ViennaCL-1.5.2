@@ -256,7 +256,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
                                    cudaMemcpyDeviceToHost));
 
         // setup the execution environment
-        dim3  grid_mult(num_blocks_mult, 1, 1);
+        dim3  grid_mult(num_blocks_mult + 1, 1, 1);
         dim3  threads_mult(MAX_THREADS_BLOCK, 1, 1);
 
         //grid_mult.x = 1;
