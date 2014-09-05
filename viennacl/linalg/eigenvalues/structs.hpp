@@ -49,7 +49,7 @@ class InputData
 
       if (0 == user_defined)
       {
-          
+          /*
            std_a[0] = 1;  std_b_raw[0] = 0;
            std_a[1] = 2;  std_b_raw[1] = 4;
            std_a[2] =-4;  std_b_raw[2] = 5;
@@ -60,10 +60,10 @@ class InputData
            std_a[7] = 9;  std_b_raw[7] = 1;
            std_a[8] = 3;  std_b_raw[8] = 5;
            std_a[9] = 8;  std_b_raw[9] = 2;
-
+*/
            
             srand(278217421);
-            /*
+            
            for(unsigned int i = 0; i < mat_size; ++i)
            {
              //std_a[i] = i % 11 + 4;
@@ -71,7 +71,7 @@ class InputData
              
              a[i] = ((float)(i % 9)) - 4.5f;
              b[i] = ((float)(i % 5)) - 4.5f;
-           }*/
+           }
            
            // initialize diagonal and superdiagonal entries with random values
        
