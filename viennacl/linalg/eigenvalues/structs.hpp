@@ -49,7 +49,7 @@ class InputData
 
       if (0 == user_defined)
       {
-          /*
+          
            std_a[0] = 1;  std_b_raw[0] = 0;
            std_a[1] = 2;  std_b_raw[1] = 4;
            std_a[2] =-4;  std_b_raw[2] = 5;
@@ -61,7 +61,7 @@ class InputData
            std_a[8] = 3;  std_b_raw[8] = 5;
            std_a[9] = 8;  std_b_raw[9] = 2;
 
-           */
+           
             srand(278217421);
             /*
            for(unsigned int i = 0; i < mat_size; ++i)
@@ -77,14 +77,14 @@ class InputData
        
 
         // srand( clock());
-        
+        /*
         for (unsigned int i = 0; i < mat_size; ++i)
         {
             a[i] = (double)(2.0 * (((double)rand()
                                          / (float) RAND_MAX) - 0.5));
             b[i] = (double)(2.0 * (((double)rand()
                                          / (float) RAND_MAX) - 0.5));
-        }
+        }*/
 
           // the first element of s is used as padding on the device (thus the
           // whole vector is copied to the device but the kernels are launched
