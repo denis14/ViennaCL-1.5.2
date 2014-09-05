@@ -375,7 +375,6 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
         // getLastCudaError( sdkWriteFilef( filename, eigenvals, mat_size, 0.0f));
 
         printf("skipping self-check!\n");
-        bCompareResult = true;
     }
 
     freePtr(eigenvalues);
