@@ -63,7 +63,7 @@ class InputData
 */
            
             srand(278217421);
-            /*
+
            for(unsigned int i = 0; i < mat_size; ++i)
            {
              //std_a[i] = i % 11 + 4;
@@ -72,19 +72,19 @@ class InputData
              a[i] = ((float)(i % 9)) - 4.5f;
              b[i] = ((float)(i % 5)) - 4.5f;
            }
-           */
+
            // initialize diagonal and superdiagonal entries with random values
        
 
         // srand( clock());
-        
+        /*
         for (unsigned int i = 0; i < mat_size; ++i)
         {
             a[i] = (double)(2.0 * (((double)rand()
                                          / (float) RAND_MAX) - 0.5));
             b[i] = (double)(2.0 * (((double)rand()
                                          / (float) RAND_MAX) - 0.5));
-        }
+        }*/
 
           // the first element of s is used as padding on the device (thus the
           // whole vector is copied to the device but the kernels are launched
@@ -161,6 +161,41 @@ class InputData
 };
 
 
+class ResultDataSmall
+{
+public:
+  ResultDataSmall(unsigned int sz) : std_eigenvalues(sz)
+  {
+  }
+
+  //! eigenvalues (host side)
+  float *eigenvalues;
+  std::vector<float> std_eigenvalues;
+
+
+  // left interval limits at the end of the computation
+  float *g_left;
+
+  // right interval limits at the end of the computation
+  float *g_right;
+
+  // number of eigenvalues smaller than the left interval limit
+  unsigned int *g_left_count;
+
+  // number of eigenvalues bigger than the right interval limit
+  unsigned int *g_right_count;
+
+  //! flag if algorithm converged
+  unsigned int *g_converged;
+
+  // helper variables
+
+  unsigned int mat_size_f;
+  unsigned int mat_size_ui;
+
+  float         *zero_f;
+  unsigned int  *zero_ui;
+};
 
 
 class ResultDataLarge

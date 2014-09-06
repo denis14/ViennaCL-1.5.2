@@ -154,6 +154,65 @@ storeInterval(unsigned int addr,
 ////////////////////////////////////////////////////////////////////////////////
 __device__
 inline unsigned int
+computeNumSmallerEigenvals(float *g_d, float *g_s, const unsigned int n,
+                           const float x,
+                           const unsigned int tid,
+                           const unsigned int num_intervals_active,
+                           float *s_d, float *s_s,
+                           unsigned int converged
+                          )
+{
+
+    float  delta = 1.0f;
+    unsigned int count = 0;
+
+    __syncthreads();
+
+    // read data into shared memory
+    if (threadIdx.x < n)
+    {
+        s_d[threadIdx.x] = *(g_d + threadIdx.x);
+        s_s[threadIdx.x] = *(g_s + threadIdx.x - 1);
+    }
+
+    __syncthreads();
+
+    // perform loop only for active threads
+    if ((tid < num_intervals_active) && (0 == converged))
+    {
+
+        // perform (optimized) Gaussian elimination to determine the number
+        // of eigenvalues that are smaller than n
+        for (unsigned int k = 0; k < n; ++k)
+        {
+            delta = s_d[k] - x - (s_s[k] * s_s[k]) / delta;
+            count += (delta < 0) ? 1 : 0;
+        }
+
+    }  // end if thread currently processing an interval
+
+    return count;
+}
+////////////////////////////////////////////////////////////////////////////////
+//! Compute number of eigenvalues that are smaller than x given a symmetric,
+//! real, and tridiagonal matrix
+//! @param  g_d  diagonal elements stored in global memory
+//! @param  g_s  superdiagonal elements stored in global memory
+//! @param  n    size of matrix
+//! @param  x    value for which the number of eigenvalues that are smaller is
+//!              seeked
+//! @param  tid  thread identified (e.g. threadIdx.x or gtid)
+//! @param  num_intervals_active  number of active intervals / threads that
+//!                               currently process an interval
+//! @param  s_d  scratch space to store diagonal entries of the tridiagonal
+//!              matrix in shared memory
+//! @param  s_s  scratch space to store superdiagonal entries of the tridiagonal
+//!              matrix in shared memory
+//! @param  converged  flag if the current thread is already converged (that
+//!         is count does not have to be computed)
+////////////////////////////////////////////////////////////////////////////////
+__device__
+inline unsigned int
 computeNumSmallerEigenvalsLarge(float *g_d, float *g_s, const unsigned int n,
                                 const float x,
                                 const unsigned int tid,
@@ -316,9 +375,7 @@ createIndicesCompaction(T *s_compaction_list_exc,
 
             unsigned int  ai = offset*(2*tid+1)-1;
             unsigned int  bi = offset*(2*tid+2)-1;
-            if( bi > 512 || ai > 512)
-            printf("ai = %u\t bi = %u\n", ai, bi);
-
+       
             s_compaction_list_exc[bi] =   s_compaction_list_exc[bi]
                                           + s_compaction_list_exc[ai];
         }

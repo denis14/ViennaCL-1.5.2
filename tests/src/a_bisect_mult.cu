@@ -38,6 +38,8 @@
 #include "viennacl/linalg/eigenvalues/bisect_large.hpp"
 
 #include "viennacl/linalg/eigenvalues/bisect_large.cuh"
+#include "viennacl/linalg/eigenvalues/bisect_small.cuh"
+#include "viennacl/linalg/eigenvalues/bisect_small.cu"
 
 ////////////////////////////////////////////////////////////////////////////////
 // declaration, forward
@@ -69,9 +71,9 @@ runTest(int argc, char **argv)
 {
     bool bCompareResult = false;
     // default
-    unsigned int mat_size = 59020;
+    unsigned int mat_size = 5133;
     // flag if the matrix size is due to explicit user request
-    unsigned int user_defined = 0;
+    unsigned int user_defined= 0;
     // desired precision of eigenvalues
     float  precision = 0.00001f;
     char  *result_file = "eigenvalues.dat";
@@ -79,6 +81,7 @@ runTest(int argc, char **argv)
     {
     // set up input
     InputData input(argv[0], mat_size, user_defined);
+    std::vector<float> eigenvalues(mat_size);
 
     // compute Gerschgorin interval
     float lg = FLT_MAX;
@@ -86,112 +89,60 @@ runTest(int argc, char **argv)
     computeGerschgorin(input.a, input.b + 1, mat_size, lg, ug);
     //computeGerschgorin(input.std_a, input.std_b_raw, mat_size, lg, ug);
     printf("Gerschgorin interval: %f / %f\n", lg, ug);
+    
+    if (mat_size <= MAX_SMALL_MATRIX)
+      {
+
+        // initialize memory for result
+        ResultDataSmall result(mat_size);
+        initResultSmallMatrix(result, mat_size);
+
+        // run the kernel
+        computeEigenvaluesSmallMatrix(input, result, mat_size, lg, ug,
+                                      precision, 1);
+
+        // get the result from the device and do some sanity checks,
+        // save the result
+        processResultSmallMatrix(input, result, mat_size, result_file);
+        std::copy(result.std_eigenvalues.begin(), result.std_eigenvalues.end(), eigenvalues.begin());
+        
+        // clean up
+        cleanupResultSmallMatrix(result);
+        bCompareResult = true;
+      }
 
 
-    // initialize memory for result
-    ResultDataLarge result(mat_size);
-    std::cout << "initResultDataLargeMatrix" << std::endl;
-    initResultDataLargeMatrix(result, mat_size);
-/*
-    // run the kernel
-    computeEigenvaluesLargeMatrix(input, result, mat_size,
-                                  precision, lg, ug,
-                                  iters_timing);
 
-   
+//  Large
+    else
+    {
+      // initialize memory for result
+      ResultDataLarge result(mat_size);
+      initResultDataLargeMatrix(result, mat_size);
 
-*/
+      // run the kernel
+      computeEigenvaluesLargeMatrix(input, result, mat_size,
+                                    precision, lg, ug,
+                                    1);
 
-    dim3  blocks(1, 1, 1);
-    dim3  threads(MAX_THREADS_BLOCK, 1, 1);
-
-    std::cout << " Start computation of the eigenvalues! " << std::endl;
-
-// anfang von bisect.hpp
-
-    std::cout << "Start bisectKernelLarge" << std::endl;
-    bisectKernelLarge<<< blocks, threads >>>
-    (input.g_a, input.g_b, mat_size,
-      lg, ug, 0, mat_size, precision,
-     result.g_num_one, result.g_num_blocks_mult,
-     result.g_left_one, result.g_right_one, result.g_pos_one,
-     result.g_left_mult, result.g_right_mult,
-     result.g_left_count_mult, result.g_right_count_mult,
-     result.g_blocks_mult, result.g_blocks_mult_sum
-    );
-
-    viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
-    checkCudaErrors(cudaDeviceSynchronize());
-
-
-    // get the number of intervals containing one eigenvalue after the first
-    // processing step
-    unsigned int num_one_intervals  = 42;
-    checkCudaErrors(cudaMemcpy(&num_one_intervals, result.g_num_one,
-                               sizeof(unsigned int),
-                               cudaMemcpyDeviceToHost));
-
-    dim3 grid_onei;
-    grid_onei.x = getNumBlocksLinear(num_one_intervals, MAX_THREADS_BLOCK);
-    grid_onei.y = 1, grid_onei.z = 1;
-    dim3 threads_onei(MAX_THREADS_BLOCK, 1, 1);
-    // use always max number of available threads to better balance load times
-    // for matrix data
-
-    // compute eigenvalues for intervals that contained only one eigenvalue
-    // after the first processing step
-
-
-    std::cout << "Start bisectKernelLarge_OneIntervals" << std::endl;
-    bisectKernelLarge_OneIntervals<<< grid_onei , threads_onei >>>
-    (input.g_a, input.g_b, mat_size, num_one_intervals,
-     result.g_left_one, result.g_right_one, result.g_pos_one,
-     precision
-    );
-
-    viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_OneIntervals() FAILED.");
-    checkCudaErrors(cudaDeviceSynchronize());
-
-    // process intervals that contained more than one eigenvalue after
-    // the first processing step
-
-    // get the number of blocks of intervals that contain, in total when
-    // each interval contains only one eigenvalue, not more than
-    // MAX_THREADS_BLOCK threads
-    unsigned int  num_blocks_mult = 0;
-    checkCudaErrors(cudaMemcpy(&num_blocks_mult, result.g_num_blocks_mult,
-                               sizeof(unsigned int),
-                               cudaMemcpyDeviceToHost));
-
-    // setup the execution environment
-    dim3  grid_mult(num_blocks_mult, 1, 1);
-    dim3  threads_mult(MAX_THREADS_BLOCK, 1, 1);
-
-
-    std::cout << "Start bisectKernelLarge_MultIntervals\t num_blocks_mult = " << num_blocks_mult << std::endl;
-    bisectKernelLarge_MultIntervals<<< grid_mult, threads_mult >>>
-    (input.g_a, input.g_b, mat_size,
-     result.g_blocks_mult, result.g_blocks_mult_sum,
-     result.g_left_mult, result.g_right_mult,
-     result.g_left_count_mult, result.g_right_count_mult,
-     result.g_lambda_mult, result.g_pos_mult,
-     precision
-    );
-    //viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
-    checkCudaErrors(cudaDeviceSynchronize());
-
-// ende bisect.hpp
-
-     // get the result from the device and do some sanity checks
-    // save the result if user specified matrix size
-    bCompareResult = processResultDataLargeMatrix(input, result, mat_size, result_file,
-                                                  user_defined, argv[0]);
-                                                  
-                                                  
-    // cleanup
-    std::cout << "CleanupResultDataLargeMatrix!" << std::endl;
-    cleanupResultDataLargeMatrix(result);
-
+     
+       // get the result from the device and do some sanity checks
+      // save the result if user specified matrix size
+      bCompareResult = processResultDataLargeMatrix(input, result, mat_size, result_file,
+                                                    user_defined, argv[0]);
+                                                    
+      std::copy(result.std_eigenvalues.begin(), result.std_eigenvalues.end(), eigenvalues.begin());                                         
+      // cleanup
+      std::cout << "CleanupResultDataLargeMatrix!" << std::endl;
+      cleanupResultDataLargeMatrix(result);
+    } //Large end
+    
+    
+    for (unsigned int i = 0; i < mat_size; ++i)
+    {
+      std::cout << "Eigenvalue " << i << ": " << std::setprecision(10) << eigenvalues[i] << std::endl;
+    }
+      
     std::cout << "cleanupInputData" << std::endl;
     input.cleanupInputData();
     }
