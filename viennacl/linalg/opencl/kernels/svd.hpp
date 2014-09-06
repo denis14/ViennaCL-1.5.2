@@ -821,7 +821,7 @@ namespace viennacl
             source.append("     }   \n");
 
             source.append("     barrier(CLK_LOCAL_MEM_FENCE);                       \n");
-            source.append("     S[glb_id * incS * startS] = XY[lcl_id];              \n");
+            source.append("     S[glb_id * incS + startS] = XY[lcl_id];              \n");
             source.append("     S_ref[glb_id * incS_ref + startS_ref] = XY[lcl_id];  \n");
             source.append(" } \n");
 

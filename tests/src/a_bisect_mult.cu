@@ -69,7 +69,7 @@ runTest(int argc, char **argv)
 {
     bool bCompareResult = false;
     // default
-    unsigned int mat_size = 11500;
+    unsigned int mat_size = 59020;
     // flag if the matrix size is due to explicit user request
     unsigned int user_defined = 0;
     // desired precision of eigenvalues
@@ -177,7 +177,7 @@ runTest(int argc, char **argv)
      result.g_lambda_mult, result.g_pos_mult,
      precision
     );
-    viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
+    //viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
     checkCudaErrors(cudaDeviceSynchronize());
 
 // ende bisect.hpp

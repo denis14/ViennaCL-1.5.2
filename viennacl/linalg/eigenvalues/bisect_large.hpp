@@ -206,7 +206,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
          result.g_blocks_mult, result.g_blocks_mult_sum
         );
 
-        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
+       // viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
         checkCudaErrors(cudaDeviceSynchronize());
         
        
@@ -241,7 +241,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
          precision
         );
 
-        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_OneIntervals() FAILED.");
+       // viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_OneIntervals() FAILED.");
         checkCudaErrors(cudaDeviceSynchronize());
 
         // process intervals that contained more than one eigenvalue after
@@ -272,7 +272,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
          result.g_lambda_mult, result.g_pos_mult,
          precision
         );
-        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
+      //  viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
         checkCudaErrors(cudaDeviceSynchronize());
 
     }
@@ -293,7 +293,7 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
                              const char *filename,
                              const unsigned int user_defined, char *exec_path)
 {
-    bool bCompareResult = false;
+    bool bCompareResult = true;
     std::cout << "Matrix size: " << mat_size << std::endl;
     const unsigned int mat_size_ui = sizeof(unsigned int) * mat_size;
     const unsigned int mat_size_f  = sizeof(float) * mat_size;
@@ -351,8 +351,11 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
         result.std_eigenvalues[pos_mult[i] - 1] = lambda_mult[i];
       
       else
+      {
         printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
-    }
+        bCompareResult = false;
+      } 
+      }
 
     // singleton intervals generated in the first step
     unsigned int index = 0;
@@ -372,7 +375,6 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
         // getLastCudaError( sdkWriteFilef( filename, eigenvals, mat_size, 0.0f));
 
         printf("skipping self-check!\n");
-        bCompareResult = true;
     }
 
     freePtr(eigenvalues);
