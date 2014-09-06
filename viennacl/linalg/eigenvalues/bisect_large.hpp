@@ -293,7 +293,7 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
                              const char *filename,
                              const unsigned int user_defined, char *exec_path)
 {
-    bool bCompareResult = false;
+    bool bCompareResult = true;
     std::cout << "Matrix size: " << mat_size << std::endl;
     const unsigned int mat_size_ui = sizeof(unsigned int) * mat_size;
     const unsigned int mat_size_f  = sizeof(float) * mat_size;
