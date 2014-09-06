@@ -130,8 +130,8 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         s_right[tid] = g_right[c_block_start + tid];
         s_left_count[tid]  = g_left_count[c_block_start + tid];
         s_right_count[tid] = g_right_count[c_block_start + tid];
-        printf("1: tid = %u s_l = %10.8f \t s_r = %10.8f \t s_l_c = %u \t s_r_c = %u \t c_block_start + tid = %u\n", 
-          tid, s_left[tid], s_right[tid], s_left_count[tid], s_right_count[tid], c_block_start + tid);       // selbst hinzugefuegt
+       // printf("1: tid = %u s_l = %10.8f \t s_r = %10.8f \t s_l_c = %u \t s_r_c = %u \t c_block_start + tid = %u\n", 
+         // tid, s_left[tid], s_right[tid], s_left_count[tid], s_right_count[tid], c_block_start + tid);       // selbst hinzugefuegt
 
         
     }
@@ -253,7 +253,7 @@ bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
         
         g_lambda[addr]  = s_left[tid];
         g_pos[addr]   = s_right_count[tid];
-        printf("s_left = %10.8f\n", s_left[tid]);
+        //printf("s_left = %10.8f\n", s_left[tid]);
     }
 }
 
