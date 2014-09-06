@@ -120,22 +120,22 @@ runTest(int argc, char **argv)
     float  precision = 0.00001f;
     char  *result_file = "eigenvalues.dat";
 
-    {
+    //{
     // set up input
-    InputData input(argv[0], mat_size, user_defined);
+   // InputData input(argv[0], mat_size, user_defined);
 
     // compute Gerschgorin interval
     float lg = FLT_MAX;
     float ug = -FLT_MAX;
-    computeGerschgorin(input.a, input.b + 1, mat_size, lg, ug);
+  //  computeGerschgorin(input.a, input.b + 1, mat_size, lg, ug);
     //computeGerschgorin(input.std_a, input.std_b_raw, mat_size, lg, ug);
-    printf("Gerschgorin interval: %f / %f\n", lg, ug);
+  //  printf("Gerschgorin interval: %f / %f\n", lg, ug);
 
-
+/*
     // initialize memory for result
     ResultDataLarge result(mat_size);
     std::cout << "initResultDataLargeMatrix" << std::endl;
-    initResultDataLargeMatrix(result, mat_size);
+    initResultDataLargeMatrix(result, mat_size);*/
 /*
     // run the kernel
     computeEigenvaluesLargeMatrix(input, result, mat_size,
@@ -144,7 +144,7 @@ runTest(int argc, char **argv)
 
    
 
-*/
+
 
     dim3  blocks(1, 1, 1);
     dim3  threads(MAX_THREADS_BLOCK, 1, 1);
@@ -230,7 +230,7 @@ runTest(int argc, char **argv)
     // save the result if user specified matrix size
     bCompareResult = processResultDataLargeMatrix(input, result, mat_size, result_file,
                                                   user_defined, argv[0]);
-   
+   */
   viennacl::matrix<float, viennacl::row_major> Q = viennacl::identity_matrix<float>(mat_size);
   ublas::vector<float> d(mat_size), e(mat_size), d_ref(mat_size), e_ref(mat_size); //d is major diagonal, e is minor diagonal
 
@@ -249,7 +249,7 @@ runTest(int argc, char **argv)
 
 //--------------------------------------------------------
   viennacl::linalg::tql2(Q, d, e);  
-  
+  /*
   for(uint i = 0; i < mat_size; i++)
   {
      if(std::abs(result.std_eigenvalues[(mat_size - 1) - i] - d[i]) > EPS)
@@ -258,8 +258,8 @@ runTest(int argc, char **argv)
 	  std::cout <<result.std_eigenvalues[(mat_size - 1) - i] << "  != " << d[i] << "\n";
      }  	
   }
-                                                  
-                                                  
+                 */                                 
+    /*                                              
     // cleanup
     std::cout << "CleanupResultDataLargeMatrix!" << std::endl;
     cleanupResultDataLargeMatrix(result);
@@ -277,4 +277,6 @@ runTest(int argc, char **argv)
     cudaDeviceReset();
 
     return bCompareResult;
+    
+    */
 }

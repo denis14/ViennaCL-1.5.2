@@ -43,8 +43,7 @@ extern "C" {
     bool
     processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
                                  const unsigned int mat_size,
-                                 const char *filename,
-                                 const unsigned int user_defined, char *exec_path);
+                                 const char *filename);
 
 };
 

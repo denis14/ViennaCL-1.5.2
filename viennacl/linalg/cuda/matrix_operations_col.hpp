@@ -1465,13 +1465,13 @@ namespace viennacl
                        VectorType & sh
                       )
       {
-        viennacl::vector<NumericT> D(dh.size());
-        viennacl::vector<NumericT> S(sh.size());
+       // viennacl::vector<NumericT> D(dh.size());
+       // viennacl::vector<NumericT> S(sh.size());
         if (viennacl::is_row_major<F>::value)
           {
             viennacl::linalg::cuda::bidiag_pack_row_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
-                                                                     viennacl::linalg::cuda::detail::cuda_arg<NumericT>(D),
-                                                                     viennacl::linalg::cuda::detail::cuda_arg<NumericT>(S),
+                                                                     viennacl::linalg::cuda::detail::cuda_arg<NumericT>(dh),
+                                                                     viennacl::linalg::cuda::detail::cuda_arg<NumericT>(sh),
                                                                      static_cast<unsigned int>(viennacl::traits::size1(A)),
                                                                      static_cast<unsigned int>(viennacl::traits::size2(A)),
                                                                      static_cast<unsigned int>(viennacl::traits::internal_size2(A)));
@@ -1479,16 +1479,16 @@ namespace viennacl
         else
           {
             viennacl::linalg::cuda::bidiag_pack_column_major_kernel<<<128, 128>>>(detail::cuda_arg<NumericT>(A),
-                                                                     viennacl::linalg::cuda::detail::cuda_arg<NumericT>(D),
-                                                                     viennacl::linalg::cuda::detail::cuda_arg<NumericT>(S),
+                                                                     viennacl::linalg::cuda::detail::cuda_arg<NumericT>(dh),
+                                                                     viennacl::linalg::cuda::detail::cuda_arg<NumericT>(sh),
                                                                      static_cast<unsigned int>(viennacl::traits::size1(A)),
                                                                      static_cast<unsigned int>(viennacl::traits::size2(A)),
                                                                      static_cast<unsigned int>(viennacl::traits::internal_size1(A)));
           }
 
 
-        fast_copy(D, dh);
-        fast_copy(S, sh);
+       // fast_copy(D, dh);
+       // fast_copy(S, sh);
       }
 
 

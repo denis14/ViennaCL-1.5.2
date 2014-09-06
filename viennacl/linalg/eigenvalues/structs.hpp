@@ -37,126 +37,86 @@ class InputData
   //!                      0 if the default size
   ////////////////////////////////////////////////////////////////////////////////
 
-  InputData(char *exec_path, const unsigned int sz, const unsigned int user_defined) :
+  InputData(std::vector<float> diagonal, std::vector<float> superdiagonal, const unsigned int sz) :
               std_a(sz), std_b(sz),  std_b_raw(sz), vcl_a(sz)
-    {
-        // allocate memory
-      const unsigned int mat_size = sz;
-      a = (float *) malloc(sizeof(float) * mat_size);
-      b = (float *) malloc(sizeof(float) * mat_size);
-      
-      std::cout << "Init Input Data!" << std::endl;
+  {
+    // allocate memory
+    const unsigned int mat_size = sz;
+    a = (float *) malloc(sizeof(float) * mat_size);
+    b = (float *) malloc(sizeof(float) * mat_size);
 
-      if (0 == user_defined)
-      {
-          /*
-           std_a[0] = 1;  std_b_raw[0] = 0;
-           std_a[1] = 2;  std_b_raw[1] = 4;
-           std_a[2] =-4;  std_b_raw[2] = 5;
-           std_a[3] = 6;  std_b_raw[3] = 1;
-           std_a[4] = 3;  std_b_raw[4] = 2;
-           std_a[5] = 4;  std_b_raw[5] =-3;
-           std_a[6] = 7;  std_b_raw[6] = 5;
-           std_a[7] = 9;  std_b_raw[7] = 1;
-           std_a[8] = 3;  std_b_raw[8] = 5;
-           std_a[9] = 8;  std_b_raw[9] = 2;
-*/
-           
-            srand(278217421);
+   std::copy(diagonal.begin(), diagonal.end(), a);
+   std::copy(superdiagonal.begin(), superdiagonal.end(), b);
 
-           for(unsigned int i = 0; i < mat_size; ++i)
-           {
-             //std_a[i] = i % 11 + 4;
-             //std_b_raw[i] = i % 9 + 2;
-             
-             a[i] = ((float)(i % 9)) - 4.5f;
-             b[i] = ((float)(i % 5)) - 4.5f;
-           }
+    // the first element of s is used as padding on the device (thus the
+    // whole vector is copied to the device but the kernels are launched
+    // with (s+1) as start address
+     //std_b_raw[0] = 0.0f;
+   b[0] = 0.0f;
 
-           // initialize diagonal and superdiagonal entries with random values
-       
+   // allocate device memory for input
+   checkCudaErrors(cudaMalloc((void **) &( g_a)    , sizeof(float) * mat_size));
+   checkCudaErrors(cudaMalloc((void **) &( g_b_raw), sizeof(float) * mat_size));
 
-        // srand( clock());
-        /*
-        for (unsigned int i = 0; i < mat_size; ++i)
-        {
-            a[i] = (double)(2.0 * (((double)rand()
-                                         / (float) RAND_MAX) - 0.5));
-            b[i] = (double)(2.0 * (((double)rand()
-                                         / (float) RAND_MAX) - 0.5));
-        }*/
+   // copy data to device
+   //copy(std_a, vcl_a);
+  // copy(std_b_raw, vcl_b_raw);
 
-          // the first element of s is used as padding on the device (thus the
-          // whole vector is copied to the device but the kernels are launched
-          // with (s+1) as start address
-           //std_b_raw[0] = 0.0f;
-          b[0] = 0.0f;
-      }
+  /* copy(std_b_raw.begin() + 0,  std_b_raw.end(),  std_b.begin());
+
+  copy(std_a.begin(), std_a.end(), a);
+  copy(std_b.begin(), std_b.end(), b);
+ */
+   checkCudaErrors(cudaMemcpy(g_a    , a, sizeof(float) * mat_size, cudaMemcpyHostToDevice));
+   checkCudaErrors(cudaMemcpy(g_b_raw, b, sizeof(float) * mat_size, cudaMemcpyHostToDevice));
 
 
-      // allocate device memory for input
-      checkCudaErrors(cudaMalloc((void **) &( g_a)    , sizeof(float) * mat_size));
-      checkCudaErrors(cudaMalloc((void **) &( g_b_raw), sizeof(float) * mat_size));
-
-      // copy data to device
-      //copy(std_a, vcl_a);
-     // copy(std_b_raw, vcl_b_raw);
-      
-     /* copy(std_b_raw.begin() + 0,  std_b_raw.end(),  std_b.begin());
-
-      copy(std_a.begin(), std_a.end(), a);
-      copy(std_b.begin(), std_b.end(), b);
-     */
-      checkCudaErrors(cudaMemcpy(g_a    , a, sizeof(float) * mat_size, cudaMemcpyHostToDevice));
-      checkCudaErrors(cudaMemcpy(g_b_raw, b, sizeof(float) * mat_size, cudaMemcpyHostToDevice));
+    g_b =  g_b_raw + 1;
+  }
 
 
-       g_b =  g_b_raw + 1;
-    }
+  ////////////////////////////////////////////////////////////////////////////////
+  //! Clean up input data, in particular allocated memory
+  //! @param input  handles to the input data
+  ////////////////////////////////////////////////////////////////////////////////
+  void
+  cleanupInputData(void)
+  {
+
+      freePtr(a);
+      freePtr(b);
+
+      checkCudaErrors(cudaFree(g_a));
+      g_a = NULL;
+      checkCudaErrors(cudaFree(g_b_raw));
+      g_b_raw = NULL;
+      g_b = NULL;
+
+  }
 
 
-    ////////////////////////////////////////////////////////////////////////////////
-    //! Clean up input data, in particular allocated memory
-    //! @param input  handles to the input data
-    ////////////////////////////////////////////////////////////////////////////////
-    void
-    cleanupInputData(void)
-    {
+  //! host/device side representation of diagonal
+  float  *a;
+  viennacl::vector<float> vcl_a;
+  std::vector<float> std_a;
+  //! host/device side representation superdiagonal
+  //viennacl::vector<float> vcl_b;
+  std::vector<float> std_b;
+  //! host/device side representation of helper vector
+  //viennacl::vector<float> vcl_b_raw;
+  std::vector<float> std_b_raw;
 
-        freePtr(a);
-        freePtr(b);
 
-        checkCudaErrors(cudaFree(g_a));
-        g_a = NULL;
-        checkCudaErrors(cudaFree(g_b_raw));
-        g_b_raw = NULL;
-        g_b = NULL;
+  //! host side representation superdiagonal
+  float  *b;
 
-    }
-    
-    
-    //! host/device side representation of diagonal
-    float  *a;
-    viennacl::vector<float> vcl_a;
-    std::vector<float> std_a;
-    //! host/device side representation superdiagonal
-    //viennacl::vector<float> vcl_b;
-    std::vector<float> std_b;
-    //! host/device side representation of helper vector
-    //viennacl::vector<float> vcl_b_raw;
-    std::vector<float> std_b_raw;
-  
-    
-    //! host side representation superdiagonal
-    float  *b;
-
-    //! device side representation of diagonal
-    float  *g_a;
-    //! device side representation of superdiagonal
-    float  *g_b;
-    //! helper variable pointing to the mem allocated for g_b which provides
-    //! space for one additional element of padding at the beginning
-    float  *g_b_raw;
+  //! device side representation of diagonal
+  float  *g_a;
+  //! device side representation of superdiagonal
+  float  *g_b;
+  //! helper variable pointing to the mem allocated for g_b which provides
+  //! space for one additional element of padding at the beginning
+  float  *g_b_raw;
 
 };
 

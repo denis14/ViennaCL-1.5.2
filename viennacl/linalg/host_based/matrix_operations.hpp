@@ -1248,16 +1248,16 @@ namespace viennacl
                          VectorType & sh
                         )
         {
-          viennacl::vector<NumericT> D(dh.size());
+         /* viennacl::vector<NumericT> D(dh.size());
           viennacl::vector<NumericT> S(sh.size());
           viennacl::copy(dh, D);
           viennacl::copy(sh, S);
-
-          viennacl::linalg::host_based::bidiag_pack_impl(A, D, S);
-
+*/
+          viennacl::linalg::host_based::bidiag_pack_impl(A, dh, sh);
+/*
           viennacl::copy(D, dh);
           viennacl::copy(S, sh);
-
+*/
         }
 
         /** @brief This function applies a householder transformation to a matrix. A <- P * A with a householder reflection P

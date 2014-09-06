@@ -299,7 +299,7 @@ int main()
 
 
 
-  test_eigen<viennacl::row_major>("../../examples/testdata/eigen/nsm2.example", false);
+  //test_eigen<viennacl::row_major>("../../examples/testdata/eigen/nsm2.example", false);
   //test_eigen<viennacl::row_major>("../../examples/testdata/eigen/nsm2.example", false);
   //test_eigen("../../examples/testdata/eigen/nsm3.example", false);
   //test_eigen("../../examples/testdata/eigen/nsm4.example", false); //Note: This test suffers from round-off errors in single precision, hence disabled

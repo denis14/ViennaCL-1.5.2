@@ -290,8 +290,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
 bool
 processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
                              const unsigned int mat_size,
-                             const char *filename,
-                             const unsigned int user_defined, char *exec_path)
+                             const char *filename)
 {
     bool bCompareResult = true;
     std::cout << "Matrix size: " << mat_size << std::endl;
@@ -368,14 +367,10 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
     for( unsigned int i = 0; i < mat_size; ++i)
       std::cout << "Eigenvalue " << i << "= " << std::setprecision(10) << result.std_eigenvalues[i] << std::endl;
 */
-    if (0 == user_defined)
-    {
-        // store result
-        //writeTridiagSymMatlab(filename, input.vcl_a, input.vcl_b, result.std_eigenvalues, mat_size);
-        // getLastCudaError( sdkWriteFilef( filename, eigenvals, mat_size, 0.0f));
 
-        printf("skipping self-check!\n");
-    }
+    // store result
+    //writeTridiagSymMatlab(filename, input.vcl_a, input.vcl_b, result.std_eigenvalues, mat_size);
+    // getLastCudaError( sdkWriteFilef( filename, eigenvals, mat_size, 0.0f));
 
     freePtr(eigenvalues);
     freePtr(lambda_mult);

@@ -40,20 +40,21 @@ namespace viennacl
     // Symmetric tridiagonal QL algorithm.
     // This is derived from the Algol procedures tql2, by Bowdler, Martin, Reinsch, and Wilkinson,
     // Handbook for Auto. Comp., Vol.ii-Linear Algebra, and the corresponding Fortran subroutine in EISPACK.
-    template <typename SCALARTYPE, typename F>
+    template <typename SCALARTYPE, typename VectorType, typename F>
     void tql2(matrix_base<SCALARTYPE, F> & Q,
-              boost::numeric::ublas::vector<SCALARTYPE> & d,
-              boost::numeric::ublas::vector<SCALARTYPE> & e)
+              VectorType & d,
+              VectorType & e)
     {
         int n = static_cast<int>(viennacl::traits::size1(Q));
 
-        boost::numeric::ublas::vector<SCALARTYPE> cs(n), ss(n);
+        //boost::numeric::ublas::vector<SCALARTYPE> cs(n), ss(n);
+        std::vector<SCALARTYPE> cs(n), ss(n);
         viennacl::vector<SCALARTYPE> tmp1(n), tmp2(n);
 
         for (int i = 1; i < n; i++)
-            e(i - 1) = e(i);
+            e[i - 1] = e[i];
 
-        e(n - 1) = 0;
+        e[n - 1] = 0;
 
         SCALARTYPE f = 0;
         SCALARTYPE tst1 = 0;
@@ -63,16 +64,16 @@ namespace viennacl
         for (int l = 0; l < n; l++)
         {
             // Find small subdiagonal element.
-            tst1 = std::max<SCALARTYPE>(tst1, std::fabs(d(l)) + std::fabs(e(l)));
+            tst1 = std::max<SCALARTYPE>(tst1, std::fabs(d[l]) + std::fabs(e[l]));
             int m = l;
             while (m < n)
             {
-                if (std::fabs(e(m)) <= eps * tst1)
+                if (std::fabs(e[m]) <= eps * tst1)
                     break;
                 m++;
             }
 
-            // If m == l, d(l) is an eigenvalue, otherwise, iterate.
+            // If m == l, d[l) is an eigenvalue, otherwise, iterate.
             if (m > l)
             {
                 int iter = 0;
@@ -81,31 +82,31 @@ namespace viennacl
                     iter = iter + 1;  // (Could check iteration count here.)
 
                     // Compute implicit shift
-                    SCALARTYPE g = d(l);
-                    SCALARTYPE p = (d(l + 1) - g) / (2 * e(l));
+                    SCALARTYPE g = d[l];
+                    SCALARTYPE p = (d[l + 1] - g) / (2 * e[l]);
                     SCALARTYPE r = viennacl::linalg::detail::pythag<SCALARTYPE>(p, 1);
                     if (p < 0)
                     {
                         r = -r;
                     }
 
-                    d(l) = e(l) / (p + r);
-                    d(l + 1) = e(l) * (p + r);
-                    SCALARTYPE dl1 = d(l + 1);
-                    SCALARTYPE h = g - d(l);
+                    d[l] = e[l] / (p + r);
+                    d[l + 1] = e[l] * (p + r);
+                    SCALARTYPE dl1 = d[l + 1];
+                    SCALARTYPE h = g - d[l];
                     for (int i = l + 2; i < n; i++)
                     {
-                        d(i) -= h;
+                        d[i] -= h;
                     }
 
                     f = f + h;
 
                     // Implicit QL transformation.
-                    p = d(m);
+                    p = d[m];
                     SCALARTYPE c = 1;
                     SCALARTYPE c2 = c;
                     SCALARTYPE c3 = c;
-                    SCALARTYPE el1 = e(l + 1);
+                    SCALARTYPE el1 = e[l + 1];
                     SCALARTYPE s = 0;
                     SCALARTYPE s2 = 0;
                     for (int i = m - 1; i >= l; i--)
@@ -113,14 +114,14 @@ namespace viennacl
                         c3 = c2;
                         c2 = c;
                         s2 = s;
-                        g = c * e(i);
+                        g = c * e[i];
                         h = c * p;
-                        r = viennacl::linalg::detail::pythag(p, e(i));
-                        e(i + 1) = s * r;
-                        s = e(i) / r;
+                        r = viennacl::linalg::detail::pythag(p, e[i]);
+                        e[i + 1] = s * r;
+                        s = e[i] / r;
                         c = p / r;
-                        p = c * d(i) - s * g;
-                        d(i + 1) = h + s * (c * g + s * d(i));
+                        p = c * d[i] - s * g;
+                        d[i + 1] = h + s * (c * g + s * d[i]);
 
 
                         cs[i] = c;
@@ -128,9 +129,9 @@ namespace viennacl
                     }
 
 
-                    p = -s * s2 * c3 * el1 * e(l) / dl1;
-                    e(l) = s * p;
-                    d(l) = c * p;
+                    p = -s * s2 * c3 * el1 * e[l] / dl1;
+                    e[l] = s * p;
+                    d[l] = c * p;
 
                     viennacl::copy(cs, tmp1);
                     viennacl::copy(ss, tmp2);
@@ -139,26 +140,26 @@ namespace viennacl
 
                     // Check for convergence.
                 }
-                while (std::fabs(e(l)) > eps * tst1);
+                while (std::fabs(e[l]) > eps * tst1);
             }
-            d(l) = d(l) + f;
-            e(l) = 0;
+            d[l] = d[l] + f;
+            e[l] = 0;
         }
 
         // Sort eigenvalues and corresponding vectors.
-
+/*
            for (int i = 0; i < n-1; i++) {
               int k = i;
-              SCALARTYPE p = d(i);
+              SCALARTYPE p = d[i];
               for (int j = i+1; j < n; j++) {
-                 if (d(j) > p) {
+                 if (d[j] > p) {
                     k = j;
-                    p = d(j);
+                    p = d[j);
                  }
               }
               if (k != i) {
-                 d(k) = d(i);
-                 d(i) = p;
+                 d[k] = d[i];
+                 d[i] = p;
                  for (int j = 0; j < n; j++) {
                     p = Q(j, i);
                     Q(j, i) = Q(j, k);
@@ -167,7 +168,7 @@ namespace viennacl
               }
            }
 
-
+*/
 
     }
 
@@ -841,22 +842,33 @@ namespace viennacl
               std::cout << "qr_method for non-symmetric column-major matrices not implemented yet!" << std::endl;
               exit(EXIT_FAILURE);
             }
+            unsigned int mat_size = A.size1();
             D.resize(A.size1());
             E.resize(A.size1());
 
+
             D.clear();
             E.clear();
+            viennacl::vector<SCALARTYPE> vcl_D(mat_size), vcl_E(mat_size);
+            //std::vector<SCALARTYPE> std_D(mat_size), std_E(mat_size);
+
             Q = viennacl::identity_matrix<SCALARTYPE>(Q.size1());
 
             // reduce to tridiagonal form
             detail::tridiagonal_reduction(A, Q);
 
             // pack diagonal and super-diagonal
-            viennacl::linalg::bidiag_pack(A, D, E);
+            viennacl::linalg::bidiag_pack(A, vcl_D, vcl_E);
+            copy(vcl_D, D);
+            copy(vcl_E, E);
 
             // find eigenvalues of symmetric tridiagonal matrix
             if(is_symmetric)
-                viennacl::linalg::tql2(Q, D, E);
+            {
+              viennacl::linalg::tql2(Q, D, E);
+
+            }
+
 
             else
             {

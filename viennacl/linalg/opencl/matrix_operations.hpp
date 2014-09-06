@@ -1013,24 +1013,18 @@ namespace viennacl
                        VectorType & sh
                       )
       {
-        viennacl::vector<NumericT> D(dh.size());
-        viennacl::vector<NumericT> S(sh.size());
-
         viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(A).context());
         viennacl::linalg::opencl::kernels::svd<NumericT, F>::init(ctx);
         viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT, F>::program_name(), SVD_BIDIAG_PACK_KERNEL);
 
         viennacl::ocl::enqueue(kernel(
                                       A,
-                                      D,
-                                      S,
+                                      dh,
+                                      sh,
                                       cl_uint(viennacl::traits::size1(A)),
                                       cl_uint(viennacl::traits::size2(A)),
                                       cl_uint(viennacl::traits::internal_size2(A))
                                     ));
-
-        fast_copy(D, dh);
-        fast_copy(S, sh);
       }
 
 
