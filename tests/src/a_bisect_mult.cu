@@ -90,7 +90,7 @@ initInputData(std::vector<float> &diagonal, std::vector<float> &superdiagonal, c
   else
   { 
     // Initialize diagonal and superdiagonal elements with modulo values
-    // This will cause many multiple eigenvalues
+    // This will cause in many multiple eigenvalues.
     for(unsigned int i = 0; i < mat_size; ++i)
     {
        diagonal[i] = ((float)(i % 9)) - 4.5f;
@@ -119,10 +119,8 @@ bool bisect(const std::vector<NumericT> & diagonal, const std::vector<NumericT> 
     
     if (mat_size <= MAX_SMALL_MATRIX)
     {
-
       // initialize memory for result
       ResultDataSmall result(mat_size);
-      initResultSmallMatrix(result, mat_size);
 
       // run the kernel
       computeEigenvaluesSmallMatrix(input, result, mat_size, lg, ug,
@@ -134,7 +132,7 @@ bool bisect(const std::vector<NumericT> & diagonal, const std::vector<NumericT> 
       std::copy(result.std_eigenvalues.begin(), result.std_eigenvalues.end(), eigenvalues.begin());
       
       // clean up
-      cleanupResultSmallMatrix(result);
+      result.cleanup();
       bCompareResult = true;
     }
 
@@ -142,8 +140,7 @@ bool bisect(const std::vector<NumericT> & diagonal, const std::vector<NumericT> 
     {
       // initialize memory for result
       ResultDataLarge result(mat_size);
-      initResultDataLargeMatrix(result, mat_size);
-
+    
       // run the kernel
       computeEigenvaluesLargeMatrix(input, result, mat_size,
                                     lg, ug, precision);
@@ -155,8 +152,8 @@ bool bisect(const std::vector<NumericT> & diagonal, const std::vector<NumericT> 
                                                     
       std::copy(result.std_eigenvalues.begin(), result.std_eigenvalues.end(), eigenvalues.begin());                                         
       // cleanup
-      std::cout << "CleanupResultDataLargeMatrix!" << std::endl;
-      cleanupResultDataLargeMatrix(result);
+      std::cout << "CleanupResultData" << std::endl;
+      result.cleanup();
     } //Large end
     
     std::cout << "cleanupInputData" << std::endl;
@@ -172,7 +169,7 @@ bool
 runTest(int argc, char **argv)
 {
     bool bCompareResult = false;
-    unsigned int mat_size = 2003;
+    unsigned int mat_size = 213;
     
     std::vector<float> diagonal(mat_size);
     std::vector<float> superdiagonal(mat_size);
@@ -222,7 +219,7 @@ runTest(int argc, char **argv)
     // Print the results.
     for (unsigned int i = 0; i < mat_size; ++i)
     {
-      std::cout << "Eigenvalue " << i << ": \tbisect: " << std::setprecision(8) << eigenvalues_bisect[i] << "\ttql2: " << diagonal_tql[i] << std::endl;
+      std::cout << "Eigenvalue " << i << ":  \tbisect: " << std::setprecision(8) << eigenvalues_bisect[i] << "\ttql2: " << diagonal_tql[i] << std::endl;
     }
     
     

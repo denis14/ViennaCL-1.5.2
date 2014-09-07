@@ -58,109 +58,6 @@
 #include "viennacl/linalg/cuda/matrix_operations_prod.hpp"
 #include "viennacl/linalg/cuda/matrix_operations_prod.hpp"
 
-////////////////////////////////////////////////////////////////////////////////
-//! Initialize variables and memory for result
-//! @param  result handles to memory
-//! @param  matrix_size  size of the matrix
-////////////////////////////////////////////////////////////////////////////////
-void
-initResultDataLargeMatrix(ResultDataLarge &result, const unsigned int mat_size)
-{
-
-    // helper variables to initialize memory
-    unsigned int zero = 0;
-    unsigned int mat_size_f = sizeof(float) * mat_size;
-    unsigned int mat_size_ui = sizeof(unsigned int) * mat_size;
-
-    float *tempf = (float *) malloc(mat_size_f);
-    unsigned int *tempui = (unsigned int *) malloc(mat_size_ui);
-
-    for (unsigned int i = 0; i < mat_size; ++i)
-    {
-        tempf[i] = 0.0f;
-        tempui[i] = 0;
-    }
-
-    // number of intervals containing only one eigenvalue after the first step
-    checkCudaErrors(cudaMalloc((void **) &result.g_num_one,
-                               sizeof(unsigned int)));
-    checkCudaErrors(cudaMemcpy(result.g_num_one, &zero, sizeof(unsigned int),
-                               cudaMemcpyHostToDevice));
-
-    // number of (thread) blocks of intervals with multiple eigenvalues after
-    // the first iteration
-    checkCudaErrors(cudaMalloc((void **) &result.g_num_blocks_mult,
-                               sizeof(unsigned int)));
-    checkCudaErrors(cudaMemcpy(result.g_num_blocks_mult, &zero,
-                               sizeof(unsigned int),
-                               cudaMemcpyHostToDevice));
-
-
-    checkCudaErrors(cudaMalloc((void **) &result.g_left_one, mat_size_f));
-    checkCudaErrors(cudaMalloc((void **) &result.g_right_one, mat_size_f));
-    checkCudaErrors(cudaMalloc((void **) &result.g_pos_one, mat_size_ui));
-
-    checkCudaErrors(cudaMalloc((void **) &result.g_left_mult, mat_size_f));
-    checkCudaErrors(cudaMalloc((void **) &result.g_right_mult, mat_size_f));
-    checkCudaErrors(cudaMalloc((void **) &result.g_left_count_mult,
-                               mat_size_ui));
-    checkCudaErrors(cudaMalloc((void **) &result.g_right_count_mult,
-                               mat_size_ui));
-
-    checkCudaErrors(cudaMemcpy(result.g_left_one, tempf, mat_size_f,
-                               cudaMemcpyHostToDevice));
-    checkCudaErrors(cudaMemcpy(result.g_right_one, tempf, mat_size_f,
-                               cudaMemcpyHostToDevice));
-    checkCudaErrors(cudaMemcpy(result.g_pos_one, tempui, mat_size_ui,
-                               cudaMemcpyHostToDevice));
-
-    checkCudaErrors(cudaMemcpy(result.g_left_mult, tempf, mat_size_f,
-                               cudaMemcpyHostToDevice));
-    checkCudaErrors(cudaMemcpy(result.g_right_mult, tempf, mat_size_f,
-                               cudaMemcpyHostToDevice));
-    checkCudaErrors(cudaMemcpy(result.g_left_count_mult, tempui, mat_size_ui,
-                               cudaMemcpyHostToDevice));
-    checkCudaErrors(cudaMemcpy(result.g_right_count_mult, tempui, mat_size_ui,
-                               cudaMemcpyHostToDevice));
-
-    checkCudaErrors(cudaMalloc((void **) &result.g_blocks_mult, mat_size_ui));
-    checkCudaErrors(cudaMemcpy(result.g_blocks_mult, tempui, mat_size_ui,
-                               cudaMemcpyHostToDevice));
-    checkCudaErrors(cudaMalloc((void **) &result.g_blocks_mult_sum, mat_size_ui));
-    checkCudaErrors(cudaMemcpy(result.g_blocks_mult_sum, tempui, mat_size_ui,
-                               cudaMemcpyHostToDevice));
-
-    checkCudaErrors(cudaMalloc((void **) &result.g_lambda_mult, mat_size_f));
-    checkCudaErrors(cudaMemcpy(result.g_lambda_mult, tempf, mat_size_f,
-                               cudaMemcpyHostToDevice));
-    checkCudaErrors(cudaMalloc((void **) &result.g_pos_mult, mat_size_ui));
-    checkCudaErrors(cudaMemcpy(result.g_pos_mult, tempf, mat_size_ui,
-                               cudaMemcpyHostToDevice));
-
-}
-
-////////////////////////////////////////////////////////////////////////////////
-//! Cleanup result memory
-//! @param result  handles to memory
-////////////////////////////////////////////////////////////////////////////////
-void
-cleanupResultDataLargeMatrix(ResultDataLarge &result)
-{
-
-    checkCudaErrors(cudaFree(result.g_num_one));
-    checkCudaErrors(cudaFree(result.g_num_blocks_mult));
-    checkCudaErrors(cudaFree(result.g_left_one));
-    checkCudaErrors(cudaFree(result.g_right_one));
-    checkCudaErrors(cudaFree(result.g_pos_one));
-    checkCudaErrors(cudaFree(result.g_left_mult));
-    checkCudaErrors(cudaFree(result.g_right_mult));
-    checkCudaErrors(cudaFree(result.g_left_count_mult));
-    checkCudaErrors(cudaFree(result.g_right_count_mult));
-    checkCudaErrors(cudaFree(result.g_blocks_mult));
-    checkCudaErrors(cudaFree(result.g_blocks_mult_sum));
-    checkCudaErrors(cudaFree(result.g_lambda_mult));
-    checkCudaErrors(cudaFree(result.g_pos_mult));
-}
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Run the kernels to compute the eigenvalues for large matrices
@@ -179,20 +76,6 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
 {
     dim3  blocks(1, 1, 1);
     dim3  threads(MAX_THREADS_BLOCK, 1, 1);
-
-    std::cout << " Start computation of the eigenvalues! " << std::endl;
-
-
-    for( unsigned int i = 0; i < 10; ++i)
-      std::cout << "a " << i << "= " << input.a[i] << std::endl;
-
-    for( unsigned int i = 0; i < 10; ++i)
-      std::cout << "b " << i << "= " << input.b[i] << std::endl;
-
-
-    // do for multiple iterations to improve timing accuracy
-
-
     std::cout << "Start bisectKernelLarge" << std::endl;
     bisectKernelLarge<<< blocks, threads >>>
     (input.g_a, input.g_b, mat_size,
@@ -204,9 +87,8 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
      result.g_blocks_mult, result.g_blocks_mult_sum
     );
 
-   // viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
+    viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
     checkCudaErrors(cudaDeviceSynchronize());
-
 
 
 
@@ -223,23 +105,17 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
     dim3 threads_onei(MAX_THREADS_BLOCK, 1, 1);
     // use always max number of available threads to better balance load times
     // for matrix data
-    //threads_onei.x = MAX_THREADS_BLOCK;
-
     // compute eigenvalues for intervals that contained only one eigenvalue
     // after the first processing step
 
-     //grid_onei.x = 1;
-    // std::cout << "grid_onei.x, y, z: " << grid_onei.x << "  " << grid_onei.y << "  " << grid_onei.z << std::endl;
-    //std::cout << "thread_onei.x, y, z: " << threads_onei.x << "  " << threads_onei.y << "  " << threads_onei.z << std::endl;
-
-    std::cout << "Start bisectKernelLarge_OneIntervals" << std::endl;
+     std::cout << "Start bisectKernelLarge_OneIntervals" << std::endl;
     bisectKernelLarge_OneIntervals<<< grid_onei , threads_onei >>>
     (input.g_a, input.g_b, mat_size, num_one_intervals,
      result.g_left_one, result.g_right_one, result.g_pos_one,
      precision
     );
 
-   // viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_OneIntervals() FAILED.");
+    viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_OneIntervals() FAILED.");
     checkCudaErrors(cudaDeviceSynchronize());
 
     // process intervals that contained more than one eigenvalue after
@@ -257,10 +133,6 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
     dim3  grid_mult(num_blocks_mult, 1, 1);
     dim3  threads_mult(MAX_THREADS_BLOCK, 1, 1);
 
-    //grid_mult.x = 1;
-  //  std::cout << "grid_mult.x, y, z: " << grid_mult.x << "  " << grid_mult.y << "  " << grid_mult.z << std::endl;
-//   std::cout << "thread_mult.x, y, z: " << threads_mult.x << "  " << threads_mult.y << "  " << threads_mult.z << std::endl;
-
     std::cout << "Start bisectKernelLarge_MultIntervals: num_block_mult = " << num_blocks_mult << std::endl;
     bisectKernelLarge_MultIntervals<<< grid_mult, threads_mult >>>
     (input.g_a, input.g_b, mat_size,
@@ -270,7 +142,7 @@ computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &res
      result.g_lambda_mult, result.g_pos_mult,
      precision
     );
-  //  viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
+    viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
     checkCudaErrors(cudaDeviceSynchronize());
 
 
@@ -333,17 +205,10 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
     checkCudaErrors(cudaMemcpy(pos_one, result.g_pos_one, mat_size_ui,
                                cudaMemcpyDeviceToHost));
 
-    // extract eigenvalues
-   // viennacl::vector<float> eigenvals(mat_size);
-    // extract eigenvalues
-    float *eigenvalues = (float *) malloc(mat_size_f);
-
 
     // singleton intervals generated in the second step
     for (unsigned int i = 0; i < sum_blocks_mult; ++i)
     {
-      
-      
       if (pos_mult[i] != 0)
         result.std_eigenvalues[pos_mult[i] - 1] = lambda_mult[i];
       
@@ -352,7 +217,7 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
         printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
         bCompareResult = false;
       } 
-      }
+    }
 
     // singleton intervals generated in the first step
     unsigned int index = 0;
@@ -361,16 +226,11 @@ processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
     {
         result.std_eigenvalues[pos_one[i] - 1] = left_one[i];
     }
-/*
-    for( unsigned int i = 0; i < mat_size; ++i)
-      std::cout << "Eigenvalue " << i << "= " << std::setprecision(10) << result.std_eigenvalues[i] << std::endl;
-*/
 
     // store result
     //writeTridiagSymMatlab(filename, input.vcl_a, input.vcl_b, result.std_eigenvalues, mat_size);
     // getLastCudaError( sdkWriteFilef( filename, eigenvals, mat_size, 0.0f));
 
-    freePtr(eigenvalues);
     freePtr(lambda_mult);
     freePtr(pos_mult);
     freePtr(blocks_mult_sum);

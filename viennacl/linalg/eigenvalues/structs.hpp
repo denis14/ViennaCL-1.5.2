@@ -106,11 +106,11 @@ class InputData
   cleanupInputData(void)
   {
 
-     // freePtr(a);
+      freePtr(a);
       freePtr(b);
 
-      //checkCudaErrors(cudaFree(g_a));
-      //g_a = NULL;
+      checkCudaErrors(cudaFree(g_a));
+      g_a = NULL;
       checkCudaErrors(cudaFree(g_b_raw));
       g_b_raw = NULL;
       g_b = NULL;
@@ -124,7 +124,6 @@ class ResultDataSmall
 {
 public:
   //! eigenvalues (host side)
-  float *eigenvalues;
   std::vector<float> std_eigenvalues;
 
 
@@ -151,11 +150,70 @@ public:
   float         *zero_f;
   unsigned int  *zero_ui;
 
-  ResultDataSmall(unsigned int sz) : std_eigenvalues(sz)
+
+  ////////////////////////////////////////////////////////////////////////////////
+  //! Initialize variables and memory for the result for small matrices
+  ////////////////////////////////////////////////////////////////////////////////
+  ResultDataSmall(const unsigned int mat_size) : std_eigenvalues(mat_size)
   {
+
+      mat_size_f = sizeof(float) * mat_size;
+      mat_size_ui = sizeof(unsigned int) * mat_size;
+
+      //eigenvalues = (float *) malloc(mat_size_f);
+
+      // helper variables
+      zero_f = (float *) malloc(mat_size_f);
+      zero_ui = (unsigned int *) malloc(mat_size_ui);
+
+      for (unsigned int i = 0; i < mat_size; ++i)
+      {
+
+          zero_f[i] = 0.0f;
+          zero_ui[i] = 0;
+      }
+
+      checkCudaErrors(cudaMalloc((void **) &g_left, mat_size_f));
+      checkCudaErrors(cudaMalloc((void **) &g_right, mat_size_f));
+
+      checkCudaErrors(cudaMalloc((void **) &g_left_count,
+                                 mat_size_ui));
+      checkCudaErrors(cudaMalloc((void **) &g_right_count,
+                                 mat_size_ui));
+
+      // initialize result memory
+      checkCudaErrors(cudaMemcpy(g_left, zero_f, mat_size_f,
+                                 cudaMemcpyHostToDevice));
+      checkCudaErrors(cudaMemcpy(g_right, zero_f, mat_size_f,
+                                 cudaMemcpyHostToDevice));
+      checkCudaErrors(cudaMemcpy(g_right_count, zero_ui,
+                                 mat_size_ui,
+                                 cudaMemcpyHostToDevice));
+      checkCudaErrors(cudaMemcpy(g_left_count, zero_ui,
+                                 mat_size_ui,
+                                 cudaMemcpyHostToDevice));
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////
+  //! Cleanup memory and variables for result for small matrices
+  ////////////////////////////////////////////////////////////////////////////////
+  void
+  cleanup()
+  {
+
+      freePtr(zero_f);
+      freePtr(zero_ui);
+
+      checkCudaErrors(cudaFree(g_left));
+      checkCudaErrors(cudaFree(g_right));
+      checkCudaErrors(cudaFree(g_left_count));
+      checkCudaErrors(cudaFree(g_right_count));
   }
 };
 
+/////////////////////////////////////////////////////////////////////////////////
+//! In this class the all data of the result is stored
+/////////////////////////////////////////////////////////////////////////////////
 
 class ResultDataLarge
 {
@@ -215,9 +273,111 @@ public:
     //! processing step
     unsigned int *g_pos_mult;
 
-    ResultDataLarge(unsigned int sz) : std_eigenvalues(sz)
+
+
+    ////////////////////////////////////////////////////////////////////////////////
+    //! Initialize variables and memory for result
+    //! @param  result handles to memory
+    //! @param  matrix_size  size of the matrix
+    ////////////////////////////////////////////////////////////////////////////////
+    ResultDataLarge(const unsigned int mat_size) : std_eigenvalues(mat_size)
     {
+
+        // helper variables to initialize memory
+        unsigned int zero = 0;
+        unsigned int mat_size_f = sizeof(float) * mat_size;
+        unsigned int mat_size_ui = sizeof(unsigned int) * mat_size;
+
+        float *tempf = (float *) malloc(mat_size_f);
+        unsigned int *tempui = (unsigned int *) malloc(mat_size_ui);
+
+        for (unsigned int i = 0; i < mat_size; ++i)
+        {
+            tempf[i] = 0.0f;
+            tempui[i] = 0;
+        }
+
+        // number of intervals containing only one eigenvalue after the first step
+        checkCudaErrors(cudaMalloc((void **)  &g_num_one,
+                                   sizeof(unsigned int)));
+        checkCudaErrors(cudaMemcpy(g_num_one, &zero, sizeof(unsigned int),
+                                   cudaMemcpyHostToDevice));
+
+        // number of (thread) blocks of intervals with multiple eigenvalues after
+        // the first iteration
+        checkCudaErrors(cudaMalloc((void **) & g_num_blocks_mult,
+                                   sizeof(unsigned int)));
+        checkCudaErrors(cudaMemcpy( g_num_blocks_mult, &zero,
+                                   sizeof(unsigned int),
+                                   cudaMemcpyHostToDevice));
+
+
+        checkCudaErrors(cudaMalloc((void **) & g_left_one, mat_size_f));
+        checkCudaErrors(cudaMalloc((void **) & g_right_one, mat_size_f));
+        checkCudaErrors(cudaMalloc((void **) & g_pos_one, mat_size_ui));
+
+        checkCudaErrors(cudaMalloc((void **) & g_left_mult, mat_size_f));
+        checkCudaErrors(cudaMalloc((void **) & g_right_mult, mat_size_f));
+        checkCudaErrors(cudaMalloc((void **) & g_left_count_mult,
+                                   mat_size_ui));
+        checkCudaErrors(cudaMalloc((void **) & g_right_count_mult,
+                                   mat_size_ui));
+
+        checkCudaErrors(cudaMemcpy( g_left_one, tempf, mat_size_f,
+                                   cudaMemcpyHostToDevice));
+        checkCudaErrors(cudaMemcpy( g_right_one, tempf, mat_size_f,
+                                   cudaMemcpyHostToDevice));
+        checkCudaErrors(cudaMemcpy( g_pos_one, tempui, mat_size_ui,
+                                   cudaMemcpyHostToDevice));
+
+        checkCudaErrors(cudaMemcpy( g_left_mult, tempf, mat_size_f,
+                                   cudaMemcpyHostToDevice));
+        checkCudaErrors(cudaMemcpy( g_right_mult, tempf, mat_size_f,
+                                   cudaMemcpyHostToDevice));
+        checkCudaErrors(cudaMemcpy( g_left_count_mult, tempui, mat_size_ui,
+                                   cudaMemcpyHostToDevice));
+        checkCudaErrors(cudaMemcpy( g_right_count_mult, tempui, mat_size_ui,
+                                   cudaMemcpyHostToDevice));
+
+        checkCudaErrors(cudaMalloc((void **) & g_blocks_mult, mat_size_ui));
+        checkCudaErrors(cudaMemcpy( g_blocks_mult, tempui, mat_size_ui,
+                                   cudaMemcpyHostToDevice));
+        checkCudaErrors(cudaMalloc((void **) & g_blocks_mult_sum, mat_size_ui));
+        checkCudaErrors(cudaMemcpy( g_blocks_mult_sum, tempui, mat_size_ui,
+                                   cudaMemcpyHostToDevice));
+
+        checkCudaErrors(cudaMalloc((void **) & g_lambda_mult, mat_size_f));
+        checkCudaErrors(cudaMemcpy( g_lambda_mult, tempf, mat_size_f,
+                                   cudaMemcpyHostToDevice));
+        checkCudaErrors(cudaMalloc((void **) & g_pos_mult, mat_size_ui));
+        checkCudaErrors(cudaMemcpy( g_pos_mult, tempf, mat_size_ui,
+                                   cudaMemcpyHostToDevice));
+
     }
+
+    ////////////////////////////////////////////////////////////////////////////////
+    //! Cleanup result memory
+    //! @param result  handles to memory
+    ////////////////////////////////////////////////////////////////////////////////
+    void
+    cleanup()
+    {
+
+        checkCudaErrors(cudaFree( g_num_one));
+        checkCudaErrors(cudaFree( g_num_blocks_mult));
+        checkCudaErrors(cudaFree( g_left_one));
+        checkCudaErrors(cudaFree( g_right_one));
+        checkCudaErrors(cudaFree( g_pos_one));
+        checkCudaErrors(cudaFree( g_left_mult));
+        checkCudaErrors(cudaFree( g_right_mult));
+        checkCudaErrors(cudaFree( g_left_count_mult));
+        checkCudaErrors(cudaFree( g_right_count_mult));
+        checkCudaErrors(cudaFree( g_blocks_mult));
+        checkCudaErrors(cudaFree( g_blocks_mult_sum));
+        checkCudaErrors(cudaFree( g_lambda_mult));
+        checkCudaErrors(cudaFree( g_pos_mult));
+    }
+
 
 };
 
