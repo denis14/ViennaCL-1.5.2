@@ -28,72 +28,6 @@
 class InputData
 {
   public:
-  ////////////////////////////////////////////////////////////////////////////////
-  //! Initialize the input data to the algorithm
-  //! @param input  handles to the input data
-  //! @param exec_path  path where executable is run (argv[0])
-  //! @param mat_size  size of the matrix
-  //! @param user_defined  1 if the matrix size has been requested by the user,
-  //!                      0 if the default size
-  ////////////////////////////////////////////////////////////////////////////////
-
-  InputData(std::vector<float> diagonal, std::vector<float> superdiagonal, const unsigned int sz) :
-              std_a(sz), std_b(sz),  std_b_raw(sz), vcl_a(sz)
-  {
-    // allocate memory
-    const unsigned int mat_size = sz;
-    a = (float *) malloc(sizeof(float) * mat_size);
-    b = (float *) malloc(sizeof(float) * mat_size);
-
-   std::copy(diagonal.begin(), diagonal.end(), a);
-   std::copy(superdiagonal.begin(), superdiagonal.end(), b);
-
-    // the first element of s is used as padding on the device (thus the
-    // whole vector is copied to the device but the kernels are launched
-    // with (s+1) as start address
-     //std_b_raw[0] = 0.0f;
-   b[0] = 0.0f;
-
-   // allocate device memory for input
-   checkCudaErrors(cudaMalloc((void **) &( g_a)    , sizeof(float) * mat_size));
-   checkCudaErrors(cudaMalloc((void **) &( g_b_raw), sizeof(float) * mat_size));
-
-   // copy data to device
-   //copy(std_a, vcl_a);
-  // copy(std_b_raw, vcl_b_raw);
-
-  /* copy(std_b_raw.begin() + 0,  std_b_raw.end(),  std_b.begin());
-
-  copy(std_a.begin(), std_a.end(), a);
-  copy(std_b.begin(), std_b.end(), b);
- */
-   checkCudaErrors(cudaMemcpy(g_a    , a, sizeof(float) * mat_size, cudaMemcpyHostToDevice));
-   checkCudaErrors(cudaMemcpy(g_b_raw, b, sizeof(float) * mat_size, cudaMemcpyHostToDevice));
-
-
-    g_b =  g_b_raw + 1;
-  }
-
-
-  ////////////////////////////////////////////////////////////////////////////////
-  //! Clean up input data, in particular allocated memory
-  //! @param input  handles to the input data
-  ////////////////////////////////////////////////////////////////////////////////
-  void
-  cleanupInputData(void)
-  {
-
-      freePtr(a);
-      freePtr(b);
-
-      checkCudaErrors(cudaFree(g_a));
-      g_a = NULL;
-      checkCudaErrors(cudaFree(g_b_raw));
-      g_b_raw = NULL;
-      g_b = NULL;
-
-  }
-
 
   //! host/device side representation of diagonal
   float  *a;
@@ -111,6 +45,7 @@ class InputData
   float  *b;
 
   //! device side representation of diagonal
+  //viennacl::vector<float> g_a;
   float  *g_a;
   //! device side representation of superdiagonal
   float  *g_b;
@@ -118,16 +53,76 @@ class InputData
   //! space for one additional element of padding at the beginning
   float  *g_b_raw;
 
+
+  ////////////////////////////////////////////////////////////////////////////////
+  //! Initialize the input data to the algorithm
+  //! @param input  handles to the input data
+  //! @param mat_size  size of the matrix
+  ////////////////////////////////////////////////////////////////////////////////
+
+  InputData(std::vector<float> diagonal, std::vector<float> superdiagonal, const unsigned int sz) :
+              std_a(sz), std_b(sz),  std_b_raw(sz)//, g_a(sz)
+  {
+    // allocate memory
+    const unsigned int mat_size = sz;
+    a = (float *) malloc(sizeof(float) * mat_size);
+    b = (float *) malloc(sizeof(float) * mat_size);
+
+   std::copy(diagonal.begin(), diagonal.end(), a);
+   std::copy(superdiagonal.begin(), superdiagonal.end(), b);
+
+   // the first element of s is used as padding on the device (thus the
+   // whole vector is copied to the device but the kernels are launched
+   // with (s+1) as start address
+   b[0] = 0.0f;
+
+   // allocate device memory for input
+   checkCudaErrors(cudaMalloc((void **) &( g_a)    , sizeof(float) * mat_size));
+   checkCudaErrors(cudaMalloc((void **) &( g_b_raw), sizeof(float) * mat_size));
+
+   // copy data to device
+   //copy(std_a, vcl_a);
+  // copy(std_b_raw, vcl_b_raw);
+
+  /* copy(std_b_raw.begin() + 0,  std_b_raw.end(),  std_b.begin());
+
+  copy(std_a.begin(), std_a.end(), a);
+  copy(std_b.begin(), std_b.end(), b);
+ */
+  // copy(diagonal.begin(), diagonal.end(), g_a);
+   checkCudaErrors(cudaMemcpy(g_a    , a, sizeof(float) * mat_size, cudaMemcpyHostToDevice));
+   checkCudaErrors(cudaMemcpy(g_b_raw, b, sizeof(float) * mat_size, cudaMemcpyHostToDevice));
+
+
+    g_b =  g_b_raw + 1;
+  }
+
+
+  ////////////////////////////////////////////////////////////////////////////////
+  //! Clean up input data, in particular allocated memory
+  //! @param input  handles to the input data
+  ////////////////////////////////////////////////////////////////////////////////
+  void
+  cleanupInputData(void)
+  {
+
+     // freePtr(a);
+      freePtr(b);
+
+      //checkCudaErrors(cudaFree(g_a));
+      //g_a = NULL;
+      checkCudaErrors(cudaFree(g_b_raw));
+      g_b_raw = NULL;
+      g_b = NULL;
+
+  }
+
 };
 
 
 class ResultDataSmall
 {
 public:
-  ResultDataSmall(unsigned int sz) : std_eigenvalues(sz)
-  {
-  }
-
   //! eigenvalues (host side)
   float *eigenvalues;
   std::vector<float> std_eigenvalues;
@@ -155,15 +150,16 @@ public:
 
   float         *zero_f;
   unsigned int  *zero_ui;
+
+  ResultDataSmall(unsigned int sz) : std_eigenvalues(sz)
+  {
+  }
 };
 
 
 class ResultDataLarge
 {
 public:
-    ResultDataLarge(unsigned int sz) : std_eigenvalues(sz)
-    {
-    }
     
     //! eigenvalues
     std::vector<float> std_eigenvalues;
@@ -218,6 +214,10 @@ public:
     //! eigenvalue index of intervals that have been generated in the second
     //! processing step
     unsigned int *g_pos_mult;
+
+    ResultDataLarge(unsigned int sz) : std_eigenvalues(sz)
+    {
+    }
 
 };
 

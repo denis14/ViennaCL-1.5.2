@@ -31,8 +31,7 @@ extern "C" {
     computeEigenvaluesSmallMatrix(const InputData &input, ResultDataSmall &result,
                                   const unsigned int mat_size,
                                   const float lg, const float ug,
-                                  const float precision,
-                                  const unsigned int iterations);
+                                  const float precision);
 
     ////////////////////////////////////////////////////////////////////////////////
     //! Initialize variables and memory for the result for small matrices

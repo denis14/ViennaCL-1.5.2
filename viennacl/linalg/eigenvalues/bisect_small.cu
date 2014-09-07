@@ -46,23 +46,21 @@ void
 computeEigenvaluesSmallMatrix(const InputData &input, ResultDataSmall &result,
                               const unsigned int mat_size,
                               const float lg, const float ug,
-                              const float precision,
-                              const unsigned int iterations)
+                              const float precision)
 {
-    for (unsigned int i = 0; i < iterations; ++i)
-    {
+    
 
-        dim3  blocks(1, 1, 1);
-        dim3  threads(MAX_THREADS_BLOCK_SMALL_MATRIX, 1, 1);
+    dim3  blocks(1, 1, 1);
+    dim3  threads(MAX_THREADS_BLOCK_SMALL_MATRIX, 1, 1);
 
-        bisectKernel<<< blocks, threads >>>(input.g_a, input.g_b, mat_size,
-                                            result.g_left, result.g_right,
-                                            result.g_left_count,
-                                            result.g_right_count,
-                                            lg, ug, 0, mat_size,
-                                            precision
-                                           );
-    }
+    bisectKernel<<< blocks, threads >>>(input.g_a, input.g_b, mat_size,
+                                        result.g_left, result.g_right,
+                                        result.g_left_count,
+                                        result.g_right_count,
+                                        lg, ug, 0, mat_size,
+                                        precision
+                                       );
+    
 
     checkCudaErrors(cudaDeviceSynchronize());
 

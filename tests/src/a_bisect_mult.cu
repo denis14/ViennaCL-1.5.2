@@ -21,18 +21,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-//#include <math.h>
-//#include <float.h>
-//#include <assert.h>
 
 // includes, project
-//#include <helper_functions.h>
-//#include <helper_cuda.h>
+
 
 #include "viennacl/scalar.hpp"
 #include "viennacl/vector.hpp"
 #include "viennacl/matrix.hpp"
-//#include "viennacl/compressed_matrix.hpp"
+
 
 #include "viennacl/linalg/eigenvalues/config.hpp"
 #include "viennacl/linalg/eigenvalues/structs.hpp"
@@ -47,7 +43,7 @@
 
 #include "viennacl/linalg/qr-method.hpp"
 
-#define EPS 10.0e-5
+#define EPS 10.0e-4
 
 ////////////////////////////////////////////////////////////////////////////////
 // declaration, forward
@@ -74,24 +70,33 @@ main(int argc, char **argv)
 void
 initInputData(std::vector<float> &diagonal, std::vector<float> &superdiagonal, const unsigned int mat_size)
 {
- // initialize diagonal and superdiagonal entries with random values
+ 
   srand(278217421);
-
-  // srand( clock());
-  /*
-  for (unsigned int i = 0; i < mat_size; ++i)
-  {
-      diagonal[i] = (float)(2.0 * (((double)rand()
-                                   / (double) RAND_MAX) - 0.5));
-      superdiagonal[i] = (float)(2.0 * (((double)rand()
-                                   / (double) RAND_MAX) - 0.5));
-  }*/
+  bool randomValues = false;
   
-  for(unsigned int i = 0; i < mat_size; ++i)
+  
+  if(randomValues == true)
+  {
+    // Initialize diagonal and superdiagonal elements with random values
+    for (unsigned int i = 0; i < mat_size; ++i)
     {
-     diagonal[i] = ((float)(i % 9)) - 4.5f;
-     superdiagonal[i] = ((float)(i % 5)) - 4.5f;
+        diagonal[i] = (float)(2.0 * (((double)rand()
+                                     / (double) RAND_MAX) - 0.5));
+        superdiagonal[i] = (float)(2.0 * (((double)rand()
+                                     / (double) RAND_MAX) - 0.5));
     }
+  }
+  
+  else
+  { 
+    // Initialize diagonal and superdiagonal elements with modulo values
+    // This will cause many multiple eigenvalues
+    for(unsigned int i = 0; i < mat_size; ++i)
+    {
+       diagonal[i] = ((float)(i % 9)) - 4.5f;
+       superdiagonal[i] = ((float)(i % 5)) - 4.5f;
+    }
+  }
  
 }
 template <typename NumericT>
@@ -121,7 +126,7 @@ bool bisect(const std::vector<NumericT> & diagonal, const std::vector<NumericT> 
 
       // run the kernel
       computeEigenvaluesSmallMatrix(input, result, mat_size, lg, ug,
-                                    precision, 1);
+                                    precision);
 
       // get the result from the device and do some sanity checks,
       // save the result
@@ -141,8 +146,7 @@ bool bisect(const std::vector<NumericT> & diagonal, const std::vector<NumericT> 
 
       // run the kernel
       computeEigenvaluesLargeMatrix(input, result, mat_size,
-                                    precision, lg, ug,
-                                    1);
+                                    lg, ug, precision);
 
      
        // get the result from the device and do some sanity checks
@@ -168,28 +172,23 @@ bool
 runTest(int argc, char **argv)
 {
     bool bCompareResult = false;
-    // default
-    unsigned int mat_size = 2203;
+    unsigned int mat_size = 2003;
     
     std::vector<float> diagonal(mat_size);
     std::vector<float> superdiagonal(mat_size);
     std::vector<float> eigenvalues_bisect(mat_size);
     
-    // Fill the vectors diagonal and superdiagonal
+    // Fill the diagonal and superdiagonal elements of the vector
     initInputData(diagonal, superdiagonal, mat_size);
     
     //Start the bisection algorithm
     std::cout << "Start the bisection algorithm" << std::endl;
     bCompareResult = bisect(diagonal, superdiagonal, eigenvalues_bisect, mat_size);
     
+    // Exit if an error occured during the execution of the algorithm
     if (bCompareResult == false)
      return false;
-  /*  
-    for (unsigned int i = 0; i < mat_size; ++i)
-    {
-      std::cout << "Eigenvalue " << i << ": " << std::setprecision(10) << eigenvalues_bisect[i] << std::endl;
-    }
-    */
+
     // The results of the bisection algorithm will be checked with the tql2 algorithm
     // Initialize Data for tql2 algorithm
     viennacl::matrix<float, viennacl::row_major> Q = viennacl::identity_matrix<float>(mat_size);
@@ -198,22 +197,29 @@ runTest(int argc, char **argv)
     diagonal_tql = diagonal;
     superdiagonal_tql = superdiagonal;
     
+    // Start the tql2 algorithm
     std::cout << "Start the tql2 algorithm..." << std::endl; 
     viennacl::linalg::tql2(Q, diagonal_tql, superdiagonal_tql);  
     
+    // Ensure that eigenvalues from tql2 algorithm are sorted in ascending order
     std::cout << "Start sorting..." << std::endl;
     std::sort(diagonal_tql.begin(), diagonal_tql.end());
     
+    
+    // Compare the results from the bisection algorithm with the results
+    // from the tql2 algorithm.
     std::cout << "Start comparison..." << std::endl;
     for(uint i = 0; i < mat_size; i++)
     {
        if(std::abs(eigenvalues_bisect[i] - diagonal_tql[i]) > EPS)
        { 
 	       std::cout << std::setprecision(8) << eigenvalues_bisect[i] << "  != " << diagonal_tql[i] << "\n";
-	       return EXIT_FAILURE;
+	       return false;
        }  	
     }
+    
     std::cout << "mat_size = " << mat_size << std::endl;
+    // Print the results.
     for (unsigned int i = 0; i < mat_size; ++i)
     {
       std::cout << "Eigenvalue " << i << ": \tbisect: " << std::setprecision(8) << eigenvalues_bisect[i] << "\ttql2: " << diagonal_tql[i] << std::endl;
