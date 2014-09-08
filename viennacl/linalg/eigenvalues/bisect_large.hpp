@@ -82,14 +82,16 @@
         dim3  threads(MAX_THREADS_BLOCK, 1, 1);
         std::cout << "Start bisectKernelLarge" << std::endl;
         bisectKernelLarge<<< blocks, threads >>>
-        (viennacl::linalg::cuda::detail::cuda_arg<float>(input.g_a), input.g_b, mat_size,
-          lg, ug, 0, mat_size, precision,
-         result.g_num_one, result.g_num_blocks_mult,
-         result.g_left_one, result.g_right_one, result.g_pos_one,
-         result.g_left_mult, result.g_right_mult,
-         result.g_left_count_mult, result.g_right_count_mult,
-         result.g_blocks_mult, result.g_blocks_mult_sum
-        );
+          (viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_a),
+           viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_b) + 1,
+           mat_size,
+           lg, ug, 0, mat_size, precision,
+           result.g_num_one, result.g_num_blocks_mult,
+           result.g_left_one, result.g_right_one, result.g_pos_one,
+           result.g_left_mult, result.g_right_mult,
+           result.g_left_count_mult, result.g_right_count_mult,
+           result.g_blocks_mult, result.g_blocks_mult_sum
+          );
 
         viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
         checkCudaErrors(cudaDeviceSynchronize());
@@ -114,10 +116,12 @@
 
          std::cout << "Start bisectKernelLarge_OneIntervals" << std::endl;
         bisectKernelLarge_OneIntervals<<< grid_onei , threads_onei >>>
-        (viennacl::linalg::cuda::detail::cuda_arg<float>(input.g_a), input.g_b, mat_size, num_one_intervals,
-         result.g_left_one, result.g_right_one, result.g_pos_one,
-         precision
-        );
+          (viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_a),
+           viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_b) + 1,
+           mat_size, num_one_intervals,
+           result.g_left_one, result.g_right_one, result.g_pos_one,
+           precision
+          );
 
         viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_OneIntervals() FAILED.");
         checkCudaErrors(cudaDeviceSynchronize());
@@ -139,13 +143,15 @@
 
         std::cout << "Start bisectKernelLarge_MultIntervals: num_block_mult = " << num_blocks_mult << std::endl;
         bisectKernelLarge_MultIntervals<<< grid_mult, threads_mult >>>
-        (viennacl::linalg::cuda::detail::cuda_arg<float>(input.g_a), input.g_b, mat_size,
-         result.g_blocks_mult, result.g_blocks_mult_sum,
-         result.g_left_mult, result.g_right_mult,
-         result.g_left_count_mult, result.g_right_count_mult,
-         result.g_lambda_mult, result.g_pos_mult,
-         precision
-        );
+          (viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_a),
+           viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_b) + 1,
+           mat_size,
+           result.g_blocks_mult, result.g_blocks_mult_sum,
+           result.g_left_mult, result.g_right_mult,
+           result.g_left_count_mult, result.g_right_count_mult,
+           result.g_lambda_mult, result.g_pos_mult,
+           precision
+          );
         viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
         checkCudaErrors(cudaDeviceSynchronize());
 

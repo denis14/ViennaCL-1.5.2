@@ -57,8 +57,9 @@
         dim3  blocks(1, 1, 1);
         dim3  threads(MAX_THREADS_BLOCK_SMALL_MATRIX, 1, 1);
 
-        bisectKernel<<< blocks, threads >>>(viennacl::linalg::cuda::detail::cuda_arg<float>(input.g_a), 
-                                            input.g_b, mat_size,
+        bisectKernel<<< blocks, threads >>>(viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_a), 
+                                            viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_b) + 1, 
+                                            mat_size,
                                             viennacl::linalg::cuda::detail::cuda_arg<float>(result.vcl_g_left), 
                                             viennacl::linalg::cuda::detail::cuda_arg<float>(result.vcl_g_right),
                                             viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.vcl_g_left_count),

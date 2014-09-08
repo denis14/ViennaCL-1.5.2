@@ -160,9 +160,6 @@
           std::cout << "CleanupResultData" << std::endl;
           result.cleanup();
         } //Large end
-        
-        std::cout << "cleanupInputData" << std::endl;
-        input.cleanupInputData();
         return bCompareResult;
     }
 
@@ -174,7 +171,7 @@
     runTest(int argc, char **argv)
     {
         bool bCompareResult = false;
-        unsigned int mat_size = 2013;
+        unsigned int mat_size = 600;
         
         std::vector<float> diagonal(mat_size);
         std::vector<float> superdiagonal(mat_size);
