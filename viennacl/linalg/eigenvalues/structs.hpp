@@ -129,6 +129,7 @@ public:
 
   // left interval limits at the end of the computation
   float *g_left;
+  viennacl::vector<float> vcl_g_left;
 
   // right interval limits at the end of the computation
   float *g_right;
@@ -154,7 +155,7 @@ public:
   ////////////////////////////////////////////////////////////////////////////////
   //! Initialize variables and memory for the result for small matrices
   ////////////////////////////////////////////////////////////////////////////////
-  ResultDataSmall(const unsigned int mat_size) : std_eigenvalues(mat_size)
+  ResultDataSmall(const unsigned int mat_size) : std_eigenvalues(mat_size), vcl_g_left(mat_size)
   {
 
       mat_size_f = sizeof(float) * mat_size;
@@ -171,6 +172,7 @@ public:
 
           zero_f[i] = 0.0f;
           zero_ui[i] = 0;
+          vcl_g_left.clear();
       }
 
       checkCudaErrors(cudaMalloc((void **) &g_left, mat_size_f));

@@ -23,6 +23,7 @@
 #include <iomanip>
 
 #include "viennacl/linalg/qr-method-common.hpp"
+#include "viennacl/linalg/tql2.hpp"
 #include "viennacl/linalg/prod.hpp"
 
 #include <boost/numeric/ublas/vector.hpp>
@@ -36,142 +37,6 @@ namespace viennacl
 {
   namespace linalg
   {
-
-    // Symmetric tridiagonal QL algorithm.
-    // This is derived from the Algol procedures tql2, by Bowdler, Martin, Reinsch, and Wilkinson,
-    // Handbook for Auto. Comp., Vol.ii-Linear Algebra, and the corresponding Fortran subroutine in EISPACK.
-    template <typename SCALARTYPE, typename VectorType, typename F>
-    void tql2(matrix_base<SCALARTYPE, F> & Q,
-              VectorType & d,
-              VectorType & e)
-    {
-        int n = static_cast<int>(viennacl::traits::size1(Q));
-
-        //boost::numeric::ublas::vector<SCALARTYPE> cs(n), ss(n);
-        std::vector<SCALARTYPE> cs(n), ss(n);
-        viennacl::vector<SCALARTYPE> tmp1(n), tmp2(n);
-
-        for (int i = 1; i < n; i++)
-            e[i - 1] = e[i];
-
-        e[n - 1] = 0;
-
-        SCALARTYPE f = 0;
-        SCALARTYPE tst1 = 0;
-        //SCALARTYPE eps = 2 * static_cast<SCALARTYPE>(EPS);
-        SCALARTYPE eps = static_cast<SCALARTYPE>(viennacl::linalg::detail::EPS);
-
-        for (int l = 0; l < n; l++)
-        {
-            // Find small subdiagonal element.
-            tst1 = std::max<SCALARTYPE>(tst1, std::fabs(d[l]) + std::fabs(e[l]));
-            int m = l;
-            while (m < n)
-            {
-                if (std::fabs(e[m]) <= eps * tst1)
-                    break;
-                m++;
-            }
-
-            // If m == l, d[l) is an eigenvalue, otherwise, iterate.
-            if (m > l)
-            {
-                int iter = 0;
-                do
-                {
-                    iter = iter + 1;  // (Could check iteration count here.)
-
-                    // Compute implicit shift
-                    SCALARTYPE g = d[l];
-                    SCALARTYPE p = (d[l + 1] - g) / (2 * e[l]);
-                    SCALARTYPE r = viennacl::linalg::detail::pythag<SCALARTYPE>(p, 1);
-                    if (p < 0)
-                    {
-                        r = -r;
-                    }
-
-                    d[l] = e[l] / (p + r);
-                    d[l + 1] = e[l] * (p + r);
-                    SCALARTYPE dl1 = d[l + 1];
-                    SCALARTYPE h = g - d[l];
-                    for (int i = l + 2; i < n; i++)
-                    {
-                        d[i] -= h;
-                    }
-
-                    f = f + h;
-
-                    // Implicit QL transformation.
-                    p = d[m];
-                    SCALARTYPE c = 1;
-                    SCALARTYPE c2 = c;
-                    SCALARTYPE c3 = c;
-                    SCALARTYPE el1 = e[l + 1];
-                    SCALARTYPE s = 0;
-                    SCALARTYPE s2 = 0;
-                    for (int i = m - 1; i >= l; i--)
-                    {
-                        c3 = c2;
-                        c2 = c;
-                        s2 = s;
-                        g = c * e[i];
-                        h = c * p;
-                        r = viennacl::linalg::detail::pythag(p, e[i]);
-                        e[i + 1] = s * r;
-                        s = e[i] / r;
-                        c = p / r;
-                        p = c * d[i] - s * g;
-                        d[i + 1] = h + s * (c * g + s * d[i]);
-
-
-                        cs[i] = c;
-                        ss[i] = s;
-                    }
-
-
-                    p = -s * s2 * c3 * el1 * e[l] / dl1;
-                    e[l] = s * p;
-                    d[l] = c * p;
-
-                    viennacl::copy(cs, tmp1);
-                    viennacl::copy(ss, tmp2);
-
-                    viennacl::linalg::givens_next(Q, tmp1, tmp2, l, m);
-
-                    // Check for convergence.
-                }
-                while (std::fabs(e[l]) > eps * tst1);
-            }
-            d[l] = d[l] + f;
-            e[l] = 0;
-        }
-
-        // Sort eigenvalues and corresponding vectors.
-/*
-           for (int i = 0; i < n-1; i++) {
-              int k = i;
-              SCALARTYPE p = d[i];
-              for (int j = i+1; j < n; j++) {
-                 if (d[j] > p) {
-                    k = j;
-                    p = d[j);
-                 }
-              }
-              if (k != i) {
-                 d[k] = d[i];
-                 d[i] = p;
-                 for (int j = 0; j < n; j++) {
-                    p = Q(j, i);
-                    Q(j, i) = Q(j, k);
-                    Q(j, k) = p;
-                 }
-              }
-           }
-
-*/
-
-    }
-
     namespace detail
     {
 
@@ -199,9 +64,9 @@ namespace viennacl
 #endif
         }
 
-        template <typename SCALARTYPE, typename F>
+        template <typename SCALARTYPE, typename F, typename VectorType>
         void update_float_QR_column_gpu(matrix_base<SCALARTYPE, F> & A,
-                                const std::vector<SCALARTYPE>& buf,
+                                const VectorType& buf,
                                 viennacl::vector<SCALARTYPE>& buf_vcl,
                                 int m,
                                 int n,
@@ -244,16 +109,16 @@ namespace viennacl
             }
         }
 
-        template <typename SCALARTYPE, typename MatrixT>
+        template <typename SCALARTYPE, typename MatrixT, typename VectorType>
         void update_float_QR_column(MatrixT& A,
-                                const std::vector<SCALARTYPE>& buf,
+                                VectorType& buf,
                                 int m,
                                 int n,
                                 int last_i,
                                 bool is_triangular
                                 )
         {
-            for (int i = 0; i < last_i; i++)
+          for (int i = 0; i < last_i; i++)
             {
                 int start_k = is_triangular?std::max(i + 1, m):m;
 
@@ -335,23 +200,20 @@ namespace viennacl
         // Nonsymmetric reduction from Hessenberg to real Schur form.
         // This is derived from the Algol procedure hqr2, by Martin and Wilkinson, Handbook for Auto. Comp.,
         // Vol.ii-Linear Algebra, and the corresponding  Fortran subroutine in EISPACK.
-        template <typename SCALARTYPE, typename F, unsigned int ALIGNMENT>
+        template <typename SCALARTYPE, typename F, unsigned int ALIGNMENT, typename VectorType>
         void hqr2(viennacl::matrix<SCALARTYPE, F, ALIGNMENT>& vcl_H,
                     viennacl::matrix<SCALARTYPE, F, ALIGNMENT>& V,
-                    boost::numeric::ublas::vector<SCALARTYPE>& d,
-                    boost::numeric::ublas::vector<SCALARTYPE>& e)
+                    VectorType & d,
+                    VectorType & e)
         {
-            if (viennacl::is_row_major<F>::value)
-              {
-;
-              }
             transpose(V);
 
             int nn = static_cast<int>(vcl_H.size1());
 
             FastMatrix<SCALARTYPE> H(nn, vcl_H.internal_size2());//, V(nn);
 
-            std::vector<SCALARTYPE> buf(5 * nn);
+            std::vector<float>  buf(5 * nn);
+            //boost::numeric::ublas::vector<float>  buf(5 * nn);
             viennacl::vector<SCALARTYPE> buf_vcl(5 * nn);
 
             viennacl::fast_copy(vcl_H, H.begin());
@@ -402,8 +264,8 @@ namespace viennacl
                 {
                     // One root found
                     H(n, n) = H(n, n) + exshift;
-                    d(n) = H(n, n);
-                    e(n) = 0;
+                    d[n] = H(n, n);
+                    e[n] = 0;
                     n--;
                     iter = 0;
                 }
@@ -422,12 +284,12 @@ namespace viennacl
                     {
                         // Real pair
                         z = (p >= 0) ? (p + z) : (p - z);
-                        d(n - 1) = x + z;
-                        d(n) = d(n - 1);
+                        d[n - 1] = x + z;
+                        d[n] = d[n - 1];
                         if (z != 0)
-                            d(n) = x - w / z;
-                        e(n - 1) = 0;
-                        e(n) = 0;
+                            d[n] = x - w / z;
+                        e[n - 1] = 0;
+                        e[n] = 0;
                         x = H(n, n - 1);
                         s = std::fabs(x) + std::fabs(z);
                         p = x / s;
@@ -451,10 +313,10 @@ namespace viennacl
                     else
                     {
                         // Complex pair
-                        d(n - 1) = x + p;
-                        d(n) = x + p;
-                        e(n - 1) = z;
-                        e(n) = -z;
+                        d[n - 1] = x + p;
+                        d[n] = x + p;
+                        e[n - 1] = z;
+                        e[n] = -z;
                     }
 
                     n = n - 2;
@@ -630,7 +492,7 @@ namespace viennacl
                     // Timer timer;
                     // timer.start();
 
-                    update_float_QR_column(H, buf, m, n, n, true);
+                    update_float_QR_column<SCALARTYPE>(H, buf, m, n, n, true);
                     update_float_QR_column_gpu(V, buf, buf_vcl, m, n, nn, false);
 
                     // std::cout << timer.get() << "\n";
@@ -645,8 +507,8 @@ namespace viennacl
 
             for (n = nn - 1; n >= 0; n--)
             {
-                p = d(n);
-                q = e(n);
+                p = d[n];
+                q = e[n];
 
                 // Real vector
                 if (q == 0)
@@ -660,7 +522,7 @@ namespace viennacl
                         for (int j = l; j <= n; j++)
                             r = r + H(i, j) * H(j, n);
 
-                        if (e(i) < 0)
+                        if (e[i] < 0)
                         {
                             z = w;
                             s = r;
@@ -668,7 +530,7 @@ namespace viennacl
                         else
                         {
                             l = i;
-                            if (e(i) == 0)
+                            if (e[i] == 0)
                             {
                                 H(i, n) = (w != 0) ? (-r / w) : (-r / (eps * norm));
                             }
@@ -677,7 +539,7 @@ namespace viennacl
                                 // Solve real equations
                                 x = H(i, i + 1);
                                 y = H(i + 1, i);
-                                q = (d(i) - p) * (d(i) - p) + e(i) * e(i);
+                                q = (d[i] - p) * (d[i] - p) + e[i] * e[i];
                                 t = (x * s - z * r) / q;
                                 H(i, n) = t;
                                 H(i + 1, n) = (std::fabs(x) > std::fabs(z)) ? ((-r - w * t) / x) : ((-s - y * t) / z);
@@ -726,7 +588,7 @@ namespace viennacl
 
                         w = H(i, i) - p;
 
-                        if (e(i) < 0)
+                        if (e[i] < 0)
                         {
                             z = w;
                             r = ra;
@@ -735,7 +597,7 @@ namespace viennacl
                         else
                         {
                             l = i;
-                            if (e(i) == 0)
+                            if (e[i] == 0)
                             {
                                 cdiv<SCALARTYPE>(-ra, -sa, w, q, out1, out2);
                                 H(i, n - 1) = out1;
@@ -746,8 +608,8 @@ namespace viennacl
                                 // Solve complex equations
                                 x = H(i, i + 1);
                                 y = H(i + 1, i);
-                                vr = (d(i) - p) * (d(i) - p) + e(i) * e(i) - q * q;
-                                vi = (d(i) - p) * 2 * q;
+                                vr = (d[i] - p) * (d[i] - p) + e[i] * e[i] - q * q;
+                                vi = (d[i] - p) * 2 * q;
                                 if ( (vr == 0) && (vi == 0) )
                                     vr = eps * norm * (std::fabs(w) + std::fabs(q) + std::fabs(x) + std::fabs(y) + std::fabs(z));
 
@@ -831,8 +693,8 @@ namespace viennacl
         template <typename SCALARTYPE, typename F, unsigned int ALIGNMENT>
         void qr_method(viennacl::matrix<SCALARTYPE, F, ALIGNMENT> & A,
                        viennacl::matrix<SCALARTYPE, F, ALIGNMENT> & Q,
-                       boost::numeric::ublas::vector<SCALARTYPE> & D,
-                       boost::numeric::ublas::vector<SCALARTYPE> & E,
+                       std::vector<SCALARTYPE> & D,
+                       std::vector<SCALARTYPE> & E,
                        bool is_symmetric = true)
         {
 
@@ -868,8 +730,6 @@ namespace viennacl
               viennacl::linalg::tql2(Q, D, E);
 
             }
-
-
             else
             {
                   detail::hqr2(A, Q, D, E);
@@ -881,16 +741,16 @@ namespace viennacl
 
             for (vcl_size_t i = 0; i < A.size1(); i++)
             {
-                if(std::fabs(E(i)) < EPS)
+                if(std::fabs(E[i]) < EPS)
                 {
-                    eigen_values(i, i) = D(i);
+                    eigen_values(i, i) = D[i];
                 }
                 else
                 {
-                    eigen_values(i, i) = D(i);
-                    eigen_values(i, i + 1) = E(i);
-                    eigen_values(i + 1, i) = -E(i);
-                    eigen_values(i + 1, i + 1) = D(i);
+                    eigen_values(i, i) = D[i];
+                    eigen_values(i, i + 1) = E[i];
+                    eigen_values(i + 1, i) = -E[i];
+                    eigen_values(i + 1, i + 1) = D[i];
                     i++;
                 }
             }
@@ -903,8 +763,8 @@ namespace viennacl
     template <typename SCALARTYPE, typename F, unsigned int ALIGNMENT>
     void qr_method_nsm(viennacl::matrix<SCALARTYPE, F, ALIGNMENT>& A,
                        viennacl::matrix<SCALARTYPE, F, ALIGNMENT>& Q,
-                       boost::numeric::ublas::vector<SCALARTYPE>& D,
-                       boost::numeric::ublas::vector<SCALARTYPE>& E
+                       std::vector<SCALARTYPE>& D,
+                       std::vector<SCALARTYPE>& E
                       )
     {
         detail::qr_method(A, Q, D, E, false);
@@ -913,10 +773,10 @@ namespace viennacl
     template <typename SCALARTYPE, typename F, unsigned int ALIGNMENT>
     void qr_method_sym(viennacl::matrix<SCALARTYPE, F, ALIGNMENT>& A,
                        viennacl::matrix<SCALARTYPE, F, ALIGNMENT>& Q,
-                       boost::numeric::ublas::vector<SCALARTYPE>& D
+                       std::vector<SCALARTYPE>& D
                       )
     {
-        boost::numeric::ublas::vector<SCALARTYPE> E(A.size1());
+        std::vector<SCALARTYPE> E(A.size1());
 
         detail::qr_method(A, Q, D, E, true);
     }

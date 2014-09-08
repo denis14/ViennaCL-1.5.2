@@ -34,7 +34,6 @@
 #include "viennacl/traits/start.hpp"
 #include "viennacl/traits/handle.hpp"
 #include "viennacl/traits/stride.hpp"
-#include "viennacl/vector.hpp"
 #include "viennacl/linalg/host_based/matrix_operations.hpp"
 
 #ifdef VIENNACL_WITH_OPENCL

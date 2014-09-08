@@ -17,6 +17,21 @@
 // includes, project
 #include "config.hpp"
 #include "util.hpp"
+#include "viennacl/vector.hpp"
+
+
+#include "viennacl/forwards.h"
+#include "viennacl/scalar.hpp"
+#include "viennacl/vector.hpp"
+#include "viennacl/vector_proxy.hpp"
+#include "viennacl/tools/tools.hpp"
+#include "viennacl/meta/enable_if.hpp"
+#include "viennacl/meta/predicate.hpp"
+#include "viennacl/meta/result_of.hpp"
+#include "viennacl/traits/size.hpp"
+#include "viennacl/traits/start.hpp"
+#include "viennacl/traits/handle.hpp"
+#include "viennacl/traits/stride.hpp"
 
 // additional kernel
 #include "bisect_util.cu"
@@ -34,10 +49,11 @@
 //! @param  lu_eig_count  number of eigenvalues that are smaller than \a lu
 //! @param  epsilon  desired accuracy of eigenvalues to compute
 ////////////////////////////////////////////////////////////////////////////////
+//template <typename T>
 __global__
 void
 bisectKernel(float *g_d, float *g_s, const unsigned int n,
-             float *g_left, float *g_right,
+             float * g_left, float *g_right,
              unsigned int *g_left_count, unsigned int *g_right_count,
              const float lg, const float ug,
              const unsigned int lg_eig_count, const unsigned int ug_eig_count,
