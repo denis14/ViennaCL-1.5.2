@@ -24,38 +24,40 @@
 #include "matlab.hpp"
 
 // namespace, unnamed
-namespace
-{
+//namespace viennacl
+//{
+  //namespace linalg
+  //{
 
-} // end namespace, unnamed
+    ///////////////////////////////////////////////////////////////////////////////
+    //! Write a tridiagonal, symmetric matrix in vector representation and
+    //! it's eigenvalues
+    //! @param  filename  name of output file
+    //! @param  d  diagonal entries of the matrix
+    //! @param  s  superdiagonal entries of the matrix (len = n - 1)
+    //! @param  eigenvals  eigenvalues of the matrix
+    //! @param  indices  vector of len n containing the position of the eigenvalues
+    //!                  if these are sorted in ascending order
+    //! @param  n  size of the matrix
+    ///////////////////////////////////////////////////////////////////////////////
+    void
+    writeTridiagSymMatlab(const char *filename,
+                          float *d, float *s,
+                          float *eigenvals,
+                          const unsigned int n)
+    {
+        std::ofstream file(filename, std::ios::out);
 
-///////////////////////////////////////////////////////////////////////////////
-//! Write a tridiagonal, symmetric matrix in vector representation and
-//! it's eigenvalues
-//! @param  filename  name of output file
-//! @param  d  diagonal entries of the matrix
-//! @param  s  superdiagonal entries of the matrix (len = n - 1)
-//! @param  eigenvals  eigenvalues of the matrix
-//! @param  indices  vector of len n containing the position of the eigenvalues
-//!                  if these are sorted in ascending order
-//! @param  n  size of the matrix
-///////////////////////////////////////////////////////////////////////////////
-void
-writeTridiagSymMatlab(const char *filename,
-                      float *d, float *s,
-                      float *eigenvals,
-                      const unsigned int n)
-{
-    std::ofstream file(filename, std::ios::out);
+        // write diagonal entries
+        writeVectorMatlab(file, "d", d, n);
 
-    // write diagonal entries
-    writeVectorMatlab(file, "d", d, n);
+        // write superdiagonal entries
+        writeVectorMatlab(file, "s", s, n-1);
 
-    // write superdiagonal entries
-    writeVectorMatlab(file, "s", s, n-1);
+        // write eigenvalues
+        writeVectorMatlab(file, "eigvals", eigenvals, n);
 
-    // write eigenvalues
-    writeVectorMatlab(file, "eigvals", eigenvals, n);
-
-    file.close();
-}
+        file.close();
+    }
+ // }
+//}
