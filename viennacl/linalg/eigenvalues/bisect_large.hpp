@@ -74,7 +74,7 @@
     //! @param  iterations  number of iterations (for timing)
     ////////////////////////////////////////////////////////////////////////////////
     void
-    computeEigenvaluesLargeMatrix(const InputData &input, const ResultDataLarge &result,
+    computeEigenvaluesLargeMatrix(InputData &input, const ResultDataLarge &result,
                                   const unsigned int mat_size,
                                   const float lg, const float ug,  const float precision)
     {
@@ -82,7 +82,7 @@
         dim3  threads(MAX_THREADS_BLOCK, 1, 1);
         std::cout << "Start bisectKernelLarge" << std::endl;
         bisectKernelLarge<<< blocks, threads >>>
-        (input.g_a, input.g_b, mat_size,
+        (viennacl::linalg::cuda::detail::cuda_arg<float>(input.g_a), input.g_b, mat_size,
           lg, ug, 0, mat_size, precision,
          result.g_num_one, result.g_num_blocks_mult,
          result.g_left_one, result.g_right_one, result.g_pos_one,
@@ -114,7 +114,7 @@
 
          std::cout << "Start bisectKernelLarge_OneIntervals" << std::endl;
         bisectKernelLarge_OneIntervals<<< grid_onei , threads_onei >>>
-        (input.g_a, input.g_b, mat_size, num_one_intervals,
+        (viennacl::linalg::cuda::detail::cuda_arg<float>(input.g_a), input.g_b, mat_size, num_one_intervals,
          result.g_left_one, result.g_right_one, result.g_pos_one,
          precision
         );
@@ -139,7 +139,7 @@
 
         std::cout << "Start bisectKernelLarge_MultIntervals: num_block_mult = " << num_blocks_mult << std::endl;
         bisectKernelLarge_MultIntervals<<< grid_mult, threads_mult >>>
-        (input.g_a, input.g_b, mat_size,
+        (viennacl::linalg::cuda::detail::cuda_arg<float>(input.g_a), input.g_b, mat_size,
          result.g_blocks_mult, result.g_blocks_mult_sum,
          result.g_left_mult, result.g_right_mult,
          result.g_left_count_mult, result.g_right_count_mult,

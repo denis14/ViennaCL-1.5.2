@@ -47,7 +47,7 @@
     //! @param  iterations  number of iterations for timing
     ////////////////////////////////////////////////////////////////////////////////
     void
-    computeEigenvaluesSmallMatrix(const InputData &input, ResultDataSmall &result,
+    computeEigenvaluesSmallMatrix(InputData &input, ResultDataSmall &result,
                                   const unsigned int mat_size,
                                   const float lg, const float ug,
                                   const float precision)
@@ -57,11 +57,12 @@
         dim3  blocks(1, 1, 1);
         dim3  threads(MAX_THREADS_BLOCK_SMALL_MATRIX, 1, 1);
 
-        bisectKernel<<< blocks, threads >>>(input.g_a, input.g_b, mat_size,
+        bisectKernel<<< blocks, threads >>>(viennacl::linalg::cuda::detail::cuda_arg<float>(input.g_a), 
+                                            input.g_b, mat_size,
                                             viennacl::linalg::cuda::detail::cuda_arg<float>(result.vcl_g_left), 
-                                            result.g_right,
-                                            result.g_left_count,
-                                            result.g_right_count,
+                                            viennacl::linalg::cuda::detail::cuda_arg<float>(result.vcl_g_right),
+                                            viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.vcl_g_left_count),
+                                            viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.vcl_g_right_count),
                                             lg, ug, 0, mat_size,
                                             precision
                                            );
@@ -87,25 +88,19 @@
                              const unsigned int mat_size,
                              const char *filename)
     {
-        const unsigned int mat_size_ui = sizeof(unsigned int) * mat_size;
-
         // copy data back to host
         std::vector<float> left(mat_size);
-        unsigned int *left_count = (unsigned int *) malloc(mat_size_ui);
+        std::vector<unsigned int> left_count(mat_size);
           
         viennacl::copy(result.vcl_g_left, left);
-        checkCudaErrors(cudaMemcpy(left_count, result.g_left_count, mat_size_ui,
-                                   cudaMemcpyDeviceToHost));
-
-
+        viennacl::copy(result.vcl_g_left_count, left_count);
+    
         for (unsigned int i = 0; i < mat_size; ++i)
         {
             result.std_eigenvalues[left_count[i]] = left[i];
         }
        // save result in matlab format
        // writeTridiagSymMatlab(filename, input.a, input.b+1, eigenvalues, mat_size);
-
-        freePtr(left_count);
     }
   //}
 //}

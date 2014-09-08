@@ -256,7 +256,6 @@
             
             g_lambda[addr]  = s_left[tid];
             g_pos[addr]   = s_right_count[tid];
-            //printf("s_left = %10.8f\n", s_left[tid]);
         }
     }
   //}

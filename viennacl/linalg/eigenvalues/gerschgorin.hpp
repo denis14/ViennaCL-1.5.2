@@ -32,8 +32,8 @@
     //! @param  ug  upper limit of Gerschgorin interval
     ////////////////////////////////////////////////////////////////////////////////
     void
-    //computeGerschgorin(std::vector<float> & d, std::vector<float> & s, unsigned int n, float &lg, float &ug)
-    computeGerschgorin(float *d, float *s, unsigned int n, float &lg, float &ug)
+    computeGerschgorin(std::vector<float> & d, std::vector<float> & s, unsigned int n, float &lg, float &ug)
+    //computeGerschgorin(float *d, float *s, unsigned int n, float &lg, float &ug)
     {
     /*
         lg = FLT_MAX;
@@ -44,7 +44,7 @@
         {
 
             // sum over the absolute values of all elements of row i
-            float sum_abs_ni = fabsf(s[i-1]) + fabsf(s[i]);
+            float sum_abs_ni = fabsf(s[i]) + fabsf(s[i + 1]);
 
             lg = min(lg, d[i] - sum_abs_ni);
             ug = max(ug, d[i] + sum_abs_ni);
@@ -53,12 +53,12 @@
         // first and last row, only one superdiagonal element
 
         // first row
-        lg = min(lg, d[0] - fabsf(s[0]));
-        ug = max(ug, d[0] + fabsf(s[0]));
+        lg = min(lg, d[0] - fabsf(s[1]));
+        ug = max(ug, d[0] + fabsf(s[1]));
 
         // last row
-        lg = min(lg, d[n-1] - fabsf(s[n-2]));
-        ug = max(ug, d[n-1] + fabsf(s[n-2]));
+        lg = min(lg, d[n-1] - fabsf(s[n-1]));
+        ug = max(ug, d[n-1] + fabsf(s[n-1]));
 
         // increase interval to avoid side effects of fp arithmetic
         float bnorm = max(fabsf(ug), fabsf(lg));

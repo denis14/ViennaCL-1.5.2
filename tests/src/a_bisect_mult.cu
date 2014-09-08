@@ -101,6 +101,10 @@
            superdiagonal[i] = ((float)(i % 5)) - 4.5f;
         }
       }
+      // the first element of s is used as padding on the device (thus the
+      // whole vector is copied to the device but the kernels are launched
+      // with (s+1) as start address
+      superdiagonal[0] = 0.0f;
      
     }
     template <typename NumericT>
@@ -117,8 +121,8 @@
         // compute Gerschgorin interval
         float lg = FLT_MAX;
         float ug = -FLT_MAX;
-        computeGerschgorin(input.a, input.b + 1, mat_size, lg, ug);
-        //computeGerschgorin(input.std_a, input.std_b_raw, mat_size, lg, ug);
+        //computeGerschgorin(input.a, input.b + 1, mat_size, lg, ug);
+        computeGerschgorin(input.std_a, input.std_b, mat_size, lg, ug);
         printf("Gerschgorin interval: %f / %f\n", lg, ug);
         
         if (mat_size <= MAX_SMALL_MATRIX)
@@ -133,10 +137,7 @@
           // get the result from the device and do some sanity checks,
           // save the result
           processResultSmallMatrix(input, result, mat_size, result_file);
-          std::copy(result.std_eigenvalues.begin(), result.std_eigenvalues.end(), eigenvalues.begin());
-          
-          // clean up
-          result.cleanup();
+          eigenvalues = result.std_eigenvalues;
           bCompareResult = true;
         }
 
@@ -173,7 +174,7 @@
     runTest(int argc, char **argv)
     {
         bool bCompareResult = false;
-        unsigned int mat_size = 213;
+        unsigned int mat_size = 2013;
         
         std::vector<float> diagonal(mat_size);
         std::vector<float> superdiagonal(mat_size);

@@ -34,7 +34,7 @@
       public:
 
       //! host/device side representation of diagonal
-      float  *a;
+      //float  *a;
       viennacl::vector<float> vcl_a;
       std::vector<float> std_a;
       //! host/device side representation superdiagonal
@@ -49,8 +49,8 @@
       float  *b;
 
       //! device side representation of diagonal
-      //viennacl::vector<float> g_a;
-      float  *g_a;
+      viennacl::vector<float> g_a;
+      //float  *g_a;
       //! device side representation of superdiagonal
       float  *g_b;
       //! helper variable pointing to the mem allocated for g_b which provides
@@ -65,23 +65,21 @@
       ////////////////////////////////////////////////////////////////////////////////
 
       InputData(std::vector<float> diagonal, std::vector<float> superdiagonal, const unsigned int sz) :
-                  std_a(sz), std_b(sz),  std_b_raw(sz)//, g_a(sz)
+                  std_a(sz), std_b(sz),  std_b_raw(sz), g_a(sz)
       {
         // allocate memory
         const unsigned int mat_size = sz;
-        a = (float *) malloc(sizeof(float) * mat_size);
+       // a = (float *) malloc(sizeof(float) * mat_size);
         b = (float *) malloc(sizeof(float) * mat_size);
 
-       std::copy(diagonal.begin(), diagonal.end(), a);
+     //  std::copy(diagonal.begin(), diagonal.end(), a);
        std::copy(superdiagonal.begin(), superdiagonal.end(), b);
 
-       // the first element of s is used as padding on the device (thus the
-       // whole vector is copied to the device but the kernels are launched
-       // with (s+1) as start address
-       b[0] = 0.0f;
+       std_a = diagonal;
+       std_b = superdiagonal;
 
        // allocate device memory for input
-       checkCudaErrors(cudaMalloc((void **) &( g_a)    , sizeof(float) * mat_size));
+      // checkCudaErrors(cudaMalloc((void **) &( g_a)    , sizeof(float) * mat_size));
        checkCudaErrors(cudaMalloc((void **) &( g_b_raw), sizeof(float) * mat_size));
 
        // copy data to device
@@ -94,8 +92,10 @@
       copy(std_b.begin(), std_b.end(), b);
      */
       // copy(diagonal.begin(), diagonal.end(), g_a);
-       checkCudaErrors(cudaMemcpy(g_a    , a, sizeof(float) * mat_size, cudaMemcpyHostToDevice));
+    //   checkCudaErrors(cudaMemcpy(g_a    , a, sizeof(float) * mat_size, cudaMemcpyHostToDevice));
        checkCudaErrors(cudaMemcpy(g_b_raw, b, sizeof(float) * mat_size, cudaMemcpyHostToDevice));
+
+       viennacl::copy(std_a, g_a);
 
 
         g_b =  g_b_raw + 1;
@@ -110,11 +110,11 @@
       cleanupInputData(void)
       {
 
-          freePtr(a);
+         // freePtr(a);
           freePtr(b);
 
-          checkCudaErrors(cudaFree(g_a));
-          g_a = NULL;
+         // checkCudaErrors(cudaFree(g_a));
+         // g_a = NULL;
           checkCudaErrors(cudaFree(g_b_raw));
           g_b_raw = NULL;
           g_b = NULL;
@@ -132,90 +132,34 @@
 
 
       // left interval limits at the end of the computation
-      float *g_left;
       viennacl::vector<float> vcl_g_left;
 
       // right interval limits at the end of the computation
-      float *g_right;
+      viennacl::vector<float> vcl_g_right;
 
       // number of eigenvalues smaller than the left interval limit
-      unsigned int *g_left_count;
+      viennacl::vector<unsigned int> vcl_g_left_count;
 
       // number of eigenvalues bigger than the right interval limit
-      unsigned int *g_right_count;
-
-      //! flag if algorithm converged
-      unsigned int *g_converged;
-
-      // helper variables
-
-      unsigned int mat_size_f;
-      unsigned int mat_size_ui;
-
-      float         *zero_f;
-      unsigned int  *zero_ui;
+      viennacl::vector<unsigned int> vcl_g_right_count;
 
 
       ////////////////////////////////////////////////////////////////////////////////
       //! Initialize variables and memory for the result for small matrices
       ////////////////////////////////////////////////////////////////////////////////
-      ResultDataSmall(const unsigned int mat_size) : std_eigenvalues(mat_size), vcl_g_left(mat_size)
+      ResultDataSmall(const unsigned int mat_size) :
+        std_eigenvalues(mat_size), vcl_g_left(mat_size), vcl_g_right(mat_size), vcl_g_left_count(mat_size), vcl_g_right_count(mat_size)
       {
-
-          mat_size_f = sizeof(float) * mat_size;
-          mat_size_ui = sizeof(unsigned int) * mat_size;
-
-          //eigenvalues = (float *) malloc(mat_size_f);
-
-          // helper variables
-          zero_f = (float *) malloc(mat_size_f);
-          zero_ui = (unsigned int *) malloc(mat_size_ui);
-
-          for (unsigned int i = 0; i < mat_size; ++i)
-          {
-
-              zero_f[i] = 0.0f;
-              zero_ui[i] = 0;
-              vcl_g_left.clear();
-          }
-
-          checkCudaErrors(cudaMalloc((void **) &g_left, mat_size_f));
-          checkCudaErrors(cudaMalloc((void **) &g_right, mat_size_f));
-
-          checkCudaErrors(cudaMalloc((void **) &g_left_count,
-                                     mat_size_ui));
-          checkCudaErrors(cudaMalloc((void **) &g_right_count,
-                                     mat_size_ui));
-
-          // initialize result memory
-          checkCudaErrors(cudaMemcpy(g_left, zero_f, mat_size_f,
-                                     cudaMemcpyHostToDevice));
-          checkCudaErrors(cudaMemcpy(g_right, zero_f, mat_size_f,
-                                     cudaMemcpyHostToDevice));
-          checkCudaErrors(cudaMemcpy(g_right_count, zero_ui,
-                                     mat_size_ui,
-                                     cudaMemcpyHostToDevice));
-          checkCudaErrors(cudaMemcpy(g_left_count, zero_ui,
-                                     mat_size_ui,
-                                     cudaMemcpyHostToDevice));
-      }
-
-      ////////////////////////////////////////////////////////////////////////////////
-      //! Cleanup memory and variables for result for small matrices
-      ////////////////////////////////////////////////////////////////////////////////
-      void
-      cleanup()
-      {
-
-          freePtr(zero_f);
-          freePtr(zero_ui);
-
-          checkCudaErrors(cudaFree(g_left));
-          checkCudaErrors(cudaFree(g_right));
-          checkCudaErrors(cudaFree(g_left_count));
-          checkCudaErrors(cudaFree(g_right_count));
+          vcl_g_left.clear();
+          vcl_g_right.clear();
+          vcl_g_left_count.clear();
+          vcl_g_right_count.clear();
       }
     };
+
+
+
+
 
     /////////////////////////////////////////////////////////////////////////////////
     //! In this class the all data of the result is stored

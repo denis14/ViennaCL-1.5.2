@@ -33,7 +33,7 @@
         //! @param  iterations  number of iterations for timing
         ////////////////////////////////////////////////////////////////////////////////
         void
-        computeEigenvaluesSmallMatrix(const InputData &input, ResultDataSmall &result,
+        computeEigenvaluesSmallMatrix(InputData &input, ResultDataSmall &result,
                                       const unsigned int mat_size,
                                       const float lg, const float ug,
                                       const float precision);
