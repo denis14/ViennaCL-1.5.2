@@ -168,70 +168,72 @@
     runTest(int argc, char **argv)
     {
         bool bCompareResult = false;
-        unsigned int mat_size = 250;
-        
-        std::vector<float> diagonal(mat_size);
-        std::vector<float> superdiagonal(mat_size);
-        std::vector<float> eigenvalues_bisect(mat_size);
-        
-        // Fill the diagonal and superdiagonal elements of the vector
-        initInputData(diagonal, superdiagonal, mat_size);
-        
-        //Start the bisection algorithm
-        std::cout << "Start the bisection algorithm" << std::endl;
-        bCompareResult = bisect(diagonal, superdiagonal, eigenvalues_bisect, mat_size);
-        
-        // Exit if an error occured during the execution of the algorithm
-        if (bCompareResult == false)
-         return false;
-
-        // The results of the bisection algorithm will be checked with the tql2 algorithm
-        // Initialize Data for tql2 algorithm
-        viennacl::matrix<float, viennacl::row_major> Q = viennacl::identity_matrix<float>(mat_size);
-        std::vector<float> diagonal_tql(mat_size);
-        std::vector<float> superdiagonal_tql(mat_size);
-        diagonal_tql = diagonal;
-        superdiagonal_tql = superdiagonal;
-        
-        // Start the tql2 algorithm
-        std::cout << "Start the tql2 algorithm..." << std::endl; 
-       /* viennacl::linalg::tql2(Q, diagonal_tql, superdiagonal_tql);  
-        
-        // Ensure that eigenvalues from tql2 algorithm are sorted in ascending order
-        std::cout << "Start sorting..." << std::endl;
-        std::sort(diagonal_tql.begin(), diagonal_tql.end());
-        
-        
-        // Compare the results from the bisection algorithm with the results
-        // from the tql2 algorithm.
-        std::cout << "Start comparison..." << std::endl;
-        for(uint i = 0; i < mat_size; i++)
         {
-           if(std::abs(eigenvalues_bisect[i] - diagonal_tql[i]) > EPS)
-           { 
-	           std::cout << std::setprecision(8) << eigenvalues_bisect[i] << "  != " << diagonal_tql[i] << "\n";
-	           return false;
-           }  	
-        }
-        
-        std::cout << "mat_size = " << mat_size << std::endl;
-        // Print the results.
-        for (unsigned int i = 0; i < mat_size; ++i)
-        {
-          std::cout << "Eigenvalue " << i << ":  \tbisect: " << std::setprecision(8) << eigenvalues_bisect[i] << "\ttql2: " << diagonal_tql[i] << std::endl;
-        }
-        */
-        
-        // cudaDeviceReset causes the driver to clean up all state. While
-        // not mandatory in normal operation, it is good practice.  It is also
-        // needed to ensure correct operation when the application is being
-        // profiled. Calling cudaDeviceReset causes all profile data to be
+	        unsigned int mat_size = 250;
+	        
+	        std::vector<float> diagonal(mat_size);
+	        std::vector<float> superdiagonal(mat_size);
+	        std::vector<float> eigenvalues_bisect(mat_size);
+	        
+	        // Fill the diagonal and superdiagonal elements of the vector
+	        initInputData(diagonal, superdiagonal, mat_size);
+	        
+	        //Start the bisection algorithm
+	        std::cout << "Start the bisection algorithm" << std::endl;
+	        bCompareResult = bisect(diagonal, superdiagonal, eigenvalues_bisect, mat_size);
+	        
+	        // Exit if an error occured during the execution of the algorithm
+	        if (bCompareResult == false)
+	         return false;
+	
+	        // The results of the bisection algorithm will be checked with the tql2 algorithm
+	        // Initialize Data for tql2 algorithm
+	        viennacl::matrix<float, viennacl::row_major> Q = viennacl::identity_matrix<float>(mat_size);
+	        std::vector<float> diagonal_tql(mat_size);
+	        std::vector<float> superdiagonal_tql(mat_size);
+	        diagonal_tql = diagonal;
+	        superdiagonal_tql = superdiagonal;
+	        
+	        // Start the tql2 algorithm
+	        std::cout << "Start the tql2 algorithm..." << std::endl; 
+	        viennacl::linalg::tql2(Q, diagonal_tql, superdiagonal_tql);  
+	        
+	        // Ensure that eigenvalues from tql2 algorithm are sorted in ascending order
+	        std::cout << "Start sorting..." << std::endl;
+	        std::sort(diagonal_tql.begin(), diagonal_tql.end());
+	        
+	        
+	        // Compare the results from the bisection algorithm with the results
+	        // from the tql2 algorithm.
+	        std::cout << "Start comparison..." << std::endl;
+	        for(uint i = 0; i < mat_size; i++)
+	        {
+	           if(std::abs(eigenvalues_bisect[i] - diagonal_tql[i]) > EPS)
+	           { 
+		           std::cout << std::setprecision(8) << eigenvalues_bisect[i] << "  != " << diagonal_tql[i] << "\n";
+		           return false;
+	           }  	
+	        }
+	        
+	        std::cout << "mat_size = " << mat_size << std::endl;
+	        // Print the results.
+	        for (unsigned int i = 0; i < mat_size; ++i)
+	        {
+	          std::cout << "Eigenvalue " << i << ":  \tbisect: " << std::setprecision(8) << eigenvalues_bisect[i] << "\ttql2: " << diagonal_tql[i] << std::endl;
+	        }
+	        
+	        
+	        // cudaDeviceReset causes the driver to clean up all state. While
+	        // not mandatory in normal operation, it is good practice.  It is also
+	        // needed to ensure correct operation when the application is being
+	        // profiled. Calling cudaDeviceReset causes all profile data to be
         // flushed before the application exits
-        
+        }
         std::cout << "cudaDeviceReset" << std::endl;
         cudaDeviceReset();
 
         return bCompareResult;
+        
     }
 //  }
 //}
