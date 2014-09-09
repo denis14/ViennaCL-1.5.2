@@ -11,8 +11,8 @@
 
 /* Utility / shared functionality for bisection kernels */
 
-#ifndef _BISECT_UTIL_H_
-#define _BISECT_UTIL_H_
+#ifndef _VIENNACL_LINALG_OPENCL_KERNELS_BISECT_UTIL_HPP_
+#define _VIENNACL_LINALG_OPENCL_KERNELS_BISECT_UTIL_HPP_
 
 // includes, project
 #include "config.hpp"

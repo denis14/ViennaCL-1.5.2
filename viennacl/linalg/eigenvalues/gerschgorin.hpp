@@ -10,6 +10,8 @@
  */
 
 /* Computation of Gerschgorin interval for symmetric, tridiagonal matrix */
+#ifndef _GERSCHORIN_H_
+#define _GERSCHORIN_H_
 
 #include <cstdio>
 #include <cstdlib>
@@ -75,3 +77,4 @@
     }
 //  }
 //}
+#endif  // _GERSCHGORIN_H_

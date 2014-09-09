@@ -623,6 +623,7 @@ namespace viennacl
         template <typename StringType>
         void generate_svd_inclusive_scan_kernel_1(StringType & source, std::string const & numeric_string)
         {
+            source.append("#define SECTION_SIZE 256\n");
             source.append("__kernel void inclusive_scan_1(__global "); source.append(numeric_string); source.append("* X, \n");
             source.append("                               uint startX, \n");
             source.append("                               uint incX, \n");
@@ -644,7 +645,7 @@ namespace viennacl
 
             source.append("    uint lcl_id = get_local_id(0); \n");
             source.append("    uint lcl_sz = get_local_size(0); \n");
-            source.append("    __local "); source.append(numeric_string); source.append(" XY[256]; \n");  //section size
+            source.append("    __local "); source.append(numeric_string); source.append(" XY[SECTION_SIZE]; \n");  //section size
 
             source.append("    if(glb_id < InputSize) \n");
             source.append("       XY[lcl_id] = X[glb_id * incX + startX]; \n");
@@ -658,7 +659,7 @@ namespace viennacl
             source.append("             XY[index] += XY[index - stride];     \n");
             source.append("    } \n");
 
-            source.append("     for(int stride = 256 / 4; stride > 0; stride /= 2) \n");             //Section size = 512
+            source.append("     for(int stride = SECTION_SIZE / 4; stride > 0; stride /= 2) \n");             //Section size = 512
             source.append("     { \n");
             source.append("         barrier(CLK_LOCAL_MEM_FENCE); \n");
             source.append("         int index = (lcl_id + 1) * 2 * stride - 1; \n");
@@ -671,7 +672,7 @@ namespace viennacl
             source.append("     barrier(CLK_LOCAL_MEM_FENCE);       \n");
             source.append("     if(lcl_id == 0)     \n");
             source.append("     { \n");
-            source.append("         S[grp_id * incS + startS] = XY[256 - 1]; \n");                    //Section size = 512
+            source.append("         S[grp_id * incS + startS] = XY[SECTION_SIZE - 1]; \n");                    //Section size = 512
             source.append("     } \n");
             source.append("} \n");
         }
@@ -700,7 +701,7 @@ namespace viennacl
 
             source.append("    uint lcl_id = get_local_id(0); \n");
             source.append("    uint lcl_sz = get_local_size(0); \n");
-            source.append("    __local "); source.append(numeric_string); source.append(" XY[256]; \n");           //section size
+            source.append("    __local "); source.append(numeric_string); source.append(" XY[SECTION_SIZE]; \n");           //section size
 
             source.append("    if(glb_id < InputSize + 1 && glb_id != 0) \n");
             source.append("       XY[lcl_id] = X[(glb_id - 1) * incX + startX]; \n");
@@ -716,7 +717,7 @@ namespace viennacl
             source.append("             XY[index] += XY[index - stride];     \n");
             source.append("    } \n");
 
-            source.append("     for(int stride = 256 / 4; stride > 0; stride /= 2) \n");             //Section size = 512
+            source.append("     for(int stride = SECTION_SIZE / 4; stride > 0; stride /= 2) \n");             //Section size = 512
             source.append("     { \n");
             source.append("         barrier(CLK_LOCAL_MEM_FENCE); \n");
             source.append("         int index = (lcl_id + 1) * 2 * stride - 1; \n");
@@ -729,7 +730,7 @@ namespace viennacl
             source.append("     barrier(CLK_LOCAL_MEM_FENCE);       \n");
             source.append("     if(lcl_id == 0)     \n");
             source.append("     { \n");
-            source.append("         S[grp_id * incS + startS] = XY[256 - 1]; \n");                    //Section size = 512
+            source.append("         S[grp_id * incS + startS] = XY[SECTION_SIZE - 1]; \n");                    //Section size = 512
             source.append("     } \n");
             source.append("} \n");
         }
@@ -753,7 +754,7 @@ namespace viennacl
 
             source.append("    uint lcl_id = get_local_id(0); \n");
             source.append("    uint lcl_sz = get_local_size(0); \n");
-            source.append("    __local "); source.append(numeric_string); source.append(" XY[256]; \n");       //section size
+            source.append("    __local "); source.append(numeric_string); source.append(" XY[SECTION_SIZE]; \n");       //section size
 
             source.append("     if(glb_id < InputSize)           \n");
             source.append("         XY[lcl_id] = S[glb_id * incS + startS];     \n");
@@ -766,7 +767,7 @@ namespace viennacl
             source.append("             XY[index] += XY[index - stride]; \n");
             source.append("     }   \n");
 
-            source.append("     for(int stride = 256 / 4; stride > 0; stride /= 2)  \n");
+            source.append("     for(int stride = SECTION_SIZE / 4; stride > 0; stride /= 2)  \n");
             source.append("     {   \n");
             source.append("         barrier(CLK_LOCAL_MEM_FENCE);                   \n");
             source.append("         int index = (lcl_id + 1) * 2 * stride - 1;      \n");
