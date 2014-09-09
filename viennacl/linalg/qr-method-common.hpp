@@ -34,8 +34,8 @@
 #include "viennacl/vector.hpp"
 #include "viennacl/matrix.hpp"
 
-#include <boost/numeric/ublas/vector.hpp>
-#include <boost/numeric/ublas/io.hpp>
+//#include <boost/numeric/ublas/vector.hpp>
+//#include <boost/numeric/ublas/io.hpp>
 
 /** @file viennacl/linalg/qr-method-common.hpp
     @brief Common routines used for the QR method and SVD. Experimental.
@@ -182,24 +182,6 @@ namespace viennacl
             throw memory_exception("not implemented");
         }
 
-
-        /*
-        std::string kernel_name = copy_col ? SVD_COPY_COL_KERNEL : SVD_COPY_ROW_KERNEL;
-        viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(A).context());
-        viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE>::program_name(), kernel_name);
-
-        viennacl::ocl::enqueue(kernel(
-                                      A,
-                                      V,
-                                      static_cast<cl_uint>(row_start),
-                                      static_cast<cl_uint>(col_start),
-                                      copy_col ? static_cast<cl_uint>(A.size1())
-                                               : static_cast<cl_uint>(A.size2()),
-                                      static_cast<cl_uint>(A.internal_size2())
-                              ));
-
-                              */
-
       }
 
 
@@ -214,43 +196,14 @@ namespace viennacl
                                     bool is_column
                                     )
       {
-        boost::numeric::ublas::vector<SCALARTYPE> tmp = boost::numeric::ublas::scalar_vector<SCALARTYPE>(size, 0);
-
+        //boost::numeric::ublas::vector<SCALARTYPE> tmp = boost::numeric::ublas::scalar_vector<SCALARTYPE>(size, 0);
+        std::vector<SCALARTYPE> tmp(size);
         copy_vec(A, D, row_start, col_start, is_column);
         fast_copy(D.begin(), D.begin() + vcl_ptrdiff_t(size - start), tmp.begin() + start);
 
         detail::householder_vector(tmp, start);
         fast_copy(tmp, D);
       }
-
-
-      /*
-      template <typename SCALARTYPE, unsigned int ALIGNMENT, typename VectorType>
-      void bidiag_pack(viennacl::matrix<SCALARTYPE, row_major, ALIGNMENT>& A,
-                       VectorType & dh,
-                       VectorType & sh
-                      )
-      {
-        viennacl::vector<SCALARTYPE, ALIGNMENT> D(dh.size());
-        viennacl::vector<SCALARTYPE, ALIGNMENT> S(sh.size());
-
-        viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(A).context());
-        viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<SCALARTYPE>::program_name(), SVD_BIDIAG_PACK_KERNEL);
-
-        viennacl::ocl::enqueue(kernel(
-                                      A,
-                                      D,
-                                      S,
-                                      static_cast<cl_uint>(A.size1()),
-                                      static_cast<cl_uint>(A.size2()),
-                                      static_cast<cl_uint>(A.internal_size2())
-                                    ));
-
-        fast_copy(D, dh);
-        fast_copy(S, sh);
-      }
-
-      */
 
     } //detail
   }

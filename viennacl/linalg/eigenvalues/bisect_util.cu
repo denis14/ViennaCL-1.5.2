@@ -18,10 +18,10 @@
 #include "config.hpp"
 #include "util.hpp"
 
-//namespace viennacl
-//{
-  //namespace linalg
-  //{
+namespace viennacl
+{
+  namespace linalg
+  {
     ////////////////////////////////////////////////////////////////////////////////
     //! Compute the next lower power of two of n
     //! @param  n  number for which next higher power of two is seeked
@@ -554,8 +554,8 @@
 
         }  // end for all active threads
     }
-  //}
-//}
+  }
+}
 
 #endif // #ifndef _BISECT_UTIL_H_
 

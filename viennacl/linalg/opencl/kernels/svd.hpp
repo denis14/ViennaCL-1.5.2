@@ -618,53 +618,7 @@ namespace viennacl
 
           source.append("} \n");
         }
-/*
-        template <typename StringType>
-        void generate_svd_inclusive_scan_kernel_1(StringType & source, std::string const & numeric_string)
-        {
-   /*     source.append("__kernel void inclusive_scan_1(__global "); source.append(numeric_string); source.append("* A, \n");
-          source.append("                               uint stride, \n");
-          source.append("                               __global "); source.append(numeric_string); source.append("* buf, \n");
-          source.append("                               int m, \n");
-          source.append("                               int n, \n");
-          source.append("                               int last_n) \n");
-          source.append("{ \n");
-          source.append("    uint glb_id = get_global_id(0); \n");
-          source.append("    uint glb_sz = get_global_size(0); \n");
 
-
-          source.append("    for (int i = glb_id; i < last_n; i += glb_sz) \n");
-          source.append("    { \n");
-          source.append("        "); source.append(numeric_string); source.append(" a_ik = A[m * stride + i], a_ik_1, a_ik_2; \n");
-
-          source.append("        a_ik_1 = A[(m + 1) * stride + i]; \n");
-
-          source.append("        for(int k = m; k < n; k++) \n");
-          source.append("        { \n");
-          source.append("            bool notlast = (k != n - 1); \n");
-
-          source.append("            "); source.append(numeric_string); source.append(" p = buf[5 * k] * a_ik + buf[5 * k + 1] * a_ik_1; \n");
-
-          source.append("            if (notlast) \n");
-          source.append("            { \n");
-          source.append("                a_ik_2 = A[(k + 2) * stride + i]; \n");
-          source.append("                p = p + buf[5 * k + 2] * a_ik_2; \n");
-          source.append("                a_ik_2 = a_ik_2 - p * buf[5 * k + 4]; \n");
-          source.append("            } \n");
-
-          source.append("            A[k * stride + i] = a_ik - p; \n");
-          source.append("            a_ik_1 = a_ik_1 - p * buf[5 * k + 3]; \n");
-
-          source.append("            a_ik = a_ik_1; \n");
-          source.append("            a_ik_1 = a_ik_2; \n");
-          source.append("        } \n");
-
-          source.append("        A[n * stride + i] = a_ik; \n");
-          source.append("    } \n");
-
-          source.append("} \n");
-        }
-*/
 
         template <typename StringType>
         void generate_svd_inclusive_scan_kernel_1(StringType & source, std::string const & numeric_string)

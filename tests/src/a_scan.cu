@@ -41,7 +41,7 @@
 
 typedef float     ScalarType;
 
-#define EPS 0.0001
+#define EPS 0.000001
 
 
 void vector_print(viennacl::vector<ScalarType>& v )
@@ -101,7 +101,7 @@ void test_exclusive_scan_values(viennacl::vector<ScalarType> & vcl_vec)
 
 void test_scans()
 {
-  unsigned int sz = 1048576 * 16;
+  unsigned int sz = 2044260;
   viennacl::vector<ScalarType> vec1(sz), vec2(sz);
 
 

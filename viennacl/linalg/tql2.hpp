@@ -22,9 +22,6 @@
 #include "viennacl/linalg/qr-method-common.hpp"
 #include "viennacl/linalg/prod.hpp"
 
-#include <boost/numeric/ublas/vector.hpp>
-#include <boost/numeric/ublas/matrix.hpp>
-
 /** @file viennacl/linalg/qr-method.hpp
     @brief Implementation of the QR method for eigenvalue computations. Experimental.
 */

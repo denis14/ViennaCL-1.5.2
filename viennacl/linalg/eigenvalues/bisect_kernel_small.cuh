@@ -41,10 +41,10 @@
 // additional kernel
 #include "bisect_util.cu"
 
-//namespace viennacl
-//{
-  //namespace linalg
-  //{
+namespace viennacl
+{
+  namespace linalg
+  {
 
     ////////////////////////////////////////////////////////////////////////////////
     //! Bisection to find eigenvalues of a real, symmetric, and tridiagonal matrix
@@ -258,6 +258,6 @@
             g_left_count[threadIdx.x]  = s_left_count[threadIdx.x];
         }
     }
-  //}
-//}
+  }
+}
 #endif // #ifndef _BISECT_KERNEL_SMALL_H_

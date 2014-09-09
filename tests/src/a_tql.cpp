@@ -87,7 +87,7 @@ bool test_eigen_val_vec(viennacl::matrix<ScalarType, MatrixLayout> & Q,
 template <typename MatrixLayout>
 void test_qr_method_sym()
 {
-  std::size_t sz = 320;
+  std::size_t sz = 220;
 
   viennacl::matrix<ScalarType, MatrixLayout> Q = viennacl::identity_matrix<ScalarType>(sz);
   std::vector<ScalarType> d(sz), e(sz), d_ref(sz), e_ref(sz);
@@ -120,6 +120,7 @@ void test_qr_method_sym()
 int main()
 {
 
+  std::cout << std::endl << "COMPUTATION OF EIGENVALUES AND EIGENVECTORS" << std::endl;
   std::cout << std::endl << "Testing QL algorithm for symmetric tridiagonal row-major matrices..." << std::endl;
   test_qr_method_sym<viennacl::row_major>();
 
