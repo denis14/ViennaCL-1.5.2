@@ -156,9 +156,6 @@
           bCompareResult = processResultDataLargeMatrix(input, result, mat_size, result_file);
                                                         
           eigenvalues = result.std_eigenvalues;                                  
-          // cleanup
-          std::cout << "CleanupResultData" << std::endl;
-          result.cleanup();
         } //Large end
         return bCompareResult;
     }
@@ -171,7 +168,7 @@
     runTest(int argc, char **argv)
     {
         bool bCompareResult = false;
-        unsigned int mat_size = 950;
+        unsigned int mat_size = 250;
         
         std::vector<float> diagonal(mat_size);
         std::vector<float> superdiagonal(mat_size);

@@ -86,7 +86,8 @@
            viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_b) + 1,
            mat_size,
            lg, ug, 0, mat_size, precision,
-           result.g_num_one, result.g_num_blocks_mult,
+           viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_num_one),
+           viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_num_blocks_mult),
            viennacl::linalg::cuda::detail::cuda_arg<float>(result.g_left_one),
            viennacl::linalg::cuda::detail::cuda_arg<float>(result.g_right_one),
            viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_pos_one),
@@ -105,10 +106,7 @@
 
         // get the number of intervals containing one eigenvalue after the first
         // processing step
-        unsigned int num_one_intervals  = 42;
-        checkCudaErrors(cudaMemcpy(&num_one_intervals, result.g_num_one,
-                                   sizeof(unsigned int),
-                                   cudaMemcpyDeviceToHost));
+        unsigned int num_one_intervals = result.g_num_one;
 
         dim3 grid_onei;
         grid_onei.x = getNumBlocksLinear(num_one_intervals, MAX_THREADS_BLOCK);
@@ -139,10 +137,10 @@
         // get the number of blocks of intervals that contain, in total when
         // each interval contains only one eigenvalue, not more than
         // MAX_THREADS_BLOCK threads
-        unsigned int  num_blocks_mult = 0;
-        checkCudaErrors(cudaMemcpy(&num_blocks_mult, result.g_num_blocks_mult,
-                                   sizeof(unsigned int),
-                                   cudaMemcpyDeviceToHost));
+        unsigned int  num_blocks_mult = result.g_num_blocks_mult;
+       // checkCudaErrors(cudaMemcpy(&num_blocks_mult, result.g_num_blocks_mult,
+         //                          sizeof(unsigned int),
+           //                        cudaMemcpyDeviceToHost));
 
         // setup the execution environment
         dim3  grid_mult(num_blocks_mult, 1, 1);
@@ -197,10 +195,10 @@
         std::vector<unsigned int> blocks_mult_sum(mat_size);
         viennacl::copy(result.g_blocks_mult_sum, blocks_mult_sum);
 
-        unsigned int num_one_intervals;
-        checkCudaErrors(cudaMemcpy(&num_one_intervals, result.g_num_one,
-                                   sizeof(unsigned int),
-                                   cudaMemcpyDeviceToHost));
+        unsigned int num_one_intervals = result.g_num_one;
+      //  checkCudaErrors(cudaMemcpy(&num_one_intervals, result.g_num_one,
+        //                           sizeof(unsigned int),
+          //                         cudaMemcpyDeviceToHost));
 
         unsigned int sum_blocks_mult = mat_size - num_one_intervals;
 

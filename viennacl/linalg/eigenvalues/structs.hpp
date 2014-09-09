@@ -105,12 +105,11 @@
         std::vector<float> std_eigenvalues;
 
         //! number of intervals containing one eigenvalue after the first step
-        unsigned int *g_num_one;
-        //vcl_t vcl_g_num_one;
+        viennacl::scalar<unsigned int> g_num_one;
 
         //! number of (thread) blocks of intervals containing multiple eigenvalues
         //! after the first steo
-        unsigned int *g_num_blocks_mult;
+        viennacl::scalar<unsigned int> g_num_blocks_mult;
 
         //! left interval limits of intervals containing one eigenvalue after the
         //! first iteration step
@@ -164,22 +163,9 @@
         ResultDataLarge(const unsigned int mat_size) :
           std_eigenvalues(mat_size), g_left_one(mat_size), g_right_one(mat_size), g_pos_one(mat_size),
           g_left_mult(mat_size), g_right_mult(mat_size),g_left_count_mult(mat_size), g_right_count_mult(mat_size),
-          g_lambda_mult(mat_size), g_blocks_mult(mat_size), g_blocks_mult_sum(mat_size), g_pos_mult(mat_size)
+          g_lambda_mult(mat_size), g_blocks_mult(mat_size), g_blocks_mult_sum(mat_size), g_pos_mult(mat_size),
+          g_num_one(0), g_num_blocks_mult(0)
         {
-
-            // helper variables to initialize memory
-            unsigned int zero = 0;
-            unsigned int mat_size_f = sizeof(float) * mat_size;
-            unsigned int mat_size_ui = sizeof(unsigned int) * mat_size;
-
-            float *tempf = (float *) malloc(mat_size_f);
-            unsigned int *tempui = (unsigned int *) malloc(mat_size_ui);
-
-            for (unsigned int i = 0; i < mat_size; ++i)
-            {
-                tempf[i] = 0.0f;
-                tempui[i] = 0;
-            }
             g_left_one.clear();
             g_right_one.clear();
             g_pos_one.clear();
@@ -191,36 +177,7 @@
             g_blocks_mult.clear();
             g_blocks_mult_sum.clear();
             g_pos_mult.clear();
-
-            // number of intervals containing only one eigenvalue after the first step
-            checkCudaErrors(cudaMalloc((void **)  &g_num_one,
-                                       sizeof(unsigned int)));
-            checkCudaErrors(cudaMemcpy(g_num_one, &zero, sizeof(unsigned int),
-                                       cudaMemcpyHostToDevice));
-
-            // number of (thread) blocks of intervals with multiple eigenvalues after
-            // the first iteration
-            checkCudaErrors(cudaMalloc((void **) & g_num_blocks_mult,
-                                       sizeof(unsigned int)));
-            checkCudaErrors(cudaMemcpy( g_num_blocks_mult, &zero,
-                                       sizeof(unsigned int),
-                                       cudaMemcpyHostToDevice));
-
         }
-
-        ////////////////////////////////////////////////////////////////////////////////
-        //! Cleanup result memory
-        //! @param result  handles to memory
-        ////////////////////////////////////////////////////////////////////////////////
-        void
-        cleanup()
-        {
-
-            checkCudaErrors(cudaFree( g_num_one));
-            checkCudaErrors(cudaFree( g_num_blocks_mult));
-        }
-
-
     };
 //  }
 //}
