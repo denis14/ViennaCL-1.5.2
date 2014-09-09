@@ -270,12 +270,13 @@ void generate_bisectKernelLarge_MultIntervals(StringType & source, std::string c
             //printf("s_left = %10.8f\n", s_left[tid]);
     source.append("         }  \n");
     source.append("     }  \n");
+} 
   //}
 //}
 
 #endif // #ifndef _BISECT_KERNEL_LARGE_MULTI_H_
 
-} 
+
 
 
  
