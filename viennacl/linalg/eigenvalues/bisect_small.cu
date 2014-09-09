@@ -29,12 +29,12 @@
 #include "bisect_kernel_small.cuh"
 
 // includes, file
-#include "bisect_small.cuh"
+//#include "bisect_small.cuh"
 
-//namespace viennacl
-//{
-  //namespace linalg
- // {
+namespace viennacl
+{
+  namespace linalg
+  {
     ////////////////////////////////////////////////////////////////////////////////
     //! Determine eigenvalues for matrices smaller than MAX_SMALL_MATRIX
     //! @param TimingIterations  number of iterations for timing
@@ -103,5 +103,5 @@
        // save result in matlab format
        // writeTridiagSymMatlab(filename, input.a, input.b+1, eigenvalues, mat_size);
     }
-  //}
-//}
+  }
+}

@@ -25,10 +25,10 @@
 #include "viennacl/matrix.hpp"
 #include "viennacl/linalg/eigenvalues/util.hpp"
 
-//namespace viennacl
-//{
-  //namespace linalg
-  //{
+namespace viennacl
+{
+  namespace linalg
+  {
     class InputData
     {
       public:
@@ -179,7 +179,7 @@
             g_pos_mult.clear();
         }
     };
-//  }
-//}
+  }
+}
 #endif // #ifndef _STRUCTS_H_
 

@@ -21,34 +21,16 @@
 #include <float.h>
 
 // includes, project
-//#include "helper_functions.h"
-//#include "helper_cuda.h"
 #include "config.hpp"
 #include "structs.hpp"
 #include "util.hpp"
 #include "matlab.hpp"
-
-#include "bisect_large.cuh"
 
 // includes, kernels
 #include "bisect_kernel_large.cuh"
 #include "bisect_kernel_large_onei.cuh"
 #include "bisect_kernel_large_multi.cuh"
 
-
-
-#include "viennacl/forwards.h"
-#include "viennacl/scalar.hpp"
-#include "viennacl/vector.hpp"
-#include "viennacl/vector_proxy.hpp"
-#include "viennacl/tools/tools.hpp"
-#include "viennacl/meta/enable_if.hpp"
-#include "viennacl/meta/predicate.hpp"
-#include "viennacl/meta/result_of.hpp"
-#include "viennacl/traits/size.hpp"
-#include "viennacl/traits/start.hpp"
-#include "viennacl/traits/handle.hpp"
-#include "viennacl/traits/stride.hpp"
 
 #include "viennacl/linalg/cuda/common.hpp"
 
@@ -58,10 +40,10 @@
 #include "viennacl/linalg/cuda/matrix_operations_prod.hpp"
 #include "viennacl/linalg/cuda/matrix_operations_prod.hpp"
 
-//namespace viennacl
-//{
-  //namespace linalg
-  //{
+namespace viennacl
+{
+  namespace linalg
+  {
 
     ////////////////////////////////////////////////////////////////////////////////
     //! Run the kernels to compute the eigenvalues for large matrices
@@ -242,5 +224,5 @@
         return bCompareResult;
 
     }
-  //}
-//}
+  }
+}

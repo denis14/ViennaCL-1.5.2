@@ -23,10 +23,10 @@
 // additional kernel
 #include "bisect_util.cu"
 
-//namespace viennacl
-//{
-  //namespace linalg
-  //{
+namespace viennacl
+{
+  namespace linalg
+  {
     ////////////////////////////////////////////////////////////////////////////////
     //! Perform second step of bisection algorithm for large matrices for
     //! intervals that after the first step contained more than one eigenvalue
@@ -258,7 +258,7 @@
             g_pos[addr]   = s_right_count[tid];
         }
     }
-  //}
-//}
+  }
+}
 
 #endif // #ifndef _BISECT_KERNEL_LARGE_MULTI_H_

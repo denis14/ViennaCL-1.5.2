@@ -24,10 +24,10 @@
 
 // declaration, forward
 
-//namespace viennacl
-//{
-  //namespace linalg
-  //{
+namespace viennacl
+{
+  namespace linalg
+  {
 
     ////////////////////////////////////////////////////////////////////////////////
     //! Write data to global memory
@@ -1005,6 +1005,6 @@
             }
         }
     }
-  //}
-//}
+  }
+}
 #endif // #ifndef _BISECT_KERNEL_LARGE_H_

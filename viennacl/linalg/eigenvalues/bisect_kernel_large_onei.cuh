@@ -23,10 +23,10 @@
 // additional kernel
 #include "bisect_util.cu"
 
-//namespace viennacl
-//{
-  //namespace linalg
-  //{
+namespace viennacl
+{
+  namespace linalg
+  {
     ////////////////////////////////////////////////////////////////////////////////
     //! Determine eigenvalues for large matrices for intervals that after
     //! the first step contained one eigenvalue
@@ -165,6 +165,6 @@
             g_left[gtid] = left;
         }
     }
- // }
-//}
+  }
+}
 #endif // #ifndef _BISECT_KERNEL_LARGE_ONEI_H_

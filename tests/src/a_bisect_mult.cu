@@ -37,18 +37,18 @@
 #include "viennacl/linalg/eigenvalues/gerschgorin.hpp"
 #include "viennacl/linalg/eigenvalues/bisect_large.hpp"
 
-#include "viennacl/linalg/eigenvalues/bisect_large.cuh"
-#include "viennacl/linalg/eigenvalues/bisect_small.cuh"
+//#include "viennacl/linalg/eigenvalues/bisect_large.cuh"
+//#include "viennacl/linalg/eigenvalues/bisect_small.cuh"
 #include "viennacl/linalg/eigenvalues/bisect_small.cu"
 
-#include "viennacl/linalg/qr-method.hpp"
+#include "viennacl/linalg/tql2.hpp"
 
 #define EPS 10.0e-4
 
 //namespace viennacl
 //{
   //namespace linalg
- // {
+  //{
     ////////////////////////////////////////////////////////////////////////////////
     // declaration, forward
     bool runTest(int argc, char **argv);
@@ -117,7 +117,7 @@
         char  *result_file = "eigenvalues.dat";
         
         // set up input
-        InputData input(diagonal, superdiagonal, mat_size);
+        viennacl::linalg::InputData input(diagonal, superdiagonal, mat_size);
         // compute Gerschgorin interval
         float lg = FLT_MAX;
         float ug = -FLT_MAX;
@@ -128,15 +128,15 @@
         if (mat_size <= MAX_SMALL_MATRIX)
         {
           // initialize memory for result
-          ResultDataSmall result(mat_size);
+          viennacl::linalg::ResultDataSmall result(mat_size);
 
           // run the kernel
-          computeEigenvaluesSmallMatrix(input, result, mat_size, lg, ug,
+          viennacl::linalg::computeEigenvaluesSmallMatrix(input, result, mat_size, lg, ug,
                                         precision);
 
           // get the result from the device and do some sanity checks,
           // save the result
-          processResultSmallMatrix(input, result, mat_size, result_file);
+          viennacl::linalg::processResultSmallMatrix(input, result, mat_size, result_file);
           eigenvalues = result.std_eigenvalues;
           bCompareResult = true;
         }
@@ -144,16 +144,16 @@
         else
         {
           // initialize memory for result
-          ResultDataLarge result(mat_size);
+          viennacl::linalg::ResultDataLarge result(mat_size);
         
           // run the kernel
-          computeEigenvaluesLargeMatrix(input, result, mat_size,
+          viennacl::linalg::computeEigenvaluesLargeMatrix(input, result, mat_size,
                                         lg, ug, precision);
 
          
            // get the result from the device and do some sanity checks
           // save the result if user specified matrix size
-          bCompareResult = processResultDataLargeMatrix(input, result, mat_size, result_file);
+          bCompareResult = viennacl::linalg::processResultDataLargeMatrix(input, result, mat_size, result_file);
                                                         
           eigenvalues = result.std_eigenvalues;                                  
         } //Large end
@@ -169,7 +169,7 @@
     {
         bool bCompareResult = false;
         {
-	        unsigned int mat_size = 250;
+	        unsigned int mat_size = 550;
 	        
 	        std::vector<float> diagonal(mat_size);
 	        std::vector<float> superdiagonal(mat_size);
@@ -227,7 +227,7 @@
 	        // not mandatory in normal operation, it is good practice.  It is also
 	        // needed to ensure correct operation when the application is being
 	        // profiled. Calling cudaDeviceReset causes all profile data to be
-        // flushed before the application exits
+          // flushed before the application exits
         }
         std::cout << "cudaDeviceReset" << std::endl;
         cudaDeviceReset();
@@ -235,5 +235,5 @@
         return bCompareResult;
         
     }
-//  }
+  //}
 //}
