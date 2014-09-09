@@ -104,9 +104,9 @@
       // the first element of s is used as padding on the device (thus the
       // whole vector is copied to the device but the kernels are launched
       // with (s+1) as start address
-      superdiagonal[0] = 0.0f;
-     
+      superdiagonal[0] = 0.0f; 
     }
+    
     template <typename NumericT>
     bool bisect(const std::vector<NumericT> & diagonal, const std::vector<NumericT> & superdiagonal, std::vector<NumericT> & eigenvalues, const unsigned int mat_size)
     {
@@ -155,7 +155,7 @@
           // save the result if user specified matrix size
           bCompareResult = processResultDataLargeMatrix(input, result, mat_size, result_file);
                                                         
-          std::copy(result.std_eigenvalues.begin(), result.std_eigenvalues.end(), eigenvalues.begin());                                         
+          eigenvalues = result.std_eigenvalues;                                  
           // cleanup
           std::cout << "CleanupResultData" << std::endl;
           result.cleanup();
@@ -171,7 +171,7 @@
     runTest(int argc, char **argv)
     {
         bool bCompareResult = false;
-        unsigned int mat_size = 600;
+        unsigned int mat_size = 950;
         
         std::vector<float> diagonal(mat_size);
         std::vector<float> superdiagonal(mat_size);
