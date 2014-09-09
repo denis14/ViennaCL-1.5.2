@@ -195,7 +195,7 @@
         
         // Start the tql2 algorithm
         std::cout << "Start the tql2 algorithm..." << std::endl; 
-        viennacl::linalg::tql2(Q, diagonal_tql, superdiagonal_tql);  
+       /* viennacl::linalg::tql2(Q, diagonal_tql, superdiagonal_tql);  
         
         // Ensure that eigenvalues from tql2 algorithm are sorted in ascending order
         std::cout << "Start sorting..." << std::endl;
@@ -220,7 +220,7 @@
         {
           std::cout << "Eigenvalue " << i << ":  \tbisect: " << std::setprecision(8) << eigenvalues_bisect[i] << "\ttql2: " << diagonal_tql[i] << std::endl;
         }
-        
+        */
         
         // cudaDeviceReset causes the driver to clean up all state. While
         // not mandatory in normal operation, it is good practice.  It is also
