@@ -28,508 +28,6 @@ namespace viennacl
 {
   namespace linalg
   {
-
-    ////////////////////////////////////////////////////////////////////////////////
-    //! Write data to global memory
-    ////////////////////////////////////////////////////////////////////////////////
-    __device__
-    void writeToGmem(const unsigned int tid, const unsigned int tid_2,
-                     const unsigned int num_threads_active,
-                     const unsigned int num_blocks_mult,
-                     float *g_left_one, float *g_right_one,
-                     unsigned int *g_pos_one,
-                     float *g_left_mult, float *g_right_mult,
-                     unsigned int *g_left_count_mult,
-                     unsigned int *g_right_count_mult,
-                     float *s_left, float *s_right,
-                     unsigned short *s_left_count, unsigned short *s_right_count,
-                     unsigned int *g_blocks_mult,
-                     unsigned int *g_blocks_mult_sum,
-                     unsigned short *s_compaction_list,
-                     unsigned short *s_cl_helper,
-                     unsigned int offset_mult_lambda
-                    );
-
-    ////////////////////////////////////////////////////////////////////////////////
-    //! Perform final stream compaction before writing out data
-    ////////////////////////////////////////////////////////////////////////////////
-    __device__
-    void
-    compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
-                        const unsigned int num_threads_active,
-                        unsigned int &offset_mult_lambda,
-                        float *s_left, float *s_right,
-                        unsigned short *s_left_count, unsigned short *s_right_count,
-                        unsigned short *s_cl_one, unsigned short *s_cl_mult,
-                        unsigned short *s_cl_blocking, unsigned short *s_cl_helper,
-                        unsigned int is_one_lambda, unsigned int is_one_lambda_2,
-                        float &left, float &right, float &left_2, float &right_2,
-                        unsigned int &left_count, unsigned int &right_count,
-                        unsigned int &left_count_2, unsigned int &right_count_2,
-                        unsigned int c_block_iend, unsigned int c_sum_block,
-                        unsigned int c_block_iend_2, unsigned int c_sum_block_2
-                       );
-
-    ////////////////////////////////////////////////////////////////////////////////
-    //! Perform scan to compact list of block start addresses
-    ////////////////////////////////////////////////////////////////////////////////
-    __device__
-    void
-    scanCompactBlocksStartAddress(const unsigned int tid, const unsigned int tid_2,
-                                  const unsigned int num_threads_compaction,
-                                  unsigned short *s_cl_blocking,
-                                  unsigned short *s_cl_helper
-                                 );
-
-    ////////////////////////////////////////////////////////////////////////////////
-    //! Perform scan to obtain number of eigenvalues before a specific block
-    ////////////////////////////////////////////////////////////////////////////////
-    __device__
-    void
-    scanSumBlocks(const unsigned int tid, const unsigned int tid_2,
-                  const unsigned int num_threads_active,
-                  const unsigned int num_threads_compaction,
-                  unsigned short *s_cl_blocking,
-                  unsigned short *s_cl_helper
-                 );
-
-    ////////////////////////////////////////////////////////////////////////////////
-    //! Perform initial scan for compaction of intervals containing one and
-    //! multiple eigenvalues; also do initial scan to build blocks
-    ////////////////////////////////////////////////////////////////////////////////
-    __device__
-    void
-    scanInitial(const unsigned int tid, const unsigned int tid_2,
-                const unsigned int num_threads_active,
-                const unsigned int num_threads_compaction,
-                unsigned short *s_cl_one, unsigned short *s_cl_mult,
-                unsigned short *s_cl_blocking, unsigned short *s_cl_helper
-               );
-
-    ////////////////////////////////////////////////////////////////////////////////
-    //! Store all non-empty intervals resulting from the subdivision of the interval
-    //! currently processed by the thread
-    //! @param  addr  address where to store
-    ////////////////////////////////////////////////////////////////////////////////
-    __device__
-    void
-    storeNonEmptyIntervalsLarge(unsigned int addr,
-                                const unsigned int num_threads_active,
-                                float  *s_left, float *s_right,
-                                unsigned short  *s_left_count,
-                                unsigned short *s_right_count,
-                                float left, float mid, float right,
-                                const unsigned short left_count,
-                                const unsigned short mid_count,
-                                const unsigned short right_count,
-                                float epsilon,
-                                unsigned int &compact_second_chunk,
-                                unsigned short *s_compaction_list,
-                                unsigned int &is_active_second
-                               );
-
-    ////////////////////////////////////////////////////////////////////////////////
-    //! Bisection to find eigenvalues of a real, symmetric, and tridiagonal matrix
-    //! @param  g_d  diagonal elements in global memory
-    //! @param  g_s  superdiagonal elements in global elements (stored so that the
-    //!              element *(g_s - 1) can be accessed an equals 0
-    //! @param  n   size of matrix
-    //! @param  lg  lower bound of input interval (e.g. Gerschgorin interval)
-    //! @param  ug  upper bound of input interval (e.g. Gerschgorin interval)
-    //! @param  lg_eig_count  number of eigenvalues that are smaller than \a lg
-    //! @param  lu_eig_count  number of eigenvalues that are smaller than \a lu
-    //! @param  epsilon  desired accuracy of eigenvalues to compute
-    ////////////////////////////////////////////////////////////////////////////////
-    __global__
-    void
-    bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
-                      const float lg, const float ug,
-                      const unsigned int lg_eig_count,
-                      const unsigned int ug_eig_count,
-                      float epsilon,
-                      unsigned int *g_num_one,
-                      unsigned int *g_num_blocks_mult,
-                      float *g_left_one, float *g_right_one,
-                      unsigned int *g_pos_one,
-                      float *g_left_mult, float *g_right_mult,
-                      unsigned int *g_left_count_mult,
-                      unsigned int *g_right_count_mult,
-                      unsigned int *g_blocks_mult,
-                      unsigned int *g_blocks_mult_sum
-                     )
-    {
-        const unsigned int tid = threadIdx.x;
-
-        // intervals (store left and right because the subdivision tree is in general
-        // not dense
-        __shared__  float  s_left[2 * MAX_THREADS_BLOCK + 1];
-        __shared__  float  s_right[2 * MAX_THREADS_BLOCK + 1];
-
-        // number of eigenvalues that are smaller than s_left / s_right
-        // (correspondence is realized via indices)
-        __shared__  unsigned short  s_left_count[2 * MAX_THREADS_BLOCK + 1];
-        __shared__  unsigned short  s_right_count[2 * MAX_THREADS_BLOCK + 1];
-
-        // helper for stream compaction
-        __shared__  unsigned short  s_compaction_list[2 * MAX_THREADS_BLOCK + 1];
-
-        // state variables for whole block
-        // if 0 then compaction of second chunk of child intervals is not necessary
-        // (because all intervals had exactly one non-dead child)
-        __shared__  unsigned int compact_second_chunk;
-        // if 1 then all threads are converged
-        __shared__  unsigned int all_threads_converged;
-
-        // number of currently active threads
-        __shared__  unsigned int num_threads_active;
-
-        // number of threads to use for stream compaction
-        __shared__  unsigned int num_threads_compaction;
-
-        // helper for exclusive scan
-        unsigned short *s_compaction_list_exc = s_compaction_list + 1;
-
-
-        // variables for currently processed interval
-        // left and right limit of active interval
-        float left = 0.0f;
-        float right = 0.0f;
-        unsigned int left_count = 0;
-        unsigned int right_count = 0;
-        // midpoint of active interval
-        float  mid = 0.0f;
-        // number of eigenvalues smaller then mid
-        unsigned int mid_count = 0;
-        // helper for stream compaction (tracking of threads generating second child)
-        unsigned int is_active_second = 0;
-
-        // initialize lists
-        s_compaction_list[tid] = 0;
-        s_left[tid] = 0;
-        s_right[tid] = 0;
-        s_left_count[tid] = 0;
-        s_right_count[tid] = 0;
-
-        __syncthreads();
-
-        // set up initial configuration
-        if (0 == tid)
-        {
-
-            s_left[0] = lg;
-            s_right[0] = ug;
-            s_left_count[0] = lg_eig_count;
-            s_right_count[0] = ug_eig_count;
-
-            compact_second_chunk = 0;
-            num_threads_active = 1;
-
-            num_threads_compaction = 1;
-
-            all_threads_converged = 1;
-        }
-
-        __syncthreads();
-
-        // for all active threads read intervals from the last level
-        // the number of (worst case) active threads per level l is 2^l
-        //while (true)                                                       
-        for( unsigned int i = 0; i < 15; ++i )                                 // selbst hinzugefuegt
-        {
-            s_compaction_list[tid] = 0;
-            s_compaction_list[tid + MAX_THREADS_BLOCK] = 0;
-            s_compaction_list[2 * MAX_THREADS_BLOCK] = 0;
-            subdivideActiveInterval(tid, s_left, s_right, s_left_count, s_right_count,
-                                    num_threads_active,
-                                    left, right, left_count, right_count,
-                                    mid, all_threads_converged);
-
-            __syncthreads();
-
-            // check if done
-            if (1 == all_threads_converged)
-            {
-                break;
-            }
-
-            // compute number of eigenvalues smaller than mid
-            // use all threads for reading the necessary matrix data from global
-            // memory
-            // use s_left and s_right as scratch space for diagonal and
-            // superdiagonal of matrix
-            mid_count = computeNumSmallerEigenvalsLarge(g_d, g_s, n,
-                                                        mid, threadIdx.x,
-                                                        num_threads_active,
-                                                        s_left, s_right,
-                                                        (left == right));
-
-            __syncthreads();
-
-            // store intervals
-            // for all threads store the first child interval in a continuous chunk of
-            // memory, and the second child interval -- if it exists -- in a second
-            // chunk; it is likely that all threads reach convergence up to
-            // \a epsilon at the same level; furthermore, for higher level most / all
-            // threads will have only one child, storing the first child compactly will
-            // (first) avoid to perform a compaction step on the first chunk, (second)
-            // make it for higher levels (when all threads / intervals have
-            // exactly one child)  unnecessary to perform a compaction of the second
-            // chunk
-            if (tid < num_threads_active)
-            {
-
-                if (left != right)
-                {
-
-                    // store intervals
-                    storeNonEmptyIntervalsLarge(tid, num_threads_active,
-                                                s_left, s_right,
-                                                s_left_count, s_right_count,
-                                                left, mid, right,
-                                                left_count, mid_count, right_count,
-                                                epsilon, compact_second_chunk,
-                                                s_compaction_list_exc,
-                                                is_active_second);
-                }
-                else
-                {
-
-                    // re-write converged interval (has to be stored again because s_left
-                    // and s_right are used as scratch space for
-                    // computeNumSmallerEigenvalsLarge()
-                    s_left[tid] = left;
-                    s_right[tid] = left;
-                    s_left_count[tid] = left_count;
-                    s_right_count[tid] = right_count;
-
-                    is_active_second = 0;
-                }
-            }
-
-            // necessary so that compact_second_chunk is up-to-date
-            __syncthreads();
-
-            // perform compaction of chunk where second children are stored
-            // scan of (num_threads_active / 2) elements, thus at most
-            // (num_threads_active / 4) threads are needed
-            if (compact_second_chunk > 0)
-            {
-
-                // create indices for compaction
-                createIndicesCompaction(s_compaction_list_exc, num_threads_compaction);
-            }
-            __syncthreads();
-            
-            if (compact_second_chunk > 0)                                              // selbst veraendert
-            {
-                compactIntervals(s_left, s_right, s_left_count, s_right_count,
-                                 mid, right, mid_count, right_count,
-                                 s_compaction_list, num_threads_active,
-                                 is_active_second);
-            }
-
-            __syncthreads();
-
-            // update state variables
-            if (0 == tid)
-            {
-
-                // update number of active threads with result of reduction
-                num_threads_active += s_compaction_list[num_threads_active];
-                num_threads_compaction = ceilPow2(num_threads_active);
-
-                compact_second_chunk = 0;
-                all_threads_converged = 1;
-            }
-
-            __syncthreads();
-
-            if (num_threads_compaction > blockDim.x)
-            {
-                break;
-            }
-
-        }
-
-        __syncthreads();
-
-        // generate two lists of intervals; one with intervals that contain one
-        // eigenvalue (or are converged), and one with intervals that need further
-        // subdivision
-
-        // perform two scans in parallel
-
-        unsigned int left_count_2;
-        unsigned int right_count_2;
-
-        unsigned int tid_2 = tid + blockDim.x;
-
-        // cache in per thread registers so that s_left_count and s_right_count
-        // can be used for scans
-        left_count = s_left_count[tid];
-        right_count = s_right_count[tid];
-
-        // some threads have to cache data for two intervals
-        if (tid_2 < num_threads_active)
-        {
-            left_count_2 = s_left_count[tid_2];
-            right_count_2 = s_right_count[tid_2];
-        }
-
-        // compaction list for intervals containing one and multiple eigenvalues
-        // do not affect first element for exclusive scan
-        unsigned short  *s_cl_one = s_left_count + 1;
-        unsigned short  *s_cl_mult = s_right_count + 1;
-
-        // compaction list for generating blocks of intervals containing multiple
-        // eigenvalues
-        unsigned short  *s_cl_blocking = s_compaction_list_exc;
-        // helper compaction list for generating blocks of intervals
-        __shared__ unsigned short  s_cl_helper[2 * MAX_THREADS_BLOCK + 1];
-
-        if (0 == tid)
-        {
-            // set to 0 for exclusive scan
-            s_left_count[0] = 0;
-            s_right_count[0] = 0;
-           
-        }
-
-        __syncthreads();
-
-        // flag if interval contains one or multiple eigenvalues
-        unsigned int is_one_lambda = 0;
-        unsigned int is_one_lambda_2 = 0;
-
-        // number of eigenvalues in the interval
-        unsigned int multiplicity = right_count - left_count;
-        is_one_lambda = (1 == multiplicity);
-
-        s_cl_one[tid] = is_one_lambda;
-        s_cl_mult[tid] = (! is_one_lambda);
-
-        // (note: s_cl_blocking is non-zero only where s_cl_mult[] is non-zero)
-        s_cl_blocking[tid] = (1 == is_one_lambda) ? 0 : multiplicity;
-        s_cl_helper[tid] = 0;
-
-        if (tid_2 < num_threads_active)
-        {
-
-            unsigned int multiplicity = right_count_2 - left_count_2;
-            is_one_lambda_2 = (1 == multiplicity);
-
-            s_cl_one[tid_2] = is_one_lambda_2;
-            s_cl_mult[tid_2] = (! is_one_lambda_2);
-
-            // (note: s_cl_blocking is non-zero only where s_cl_mult[] is non-zero)
-            s_cl_blocking[tid_2] = (1 == is_one_lambda_2) ? 0 : multiplicity;
-            s_cl_helper[tid_2] = 0;
-        }
-        else if (tid_2 < (2 * MAX_THREADS_BLOCK + 1))
-        {
-
-            // clear
-            s_cl_blocking[tid_2] = 0;
-            s_cl_helper[tid_2] = 0;
-        }
-
-
-        scanInitial(tid, tid_2, num_threads_active, num_threads_compaction,
-                    s_cl_one, s_cl_mult, s_cl_blocking, s_cl_helper);
-        
-        __syncthreads();                                                     // selbst hinzugefuegt
-
-        scanSumBlocks(tid, tid_2, num_threads_active,
-                      num_threads_compaction, s_cl_blocking, s_cl_helper);
-
-        // end down sweep of scan
-        __syncthreads();
-
-        unsigned int  c_block_iend = 0;
-        unsigned int  c_block_iend_2 = 0;
-        unsigned int  c_sum_block = 0;
-        unsigned int  c_sum_block_2 = 0;
-
-        // for each thread / interval that corresponds to root node of interval block
-        // store start address of block and total number of eigenvalues in all blocks
-        // before this block (particular thread is irrelevant, constraint is to
-        // have a subset of threads so that one and only one of them is in each
-        // interval)
-        if (1 == s_cl_helper[tid])
-        {
-
-            c_block_iend = s_cl_mult[tid] + 1;
-            c_sum_block = s_cl_blocking[tid];
-        }
-
-        if (1 == s_cl_helper[tid_2])
-        {
-
-            c_block_iend_2 = s_cl_mult[tid_2] + 1;
-            c_sum_block_2 = s_cl_blocking[tid_2];
-        }
-
-        scanCompactBlocksStartAddress(tid, tid_2, num_threads_compaction,
-                                      s_cl_blocking, s_cl_helper);
-
-
-        // finished second scan for s_cl_blocking
-        __syncthreads();
-
-        // determine the global results
-        __shared__  unsigned int num_blocks_mult;
-        __shared__  unsigned int num_mult;
-        __shared__  unsigned int offset_mult_lambda;
-
-        if (0 == tid)
-        {
-
-            num_blocks_mult = s_cl_blocking[num_threads_active - 1];
-            offset_mult_lambda = s_cl_one[num_threads_active - 1];
-            num_mult = s_cl_mult[num_threads_active - 1];
-
-            *g_num_one = offset_mult_lambda;
-            *g_num_blocks_mult = num_blocks_mult;
-        }
-
-        __syncthreads();
-
-        float left_2, right_2;
-        --s_cl_one;
-        --s_cl_mult;
-        --s_cl_blocking;
-        
-        __syncthreads();                                                        // selbst hinzugefuegt
-        compactStreamsFinal(tid, tid_2, num_threads_active, offset_mult_lambda,
-                            s_left, s_right, s_left_count, s_right_count,
-                            s_cl_one, s_cl_mult, s_cl_blocking, s_cl_helper,
-                            is_one_lambda, is_one_lambda_2,
-                            left, right, left_2, right_2,
-                            left_count, right_count, left_count_2, right_count_2,
-                            c_block_iend, c_sum_block, c_block_iend_2, c_sum_block_2
-                           );
-
-        __syncthreads();
-
-        // final adjustment before writing out data to global memory
-        if (0 == tid)
-        {
-            s_cl_blocking[num_blocks_mult] = num_mult;
-            s_cl_helper[0] = 0;
-        }
-
-        __syncthreads();
-
-        // write to global memory
-        writeToGmem(tid, tid_2, num_threads_active, num_blocks_mult,
-                    g_left_one, g_right_one, g_pos_one,
-                    g_left_mult, g_right_mult, g_left_count_mult, g_right_count_mult,
-                    s_left, s_right, s_left_count, s_right_count,
-                    g_blocks_mult, g_blocks_mult_sum,
-                    s_compaction_list, s_cl_helper, offset_mult_lambda);
-                    
-    }
-
     ////////////////////////////////////////////////////////////////////////////////
     //! Write data to global memory
     ////////////////////////////////////////////////////////////////////////////////
@@ -1005,6 +503,409 @@ namespace viennacl
             }
         }
     }
+    
+    ////////////////////////////////////////////////////////////////////////////////
+    //! Bisection to find eigenvalues of a real, symmetric, and tridiagonal matrix
+    //! @param  g_d  diagonal elements in global memory
+    //! @param  g_s  superdiagonal elements in global elements (stored so that the
+    //!              element *(g_s - 1) can be accessed and equals 0
+    //! @param  n   size of matrix
+    //! @param  lg  lower bound of input interval (e.g. Gerschgorin interval)
+    //! @param  ug  upper bound of input interval (e.g. Gerschgorin interval)
+    //! @param  lg_eig_count  number of eigenvalues that are smaller than \a lg
+    //! @param  lu_eig_count  number of eigenvalues that are smaller than \a lu
+    //! @param  epsilon  desired accuracy of eigenvalues to compute
+    ////////////////////////////////////////////////////////////////////////////////
+    __global__
+    void
+    bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
+                      const float lg, const float ug,
+                      const unsigned int lg_eig_count,
+                      const unsigned int ug_eig_count,
+                      float epsilon,
+                      unsigned int *g_num_one,
+                      unsigned int *g_num_blocks_mult,
+                      float *g_left_one, float *g_right_one,
+                      unsigned int *g_pos_one,
+                      float *g_left_mult, float *g_right_mult,
+                      unsigned int *g_left_count_mult,
+                      unsigned int *g_right_count_mult,
+                      unsigned int *g_blocks_mult,
+                      unsigned int *g_blocks_mult_sum
+                     )
+    {
+        const unsigned int tid = threadIdx.x;
+
+        // intervals (store left and right because the subdivision tree is in general
+        // not dense
+        __shared__  float  s_left[2 * MAX_THREADS_BLOCK + 1];
+        __shared__  float  s_right[2 * MAX_THREADS_BLOCK + 1];
+
+        // number of eigenvalues that are smaller than s_left / s_right
+        // (correspondence is realized via indices)
+        __shared__  unsigned short  s_left_count[2 * MAX_THREADS_BLOCK + 1];
+        __shared__  unsigned short  s_right_count[2 * MAX_THREADS_BLOCK + 1];
+
+        // helper for stream compaction
+        __shared__  unsigned short  s_compaction_list[2 * MAX_THREADS_BLOCK + 1];
+
+        // state variables for whole block
+        // if 0 then compaction of second chunk of child intervals is not necessary
+        // (because all intervals had exactly one non-dead child)
+        __shared__  unsigned int compact_second_chunk;
+        // if 1 then all threads are converged
+        __shared__  unsigned int all_threads_converged;
+
+        // number of currently active threads
+        __shared__  unsigned int num_threads_active;
+
+        // number of threads to use for stream compaction
+        __shared__  unsigned int num_threads_compaction;
+
+        // helper for exclusive scan
+        unsigned short *s_compaction_list_exc = s_compaction_list + 1;
+
+
+        // variables for currently processed interval
+        // left and right limit of active interval
+        float left = 0.0f;
+        float right = 0.0f;
+        unsigned int left_count = 0;
+        unsigned int right_count = 0;
+        // midpoint of active interval
+        float  mid = 0.0f;
+        // number of eigenvalues smaller then mid
+        unsigned int mid_count = 0;
+        // helper for stream compaction (tracking of threads generating second child)
+        unsigned int is_active_second = 0;
+
+        // initialize lists
+        s_compaction_list[tid] = 0;
+        s_left[tid] = 0;
+        s_right[tid] = 0;
+        s_left_count[tid] = 0;
+        s_right_count[tid] = 0;
+
+        __syncthreads();
+
+        // set up initial configuration
+        if (0 == tid)
+        {
+
+            s_left[0] = lg;
+            s_right[0] = ug;
+            s_left_count[0] = lg_eig_count;
+            s_right_count[0] = ug_eig_count;
+
+            compact_second_chunk = 0;
+            num_threads_active = 1;
+
+            num_threads_compaction = 1;
+
+            all_threads_converged = 1;
+        }
+
+        __syncthreads();
+
+        // for all active threads read intervals from the last level
+        // the number of (worst case) active threads per level l is 2^l
+        //while (true)                                                       
+        for( unsigned int i = 0; i < 15; ++i )                                 // selbst hinzugefuegt
+        {
+            s_compaction_list[tid] = 0;
+            s_compaction_list[tid + MAX_THREADS_BLOCK] = 0;
+            s_compaction_list[2 * MAX_THREADS_BLOCK] = 0;
+            subdivideActiveInterval(tid, s_left, s_right, s_left_count, s_right_count,
+                                    num_threads_active,
+                                    left, right, left_count, right_count,
+                                    mid, all_threads_converged);
+
+            __syncthreads();
+
+            // check if done
+            if (1 == all_threads_converged)
+            {
+                break;
+            }
+
+            // compute number of eigenvalues smaller than mid
+            // use all threads for reading the necessary matrix data from global
+            // memory
+            // use s_left and s_right as scratch space for diagonal and
+            // superdiagonal of matrix
+            mid_count = computeNumSmallerEigenvalsLarge(g_d, g_s, n,
+                                                        mid, threadIdx.x,
+                                                        num_threads_active,
+                                                        s_left, s_right,
+                                                        (left == right));
+
+            __syncthreads();
+
+            // store intervals
+            // for all threads store the first child interval in a continuous chunk of
+            // memory, and the second child interval -- if it exists -- in a second
+            // chunk; it is likely that all threads reach convergence up to
+            // \a epsilon at the same level; furthermore, for higher level most / all
+            // threads will have only one child, storing the first child compactly will
+            // (first) avoid to perform a compaction step on the first chunk, (second)
+            // make it for higher levels (when all threads / intervals have
+            // exactly one child)  unnecessary to perform a compaction of the second
+            // chunk
+            if (tid < num_threads_active)
+            {
+
+                if (left != right)
+                {
+
+                    // store intervals
+                    storeNonEmptyIntervalsLarge(tid, num_threads_active,
+                                                s_left, s_right,
+                                                s_left_count, s_right_count,
+                                                left, mid, right,
+                                                left_count, mid_count, right_count,
+                                                epsilon, compact_second_chunk,
+                                                s_compaction_list_exc,
+                                                is_active_second);
+                }
+                else
+                {
+
+                    // re-write converged interval (has to be stored again because s_left
+                    // and s_right are used as scratch space for
+                    // computeNumSmallerEigenvalsLarge()
+                    s_left[tid] = left;
+                    s_right[tid] = left;
+                    s_left_count[tid] = left_count;
+                    s_right_count[tid] = right_count;
+
+                    is_active_second = 0;
+                }
+            }
+
+            // necessary so that compact_second_chunk is up-to-date
+            __syncthreads();
+
+            // perform compaction of chunk where second children are stored
+            // scan of (num_threads_active / 2) elements, thus at most
+            // (num_threads_active / 4) threads are needed
+            if (compact_second_chunk > 0)
+            {
+
+                // create indices for compaction
+                createIndicesCompaction(s_compaction_list_exc, num_threads_compaction);
+            }
+            __syncthreads();
+            
+            if (compact_second_chunk > 0)                                              // selbst veraendert
+            {
+                compactIntervals(s_left, s_right, s_left_count, s_right_count,
+                                 mid, right, mid_count, right_count,
+                                 s_compaction_list, num_threads_active,
+                                 is_active_second);
+            }
+
+            __syncthreads();
+
+            // update state variables
+            if (0 == tid)
+            {
+
+                // update number of active threads with result of reduction
+                num_threads_active += s_compaction_list[num_threads_active];
+                num_threads_compaction = ceilPow2(num_threads_active);
+
+                compact_second_chunk = 0;
+                all_threads_converged = 1;
+            }
+
+            __syncthreads();
+
+            if (num_threads_compaction > blockDim.x)
+            {
+                break;
+            }
+
+        }
+
+        __syncthreads();
+
+        // generate two lists of intervals; one with intervals that contain one
+        // eigenvalue (or are converged), and one with intervals that need further
+        // subdivision
+
+        // perform two scans in parallel
+
+        unsigned int left_count_2;
+        unsigned int right_count_2;
+
+        unsigned int tid_2 = tid + blockDim.x;
+
+        // cache in per thread registers so that s_left_count and s_right_count
+        // can be used for scans
+        left_count = s_left_count[tid];
+        right_count = s_right_count[tid];
+
+        // some threads have to cache data for two intervals
+        if (tid_2 < num_threads_active)
+        {
+            left_count_2 = s_left_count[tid_2];
+            right_count_2 = s_right_count[tid_2];
+        }
+
+        // compaction list for intervals containing one and multiple eigenvalues
+        // do not affect first element for exclusive scan
+        unsigned short  *s_cl_one = s_left_count + 1;
+        unsigned short  *s_cl_mult = s_right_count + 1;
+
+        // compaction list for generating blocks of intervals containing multiple
+        // eigenvalues
+        unsigned short  *s_cl_blocking = s_compaction_list_exc;
+        // helper compaction list for generating blocks of intervals
+        __shared__ unsigned short  s_cl_helper[2 * MAX_THREADS_BLOCK + 1];
+
+        if (0 == tid)
+        {
+            // set to 0 for exclusive scan
+            s_left_count[0] = 0;
+            s_right_count[0] = 0;
+           
+        }
+
+        __syncthreads();
+
+        // flag if interval contains one or multiple eigenvalues
+        unsigned int is_one_lambda = 0;
+        unsigned int is_one_lambda_2 = 0;
+
+        // number of eigenvalues in the interval
+        unsigned int multiplicity = right_count - left_count;
+        is_one_lambda = (1 == multiplicity);
+
+        s_cl_one[tid] = is_one_lambda;
+        s_cl_mult[tid] = (! is_one_lambda);
+
+        // (note: s_cl_blocking is non-zero only where s_cl_mult[] is non-zero)
+        s_cl_blocking[tid] = (1 == is_one_lambda) ? 0 : multiplicity;
+        s_cl_helper[tid] = 0;
+
+        if (tid_2 < num_threads_active)
+        {
+
+            unsigned int multiplicity = right_count_2 - left_count_2;
+            is_one_lambda_2 = (1 == multiplicity);
+
+            s_cl_one[tid_2] = is_one_lambda_2;
+            s_cl_mult[tid_2] = (! is_one_lambda_2);
+
+            // (note: s_cl_blocking is non-zero only where s_cl_mult[] is non-zero)
+            s_cl_blocking[tid_2] = (1 == is_one_lambda_2) ? 0 : multiplicity;
+            s_cl_helper[tid_2] = 0;
+        }
+        else if (tid_2 < (2 * MAX_THREADS_BLOCK + 1))
+        {
+
+            // clear
+            s_cl_blocking[tid_2] = 0;
+            s_cl_helper[tid_2] = 0;
+        }
+
+
+        scanInitial(tid, tid_2, num_threads_active, num_threads_compaction,
+                    s_cl_one, s_cl_mult, s_cl_blocking, s_cl_helper);
+        
+        __syncthreads();                                                     // selbst hinzugefuegt
+
+        scanSumBlocks(tid, tid_2, num_threads_active,
+                      num_threads_compaction, s_cl_blocking, s_cl_helper);
+
+        // end down sweep of scan
+        __syncthreads();
+
+        unsigned int  c_block_iend = 0;
+        unsigned int  c_block_iend_2 = 0;
+        unsigned int  c_sum_block = 0;
+        unsigned int  c_sum_block_2 = 0;
+
+        // for each thread / interval that corresponds to root node of interval block
+        // store start address of block and total number of eigenvalues in all blocks
+        // before this block (particular thread is irrelevant, constraint is to
+        // have a subset of threads so that one and only one of them is in each
+        // interval)
+        if (1 == s_cl_helper[tid])
+        {
+
+            c_block_iend = s_cl_mult[tid] + 1;
+            c_sum_block = s_cl_blocking[tid];
+        }
+
+        if (1 == s_cl_helper[tid_2])
+        {
+
+            c_block_iend_2 = s_cl_mult[tid_2] + 1;
+            c_sum_block_2 = s_cl_blocking[tid_2];
+        }
+
+        scanCompactBlocksStartAddress(tid, tid_2, num_threads_compaction,
+                                      s_cl_blocking, s_cl_helper);
+
+
+        // finished second scan for s_cl_blocking
+        __syncthreads();
+
+        // determine the global results
+        __shared__  unsigned int num_blocks_mult;
+        __shared__  unsigned int num_mult;
+        __shared__  unsigned int offset_mult_lambda;
+
+        if (0 == tid)
+        {
+
+            num_blocks_mult = s_cl_blocking[num_threads_active - 1];
+            offset_mult_lambda = s_cl_one[num_threads_active - 1];
+            num_mult = s_cl_mult[num_threads_active - 1];
+
+            *g_num_one = offset_mult_lambda;
+            *g_num_blocks_mult = num_blocks_mult;
+        }
+
+        __syncthreads();
+
+        float left_2, right_2;
+        --s_cl_one;
+        --s_cl_mult;
+        --s_cl_blocking;
+        
+        __syncthreads();                                                        // selbst hinzugefuegt
+        compactStreamsFinal(tid, tid_2, num_threads_active, offset_mult_lambda,
+                            s_left, s_right, s_left_count, s_right_count,
+                            s_cl_one, s_cl_mult, s_cl_blocking, s_cl_helper,
+                            is_one_lambda, is_one_lambda_2,
+                            left, right, left_2, right_2,
+                            left_count, right_count, left_count_2, right_count_2,
+                            c_block_iend, c_sum_block, c_block_iend_2, c_sum_block_2
+                           );
+
+        __syncthreads();
+
+        // final adjustment before writing out data to global memory
+        if (0 == tid)
+        {
+            s_cl_blocking[num_blocks_mult] = num_mult;
+            s_cl_helper[0] = 0;
+        }
+
+        __syncthreads();
+
+        // write to global memory
+        writeToGmem(tid, tid_2, num_threads_active, num_blocks_mult,
+                    g_left_one, g_right_one, g_pos_one,
+                    g_left_mult, g_right_mult, g_left_count_mult, g_right_count_mult,
+                    s_left, s_right, s_left_count, s_right_count,
+                    g_blocks_mult, g_blocks_mult_sum,
+                    s_compaction_list, s_cl_helper, offset_mult_lambda);
+                    
+    }
+
   }
 }
 #endif // #ifndef _BISECT_KERNEL_LARGE_H_
