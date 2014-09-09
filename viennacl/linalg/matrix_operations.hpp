@@ -980,7 +980,7 @@ namespace viennacl
           break;
 #ifdef VIENNACL_WITH_OPENCL
         case viennacl::OPENCL_MEMORY:
-//          viennacl::linalg::opencl::exclusive_scan(vec1, vec2);
+          viennacl::linalg::opencl::exclusive_scan(vec1, vec2);
           break;
 #endif
 

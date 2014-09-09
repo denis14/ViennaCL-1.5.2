@@ -1158,60 +1158,61 @@ namespace viennacl
           viennacl::ocl::kernel& kernel2 = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT, float>::program_name(), SVD_SCAN_KERNEL_2);
           viennacl::ocl::kernel& kernel3 = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT, float>::program_name(), SVD_SCAN_KERNEL_3);
           viennacl::ocl::kernel& kernel4 = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT, float>::program_name(), SVD_SCAN_KERNEL_4);
-          kernel1.global_work_size(0, viennacl::tools::align_to_multiple<cl_uint>(cl_uint(viennacl::traits::size(S)), 256 * S.size()));  //S.size()
+          kernel1.global_work_size(0, SECTION_SIZE * S.size());  //S.size()
           kernel1.local_work_size(0, SECTION_SIZE);
 
           viennacl::ocl::enqueue(kernel1(
-                                            vec1,
+                                            viennacl::traits::opencl_handle(vec1),
                                             static_cast<unsigned int>(viennacl::traits::start(vec1)),
                                             static_cast<unsigned int>(viennacl::traits::stride(vec1)),
                                             static_cast<unsigned int>(viennacl::traits::size(vec1)),
 
-                                            vec2,
+                                            viennacl::traits::opencl_handle(vec2),
                                             static_cast<unsigned int>(viennacl::traits::start(vec2)),
                                             static_cast<unsigned int>(viennacl::traits::stride(vec2)),
 
-                                            S,
+                                            viennacl::traits::opencl_handle(S),
                                             static_cast<unsigned int>(viennacl::traits::start(S)),
                                             static_cast<unsigned int>(viennacl::traits::stride(S))));
 
-          kernel2.global_work_size(0, viennacl::tools::align_to_multiple<cl_uint>(cl_uint(viennacl::traits::size(S)), 256)); //std::ceil(S.size()/static_cast<float>(SECTION_SIZE))
+
+          kernel2.global_work_size(0, viennacl::tools::align_to_multiple<cl_uint>(cl_uint(viennacl::traits::size(S)), 256));
           kernel2.local_work_size(0, SECTION_SIZE);
           viennacl::ocl::enqueue(kernel2(
           //scan_kernel_2<<<std::ceil(S.size()/static_cast<float>(SECTION_SIZE)), SECTION_SIZE>>>(
-                                             S_ref,
+                                             viennacl::traits::opencl_handle(S_ref),
                                              static_cast<unsigned int>(viennacl::traits::start(S_ref)),
                                              static_cast<unsigned int>(viennacl::traits::stride(S_ref)),
 
-                                             S,
+                                             viennacl::traits::opencl_handle(S),
                                              static_cast<unsigned int>(viennacl::traits::start(S)),
                                              static_cast<unsigned int>(viennacl::traits::stride(S)),
                                              static_cast<unsigned int>(viennacl::traits::size(S))
                                      ));
 
-          kernel3.global_work_size(0, viennacl::tools::align_to_multiple<cl_uint>(cl_uint(viennacl::traits::size(S)), 256));
+          kernel3.global_work_size(0,  viennacl::tools::align_to_multiple<cl_uint>(cl_uint(viennacl::traits::size(S)), 256));
           kernel3.local_work_size(0, SECTION_SIZE);
           viennacl::ocl::enqueue(kernel3(
           //scan_kernel_3<<<std::ceil(S.size()/static_cast<float>(SECTION_SIZE)), SECTION_SIZE>>>(
-                                             S_ref,
+                                             viennacl::traits::opencl_handle(S_ref),
                                              static_cast<unsigned int>(viennacl::traits::start(S_ref)),
                                              static_cast<unsigned int>(viennacl::traits::stride(S_ref)),
 
-                                             S,
+                                             viennacl::traits::opencl_handle(S),
                                              static_cast<unsigned int>(viennacl::traits::start(S)),
                                              static_cast<unsigned int>(viennacl::traits::stride(S))
                                      ));
 
 
-          kernel4.global_work_size(0, viennacl::tools::align_to_multiple<cl_uint>(cl_uint(viennacl::traits::size(S)), 256*S.size()));
+          kernel4.global_work_size(0, SECTION_SIZE * S.size());
           kernel4.local_work_size(0, SECTION_SIZE);
           viennacl::ocl::enqueue(kernel4(
           //scan_kernel_4<<<S.size(), SECTION_SIZE>>>(
-                                            S,
+                                            viennacl::traits::opencl_handle(S),
                                             static_cast<unsigned int>(viennacl::traits::start(S)),
                                             static_cast<unsigned int>(viennacl::traits::stride(S)),
 
-                                            vec2,
+                                            viennacl::traits::opencl_handle(vec2),
                                             static_cast<unsigned int>(viennacl::traits::start(vec2)),
                                             static_cast<unsigned int>(viennacl::traits::stride(vec2)),
                                             static_cast<unsigned int>(viennacl::traits::size(vec2))
@@ -1221,7 +1222,7 @@ namespace viennacl
         }
 
 
-#define SECTION_SIZE 256
+//#define SECTION_SIZE 256
         template<typename NumericT>
         void exclusive_scan(vector_base<NumericT>& vec1,
                             vector_base<NumericT>& vec2)
@@ -1230,68 +1231,84 @@ namespace viennacl
 
             viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(vec1).context());
             viennacl::linalg::opencl::kernels::svd<NumericT, float>::init(ctx);
-            viennacl::ocl::kernel& kernel1 = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT, float>::program_name(), SVD_INCLUSIVE_SCAN_KERNEL_1);
+            viennacl::ocl::kernel& kernel1 = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT, float>::program_name(), SVD_EXCLUSIVE_SCAN_KERNEL_1);
             viennacl::ocl::kernel& kernel2 = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT, float>::program_name(), SVD_SCAN_KERNEL_2);
             viennacl::ocl::kernel& kernel3 = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT, float>::program_name(), SVD_SCAN_KERNEL_3);
             viennacl::ocl::kernel& kernel4 = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT, float>::program_name(), SVD_SCAN_KERNEL_4);
-            kernel1.global_work_size(0, viennacl::tools::align_to_multiple<cl_uint>(cl_uint(viennacl::traits::size(S)), 256));
+            kernel1.global_work_size(0, SECTION_SIZE * S.size());  //S.size()
             kernel1.local_work_size(0, SECTION_SIZE);
 
             viennacl::ocl::enqueue(kernel1(
-                                              vec1,
+                                              viennacl::traits::opencl_handle(vec1),
                                               static_cast<unsigned int>(viennacl::traits::start(vec1)),
                                               static_cast<unsigned int>(viennacl::traits::stride(vec1)),
                                               static_cast<unsigned int>(viennacl::traits::size(vec1)),
 
-                                              vec2,
+                                              viennacl::traits::opencl_handle(vec2),
                                               static_cast<unsigned int>(viennacl::traits::start(vec2)),
                                               static_cast<unsigned int>(viennacl::traits::stride(vec2)),
 
-                                              S,
+                                              viennacl::traits::opencl_handle(S),
                                               static_cast<unsigned int>(viennacl::traits::start(S)),
                                               static_cast<unsigned int>(viennacl::traits::stride(S))));
+/*
+            for(unsigned int i = 0; i < vec1.size(); ++i)
+            {
+              std::cout << "vec1[" << i << "] = " << vec1[i] << std::endl;
+            }
 
-          kernel2.global_work_size(0, viennacl::tools::align_to_multiple<cl_uint>(cl_uint(viennacl::traits::size(S)), 256));
-          kernel2.local_work_size(0, SECTION_SIZE);
-          viennacl::ocl::enqueue(kernel2(
-          //scan_kernel_2<<<std::ceil(S.size()/static_cast<float>(SECTION_SIZE)), SECTION_SIZE>>>(
-                                             S_ref,
-                                             static_cast<unsigned int>(viennacl::traits::start(S_ref)),
-                                             static_cast<unsigned int>(viennacl::traits::stride(S_ref)),
+            for(unsigned int i = 0; i < vec2.size(); ++i)
+            {
+              std::cout << "vec2[" << i << "] = " << vec2[i] << std::endl;
+            }
 
-                                             S,
-                                             static_cast<unsigned int>(viennacl::traits::start(S)),
-                                             static_cast<unsigned int>(viennacl::traits::stride(S)),
-                                             static_cast<unsigned int>(viennacl::traits::size(S))
-                                     ));
 
-          kernel3.global_work_size(0, viennacl::tools::align_to_multiple<cl_uint>(cl_uint(viennacl::traits::size(S)), 256));
-          kernel3.local_work_size(0, SECTION_SIZE);
+            for(unsigned int i = 0; i < S.size(); ++i)
+            {
+              std::cout << "S[" << i << "] = " << S[i] << std::endl;
+            }
+*/
+            kernel2.global_work_size(0, viennacl::tools::align_to_multiple<cl_uint>(cl_uint(viennacl::traits::size(S)), 256));
+            kernel2.local_work_size(0, SECTION_SIZE);
+            viennacl::ocl::enqueue(kernel2(
+            //scan_kernel_2<<<std::ceil(S.size()/static_cast<float>(SECTION_SIZE)), SECTION_SIZE>>>(
+                                               viennacl::traits::opencl_handle(S_ref),
+                                               static_cast<unsigned int>(viennacl::traits::start(S_ref)),
+                                               static_cast<unsigned int>(viennacl::traits::stride(S_ref)),
 
-          viennacl::ocl::enqueue(kernel3(
-          //scan_kernel_3<<<std::ceil(S.size()/static_cast<float>(SECTION_SIZE)), SECTION_SIZE>>>(
-                                             S_ref,
-                                             static_cast<unsigned int>(viennacl::traits::start(S_ref)),
-                                             static_cast<unsigned int>(viennacl::traits::stride(S_ref)),
+                                               viennacl::traits::opencl_handle(S),
+                                               static_cast<unsigned int>(viennacl::traits::start(S)),
+                                               static_cast<unsigned int>(viennacl::traits::stride(S)),
+                                               static_cast<unsigned int>(viennacl::traits::size(S))
+                                       ));
 
-                                             S,
-                                             static_cast<unsigned int>(viennacl::traits::start(S)),
-                                             static_cast<unsigned int>(viennacl::traits::stride(S))
-                                     ));
+            kernel3.global_work_size(0,  viennacl::tools::align_to_multiple<cl_uint>(cl_uint(viennacl::traits::size(S)), 256));
+            kernel3.local_work_size(0, SECTION_SIZE);
+            viennacl::ocl::enqueue(kernel3(
+            //scan_kernel_3<<<std::ceil(S.size()/static_cast<float>(SECTION_SIZE)), SECTION_SIZE>>>(
+                                               viennacl::traits::opencl_handle(S_ref),
+                                               static_cast<unsigned int>(viennacl::traits::start(S_ref)),
+                                               static_cast<unsigned int>(viennacl::traits::stride(S_ref)),
 
-          kernel4.global_work_size(0, viennacl::tools::align_to_multiple<cl_uint>(cl_uint(viennacl::traits::size(S)), 256));
-          kernel4.local_work_size(0, SECTION_SIZE);
-          viennacl::ocl::enqueue(kernel4(
-          //scan_kernel_4<<<S.size(), SECTION_SIZE>>>(
-                                            S,
-                                            static_cast<unsigned int>(viennacl::traits::start(S)),
-                                            static_cast<unsigned int>(viennacl::traits::stride(S)),
+                                               viennacl::traits::opencl_handle(S),
+                                               static_cast<unsigned int>(viennacl::traits::start(S)),
+                                               static_cast<unsigned int>(viennacl::traits::stride(S))
+                                       ));
 
-                                            vec2,
-                                            static_cast<unsigned int>(viennacl::traits::start(vec2)),
-                                            static_cast<unsigned int>(viennacl::traits::stride(vec2)),
-                                            static_cast<unsigned int>(viennacl::traits::size(vec2))
-                                     ));
+
+            kernel4.global_work_size(0, SECTION_SIZE * S.size());
+            kernel4.local_work_size(0, SECTION_SIZE);
+            viennacl::ocl::enqueue(kernel4(
+            //scan_kernel_4<<<S.size(), SECTION_SIZE>>>(
+                                              viennacl::traits::opencl_handle(S),
+                                              static_cast<unsigned int>(viennacl::traits::start(S)),
+                                              static_cast<unsigned int>(viennacl::traits::stride(S)),
+
+                                              viennacl::traits::opencl_handle(vec2),
+                                              static_cast<unsigned int>(viennacl::traits::start(vec2)),
+                                              static_cast<unsigned int>(viennacl::traits::stride(vec2)),
+                                              static_cast<unsigned int>(viennacl::traits::size(vec2))
+                                       ));
       }
 
 
