@@ -174,11 +174,12 @@ void generate_bisectKernelLarge_OneIntervals(StringType & source, std::string co
     source.append("             g_left[gtid] = left;  \n");
     source.append("         }  \n");
     source.append("     }  \n");
+} 
  // }
 //}
 #endif // #ifndef _BISECT_KERNEL_LARGE_ONEI_H_
 
-} 
+
 
 
  

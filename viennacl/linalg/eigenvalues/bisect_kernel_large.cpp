@@ -1135,11 +1135,72 @@ void generate_storeNonEmptyIntervalsLarge(StringType & source, std::string const
     source.append("             }  \n");
     source.append("         }  \n");
     source.append("     }  \n");
+} 
+
+
+
+
+// main kernel class
+/** @brief Main kernel class for the generation of ...
+  *
+  */
+template <class NumericT>
+struct bisect_kernel_large                   //??
+{
+  static std::string program_name()
+  {
+    return viennacl::ocl::type_to_string<NumericT>::apply();
+  }
+
+  static void init(viennacl::ocl::context & ctx)
+  {
+    viennacl::ocl::DOUBLE_PRECISION_CHECKER<NumericT>::apply(ctx);
+    std::string numeric_string = viennacl::ocl::type_to_string<NumericT>::apply();
+
+
+    static std::map<cl_context, bool> init_done;
+    if (!init_done[ctx.handle().get()])
+    {
+      std::string source;
+      source.reserve(8192);
+
+      viennacl::ocl::append_double_precision_pragma<NumericT>(ctx, source);
+
+      // only generate for floating points (forces error for integers)
+      if (numeric_string == "float" || numeric_string == "double")
+      {
+        generate_matrix_prod_blas3(source, numeric_string);
+        generate_writeToGmem(source, numeric_string);
+        generate_compactStreamsFinal(source, numeric_string);
+        generate_scanCompactBlocksStartAddress(source, numeric_string);
+        generate_scanSumBlocks(source, numeric_string);
+        generate_scanInitial(source, numeric_string);
+        generate_storeNonEmptyIntervalsLarge(source, numeric_string);
+        generate_bisectKernelLarge(source, numeric_string);
+        generate_writeToGmem(source, numeric_string);
+        generate_compactStreamsFinal(source, numeric_string);
+        generate_scanCompactBlocksStartAddress(source, numeric_string);
+        generate_scanSumBlocks(source, numeric_string);
+        generate_scanInitial(source, numeric_string);
+        generate_storeNonEmptyIntervalsLarge(source, numeric_string);
+
+      }
+
+      std::string prog_name = program_name();
+      #ifdef VIENNACL_BUILD_INFO
+      std::cout << "Creating program " << prog_name << std::endl;
+      #endif
+      ctx.add_program(source, prog_name);
+      init_done[ctx.handle().get()] = true;
+    } //if
+  } //init
+};
   //}
 //}
+
 #endif // #ifndef _BISECT_KERNEL_LARGE_H_
 
-} 
+
 
 
  

@@ -682,13 +682,14 @@ void generate_subdivideActiveInterval(StringType & source, std::string const & n
     source.append("         }    \n");
 // end for all active threads
     source.append("     }  \n");
+} 
   //}
 //}
 
 #endif // #ifndef _BISECT_UTIL_H_
 
 
-} 
+
 
 
  
