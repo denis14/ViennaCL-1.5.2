@@ -1135,11 +1135,13 @@ void generate_storeNonEmptyIntervalsLarge(StringType & source, std::string const
     source.append("             }  \n");
     source.append("         }  \n");
     source.append("     }  \n");
+} 
   //}
 //}
+
 #endif // #ifndef _BISECT_KERNEL_LARGE_H_
 
-} 
+
 
 
  
