@@ -20,7 +20,7 @@
 #include "util.hpp"
 
 // additional kernel
-#include "bisect_util.cpp"
+//#include "bisect_util.cpp"                                                           // deleted and added to this file
 
 // declaration, forward
 
@@ -149,16 +149,18 @@
     //! @param  precision  desired precision for eigenvalues
     ////////////////////////////////////////////////////////////////////////////////
 
-    template<typename StringType, class S, class T>
+    template<typename StringType>
     void generate_bisect_kernel_large_storeInterval(StringType & source, std::string const & numeric_string)
     {
     source.append("       \n");
     source.append("     void  \n");
     source.append("     storeInterval(unsigned int addr,  \n");
     source.append("                   float *s_left, float *s_right,  \n");
-    source.append("                   __global "); source.append(numeric_string); source.append("*s_left_count, T *s_right_count,  \n");
+    source.append("                   __global "); source.append(numeric_string); source.append("*s_left_count,  \n");
+    source.append("                   __global "); source.append(numeric_string); source.append("*s_right_count,  \n");
     source.append("                   float left, float right,  \n");
-    source.append("                   S left_count, S right_count,  \n");
+    source.append("                   __global "); source.append(numeric_string); source.append(" left_count, \n");
+    source.append("                   __global "); source.append(numeric_string); source.append(" right_count,  \n");
     source.append("                   float precision)  \n");
     source.append("     {  \n");
     source.append("         uint glb_id = get_global_id(0); \n");
@@ -378,7 +380,7 @@
     //! @is_active_interval  mark is thread has a second non-empty child interval
     ////////////////////////////////////////////////////////////////////////////////
 
-    template<typename StringType, class S, class T>
+    template<typename StringType>
     void generate_bisect_kernel_large_storeNonEmptyIntervals(StringType & source, std::string const & numeric_string)
     {
     source.append("       \n");
@@ -386,11 +388,12 @@
     source.append("     storeNonEmptyIntervals(unsigned int addr,  \n");
     source.append("                            const unsigned int num_threads_active,  \n");
     source.append("                            float  *s_left, float *s_right,  \n");
-    source.append("                            T  *s_left_count, __global "); source.append(numeric_string); source.append("*s_right_count,  \n");
+    source.append("                            __global "); source.append(numeric_string); source.append(" *s_left_count,  \n");
+    source.append("                            __global "); source.append(numeric_string); source.append("*s_right_count,  \n");
     source.append("                            float left, float mid, float right,  \n");
-    source.append("                            const S left_count,  \n");
-    source.append("                            const S mid_count,  \n");
-    source.append("                            const S right_count,  \n");
+    source.append("                            const __global "); source.append(numeric_string); source.append("left_count,  \n");
+    source.append("                            const __global "); source.append(numeric_string); source.append("mid_count,  \n");
+    source.append("                            const __global "); source.append(numeric_string); source.append("right_count,  \n");
     source.append("                            float precision,  \n");
     source.append("                            unsigned int &compact_second_chunk,  \n");
     source.append("                            __global "); source.append(numeric_string); source.append("*s_compaction_list_exc,  \n");
@@ -454,7 +457,7 @@
     //! @param   num_threads_compaction number of threads to employ for compaction
     ////////////////////////////////////////////////////////////////////////////////
 
-    template<typename StringType, class T>
+    template<typename StringType>
     void generate_bisect_kernel_large_createIndicesCompaction(StringType & source, std::string const & numeric_string)
     {
     source.append("       \n");
@@ -535,13 +538,14 @@
     ///////////////////////////////////////////////////////////////////////////////
 
 
-    template<typename StringType, class T>
+    template<typename StringType>
     void generate_bisect_kernel_large_compactIntervals(StringType & source, std::string const & numeric_string)
     {
     source.append("       \n");
     source.append("     void  \n");
     source.append("     compactIntervals(float *s_left, float *s_right,  \n");
-    source.append("                      __global "); source.append(numeric_string); source.append("*s_left_count, T *s_right_count,  \n");
+    source.append("                      __global "); source.append(numeric_string); source.append("*s_left_count, \n");
+      source.append("                    __global "); source.append(numeric_string); source.append(" *s_right_count,  \n");
     source.append("                      float mid, float right,  \n");
     source.append("                      unsigned int mid_count, unsigned int right_count,  \n");
     source.append("                      __global "); source.append(numeric_string); source.append("*s_compaction_list,  \n");
@@ -571,15 +575,18 @@
 
 
 
-    template<typename StringType, class T, class S>
+    template<typename StringType>
     void generate_bisect_kernel_large_storeIntervalConverged(StringType & source, std::string const & numeric_string)
     {
     source.append("       \n");
     source.append("     void  \n");
     source.append("     storeIntervalConverged(float *s_left, float *s_right,  \n");
-    source.append("                            __global "); source.append(numeric_string); source.append("*s_left_count, T *s_right_count,  \n");
+    source.append("                            __global "); source.append(numeric_string); source.append("*s_left_count, \n");
+    source.append("                            __global "); source.append(numeric_string); source.append("*s_right_count,  \n");
     source.append("                            float &left, float &mid, float &right,  \n");
-    source.append("                            S &left_count, S &mid_count, S &right_count,  \n");
+    source.append("                            __global "); source.append(numeric_string); source.append(" &left_count,     \n");
+    source.append("                            __global "); source.append(numeric_string); source.append(" &mid_count,      \n");
+    source.append("                            __global "); source.append(numeric_string); source.append(" &right_count,     \n");
     source.append("                            __global "); source.append(numeric_string); source.append("*s_compaction_list_exc,  \n");
     source.append("                            unsigned int &compact_second_chunk,  \n");
     source.append("                            const unsigned int num_threads_active,  \n");
@@ -649,14 +656,15 @@
     ///////////////////////////////////////////////////////////////////////////////
 
 
-    template<typename StringType, class T>
+    template<typename StringType>
     void generate_bisect_kernel_large_subdivideActiveInterval(StringType & source, std::string const & numeric_string)
     {
     source.append("       \n");
     source.append("     void  \n");
     source.append("     subdivideActiveInterval(const unsigned int tid,  \n");
     source.append("                             float *s_left, float *s_right,  \n");
-    source.append("                             __global "); source.append(numeric_string); source.append("*s_left_count, T *s_right_count,  \n");
+    source.append("                             __global "); source.append(numeric_string); source.append("*s_left_count,   \n");
+    source.append("                             __global "); source.append(numeric_string); source.append("*s_right_count,  \n");
     source.append("                             const unsigned int num_threads_active,  \n");
     source.append("                             float &left, float &right,  \n");
     source.append("                             unsigned int &left_count, unsigned int &right_count,  \n");
@@ -734,13 +742,14 @@
     //! @param  epsilon  desired accuracy of eigenvalues to compute
     ////////////////////////////////////////////////////////////////////////////////
     ///
-    template <typename StringType, typename T>
+    template <typename StringType>
     void generate_bisect_kernel_large_bisectKernel(StringType & source, std::string const & numeric_string)
     {
         source.append("     __kernel  \n");
         source.append("     void  \n");
         source.append("     bisectKernel(float *g_d, float *g_s, const unsigned int n,  \n");
-        source.append("                  __global "); source.append(numeric_string); source.append("* g_left, float *g_right,  \n");
+        source.append("                  __global "); source.append(numeric_string); source.append("* g_left, \n");
+        source.append("                  float *g_right,  \n");
         source.append("                  unsigned int *g_left_count, unsigned int *g_right_count,  \n");
         source.append("                  const float lg, const float ug,  \n");
         source.append("                  const unsigned int lg_eig_count, const unsigned int ug_eig_count,  \n");
@@ -2324,7 +2333,7 @@
     {
       static std::string program_name()
       {
-        return (viennacl::ocl::type_to_string<NumericT>::apply() + "_bisect_kernel_large_");
+        return viennacl::ocl::type_to_string<NumericT>::apply() + "_bisect_kernel_large_";
       }
 
       static void init(viennacl::ocl::context & ctx)
