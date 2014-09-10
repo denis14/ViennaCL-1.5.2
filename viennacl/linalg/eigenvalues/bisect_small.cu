@@ -26,10 +26,8 @@
 #include "matlab.hpp"
 
 // includes, kernels
-#include "bisect_kernel_small.cuh"
-
-// includes, file
-//#include "bisect_small.cuh"
+//#include "bisect_kernel_small.cuh"
+#include "bisect_kernel_calls.hpp"
 
 namespace viennacl
 {
@@ -52,6 +50,13 @@ namespace viennacl
                                   const float lg, const float ug,
                                   const float precision)
     {
+        bisect_small( input, result,
+                      mat_size,
+                      lg,ug,
+                      precision);
+
+        
+        /*
         
 
         dim3  blocks(1, 1, 1);
@@ -71,8 +76,8 @@ namespace viennacl
 
         checkCudaErrors(cudaDeviceSynchronize());
 
-    //    getLastCudaError("Kernel launch failed");
-
+        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed");
+*/
     }
 
 
