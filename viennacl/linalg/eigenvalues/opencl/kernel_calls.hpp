@@ -1,7 +1,7 @@
 /* Determine eigenvalues for small symmetric, tridiagonal matrix */
 
-#ifndef _BISECT_CUDA_KERNEL_CALLS_H_
-#define _BISECT_CUDA_KERNEL_CALLS_H_
+#ifndef _BISECT_OPENCL_KERNEL_CALLS_H_
+#define _BISECT_OPENCL_KERNEL_CALLS_H_
 
 // includes, project
 #include "viennacl/linalg/eigenvalues/bisect_kernel_small.cuh"
@@ -13,11 +13,8 @@ namespace viennacl
     namespace opencl
     {
 
-      void bisect_small_cuda(InputData &input, ResultDataSmall &result,
-                         const unsigned int mat_size,
-                         const float lg, const float ug,
-                         const float precision);
 
+/*
 
     const std::string SVD_GIVENS_NEXT_KERNEL = "givens_next";
     const std::string SVD_COPY_COL_KERNEL = "copy_col";
@@ -28,33 +25,35 @@ namespace viennacl
     const std::string SVD_SCAN_KERNEL_3 = "scan_kernel_3";
     const std::string SVD_SCAN_KERNEL_4 = "scan_kernel_4";
 
+*/
 
-
-      template<typename NumericT, typename F>
-        void givens_next(matrix_base<NumericT, F> & matrix,
-                        vector_base<NumericT>& tmp1,
-                        vector_base<NumericT>& tmp2,
-                        int l,
-                        int m
-                      )
+    void bisect_small_opencl(InputData &input, ResultDataSmall &result,
+                       const unsigned int mat_size,
+                       const float lg, const float ug,
+                       const float precision)
         {
-          viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(matrix).context());
+       /*   viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(input.vcl_a).context());
           viennacl::linalg::opencl::kernels::svd<NumericT, F>::init(ctx);
           viennacl::ocl::kernel& kernel = ctx.get_kernel(viennacl::linalg::opencl::kernels::svd<NumericT, F>::program_name(), SVD_GIVENS_NEXT_KERNEL);
-          kernel.global_work_size(0, viennacl::tools::align_to_multiple<cl_uint>(cl_uint(viennacl::traits::size1(matrix)), 256));
-          kernel.local_work_size(0, 256);
+          kernel.global_work_size(0, 1);
+          kernel.local_work_size(0, MAX_THREADS_BLOCK_SMALL_MATRIX);
 
           viennacl::ocl::enqueue(kernel(
-                                        matrix,
-                                        tmp1,
-                                        tmp2,
-                                        cl_uint(viennacl::traits::size1(matrix)),
-                                        cl_uint(viennacl::traits::internal_size2(matrix)),
-                                        static_cast<cl_uint>(l),
-                                        static_cast<cl_uint>(m - 1)
-                                ));
+                                        viennacl::traits::opencl_handle(input.vcl_a),
+                                        viennacl::traits::opencl_handle(input.vcl_b) + 1,
+                                        static_cast<cl_uint>(mat_size),
+                                        viennacl::traits::opencl_handle(result.vcl_g_left),
+                                        viennacl::traits::opencl_handle(result.vcl_g_right),
+                                        viennacl::traits::opencl_handle(result.vcl_g_left_count),
+                                        viennacl::traits::opencl_handle(result.vcl_g_right_count),
+                                        static_cast<cl_uint>(lg),
+                                        static_cast<cl_uint>(ug),
+                                        static_cast<cl_uint>(0),
+                                        static_cast<cl_uint>(mat_size),
+                                        static_cast<float>(precision)
+                                ));*/
         }
-
+/*
         template <typename NumericT, typename F>
         void copy_vec(matrix_base<NumericT, F>& A,
                       vector_base<NumericT> & V,
@@ -155,7 +154,7 @@ namespace viennacl
 
     }
 
-
+*/
 
     } // namespace opencl
   } //namespace linalg

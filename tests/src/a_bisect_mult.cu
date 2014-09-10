@@ -45,7 +45,7 @@ initInputData(std::vector<float> &diagonal, std::vector<float> &superdiagonal, c
 {
  
   srand(278217421);
-  bool randomValues = false;
+  bool randomValues = true;
   
   
   if(randomValues == true)
@@ -101,7 +101,7 @@ runTest(int argc, char **argv)
 {
     bool bCompareResult = false;
     {
-      unsigned int mat_size = 250;
+      unsigned int mat_size = 2050;
       
       std::vector<float> diagonal(mat_size);
       std::vector<float> superdiagonal(mat_size);

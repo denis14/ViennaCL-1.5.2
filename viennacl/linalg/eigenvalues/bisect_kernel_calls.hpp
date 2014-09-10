@@ -37,7 +37,7 @@
 //#include "viennacl/linalg/host_based/matrix_operations.hpp"
 
 #ifdef VIENNACL_WITH_OPENCL
- //  #include "viennacl/linalg/eigenvalues/opencl/kernel_calls.hpp"
+   #include "viennacl/linalg/eigenvalues/opencl/kernel_calls.hpp"
 #endif
 
 #ifdef VIENNACL_WITH_CUDA
@@ -62,10 +62,10 @@ namespace viennacl
               //                                   precision);
          // break;
 #ifdef VIENNACL_WITH_OPENCL
-      //    viennacl::linalg::opencl::bisect_small_cuda(input, result,
-        //                                       mat_size,
-          //                                     lg,ug,
-            //                                   precision);
+          viennacl::linalg::opencl::bisect_small_opencl(input, result,
+                                               mat_size,
+                                               lg,ug,
+                                               precision);
           break;
 #endif
 #ifdef VIENNACL_WITH_CUDA
@@ -85,37 +85,123 @@ namespace viennacl
       }
     }
 
-/*
 
-    template <typename NumericT, typename F>
-    void house_update_QL(matrix_base<NumericT, F> & Q,
-                         vector_base<NumericT>    & D,
-                         vcl_size_t A_size1)
+
+
+
+   void bisectLarge(InputData &input, ResultDataLarge &result,
+                      const unsigned int mat_size,
+                      const float lg, const float ug,
+                      const float precision)
     {
-      switch (viennacl::traits::handle(Q).get_active_handle_id())
+      switch (viennacl::traits::handle(input.vcl_a).get_active_handle_id())
       {
-        case viennacl::MAIN_MEMORY:
-          viennacl::linalg::host_based::house_update_QL(Q, D, A_size1);
-          break;
+        //    viennacl::linalg::host_based::bisect_small_cuda(input, result,
+          //                                       mat_size,
+            //                                     lg,ug,
+              //                                   precision);
+         // break;
 #ifdef VIENNACL_WITH_OPENCL
-        case viennacl::OPENCL_MEMORY:
-          viennacl::linalg::opencl::house_update_QL(Q, D, A_size1);
+          viennacl::linalg::opencl::bisectLargeOPC(input, result,
+                                               mat_size,
+                                               lg,ug,
+                                               precision);
           break;
 #endif
-
 #ifdef VIENNACL_WITH_CUDA
         case viennacl::CUDA_MEMORY:
-          viennacl::linalg::cuda::house_update_QL(Q, D, A_size1);
+          viennacl::linalg::cuda::bisectLargeCuda(input, result,
+                                               mat_size,
+                                               lg,ug,
+                                               precision);
+
+//          std::cout << "Hallo" << std::endl;
           break;
 #endif
-
         case viennacl::MEMORY_NOT_INITIALIZED:
           throw memory_exception("not initialised!");
         default:
           throw memory_exception("not implemented");
       }
     }
-*/
+
+
+
+
+
+
+   void bisectLarge_OneIntervals(InputData &input, ResultDataLarge &result,
+                      const unsigned int mat_size,
+                      const float precision)
+    {
+      switch (viennacl::traits::handle(input.vcl_a).get_active_handle_id())
+      {
+        //    viennacl::linalg::host_based::bisect_small_cuda(input, result,
+          //                                       mat_size,
+            //                                     lg,ug,
+              //                                   precision);
+         // break;
+#ifdef VIENNACL_WITH_OPENCL
+          viennacl::linalg::opencl::bisectLargeOPC(input, result,
+                                               mat_size,
+                                               lg,ug,
+                                               precision);
+          break;
+#endif
+#ifdef VIENNACL_WITH_CUDA
+        case viennacl::CUDA_MEMORY:
+          viennacl::linalg::cuda::bisectLarge_OneIntervalsCuda(input, result,
+                                               mat_size,
+                                               precision);
+
+//          std::cout << "Hallo" << std::endl;
+          break;
+#endif
+        case viennacl::MEMORY_NOT_INITIALIZED:
+          throw memory_exception("not initialised!");
+        default:
+          throw memory_exception("not implemented");
+      }
+    }
+
+
+
+
+
+   void bisectLarge_MultIntervals(InputData &input, ResultDataLarge &result,
+                      const unsigned int mat_size,
+                      const float precision)
+    {
+      switch (viennacl::traits::handle(input.vcl_a).get_active_handle_id())
+      {
+        //    viennacl::linalg::host_based::bisect_small_cuda(input, result,
+          //                                       mat_size,
+            //                                     lg,ug,
+              //                                   precision);
+         // break;
+#ifdef VIENNACL_WITH_OPENCL
+          viennacl::linalg::opencl::bisectLargeOPC(input, result,
+                                               mat_size,
+                                               lg,ug,
+                                               precision);
+          break;
+#endif
+#ifdef VIENNACL_WITH_CUDA
+        case viennacl::CUDA_MEMORY:
+          viennacl::linalg::cuda::bisectLarge_MultIntervalsCuda(input, result,
+                                               mat_size,
+                                               precision);
+
+//          std::cout << "Hallo" << std::endl;
+          break;
+#endif
+        case viennacl::MEMORY_NOT_INITIALIZED:
+          throw memory_exception("not initialised!");
+        default:
+          throw memory_exception("not implemented");
+      }
+    }
+
   } //namespace linalg
 
 } //namespace viennacl

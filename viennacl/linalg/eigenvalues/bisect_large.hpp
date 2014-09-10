@@ -16,9 +16,6 @@
 #include <iomanip>  
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <float.h>
 
 // includes, project
 #include "config.hpp"
@@ -26,19 +23,7 @@
 #include "util.hpp"
 #include "matlab.hpp"
 
-// includes, kernels
-#include "bisect_kernel_large.cuh"
-#include "bisect_kernel_large_onei.cuh"
-#include "bisect_kernel_large_multi.cuh"
-
-
-#include "viennacl/linalg/cuda/common.hpp"
-
-#include "viennacl/linalg/cuda/vector_operations.hpp"
-#include "viennacl/linalg/cuda/matrix_operations_row.hpp"
-#include "viennacl/linalg/cuda/matrix_operations_col.hpp"
-#include "viennacl/linalg/cuda/matrix_operations_prod.hpp"
-#include "viennacl/linalg/cuda/matrix_operations_prod.hpp"
+#include "viennacl/linalg/eigenvalues/bisect_kernel_calls.hpp"
 
 namespace viennacl
 {
@@ -60,93 +45,16 @@ namespace viennacl
                                   const unsigned int mat_size,
                                   const float lg, const float ug,  const float precision)
     {
-        dim3  blocks(1, 1, 1);
-        dim3  threads(MAX_THREADS_BLOCK, 1, 1);
-        std::cout << "Start bisectKernelLarge" << std::endl;
-        bisectKernelLarge<<< blocks, threads >>>
-          (viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_a),
-           viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_b) + 1,
-           mat_size,
-           lg, ug, 0, mat_size, precision,
-           viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_num_one),
-           viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_num_blocks_mult),
-           viennacl::linalg::cuda::detail::cuda_arg<float>(result.g_left_one),
-           viennacl::linalg::cuda::detail::cuda_arg<float>(result.g_right_one),
-           viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_pos_one),
-           viennacl::linalg::cuda::detail::cuda_arg<float>(result.g_left_mult),
-           viennacl::linalg::cuda::detail::cuda_arg<float>(result.g_right_mult),
-           viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_left_count_mult),
-           viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_right_count_mult),
-           viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_blocks_mult),
-           viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_blocks_mult_sum)
-          );
+       // First kernel call
+       bisectLarge(input, result, mat_size, lg, ug, precision);
 
-        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
-        checkCudaErrors(cudaDeviceSynchronize());
-
-
-
-        // get the number of intervals containing one eigenvalue after the first
-        // processing step
-        unsigned int num_one_intervals = result.g_num_one;
-
-        dim3 grid_onei;
-        grid_onei.x = getNumBlocksLinear(num_one_intervals, MAX_THREADS_BLOCK);
-        grid_onei.y = 1, grid_onei.z = 1;
-        dim3 threads_onei(MAX_THREADS_BLOCK, 1, 1);
-        // use always max number of available threads to better balance load times
-        // for matrix data
         // compute eigenvalues for intervals that contained only one eigenvalue
         // after the first processing step
-
-         std::cout << "Start bisectKernelLarge_OneIntervals" << std::endl;
-        bisectKernelLarge_OneIntervals<<< grid_onei , threads_onei >>>
-          (viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_a),
-           viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_b) + 1,
-           mat_size, num_one_intervals,
-           viennacl::linalg::cuda::detail::cuda_arg<float>(result.g_left_one),
-           viennacl::linalg::cuda::detail::cuda_arg<float>(result.g_right_one),
-           viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_pos_one),
-           precision
-          );
-
-        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_OneIntervals() FAILED.");
-        checkCudaErrors(cudaDeviceSynchronize());
+        bisectLarge_OneIntervals(input, result, mat_size, precision);
 
         // process intervals that contained more than one eigenvalue after
         // the first processing step
-
-        // get the number of blocks of intervals that contain, in total when
-        // each interval contains only one eigenvalue, not more than
-        // MAX_THREADS_BLOCK threads
-        unsigned int  num_blocks_mult = result.g_num_blocks_mult;
-       // checkCudaErrors(cudaMemcpy(&num_blocks_mult, result.g_num_blocks_mult,
-         //                          sizeof(unsigned int),
-           //                        cudaMemcpyDeviceToHost));
-
-        // setup the execution environment
-        dim3  grid_mult(num_blocks_mult, 1, 1);
-        dim3  threads_mult(MAX_THREADS_BLOCK, 1, 1);
-
-        std::cout << "Start bisectKernelLarge_MultIntervals " << std::endl;
-        bisectKernelLarge_MultIntervals<<< grid_mult, threads_mult >>>
-          (viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_a),
-           viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_b) + 1,
-           mat_size,
-           viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_blocks_mult),
-           viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_blocks_mult_sum),
-           viennacl::linalg::cuda::detail::cuda_arg<float>(result.g_left_mult),
-           viennacl::linalg::cuda::detail::cuda_arg<float>(result.g_right_mult),
-           viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_left_count_mult),
-           viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_right_count_mult),
-           viennacl::linalg::cuda::detail::cuda_arg<float>(result.g_lambda_mult),
-           viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_pos_mult),
-           precision
-          );
-        viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
-        checkCudaErrors(cudaDeviceSynchronize());
-
-
+        bisectLarge_MultIntervals(input, result, mat_size, precision);
 
     }
 
@@ -178,10 +86,6 @@ namespace viennacl
         viennacl::copy(result.g_blocks_mult_sum, blocks_mult_sum);
 
         unsigned int num_one_intervals = result.g_num_one;
-      //  checkCudaErrors(cudaMemcpy(&num_one_intervals, result.g_num_one,
-        //                           sizeof(unsigned int),
-          //                         cudaMemcpyDeviceToHost));
-
         unsigned int sum_blocks_mult = mat_size - num_one_intervals;
 
 
