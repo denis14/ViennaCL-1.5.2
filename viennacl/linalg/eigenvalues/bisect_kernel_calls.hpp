@@ -56,17 +56,13 @@ namespace viennacl
     {
       switch (viennacl::traits::handle(input.vcl_a).get_active_handle_id())
       {
-        //    viennacl::linalg::host_based::bisect_small_cuda(input, result,
-          //                                       mat_size,
-            //                                     lg,ug,
-              //                                   precision);
-         // break;
 #ifdef VIENNACL_WITH_OPENCL
-          viennacl::linalg::opencl::bisect_small_opencl(input, result,
+        case viennacl::OPENCL_MEMORY:
+      /*    viennacl::linalg::opencl::bisect_small_opencl(input, result,
                                                mat_size,
                                                lg,ug,
                                                precision);
-          break;
+        */  break;
 #endif
 #ifdef VIENNACL_WITH_CUDA
         case viennacl::CUDA_MEMORY:
@@ -74,8 +70,6 @@ namespace viennacl
                                                mat_size,
                                                lg,ug,
                                                precision);
-
-//          std::cout << "Hallo" << std::endl;
           break;
 #endif
         case viennacl::MEMORY_NOT_INITIALIZED:
@@ -96,17 +90,13 @@ namespace viennacl
     {
       switch (viennacl::traits::handle(input.vcl_a).get_active_handle_id())
       {
-        //    viennacl::linalg::host_based::bisect_small_cuda(input, result,
-          //                                       mat_size,
-            //                                     lg,ug,
-              //                                   precision);
-         // break;
 #ifdef VIENNACL_WITH_OPENCL
-          viennacl::linalg::opencl::bisectLargeOPC(input, result,
+        case viennacl::OPENCL_MEMORY:
+   /*       viennacl::linalg::opencl::bisectLargeOPC(input, result,
                                                mat_size,
                                                lg,ug,
                                                precision);
-          break;
+     */     break;
 #endif
 #ifdef VIENNACL_WITH_CUDA
         case viennacl::CUDA_MEMORY:
@@ -114,8 +104,6 @@ namespace viennacl
                                                mat_size,
                                                lg,ug,
                                                precision);
-
-//          std::cout << "Hallo" << std::endl;
           break;
 #endif
         case viennacl::MEMORY_NOT_INITIALIZED:
@@ -136,17 +124,13 @@ namespace viennacl
     {
       switch (viennacl::traits::handle(input.vcl_a).get_active_handle_id())
       {
-        //    viennacl::linalg::host_based::bisect_small_cuda(input, result,
-          //                                       mat_size,
-            //                                     lg,ug,
-              //                                   precision);
-         // break;
 #ifdef VIENNACL_WITH_OPENCL
-          viennacl::linalg::opencl::bisectLargeOPC(input, result,
+        case viennacl::OPENCL_MEMORY:
+   /*       viennacl::linalg::opencl::bisectLargeOPC(input, result,
                                                mat_size,
                                                lg,ug,
                                                precision);
-          break;
+     */     break;
 #endif
 #ifdef VIENNACL_WITH_CUDA
         case viennacl::CUDA_MEMORY:
@@ -154,7 +138,6 @@ namespace viennacl
                                                mat_size,
                                                precision);
 
-//          std::cout << "Hallo" << std::endl;
           break;
 #endif
         case viennacl::MEMORY_NOT_INITIALIZED:
@@ -174,25 +157,18 @@ namespace viennacl
     {
       switch (viennacl::traits::handle(input.vcl_a).get_active_handle_id())
       {
-        //    viennacl::linalg::host_based::bisect_small_cuda(input, result,
-          //                                       mat_size,
-            //                                     lg,ug,
-              //                                   precision);
-         // break;
 #ifdef VIENNACL_WITH_OPENCL
-          viennacl::linalg::opencl::bisectLargeOPC(input, result,
-                                               mat_size,
-                                               lg,ug,
-                                               precision);
-          break;
+        case viennacl::OPENCL_MEMORY:
+  /*      viennacl::linalg::opencl::bisectLarge_MultIntervalsOPC(input, result,
+                                             mat_size,
+                                             precision);
+    */      break;
 #endif
 #ifdef VIENNACL_WITH_CUDA
         case viennacl::CUDA_MEMORY:
           viennacl::linalg::cuda::bisectLarge_MultIntervalsCuda(input, result,
                                                mat_size,
                                                precision);
-
-//          std::cout << "Hallo" << std::endl;
           break;
 #endif
         case viennacl::MEMORY_NOT_INITIALIZED:

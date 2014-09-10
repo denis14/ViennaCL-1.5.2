@@ -9,7 +9,7 @@ foreach(PROG blas3_prod_float blas3_prod_double blas3_solve_float blas3_solve_do
              matrix_col_float matrix_col_double matrix_col_int
              scalar scheduler_matrix scheduler_matrix_matrix scheduler_matrix_vector scheduler_sparse scheduler_vector sparse
              vector_float vector_double vector_int vector_uint vector_multi_inner_prod
-             a_qr_method_func a_tql a_scan qr_method                                                                      #selbst hinzugefuegt
+             a_qr_method_func a_tql a_scan  qr_method                                                                      #selbst hinzugefuegt
              
              spmdm)
    add_executable(${PROG}-test-cpu src/${PROG}.cpp)
@@ -27,7 +27,7 @@ if (ENABLE_OPENCL)
                matrix_row_float matrix_row_double matrix_row_int
                matrix_col_float matrix_col_double matrix_col_int
                nmf qr_method 
-               a_qr_method_func a_scan a_tql                                                                             #selbst hinzugefuegt 
+               a_qr_method_func a_scan a_tql a_bisect_mult                                                                          #selbst hinzugefuegt 
                scalar sparse structured-matrices svd
                vector_float vector_double vector_int vector_uint vector_multi_inner_prod
                spmdm)
@@ -54,8 +54,8 @@ if (ENABLE_CUDA)
                matrix_col_float matrix_col_double matrix_col_int
                scalar sparse
                vector_float vector_double vector_int vector_uint vector_multi_inner_prod
-               qr_method a_qr_method_func a_scan a_tql main a_bisect
-               spmdm)
+               qr_method a_qr_method_func a_scan a_tql main a_bisect a_bisect_mult a_bisect_onei		    #selbst hinzugefuegt 
+               spmdm a_bisect_test)
      cuda_add_executable(${PROG}-test-cuda src/${PROG}.cu)
      target_link_libraries(${PROG}-test-cuda ${Boost_LIBRARIES})
      add_test(${PROG}-cuda ${PROG}-test-cuda)

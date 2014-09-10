@@ -4,7 +4,7 @@
 #define _BISECT_OPENCL_KERNEL_CALLS_H_
 
 // includes, project
-#include "viennacl/linalg/eigenvalues/bisect_kernel_small.cuh"
+//#include "viennacl/linalg/eigenvalues/bisect_kernel_small.cuh"
 
 namespace viennacl
 {
