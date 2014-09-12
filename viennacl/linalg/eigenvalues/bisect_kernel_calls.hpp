@@ -58,11 +58,12 @@ namespace viennacl
       {
 #ifdef VIENNACL_WITH_OPENCL
         case viennacl::OPENCL_MEMORY:
-      /*    viennacl::linalg::opencl::bisect_small_opencl(input, result,
+          viennacl::linalg::opencl::bisect_small_opencl(input, result,
                                                mat_size,
                                                lg,ug,
                                                precision);
-        */  break;
+        //  std::cout << "Hallo!" << std::endl;
+          break;
 #endif
 #ifdef VIENNACL_WITH_CUDA
         case viennacl::CUDA_MEMORY:
@@ -92,11 +93,11 @@ namespace viennacl
       {
 #ifdef VIENNACL_WITH_OPENCL
         case viennacl::OPENCL_MEMORY:
-   /*       viennacl::linalg::opencl::bisectLargeOPC(input, result,
+          viennacl::linalg::opencl::bisectLarge_opencl(input, result,
                                                mat_size,
                                                lg,ug,
                                                precision);
-     */     break;
+          break;
 #endif
 #ifdef VIENNACL_WITH_CUDA
         case viennacl::CUDA_MEMORY:
@@ -126,11 +127,10 @@ namespace viennacl
       {
 #ifdef VIENNACL_WITH_OPENCL
         case viennacl::OPENCL_MEMORY:
-   /*       viennacl::linalg::opencl::bisectLargeOPC(input, result,
+          viennacl::linalg::opencl::bisectLargeOneIntervals_opencl(input, result,
                                                mat_size,
-                                               lg,ug,
                                                precision);
-     */     break;
+          break;
 #endif
 #ifdef VIENNACL_WITH_CUDA
         case viennacl::CUDA_MEMORY:
@@ -159,10 +159,10 @@ namespace viennacl
       {
 #ifdef VIENNACL_WITH_OPENCL
         case viennacl::OPENCL_MEMORY:
-  /*      viennacl::linalg::opencl::bisectLarge_MultIntervalsOPC(input, result,
+        viennacl::linalg::opencl::bisectLargeMultIntervals_opencl(input, result,
                                              mat_size,
                                              precision);
-    */      break;
+          break;
 #endif
 #ifdef VIENNACL_WITH_CUDA
         case viennacl::CUDA_MEMORY:
