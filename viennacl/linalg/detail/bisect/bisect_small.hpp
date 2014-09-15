@@ -29,46 +29,49 @@ namespace viennacl
 {
   namespace linalg
   {
-    ////////////////////////////////////////////////////////////////////////////////
-    //! Determine eigenvalues for matrices smaller than MAX_SMALL_MATRIX
-    //! @param  input  handles to input data of kernel
-    //! @param  result handles to result of kernel
-    //! @param  mat_size  matrix size
-    //! @param  lg  lower limit of Gerschgorin interval
-    //! @param  ug  upper limit of Gerschgorin interval
-    //! @param  precision  desired precision of eigenvalues
-    ////////////////////////////////////////////////////////////////////////////////
-    void
-    computeEigenvaluesSmallMatrix(const InputData &input, ResultDataSmall &result,
-                                  const unsigned int mat_size,
-                                  const float lg, const float ug,
-                                  const float precision)
+    namespace detail
     {
-      bisect_small( input, result, mat_size, lg, ug, precision);
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////////
-    //! Process the result obtained on the device, that is transfer to host and
-    //! perform basic sanity checking
-    //! @param  result  handles to result data
-    //! @param  mat_size   matrix size
-    ////////////////////////////////////////////////////////////////////////////////
-    void
-    processResultSmallMatrix(ResultDataSmall &result,
-                             const unsigned int mat_size)
-    {
-      // copy data back to host
-      std::vector<float> left(mat_size);
-      std::vector<unsigned int> left_count(mat_size);
-
-      viennacl::copy(result.vcl_g_left, left);
-      viennacl::copy(result.vcl_g_left_count, left_count);
-
-      for (unsigned int i = 0; i < mat_size; ++i)
+      ////////////////////////////////////////////////////////////////////////////////
+      //! Determine eigenvalues for matrices smaller than MAX_SMALL_MATRIX
+      //! @param  input  handles to input data of kernel
+      //! @param  result handles to result of kernel
+      //! @param  mat_size  matrix size
+      //! @param  lg  lower limit of Gerschgorin interval
+      //! @param  ug  upper limit of Gerschgorin interval
+      //! @param  precision  desired precision of eigenvalues
+      ////////////////////////////////////////////////////////////////////////////////
+      void
+      computeEigenvaluesSmallMatrix(const InputData &input, ResultDataSmall &result,
+                                    const unsigned int mat_size,
+                                    const float lg, const float ug,
+                                    const float precision)
       {
-          result.std_eigenvalues[left_count[i]] = left[i];
+        viennacl::linalg::detail::bisect_small( input, result, mat_size, lg, ug, precision);
       }
-    }
-  }
-}
+
+
+      ////////////////////////////////////////////////////////////////////////////////
+      //! Process the result obtained on the device, that is transfer to host and
+      //! perform basic sanity checking
+      //! @param  result  handles to result data
+      //! @param  mat_size   matrix size
+      ////////////////////////////////////////////////////////////////////////////////
+      void
+      processResultSmallMatrix(ResultDataSmall &result,
+                               const unsigned int mat_size)
+      {
+        // copy data back to host
+        std::vector<float> left(mat_size);
+        std::vector<unsigned int> left_count(mat_size);
+
+        viennacl::copy(result.vcl_g_left, left);
+        viennacl::copy(result.vcl_g_left_count, left_count);
+
+        for (unsigned int i = 0; i < mat_size; ++i)
+        {
+            result.std_eigenvalues[left_count[i]] = left[i];
+        }
+      }
+    }  // namespace detail
+  }  // namespace linalg
+} // namespace viennacl

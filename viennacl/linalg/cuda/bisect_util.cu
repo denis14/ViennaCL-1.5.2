@@ -77,7 +77,7 @@ namespace viennacl
 
         float mid;
 
-        if (sign_f(left) == sign_f(right))
+        if (viennacl::linalg::detail::sign_f(left) == viennacl::linalg::detail::sign_f(right))
         {
             mid = left + (right - left) * 0.5f;
         }

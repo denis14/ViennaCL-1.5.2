@@ -17,10 +17,11 @@ namespace viennacl
     const std::string BISECT_KERNEL_LARGE_ONE_INTERVALS  = "bisectKernelLarge_OneIntervals";
     const std::string BISECT_KERNEL_LARGE_MULT_INTERVALS = "bisectKernelLarge_MultIntervals";
 
-    void bisect_small_opencl(const InputData &input, ResultDataSmall &result,
-                       const unsigned int mat_size,
-                       const float lg, const float ug,
-                       const float precision)
+    void bisect_small_opencl(const viennacl::linalg::detail::InputData &input,
+                             viennacl::linalg::detail::ResultDataSmall &result,
+                             const unsigned int mat_size,
+                             const float lg, const float ug,
+                             const float precision)
         {
           viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(input.vcl_a).context());
           viennacl::linalg::opencl::kernels::bisect_kernel_large<float>::init(ctx);
@@ -29,8 +30,7 @@ namespace viennacl
           kernel.global_work_size(0, 1 * MAX_THREADS_BLOCK_SMALL_MATRIX);
           kernel.local_work_size(0, MAX_THREADS_BLOCK_SMALL_MATRIX);
 
-          viennacl::ocl::enqueue(kernel(
-                                        viennacl::traits::opencl_handle(input.vcl_a),
+          viennacl::ocl::enqueue(kernel(viennacl::traits::opencl_handle(input.vcl_a),
                                         viennacl::traits::opencl_handle(input.vcl_b),
                                         static_cast<cl_uint>(mat_size),
                                         viennacl::traits::opencl_handle(result.vcl_g_left),
@@ -46,10 +46,11 @@ namespace viennacl
 
         }
 
-    void bisectLarge_opencl(const InputData &input, ResultDataLarge &result,
-                       const unsigned int mat_size,
-                       const float lg, const float ug,
-                       const float precision)
+    void bisectLarge_opencl(const viennacl::linalg::detail::InputData &input,
+                            viennacl::linalg::detail::ResultDataLarge &result,
+                            const unsigned int mat_size,
+                            const float lg, const float ug,
+                            const float precision)
         {
           viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(input.vcl_a).context());
           viennacl::linalg::opencl::kernels::bisect_kernel_large<float>::init(ctx);
@@ -58,8 +59,7 @@ namespace viennacl
           kernel.global_work_size(0, 1 * MAX_THREADS_BLOCK);
           kernel.local_work_size(0, MAX_THREADS_BLOCK);
 
-          viennacl::ocl::enqueue(kernel(
-                                        viennacl::traits::opencl_handle(input.vcl_a),
+          viennacl::ocl::enqueue(kernel(viennacl::traits::opencl_handle(input.vcl_a),
                                         viennacl::traits::opencl_handle(input.vcl_b),
                                         static_cast<cl_uint>(mat_size),
                                         static_cast<float>(lg),
@@ -83,12 +83,13 @@ namespace viennacl
         }
 
 
-    void bisectLargeOneIntervals_opencl(const InputData &input, ResultDataLarge &result,
-                       const unsigned int mat_size,
-                       const float precision)
+    void bisectLargeOneIntervals_opencl(const viennacl::linalg::detail::InputData &input,
+                                        viennacl::linalg::detail::ResultDataLarge &result,
+                                        const unsigned int mat_size,
+                                        const float precision)
         {
           unsigned int num_one_intervals = result.g_num_one;
-          unsigned int num_blocks = getNumBlocksLinear(num_one_intervals, MAX_THREADS_BLOCK);
+          unsigned int num_blocks = viennacl::linalg::detail::getNumBlocksLinear(num_one_intervals, MAX_THREADS_BLOCK);
 
           viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(input.vcl_a).context());
           viennacl::linalg::opencl::kernels::bisect_kernel_large<float>::init(ctx);
@@ -97,8 +98,7 @@ namespace viennacl
           kernel.global_work_size(0, num_blocks * MAX_THREADS_BLOCK);
           kernel.local_work_size(0, MAX_THREADS_BLOCK);
 
-          viennacl::ocl::enqueue(kernel(
-                                        viennacl::traits::opencl_handle(input.vcl_a),
+          viennacl::ocl::enqueue(kernel(viennacl::traits::opencl_handle(input.vcl_a),
                                         viennacl::traits::opencl_handle(input.vcl_b),
                                         static_cast<cl_uint>(mat_size),
                                         static_cast<cl_uint>(num_one_intervals),
@@ -111,9 +111,10 @@ namespace viennacl
         }
 
 
-    void bisectLargeMultIntervals_opencl(const InputData &input, ResultDataLarge &result,
-                       const unsigned int mat_size,
-                       const float precision)
+    void bisectLargeMultIntervals_opencl(const viennacl::linalg::detail::InputData &input,
+                                         viennacl::linalg::detail::ResultDataLarge &result,
+                                         const unsigned int mat_size,
+                                         const float precision)
         {
           unsigned int  num_blocks_mult = result.g_num_blocks_mult;
 
@@ -139,8 +140,8 @@ namespace viennacl
                                         static_cast<float>(precision)
                                 ));
         }
-    } // opencl
-  } // linalg
-} // viennacl
+    } // namespace opencl
+  } // namespace linalg
+} // namespace viennacl
 
 #endif

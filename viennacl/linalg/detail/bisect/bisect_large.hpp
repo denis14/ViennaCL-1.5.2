@@ -29,96 +29,98 @@ namespace viennacl
 {
   namespace linalg
   {
-
-    ////////////////////////////////////////////////////////////////////////////////
-    //! Run the kernels to compute the eigenvalues for large matrices
-    //! @param  input   handles to input data
-    //! @param  result  handles to result data
-    //! @param  mat_size  matrix size
-    //! @param  precision  desired precision of eigenvalues
-    //! @param  lg  lower limit of Gerschgorin interval
-    //! @param  ug  upper limit of Gerschgorin interval
-    ////////////////////////////////////////////////////////////////////////////////
-    void
-    computeEigenvaluesLargeMatrix(InputData &input, ResultDataLarge &result,
-                                  const unsigned int mat_size,
-                                  const float lg, const float ug,  const float precision)
+    namespace detail
     {
-       // First kernel call
-       bisectLarge(input, result, mat_size, lg, ug, precision);
 
-        // compute eigenvalues for intervals that contained only one eigenvalue
-        // after the first processing step
-        bisectLarge_OneIntervals(input, result, mat_size, precision);
+      ////////////////////////////////////////////////////////////////////////////////
+      //! Run the kernels to compute the eigenvalues for large matrices
+      //! @param  input   handles to input data
+      //! @param  result  handles to result data
+      //! @param  mat_size  matrix size
+      //! @param  precision  desired precision of eigenvalues
+      //! @param  lg  lower limit of Gerschgorin interval
+      //! @param  ug  upper limit of Gerschgorin interval
+      ////////////////////////////////////////////////////////////////////////////////
+      void
+      computeEigenvaluesLargeMatrix(InputData &input, ResultDataLarge &result,
+                                    const unsigned int mat_size,
+                                    const float lg, const float ug,  const float precision)
+      {
+         // First kernel call
+          viennacl::linalg::detail::bisectLarge(input, result, mat_size, lg, ug, precision);
 
-        // process intervals that contained more than one eigenvalue after
-        // the first processing step
-        bisectLarge_MultIntervals(input, result, mat_size, precision);
+          // compute eigenvalues for intervals that contained only one eigenvalue
+          // after the first processing step
+          viennacl::linalg::detail::bisectLarge_OneIntervals(input, result, mat_size, precision);
 
-    }
+          // process intervals that contained more than one eigenvalue after
+          // the first processing step
+          viennacl::linalg::detail::bisectLarge_MultIntervals(input, result, mat_size, precision);
 
-    ////////////////////////////////////////////////////////////////////////////////
-    //! Process the result, that is obtain result from device and do simple sanity
-    //! checking
-    //! @param  result  handles to result data
-    //! @param  mat_size  matrix size
-    ////////////////////////////////////////////////////////////////////////////////
-    bool
-    processResultDataLargeMatrix(ResultDataLarge &result,
-                                 const unsigned int mat_size)
-    {
-        bool bCompareResult = true;
-        std::cout << "Matrix size: " << mat_size << std::endl;
+      }
 
-        // copy data from intervals that contained more than one eigenvalue after
-        // the first processing step
-        std::vector<float> lambda_mult(mat_size);
-        viennacl::copy(result.g_lambda_mult, lambda_mult);
+      ////////////////////////////////////////////////////////////////////////////////
+      //! Process the result, that is obtain result from device and do simple sanity
+      //! checking
+      //! @param  result  handles to result data
+      //! @param  mat_size  matrix size
+      ////////////////////////////////////////////////////////////////////////////////
+      bool
+      processResultDataLargeMatrix(ResultDataLarge &result,
+                                   const unsigned int mat_size)
+      {
+          bool bCompareResult = true;
+          std::cout << "Matrix size: " << mat_size << std::endl;
 
-        std::vector<unsigned int> pos_mult(mat_size);
-        viennacl::copy(result.g_pos_mult, pos_mult);
+          // copy data from intervals that contained more than one eigenvalue after
+          // the first processing step
+          std::vector<float> lambda_mult(mat_size);
+          viennacl::copy(result.g_lambda_mult, lambda_mult);
 
-        std::vector<unsigned int> blocks_mult_sum(mat_size);
-        viennacl::copy(result.g_blocks_mult_sum, blocks_mult_sum);
+          std::vector<unsigned int> pos_mult(mat_size);
+          viennacl::copy(result.g_pos_mult, pos_mult);
 
-        unsigned int num_one_intervals = result.g_num_one;
-        unsigned int sum_blocks_mult = mat_size - num_one_intervals;
+          std::vector<unsigned int> blocks_mult_sum(mat_size);
+          viennacl::copy(result.g_blocks_mult_sum, blocks_mult_sum);
 
-
-        // copy data for intervals that contained one eigenvalue after the first
-        // processing step
-        std::vector<float> left_one(mat_size);
-        std::vector<float> right_one(mat_size);
-        std::vector<unsigned int> pos_one(mat_size);
-
-        viennacl::copy(result.g_left_one, left_one);
-        viennacl::copy(result.g_right_one, right_one);
-        viennacl::copy(result.g_pos_one, pos_one);
+          unsigned int num_one_intervals = result.g_num_one;
+          unsigned int sum_blocks_mult = mat_size - num_one_intervals;
 
 
-        // singleton intervals generated in the second step
-        for (unsigned int i = 0; i < sum_blocks_mult; ++i)
-        {
-          if (pos_mult[i] != 0)
-            result.std_eigenvalues[pos_mult[i] - 1] = lambda_mult[i];
+          // copy data for intervals that contained one eigenvalue after the first
+          // processing step
+          std::vector<float> left_one(mat_size);
+          std::vector<float> right_one(mat_size);
+          std::vector<unsigned int> pos_one(mat_size);
 
-          else
+          viennacl::copy(result.g_left_one, left_one);
+          viennacl::copy(result.g_right_one, right_one);
+          viennacl::copy(result.g_pos_one, pos_one);
+
+
+          // singleton intervals generated in the second step
+          for (unsigned int i = 0; i < sum_blocks_mult; ++i)
           {
-            printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
-            bCompareResult = false;
+            if (pos_mult[i] != 0)
+              result.std_eigenvalues[pos_mult[i] - 1] = lambda_mult[i];
+
+            else
+            {
+              printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
+              bCompareResult = false;
+            }
           }
-        }
 
-        // singleton intervals generated in the first step
-        unsigned int index = 0;
+          // singleton intervals generated in the first step
+          unsigned int index = 0;
 
-        for (unsigned int i = 0; i < num_one_intervals; ++i, ++index)
-        {
-            result.std_eigenvalues[pos_one[i] - 1] = left_one[i];
-        }
+          for (unsigned int i = 0; i < num_one_intervals; ++i, ++index)
+          {
+              result.std_eigenvalues[pos_one[i] - 1] = left_one[i];
+          }
 
-        return bCompareResult;
-
-    }
-  }
-}
+          return bCompareResult;
+      }
+    } // namespace detail
+  }  // namespace linalg
+}  // namespace viennacl

@@ -31,25 +31,25 @@ namespace viennacl
         float  precision = 0.00001;
 
         // set up input
-        viennacl::linalg::InputData input(diagonal, superdiagonal, mat_size);
+        viennacl::linalg::detail::InputData input(diagonal, superdiagonal, mat_size);
         // compute Gerschgorin interval
         float lg = FLT_MAX;
         float ug = -FLT_MAX;
-        computeGerschgorin(input.std_a, input.std_b, mat_size, lg, ug);
+        viennacl::linalg::detail::computeGerschgorin(input.std_a, input.std_b, mat_size, lg, ug);
         printf("Gerschgorin interval: %f / %f\n", lg, ug);
 
         if (mat_size <= MAX_SMALL_MATRIX)
         {
           // initialize memory for result
-          viennacl::linalg::ResultDataSmall result(mat_size);
+          viennacl::linalg::detail::ResultDataSmall result(mat_size);
 
           // run the kernel
-          viennacl::linalg::computeEigenvaluesSmallMatrix(input, result, mat_size, lg, ug,
+          viennacl::linalg::detail::computeEigenvaluesSmallMatrix(input, result, mat_size, lg, ug,
                                         precision);
 
           // get the result from the device and do some sanity checks,
           // save the result
-          viennacl::linalg::processResultSmallMatrix(result, mat_size);
+          viennacl::linalg::detail::processResultSmallMatrix(result, mat_size);
           eigenvalues = result.std_eigenvalues;
           bCompareResult = true;
         }
@@ -57,16 +57,16 @@ namespace viennacl
         else
         {
           // initialize memory for result
-          viennacl::linalg::ResultDataLarge result(mat_size);
+          viennacl::linalg::detail::ResultDataLarge result(mat_size);
 
           // run the kernel
-          viennacl::linalg::computeEigenvaluesLargeMatrix(input, result, mat_size,
+          viennacl::linalg::detail::computeEigenvaluesLargeMatrix(input, result, mat_size,
                                         lg, ug, precision);
 
 
            // get the result from the device and do some sanity checks
           // save the result if user specified matrix size
-          bCompareResult = viennacl::linalg::processResultDataLargeMatrix(result, mat_size);
+          bCompareResult = viennacl::linalg::detail::processResultDataLargeMatrix(result, mat_size);
 
           eigenvalues = result.std_eigenvalues;
         } //Large end

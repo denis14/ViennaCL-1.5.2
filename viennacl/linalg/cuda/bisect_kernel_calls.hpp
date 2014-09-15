@@ -16,7 +16,7 @@ namespace viennacl
   {
     namespace cuda
     {
-      void bisect_small_cuda(const InputData &input, ResultDataSmall &result,
+      void bisect_small_cuda(const viennacl::linalg::detail::InputData &input, viennacl::linalg::detail::ResultDataSmall &result,
                              const unsigned int mat_size,
                              const float lg, const float ug,
                              const float precision)
@@ -41,7 +41,7 @@ namespace viennacl
       }
 
 
-      void bisectLargeCuda(const InputData &input, ResultDataLarge &result,
+      void bisectLargeCuda(const viennacl::linalg::detail::InputData &input, viennacl::linalg::detail::ResultDataLarge &result,
                          const unsigned int mat_size,
                          const float lg, const float ug,
                          const float precision)
@@ -73,13 +73,13 @@ namespace viennacl
 
       // compute eigenvalues for intervals that contained only one eigenvalue
       // after the first processing step
-      void bisectLarge_OneIntervalsCuda(const InputData &input, ResultDataLarge &result,
+      void bisectLarge_OneIntervalsCuda(const viennacl::linalg::detail::InputData &input, viennacl::linalg::detail::ResultDataLarge &result,
                          const unsigned int mat_size,
                          const float precision)
        {
 
         unsigned int num_one_intervals = result.g_num_one;
-        unsigned int num_blocks = getNumBlocksLinear(num_one_intervals, MAX_THREADS_BLOCK);
+        unsigned int num_blocks = viennacl::linalg::detail::getNumBlocksLinear(num_one_intervals, MAX_THREADS_BLOCK);
         dim3 grid_onei;
         grid_onei.x = num_blocks;
         grid_onei.y = 1, grid_onei.z = 1;
@@ -101,7 +101,7 @@ namespace viennacl
 
       // process intervals that contained more than one eigenvalue after
       // the first processing step
-      void bisectLarge_MultIntervalsCuda(const InputData &input, ResultDataLarge &result,
+      void bisectLarge_MultIntervalsCuda(const viennacl::linalg::detail::InputData &input, viennacl::linalg::detail::ResultDataLarge &result,
                          const unsigned int mat_size,
                          const float precision)
        {
@@ -134,10 +134,5 @@ namespace viennacl
     }
   }
 }
-
-
-
-
-
 
 #endif
