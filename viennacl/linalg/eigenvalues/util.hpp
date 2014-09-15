@@ -14,27 +14,10 @@
 #ifndef _UTIL_H_
 #define _UTIL_H_
 
-//namespace viennacl
-//{
-  //namespace linalg
-  //{
-
-
-
-    ////////////////////////////////////////////////////////////////////////////////
-    //! Safely free() for pointer
-    ////////////////////////////////////////////////////////////////////////////////
-    template<class T>
-    inline void
-    freePtr(T *&ptr)
-    {
-
-        if (NULL != ptr)
-        {
-            free(ptr);
-            ptr = NULL;
-        }
-    }
+namespace viennacl
+{
+  namespace linalg
+  {
 
     ////////////////////////////////////////////////////////////////////////////////
     //! Minimum
@@ -65,19 +48,6 @@
     }
 
     ////////////////////////////////////////////////////////////////////////////////
-    //! Sign of number (integer data type)
-    ////////////////////////////////////////////////////////////////////////////////
-    template<class T>
-    #ifdef __CUDACC__
-    __host__  __device__
-    #endif
-    T
-    sign_i(const T &val)
-    {
-        return (val < 0) ? -1 : 1;
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////
     //! Sign of number (float)
     ////////////////////////////////////////////////////////////////////////////////
     #ifdef __CUDACC__
@@ -101,22 +71,6 @@
         return (val < 0.0) ? -1.0 : 1.0;
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
-    //! Swap \a lhs and \a rhs
-    ////////////////////////////////////////////////////////////////////////////////
-    template<class T>
-    #ifdef __CUDACC__
-    __host__  __device__
-    #endif
-    void
-    swap(T &lhs, T &rhs)
-    {
-
-        T temp = rhs;
-        rhs = lhs;
-        lhs = temp;
-    }
-
     ///////////////////////////////////////////////////////////////////////////////
     //! Get the number of blocks that are required to process \a num_threads with
     //! \a num_threads_blocks threads per block
@@ -132,10 +86,6 @@
         return (num_threads / num_threads_block) + block_rem;
     }
 
-    bool checkCudaErrors(bool val)
-    {
-      return true;
-    }
- // }
-//}
+  }
+}
 #endif // #ifndef _UTIL_H_

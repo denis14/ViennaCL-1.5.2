@@ -20,7 +20,7 @@
 #include "viennacl/linalg/eigenvalues/config.hpp"
 #include "viennacl/linalg/eigenvalues/util.hpp"
 // additional kernel
-#include "viennacl/linalg/eigenvalues/bisect_util.cu"
+#include "viennacl/linalg/eigenvalues/cuda/bisect_util.cu"
 
 namespace viennacl
 {

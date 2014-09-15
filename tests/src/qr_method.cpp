@@ -189,9 +189,9 @@ void test_eigen(const std::string& fn, bool is_symm)
     else
       std::cout << "Testing column-major matrix of size " << sz << "-by-" << sz << std::endl;
 
-    viennacl::matrix<ScalarType, MatrixLayout> A_input(sz, sz), A_ref(sz, sz), Q(sz, sz);
-    std::vector<ScalarType> eigen_ref_re(sz);
-    std::vector<ScalarType> eigen_ref_im(sz);
+    viennacl::matrix<ScalarType> A_input(sz, sz), A_ref(sz, sz), Q(sz, sz);
+    // std::vector<ScalarType> eigen_ref_re(sz);
+    // std::vector<ScalarType> eigen_ref_im(sz);
     std::vector<ScalarType> eigen_re(sz);
     std::vector<ScalarType> eigen_im(sz);
     read_matrix_body(f, A_input);

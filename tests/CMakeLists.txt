@@ -27,7 +27,7 @@ if (ENABLE_OPENCL)
                matrix_row_float matrix_row_double matrix_row_int
                matrix_col_float matrix_col_double matrix_col_int
                nmf qr_method 
-               a_qr_method_func a_scan a_tql a_bisect_mult                                                                          #selbst hinzugefuegt 
+               a_qr_method_func a_scan a_tql a_bisect                                                                          #selbst hinzugefuegt 
                scalar sparse structured-matrices svd
                vector_float vector_double vector_int vector_uint vector_multi_inner_prod
                spmdm)
@@ -54,8 +54,8 @@ if (ENABLE_CUDA)
                matrix_col_float matrix_col_double matrix_col_int
                scalar sparse
                vector_float vector_double vector_int vector_uint vector_multi_inner_prod
-               qr_method a_qr_method_func a_scan a_tql main a_bisect a_bisect_mult 		    #selbst hinzugefuegt 
-               spmdm a_bisect_test)
+               qr_method a_qr_method_func a_scan a_tql main a_bisect		    #selbst hinzugefuegt 
+               spmdm)
      cuda_add_executable(${PROG}-test-cuda src/${PROG}.cu)
      target_link_libraries(${PROG}-test-cuda ${Boost_LIBRARIES})
      add_test(${PROG}-cuda ${PROG}-test-cuda)

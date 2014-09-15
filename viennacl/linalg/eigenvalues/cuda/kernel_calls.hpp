@@ -39,9 +39,7 @@ namespace viennacl
           precision
          );
 
-
-        checkCudaErrors(cudaDeviceSynchronize());
-
+        cudaDeviceSynchronize();
         viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed");
       }
 
@@ -74,8 +72,7 @@ namespace viennacl
           );
 
         viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
-        checkCudaErrors(cudaDeviceSynchronize());
-
+        cudaDeviceSynchronize();
 
       }
 
@@ -108,11 +105,10 @@ namespace viennacl
           );
 
         viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_OneIntervals() FAILED.");
-        checkCudaErrors(cudaDeviceSynchronize());
-
-
-
+        cudaDeviceSynchronize();
       }
+
+
 
       void bisectLarge_MultIntervalsCuda(InputData &input, ResultDataLarge &result,
                          const unsigned int mat_size,
@@ -149,7 +145,7 @@ namespace viennacl
              precision
             );
           viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
-          checkCudaErrors(cudaDeviceSynchronize());
+          cudaDeviceSynchronize();
 
       }
     }

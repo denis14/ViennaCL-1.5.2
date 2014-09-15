@@ -151,8 +151,8 @@ namespace viennacl
       }
 
 
-      template <typename SCALARTYPE, typename F>
-      void copy_vec(matrix_base<SCALARTYPE, F>& A,
+      template <typename SCALARTYPE>
+      void copy_vec(matrix_base<SCALARTYPE>& A,
                     vector_base<SCALARTYPE>& V,
                     vcl_size_t row_start,
                     vcl_size_t col_start,

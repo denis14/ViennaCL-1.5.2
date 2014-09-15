@@ -200,9 +200,9 @@ namespace viennacl
         // Nonsymmetric reduction from Hessenberg to real Schur form.
         // This is derived from the Algol procedure hqr2, by Martin and Wilkinson, Handbook for Auto. Comp.,
         // Vol.ii-Linear Algebra, and the corresponding  Fortran subroutine in EISPACK.
-        template <typename SCALARTYPE, typename F, unsigned int ALIGNMENT, typename VectorType>
-        void hqr2(viennacl::matrix<SCALARTYPE, F, ALIGNMENT>& vcl_H,
-                    viennacl::matrix<SCALARTYPE, F, ALIGNMENT>& V,
+        template <typename SCALARTYPE, typename VectorType>
+        void hqr2(viennacl::matrix<SCALARTYPE>& vcl_H,
+                    viennacl::matrix<SCALARTYPE>& V,
                     VectorType & d,
                     VectorType & e)
         {
@@ -651,7 +651,7 @@ namespace viennacl
             viennacl::fast_copy(H.begin(), H.end(),  vcl_H);
             // viennacl::fast_copy(V.begin(), V.end(),  vcl_V);
 
-            viennacl::matrix<SCALARTYPE, F, ALIGNMENT> tmp = V;
+            viennacl::matrix<SCALARTYPE> tmp = V;
 
             V = viennacl::linalg::prod(trans(tmp), vcl_H);
         }
@@ -690,20 +690,22 @@ namespace viennacl
 
         }
 
-        template <typename SCALARTYPE, typename F, unsigned int ALIGNMENT>
-        void qr_method(viennacl::matrix<SCALARTYPE, F, ALIGNMENT> & A,
-                       viennacl::matrix<SCALARTYPE, F, ALIGNMENT> & Q,
+        template <typename SCALARTYPE>
+        void qr_method(viennacl::matrix<SCALARTYPE> & A,
+                       viennacl::matrix<SCALARTYPE> & Q,
                        std::vector<SCALARTYPE> & D,
                        std::vector<SCALARTYPE> & E,
                        bool is_symmetric = true)
         {
 
             assert(A.size1() == A.size2() && bool("Input matrix must be square for QR method!"));
-            if (!viennacl::is_row_major<F>::value && !is_symmetric)
+        /*    if (!viennacl::is_row_major<F>::value && !is_symmetric)
             {
               std::cout << "qr_method for non-symmetric column-major matrices not implemented yet!" << std::endl;
               exit(EXIT_FAILURE);
             }
+
+            */
             unsigned int mat_size = A.size1();
             D.resize(A.size1());
             E.resize(A.size1());
@@ -760,9 +762,9 @@ namespace viennacl
     }
 
 
-    template <typename SCALARTYPE, typename F, unsigned int ALIGNMENT>
-    void qr_method_nsm(viennacl::matrix<SCALARTYPE, F, ALIGNMENT>& A,
-                       viennacl::matrix<SCALARTYPE, F, ALIGNMENT>& Q,
+    template <typename SCALARTYPE>
+    void qr_method_nsm(viennacl::matrix<SCALARTYPE>& A,
+                       viennacl::matrix<SCALARTYPE>& Q,
                        std::vector<SCALARTYPE>& D,
                        std::vector<SCALARTYPE>& E
                       )
@@ -770,9 +772,9 @@ namespace viennacl
         detail::qr_method(A, Q, D, E, false);
     }
 
-    template <typename SCALARTYPE, typename F, unsigned int ALIGNMENT>
-    void qr_method_sym(viennacl::matrix<SCALARTYPE, F, ALIGNMENT>& A,
-                       viennacl::matrix<SCALARTYPE, F, ALIGNMENT>& Q,
+    template <typename SCALARTYPE>
+    void qr_method_sym(viennacl::matrix<SCALARTYPE>& A,
+                       viennacl::matrix<SCALARTYPE>& Q,
                        std::vector<SCALARTYPE>& D
                       )
     {
