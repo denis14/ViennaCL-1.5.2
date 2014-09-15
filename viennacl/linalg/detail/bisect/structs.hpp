@@ -11,8 +11,8 @@
 
 /* Helper structures to simplify variable handling */
 
-#ifndef _STRUCTS_H_
-#define _STRUCTS_H_
+#ifndef VIENNACL_LINALG_DETAIL_STRUCTS_HPP_
+#define VIENNACL_LINALG_DETAIL_STRUCTS_HPP_
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -30,10 +30,8 @@ namespace viennacl
   {
     namespace detail
     {
-      class InputData
+      struct InputData
       {
-        public:
-
           //! host side representation of diagonal
           std::vector<float> std_a;
           //! host side representation superdiagonal
@@ -62,9 +60,8 @@ namespace viennacl
 
 
 
-      class ResultDataSmall
+      struct ResultDataSmall
       {
-        public:
           //! eigenvalues (host side)
           std::vector<float> std_eigenvalues;
           //! left interval limits at the end of the computation
@@ -98,10 +95,8 @@ namespace viennacl
       //! In this class the all data of the result is stored
       /////////////////////////////////////////////////////////////////////////////////
 
-      class ResultDataLarge
+      struct ResultDataLarge
       {
-      public:
-
           //! eigenvalues
           std::vector<float> std_eigenvalues;
 
@@ -183,5 +178,5 @@ namespace viennacl
     } // namespace detail
   } // namespace linalg
 } // namespace viennacl
-#endif // #ifndef _STRUCTS_H_
+#endif // #ifndef VIENNACL_LINALG_DETAIL_STRUCTS_HPP_
 

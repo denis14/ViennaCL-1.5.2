@@ -11,9 +11,8 @@
 
 /* Utility functions */
 
-#ifndef _UTIL_H_
-#define _UTIL_H_
-
+#ifndef VIENNACL_LINALG_DETAIL_UTIL_HPP_
+#define VIENNACL_LINALG_DETAIL_UTIL_HPP_
 namespace viennacl
 {
   namespace linalg
@@ -90,4 +89,4 @@ namespace viennacl
     } // namespace detail
   } // namespace linalg
 } // namespace viennacl
-#endif // #ifndef _UTIL_H_
+#endif // #ifndef VIENNACL_LINALG_DETAIL_UTIL_HPP_

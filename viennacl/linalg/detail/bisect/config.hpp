@@ -10,9 +10,8 @@
  */
 
 /* Global configuration parameter */
-
-#ifndef _CONFIG_H_
-#define _CONFIG_H_
+#ifndef VIENNACL_LINALG_DETAIL_CONFIG_HPP_
+#define VIENNACL_LINALG_DETAIL_CONFIG_HPP_
 
 // should be power of two
 #define  MAX_THREADS_BLOCK                256
@@ -22,4 +21,4 @@
 
 #define  MIN_ABS_INTERVAL                 5.0e-37
 
- #endif // #ifndef _CONFIG_H_
+ #endif // #ifndef VIENNACL_LINALG_DETAIL_CONFIG_HPP_

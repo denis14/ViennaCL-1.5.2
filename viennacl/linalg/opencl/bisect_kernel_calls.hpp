@@ -1,7 +1,7 @@
 /* Determine eigenvalues for small symmetric, tridiagonal matrix */
 
-#ifndef _BISECT_OPENCL_KERNEL_CALLS_H_
-#define _BISECT_OPENCL_KERNEL_CALLS_H_
+#ifndef VIENNACL_LINALG_DETAIL_BISECT_KERNEL_CALLS_HPP_
+#define VIENNACL_LINALG_DETAIL_BISECT_KERNEL_CALLS_HPP_
 
 // includes, project
 #include "viennacl/linalg/opencl/kernels/bisect.hpp"

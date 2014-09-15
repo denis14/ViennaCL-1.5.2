@@ -10,8 +10,8 @@
  */
 
 /* Computation of Gerschgorin interval for symmetric, tridiagonal matrix */
-#ifndef _GERSCHORIN_H_
-#define _GERSCHORIN_H_
+#ifndef _VIENNACL_LINALG_DETAIL_GERSCHORIN_HPP_
+#define _VIENNACL_LINALG_DETAIL_GERSCHORIN_HPP_
 
 #include <cstdio>
 #include <cstdlib>
@@ -75,4 +75,4 @@ namespace viennacl
     }  // namespace detail
   }  // namespace linalg
 } // namespace viennacl
-#endif  // _GERSCHGORIN_H_
+#endif  // _VIENNACL_LINALG_DETAIL_GERSCHORIN_H_

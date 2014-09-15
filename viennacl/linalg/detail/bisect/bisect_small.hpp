@@ -9,6 +9,9 @@
  *
  */
 
+#ifndef VIENNACL_LINALG_DETAIL_BISECT_SMALL_HPP_
+#define VIENNACL_LINALG_DETAIL_BISECT_SMALL_HPP_
+
 /* Computation of eigenvalues of a small symmetric, tridiagonal matrix */
 
 // includes, system
@@ -75,3 +78,4 @@ namespace viennacl
     }  // namespace detail
   }  // namespace linalg
 } // namespace viennacl
+#endif

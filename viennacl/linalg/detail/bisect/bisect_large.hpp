@@ -9,6 +9,11 @@
  *
  */
 
+
+#ifndef VIENNACL_LINALG_DETAIL_BISECT_LARGE_HPP_
+#define VIENNACL_LINALG_DETAIL_BISECT_LARGE_HPP_
+
+
 /* Computation of eigenvalues of a large symmetric, tridiagonal matrix */
 
 // includes, system
@@ -124,3 +129,4 @@ namespace viennacl
     } // namespace detail
   }  // namespace linalg
 }  // namespace viennacl
+#endif //VIENNACL_LINALG_DETAIL_BISECT_LARGE_HPP_
