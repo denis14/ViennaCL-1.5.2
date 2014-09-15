@@ -103,7 +103,7 @@ runTest(int argc, char **argv)
 {
     bool bCompareResult = false;
 
-    unsigned int mat_size = 520;
+    unsigned int mat_size = 5200;
 
     std::vector<NumericT> diagonal(mat_size);
     std::vector<NumericT> superdiagonal(mat_size);
