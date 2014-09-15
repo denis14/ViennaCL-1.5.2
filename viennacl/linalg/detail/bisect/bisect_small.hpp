@@ -43,10 +43,11 @@ namespace viennacl
       //! @param  ug  upper limit of Gerschgorin interval
       //! @param  precision  desired precision of eigenvalues
       ////////////////////////////////////////////////////////////////////////////////
+      template<typename NumericT>
       void
-      computeEigenvaluesSmallMatrix(const InputData &input, ResultDataSmall &result,
+      computeEigenvaluesSmallMatrix(const InputData<NumericT> &input, ResultDataSmall<NumericT> &result,
                                     const unsigned int mat_size,
-                                    const float lg, const float ug,
+                                    const NumericT lg, const float ug,
                                     const float precision)
       {
         viennacl::linalg::detail::bisectSmall( input, result, mat_size, lg, ug, precision);
@@ -59,8 +60,9 @@ namespace viennacl
       //! @param  result  handles to result data
       //! @param  mat_size   matrix size
       ////////////////////////////////////////////////////////////////////////////////
+      template<typename NumericT>
       void
-      processResultSmallMatrix(ResultDataSmall &result,
+      processResultSmallMatrix(ResultDataSmall<NumericT> &result,
                                const unsigned int mat_size)
       {
         // copy data back to host

@@ -50,10 +50,10 @@ namespace viennacl
   {
     namespace detail
     {
-
-     void bisectSmall(const InputData &input, ResultDataSmall &result,
+     template<typename NumericT>
+     void bisectSmall(const InputData<NumericT> &input, ResultDataSmall<NumericT> &result,
                         const unsigned int mat_size,
-                        const float lg, const float ug,
+                        const NumericT lg, const float ug,
                         const float precision)
       {
         switch (viennacl::traits::handle(input.g_a).get_active_handle_id())
@@ -84,11 +84,11 @@ namespace viennacl
 
 
 
-
-     void bisectLarge(const InputData &input, ResultDataLarge &result,
+     template<typename NumericT>
+     void bisectLarge(const InputData<NumericT> &input, ResultDataLarge<NumericT> &result,
                         const unsigned int mat_size,
-                        const float lg, const float ug,
-                        const float precision)
+                        const NumericT lg, const NumericT ug,
+                        const NumericT precision)
       {
         switch (viennacl::traits::handle(input.g_a).get_active_handle_id())
         {
@@ -119,10 +119,10 @@ namespace viennacl
 
 
 
-
-     void bisectLarge_OneIntervals(const InputData &input, ResultDataLarge &result,
+     template<typename NumericT>
+     void bisectLarge_OneIntervals(const InputData<NumericT> &input, ResultDataLarge<NumericT> &result,
                         const unsigned int mat_size,
-                        const float precision)
+                        const NumericT precision)
       {
         switch (viennacl::traits::handle(input.g_a).get_active_handle_id())
         {
@@ -151,10 +151,10 @@ namespace viennacl
 
 
 
-
-     void bisectLarge_MultIntervals(const InputData &input, ResultDataLarge &result,
+     template<typename NumericT>
+     void bisectLarge_MultIntervals(const InputData<NumericT> &input, ResultDataLarge<NumericT> &result,
                         const unsigned int mat_size,
-                        const float precision)
+                        const NumericT precision)
       {
         switch (viennacl::traits::handle(input.g_a).get_active_handle_id())
         {

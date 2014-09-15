@@ -39,20 +39,21 @@ namespace viennacl
       //! @param  lu_eig_count  number of eigenvalues that are smaller than \a lu
       //! @param  epsilon  desired accuracy of eigenvalues to compute
       ////////////////////////////////////////////////////////////////////////////////
+      template<typename NumericT>
       __global__
       void
-      bisectKernelSmall(const float *g_d, const float *g_s, const unsigned int n,
-                   float * g_left, float *g_right,
+      bisectKernelSmall(const NumericT *g_d, const NumericT *g_s, const unsigned int n,
+                   NumericT * g_left, NumericT *g_right,
                    unsigned int *g_left_count, unsigned int *g_right_count,
-                   const float lg, const float ug,
+                   const NumericT lg, const NumericT ug,
                    const unsigned int lg_eig_count, const unsigned int ug_eig_count,
-                   float epsilon
+                   NumericT epsilon
                   )
       {
           // intervals (store left and right because the subdivision tree is in general
           // not dense
-          __shared__  float  s_left[MAX_THREADS_BLOCK_SMALL_MATRIX];
-          __shared__  float  s_right[MAX_THREADS_BLOCK_SMALL_MATRIX];
+          __shared__  NumericT  s_left[MAX_THREADS_BLOCK_SMALL_MATRIX];
+          __shared__  NumericT  s_right[MAX_THREADS_BLOCK_SMALL_MATRIX];
 
           // number of eigenvalues that are smaller than s_left / s_right
           // (correspondence is realized via indices)
@@ -81,12 +82,12 @@ namespace viennacl
 
           // variables for currently processed interval
           // left and right limit of active interval
-          float  left = 0.0f;
-          float  right = 0.0f;
+          NumericT  left = 0.0f;
+          NumericT  right = 0.0f;
           unsigned int left_count = 0;
           unsigned int right_count = 0;
           // midpoint of active interval
-          float  mid = 0.0f;
+          NumericT  mid = 0.0f;
           // number of eigenvalues smaller then mid
           unsigned int mid_count = 0;
           // affected from compaction
@@ -238,7 +239,7 @@ namespace viennacl
               g_left_count[threadIdx.x]  = s_left_count[threadIdx.x];
           }
       }
-    }
-  }
-}
+    } // namespace cuda
+  } // namespace linalg
+} // namespace viennacl
 #endif // #ifndef _BISECT_KERNEL_SMALL_H_

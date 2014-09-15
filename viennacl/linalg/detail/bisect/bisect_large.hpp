@@ -46,10 +46,11 @@ namespace viennacl
       //! @param  lg  lower limit of Gerschgorin interval
       //! @param  ug  upper limit of Gerschgorin interval
       ////////////////////////////////////////////////////////////////////////////////
+      template<typename NumericT>
       void
-      computeEigenvaluesLargeMatrix(InputData &input, ResultDataLarge &result,
+      computeEigenvaluesLargeMatrix(InputData<NumericT> &input, ResultDataLarge<NumericT> &result,
                                     const unsigned int mat_size,
-                                    const float lg, const float ug,  const float precision)
+                                    const NumericT lg, const NumericT ug,  const NumericT precision)
       {
          // First kernel call
           viennacl::linalg::detail::bisectLarge(input, result, mat_size, lg, ug, precision);
@@ -70,8 +71,9 @@ namespace viennacl
       //! @param  result  handles to result data
       //! @param  mat_size  matrix size
       ////////////////////////////////////////////////////////////////////////////////
+      template<typename NumericT>
       bool
-      processResultDataLargeMatrix(ResultDataLarge &result,
+      processResultDataLargeMatrix(ResultDataLarge<NumericT> &result,
                                    const unsigned int mat_size)
       {
           bool bCompareResult = true;

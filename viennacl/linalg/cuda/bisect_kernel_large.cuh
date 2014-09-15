@@ -32,16 +32,17 @@ namespace viennacl
       ////////////////////////////////////////////////////////////////////////////////
       //! Write data to global memory
       ////////////////////////////////////////////////////////////////////////////////
+      template<typename NumericT>
       __device__
       void writeToGmem(const unsigned int tid, const unsigned int tid_2,
                        const unsigned int num_threads_active,
                        const unsigned int num_blocks_mult,
-                       float *g_left_one, float *g_right_one,
+                       NumericT *g_left_one, NumericT *g_right_one,
                        unsigned int *g_pos_one,
-                       float *g_left_mult, float *g_right_mult,
+                       NumericT *g_left_mult, NumericT *g_right_mult,
                        unsigned int *g_left_count_mult,
                        unsigned int *g_right_count_mult,
-                       float *s_left, float *s_right,
+                       NumericT *s_left, NumericT *s_right,
                        unsigned short *s_left_count, unsigned short *s_right_count,
                        unsigned int *g_blocks_mult,
                        unsigned int *g_blocks_mult_sum,
@@ -111,17 +112,18 @@ namespace viennacl
       ////////////////////////////////////////////////////////////////////////////////
       //! Perform final stream compaction before writing data to global memory
       ////////////////////////////////////////////////////////////////////////////////
+      template<typename NumericT>
       __device__
       void
       compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
                           const unsigned int num_threads_active,
                           unsigned int &offset_mult_lambda,
-                          float *s_left, float *s_right,
+                          NumericT *s_left, NumericT *s_right,
                           unsigned short *s_left_count, unsigned short *s_right_count,
                           unsigned short *s_cl_one, unsigned short *s_cl_mult,
                           unsigned short *s_cl_blocking, unsigned short *s_cl_helper,
                           unsigned int is_one_lambda, unsigned int is_one_lambda_2,
-                          float &left, float &right, float &left_2, float &right_2,
+                          NumericT &left, NumericT &right, NumericT &left_2, NumericT &right_2,
                           unsigned int &left_count, unsigned int &right_count,
                           unsigned int &left_count_2, unsigned int &right_count_2,
                           unsigned int c_block_iend, unsigned int c_sum_block,
@@ -455,18 +457,19 @@ namespace viennacl
       //! Store all non-empty intervals resulting from the subdivision of the interval
       //! currently processed by the thread
       ////////////////////////////////////////////////////////////////////////////////
+      template<typename NumericT>
       __device__
       void
       storeNonEmptyIntervalsLarge(unsigned int addr,
                                   const unsigned int num_threads_active,
-                                  float  *s_left, float *s_right,
+                                  NumericT  *s_left, NumericT *s_right,
                                   unsigned short  *s_left_count,
                                   unsigned short *s_right_count,
-                                  float left, float mid, float right,
+                                  NumericT left, NumericT mid, NumericT right,
                                   const unsigned short left_count,
                                   const unsigned short mid_count,
                                   const unsigned short right_count,
-                                  float epsilon,
+                                  NumericT epsilon,
                                   unsigned int &compact_second_chunk,
                                   unsigned short *s_compaction_list,
                                   unsigned int &is_active_second)
@@ -517,18 +520,19 @@ namespace viennacl
       //! @param  lu_eig_count  number of eigenvalues that are smaller than \a lu
       //! @param  epsilon  desired accuracy of eigenvalues to compute
       ////////////////////////////////////////////////////////////////////////////////
+      template<typename NumericT>
       __global__
       void
-      bisectKernelLarge(const float *g_d, const float *g_s, const unsigned int n,
-                        const float lg, const float ug,
+      bisectKernelLarge(const NumericT *g_d, const NumericT *g_s, const unsigned int n,
+                        const NumericT lg, const NumericT ug,
                         const unsigned int lg_eig_count,
                         const unsigned int ug_eig_count,
-                        float epsilon,
+                        NumericT epsilon,
                         unsigned int *g_num_one,
                         unsigned int *g_num_blocks_mult,
-                        float *g_left_one, float *g_right_one,
+                        NumericT *g_left_one, NumericT *g_right_one,
                         unsigned int *g_pos_one,
-                        float *g_left_mult, float *g_right_mult,
+                        NumericT *g_left_mult, NumericT *g_right_mult,
                         unsigned int *g_left_count_mult,
                         unsigned int *g_right_count_mult,
                         unsigned int *g_blocks_mult,
@@ -539,8 +543,8 @@ namespace viennacl
 
           // intervals (store left and right because the subdivision tree is in general
           // not dense
-          __shared__  float  s_left[2 * MAX_THREADS_BLOCK + 1];
-          __shared__  float  s_right[2 * MAX_THREADS_BLOCK + 1];
+          __shared__  NumericT  s_left[2 * MAX_THREADS_BLOCK + 1];
+          __shared__  NumericT  s_right[2 * MAX_THREADS_BLOCK + 1];
 
           // number of eigenvalues that are smaller than s_left / s_right
           // (correspondence is realized via indices)
@@ -569,12 +573,12 @@ namespace viennacl
 
           // variables for currently processed interval
           // left and right limit of active interval
-          float left = 0.0f;
-          float right = 0.0f;
+          NumericT left = 0.0f;
+          NumericT right = 0.0f;
           unsigned int left_count = 0;
           unsigned int right_count = 0;
           // midpoint of active interval
-          float  mid = 0.0f;
+          NumericT  mid = 0.0f;
           // number of eigenvalues smaller then mid
           unsigned int mid_count = 0;
           // helper for stream compaction (tracking of threads generating second child)
@@ -871,7 +875,7 @@ namespace viennacl
 
           __syncthreads();
 
-          float left_2, right_2;
+          NumericT left_2, right_2;
           --s_cl_one;
           --s_cl_mult;
           --s_cl_blocking;

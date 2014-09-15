@@ -42,30 +42,31 @@ namespace viennacl
       //!               right interval limit
       //! @param  precision  desired precision of eigenvalues
       ////////////////////////////////////////////////////////////////////////////////
+      template<typename NumericT>
       __global__
       void
-      bisectKernelLarge_OneIntervals(const float *g_d, const float *g_s, const unsigned int n,
+      bisectKernelLarge_OneIntervals(const NumericT *g_d, const NumericT *g_s, const unsigned int n,
                                      unsigned int num_intervals,
-                                     float *g_left, float *g_right,
+                                     NumericT *g_left, NumericT *g_right,
                                      unsigned int *g_pos,
-                                     float  precision)
+                                     NumericT  precision)
       {
 
           const unsigned int gtid = (blockDim.x * blockIdx.x) + threadIdx.x;
 
-          __shared__  float  s_left_scratch[MAX_THREADS_BLOCK];
-          __shared__  float  s_right_scratch[MAX_THREADS_BLOCK];
+          __shared__  NumericT  s_left_scratch[MAX_THREADS_BLOCK];
+          __shared__  NumericT  s_right_scratch[MAX_THREADS_BLOCK];
 
           // active interval of thread
           // left and right limit of current interval
-          float left, right;
+          NumericT left, right;
           // number of threads smaller than the right limit (also corresponds to the
           // global index of the eigenvalues contained in the active interval)
           unsigned int right_count;
           // flag if current thread converged
           unsigned int converged = 0;
           // midpoint when current interval is subdivided
-          float mid = 0.0f;
+          NumericT mid = 0.0f;
           // number of eigenvalues less than mid
           unsigned int mid_count = 0;
 
@@ -128,13 +129,13 @@ namespace viennacl
                   }
 
                   // check for convergence
-                  float t0 = right - left;
-                  float t1 = max(abs(right), abs(left)) * precision;
+                  NumericT t0 = right - left;
+                  NumericT t1 = max(abs(right), abs(left)) * precision;
 
                   if (t0 < min(precision, t1))
                   {
 
-                      float lambda = computeMidpoint(left, right);
+                      NumericT lambda = computeMidpoint(left, right);
                       left = lambda;
                       right = lambda;
 

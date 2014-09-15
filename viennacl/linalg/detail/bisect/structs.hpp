@@ -30,16 +30,18 @@ namespace viennacl
   {
     namespace detail
     {
+      template<typename NumericT>
       struct InputData
       {
-          //! host side representation of diagonal
-          std::vector<float> std_a;
+     //   typedef float NumericT;
+        //! host side representation of diagonal
+          std::vector<NumericT> std_a;
           //! host side representation superdiagonal
-          std::vector<float> std_b;
+          std::vector<NumericT> std_b;
           //! device side representation of diagonal
-          viennacl::vector<float> g_a;
+          viennacl::vector<NumericT> g_a;
           //!device side representation of superdiagonal
-          viennacl::vector<float> g_b;
+          viennacl::vector<NumericT> g_b;
 
           ////////////////////////////////////////////////////////////////////////////////
           //! Initialize the input data to the algorithm
@@ -47,7 +49,7 @@ namespace viennacl
           //! @param mat_size  size of the matrix
           ////////////////////////////////////////////////////////////////////////////////
 
-          InputData(std::vector<float> diagonal, std::vector<float> superdiagonal, const unsigned int sz) :
+          InputData(std::vector<NumericT> diagonal, std::vector<NumericT> superdiagonal, const unsigned int sz) :
                       std_a(sz), std_b(sz), g_a(sz), g_b(sz)
           {
            std_a = diagonal;
@@ -59,15 +61,16 @@ namespace viennacl
       };
 
 
-
+      template<typename NumericT>
       struct ResultDataSmall
       {
-          //! eigenvalues (host side)
-          std::vector<float> std_eigenvalues;
+//typedef float NumericT;
+        //! eigenvalues (host side)
+          std::vector<NumericT> std_eigenvalues;
           //! left interval limits at the end of the computation
-          viennacl::vector<float> vcl_g_left;
+          viennacl::vector<NumericT> vcl_g_left;
           //! right interval limits at the end of the computation
-          viennacl::vector<float> vcl_g_right;
+          viennacl::vector<NumericT> vcl_g_right;
           //! number of eigenvalues smaller than the left interval limit
           viennacl::vector<unsigned int> vcl_g_left_count;
           //! number of eigenvalues bigger than the right interval limit
@@ -94,11 +97,12 @@ namespace viennacl
       /////////////////////////////////////////////////////////////////////////////////
       //! In this class the all data of the result is stored
       /////////////////////////////////////////////////////////////////////////////////
-
+      template<typename NumericT>
       struct ResultDataLarge
       {
-          //! eigenvalues
-          std::vector<float> std_eigenvalues;
+       //typedef float NumericT;
+        //! eigenvalues
+          std::vector<NumericT> std_eigenvalues;
 
           //! number of intervals containing one eigenvalue after the first step
           viennacl::scalar<unsigned int> g_num_one;
@@ -109,11 +113,11 @@ namespace viennacl
 
           //! left interval limits of intervals containing one eigenvalue after the
           //! first iteration step
-          viennacl::vector<float> g_left_one;
+          viennacl::vector<NumericT> g_left_one;
 
           //! right interval limits of intervals containing one eigenvalue after the
           //! first iteration step
-          viennacl::vector<float> g_right_one;
+          viennacl::vector<NumericT> g_right_one;
 
           //! interval indices (position in sorted listed of eigenvalues)
           //! of intervals containing one eigenvalue after the first iteration step
@@ -121,10 +125,10 @@ namespace viennacl
 
           //! left interval limits of intervals containing multiple eigenvalues
           //! after the first iteration step
-          viennacl::vector<float> g_left_mult;
+          viennacl::vector<NumericT> g_left_mult;
           //! right interval limits of intervals containing multiple eigenvalues
           //! after the first iteration step
-          viennacl::vector<float> g_right_mult;
+          viennacl::vector<NumericT> g_right_mult;
 
           //! number of eigenvalues less than the left limit of the eigenvalue
           //! intervals containing multiple eigenvalues
@@ -143,7 +147,7 @@ namespace viennacl
 
           //! eigenvalues that have been generated in the second step from intervals
           //! that still contained multiple eigenvalues after the first step
-          viennacl::vector<float> g_lambda_mult;
+          viennacl::vector<NumericT> g_lambda_mult;
 
           //! eigenvalue index of intervals that have been generated in the second
           //! processing step

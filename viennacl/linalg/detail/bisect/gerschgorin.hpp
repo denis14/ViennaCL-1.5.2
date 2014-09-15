@@ -35,15 +35,16 @@ namespace viennacl
       //! @param  lg  lower limit of Gerschgorin interval
       //! @param  ug  upper limit of Gerschgorin interval
       ////////////////////////////////////////////////////////////////////////////////
+      template<typename NumericT>
       void
-      computeGerschgorin(std::vector<float> & d, std::vector<float> & s, unsigned int n, float &lg, float &ug)
+      computeGerschgorin(std::vector<NumericT> & d, std::vector<NumericT> & s, unsigned int n, NumericT &lg, NumericT &ug)
       {
           // compute bounds
           for (unsigned int i = 1; i < (n - 1); ++i)
           {
 
               // sum over the absolute values of all elements of row i
-              float sum_abs_ni = fabsf(s[i]) + fabsf(s[i + 1]);
+              NumericT sum_abs_ni = fabsf(s[i]) + fabsf(s[i + 1]);
 
               lg = min(lg, d[i] - sum_abs_ni);
               ug = max(ug, d[i] + sum_abs_ni);
@@ -60,12 +61,12 @@ namespace viennacl
           ug = max(ug, d[n-1] + fabsf(s[n-1]));
 
           // increase interval to avoid side effects of fp arithmetic
-          float bnorm = max(fabsf(ug), fabsf(lg));
+          NumericT bnorm = max(fabsf(ug), fabsf(lg));
 
           // these values depend on the implmentation of floating count that is
           // employed in the following
-          float psi_0 = 11 * FLT_EPSILON * bnorm;
-          float psi_n = 11 * FLT_EPSILON * bnorm;
+          NumericT psi_0 = 11 * FLT_EPSILON * bnorm;
+          NumericT psi_n = 11 * FLT_EPSILON * bnorm;
 
           lg = lg - bnorm * 2 * n * FLT_EPSILON - psi_0;
           ug = ug + bnorm * 2 * n * FLT_EPSILON + psi_n;

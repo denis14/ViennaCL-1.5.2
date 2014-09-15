@@ -47,23 +47,24 @@ namespace viennacl
       //! @param  g_pos  index of eigenvalue (in ascending order)
       //! @param  precision  desired precision of eigenvalues
       ////////////////////////////////////////////////////////////////////////////////
+      template<typename NumericT>
       __global__
       void
-      bisectKernelLarge_MultIntervals(const float *g_d, const float *g_s, const unsigned int n,
+      bisectKernelLarge_MultIntervals(const NumericT *g_d, const NumericT *g_s, const unsigned int n,
                                       unsigned int *blocks_mult,
                                       unsigned int *blocks_mult_sum,
-                                      float *g_left, float *g_right,
+                                      NumericT *g_left, NumericT *g_right,
                                       unsigned int *g_left_count,
                                       unsigned int *g_right_count,
-                                      float *g_lambda, unsigned int *g_pos,
-                                      float precision
+                                      NumericT *g_lambda, unsigned int *g_pos,
+                                      NumericT precision
                                      )
       {
         const unsigned int tid = threadIdx.x;
 
           // left and right limits of interval
-          __shared__  float  s_left[2 * MAX_THREADS_BLOCK];
-          __shared__  float  s_right[2 * MAX_THREADS_BLOCK];
+          __shared__  NumericT  s_left[2 * MAX_THREADS_BLOCK];
+          __shared__  NumericT  s_right[2 * MAX_THREADS_BLOCK];
 
           // number of eigenvalues smaller than interval limits
           __shared__  unsigned int  s_left_count[2 * MAX_THREADS_BLOCK];
@@ -89,12 +90,12 @@ namespace viennacl
           __shared__  unsigned int  c_block_offset_output;
 
           // midpoint of currently active interval of the thread
-          float mid = 0.0f;
+          NumericT mid = 0.0f;
           // number of eigenvalues smaller than \a mid
           unsigned int  mid_count = 0;
           // current interval parameter
-          float  left = 0.0f;
-          float  right = 0.0f;
+          NumericT  left = 0.0f;
+          NumericT  right = 0.0f;
           unsigned int  left_count = 0;
           unsigned int  right_count = 0;
           // helper for compaction, keep track which threads have a second child
@@ -130,15 +131,10 @@ namespace viennacl
           // read data into shared memory
           if (tid < num_threads_active)
           {
-
               s_left[tid]  = g_left[c_block_start + tid];
               s_right[tid] = g_right[c_block_start + tid];
               s_left_count[tid]  = g_left_count[c_block_start + tid];
-              s_right_count[tid] = g_right_count[c_block_start + tid];
-             // printf("1: tid = %u s_l = %10.8f \t s_r = %10.8f \t s_l_c = %u \t s_r_c = %u \t c_block_start + tid = %u\n", 
-               // tid, s_left[tid], s_right[tid], s_left_count[tid], s_right_count[tid], c_block_start + tid);       // selbst hinzugefuegt
-
-              
+              s_right_count[tid] = g_right_count[c_block_start + tid];              
           }
        
           __syncthreads();

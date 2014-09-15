@@ -17,11 +17,12 @@ namespace viennacl
     const std::string BISECT_KERNEL_LARGE_ONE_INTERVALS  = "bisectKernelLarge_OneIntervals";
     const std::string BISECT_KERNEL_LARGE_MULT_INTERVALS = "bisectKernelLarge_MultIntervals";
 
-    void bisectSmall(const viennacl::linalg::detail::InputData &input,
-                             viennacl::linalg::detail::ResultDataSmall &result,
+    template<typename NumericT>
+    void bisectSmall(const viennacl::linalg::detail::InputData<NumericT> &input,
+                             viennacl::linalg::detail::ResultDataSmall<NumericT> &result,
                              const unsigned int mat_size,
-                             const float lg, const float ug,
-                             const float precision)
+                             const NumericT lg, const NumericT ug,
+                             const NumericT precision)
         {
           viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(input.g_a).context());
           viennacl::linalg::opencl::kernels::bisect_kernel_large<float>::init(ctx);
@@ -46,11 +47,12 @@ namespace viennacl
 
         }
 
-    void bisectLarge(const viennacl::linalg::detail::InputData &input,
-                            viennacl::linalg::detail::ResultDataLarge &result,
+    template<typename NumericT>
+    void bisectLarge(const viennacl::linalg::detail::InputData<NumericT> &input,
+                            viennacl::linalg::detail::ResultDataLarge<NumericT> &result,
                             const unsigned int mat_size,
-                            const float lg, const float ug,
-                            const float precision)
+                            const NumericT lg, const NumericT ug,
+                            const NumericT precision)
         {
           viennacl::ocl::context & ctx = const_cast<viennacl::ocl::context &>(viennacl::traits::opencl_handle(input.g_a).context());
           viennacl::linalg::opencl::kernels::bisect_kernel_large<float>::init(ctx);
@@ -82,11 +84,11 @@ namespace viennacl
 
         }
 
-
-    void bisectLargeOneIntervals(const viennacl::linalg::detail::InputData &input,
-                                        viennacl::linalg::detail::ResultDataLarge &result,
+    template<typename NumericT>
+    void bisectLargeOneIntervals(const viennacl::linalg::detail::InputData<NumericT> &input,
+                                        viennacl::linalg::detail::ResultDataLarge<NumericT> &result,
                                         const unsigned int mat_size,
-                                        const float precision)
+                                        const NumericT precision)
         {
           unsigned int num_one_intervals = result.g_num_one;
           unsigned int num_blocks = viennacl::linalg::detail::getNumBlocksLinear(num_one_intervals, MAX_THREADS_BLOCK);
@@ -110,10 +112,11 @@ namespace viennacl
         }
 
 
-    void bisectLargeMultIntervals(const viennacl::linalg::detail::InputData &input,
-                                         viennacl::linalg::detail::ResultDataLarge &result,
+    template<typename NumericT>
+    void bisectLargeMultIntervals(const viennacl::linalg::detail::InputData<NumericT> &input,
+                                         viennacl::linalg::detail::ResultDataLarge<NumericT> &result,
                                          const unsigned int mat_size,
-                                         const float precision)
+                                         const NumericT precision)
         {
           unsigned int  num_blocks_mult = result.g_num_blocks_mult;
 

@@ -35,7 +35,7 @@
 
 #define EPS 10.0e-4
 
-
+typedef float NumericT;
 ////////////////////////////////////////////////////////////////////////////////
 // declaration, forward
 bool runTest(int argc, char **argv);
@@ -43,7 +43,7 @@ bool runTest(int argc, char **argv);
 
 
 void
-initInputData(std::vector<float> &diagonal, std::vector<float> &superdiagonal, const unsigned int mat_size)
+initInputData(std::vector<NumericT> &diagonal, std::vector<NumericT> &superdiagonal, const unsigned int mat_size)
 {
  
   srand(278217421);
@@ -55,9 +55,9 @@ initInputData(std::vector<float> &diagonal, std::vector<float> &superdiagonal, c
     // Initialize diagonal and superdiagonal elements with random values
     for (unsigned int i = 0; i < mat_size; ++i)
     {
-        diagonal[i] = (float)(2.0 * (((double)rand()
+        diagonal[i] = (NumericT)(2.0 * (((double)rand()
                                      / (double) RAND_MAX) - 0.5));
-        superdiagonal[i] = (float)(2.0 * (((double)rand()
+        superdiagonal[i] = (NumericT)(2.0 * (((double)rand()
                                      / (double) RAND_MAX) - 0.5));
     }
   }
@@ -68,8 +68,8 @@ initInputData(std::vector<float> &diagonal, std::vector<float> &superdiagonal, c
     // This will cause in many multiple eigenvalues.
     for(unsigned int i = 0; i < mat_size; ++i)
     {
-       diagonal[i] = ((float)(i % 8)) - 4.5f;
-       superdiagonal[i] = ((float)(i % 5)) - 4.5f;
+       diagonal[i] = ((NumericT)(i % 8)) - 4.5f;
+       superdiagonal[i] = ((NumericT)(i % 5)) - 4.5f;
     }
   }
   // the first element of s is used as padding on the device (thus the
@@ -105,9 +105,9 @@ runTest(int argc, char **argv)
 
     unsigned int mat_size = 520;
 
-    std::vector<float> diagonal(mat_size);
-    std::vector<float> superdiagonal(mat_size);
-    std::vector<float> eigenvalues_bisect(mat_size);
+    std::vector<NumericT> diagonal(mat_size);
+    std::vector<NumericT> superdiagonal(mat_size);
+    std::vector<NumericT> eigenvalues_bisect(mat_size);
 
     // -------------Initialize data-------------------
     // Fill the diagonal and superdiagonal elements of the vector
@@ -127,9 +127,9 @@ runTest(int argc, char **argv)
     // ---------------Check the results---------------
     // The results of the bisection algorithm will be checked with the tql2 algorithm
     // Initialize Data for tql2 algorithm
-    viennacl::matrix<float, viennacl::row_major> Q = viennacl::identity_matrix<float>(mat_size);
-    std::vector<float> diagonal_tql(mat_size);
-    std::vector<float> superdiagonal_tql(mat_size);
+    viennacl::matrix<NumericT, viennacl::row_major> Q = viennacl::identity_matrix<NumericT>(mat_size);
+    std::vector<NumericT> diagonal_tql(mat_size);
+    std::vector<NumericT> superdiagonal_tql(mat_size);
     diagonal_tql = diagonal;
     superdiagonal_tql = superdiagonal;
 
