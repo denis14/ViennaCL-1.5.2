@@ -122,7 +122,7 @@ namespace viennacl
         NumericT t0 = abs(right - left);
         NumericT t1 = max(abs(left), abs(right)) * precision;
 
-        if (t0 <= max(static_cast<NumericT>MIN_ABS_INTERVAL, t1))
+        if (t0 <= max(static_cast<NumericT>(MIN_ABS_INTERVAL), t1))
         {
             // compute mid point
             NumericT lambda = computeMidpoint(left, right);
