@@ -81,7 +81,7 @@ namespace viennacl
 
           // copy data from intervals that contained more than one eigenvalue after
           // the first processing step
-          std::vector<float> lambda_mult(mat_size);
+          std::vector<NumericT> lambda_mult(mat_size);
           viennacl::copy(result.g_lambda_mult, lambda_mult);
 
           std::vector<unsigned int> pos_mult(mat_size);
@@ -96,8 +96,8 @@ namespace viennacl
 
           // copy data for intervals that contained one eigenvalue after the first
           // processing step
-          std::vector<float> left_one(mat_size);
-          std::vector<float> right_one(mat_size);
+          std::vector<NumericT> left_one(mat_size);
+          std::vector<NumericT> right_one(mat_size);
           std::vector<unsigned int> pos_one(mat_size);
 
           viennacl::copy(result.g_left_one, left_one);

@@ -47,8 +47,8 @@ namespace viennacl
       void
       computeEigenvaluesSmallMatrix(const InputData<NumericT> &input, ResultDataSmall<NumericT> &result,
                                     const unsigned int mat_size,
-                                    const NumericT lg, const float ug,
-                                    const float precision)
+                                    const NumericT lg, const NumericT ug,
+                                    const NumericT precision)
       {
         viennacl::linalg::detail::bisectSmall( input, result, mat_size, lg, ug, precision);
       }
@@ -66,7 +66,7 @@ namespace viennacl
                                const unsigned int mat_size)
       {
         // copy data back to host
-        std::vector<float> left(mat_size);
+        std::vector<NumericT> left(mat_size);
         std::vector<unsigned int> left_count(mat_size);
 
         viennacl::copy(result.vcl_g_left, left);

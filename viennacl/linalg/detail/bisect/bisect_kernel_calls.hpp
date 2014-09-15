@@ -52,9 +52,9 @@ namespace viennacl
     {
      template<typename NumericT>
      void bisectSmall(const InputData<NumericT> &input, ResultDataSmall<NumericT> &result,
-                        const unsigned int mat_size,
-                        const NumericT lg, const float ug,
-                        const float precision)
+                      const unsigned int mat_size,
+                      const NumericT lg, const NumericT ug,
+                      const NumericT precision)
       {
         switch (viennacl::traits::handle(input.g_a).get_active_handle_id())
         {
