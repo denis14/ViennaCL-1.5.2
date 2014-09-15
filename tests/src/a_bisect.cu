@@ -35,7 +35,7 @@
 
 #define EPS 10.0e-4
 
-typedef float NumericT;
+typedef double NumericT;
 ////////////////////////////////////////////////////////////////////////////////
 // declaration, forward
 bool runTest(int argc, char **argv);
