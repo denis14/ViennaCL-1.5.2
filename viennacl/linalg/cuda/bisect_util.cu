@@ -70,6 +70,7 @@ namespace viennacl
     //! @param left   left / lower limit of interval
     //! @param right  right / upper limit of interval
     ////////////////////////////////////////////////////////////////////////////////
+    template<typename NumericT>
     __device__
     inline NumericT
     computeMidpoint(const NumericT left, const NumericT right)
