@@ -40,7 +40,7 @@ namespace viennacl
         }
 
         int exp;
-        frexp((float)n, &exp);
+        frexp((NumericT)n, &exp);
         return (1 << (exp - 1));
     }
 
@@ -60,7 +60,7 @@ namespace viennacl
         }
 
         int exp;
-        frexp((float)n, &exp);
+        frexp((NumericT)n, &exp);
         return (1 << exp);
     }
 
@@ -71,11 +71,11 @@ namespace viennacl
     //! @param right  right / upper limit of interval
     ////////////////////////////////////////////////////////////////////////////////
     __device__
-    inline float
-    computeMidpoint(const float left, const float right)
+    inline NumericT
+    computeMidpoint(const NumericT left, const NumericT right)
     {
 
-        float mid;
+        NumericT mid;
 
         if (viennacl::linalg::detail::sign_f(left) == viennacl::linalg::detail::sign_f(right))
         {
@@ -104,27 +104,27 @@ namespace viennacl
     //! @param  right_count  eigenvalues less than \a right
     //! @param  precision  desired precision for eigenvalues
     ////////////////////////////////////////////////////////////////////////////////
-    template<class S, class T>
+    template<class S, class T, class NumericT>
     __device__
     void
     storeInterval(unsigned int addr,
-                  float *s_left, float *s_right,
+                  NumericT *s_left, NumericT *s_right,
                   T *s_left_count, T *s_right_count,
-                  float left, float right,
+                  NumericT left, NumericT right,
                   S left_count, S right_count,
-                  float precision)
+                  NumericT precision)
     {
         s_left_count[addr] = left_count;
         s_right_count[addr] = right_count;
 
         // check if interval converged
-        float t0 = abs(right - left);
-        float t1 = max(abs(left), abs(right)) * precision;
+        NumericT t0 = abs(right - left);
+        NumericT t1 = max(abs(left), abs(right)) * precision;
 
-        if (t0 <= max((float)MIN_ABS_INTERVAL, t1))
+        if (t0 <= max(static_cast<NumericT>MIN_ABS_INTERVAL, t1))
         {
             // compute mid point
-            float lambda = computeMidpoint(left, right);
+            NumericT lambda = computeMidpoint(left, right);
 
             // mark as converged
             s_left[addr] = lambda;
@@ -157,18 +157,19 @@ namespace viennacl
     //! @param  converged  flag if the current thread is already converged (that
     //!         is count does not have to be computed)
     ////////////////////////////////////////////////////////////////////////////////
+    template<typename NumericT>
     __device__
     inline unsigned int
-    computeNumSmallerEigenvals(const float *g_d, const float *g_s, const unsigned int n,
-                               const float x,
+    computeNumSmallerEigenvals(const NumericT *g_d, const NumericT *g_s, const unsigned int n,
+                               const NumericT x,
                                const unsigned int tid,
                                const unsigned int num_intervals_active,
-                               float *s_d, float *s_s,
+                               NumericT *s_d, NumericT *s_s,
                                unsigned int converged
                               )
     {
 
-        float  delta = 1.0f;
+        NumericT  delta = 1.0f;
         unsigned int count = 0;
 
         __syncthreads();
@@ -216,17 +217,18 @@ namespace viennacl
     //! @param  converged  flag if the current thread is already converged (that
     //!         is count does not have to be computed)
     ////////////////////////////////////////////////////////////////////////////////
+    template<typename NumericT>
     __device__
     inline unsigned int
-    computeNumSmallerEigenvalsLarge(const float *g_d, const float *g_s, const unsigned int n,
-                                    const float x,
+    computeNumSmallerEigenvalsLarge(const NumericT *g_d, const NumericT *g_s, const unsigned int n,
+                                    const NumericT x,
                                     const unsigned int tid,
                                     const unsigned int num_intervals_active,
-                                    float *s_d, float *s_s,
+                                    NumericT *s_d, NumericT *s_s,
                                     unsigned int converged
                                    )
     {
-        float  delta = 1.0f;
+        NumericT  delta = 1.0f;
         unsigned int count = 0;
 
         unsigned int rem = n;
@@ -293,18 +295,18 @@ namespace viennacl
     //!                                thread generated two child intervals
     //! @is_active_interval  mark is thread has a second non-empty child interval
     ////////////////////////////////////////////////////////////////////////////////
-    template<class S, class T>
+    template<class S, class T, class NumericT>
     __device__
     void
     storeNonEmptyIntervals(unsigned int addr,
                            const unsigned int num_threads_active,
-                           float  *s_left, float *s_right,
+                           NumericT  *s_left, NumericT *s_right,
                            T  *s_left_count, T *s_right_count,
-                           float left, float mid, float right,
+                           NumericT left, NumericT mid, NumericT right,
                            const S left_count,
                            const S mid_count,
                            const S right_count,
-                           float precision,
+                           NumericT precision,
                            unsigned int &compact_second_chunk,
                            T *s_compaction_list_exc,
                            unsigned int &is_active_second)
@@ -427,12 +429,12 @@ namespace viennacl
     //! @param  num_threads_active  number of active threads / intervals
     //! @is_active_interval  mark is thread has a second non-empty child interval
     ///////////////////////////////////////////////////////////////////////////////
-    template<class T>
+    template<class T, class NumericT>
     __device__
     void
-    compactIntervals(float *s_left, float *s_right,
+    compactIntervals(NumericT *s_left, NumericT *s_right,
                      T *s_left_count, T *s_right_count,
-                     float mid, float right,
+                     NumericT mid, NumericT right,
                      unsigned int mid_count, unsigned int right_count,
                      T *s_compaction_list,
                      unsigned int num_threads_active,
@@ -452,12 +454,12 @@ namespace viennacl
         }
     }
 
-    template<class T, class S>
+    template<class T, class S, class NumericT>
     __device__
     void
-    storeIntervalConverged(float *s_left, float *s_right,
+    storeIntervalConverged(NumericT *s_left, NumericT *s_right,
                            T *s_left_count, T *s_right_count,
-                           float &left, float &mid, float &right,
+                           NumericT &left, NumericT &mid, NumericT &right,
                            S &left_count, S &mid_count, S &right_count,
                            T *s_compaction_list_exc,
                            unsigned int &compact_second_chunk,
@@ -519,16 +521,16 @@ namespace viennacl
     //! @param  all_threads_converged  shared memory flag if all threads are
     //!                                 converged
     ///////////////////////////////////////////////////////////////////////////////
-    template<class T>
+    template<class T, class NumericT>
     __device__
     void
     subdivideActiveInterval(const unsigned int tid,
-                            float *s_left, float *s_right,
+                            NumericT *s_left, NumericT *s_right,
                             T *s_left_count, T *s_right_count,
                             const unsigned int num_threads_active,
-                            float &left, float &right,
+                            NumericT &left, NumericT &right,
                             unsigned int &left_count, unsigned int &right_count,
-                            float &mid, unsigned int &all_threads_converged)
+                            NumericT &mid, unsigned int &all_threads_converged)
     {
         // for all active threads
         if (tid < num_threads_active)
