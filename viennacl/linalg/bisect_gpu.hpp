@@ -48,7 +48,6 @@ namespace viennacl
                                         precision);
 
           // get the result from the device and do some sanity checks,
-          // save the result
           viennacl::linalg::detail::processResultSmallMatrix(result, mat_size);
           eigenvalues = result.std_eigenvalues;
           bCompareResult = true;
@@ -64,8 +63,7 @@ namespace viennacl
                                         lg, ug, precision);
 
 
-           // get the result from the device and do some sanity checks
-          // save the result if user specified matrix size
+          // get the result from the device and do some sanity checks
           bCompareResult = viennacl::linalg::detail::processResultDataLargeMatrix(result, mat_size);
 
           eigenvalues = result.std_eigenvalues;

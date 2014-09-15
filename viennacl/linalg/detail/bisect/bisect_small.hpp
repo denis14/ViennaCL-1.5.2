@@ -49,7 +49,7 @@ namespace viennacl
                                     const float lg, const float ug,
                                     const float precision)
       {
-        viennacl::linalg::detail::bisect_small( input, result, mat_size, lg, ug, precision);
+        viennacl::linalg::detail::bisectSmall( input, result, mat_size, lg, ug, precision);
       }
 
 

@@ -16,7 +16,7 @@ namespace viennacl
   {
     namespace cuda
     {
-      void bisect_small_cuda(const viennacl::linalg::detail::InputData &input, viennacl::linalg::detail::ResultDataSmall &result,
+      void bisectSmall(const viennacl::linalg::detail::InputData &input, viennacl::linalg::detail::ResultDataSmall &result,
                              const unsigned int mat_size,
                              const float lg, const float ug,
                              const float precision)
@@ -27,8 +27,8 @@ namespace viennacl
         dim3  threads(MAX_THREADS_BLOCK_SMALL_MATRIX, 1, 1);
 
         bisectKernelSmall<<< blocks, threads >>>(
-          viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_a),
-          viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_b) + 1,
+          viennacl::linalg::cuda::detail::cuda_arg<float>(input.g_a),
+          viennacl::linalg::cuda::detail::cuda_arg<float>(input.g_b) + 1,
           mat_size,
           viennacl::linalg::cuda::detail::cuda_arg<float>(result.vcl_g_left),
           viennacl::linalg::cuda::detail::cuda_arg<float>(result.vcl_g_right),
@@ -41,7 +41,7 @@ namespace viennacl
       }
 
 
-      void bisectLargeCuda(const viennacl::linalg::detail::InputData &input, viennacl::linalg::detail::ResultDataLarge &result,
+      void bisectLarge(const viennacl::linalg::detail::InputData &input, viennacl::linalg::detail::ResultDataLarge &result,
                          const unsigned int mat_size,
                          const float lg, const float ug,
                          const float precision)
@@ -51,8 +51,8 @@ namespace viennacl
         dim3  threads(MAX_THREADS_BLOCK, 1, 1);
         std::cout << "Start bisectKernelLarge" << std::endl;
         bisectKernelLarge<<< blocks, threads >>>
-          (viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_a),
-           viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_b) + 1,
+          (viennacl::linalg::cuda::detail::cuda_arg<float>(input.g_a),
+           viennacl::linalg::cuda::detail::cuda_arg<float>(input.g_b) + 1,
            mat_size,
            lg, ug, 0, mat_size, precision,
            viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_num_one),
@@ -73,7 +73,7 @@ namespace viennacl
 
       // compute eigenvalues for intervals that contained only one eigenvalue
       // after the first processing step
-      void bisectLarge_OneIntervalsCuda(const viennacl::linalg::detail::InputData &input, viennacl::linalg::detail::ResultDataLarge &result,
+      void bisectLarge_OneIntervals(const viennacl::linalg::detail::InputData &input, viennacl::linalg::detail::ResultDataLarge &result,
                          const unsigned int mat_size,
                          const float precision)
        {
@@ -87,8 +87,8 @@ namespace viennacl
 
          std::cout << "Start bisectKernelLarge_OneIntervals" << std::endl;
         bisectKernelLarge_OneIntervals<<< grid_onei , threads_onei >>>
-          (viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_a),
-           viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_b) + 1,
+          (viennacl::linalg::cuda::detail::cuda_arg<float>(input.g_a),
+           viennacl::linalg::cuda::detail::cuda_arg<float>(input.g_b) + 1,
            mat_size, num_one_intervals,
            viennacl::linalg::cuda::detail::cuda_arg<float>(result.g_left_one),
            viennacl::linalg::cuda::detail::cuda_arg<float>(result.g_right_one),
@@ -101,7 +101,7 @@ namespace viennacl
 
       // process intervals that contained more than one eigenvalue after
       // the first processing step
-      void bisectLarge_MultIntervalsCuda(const viennacl::linalg::detail::InputData &input, viennacl::linalg::detail::ResultDataLarge &result,
+      void bisectLarge_MultIntervals(const viennacl::linalg::detail::InputData &input, viennacl::linalg::detail::ResultDataLarge &result,
                          const unsigned int mat_size,
                          const float precision)
        {
@@ -116,8 +116,8 @@ namespace viennacl
 
           std::cout << "Start bisectKernelLarge_MultIntervals " << std::endl;
           bisectKernelLarge_MultIntervals<<< grid_mult, threads_mult >>>
-            (viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_a),
-             viennacl::linalg::cuda::detail::cuda_arg<float>(input.vcl_b) + 1,
+            (viennacl::linalg::cuda::detail::cuda_arg<float>(input.g_a),
+             viennacl::linalg::cuda::detail::cuda_arg<float>(input.g_b) + 1,
              mat_size,
              viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_blocks_mult),
              viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_blocks_mult_sum),

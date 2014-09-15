@@ -37,9 +37,9 @@ namespace viennacl
           //! host side representation superdiagonal
           std::vector<float> std_b;
           //! device side representation of diagonal
-          viennacl::vector<float> vcl_a;
+          viennacl::vector<float> g_a;
           //!device side representation of superdiagonal
-          viennacl::vector<float> vcl_b;
+          viennacl::vector<float> g_b;
 
           ////////////////////////////////////////////////////////////////////////////////
           //! Initialize the input data to the algorithm
@@ -48,13 +48,13 @@ namespace viennacl
           ////////////////////////////////////////////////////////////////////////////////
 
           InputData(std::vector<float> diagonal, std::vector<float> superdiagonal, const unsigned int sz) :
-                      std_a(sz), std_b(sz), vcl_a(sz), vcl_b(sz)
+                      std_a(sz), std_b(sz), g_a(sz), g_b(sz)
           {
            std_a = diagonal;
            std_b = superdiagonal;
 
-           viennacl::copy(std_b, vcl_b);
-           viennacl::copy(std_a, vcl_a);
+           viennacl::copy(std_b, g_b);
+           viennacl::copy(std_a, g_a);
         }
       };
 
