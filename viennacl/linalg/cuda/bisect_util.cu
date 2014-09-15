@@ -60,7 +60,7 @@ namespace viennacl
         }
 
         int exp;
-        frexp((NumericT)n, &exp);
+        frexp((float)n, &exp);
         return (1 << exp);
     }
 
