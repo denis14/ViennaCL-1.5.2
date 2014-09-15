@@ -15,10 +15,10 @@
 #define _BISECT_KERNEL_SMALL_H_
 
 // includes, project
-#include "viennacl/linalg/eigenvalues/config.hpp"
-#include "viennacl/linalg/eigenvalues/util.hpp"
+#include "viennacl/linalg/detail/bisect/config.hpp"
+#include "viennacl/linalg/detail/bisect/util.hpp"
 // additional kernel
-#include "viennacl/linalg/eigenvalues/bisect_util.cu"
+#include "viennacl/linalg/cuda/bisect_util.cu"
 
 namespace viennacl
 {
@@ -39,11 +39,10 @@ namespace viennacl
       //! @param  lu_eig_count  number of eigenvalues that are smaller than \a lu
       //! @param  epsilon  desired accuracy of eigenvalues to compute
       ////////////////////////////////////////////////////////////////////////////////
-      template <typename T>
       __global__
       void
-      bisectKernelSmall(float *g_d, float *g_s, const unsigned int n,
-                   T * g_left, float *g_right,
+      bisectKernelSmall(const float *g_d, const float *g_s, const unsigned int n,
+                   float * g_left, float *g_right,
                    unsigned int *g_left_count, unsigned int *g_right_count,
                    const float lg, const float ug,
                    const unsigned int lg_eig_count, const unsigned int ug_eig_count,

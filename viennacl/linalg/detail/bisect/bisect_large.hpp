@@ -18,12 +18,12 @@
 #include <stdio.h>
 
 // includes, project
-#include "config.hpp"
-#include "structs.hpp"
-#include "util.hpp"
-#include "matlab.hpp"
+#include "viennacl/linalg/detail/bisect/config.hpp"
+#include "viennacl/linalg/detail/bisect/structs.hpp"
 
-#include "viennacl/linalg/eigenvalues/bisect_kernel_calls.hpp"
+
+
+#include "viennacl/linalg/detail/bisect/bisect_kernel_calls.hpp"
 
 namespace viennacl
 {
@@ -38,7 +38,6 @@ namespace viennacl
     //! @param  precision  desired precision of eigenvalues
     //! @param  lg  lower limit of Gerschgorin interval
     //! @param  ug  upper limit of Gerschgorin interval
-    //! @param  iterations  number of iterations (for timing)
     ////////////////////////////////////////////////////////////////////////////////
     void
     computeEigenvaluesLargeMatrix(InputData &input, ResultDataLarge &result,
@@ -61,15 +60,12 @@ namespace viennacl
     ////////////////////////////////////////////////////////////////////////////////
     //! Process the result, that is obtain result from device and do simple sanity
     //! checking
-    //! @param  input   handles to input data
     //! @param  result  handles to result data
     //! @param  mat_size  matrix size
-    //! @param  filename  output filename
     ////////////////////////////////////////////////////////////////////////////////
     bool
-    processResultDataLargeMatrix(const InputData &input, ResultDataLarge &result,
-                                 const unsigned int mat_size,
-                                 const char *filename)
+    processResultDataLargeMatrix(ResultDataLarge &result,
+                                 const unsigned int mat_size)
     {
         bool bCompareResult = true;
         std::cout << "Matrix size: " << mat_size << std::endl;
@@ -120,10 +116,6 @@ namespace viennacl
         {
             result.std_eigenvalues[pos_one[i] - 1] = left_one[i];
         }
-
-        // store result
-        //writeTridiagSymMatlab(filename, input.vcl_a, input.vcl_b, result.std_eigenvalues, mat_size);
-        // getLastCudaError( sdkWriteFilef( filename, eigenvals, mat_size, 0.0f));
 
         return bCompareResult;
 

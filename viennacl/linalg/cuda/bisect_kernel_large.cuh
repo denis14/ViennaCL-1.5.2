@@ -16,10 +16,10 @@
 #define _BISECT_KERNEL_LARGE_H_
 
 // includes, project
-#include "viennacl/linalg/eigenvalues/config.hpp"
-#include "viennacl/linalg/eigenvalues/util.hpp"
+#include "viennacl/linalg/detail/bisect/config.hpp"
+#include "viennacl/linalg/detail/bisect/util.hpp"
 // additional kernel
-#include "viennacl/linalg/eigenvalues/cuda/bisect_util.cu"
+#include "viennacl/linalg/cuda/bisect_util.cu"
 
 // declaration, forward
 
@@ -519,7 +519,7 @@ namespace viennacl
       ////////////////////////////////////////////////////////////////////////////////
       __global__
       void
-      bisectKernelLarge(float *g_d, float *g_s, const unsigned int n,
+      bisectKernelLarge(const float *g_d, const float *g_s, const unsigned int n,
                         const float lg, const float ug,
                         const unsigned int lg_eig_count,
                         const unsigned int ug_eig_count,

@@ -34,14 +34,14 @@
 #include "viennacl/traits/start.hpp"
 #include "viennacl/traits/handle.hpp"
 #include "viennacl/traits/stride.hpp"
-//#include "viennacl/linalg/host_based/matrix_operations.hpp"
+
 
 #ifdef VIENNACL_WITH_OPENCL
-   #include "viennacl/linalg/eigenvalues/opencl/kernel_calls.hpp"
+   #include "viennacl/linalg/opencl/bisect_kernel_calls.hpp"
 #endif
 
 #ifdef VIENNACL_WITH_CUDA
-  #include "viennacl/linalg/eigenvalues/cuda/kernel_calls.hpp"
+  #include "viennacl/linalg/cuda/bisect_kernel_calls.hpp"
 #endif
 
 namespace viennacl
@@ -49,7 +49,7 @@ namespace viennacl
   namespace linalg
   {
 
-   void bisect_small(InputData &input, ResultDataSmall &result,
+   void bisect_small(const InputData &input, ResultDataSmall &result,
                       const unsigned int mat_size,
                       const float lg, const float ug,
                       const float precision)
@@ -62,7 +62,6 @@ namespace viennacl
                                                mat_size,
                                                lg,ug,
                                                precision);
-        //  std::cout << "Hallo!" << std::endl;
           break;
 #endif
 #ifdef VIENNACL_WITH_CUDA
@@ -84,7 +83,7 @@ namespace viennacl
 
 
 
-   void bisectLarge(InputData &input, ResultDataLarge &result,
+   void bisectLarge(const InputData &input, ResultDataLarge &result,
                       const unsigned int mat_size,
                       const float lg, const float ug,
                       const float precision)
@@ -119,7 +118,7 @@ namespace viennacl
 
 
 
-   void bisectLarge_OneIntervals(InputData &input, ResultDataLarge &result,
+   void bisectLarge_OneIntervals(const InputData &input, ResultDataLarge &result,
                       const unsigned int mat_size,
                       const float precision)
     {
@@ -151,7 +150,7 @@ namespace viennacl
 
 
 
-   void bisectLarge_MultIntervals(InputData &input, ResultDataLarge &result,
+   void bisectLarge_MultIntervals(const InputData &input, ResultDataLarge &result,
                       const unsigned int mat_size,
                       const float precision)
     {

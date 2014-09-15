@@ -17,10 +17,10 @@
 #define _BISECT_KERNEL_LARGE_MULTI_H_
 
 // includes, project
-#include "viennacl/linalg/eigenvalues/config.hpp"
-#include "viennacl/linalg/eigenvalues/util.hpp"
+#include "viennacl/linalg/detail/bisect/config.hpp"
+#include "viennacl/linalg/detail/bisect/util.hpp"
 // additional kernel
-#include "viennacl/linalg/eigenvalues/cuda/bisect_util.cu"
+#include "viennacl/linalg/cuda/bisect_util.cu"
 
 namespace viennacl
 {
@@ -49,7 +49,7 @@ namespace viennacl
       ////////////////////////////////////////////////////////////////////////////////
       __global__
       void
-      bisectKernelLarge_MultIntervals(float *g_d, float *g_s, const unsigned int n,
+      bisectKernelLarge_MultIntervals(const float *g_d, const float *g_s, const unsigned int n,
                                       unsigned int *blocks_mult,
                                       unsigned int *blocks_mult_sum,
                                       float *g_left, float *g_right,

@@ -4,10 +4,10 @@
 #define _BISECT_CUDA_KERNEL_CALLS_H_
 
 // includes, kernels
-#include "viennacl/linalg/eigenvalues/cuda/bisect_kernel_small.cuh"
-#include "viennacl/linalg/eigenvalues/cuda/bisect_kernel_large.cuh"
-#include "viennacl/linalg/eigenvalues/cuda/bisect_kernel_large_onei.cuh"
-#include "viennacl/linalg/eigenvalues/cuda/bisect_kernel_large_multi.cuh"
+#include "viennacl/linalg/cuda/bisect_kernel_small.cuh"
+#include "viennacl/linalg/cuda/bisect_kernel_large.cuh"
+#include "viennacl/linalg/cuda/bisect_kernel_large_onei.cuh"
+#include "viennacl/linalg/cuda/bisect_kernel_large_multi.cuh"
 
 
 namespace viennacl
@@ -16,11 +16,10 @@ namespace viennacl
   {
     namespace cuda
     {
-
-      void bisect_small_cuda(InputData &input, ResultDataSmall &result,
-                         const unsigned int mat_size,
-                         const float lg, const float ug,
-                         const float precision)
+      void bisect_small_cuda(const InputData &input, ResultDataSmall &result,
+                             const unsigned int mat_size,
+                             const float lg, const float ug,
+                             const float precision)
       {
 
 
@@ -37,14 +36,12 @@ namespace viennacl
           viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.vcl_g_right_count),
           lg, ug, 0, mat_size,
           precision
-         );
-
-        cudaDeviceSynchronize();
+          );
         viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed");
       }
 
 
-      void bisectLargeCuda(InputData &input, ResultDataLarge &result,
+      void bisectLargeCuda(const InputData &input, ResultDataLarge &result,
                          const unsigned int mat_size,
                          const float lg, const float ug,
                          const float precision)
@@ -69,15 +66,14 @@ namespace viennacl
            viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_right_count_mult),
            viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_blocks_mult),
            viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_blocks_mult_sum)
-          );
-
+           );
         viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("Kernel launch failed.");
-        cudaDeviceSynchronize();
-
       }
 
 
-      void bisectLarge_OneIntervalsCuda(InputData &input, ResultDataLarge &result,
+      // compute eigenvalues for intervals that contained only one eigenvalue
+      // after the first processing step
+      void bisectLarge_OneIntervalsCuda(const InputData &input, ResultDataLarge &result,
                          const unsigned int mat_size,
                          const float precision)
        {
@@ -88,10 +84,6 @@ namespace viennacl
         grid_onei.x = num_blocks;
         grid_onei.y = 1, grid_onei.z = 1;
         dim3 threads_onei(MAX_THREADS_BLOCK, 1, 1);
-        // use always max number of available threads to better balance load times
-        // for matrix data
-        // compute eigenvalues for intervals that contained only one eigenvalue
-        // after the first processing step
 
          std::cout << "Start bisectKernelLarge_OneIntervals" << std::endl;
         bisectKernelLarge_OneIntervals<<< grid_onei , threads_onei >>>
@@ -102,24 +94,17 @@ namespace viennacl
            viennacl::linalg::cuda::detail::cuda_arg<float>(result.g_right_one),
            viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_pos_one),
            precision
-          );
-
+           );
         viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_OneIntervals() FAILED.");
-        cudaDeviceSynchronize();
       }
 
 
-
-      void bisectLarge_MultIntervalsCuda(InputData &input, ResultDataLarge &result,
+      // process intervals that contained more than one eigenvalue after
+      // the first processing step
+      void bisectLarge_MultIntervalsCuda(const InputData &input, ResultDataLarge &result,
                          const unsigned int mat_size,
                          const float precision)
        {
-
-
-
-          // process intervals that contained more than one eigenvalue after
-          // the first processing step
-
           // get the number of blocks of intervals that contain, in total when
           // each interval contains only one eigenvalue, not more than
           // MAX_THREADS_BLOCK threads
@@ -145,8 +130,6 @@ namespace viennacl
              precision
             );
           viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
-          cudaDeviceSynchronize();
-
       }
     }
   }

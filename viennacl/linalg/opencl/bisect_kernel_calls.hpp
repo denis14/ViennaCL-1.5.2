@@ -4,7 +4,7 @@
 #define _BISECT_OPENCL_KERNEL_CALLS_H_
 
 // includes, project
-#include "viennacl/linalg/eigenvalues/opencl/bisect_kernel_large.hpp"
+#include "viennacl/linalg/opencl/kernels/bisect.hpp"
 
 namespace viennacl
 {
@@ -12,14 +12,12 @@ namespace viennacl
   {
     namespace opencl
     {
-
-
     const std::string BISECT_KERNEL_SMALL = "bisectKernel";
     const std::string BISECT_KERNEL_LARGE = "bisectKernelLarge";
     const std::string BISECT_KERNEL_LARGE_ONE_INTERVALS  = "bisectKernelLarge_OneIntervals";
     const std::string BISECT_KERNEL_LARGE_MULT_INTERVALS = "bisectKernelLarge_MultIntervals";
 
-    void bisect_small_opencl(InputData &input, ResultDataSmall &result,
+    void bisect_small_opencl(const InputData &input, ResultDataSmall &result,
                        const unsigned int mat_size,
                        const float lg, const float ug,
                        const float precision)
@@ -33,7 +31,7 @@ namespace viennacl
 
           viennacl::ocl::enqueue(kernel(
                                         viennacl::traits::opencl_handle(input.vcl_a),
-                                        viennacl::traits::opencl_handle(input.vcl_b),  // +1
+                                        viennacl::traits::opencl_handle(input.vcl_b),
                                         static_cast<cl_uint>(mat_size),
                                         viennacl::traits::opencl_handle(result.vcl_g_left),
                                         viennacl::traits::opencl_handle(result.vcl_g_right),
@@ -48,7 +46,7 @@ namespace viennacl
 
         }
 
-    void bisectLarge_opencl(InputData &input, ResultDataLarge &result,
+    void bisectLarge_opencl(const InputData &input, ResultDataLarge &result,
                        const unsigned int mat_size,
                        const float lg, const float ug,
                        const float precision)
@@ -62,7 +60,7 @@ namespace viennacl
 
           viennacl::ocl::enqueue(kernel(
                                         viennacl::traits::opencl_handle(input.vcl_a),
-                                        viennacl::traits::opencl_handle(input.vcl_b),  // +1
+                                        viennacl::traits::opencl_handle(input.vcl_b),
                                         static_cast<cl_uint>(mat_size),
                                         static_cast<float>(lg),
                                         static_cast<float>(ug),
@@ -85,7 +83,7 @@ namespace viennacl
         }
 
 
-    void bisectLargeOneIntervals_opencl(InputData &input, ResultDataLarge &result,
+    void bisectLargeOneIntervals_opencl(const InputData &input, ResultDataLarge &result,
                        const unsigned int mat_size,
                        const float precision)
         {
@@ -101,7 +99,7 @@ namespace viennacl
 
           viennacl::ocl::enqueue(kernel(
                                         viennacl::traits::opencl_handle(input.vcl_a),
-                                        viennacl::traits::opencl_handle(input.vcl_b),  // will be shifted +1 in kernel
+                                        viennacl::traits::opencl_handle(input.vcl_b),
                                         static_cast<cl_uint>(mat_size),
                                         static_cast<cl_uint>(num_one_intervals),
                                         viennacl::traits::opencl_handle(result.g_left_one),
@@ -113,7 +111,7 @@ namespace viennacl
         }
 
 
-    void bisectLargeMultIntervals_opencl(InputData &input, ResultDataLarge &result,
+    void bisectLargeMultIntervals_opencl(const InputData &input, ResultDataLarge &result,
                        const unsigned int mat_size,
                        const float precision)
         {
@@ -128,7 +126,7 @@ namespace viennacl
 
           viennacl::ocl::enqueue(kernel(
                                         viennacl::traits::opencl_handle(input.vcl_a),
-                                        viennacl::traits::opencl_handle(input.vcl_b),  // will be shifted +1 in kernel
+                                        viennacl::traits::opencl_handle(input.vcl_b),
                                         static_cast<cl_uint>(mat_size),
                                         viennacl::traits::opencl_handle(result.g_blocks_mult),
                                         viennacl::traits::opencl_handle(result.g_blocks_mult_sum),
@@ -141,9 +139,8 @@ namespace viennacl
                                         static_cast<float>(precision)
                                 ));
         }
-
-    }
-  }
-}
+    } // opencl
+  } // linalg
+} // viennacl
 
 #endif

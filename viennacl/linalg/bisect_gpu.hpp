@@ -14,13 +14,10 @@
 #include "viennacl/matrix.hpp"
 
 
-#include "viennacl/linalg/eigenvalues/config.hpp"
-#include "viennacl/linalg/eigenvalues/structs.hpp"
-#include "viennacl/linalg/eigenvalues/matlab.hpp"
-#include "viennacl/linalg/eigenvalues/util.hpp"
-#include "viennacl/linalg/eigenvalues/gerschgorin.hpp"
-#include "viennacl/linalg/eigenvalues/bisect_large.hpp"
-#include "viennacl/linalg/eigenvalues/bisect_small.cu"
+#include "viennacl/linalg/detail/bisect/structs.hpp"
+#include "viennacl/linalg/detail/bisect/gerschgorin.hpp"
+#include "viennacl/linalg/detail/bisect/bisect_large.hpp"
+#include "viennacl/linalg/detail/bisect/bisect_small.hpp"
 
 namespace viennacl
 {
@@ -32,14 +29,12 @@ namespace viennacl
         // flag if the matrix size is due to explicit user request
         // desired precision of eigenvalues
         float  precision = 0.00001;
-        char  *result_file = "eigenvalues.dat";
 
         // set up input
         viennacl::linalg::InputData input(diagonal, superdiagonal, mat_size);
         // compute Gerschgorin interval
         float lg = FLT_MAX;
         float ug = -FLT_MAX;
-        //computeGerschgorin(input.a, input.b + 1, mat_size, lg, ug);
         computeGerschgorin(input.std_a, input.std_b, mat_size, lg, ug);
         printf("Gerschgorin interval: %f / %f\n", lg, ug);
 
@@ -54,7 +49,7 @@ namespace viennacl
 
           // get the result from the device and do some sanity checks,
           // save the result
-          viennacl::linalg::processResultSmallMatrix(input, result, mat_size, result_file);
+          viennacl::linalg::processResultSmallMatrix(result, mat_size);
           eigenvalues = result.std_eigenvalues;
           bCompareResult = true;
         }
@@ -71,7 +66,7 @@ namespace viennacl
 
            // get the result from the device and do some sanity checks
           // save the result if user specified matrix size
-          bCompareResult = viennacl::linalg::processResultDataLargeMatrix(input, result, mat_size, result_file);
+          bCompareResult = viennacl::linalg::processResultDataLargeMatrix(result, mat_size);
 
           eigenvalues = result.std_eigenvalues;
         } //Large end

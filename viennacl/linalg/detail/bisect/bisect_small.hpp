@@ -17,17 +17,13 @@
 #include <string.h>
 #include <math.h>
 #include <float.h>
-#include  <algorithm>
 
 // includes, project
 
-#include "config.hpp"
-#include "structs.hpp"
-#include "matlab.hpp"
+#include "viennacl/linalg/detail/bisect/structs.hpp"
 
 // includes, kernels
-//#include "bisect_kernel_small.cuh"
-#include "bisect_kernel_calls.hpp"
+#include "viennacl/linalg/detail/bisect/bisect_kernel_calls.hpp"
 
 namespace viennacl
 {
@@ -35,51 +31,44 @@ namespace viennacl
   {
     ////////////////////////////////////////////////////////////////////////////////
     //! Determine eigenvalues for matrices smaller than MAX_SMALL_MATRIX
-    //! @param TimingIterations  number of iterations for timing
     //! @param  input  handles to input data of kernel
     //! @param  result handles to result of kernel
     //! @param  mat_size  matrix size
     //! @param  lg  lower limit of Gerschgorin interval
     //! @param  ug  upper limit of Gerschgorin interval
     //! @param  precision  desired precision of eigenvalues
-    //! @param  iterations  number of iterations for timing
     ////////////////////////////////////////////////////////////////////////////////
     void
-    computeEigenvaluesSmallMatrix(InputData &input, ResultDataSmall &result,
+    computeEigenvaluesSmallMatrix(const InputData &input, ResultDataSmall &result,
                                   const unsigned int mat_size,
                                   const float lg, const float ug,
                                   const float precision)
     {
-        bisect_small( input, result, mat_size, lg, ug, precision);
+      bisect_small( input, result, mat_size, lg, ug, precision);
     }
 
 
     ////////////////////////////////////////////////////////////////////////////////
     //! Process the result obtained on the device, that is transfer to host and
     //! perform basic sanity checking
-    //! @param  input  handles to input data
     //! @param  result  handles to result data
     //! @param  mat_size   matrix size
-    //! @param  filename  output filename
     ////////////////////////////////////////////////////////////////////////////////
     void
-    processResultSmallMatrix(const InputData &input, ResultDataSmall &result,
-                             const unsigned int mat_size,
-                             const char *filename)
+    processResultSmallMatrix(ResultDataSmall &result,
+                             const unsigned int mat_size)
     {
-        // copy data back to host
-        std::vector<float> left(mat_size);
-        std::vector<unsigned int> left_count(mat_size);
-          
-        viennacl::copy(result.vcl_g_left, left);
-        viennacl::copy(result.vcl_g_left_count, left_count);
-    
-        for (unsigned int i = 0; i < mat_size; ++i)
-        {
-            result.std_eigenvalues[left_count[i]] = left[i];
-        }
-       // save result in matlab format
-       // writeTridiagSymMatlab(filename, input.a, input.b+1, eigenvalues, mat_size);
+      // copy data back to host
+      std::vector<float> left(mat_size);
+      std::vector<unsigned int> left_count(mat_size);
+
+      viennacl::copy(result.vcl_g_left, left);
+      viennacl::copy(result.vcl_g_left_count, left_count);
+
+      for (unsigned int i = 0; i < mat_size; ++i)
+      {
+          result.std_eigenvalues[left_count[i]] = left[i];
+      }
     }
   }
 }

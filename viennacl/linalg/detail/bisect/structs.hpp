@@ -23,7 +23,6 @@
 
 #include "viennacl/vector.hpp"
 #include "viennacl/matrix.hpp"
-#include "viennacl/linalg/eigenvalues/util.hpp"
 
 namespace viennacl
 {

@@ -18,13 +18,13 @@
 #include <cmath>
 #include <cfloat>
 
-#include "util.hpp"
-
+#include "viennacl/linalg/detail/bisect/util.hpp"
 #include "viennacl/vector.hpp"
-//namespace viennacl
-//{
-  //namespace linalg
-  //{
+
+namespace viennacl
+{
+  namespace linalg
+  {
     ////////////////////////////////////////////////////////////////////////////////
     //! Compute Gerschgorin interval for symmetric, tridiagonal matrix
     //! @param  d  diagonal elements
@@ -35,12 +35,7 @@
     ////////////////////////////////////////////////////////////////////////////////
     void
     computeGerschgorin(std::vector<float> & d, std::vector<float> & s, unsigned int n, float &lg, float &ug)
-    //computeGerschgorin(float *d, float *s, unsigned int n, float &lg, float &ug)
     {
-    /*
-        lg = FLT_MAX;
-        ug = -FLT_MAX;
-    */
         // compute bounds
         for (unsigned int i = 1; i < (n - 1); ++i)
         {
@@ -75,6 +70,6 @@
 
         ug = max(lg, ug);
     }
-//  }
-//}
+  }
+}
 #endif  // _GERSCHGORIN_H_
