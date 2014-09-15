@@ -24,9 +24,10 @@ namespace viennacl
 {
   namespace linalg
   {
-    bool bisect(const std::vector<float> & diagonal, const std::vector<float> & superdiagonal, std::vector<float> & eigenvalues, const unsigned int mat_size)
+    template<typename NumericT>
+    bool
+    bisect(const std::vector<NumericT> & diagonal, const std::vector<NumericT> & superdiagonal, std::vector<NumericT> & eigenvalues, const unsigned int mat_size)
     {
-      typedef float NumericT;
       bool bCompareResult = false;
       // flag if the matrix size is due to explicit user request
       // desired precision of eigenvalues
