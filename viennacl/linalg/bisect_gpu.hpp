@@ -6,14 +6,11 @@
 #include <stdio.h>
 #include <string.h>
 
-// includes, project
-
-
 #include "viennacl/scalar.hpp"
 #include "viennacl/vector.hpp"
 #include "viennacl/matrix.hpp"
 
-
+// includes, project
 #include "viennacl/linalg/detail/bisect/structs.hpp"
 #include "viennacl/linalg/detail/bisect/gerschgorin.hpp"
 #include "viennacl/linalg/detail/bisect/bisect_large.hpp"
@@ -24,6 +21,17 @@ namespace viennacl
 {
   namespace linalg
   {
+
+
+    ///////////////////////////////////////////////////////////////////////////
+    //! @brief bisect           The bisection algorithm computes the eigevalues
+    //!                         of a symmetric tridiagonal matrix.
+    //! @param diagonal         diagonal elements of the matrix
+    //! @param superdiagonal    superdiagonal elements of the matrix
+    //! @param eigenvalues      Vectors with the eigenvalues in ascending order
+    //! @return                 return false if any errors occured
+    ///
+    //! overloaded function template: std::vectors as parameters
     template<typename NumericT>
     bool
     bisect(const std::vector<NumericT> & diagonal, const std::vector<NumericT> & superdiagonal, std::vector<NumericT> & eigenvalues)
@@ -31,7 +39,7 @@ namespace viennacl
       assert(diagonal.size() == superdiagonal.size() &&
              diagonal.size() == eigenvalues.size()   &&
              bool("Input vectors do not have the same sizes!"));
-      bool bCompareResult = false;
+      bool bResult = false;
       // flag if the matrix size is due to explicit user request
       // desired precision of eigenvalues
       NumericT  precision = 0.00001;
@@ -58,7 +66,7 @@ namespace viennacl
         // get the result from the device and do some sanity checks,
         viennacl::linalg::detail::processResultSmallMatrix(result, mat_size);
         eigenvalues = result.std_eigenvalues;
-        bCompareResult = true;
+        bResult = true;
       }
 
       else
@@ -71,14 +79,23 @@ namespace viennacl
                                       lg, ug, precision);
 
         // get the result from the device and do some sanity checks
-        bCompareResult = viennacl::linalg::detail::processResultDataLargeMatrix(result, mat_size);
+        bResult = viennacl::linalg::detail::processResultDataLargeMatrix(result, mat_size);
 
         eigenvalues = result.std_eigenvalues;
       }
-      return bCompareResult;
+      return bResult;
     }
 
 
+    ///////////////////////////////////////////////////////////////////////////
+    //! @brief bisect           The bisection algorithm computes the eigevalues
+    //!                         of a symmetric tridiagonal matrix.
+    //! @param diagonal         diagonal elements of the matrix
+    //! @param superdiagonal    superdiagonal elements of the matrix
+    //! @param eigenvalues      Vectors with the eigenvalues in ascending order
+    //! @return                 return false if any errors occured
+    ///
+    //! overloaded function template: std::vectors as parameters
     template<typename NumericT>
     bool
     bisect(const viennacl::vector<NumericT> & diagonal, const viennacl::vector<NumericT> & superdiagonal, viennacl::vector<NumericT> & eigenvalues)
@@ -86,7 +103,7 @@ namespace viennacl
       assert(diagonal.size() == superdiagonal.size() &&
              diagonal.size() == eigenvalues.size()   &&
              bool("Input vectors do not have the same sizes!"));
-      bool bCompareResult = false;
+      bool bResult = false;
       // flag if the matrix size is due to explicit user request
       // desired precision of eigenvalues
       NumericT  precision = 0.00001;
@@ -113,7 +130,7 @@ namespace viennacl
         // get the result from the device and do some sanity checks,
         viennacl::linalg::detail::processResultSmallMatrix(result, mat_size);
         copy(result.std_eigenvalues, eigenvalues);
-        bCompareResult = true;
+        bResult = true;
       }
 
       else
@@ -126,11 +143,11 @@ namespace viennacl
                                       lg, ug, precision);
 
         // get the result from the device and do some sanity checks
-        bCompareResult = viennacl::linalg::detail::processResultDataLargeMatrix(result, mat_size);
+        bResult = viennacl::linalg::detail::processResultDataLargeMatrix(result, mat_size);
 
         copy(result.std_eigenvalues, eigenvalues);
       }
-      return bCompareResult;
+      return bResult;
     }
   }
 }

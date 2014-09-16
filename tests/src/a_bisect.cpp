@@ -56,7 +56,7 @@ initInputData(std::vector<NumericT> &diagonal, std::vector<NumericT> &superdiago
   bool randomValues = false;
   
   
-  if(randomValues == true)
+  if (randomValues == true)
   {
     // Initialize diagonal and superdiagonal elements with random values
     for (unsigned int i = 0; i < mat_size; ++i)
@@ -67,12 +67,11 @@ initInputData(std::vector<NumericT> &diagonal, std::vector<NumericT> &superdiago
                                      / (double) RAND_MAX) - 0.5));
     }
   }
-  
   else
   { 
     // Initialize diagonal and superdiagonal elements with modulo values
     // This will cause in many multiple eigenvalues.
-    for(unsigned int i = 0; i < mat_size; ++i)
+    for (unsigned int i = 0; i < mat_size; ++i)
     {
        diagonal[i] = ((NumericT)(i % 8)) - 4.5f;
        superdiagonal[i] = ((NumericT)(i % 5)) - 4.5f;
@@ -109,7 +108,7 @@ runTest(int argc, char **argv)
 {
     bool bCompareResult = false;
 
-    unsigned int mat_size = 730;
+    unsigned int mat_size = 520;
 
     std::vector<NumericT> diagonal(mat_size);
     std::vector<NumericT> superdiagonal(mat_size);
@@ -148,9 +147,9 @@ runTest(int argc, char **argv)
     // Compare the results from the bisection algorithm with the results
     // from the tql2 algorithm.
     std::cout << "Start comparison..." << std::endl;
-    for(uint i = 0; i < mat_size; i++)
+    for (uint i = 0; i < mat_size; i++)
     {
-       if(std::abs(eigenvalues_bisect[i] - diagonal_tql[i]) > EPS)
+       if (std::abs(eigenvalues_bisect[i] - diagonal_tql[i]) > EPS)
        {
          std::cout << std::setprecision(8) << eigenvalues_bisect[i] << "  != " << diagonal_tql[i] << "\n";
          return false;

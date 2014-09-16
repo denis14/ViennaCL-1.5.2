@@ -76,7 +76,7 @@ void read_matrix_body(std::fstream& f, viennacl::matrix<ScalarType, MatrixLayout
     viennacl::copy(h_A, A);
 }
 
-void read_vector_body(std::fstream& f, ublas::vector<ScalarType>& v) {
+void read_vector_body(std::fstream& f, std::vector<ScalarType>& v) {
     if(!f.is_open())
         throw std::invalid_argument("File is not opened");
 
@@ -142,20 +142,15 @@ ScalarType matrix_compare(ublas::matrix<ScalarType>& res,
     return diff / mx;
 }
 
-ScalarType vector_compare(ublas::vector<ScalarType>& res,
-                          ublas::vector<ScalarType>& ref)
+ScalarType vector_compare(std::vector<ScalarType> & res,
+                          std::vector<ScalarType> & ref)
 {
     std::sort(ref.begin(), ref.end());
     std::sort(res.begin(), res.end());
-    for(unsigned int i = 0; i < ref.size(); ++i)
-      std::cout << ref[i] << std::endl;
-
-    for(unsigned int i = 0; i < ref.size(); ++i)
-      std::cout << res[i] << std::endl;
 
     ScalarType diff = 0.0;
     ScalarType mx = 0.0;
-    for(size_t i = 0; i < ref.size(); i++)
+    for(size_t i = 0; i < 9; i++)
     {
         diff = std::max(diff, std::abs(res[i] - ref[i]));
         mx = std::max(mx, res[i]);
@@ -190,19 +185,19 @@ void test_eigen(const std::string& fn, bool is_symm)
       std::cout << "Testing column-major matrix of size " << sz << "-by-" << sz << std::endl;
 
     viennacl::matrix<ScalarType> A_input(sz, sz), A_ref(sz, sz), Q(sz, sz);
-    // std::vector<ScalarType> eigen_ref_re(sz);
-    // std::vector<ScalarType> eigen_ref_im(sz);
+    // reference vector with reference values from file
+    std::vector<ScalarType> eigen_ref_re(sz);
+    // calculated real eigenvalues
     std::vector<ScalarType> eigen_re(sz);
+    // calculated im. eigenvalues
     std::vector<ScalarType> eigen_im(sz);
+
+    // read input matrix from file
     read_matrix_body(f, A_input);
+    // read reference eigenvalues from file
+    read_vector_body(f, eigen_ref_re);
 
-    //matrix_print(A_input);
 
-   /* read_vector_body(f, eigen_ref_re);
-
-    if(!is_symm)
-        read_vector_body(f, eigen_ref_im);
-*/
     f.close();
 
     A_ref = A_input;
@@ -226,8 +221,6 @@ void test_eigen(const std::string& fn, bool is_symm)
     matrix_print(Q);
     std::cout << "\n\n";
 */
-
-    viennacl::backend::finish();
 
     double time_spend = timer.get();
 
@@ -262,8 +255,8 @@ void test_eigen(const std::string& fn, bool is_symm)
 
 
     ScalarType prods_diff = matrix_compare(result1, result2);
-   // ScalarType eigen_diff = vector_compare(eigen_ref_re, eigen_re_ublas);
-    ScalarType eigen_diff = 0.0;
+    ScalarType eigen_diff = vector_compare(eigen_re, eigen_ref_re);
+
 
     bool is_ok = is_hessenberg;
 
@@ -299,11 +292,10 @@ int main()
 {
 
   test_eigen<viennacl::row_major>("../../examples/testdata/eigen/symm5.example", true);
- // test_eigen<viennacl::row_major>("../../examples/testdata/eigen/symm3.example", true);
+ // test_eigen<viennacl::row_major>("../../examples/testdata/eigen/symm3.example", true);  // Computation of this matrix takes very long
 
   test_eigen<viennacl::column_major>("../../examples/testdata/eigen/symm5.example", true);
 //  test_eigen<viennacl::column_major>("../../examples/testdata/eigen/symm3.example", true);
-
 
 
   test_eigen<viennacl::row_major>("../../examples/testdata/eigen/nsm2.example", false);

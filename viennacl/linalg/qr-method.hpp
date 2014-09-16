@@ -710,9 +710,6 @@ namespace viennacl
             D.resize(A.size1());
             E.resize(A.size1());
 
-
-            D.clear();
-            E.clear();
             viennacl::vector<SCALARTYPE> vcl_D(mat_size), vcl_E(mat_size);
             //std::vector<SCALARTYPE> std_D(mat_size), std_E(mat_size);
 
@@ -723,6 +720,7 @@ namespace viennacl
 
             // pack diagonal and super-diagonal
             viennacl::linalg::bidiag_pack(A, vcl_D, vcl_E);
+
             copy(vcl_D, D);
             copy(vcl_E, E);
 
