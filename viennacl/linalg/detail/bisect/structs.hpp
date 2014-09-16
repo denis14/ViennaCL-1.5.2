@@ -33,30 +33,41 @@ namespace viennacl
       template<typename NumericT>
       struct InputData
       {
-     //   typedef float NumericT;
         //! host side representation of diagonal
-          std::vector<NumericT> std_a;
-          //! host side representation superdiagonal
-          std::vector<NumericT> std_b;
-          //! device side representation of diagonal
-          viennacl::vector<NumericT> g_a;
-          //!device side representation of superdiagonal
-          viennacl::vector<NumericT> g_b;
+        std::vector<NumericT> std_a;
+        //! host side representation superdiagonal
+        std::vector<NumericT> std_b;
+        //! device side representation of diagonal
+        viennacl::vector<NumericT> g_a;
+        //!device side representation of superdiagonal
+        viennacl::vector<NumericT> g_b;
 
-          ////////////////////////////////////////////////////////////////////////////////
-          //! Initialize the input data to the algorithm
-          //! @param input  handles to the input data
-          //! @param mat_size  size of the matrix
-          ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //! Initialize the input data to the algorithm
+        //! Contructor for std::vector
+        //! @param diagonal        vector with the diagonal elements
+        //! @param superdiagonal   vector with the superdiagonal elements
+        //! @param sz              size of the matrix
+        ////////////////////////////////////////////////////////////////////////////////
 
-          InputData(std::vector<NumericT> diagonal, std::vector<NumericT> superdiagonal, const unsigned int sz) :
-                      std_a(sz), std_b(sz), g_a(sz), g_b(sz)
-          {
-           std_a = diagonal;
-           std_b = superdiagonal;
+        InputData(std::vector<NumericT> diagonal, std::vector<NumericT> superdiagonal, const unsigned int sz) :
+                    std_a(sz), std_b(sz), g_a(sz), g_b(sz)
+        {
+         std_a = diagonal;
+         std_b = superdiagonal;
 
-           viennacl::copy(std_b, g_b);
-           viennacl::copy(std_a, g_a);
+         viennacl::copy(std_b, g_b);
+         viennacl::copy(std_a, g_a);
+        }
+
+        InputData(viennacl::vector<NumericT> diagonal, viennacl::vector<NumericT> superdiagonal, const unsigned int sz) :
+                    std_a(sz), std_b(sz), g_a(sz), g_b(sz)
+        {
+         g_a = diagonal;
+         g_b = superdiagonal;
+
+         viennacl::copy(g_a, std_a);
+         viennacl::copy(g_b, std_b);
         }
       };
 
@@ -64,7 +75,6 @@ namespace viennacl
       template<typename NumericT>
       struct ResultDataSmall
       {
-//typedef float NumericT;
         //! eigenvalues (host side)
           std::vector<NumericT> std_eigenvalues;
           //! left interval limits at the end of the computation
@@ -100,7 +110,6 @@ namespace viennacl
       template<typename NumericT>
       struct ResultDataLarge
       {
-       //typedef float NumericT;
         //! eigenvalues
           std::vector<NumericT> std_eigenvalues;
 

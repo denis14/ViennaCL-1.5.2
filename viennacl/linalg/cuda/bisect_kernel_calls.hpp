@@ -4,10 +4,10 @@
 #define _BISECT_CUDA_KERNEL_CALLS_H_
 
 // includes, kernels
-#include "viennacl/linalg/cuda/bisect_kernel_small.cuh"
-#include "viennacl/linalg/cuda/bisect_kernel_large.cuh"
-#include "viennacl/linalg/cuda/bisect_kernel_large_onei.cuh"
-#include "viennacl/linalg/cuda/bisect_kernel_large_multi.cuh"
+#include "viennacl/linalg/cuda/bisect_kernel_small.hpp"
+#include "viennacl/linalg/cuda/bisect_kernel_large.hpp"
+#include "viennacl/linalg/cuda/bisect_kernel_large_onei.hpp"
+#include "viennacl/linalg/cuda/bisect_kernel_large_multi.hpp"
 
 
 namespace viennacl

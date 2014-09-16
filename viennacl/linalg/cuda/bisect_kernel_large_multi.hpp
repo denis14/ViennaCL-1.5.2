@@ -13,14 +13,14 @@
  * intervals that contained after the first step more than one eigenvalue
  */
 
-#ifndef _BISECT_KERNEL_LARGE_MULTI_H_
-#define _BISECT_KERNEL_LARGE_MULTI_H_
+#ifndef VIENNACL_LINALG_DETAIL_BISECT_KERNEL_LARGE_MULTI_HPP_
+#define VIENNACL_LINALG_DETAIL_BISECT_KERNEL_LARGE_MULTI_HPP_
 
 // includes, project
 #include "viennacl/linalg/detail/bisect/config.hpp"
 #include "viennacl/linalg/detail/bisect/util.hpp"
 // additional kernel
-#include "viennacl/linalg/cuda/bisect_util.cu"
+#include "viennacl/linalg/cuda/bisect_util.hpp"
 
 namespace viennacl
 {

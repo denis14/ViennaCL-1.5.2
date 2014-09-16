@@ -12,14 +12,14 @@
 /* Determine eigenvalues for large symmetric, tridiagonal matrix. First
   step of the computation. */
 
-#ifndef _BISECT_KERNEL_LARGE_H_
-#define _BISECT_KERNEL_LARGE_H_
+#ifndef VIENNACL_LINALG_DETAIL_BISECT_KERNEL_LARGE_HPP_
+#define VIENNACL_LINALG_DETAIL_BISECT_KERNEL_LARGE_HPP_
 
 // includes, project
 #include "viennacl/linalg/detail/bisect/config.hpp"
 #include "viennacl/linalg/detail/bisect/util.hpp"
 // additional kernel
-#include "viennacl/linalg/cuda/bisect_util.cu"
+#include "viennacl/linalg/cuda/bisect_util.hpp"
 
 // declaration, forward
 

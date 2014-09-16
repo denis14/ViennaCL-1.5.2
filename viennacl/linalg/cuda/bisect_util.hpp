@@ -11,8 +11,9 @@
 
 /* Utility / shared functionality for bisection kernels */
 
-#ifndef _BISECT_UTIL_H_
-#define _BISECT_UTIL_H_
+
+#ifndef VIENNACL_LINALG_DETAIL_BISECT_UTIL_HPP_
+#define VIENNACL_LINALG_DETAIL_BISECT_UTIL_HPP_
 
 // includes, project
 #include "viennacl/linalg/detail/bisect/config.hpp"
@@ -563,5 +564,5 @@ namespace viennacl
   }
 }
 
-#endif // #ifndef _BISECT_UTIL_H_
+#endif // #ifndef VIENNACL_LINALG_DETAIL_BISECT_UTIL_HPP_
 
