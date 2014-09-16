@@ -35,7 +35,7 @@
 
 #define EPS 10.0e-4
 
-typedef float NumericT;
+typedef double NumericT;
 ////////////////////////////////////////////////////////////////////////////////
 // declaration, forward
 bool runTest(int argc, char **argv);
@@ -103,7 +103,7 @@ runTest(int argc, char **argv)
 {
     bool bCompareResult = false;
 
-    unsigned int mat_size = 500;
+    unsigned int mat_size = 1530;
 
     std::vector<NumericT> diagonal(mat_size);
     std::vector<NumericT> superdiagonal(mat_size);

@@ -12,15 +12,9 @@
 /* Determine eigenvalues for large symmetric, tridiagonal matrix. First
   step of the computation. */
 
-#ifndef _BISECT_OPENCL_KERNEL_LARGE_H_
-#define _BISECT_OPENCL_KERNEL_LARGE_H_
+#ifndef VIENNACL_LINALG_OPENCL_KERNELS_BISECT_HPP_
+#define VIENNACL_LINALG_OPENCL_KERNELS_BISECT_HPP_
 
-// includes, project
-//#include "config.hpp"
-//#include "util.hpp"
-
-// additional kernel
-//#include "bisect_util.cpp"                                                           // deleted and added to this file
 
 // declaration, forward
 
@@ -36,19 +30,10 @@ namespace viennacl
         void generate_bisect_kernel_large_config(StringType & source)
         {
           /* Global configuration parameter */
-
-          source.append("     #ifndef _CONFIG_H_\n");
-          source.append("     #define _CONFIG_H_\n");
-
-          // should be power of two
           source.append("     #define  MAX_THREADS_BLOCK                256\n");
-
           source.append("     #define  MAX_SMALL_MATRIX                 512\n");
           source.append("     #define  MAX_THREADS_BLOCK_SMALL_MATRIX   512\n");
-
           source.append("     #define  MIN_ABS_INTERVAL                 5.0e-37\n");
-
-          source.append("     #endif // #ifndef _CONFIG_H_\n");
 
         }
 
@@ -80,7 +65,7 @@ namespace viennacl
         source.append("         }  \n");
 
         source.append("         int exp;  \n");
-        source.append("         frexp((float)n, &exp);  \n");
+        source.append("         frexp(( "); source.append(numeric_string); source.append(" )n, &exp);  \n");
         source.append("         return (1 << (exp - 1));  \n");
         source.append("     }  \n");
 
@@ -113,7 +98,7 @@ namespace viennacl
         source.append("         }  \n");
 
         source.append("         int exp;  \n");
-        source.append("         frexp((float)n, &exp);  \n");
+        source.append("         frexp(( "); source.append(numeric_string); source.append(" )n, &exp);  \n");
         source.append("         return (1 << exp);  \n");
         source.append("     }  \n");
         }
@@ -130,8 +115,9 @@ namespace viennacl
         void generate_bisect_kernel_large_computeMidpoint(StringType & source, std::string const & numeric_string)
         {
         source.append("       \n");
-        source.append("     inline float  \n");
-        source.append("     computeMidpoint(const float left, const float right)  \n");
+        source.append("     inline "); source.append(numeric_string); source.append(" \n");
+        source.append("     computeMidpoint(const "); source.append(numeric_string); source.append(" left,\n");
+        source.append("       const "); source.append(numeric_string); source.append("  right)  \n");
         source.append("     {  \n");
         source.append("         uint glb_id = get_global_id(0); \n");
         source.append("         uint grp_id = get_group_id(0); \n");
@@ -140,7 +126,7 @@ namespace viennacl
         source.append("         uint lcl_sz = get_local_size(0); \n");
 
 
-        source.append("         float mid;  \n");
+        source.append("          "); source.append(numeric_string); source.append("  mid;  \n");
 
         source.append("         if (sign(left) == sign(right))  \n");
         source.append("         {  \n");
@@ -179,13 +165,15 @@ namespace viennacl
         source.append("     \n");
         source.append("     void  \n");
         source.append("     storeInterval(unsigned int addr,  \n");
-        source.append("                   __local float * s_left, __local float * s_right,  \n");
+        source.append("                   __local "); source.append(numeric_string); source.append(" * s_left,   \n");
+        source.append("                   __local "); source.append(numeric_string); source.append(" * s_right,  \n");
         source.append("                   __local unsigned int * s_left_count,  \n");
         source.append("                   __local unsigned int * s_right_count,  \n");
-        source.append("                   float left, float right,  \n");
+        source.append("                    "); source.append(numeric_string); source.append(" left,   \n");
+        source.append("                    "); source.append(numeric_string); source.append(" right,  \n");
         source.append("                   unsigned int left_count, \n");
         source.append("                   unsigned int right_count,  \n");
-        source.append("                   float precision)  \n");
+        source.append("                    "); source.append(numeric_string); source.append("  precision)  \n");
         source.append("     {  \n");
         source.append("         uint glb_id = get_global_id(0); \n");
         source.append("         uint grp_id = get_group_id(0); \n");
@@ -197,13 +185,13 @@ namespace viennacl
         source.append("         s_right_count[addr] = right_count;  \n");
 
             // check if interval converged
-        source.append("         float t0 = fabs(right - left);  \n");
-        source.append("         float t1 = max(fabs(left), fabs(right)) * precision;  \n");
+        source.append("          "); source.append(numeric_string); source.append(" t0 = fabs(right - left);  \n");
+        source.append("          "); source.append(numeric_string); source.append(" t1 = max(fabs(left), fabs(right)) * precision;  \n");
 
-        source.append("         if (t0 <= max((float)MIN_ABS_INTERVAL, t1))  \n");
+        source.append("         if (t0 <= max(( "); source.append(numeric_string); source.append(" )MIN_ABS_INTERVAL, t1))  \n");
         source.append("         {  \n");
                 // compute mid point
-        source.append("             float lambda = computeMidpoint(left, right);  \n");
+        source.append("              "); source.append(numeric_string); source.append(" lambda = computeMidpoint(left, right);  \n");
 
                 // mark as converged
         source.append("             s_left[addr] = lambda;  \n");
@@ -227,13 +215,15 @@ namespace viennacl
         source.append("     \n");
         source.append("     void  \n");
         source.append("     storeIntervalShort(unsigned int addr,  \n");
-        source.append("                   __local float * s_left, __local float * s_right,  \n");
+        source.append("                   __local "); source.append(numeric_string); source.append(" * s_left,   \n");
+        source.append("                   __local "); source.append(numeric_string); source.append(" * s_right,  \n");
         source.append("                   __local unsigned short * s_left_count,  \n");
         source.append("                   __local unsigned short * s_right_count,  \n");
-        source.append("                   float left, float right,  \n");
+        source.append("                    "); source.append(numeric_string); source.append(" left,   \n");
+        source.append("                    "); source.append(numeric_string); source.append(" right,  \n");
         source.append("                   unsigned int left_count, \n");
         source.append("                   unsigned int right_count,  \n");
-        source.append("                   float precision)  \n");
+        source.append("                    "); source.append(numeric_string); source.append("  precision)  \n");
         source.append("     {  \n");
         source.append("         uint glb_id = get_global_id(0); \n");
         source.append("         uint grp_id = get_group_id(0); \n");
@@ -245,13 +235,13 @@ namespace viennacl
         source.append("         s_right_count[addr] = right_count;  \n");
 
             // check if interval converged
-        source.append("         float t0 = fabs(right - left);  \n");
-        source.append("         float t1 = max(fabs(left), fabs(right)) * precision;  \n");
+        source.append("          "); source.append(numeric_string); source.append(" t0 = fabs(right - left);  \n");
+        source.append("          "); source.append(numeric_string); source.append(" t1 = max(fabs(left), fabs(right)) * precision;  \n");
 
-        source.append("         if (t0 <= max((float)MIN_ABS_INTERVAL, t1))  \n");
+        source.append("         if (t0 <= max(( "); source.append(numeric_string); source.append(" )MIN_ABS_INTERVAL, t1))  \n");
         source.append("         {  \n");
                 // compute mid point
-        source.append("             float lambda = computeMidpoint(left, right);  \n");
+        source.append("              "); source.append(numeric_string); source.append(" lambda = computeMidpoint(left, right);  \n");
 
                 // mark as converged
         source.append("             s_left[addr] = lambda;  \n");
@@ -266,6 +256,7 @@ namespace viennacl
         source.append("         }  \n");
 
         source.append("     }  \n");
+
 
         }
 
@@ -294,11 +285,14 @@ namespace viennacl
         {
         source.append("       \n");
         source.append("     inline unsigned int  \n");
-        source.append("     computeNumSmallerEigenvals(__global float *g_d, __global float *g_s, const unsigned int n,  \n");
-        source.append("                                const float x,  \n");
+        source.append("     computeNumSmallerEigenvals(__global "); source.append(numeric_string); source.append(" *g_d,   \n");
+        source.append("                                __global "); source.append(numeric_string); source.append(" *g_s,   \n");
+        source.append("                                const unsigned int n,  \n");
+        source.append("                                const "); source.append(numeric_string); source.append(" x,         \n");
         source.append("                                const unsigned int tid,  \n");
         source.append("                                const unsigned int num_intervals_active,  \n");
-        source.append("                                __local float *s_d, __local float *s_s,  \n");
+        source.append("                                __local "); source.append(numeric_string); source.append(" *s_d,  \n");
+        source.append("                                __local "); source.append(numeric_string); source.append(" *s_s,  \n");
         source.append("                                unsigned int converged  \n");
         source.append("                               )  \n");
         source.append("     {  \n");
@@ -309,7 +303,7 @@ namespace viennacl
         source.append("         uint lcl_sz = get_local_size(0); \n");
 
 
-        source.append("         float  delta = 1.0f;  \n");
+        source.append("          "); source.append(numeric_string); source.append(" delta = 1.0f;  \n");
         source.append("         unsigned int count = 0;  \n");
 
         source.append("         barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
@@ -367,13 +361,16 @@ namespace viennacl
         {
         source.append("       \n");
         source.append("     inline unsigned int  \n");
-        source.append("     computeNumSmallerEigenvalsLarge(__global float *g_d, __global float *g_s, const unsigned int n,  \n");
-        source.append("                                     const float x,  \n");
-        source.append("                                     const unsigned int tid,  \n");
-        source.append("                                     const unsigned int num_intervals_active,  \n");
-        source.append("                                     __local float *s_d, __local float *s_s,  \n");
-        source.append("                                     unsigned int converged  \n");
-        source.append("                                    )  \n");
+        source.append("     computeNumSmallerEigenvalsLarge(__global "); source.append(numeric_string); source.append(" *g_d,   \n");
+        source.append("                                __global "); source.append(numeric_string); source.append(" *g_s,   \n");
+        source.append("                                const unsigned int n,  \n");
+        source.append("                                const "); source.append(numeric_string); source.append(" x,         \n");
+        source.append("                                const unsigned int tid,  \n");
+        source.append("                                const unsigned int num_intervals_active,  \n");
+        source.append("                                __local "); source.append(numeric_string); source.append(" *s_d,  \n");
+        source.append("                                __local "); source.append(numeric_string); source.append(" *s_s,  \n");
+        source.append("                                unsigned int converged  \n");
+        source.append("                               )  \n");
         source.append("     {  \n");
         source.append("         uint glb_id = get_global_id(0); \n");
         source.append("         uint grp_id = get_group_id(0); \n");
@@ -381,7 +378,7 @@ namespace viennacl
         source.append("         uint lcl_id = get_local_id(0); \n");
         source.append("         uint lcl_sz = get_local_size(0); \n");
 
-        source.append("         float  delta = 1.0f;  \n");
+        source.append("          "); source.append(numeric_string); source.append(" delta = 1.0f;  \n");
         source.append("         unsigned int count = 0;  \n");
 
         source.append("         unsigned int rem = n;  \n");
@@ -459,14 +456,17 @@ namespace viennacl
         source.append("     void  \n");
         source.append("     storeNonEmptyIntervals(unsigned int addr,  \n");
         source.append("                            const unsigned int num_threads_active,  \n");
-        source.append("                            __local float  *s_left, __local float *s_right,  \n");
+        source.append("                            __local "); source.append(numeric_string); source.append(" *s_left,   \n");
+        source.append("                            __local "); source.append(numeric_string); source.append(" *s_right,  \n");
         source.append("                            __local unsigned int *s_left_count,  \n");
         source.append("                            __local unsigned int *s_right_count,  \n");
-        source.append("                            float left, float mid, float right,  \n");
+        source.append("                             "); source.append(numeric_string); source.append(" left, \n ");
+        source.append("                             "); source.append(numeric_string); source.append(" mid,  \n");
+        source.append("                             "); source.append(numeric_string); source.append(" right,\n");
         source.append("                            const unsigned int left_count,  \n");
         source.append("                            const unsigned int mid_count,  \n");
         source.append("                            const unsigned int right_count,  \n");
-        source.append("                            float precision,  \n");
+        source.append("                             "); source.append(numeric_string); source.append(" precision,  \n");
         source.append("                            __local unsigned int *compact_second_chunk,  \n");
         source.append("                            __local unsigned int *s_compaction_list_exc,  \n");
         source.append("                            unsigned int *is_active_second)  \n");
@@ -530,18 +530,21 @@ namespace viennacl
             source.append("       \n");
             source.append("     void  \n");
             source.append("     storeNonEmptyIntervalsLarge(unsigned int addr,  \n");
-            source.append("                                 const unsigned int num_threads_active,  \n");
-            source.append("                                 __local float  *s_left, __local float *s_right,  \n");
-            source.append("                                 __local unsigned short  *s_left_count,  \n");
-            source.append("                                 __local unsigned short *s_right_count,  \n");
-            source.append("                                 float left, float mid, float right,  \n");
-            source.append("                                 const unsigned int left_count,  \n");
-            source.append("                                 const unsigned int mid_count,  \n");
-            source.append("                                 const unsigned int right_count,  \n");
-            source.append("                                 float epsilon,  \n");
-            source.append("                                 __local unsigned int *compact_second_chunk,  \n");
-            source.append("                                 __local unsigned short *s_compaction_list,  \n");
-            source.append("                                 unsigned int *is_active_second)  \n");
+            source.append("                            const unsigned int num_threads_active,  \n");
+            source.append("                            __local "); source.append(numeric_string); source.append(" *s_left,   \n");
+            source.append("                            __local "); source.append(numeric_string); source.append(" *s_right,  \n");
+            source.append("                            __local unsigned short *s_left_count,  \n");
+            source.append("                            __local unsigned short *s_right_count,  \n");
+            source.append("                             "); source.append(numeric_string); source.append(" left, \n ");
+            source.append("                             "); source.append(numeric_string); source.append(" mid,  \n");
+            source.append("                             "); source.append(numeric_string); source.append(" right,\n");
+            source.append("                            const unsigned int left_count,  \n");
+            source.append("                            const unsigned int mid_count,  \n");
+            source.append("                            const unsigned int right_count,  \n");
+            source.append("                             "); source.append(numeric_string); source.append(" epsilon,  \n");
+            source.append("                            __local unsigned int *compact_second_chunk,  \n");
+            source.append("                            __local unsigned short *s_compaction_list,  \n");
+            source.append("                            unsigned int *is_active_second)  \n");
             source.append("     {  \n");
             source.append("         uint glb_id = get_global_id(0); \n");
             source.append("         uint grp_id = get_group_id(0); \n");
@@ -675,8 +678,6 @@ namespace viennacl
 
         source.append("         unsigned int offset = 1;  \n");
         source.append("         const unsigned int tid = lcl_id;  \n");
-           // if(tid == 0)
-             // printf("num_threads_compaction = %u\n", num_threads_compaction);
 
             // higher levels of scan tree
         source.append("         for (int d = (num_threads_compaction >> 1); d > 0; d >>= 1)  \n");
@@ -744,10 +745,12 @@ namespace viennacl
         {
         source.append("       \n");
         source.append("     void  \n");
-        source.append("     compactIntervals(__local float *s_left, __local float *s_right,  \n");
+        source.append("     compactIntervals(__local "); source.append(numeric_string); source.append(" *s_left,  \n");
+        source.append("                      __local "); source.append(numeric_string); source.append(" *s_right, \n");
         source.append("                      __local unsigned int *s_left_count, \n");
-          source.append("                    __local unsigned int *s_right_count,  \n");
-        source.append("                      float mid, float right,  \n");
+        source.append("                      __local unsigned int *s_right_count,  \n");
+        source.append("                       "); source.append(numeric_string); source.append(" mid,  \n");
+        source.append("                       "); source.append(numeric_string); source.append(" right, \n");
         source.append("                      unsigned int mid_count, unsigned int right_count,  \n");
         source.append("                      __local unsigned int *s_compaction_list,  \n");
         source.append("                      unsigned int num_threads_active,  \n");
@@ -782,10 +785,12 @@ namespace viennacl
         {
         source.append("       \n");
         source.append("     void  \n");
-        source.append("     compactIntervalsShort(__local float *s_left, __local float *s_right,  \n");
+        source.append("     compactIntervalsShort(__local "); source.append(numeric_string); source.append(" *s_left,  \n");
+        source.append("                      __local "); source.append(numeric_string); source.append(" *s_right,  \n");
         source.append("                      __local unsigned short *s_left_count, \n");
-          source.append("                    __local unsigned short *s_right_count,  \n");
-        source.append("                      float mid, float right,  \n");
+        source.append("                      __local unsigned short *s_right_count,  \n");
+        source.append("                      "); source.append(numeric_string); source.append(" mid,   \n");
+        source.append("                      "); source.append(numeric_string); source.append(" right, \n");
         source.append("                      unsigned int mid_count, unsigned int right_count,  \n");
         source.append("                      __local unsigned short *s_compaction_list,  \n");
         source.append("                      unsigned int num_threads_active,  \n");
@@ -819,10 +824,13 @@ namespace viennacl
         {
         source.append("       \n");
         source.append("     void  \n");
-        source.append("     storeIntervalConverged( __local float *s_left, __local float *s_right,  \n");
+        source.append("     storeIntervalConverged( __local "); source.append(numeric_string); source.append(" *s_left,   \n");
+        source.append("                             __local "); source.append(numeric_string); source.append(" *s_right,   \n");
         source.append("                            __local unsigned int *s_left_count, \n");
         source.append("                            __local unsigned int *s_right_count,  \n");
-        source.append("                            float *left, float *mid, float *right,  \n");
+        source.append("                            "); source.append(numeric_string); source.append(" *left,   \n");
+        source.append("                            "); source.append(numeric_string); source.append(" *mid,   \n");
+        source.append("                            "); source.append(numeric_string); source.append(" *right,   \n");
         source.append("                            unsigned int *left_count,     \n");
         source.append("                            unsigned int *mid_count,      \n");
         source.append("                            unsigned int *right_count,     \n");
@@ -884,10 +892,13 @@ namespace viennacl
         {
         source.append("       \n");
         source.append("     void  \n");
-        source.append("     storeIntervalConvergedShort( __local float *s_left, __local float *s_right,  \n");
+        source.append("     storeIntervalConvergedShort(__local "); source.append(numeric_string); source.append(" *s_left,   \n");
+        source.append("                             __local "); source.append(numeric_string); source.append(" *s_right,   \n");
         source.append("                            __local unsigned short *s_left_count, \n");
         source.append("                            __local unsigned short *s_right_count,  \n");
-        source.append("                            float *left, float *mid, float *right,  \n");
+        source.append("                            "); source.append(numeric_string); source.append(" *left,   \n");
+        source.append("                            "); source.append(numeric_string); source.append(" *mid,   \n");
+        source.append("                            "); source.append(numeric_string); source.append(" *right,   \n");
         source.append("                            unsigned int *left_count,     \n");
         source.append("                            unsigned int *mid_count,      \n");
         source.append("                            unsigned int *right_count,     \n");
@@ -965,13 +976,16 @@ namespace viennacl
         source.append("       \n");
         source.append("     void  \n");
         source.append("     subdivideActiveInterval(const unsigned int tid,  \n");
-        source.append("                             __local float *s_left, __local float *s_right,  \n");
+        source.append("                             __local "); source.append(numeric_string); source.append(" *s_left,    \n");
+        source.append("                             __local "); source.append(numeric_string); source.append(" *s_right,   \n");
         source.append("                             __local unsigned int *s_left_count,   \n");
         source.append("                             __local unsigned int *s_right_count,  \n");
         source.append("                             const unsigned int num_threads_active,  \n");
-        source.append("                             float *left, float *right,  \n");
+        source.append("                              "); source.append(numeric_string); source.append(" *left,   \n");
+        source.append("                              "); source.append(numeric_string); source.append(" *right,   \n");
         source.append("                             unsigned int *left_count, unsigned int *right_count,  \n");
-        source.append("                             float *mid, __local unsigned int *all_threads_converged)  \n");
+        source.append("                              "); source.append(numeric_string); source.append(" *mid,    \n");
+        source.append("                              __local unsigned int *all_threads_converged)  \n");
         source.append("     {  \n");
         source.append("         uint glb_id = get_global_id(0); \n");
         source.append("         uint grp_id = get_group_id(0); \n");
@@ -1014,13 +1028,16 @@ namespace viennacl
         source.append("       \n");
         source.append("     void  \n");
         source.append("     subdivideActiveIntervalShort(const unsigned int tid,  \n");
-        source.append("                             __local float *s_left, __local float *s_right,  \n");
+        source.append("                             __local "); source.append(numeric_string); source.append(" *s_left,    \n");
+        source.append("                             __local "); source.append(numeric_string); source.append(" *s_right,   \n");
         source.append("                             __local unsigned short *s_left_count,   \n");
         source.append("                             __local unsigned short *s_right_count,  \n");
         source.append("                             const unsigned int num_threads_active,  \n");
-        source.append("                             float *left, float *right,  \n");
+        source.append("                             "); source.append(numeric_string); source.append(" *left,   \n");
+        source.append("                             "); source.append(numeric_string); source.append(" *right,   \n");
         source.append("                             unsigned int *left_count, unsigned int *right_count,  \n");
-        source.append("                             float *mid, __local unsigned int *all_threads_converged)  \n");
+        source.append("                             "); source.append(numeric_string); source.append(" *mid,    \n");
+        source.append("                             __local unsigned int *all_threads_converged)  \n");
         source.append("     {  \n");
         source.append("         uint glb_id = get_global_id(0); \n");
         source.append("         uint grp_id = get_group_id(0); \n");
@@ -1098,13 +1115,16 @@ namespace viennacl
         {
             source.append("     __kernel  \n");
             source.append("     void  \n");
-            source.append("     bisectKernel(__global float *g_d, __global float *g_s, const unsigned int n,  \n");
-            source.append("                  __global float *g_left,   \n");
-            source.append("                  __global float *g_right,  \n");
+            source.append("     bisectKernel(__global "); source.append(numeric_string); source.append(" *g_d,   \n");
+            source.append("                  __global "); source.append(numeric_string); source.append(" *g_s,   \n");
+            source.append("                  const unsigned int n,  \n");
+            source.append("                  __global "); source.append(numeric_string); source.append(" *g_left,   \n");
+            source.append("                  __global "); source.append(numeric_string); source.append(" *g_right,  \n");
             source.append("                  __global unsigned int *g_left_count, __global unsigned int *g_right_count,  \n");
-            source.append("                  const float lg, const float ug,  \n");
+            source.append("                  const "); source.append(numeric_string); source.append(" lg,  \n");
+            source.append("                  const "); source.append(numeric_string); source.append(" ug,  \n");
             source.append("                  const unsigned int lg_eig_count, const unsigned int ug_eig_count, \n");
-            source.append("                  float epsilon  \n");
+            source.append("                  "); source.append(numeric_string); source.append(" epsilon  \n");
             source.append("                 )  \n");
             source.append("     {  \n");
             source.append("         g_s = g_s + 1; \n");
@@ -1116,8 +1136,8 @@ namespace viennacl
 
                 // intervals (store left and right because the subdivision tree is in general
                 // not dense
-            source.append("         __local  float  s_left[MAX_THREADS_BLOCK_SMALL_MATRIX];  \n");
-            source.append("         __local  float  s_right[MAX_THREADS_BLOCK_SMALL_MATRIX];  \n");
+            source.append("         __local "); source.append(numeric_string); source.append(" s_left[MAX_THREADS_BLOCK_SMALL_MATRIX];  \n");
+            source.append("         __local "); source.append(numeric_string); source.append(" s_right[MAX_THREADS_BLOCK_SMALL_MATRIX];  \n");
 
                 // number of eigenvalues that are smaller than s_left / s_right
                 // (correspondence is realized via indices)
@@ -1146,12 +1166,12 @@ namespace viennacl
 
                 // variables for currently processed interval
                 // left and right limit of active interval
-            source.append("         float  left = 0.0f;  \n");
-            source.append("         float  right = 0.0f;  \n");
+            source.append("          "); source.append(numeric_string); source.append(" left = 0.0f;  \n");
+            source.append("          "); source.append(numeric_string); source.append(" right = 0.0f;  \n");
             source.append("         unsigned int left_count = 0;  \n");
             source.append("         unsigned int right_count = 0;  \n");
                 // midpoint of active interval
-            source.append("         float  mid = 0.0f;  \n");
+            source.append("          "); source.append(numeric_string); source.append(" mid = 0.0f;  \n");
                 // number of eigenvalues smaller then mid
             source.append("         unsigned int mid_count = 0;  \n");
                 // affected from compaction
@@ -1330,14 +1350,18 @@ namespace viennacl
         {
             source.append("     __kernel  \n");
             source.append("     void  \n");
-            source.append("     bisectKernelLarge_MultIntervals(__global float *g_d, __global float *g_s, const unsigned int n,  \n");
+            source.append("     bisectKernelLarge_MultIntervals(__global "); source.append(numeric_string); source.append(" *g_d,   \n");
+            source.append("                                     __global "); source.append(numeric_string); source.append(" *g_s,   \n");
+            source.append("                                     const unsigned int n,  \n");
             source.append("                                     __global unsigned int *blocks_mult,  \n");
             source.append("                                     __global unsigned int *blocks_mult_sum,  \n");
-            source.append("                                     __global float *g_left, __global float *g_right,  \n");
+            source.append("                                     __global "); source.append(numeric_string); source.append(" *g_left,   \n");
+            source.append("                                     __global "); source.append(numeric_string); source.append(" *g_right,  \n");
             source.append("                                     __global unsigned int *g_left_count,  \n");
             source.append("                                     __global unsigned int *g_right_count,  \n");
-            source.append("                                     __global float *g_lambda, __global unsigned int *g_pos,  \n");
-            source.append("                                     float precision  \n");
+            source.append("                                     __global  "); source.append(numeric_string); source.append(" *g_lambda, \n");
+            source.append("                                     __global unsigned int *g_pos,  \n");
+            source.append("                                     "); source.append(numeric_string); source.append(" precision  \n");
             source.append("                                    )  \n");
             source.append("     {  \n");
             source.append("         g_s = g_s + 1; \n");
@@ -1350,8 +1374,8 @@ namespace viennacl
             source.append("       const unsigned int tid = lcl_id;  \n");
 
                 // left and right limits of interval
-            source.append("         __local  float  s_left[2 * MAX_THREADS_BLOCK];  \n");
-            source.append("         __local  float  s_right[2 * MAX_THREADS_BLOCK];  \n");
+            source.append("         __local "); source.append(numeric_string); source.append(" s_left[2 * MAX_THREADS_BLOCK];  \n");
+            source.append("         __local "); source.append(numeric_string); source.append(" s_right[2 * MAX_THREADS_BLOCK];  \n");
 
                 // number of eigenvalues smaller than interval limits
             source.append("         __local  unsigned int  s_left_count[2 * MAX_THREADS_BLOCK];  \n");
@@ -1377,12 +1401,12 @@ namespace viennacl
             source.append("         __local  unsigned int  c_block_offset_output;  \n");
 
                 // midpoint of currently active interval of the thread
-            source.append("         float mid = 0.0f;  \n");
+            source.append("         "); source.append(numeric_string); source.append(" mid = 0.0f;  \n");
                 // number of eigenvalues smaller than \a mid
             source.append("         unsigned int  mid_count = 0;  \n");
                 // current interval parameter
-            source.append("         float  left = 0.0f;  \n");
-            source.append("         float  right = 0.0f;  \n");
+            source.append("         "); source.append(numeric_string); source.append(" left = 0.0f;  \n");
+            source.append("         "); source.append(numeric_string); source.append(" right = 0.0f;  \n");
             source.append("         unsigned int  left_count = 0;  \n");
             source.append("         unsigned int  right_count = 0;  \n");
                 // helper for compaction, keep track which threads have a second child
@@ -1407,8 +1431,7 @@ namespace viennacl
             source.append("             all_threads_converged = 1;  \n");
             source.append("             compact_second_chunk = 0;  \n");
             source.append("         }  \n");
-           // selbst hinzugefuegt
-            source.append("          s_left_count [tid] = 42;                                        \n");
+            source.append("          s_left_count [tid] = 42;  \n");
             source.append("          s_right_count[tid] = 42;  \n");
             source.append("          s_left_count [tid + MAX_THREADS_BLOCK] = 0;  \n");
             source.append("          s_right_count[tid + MAX_THREADS_BLOCK] = 0;  \n");
@@ -1570,11 +1593,14 @@ namespace viennacl
         {
             source.append("     __kernel  \n");
             source.append("     void  \n");
-            source.append("     bisectKernelLarge_OneIntervals(__global float *g_d, __global float *g_s, const unsigned int n,  \n");
+            source.append("     bisectKernelLarge_OneIntervals(__global "); source.append(numeric_string); source.append(" *g_d,   \n");
+            source.append("                                    __global "); source.append(numeric_string); source.append(" *g_s,    \n");
+            source.append("                                    const unsigned int n,  \n");
             source.append("                                    unsigned int num_intervals,  \n");
-            source.append("                                    __global float *g_left, __global float *g_right,  \n");
+            source.append("                                    __global "); source.append(numeric_string); source.append(" *g_left,  \n");
+            source.append("                                    __global "); source.append(numeric_string); source.append(" *g_right,  \n");
             source.append("                                    __global unsigned int *g_pos,  \n");
-            source.append("                                    float  precision)  \n");
+            source.append("                                    "); source.append(numeric_string); source.append(" precision)  \n");
             source.append("     {  \n");
             source.append("         g_s = g_s + 1; \n");
             source.append("         uint glb_id = get_global_id(0); \n");
@@ -1586,19 +1612,19 @@ namespace viennacl
 
             source.append("         const unsigned int gtid = (lcl_sz * grp_id) + lcl_id;  \n");
 
-            source.append("         __local  float  s_left_scratch[MAX_THREADS_BLOCK];  \n");
-            source.append("         __local  float  s_right_scratch[MAX_THREADS_BLOCK];  \n");
+            source.append("         __local "); source.append(numeric_string); source.append(" s_left_scratch[MAX_THREADS_BLOCK];  \n");
+            source.append("         __local "); source.append(numeric_string); source.append(" s_right_scratch[MAX_THREADS_BLOCK];  \n");
 
                 // active interval of thread
                 // left and right limit of current interval
-            source.append("         float left, right;  \n");
+            source.append("          "); source.append(numeric_string); source.append(" left, right;  \n");
                 // number of threads smaller than the right limit (also corresponds to the
                 // global index of the eigenvalues contained in the active interval)
             source.append("         unsigned int right_count;  \n");
                 // flag if current thread converged
             source.append("         unsigned int converged = 0;  \n");
                 // midpoint when current interval is subdivided
-            source.append("         float mid = 0.0f;  \n");
+            source.append("         "); source.append(numeric_string); source.append(" mid = 0.0f;  \n");
                 // number of eigenvalues less than mid
             source.append("         unsigned int mid_count = 0;  \n");
 
@@ -1661,13 +1687,13 @@ namespace viennacl
             source.append("                 }  \n");
 
                         // check for convergence
-            source.append("                 float t0 = right - left;  \n");
-            source.append("                 float t1 = max(fabs(right), fabs(left)) * precision;  \n");
+            source.append("                 "); source.append(numeric_string); source.append(" t0 = right - left;  \n");
+            source.append("                 "); source.append(numeric_string); source.append(" t1 = max(fabs(right), fabs(left)) * precision;  \n");
 
             source.append("                 if (t0 < min(precision, t1))  \n");
             source.append("                 {  \n");
 
-            source.append("                     float lambda = computeMidpoint(left, right);  \n");
+            source.append("                     "); source.append(numeric_string); source.append(" lambda = computeMidpoint(left, right);  \n");
             source.append("                     left = lambda;  \n");
             source.append("                     right = lambda;  \n");
 
@@ -1712,12 +1738,15 @@ namespace viennacl
             source.append("     void writeToGmem(const unsigned int tid, const unsigned int tid_2,  \n");
             source.append("                      const unsigned int num_threads_active,  \n");
             source.append("                      const unsigned int num_blocks_mult,  \n");
-            source.append("                      __global float *g_left_one, __global float *g_right_one,  \n");
+            source.append("                      __global "); source.append(numeric_string); source.append(" *g_left_one,    \n");
+            source.append("                      __global "); source.append(numeric_string); source.append(" *g_right_one,   \n");
             source.append("                      __global unsigned int *g_pos_one,  \n");
-            source.append("                      __global float *g_left_mult, __global float *g_right_mult,  \n");
+            source.append("                      __global "); source.append(numeric_string); source.append(" *g_left_mult,   \n");
+            source.append("                      __global "); source.append(numeric_string); source.append(" *g_right_mult,  \n");
             source.append("                      __global unsigned int *g_left_count_mult,  \n");
             source.append("                      __global unsigned int *g_right_count_mult,  \n");
-            source.append("                      __local float *s_left, __local float *s_right,  \n");
+            source.append("                      __local "); source.append(numeric_string); source.append(" *s_left,    \n");
+            source.append("                      __local "); source.append(numeric_string); source.append(" *s_right,  \n");
             source.append("                      __local unsigned short *s_left_count, __local unsigned short *s_right_count,  \n");
             source.append("                      __global unsigned int *g_blocks_mult,  \n");
             source.append("                      __global unsigned int *g_blocks_mult_sum,  \n");
@@ -1806,12 +1835,16 @@ namespace viennacl
             source.append("     compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,  \n");
             source.append("                         const unsigned int num_threads_active,  \n");
             source.append("                         __local unsigned int *offset_mult_lambda,  \n");
-            source.append("                         __local float *s_left, __local float *s_right,  \n");
+            source.append("                         __local "); source.append(numeric_string); source.append(" *s_left,    \n");
+            source.append("                         __local "); source.append(numeric_string); source.append(" *s_right,   \n");
             source.append("                         __local unsigned short *s_left_count,   __local unsigned short *s_right_count,  \n");
             source.append("                         __local unsigned short *s_cl_one,       __local unsigned short *s_cl_mult,  \n");
             source.append("                         __local unsigned short *s_cl_blocking,  __local unsigned short *s_cl_helper,  \n");
             source.append("                         unsigned int is_one_lambda, unsigned int is_one_lambda_2,  \n");
-            source.append("                         float *left, float *right, float *left_2, float *right_2,  \n");
+            source.append("                         "); source.append(numeric_string); source.append(" *left,    \n");
+            source.append("                         "); source.append(numeric_string); source.append(" *right,    \n");
+            source.append("                         "); source.append(numeric_string); source.append(" *left_2,    \n");
+            source.append("                         "); source.append(numeric_string); source.append(" *right_2,    \n");
             source.append("                         unsigned int *left_count, unsigned int *right_count,  \n");
             source.append("                         unsigned int *left_count_2, unsigned int *right_count_2,  \n");
             source.append("                         unsigned int c_block_iend, unsigned int c_sum_block,  \n");
@@ -2209,16 +2242,21 @@ namespace viennacl
         {
             source.append("     __kernel  \n");
             source.append("     void  \n");
-            source.append("     bisectKernelLarge(__global float *g_d, __global float *g_s, const unsigned int n,  \n");
-            source.append("                       const float lg, const float ug,  \n");
+            source.append("     bisectKernelLarge(__global "); source.append(numeric_string); source.append(" *g_d,    \n");
+            source.append("                       __global "); source.append(numeric_string); source.append(" *g_s,    \n");
+            source.append("                       const unsigned int n,  \n");
+            source.append("                       const "); source.append(numeric_string); source.append(" lg,     \n");
+            source.append("                       const "); source.append(numeric_string); source.append(" ug,     \n");
             source.append("                       const unsigned int lg_eig_count,  \n");
             source.append("                       const unsigned int ug_eig_count,  \n");
-            source.append("                       float epsilon,  \n");
+            source.append("                       "); source.append(numeric_string); source.append(" epsilon,  \n");
             source.append("                       __global unsigned int *g_num_one,  \n");
             source.append("                       __global unsigned int *g_num_blocks_mult,  \n");
-            source.append("                       __global float *g_left_one, __global float *g_right_one,  \n");
+            source.append("                       __global "); source.append(numeric_string); source.append(" *g_left_one,    \n");
+            source.append("                       __global "); source.append(numeric_string); source.append(" *g_right_one,   \n");
             source.append("                       __global unsigned int *g_pos_one,  \n");
-            source.append("                       __global float *g_left_mult, __global float *g_right_mult,  \n");
+            source.append("                       __global "); source.append(numeric_string); source.append(" *g_left_mult,   \n");
+            source.append("                       __global "); source.append(numeric_string); source.append(" *g_right_mult,  \n");
             source.append("                       __global unsigned int *g_left_count_mult,  \n");
             source.append("                       __global unsigned int *g_right_count_mult,  \n");
             source.append("                       __global unsigned int *g_blocks_mult,  \n");
@@ -2236,8 +2274,8 @@ namespace viennacl
 
                 // intervals (store left and right because the subdivision tree is in general
                 // not dense
-            source.append("         __local  float  s_left[2 * MAX_THREADS_BLOCK + 1];  \n");
-            source.append("         __local  float  s_right[2 * MAX_THREADS_BLOCK + 1];  \n");
+            source.append("         __local "); source.append(numeric_string); source.append("  s_left[2 * MAX_THREADS_BLOCK + 1];  \n");
+            source.append("         __local "); source.append(numeric_string); source.append("  s_right[2 * MAX_THREADS_BLOCK + 1];  \n");
 
                 // number of eigenvalues that are smaller than s_left / s_right
                 // (correspondence is realized via indices)
@@ -2266,12 +2304,12 @@ namespace viennacl
 
                 // variables for currently processed interval
                 // left and right limit of active interval
-            source.append("         float left = 0.0f;  \n");
-            source.append("         float right = 0.0f;  \n");
+            source.append("         "); source.append(numeric_string); source.append(" left = 0.0f;  \n");
+            source.append("         "); source.append(numeric_string); source.append(" right = 0.0f;  \n");
             source.append("         unsigned int left_count = 0;  \n");
             source.append("         unsigned int right_count = 0;  \n");
                 // midpoint of active interval
-            source.append("         float  mid = 0.0f;  \n");
+            source.append("         "); source.append(numeric_string); source.append(" mid = 0.0f;  \n");
                 // number of eigenvalues smaller then mid
             source.append("         unsigned int mid_count = 0;  \n");
                 // helper for stream compaction (tracking of threads generating second child)
@@ -2567,7 +2605,7 @@ namespace viennacl
 
             source.append("         barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
 
-            source.append("         float left_2, right_2;  \n");
+            source.append("         "); source.append(numeric_string); source.append(" left_2, right_2;  \n");
             source.append("         --s_cl_one;  \n");
             source.append("         --s_cl_mult;  \n");
             source.append("         --s_cl_blocking;  \n");
