@@ -23,7 +23,6 @@
 #include <string.h>
 
 
-
 // includes, project
 
 #include "viennacl/scalar.hpp"
@@ -42,6 +41,13 @@ bool runTest(int argc, char **argv);
 
 
 
+////////////////////////////////////////////////////////////////////////////////
+/// \brief initInputData   Initialize the diagonal and superdiagonal elements of
+///                        the matrix
+/// \param diagonal        diagonal elements of the matrix
+/// \param superdiagonal   superdiagonal elements of the matrix
+/// \param mat_size        Dimension of the matrix
+///
 void
 initInputData(std::vector<NumericT> &diagonal, std::vector<NumericT> &superdiagonal, const unsigned int mat_size)
 {
@@ -50,23 +56,22 @@ initInputData(std::vector<NumericT> &diagonal, std::vector<NumericT> &superdiago
   bool randomValues = false;
   
   
-  if(randomValues == true)
+  if (randomValues == true)
   {
     // Initialize diagonal and superdiagonal elements with random values
     for (unsigned int i = 0; i < mat_size; ++i)
     {
-        diagonal[i] = (NumericT)(2.0 * (((double)rand()
+        diagonal[i] =      static_cast<NumericT>(2.0 * (((double)rand()
                                      / (double) RAND_MAX) - 0.5));
-        superdiagonal[i] = (NumericT)(2.0 * (((double)rand()
+        superdiagonal[i] = static_cast<NumericT>(2.0 * (((double)rand()
                                      / (double) RAND_MAX) - 0.5));
     }
   }
-  
   else
   { 
     // Initialize diagonal and superdiagonal elements with modulo values
     // This will cause in many multiple eigenvalues.
-    for(unsigned int i = 0; i < mat_size; ++i)
+    for (unsigned int i = 0; i < mat_size; ++i)
     {
        diagonal[i] = ((NumericT)(i % 8)) - 4.5f;
        superdiagonal[i] = ((NumericT)(i % 5)) - 4.5f;
@@ -96,14 +101,14 @@ main(int argc, char **argv)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//! Run a simple test for CUDA
+//! Run a simple test
 ////////////////////////////////////////////////////////////////////////////////
 bool
 runTest(int argc, char **argv)
 {
     bool bCompareResult = false;
 
-    unsigned int mat_size = 5200;
+    unsigned int mat_size = 520;
 
     std::vector<NumericT> diagonal(mat_size);
     std::vector<NumericT> superdiagonal(mat_size);
@@ -116,9 +121,7 @@ runTest(int argc, char **argv)
 
     // -------Start the bisection algorithm------------
     std::cout << "Start the bisection algorithm" << std::endl;
-    bCompareResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect, mat_size);
-
-
+    bCompareResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect);
     // Exit if an error occured during the execution of the algorithm
     if (bCompareResult == false)
      return false;
@@ -127,7 +130,7 @@ runTest(int argc, char **argv)
     // ---------------Check the results---------------
     // The results of the bisection algorithm will be checked with the tql2 algorithm
     // Initialize Data for tql2 algorithm
-    viennacl::matrix<NumericT, viennacl::row_major> Q = viennacl::identity_matrix<NumericT>(mat_size);
+    viennacl::matrix<NumericT> Q = viennacl::identity_matrix<NumericT>(mat_size);
     std::vector<NumericT> diagonal_tql(mat_size);
     std::vector<NumericT> superdiagonal_tql(mat_size);
     diagonal_tql = diagonal;
@@ -144,21 +147,23 @@ runTest(int argc, char **argv)
     // Compare the results from the bisection algorithm with the results
     // from the tql2 algorithm.
     std::cout << "Start comparison..." << std::endl;
-    for(uint i = 0; i < mat_size; i++)
+    for (uint i = 0; i < mat_size; i++)
     {
-       if(std::abs(eigenvalues_bisect[i] - diagonal_tql[i]) > EPS)
+       if (std::abs(eigenvalues_bisect[i] - diagonal_tql[i]) > EPS)
        {
          std::cout << std::setprecision(8) << eigenvalues_bisect[i] << "  != " << diagonal_tql[i] << "\n";
-        // return false;
+         return false;
        }
     }
 
+/*
     // ------------Print the results---------------
     std::cout << "mat_size = " << mat_size << std::endl;
     for (unsigned int i = 0; i < mat_size; ++i)
     {
       std::cout << "Eigenvalue " << i << ":  \tbisect: " << std::setprecision(8) << eigenvalues_bisect[i] << "\ttql2: " << diagonal_tql[i] << std::endl;
     }
+*/
 
 
   return bCompareResult;

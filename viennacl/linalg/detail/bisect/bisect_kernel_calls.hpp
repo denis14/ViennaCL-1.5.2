@@ -46,140 +46,140 @@
 
 namespace viennacl
 {
-  namespace linalg
+namespace linalg
+{
+namespace detail
+{
+ template<typename NumericT>
+ void bisectSmall(const InputData<NumericT> &input, ResultDataSmall<NumericT> &result,
+                  const unsigned int mat_size,
+                  const NumericT lg, const NumericT ug,
+                  const NumericT precision)
   {
-    namespace detail
+    switch (viennacl::traits::handle(input.g_a).get_active_handle_id())
     {
-     template<typename NumericT>
-     void bisectSmall(const InputData<NumericT> &input, ResultDataSmall<NumericT> &result,
-                      const unsigned int mat_size,
-                      const NumericT lg, const NumericT ug,
-                      const NumericT precision)
-      {
-        switch (viennacl::traits::handle(input.g_a).get_active_handle_id())
-        {
-  #ifdef VIENNACL_WITH_OPENCL
-          case viennacl::OPENCL_MEMORY:
-            viennacl::linalg::opencl::bisectSmall(input, result,
-                                                 mat_size,
-                                                 lg,ug,
-                                                 precision);
-            break;
-  #endif
-  #ifdef VIENNACL_WITH_CUDA
-          case viennacl::CUDA_MEMORY:
-            viennacl::linalg::cuda::bisectSmall(input, result,
-                                                 mat_size,
-                                                 lg,ug,
-                                                 precision);
-            break;
-  #endif
-          case viennacl::MEMORY_NOT_INITIALIZED:
-            throw memory_exception("not initialised!");
-          default:
-            throw memory_exception("not implemented");
-        }
-      }
+#ifdef VIENNACL_WITH_OPENCL
+      case viennacl::OPENCL_MEMORY:
+        viennacl::linalg::opencl::bisectSmall(input, result,
+                                             mat_size,
+                                             lg,ug,
+                                             precision);
+        break;
+#endif
+#ifdef VIENNACL_WITH_CUDA
+      case viennacl::CUDA_MEMORY:
+        viennacl::linalg::cuda::bisectSmall(input, result,
+                                             mat_size,
+                                             lg,ug,
+                                             precision);
+        break;
+#endif
+      case viennacl::MEMORY_NOT_INITIALIZED:
+        throw memory_exception("not initialised!");
+      default:
+        throw memory_exception("not implemented");
+    }
+  }
 
 
 
 
-     template<typename NumericT>
-     void bisectLarge(const InputData<NumericT> &input, ResultDataLarge<NumericT> &result,
-                        const unsigned int mat_size,
-                        const NumericT lg, const NumericT ug,
-                        const NumericT precision)
-      {
-        switch (viennacl::traits::handle(input.g_a).get_active_handle_id())
-        {
-  #ifdef VIENNACL_WITH_OPENCL
-          case viennacl::OPENCL_MEMORY:
-            viennacl::linalg::opencl::bisectLarge(input, result,
-                                                 mat_size,
-                                                 lg,ug,
-                                                 precision);
-            break;
-  #endif
-  #ifdef VIENNACL_WITH_CUDA
-          case viennacl::CUDA_MEMORY:
-            viennacl::linalg::cuda::bisectLarge(input, result,
-                                                 mat_size,
-                                                 lg,ug,
-                                                 precision);
-            break;
-  #endif
-          case viennacl::MEMORY_NOT_INITIALIZED:
-            throw memory_exception("not initialised!");
-          default:
-            throw memory_exception("not implemented");
-        }
-      }
+ template<typename NumericT>
+ void bisectLarge(const InputData<NumericT> &input, ResultDataLarge<NumericT> &result,
+                    const unsigned int mat_size,
+                    const NumericT lg, const NumericT ug,
+                    const NumericT precision)
+  {
+    switch (viennacl::traits::handle(input.g_a).get_active_handle_id())
+    {
+#ifdef VIENNACL_WITH_OPENCL
+      case viennacl::OPENCL_MEMORY:
+        viennacl::linalg::opencl::bisectLarge(input, result,
+                                             mat_size,
+                                             lg,ug,
+                                             precision);
+        break;
+#endif
+#ifdef VIENNACL_WITH_CUDA
+      case viennacl::CUDA_MEMORY:
+        viennacl::linalg::cuda::bisectLarge(input, result,
+                                             mat_size,
+                                             lg,ug,
+                                             precision);
+        break;
+#endif
+      case viennacl::MEMORY_NOT_INITIALIZED:
+        throw memory_exception("not initialised!");
+      default:
+        throw memory_exception("not implemented");
+    }
+  }
 
 
 
 
 
-     template<typename NumericT>
-     void bisectLarge_OneIntervals(const InputData<NumericT> &input, ResultDataLarge<NumericT> &result,
-                        const unsigned int mat_size,
-                        const NumericT precision)
-      {
-        switch (viennacl::traits::handle(input.g_a).get_active_handle_id())
-        {
-  #ifdef VIENNACL_WITH_OPENCL
-          case viennacl::OPENCL_MEMORY:
-            viennacl::linalg::opencl::bisectLargeOneIntervals(input, result,
-                                                 mat_size,
-                                                 precision);
-            break;
-  #endif
-  #ifdef VIENNACL_WITH_CUDA
-          case viennacl::CUDA_MEMORY:
-            viennacl::linalg::cuda::bisectLarge_OneIntervals(input, result,
-                                                 mat_size,
-                                                 precision);
+ template<typename NumericT>
+ void bisectLarge_OneIntervals(const InputData<NumericT> &input, ResultDataLarge<NumericT> &result,
+                    const unsigned int mat_size,
+                    const NumericT precision)
+  {
+    switch (viennacl::traits::handle(input.g_a).get_active_handle_id())
+    {
+#ifdef VIENNACL_WITH_OPENCL
+      case viennacl::OPENCL_MEMORY:
+        viennacl::linalg::opencl::bisectLargeOneIntervals(input, result,
+                                             mat_size,
+                                             precision);
+        break;
+#endif
+#ifdef VIENNACL_WITH_CUDA
+      case viennacl::CUDA_MEMORY:
+        viennacl::linalg::cuda::bisectLarge_OneIntervals(input, result,
+                                             mat_size,
+                                             precision);
 
-            break;
-  #endif
-          case viennacl::MEMORY_NOT_INITIALIZED:
-            throw memory_exception("not initialised!");
-          default:
-            throw memory_exception("not implemented");
-        }
-      }
-
-
+        break;
+#endif
+      case viennacl::MEMORY_NOT_INITIALIZED:
+        throw memory_exception("not initialised!");
+      default:
+        throw memory_exception("not implemented");
+    }
+  }
 
 
-     template<typename NumericT>
-     void bisectLarge_MultIntervals(const InputData<NumericT> &input, ResultDataLarge<NumericT> &result,
-                        const unsigned int mat_size,
-                        const NumericT precision)
-      {
-        switch (viennacl::traits::handle(input.g_a).get_active_handle_id())
-        {
-  #ifdef VIENNACL_WITH_OPENCL
-          case viennacl::OPENCL_MEMORY:
-          viennacl::linalg::opencl::bisectLargeMultIntervals(input, result,
-                                               mat_size,
-                                               precision);
-            break;
-  #endif
-  #ifdef VIENNACL_WITH_CUDA
-          case viennacl::CUDA_MEMORY:
-            viennacl::linalg::cuda::bisectLarge_MultIntervals(input, result,
-                                                 mat_size,
-                                                 precision);
-            break;
-  #endif
-          case viennacl::MEMORY_NOT_INITIALIZED:
-            throw memory_exception("not initialised!");
-          default:
-            throw memory_exception("not implemented");
-        }
-      }
-    } // namespace detail
-  } // namespace linalg
+
+
+ template<typename NumericT>
+ void bisectLarge_MultIntervals(const InputData<NumericT> &input, ResultDataLarge<NumericT> &result,
+                    const unsigned int mat_size,
+                    const NumericT precision)
+  {
+    switch (viennacl::traits::handle(input.g_a).get_active_handle_id())
+    {
+#ifdef VIENNACL_WITH_OPENCL
+      case viennacl::OPENCL_MEMORY:
+      viennacl::linalg::opencl::bisectLargeMultIntervals(input, result,
+                                           mat_size,
+                                           precision);
+        break;
+#endif
+#ifdef VIENNACL_WITH_CUDA
+      case viennacl::CUDA_MEMORY:
+        viennacl::linalg::cuda::bisectLarge_MultIntervals(input, result,
+                                             mat_size,
+                                             precision);
+        break;
+#endif
+      case viennacl::MEMORY_NOT_INITIALIZED:
+        throw memory_exception("not initialised!");
+      default:
+        throw memory_exception("not implemented");
+    }
+  }
+} // namespace detail
+} // namespace linalg
 } //namespace viennacl
 
 
