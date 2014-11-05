@@ -1,0 +1,1 @@
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP -O3 -DNDEBUG        CMakeFiles/external_linkage-opencl.dir/src/external_1.cpp.o CMakeFiles/external_linkage-opencl.dir/src/external_2.cpp.o  -o external_linkage-opencl -rdynamic -lOpenCL -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

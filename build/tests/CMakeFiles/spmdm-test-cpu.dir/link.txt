@@ -1,0 +1,1 @@
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP -O3 -DNDEBUG        CMakeFiles/spmdm-test-cpu.dir/src/spmdm.cpp.o  -o spmdm-test-cpu -rdynamic -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

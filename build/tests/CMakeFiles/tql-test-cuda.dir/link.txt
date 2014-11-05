@@ -1,0 +1,1 @@
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP -O3 -DNDEBUG        CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o  -o tql-test-cuda -rdynamic -lcudart -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

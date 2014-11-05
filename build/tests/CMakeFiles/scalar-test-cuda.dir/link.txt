@@ -1,0 +1,1 @@
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP -O3 -DNDEBUG        CMakeFiles/scalar-test-cuda.dir/src/./scalar-test-cuda_generated_scalar.cu.o  -o scalar-test-cuda -rdynamic -lcudart -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 
