@@ -1,3 +1,6 @@
+#ifndef VIENNACL_LINALG_CUDA_BISECT_BISECT_UTIL_HPP_
+#define VIENNACL_LINALG_CUDA_BISECT_BISECT_UTIL_HPP_
+
 /* =========================================================================
    Copyright (c) 2010-2014, Institute for Microelectronics,
                             Institute for Analysis and Scientific Computing,
@@ -15,11 +18,14 @@
    License:         MIT (X11), see file LICENSE in the base directory
 ============================================================================= */
 
-/* Utility / shared functionality for bisection kernels */
 
+/** @file viennacl/linalg/cuda/bisect_kernel_small.hpp
+    @brief Utility / shared functionality for bisection kernels
 
-#ifndef VIENNACL_LINALG_DETAIL_BISECT_UTIL_HPP_
-#define VIENNACL_LINALG_DETAIL_BISECT_UTIL_HPP_
+    Implementation based on the sample provided with the CUDA 6.0 SDK, for which
+    the creation of derivative works is allowed by including the following statement:
+    "This software contains source code provided by NVIDIA Corporation."
+*/
 
 // includes, project
 #include "viennacl/linalg/detail/bisect/config.hpp"
@@ -475,8 +481,7 @@ storeIntervalConverged(NumericT *s_left, NumericT *s_right,
                        unsigned int &is_active_second)
 {
     const unsigned int tid = threadIdx.x;
-   // const unsigned int multiplicity = right_count >= left_count ? right_count - left_count : 1; // selbst veraendert
-    const unsigned int multiplicity = right_count - left_count;  // selbst veraendert
+    const unsigned int multiplicity = right_count - left_count;
     // check multiplicity of eigenvalue
     if (1 == multiplicity)
     {
@@ -550,7 +555,6 @@ subdivideActiveInterval(const unsigned int tid,
         right_count = s_right_count[tid];
 
         // check if thread already converged
-        //if( std::abs(left - right) > 0.00000001f )
         if (left != right)
         {
 

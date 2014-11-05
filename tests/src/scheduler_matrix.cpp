@@ -49,7 +49,7 @@
 
 using namespace boost::numeric;
 
-template <typename MatrixType, typename VCLMatrixType>
+template<typename MatrixType, typename VCLMatrixType>
 bool check_for_equality(MatrixType const & ublas_A, VCLMatrixType const & vcl_A, double epsilon)
 {
   typedef typename MatrixType::value_type   value_type;
@@ -81,7 +81,7 @@ bool check_for_equality(MatrixType const & ublas_A, VCLMatrixType const & vcl_A,
 
 
 
-template <typename UBLASMatrixType,
+template<typename UBLASMatrixType,
           typename ViennaCLMatrixType1, typename ViennaCLMatrixType2, typename ViennaCLMatrixType3>
 int run_test(double epsilon,
              UBLASMatrixType & ublas_A, UBLASMatrixType & ublas_B, UBLASMatrixType & ublas_C,
@@ -336,7 +336,7 @@ int run_test(double epsilon,
   { \
   for (std::size_t i=0; i<ublas_C.size1(); ++i) \
     for (std::size_t j=0; j<ublas_C.size2(); ++j) \
-      ublas_C(i,j) = OPNAME(ublas_A(i,j)); \
+      ublas_C(i,j) = static_cast<cpu_value_type>(OPNAME(ublas_A(i,j))); \
   viennacl::scheduler::statement my_statement(vcl_C, viennacl::op_assign(), viennacl::linalg::element_##OPNAME(vcl_A)); \
   viennacl::scheduler::execute(my_statement); \
   if (!check_for_equality(ublas_C, vcl_C, epsilon) != EXIT_SUCCESS) \
@@ -345,7 +345,7 @@ int run_test(double epsilon,
   { \
   for (std::size_t i=0; i<ublas_C.size1(); ++i) \
     for (std::size_t j=0; j<ublas_C.size2(); ++j) \
-      ublas_C(i,j) = OPNAME(ublas_A(i,j) / cpu_value_type(2)); \
+      ublas_C(i,j) = static_cast<cpu_value_type>(OPNAME(ublas_A(i,j) / cpu_value_type(2))); \
   viennacl::scheduler::statement my_statement(vcl_C, viennacl::op_assign(), viennacl::linalg::element_##OPNAME(vcl_A / cpu_value_type(2))); \
   viennacl::scheduler::execute(my_statement); \
   if (!check_for_equality(ublas_C, vcl_C, epsilon) != EXIT_SUCCESS) \
@@ -381,7 +381,7 @@ int run_test(double epsilon,
 
 
 
-template <typename T, typename ScalarType>
+template<typename T, typename ScalarType>
 int run_test(double epsilon)
 {
     //typedef float               ScalarType;
@@ -896,7 +896,7 @@ int main (int, const char **)
 
 
 #ifdef VIENNACL_WITH_OPENCL
-   if( viennacl::ocl::current_device().double_support() )
+   if ( viennacl::ocl::current_device().double_support() )
 #endif
   {
     double epsilon = 1e-12;

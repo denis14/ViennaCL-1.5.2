@@ -86,7 +86,7 @@ namespace viennacl
     }
 
     // with vector expression:
-    template <typename LHS, typename RHS, typename OP>
+    template<typename LHS, typename RHS, typename OP>
     viennacl::scalar_expression<const viennacl::vector_expression<const LHS, const RHS, OP>,
                                 const viennacl::vector_expression<const LHS, const RHS, OP>,
                                 viennacl::op_norm_inf>
@@ -96,15 +96,6 @@ namespace viennacl
                                           const viennacl::vector_expression<const LHS, const RHS, OP>,
                                           viennacl::op_norm_inf >(vector, vector);
     }
-
-    // with matrix:
-    /*
-    template<typename NumericT, typename F>
-    scalar_expression< const matrix_base<NumericT, F>, const matrix_base<NumericT, F>, op_norm_inf>
-    norm_inf(const matrix<NumericT, F> & A)
-    {
-      return scalar_expression< const matrix_base<NumericT, F>, const matrix_base<NumericT, F>, op_norm_inf>(A, A);
-    }*/
 
 
   } // end namespace linalg

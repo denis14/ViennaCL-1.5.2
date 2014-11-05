@@ -150,7 +150,7 @@ ScalarType vector_compare(std::vector<ScalarType> & res,
 
     ScalarType diff = 0.0;
     ScalarType mx = 0.0;
-    for(size_t i = 0; i < 9; i++)
+    for(size_t i = 0; i < res.size(); i++)
     {
         diff = std::max(diff, std::abs(res[i] - ref[i]));
         mx = std::max(mx, res[i]);
@@ -297,8 +297,9 @@ int main()
   test_eigen<viennacl::column_major>("../../examples/testdata/eigen/symm5.example", true);
 //  test_eigen<viennacl::column_major>("../../examples/testdata/eigen/symm3.example", true);
 
-
+#ifdef VIENNACL_WITH_OPENCL
   test_eigen<viennacl::row_major>("../../examples/testdata/eigen/nsm2.example", false);
+#endif
   //test_eigen<viennacl::row_major>("../../examples/testdata/eigen/nsm2.example", false);
   //test_eigen("../../examples/testdata/eigen/nsm3.example", false);
   //test_eigen("../../examples/testdata/eigen/nsm4.example", false); //Note: This test suffers from round-off errors in single precision, hence disabled

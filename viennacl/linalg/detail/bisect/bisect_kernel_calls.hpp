@@ -1,5 +1,5 @@
-#ifndef VIENNACL_LINALG_BISECT_KERNEL_CALLS_HPP_
-#define VIENNACL_LINALG_BISECT_KERNEL_CALLS_HPP_
+#ifndef VIENNACL_LINALG_DETAIL_BISECT_KERNEL_CALLS_HPP_
+#define VIENNACL_LINALG_DETAIL_BISECT_KERNEL_CALLS_HPP_
 
 /* =========================================================================
    Copyright (c) 2010-2014, Institute for Microelectronics,
@@ -18,9 +18,14 @@
    License:         MIT (X11), see file LICENSE in the base directory
 ============================================================================= */
 
-/** @file viennacl/linalg/matrix_operations.hpp
-    @brief Implementations of dense matrix related operations including matrix-vector products.
+/** @file viennacl/linalg/detail/bisect_kernel_calls.hpp
+    @brief Kernel calls for the bisection algorithm
+
+    Implementation based on the sample provided with the CUDA 6.0 SDK, for which
+    the creation of derivative works is allowed by including the following statement:
+    "This software contains source code provided by NVIDIA Corporation."
 */
+
 
 #include "viennacl/forwards.h"
 #include "viennacl/scalar.hpp"

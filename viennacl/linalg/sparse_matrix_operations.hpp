@@ -128,11 +128,11 @@ namespace viennacl
     * @param d_mat    The dense matrix
     * @param result   The result matrix (dense)
     */
-    template<typename SparseMatrixType, class ScalarType, typename F1, typename F2>
+    template<typename SparseMatrixType, class ScalarType>
     typename viennacl::enable_if< viennacl::is_any_sparse_matrix<SparseMatrixType>::value>::type
     prod_impl(const SparseMatrixType & sp_mat,
-              const viennacl::matrix_base<ScalarType, F1> & d_mat,
-                    viennacl::matrix_base<ScalarType, F2> & result)
+              const viennacl::matrix_base<ScalarType> & d_mat,
+                    viennacl::matrix_base<ScalarType> & result)
     {
       assert( (sp_mat.size1() == result.size1()) && bool("Size check failed for compressed matrix - dense matrix product: size1(sp_mat) != size1(result)"));
       assert( (sp_mat.size2() == d_mat.size1()) && bool("Size check failed for compressed matrix - dense matrix product: size2(sp_mat) != size1(d_mat)"));
@@ -168,13 +168,13 @@ namespace viennacl
     * @param d_mat    The dense matrix (transposed)
     * @param result   The result matrix (dense)
     */
-    template<typename SparseMatrixType, class ScalarType, typename F1, typename F2>
+    template<typename SparseMatrixType, class ScalarType>
     typename viennacl::enable_if< viennacl::is_any_sparse_matrix<SparseMatrixType>::value>::type
     prod_impl(const SparseMatrixType & sp_mat,
-              const viennacl::matrix_expression<const viennacl::matrix_base<ScalarType, F1>,
-                                                const viennacl::matrix_base<ScalarType, F1>,
+              const viennacl::matrix_expression<const viennacl::matrix_base<ScalarType>,
+                                                const viennacl::matrix_base<ScalarType>,
                                                 viennacl::op_trans>& d_mat,
-                    viennacl::matrix_base<ScalarType, F2> & result)
+                    viennacl::matrix_base<ScalarType> & result)
     {
       assert( (sp_mat.size1() == result.size1()) && bool("Size check failed for compressed matrix - dense matrix product: size1(sp_mat) != size1(result)"));
       assert( (sp_mat.size2() == d_mat.size1()) && bool("Size check failed for compressed matrix - dense matrix product: size2(sp_mat) != size1(d_mat)"));
@@ -338,7 +338,7 @@ namespace viennacl
   * @param result The vector the result is written to.
   * @param proxy  An expression template proxy class holding v1, A, and v2.
   */
-  template <typename SCALARTYPE, typename SparseMatrixType>
+  template<typename SCALARTYPE, typename SparseMatrixType>
   typename viennacl::enable_if< viennacl::is_any_sparse_matrix<SparseMatrixType>::value,
                                 viennacl::vector<SCALARTYPE> >::type
   operator+(viennacl::vector_base<SCALARTYPE> & result,
@@ -356,7 +356,7 @@ namespace viennacl
   * @param result The vector the result is written to.
   * @param proxy  An expression template proxy class.
   */
-  template <typename SCALARTYPE, typename SparseMatrixType>
+  template<typename SCALARTYPE, typename SparseMatrixType>
   typename viennacl::enable_if< viennacl::is_any_sparse_matrix<SparseMatrixType>::value,
                                 viennacl::vector<SCALARTYPE> >::type
   operator-(viennacl::vector_base<SCALARTYPE> & result,

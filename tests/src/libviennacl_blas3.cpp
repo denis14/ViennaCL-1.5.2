@@ -35,7 +35,7 @@
 
 #include "viennacl/vector.hpp"
 
-template <typename ScalarType>
+template<typename ScalarType>
 ScalarType diff(ScalarType const & s1, ScalarType const & s2)
 {
    if (s1 != s2)
@@ -43,7 +43,7 @@ ScalarType diff(ScalarType const & s1, ScalarType const & s2)
    return 0;
 }
 
-template <typename ScalarType, typename ViennaCLVectorType>
+template<typename ScalarType, typename ViennaCLVectorType>
 ScalarType diff(std::vector<ScalarType> const & v1, ViennaCLVectorType const & vcl_vec)
 {
    std::vector<ScalarType> v2_cpu(vcl_vec.size());
@@ -65,7 +65,7 @@ ScalarType diff(std::vector<ScalarType> const & v1, ViennaCLVectorType const & v
    return inf_norm;
 }
 
-template <typename T, typename U, typename EpsilonT>
+template<typename T, typename U, typename EpsilonT>
 void check(T const & t, U const & u, EpsilonT eps)
 {
   EpsilonT rel_error = diff(t,u);
@@ -79,7 +79,7 @@ void check(T const & t, U const & u, EpsilonT eps)
 }
 
 
-template <typename T>
+template<typename T>
 T get_value(std::vector<T> & array, ViennaCLInt i, ViennaCLInt j,
             ViennaCLInt start1, ViennaCLInt start2,
             ViennaCLInt stride1, ViennaCLInt stride2,
@@ -88,14 +88,14 @@ T get_value(std::vector<T> & array, ViennaCLInt i, ViennaCLInt j,
 {
   // row-major
   if (order == ViennaCLRowMajor && trans == ViennaCLTrans)
-    return array[(j*stride1 + start1) * cols + (i*stride2 + start2)];
+    return array[static_cast<std::size_t>((j*stride1 + start1) * cols + (i*stride2 + start2))];
   else if (order == ViennaCLRowMajor && trans != ViennaCLTrans)
-    return array[(i*stride1 + start1) * cols + (j*stride2 + start2)];
+    return array[static_cast<std::size_t>((i*stride1 + start1) * cols + (j*stride2 + start2))];
 
   // column-major
   else if (order != ViennaCLRowMajor && trans == ViennaCLTrans)
-    return array[(j*stride1 + start1) + (i*stride2 + start2) * rows];
-  return array[(i*stride1 + start1) + (j*stride2 + start2) * rows];
+    return array[static_cast<std::size_t>((j*stride1 + start1) + (i*stride2 + start2) * rows)];
+  return array[static_cast<std::size_t>((i*stride1 + start1) + (j*stride2 + start2) * rows)];
 }
 
 
@@ -171,13 +171,13 @@ void test_blas(ViennaCLBackend my_backend,
       // write result
       if (order_C == ViennaCLRowMajor)
       {
-        C_float [(i*C_stride1 + C_start1) * C_columns + (j*C_stride2 + C_start2)] = val_float;
-        C_double[(i*C_stride1 + C_start1) * C_columns + (j*C_stride2 + C_start2)] = val_double;
+        C_float [static_cast<std::size_t>((i*C_stride1 + C_start1) * C_columns + (j*C_stride2 + C_start2))] = val_float;
+        C_double[static_cast<std::size_t>((i*C_stride1 + C_start1) * C_columns + (j*C_stride2 + C_start2))] = val_double;
       }
       else
       {
-        C_float [(i*C_stride1 + C_start1) + (j*C_stride2 + C_start2) * C_rows] = val_float;
-        C_double[(i*C_stride1 + C_start1) + (j*C_stride2 + C_start2) * C_rows] = val_double;
+        C_float [static_cast<std::size_t>((i*C_stride1 + C_start1) + (j*C_stride2 + C_start2) * C_rows)] = val_float;
+        C_double[static_cast<std::size_t>((i*C_stride1 + C_start1) + (j*C_stride2 + C_start2) * C_rows)] = val_double;
       }
     }
 
@@ -476,7 +476,7 @@ void test_blas(ViennaCLBackend my_backend,
 
 int main()
 {
-  ViennaCLInt size  = 500*500;
+  std::size_t size  = 500*500;
   float  eps_float  = 1e-5f;
   double eps_double = 1e-12;
 
@@ -490,7 +490,7 @@ int main()
 
   // fill with random data:
 
-  for (ViennaCLInt i = 0; i < size; ++i)
+  for (std::size_t i = 0; i < size; ++i)
   {
     C_float[i] = 0.5f + 0.1f * random<float>();
     A_float[i] = 0.5f + 0.1f * random<float>();
@@ -536,7 +536,7 @@ int main()
   viennacl::vector<double> *opencl_A_double = NULL;
   viennacl::vector<double> *opencl_B_double = NULL;
 
-  if( viennacl::ocl::current_device().double_support() )
+  if ( viennacl::ocl::current_device().double_support() )
   {
     opencl_C_double = new viennacl::vector<double>(size, viennacl::context(viennacl::ocl::get_context(context_id)));  viennacl::copy(C_double, *opencl_C_double);
     opencl_A_double = new viennacl::vector<double>(size, viennacl::context(viennacl::ocl::get_context(context_id)));  viennacl::copy(A_double, *opencl_A_double);
@@ -569,7 +569,7 @@ int main()
   check(A_float, opencl_A_float, eps_float);
   check(B_float, opencl_B_float, eps_float);
 
-  if( viennacl::ocl::current_device().double_support() )
+  if ( viennacl::ocl::current_device().double_support() )
   {
     check(C_double, *opencl_C_double, eps_double);
     check(A_double, *opencl_A_double, eps_double);
@@ -602,7 +602,7 @@ int main()
 
 #ifdef VIENNACL_WITH_OPENCL
   //cleanup
-  if( viennacl::ocl::current_device().double_support() )
+  if ( viennacl::ocl::current_device().double_support() )
   {
     delete opencl_C_double;
     delete opencl_A_double;

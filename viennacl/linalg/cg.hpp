@@ -25,6 +25,8 @@
 #include <vector>
 #include <map>
 #include <cmath>
+#include <numeric>
+
 #include "viennacl/forwards.h"
 #include "viennacl/tools/tools.hpp"
 #include "viennacl/linalg/ilu.hpp"
@@ -34,6 +36,7 @@
 #include "viennacl/traits/clear.hpp"
 #include "viennacl/traits/size.hpp"
 #include "viennacl/meta/result_of.hpp"
+#include "viennacl/linalg/iterative_operations.hpp"
 
 namespace viennacl
 {
@@ -76,73 +79,95 @@ namespace viennacl
         mutable double last_error_;
     };
 
+    namespace detail{
 
-    /** @brief Implementation of the conjugate gradient solver without preconditioner
+      /** @brief handles the no_precond case at minimal overhead */
+      template<typename VectorType, typename PreconditionerType>
+      class z_handler{
+      public:
+        z_handler(VectorType & residual) : z_(residual){ }
+        VectorType & get() { return z_; }
+      private:
+        VectorType z_;
+      };
+
+      template<typename VectorType>
+      class z_handler<VectorType, viennacl::linalg::no_precond>{
+      public:
+        z_handler(VectorType & residual) : presidual_(&residual){ }
+        VectorType & get() { return *presidual_; }
+      private:
+        VectorType * presidual_;
+      };
+
+    }
+
+    /** @brief Implementation of the standard conjugate gradient algorithm (no preconditioner), specialized for ViennaCL types.
     *
-    * Following the algorithm in the book by Y. Saad "Iterative Methods for sparse linear systems"
+    * Pipelined version from A. T. Chronopoulos and C. W. Gear, J. Comput. Appl. Math. 25(2), 153–168 (1989)
     *
-    * @param matrix     The system matrix
+    * @param A          The system matrix
     * @param rhs        The load vector
     * @param tag        Solver configuration tag
+    * @param precond    A preconditioner. Precondition operation is done via member function apply()
     * @return The result vector
     */
-    template <typename MatrixType, typename VectorType>
-    VectorType solve(const MatrixType & matrix, VectorType const & rhs, cg_tag const & tag)
+    //template<typename MatrixType, typename ScalarType>
+    template<typename MatrixType, typename ScalarType>
+    viennacl::vector<ScalarType> solve(MatrixType const & A, //MatrixType const & A,
+                                       viennacl::vector<ScalarType> const & rhs,
+                                       cg_tag const & tag,
+                                       viennacl::linalg::no_precond)
     {
-      //typedef typename VectorType::value_type      ScalarType;
-      typedef typename viennacl::result_of::value_type<VectorType>::type        ScalarType;
-      typedef typename viennacl::result_of::cpu_value_type<ScalarType>::type    CPU_ScalarType;
-      //std::cout << "Starting CG" << std::endl;
-      VectorType result = rhs;
+      viennacl::vector<ScalarType> result(rhs);
       viennacl::traits::clear(result);
 
-      VectorType residual = rhs;
-      VectorType p = rhs;
-      VectorType tmp = rhs;
+      viennacl::vector<ScalarType> residual(rhs);
+      viennacl::vector<ScalarType> p(rhs);
+      viennacl::vector<ScalarType> Ap = viennacl::linalg::prod(A, p);
+      viennacl::vector<ScalarType> inner_prod_buffer = viennacl::zero_vector<ScalarType>(3*256, viennacl::traits::context(rhs)); // temporary buffer
+      std::vector<ScalarType>      host_inner_prod_buffer(inner_prod_buffer.size());
+      std::size_t                  buffer_size_per_vector = inner_prod_buffer.size() / 3;
 
-      CPU_ScalarType ip_rr = viennacl::linalg::inner_prod(rhs,rhs);
-      CPU_ScalarType alpha;
-      CPU_ScalarType new_ip_rr = 0;
-      CPU_ScalarType beta;
-      CPU_ScalarType norm_rhs = std::sqrt(ip_rr);
+      ScalarType norm_rhs_squared = viennacl::linalg::norm_2(residual); norm_rhs_squared *= norm_rhs_squared;
 
-      //std::cout << "Starting CG solver iterations... " << std::endl;
-      if (norm_rhs == 0) //solution is zero if RHS norm is zero
+      if (!norm_rhs_squared) //check for early convergence of A*x = 0
         return result;
+
+      ScalarType inner_prod_rr = norm_rhs_squared;
+      ScalarType alpha = inner_prod_rr / viennacl::linalg::inner_prod(p, Ap);
+      ScalarType beta  = viennacl::linalg::norm_2(Ap); beta = (alpha * alpha * beta * beta - inner_prod_rr) / inner_prod_rr;
+      ScalarType inner_prod_ApAp = 0;
+      ScalarType inner_prod_pAp  = 0;
 
       for (unsigned int i = 0; i < tag.max_iterations(); ++i)
       {
         tag.iters(i+1);
-        tmp = viennacl::linalg::prod(matrix, p);
 
-        alpha = ip_rr / viennacl::linalg::inner_prod(tmp, p);
-        result += alpha * p;
-        residual -= alpha * tmp;
+        viennacl::linalg::pipelined_cg_vector_update(result, alpha, p, residual, Ap, beta, inner_prod_buffer);
+        viennacl::linalg::pipelined_cg_prod(A, p, Ap, inner_prod_buffer);
 
-        new_ip_rr = viennacl::linalg::norm_2(residual);
-        if (new_ip_rr / norm_rhs < tag.tolerance())
+        // bring back the partial results to the host:
+        viennacl::fast_copy(inner_prod_buffer.begin(), inner_prod_buffer.end(), host_inner_prod_buffer.begin());
+
+        inner_prod_rr   = std::accumulate(host_inner_prod_buffer.begin(),                              host_inner_prod_buffer.begin() +     buffer_size_per_vector, ScalarType(0));
+        inner_prod_ApAp = std::accumulate(host_inner_prod_buffer.begin() +     buffer_size_per_vector, host_inner_prod_buffer.begin() + 2 * buffer_size_per_vector, ScalarType(0));
+        inner_prod_pAp  = std::accumulate(host_inner_prod_buffer.begin() + 2 * buffer_size_per_vector, host_inner_prod_buffer.begin() + 3 * buffer_size_per_vector, ScalarType(0));
+
+        if (std::fabs(inner_prod_rr / norm_rhs_squared) < tag.tolerance() *  tag.tolerance())    //squared norms involved here
           break;
-        new_ip_rr *= new_ip_rr;
 
-        beta = new_ip_rr / ip_rr;
-        ip_rr = new_ip_rr;
-
-        p = residual + beta * p;
+        alpha = inner_prod_rr / inner_prod_pAp;
+        beta  = (alpha*alpha*inner_prod_ApAp - inner_prod_rr) / inner_prod_rr;
       }
 
       //store last error estimate:
-      tag.error(std::sqrt(new_ip_rr) / norm_rhs);
+      tag.error(std::sqrt(std::fabs(inner_prod_rr) / norm_rhs_squared));
 
       return result;
     }
 
-    template <typename MatrixType, typename VectorType>
-    VectorType solve(const MatrixType & matrix, VectorType const & rhs, cg_tag const & tag, viennacl::linalg::no_precond)
-    {
-      return solve(matrix, rhs, tag);
-    }
-
-    /** @brief Implementation of the preconditioned conjugate gradient solver
+    /** @brief Implementation of the preconditioned conjugate gradient solver, generic implementation for non-ViennaCL types.
     *
     * Following Algorithm 9.1 in "Iterative Methods for Sparse Linear Systems" by Y. Saad
     *
@@ -152,7 +177,7 @@ namespace viennacl
     * @param precond    A preconditioner. Precondition operation is done via member function apply()
     * @return The result vector
     */
-    template <typename MatrixType, typename VectorType, typename PreconditionerType>
+    template<typename MatrixType, typename VectorType, typename PreconditionerType>
     VectorType solve(const MatrixType & matrix, VectorType const & rhs, cg_tag const & tag, PreconditionerType const & precond)
     {
       typedef typename viennacl::result_of::value_type<VectorType>::type        ScalarType;
@@ -163,7 +188,8 @@ namespace viennacl
 
       VectorType residual = rhs;
       VectorType tmp = rhs;
-      VectorType z = rhs;
+      detail::z_handler<VectorType, PreconditionerType> zhandler(residual);
+      VectorType & z = zhandler.get();
 
       precond.apply(z);
       VectorType p = z;
@@ -190,7 +216,11 @@ namespace viennacl
         z = residual;
         precond.apply(z);
 
-        new_ip_rr = viennacl::linalg::inner_prod(residual, z);
+        if (&residual==&z)
+          new_ip_rr = std::pow(viennacl::linalg::norm_2(residual),2);
+        else
+          new_ip_rr = viennacl::linalg::inner_prod(residual, z);
+
         new_ipp_rr_over_norm_rhs = new_ip_rr / norm_rhs_squared;
         if (std::fabs(new_ipp_rr_over_norm_rhs) < tag.tolerance() *  tag.tolerance())    //squared norms involved here
           break;
@@ -205,6 +235,12 @@ namespace viennacl
       tag.error(std::sqrt(std::fabs(new_ip_rr / norm_rhs_squared)));
 
       return result;
+    }
+
+    template<typename MatrixType, typename VectorType>
+    VectorType solve(const MatrixType & matrix, VectorType const & rhs, cg_tag const & tag)
+    {
+      return solve(matrix, rhs, tag, viennacl::linalg::no_precond());
     }
 
   }

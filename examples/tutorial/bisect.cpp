@@ -1,13 +1,20 @@
-/*
- * Copyright 1993-2014 NVIDIA Corporation.  All rights reserved.
- *
- * Please refer to the NVIDIA end user license agreement (EULA) associated
- * with this source code for terms and conditions that govern your use of
- * this software. Any use, reproduction, disclosure, or distribution of
- * this software and related documentation outside the terms of the EULA
- * is strictly prohibited.
- *
- */
+/* =========================================================================
+   Copyright (c) 2010-2014, Institute for Microelectronics,
+                            Institute for Analysis and Scientific Computing,
+                            TU Wien.
+   Portions of this software are copyright by UChicago Argonne, LLC.
+
+                            -----------------
+                  ViennaCL - The Vienna Computing Library
+                            -----------------
+
+   Project Head:    Karl Rupp                   rupp@iue.tuwien.ac.at
+
+   (A list of authors and contributors can be found in the PDF manual)
+
+   License:         MIT (X11), see file LICENSE in the base directory
+============================================================================= */
+
 
 /* Computation of eigenvalues of symmetric, tridiagonal matrix using
  * bisection.
@@ -86,9 +93,6 @@ int
 main(int argc, char **argv)
 {
     bool bResult = false;
-
-    printf("Starting eigenvalues\n");
-
     unsigned int mat_size = 30;
 
     std::vector<NumericT> diagonal(mat_size);
@@ -103,14 +107,15 @@ main(int argc, char **argv)
     // -------Start the bisection algorithm------------
     std::cout << "Start the bisection algorithm" << std::endl;
     bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect);
+    std::cout << std::endl << "---TUTORIAL COMPLETED---" << std::endl;
 
-
+/*
     // ------------Print the results---------------
     std::cout << "mat_size = " << mat_size << std::endl;
     for (unsigned int i = 0; i < mat_size; ++i)
     {
       std::cout << "Eigenvalue " << i << ": " << std::setprecision(8) << eigenvalues_bisect[i] << std::endl;
     }
-
+*/
     exit(bResult == true ? EXIT_SUCCESS : EXIT_FAILURE);
 }

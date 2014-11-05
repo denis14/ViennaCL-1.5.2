@@ -39,117 +39,132 @@
 
 namespace viennacl
 {
-  namespace ocl
+namespace ocl
+{
+
+enum vendor_id
+{
+  beignet_id = 358,
+  intel_id = 32902,
+  nvidia_id = 4318,
+  amd_id = 4098,
+  unknown_id = 0
+};
+
+//Architecture Family
+enum device_architecture_family
+{
+  //NVidia
+  tesla,
+  fermi,
+  kepler,
+  maxwell,
+
+  //AMD
+  evergreen,
+  northern_islands,
+  southern_islands,
+  volcanic_islands,
+
+  unknown
+};
+
+inline device_architecture_family get_architecture_family(cl_uint vendor_id, std::string const & name)
+{
+  /*-NVidia-*/
+  if (vendor_id==nvidia_id)
+  {
+    //GeForce
+    vcl_size_t found=0;
+    if ((found= name.find("GeForce",0)) != std::string::npos)
+    {
+      if ((found = name.find_first_of("123456789", found)) != std::string::npos)
+      {
+        switch (name[found])
+        {
+        case '2' : return tesla;
+        case '3' : return tesla;
+
+        case '4' : return fermi;
+        case '5' : return fermi;
+
+        case '6' : return kepler;
+        case '7' : return kepler;
+
+        case '8' : return maxwell;
+
+        default: return unknown;
+        }
+      }
+      else
+        return unknown;
+    }
+
+    //Tesla
+    else if ((found = name.find("Tesla",0)) != std::string::npos)
+    {
+      if ((found = name.find("CMK", found)) != std::string::npos)
+      {
+        switch (name[found])
+        {
+        case 'C' : return fermi;
+        case 'M' : return fermi;
+        case 'K' : return kepler;
+
+        default : return unknown;
+        }
+      }
+      else
+        return unknown;
+    }
+
+    else
+      return unknown;
+  }
+
+  /*-AMD-*/
+  else if (vendor_id==amd_id)
   {
 
-    static const cl_uint intel_id = 32902;
-    static const cl_uint nvidia_id = 4318;
-    static const cl_uint amd_id = 4098;
-    static const cl_uint unknown_id = 0;
+#define VIENNACL_DEVICE_MAP(device,arch)if (name.find(device,0)!=std::string::npos) return arch;
 
-    //Architecture Family
-    enum device_architecture_family{
-      //NVidia
-      Tesla,
-      Fermi,
-      Kepler,
+    //Evergreen
+    VIENNACL_DEVICE_MAP("Cedar",evergreen);
+    VIENNACL_DEVICE_MAP("Redwood",evergreen);
+    VIENNACL_DEVICE_MAP("Juniper",evergreen);
+    VIENNACL_DEVICE_MAP("Cypress",evergreen);
+    VIENNACL_DEVICE_MAP("Hemlock",evergreen);
 
-      //AMD
-      Evergreen,
-      NorthernIslands,
-      SouthernIslands,
+    //NorthernIslands
+    VIENNACL_DEVICE_MAP("Caicos",northern_islands);
+    VIENNACL_DEVICE_MAP("Turks",northern_islands);
+    VIENNACL_DEVICE_MAP("Barts",northern_islands);
+    VIENNACL_DEVICE_MAP("Cayman",northern_islands);
+    VIENNACL_DEVICE_MAP("Antilles",northern_islands);
 
-      UNKNOWN
-    };
+    //SouthernIslands
+    VIENNACL_DEVICE_MAP("Cape",southern_islands);
+    VIENNACL_DEVICE_MAP("Bonaire",southern_islands);
+    VIENNACL_DEVICE_MAP("Pitcaim",southern_islands);
+    VIENNACL_DEVICE_MAP("Tahiti",southern_islands);
+    VIENNACL_DEVICE_MAP("Malta",southern_islands);
 
-    static device_architecture_family get_device_architecture(cl_uint vendor_id, std::string const & name){
-
-      /*-NVidia-*/
-      if(vendor_id==nvidia_id){
-        //GeForce
-        vcl_size_t found=0;
-        if((found= name.find("GeForce",0)) != std::string::npos){
-          if((found = name.find_first_of("123456789", found)) != std::string::npos){
-            switch (name[found]) {
-              case '2' : return Tesla;
-              case '3' : return Tesla;
-
-              case '4' : return Fermi;
-              case '5' : return Fermi;
-
-              case '6' : return Kepler;
-              case '7' : return Kepler;
-
-              default: return UNKNOWN;
-            }
-          }
-          else
-            return UNKNOWN;
-        }
-
-        //Tesla
-        else if((found = name.find("Tesla",0)) != std::string::npos){
-          if((found = name.find("CMK", found)) != std::string::npos){
-            switch(name[found]){
-              case 'C' : return Fermi;
-              case 'M' : return Fermi;
-
-              case 'K' : return Kepler;
-
-              default : return UNKNOWN;
-            }
-          }
-          else
-            return UNKNOWN;
-        }
-
-        else
-          return UNKNOWN;
-      }
-
-      /*-AMD-*/
-      else if(vendor_id==amd_id){
-
-#define VIENNACL_DEVICE_MAP(device,arch)if(name.find(device,0)!=std::string::npos) return arch;
-
-        //Evergreen
-        VIENNACL_DEVICE_MAP("Cedar",Evergreen);
-        VIENNACL_DEVICE_MAP("Redwood",Evergreen);
-        VIENNACL_DEVICE_MAP("Juniper",Evergreen);
-        VIENNACL_DEVICE_MAP("Cypress",Evergreen);
-        VIENNACL_DEVICE_MAP("Hemlock",Evergreen);
-
-        //NorthernIslands
-        VIENNACL_DEVICE_MAP("Caicos",NorthernIslands);
-        VIENNACL_DEVICE_MAP("Turks",NorthernIslands);
-        VIENNACL_DEVICE_MAP("Barts",NorthernIslands);
-        VIENNACL_DEVICE_MAP("Cayman",NorthernIslands);
-        VIENNACL_DEVICE_MAP("Antilles",NorthernIslands);
-
-        //SouthernIslands
-        VIENNACL_DEVICE_MAP("Cape",SouthernIslands);
-        VIENNACL_DEVICE_MAP("Bonaire",SouthernIslands);
-        VIENNACL_DEVICE_MAP("Pitcaim",SouthernIslands);
-        VIENNACL_DEVICE_MAP("Tahiti",SouthernIslands);
-        VIENNACL_DEVICE_MAP("Malta",SouthernIslands);
+    //VolcanicIslands
+    VIENNACL_DEVICE_MAP("Hawaii",volcanic_islands);
 
 #undef VIENNACL_DEVICE_MAP
 
-        return UNKNOWN;
-
-      }
-
-      /*-Other-*/
-      else{
-        return UNKNOWN;
-      }
-
-    }
-
+    return unknown;
 
   }
+
+  /*-Other-*/
+  else
+    return unknown;
+
+}
+
+}
 } //namespace viennacl
 
 #endif
-
-/*@}*/

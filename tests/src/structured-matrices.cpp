@@ -36,7 +36,7 @@
 //
 // A simple dense matrix class (in order to avoid an unnecessary boost dependency)
 //
-template <typename T>
+template<typename T>
 class dense_matrix
 {
   public:
@@ -52,8 +52,8 @@ class dense_matrix
 
     dense_matrix & operator+=(dense_matrix const & other)
     {
-      for(std::size_t i = 0; i < other.size1(); i++)
-        for(std::size_t j = 0; j < other.size2(); j++)
+      for (std::size_t i = 0; i < other.size1(); i++)
+        for (std::size_t j = 0; j < other.size2(); j++)
           elements_[i*cols_ + j] = other.elements_[i*cols_+j];
       return *this;
     }
@@ -64,7 +64,7 @@ class dense_matrix
     std::size_t cols_;
 };
 
-template <typename T>
+template<typename T>
 std::ostream & operator<<(std::ostream & os, dense_matrix<T> const & mat)
 {
   std::cout << "[" << mat.size1() << "," << mat.size2() << "](";
@@ -80,15 +80,15 @@ std::ostream & operator<<(std::ostream & os, dense_matrix<T> const & mat)
 }
 
 
-template <typename ScalarType>
+template<typename ScalarType>
 ScalarType diff(dense_matrix<ScalarType> const & m1, dense_matrix<ScalarType> const & m2)
 {
     ScalarType df = 0.0;
     ScalarType d1 = 0;
     ScalarType d2 = 0;
 
-    for(std::size_t i = 0; i < m1.size1(); i++)
-      for(std::size_t j = 0; j < m1.size2(); j++)
+    for (std::size_t i = 0; i < m1.size1(); i++)
+      for (std::size_t j = 0; j < m1.size2(); j++)
       {
         df += (m1(i,j) - m2(i,j)) * (m1(i,j) - m2(i,j));
         d1 += m1(i,j) * m1(i,j);
@@ -102,22 +102,22 @@ ScalarType diff(dense_matrix<ScalarType> const & m1, dense_matrix<ScalarType> co
 }
 
 
-template <typename ScalarType>
+template<typename ScalarType>
 ScalarType diff(std::vector<ScalarType>& vec, std::vector<ScalarType>& ref)
 {
     ScalarType df = 0.0;
     ScalarType norm_ref = 0;
 
-    for(std::size_t i = 0; i < vec.size(); i++)
+    for (std::size_t i = 0; i < vec.size(); i++)
     {
         df = df + pow(vec[i] - ref[i], 2);
         norm_ref += ref[i] * ref[i];
     }
 
-    return std::sqrt(df / norm_ref) ;
+    return std::sqrt(df / norm_ref);
 }
 
-template <typename ScalarType>
+template<typename ScalarType>
 ScalarType diff_max(std::vector<ScalarType>& vec, std::vector<ScalarType>& ref)
 {
   ScalarType df = 0.0;
@@ -126,8 +126,8 @@ ScalarType diff_max(std::vector<ScalarType>& vec, std::vector<ScalarType>& ref)
 
   for (std::size_t i = 0; i < vec.size(); i++)
   {
-    df = std::max<ScalarType>(fabs(vec[i] - ref[i]), df);
-    mx = std::max<ScalarType>(fabs(vec[i]), mx);
+    df = std::max<ScalarType>(std::fabs(vec[i] - ref[i]), df);
+    mx = std::max<ScalarType>(std::fabs(vec[i]), mx);
 
     if (mx > 0)
     {
@@ -140,7 +140,7 @@ ScalarType diff_max(std::vector<ScalarType>& vec, std::vector<ScalarType>& ref)
 }
 
 
-template <typename ScalarType>
+template<typename ScalarType>
 void transpose_test()
 {
     int w = 5, h = 7;
@@ -148,19 +148,19 @@ void transpose_test()
     viennacl::matrix<ScalarType> normal(w, 2 * h);
     viennacl::matrix<ScalarType> transp(h, 2 * w);
 
-    for(unsigned int i = 0; i < s_normal.size(); i+=2) {
+    for (unsigned int i = 0; i < s_normal.size(); i+=2) {
         s_normal[i] = i;
         s_normal[i+1] = i;
     }
     viennacl::fast_copy(&s_normal[0], &s_normal[0] + s_normal.size(), normal);
     std::cout << normal << std::endl;
-    viennacl::detail::fft::transpose(normal);
+    viennacl::linalg::transpose(normal);
     std::cout << normal << std::endl;
 }
 
 
 
-template <typename ScalarType>
+template<typename ScalarType>
 int toeplitz_test(ScalarType epsilon)
 {
     std::size_t TOEPLITZ_SIZE = 47;
@@ -176,14 +176,14 @@ int toeplitz_test(ScalarType epsilon)
     dense_matrix<ScalarType> m1(TOEPLITZ_SIZE, TOEPLITZ_SIZE);
     dense_matrix<ScalarType> m2(TOEPLITZ_SIZE, TOEPLITZ_SIZE);
 
-    for(std::size_t i = 0; i < TOEPLITZ_SIZE; i++)
-      for(std::size_t j = 0; j < TOEPLITZ_SIZE; j++)
+    for (std::size_t i = 0; i < TOEPLITZ_SIZE; i++)
+      for (std::size_t j = 0; j < TOEPLITZ_SIZE; j++)
       {
         m1(i,j) = static_cast<ScalarType>(i) - static_cast<ScalarType>(j);
         m2(i,j) = m1(i,j) * m1(i,j) + ScalarType(1);
       }
 
-    for(std::size_t i = 0; i < TOEPLITZ_SIZE; i++)
+    for (std::size_t i = 0; i < TOEPLITZ_SIZE; i++)
       input_ref[i] = ScalarType(i);
 
     // Copy to ViennaCL
@@ -196,10 +196,10 @@ int toeplitz_test(ScalarType epsilon)
     //
     vcl_result = viennacl::linalg::prod(vcl_toeplitz1, vcl_input);
 
-    for(std::size_t i = 0; i < m1.size1(); i++)     //reference calculation
+    for (std::size_t i = 0; i < m1.size1(); i++)     //reference calculation
     {
       ScalarType entry = 0;
-      for(std::size_t j = 0; j < m1.size2(); j++)
+      for (std::size_t j = 0; j < m1.size2(); j++)
         entry += m1(i,j) * input_ref[j];
 
       result_ref[i] = entry;
@@ -223,8 +223,8 @@ int toeplitz_test(ScalarType epsilon)
     //
     vcl_toeplitz1 += vcl_toeplitz2;
 
-    for(std::size_t i = 0; i < m1.size1(); i++)    //reference calculation
-      for(std::size_t j = 0; j < m1.size2(); j++)
+    for (std::size_t i = 0; i < m1.size1(); i++)    //reference calculation
+      for (std::size_t j = 0; j < m1.size2(); j++)
         m1(i,j) += m2(i,j);
 
     viennacl::copy(vcl_toeplitz1, m2);
@@ -261,7 +261,7 @@ int toeplitz_test(ScalarType epsilon)
     return EXIT_SUCCESS;
 }
 
-template <typename ScalarType>
+template<typename ScalarType>
 int circulant_test(ScalarType epsilon)
 {
     std::size_t CIRCULANT_SIZE = 53;
@@ -277,14 +277,14 @@ int circulant_test(ScalarType epsilon)
     dense_matrix<ScalarType> m1(vcl_circulant1.size1(), vcl_circulant1.size2());
     dense_matrix<ScalarType> m2(vcl_circulant1.size1(), vcl_circulant1.size2());
 
-    for(std::size_t i = 0; i < m1.size1(); i++)
-      for(std::size_t j = 0; j < m1.size2(); j++)
+    for (std::size_t i = 0; i < m1.size1(); i++)
+      for (std::size_t j = 0; j < m1.size2(); j++)
       {
         m1(i,j) = static_cast<ScalarType>((i - j + m1.size1()) % m1.size1());
         m2(i,j) = m1(i,j) * m1(i,j) + ScalarType(1);
       }
 
-    for(std::size_t i = 0; i < input_ref.size(); i++)
+    for (std::size_t i = 0; i < input_ref.size(); i++)
       input_ref[i] = ScalarType(i);
 
     // Copy to ViennaCL
@@ -297,10 +297,10 @@ int circulant_test(ScalarType epsilon)
     //
     vcl_result = viennacl::linalg::prod(vcl_circulant1, vcl_input);
 
-    for(std::size_t i = 0; i < m1.size1(); i++)     //reference calculation
+    for (std::size_t i = 0; i < m1.size1(); i++)     //reference calculation
     {
       ScalarType entry = 0;
-      for(std::size_t j = 0; j < m1.size2(); j++)
+      for (std::size_t j = 0; j < m1.size2(); j++)
         entry += m1(i,j) * input_ref[j];
 
       result_ref[i] = entry;
@@ -324,8 +324,8 @@ int circulant_test(ScalarType epsilon)
     //
     vcl_circulant1 += vcl_circulant2;
 
-    for(std::size_t i = 0; i < m1.size1(); i++)    //reference calculation
-      for(std::size_t j = 0; j < m1.size2(); j++)
+    for (std::size_t i = 0; i < m1.size1(); i++)    //reference calculation
+      for (std::size_t j = 0; j < m1.size2(); j++)
         m1(i,j) += m2(i,j);
 
     viennacl::copy(vcl_circulant1, m2);
@@ -343,8 +343,8 @@ int circulant_test(ScalarType epsilon)
     //
     vcl_circulant1(4,2) = 42;
 
-    for(std::size_t i = 0; i < m1.size1(); i++)    //reference calculation
-      for(std::size_t j = 0; j < m1.size2(); j++)
+    for (std::size_t i = 0; i < m1.size1(); i++)    //reference calculation
+      for (std::size_t j = 0; j < m1.size2(); j++)
       {
         if ((i - j + m1.size1()) % m1.size1() == 2)
           m1(i, j) = 42;
@@ -363,7 +363,7 @@ int circulant_test(ScalarType epsilon)
     return EXIT_SUCCESS;
 }
 
-template <typename ScalarType>
+template<typename ScalarType>
 int vandermonde_test(ScalarType epsilon)
 {
     std::size_t VANDERMONDE_SIZE = 61;
@@ -380,14 +380,14 @@ int vandermonde_test(ScalarType epsilon)
     dense_matrix<ScalarType> m1(vcl_vandermonde1.size1(), vcl_vandermonde1.size2());
     dense_matrix<ScalarType> m2(m1.size1(), m1.size2());
 
-    for(std::size_t i = 0; i < m1.size1(); i++)
-      for(std::size_t j = 0; j < m1.size2(); j++)
+    for (std::size_t i = 0; i < m1.size1(); i++)
+      for (std::size_t j = 0; j < m1.size2(); j++)
       {
         m1(i,j) = std::pow(ScalarType(1.0 + i/1000.0), ScalarType(j));
         m2(i,j) = std::pow(ScalarType(1.0 - i/2000.0), ScalarType(j));
       }
 
-    for(std::size_t i = 0; i < input_ref.size(); i++)
+    for (std::size_t i = 0; i < input_ref.size(); i++)
       input_ref[i] = ScalarType(i);
 
     // Copy to ViennaCL
@@ -400,10 +400,10 @@ int vandermonde_test(ScalarType epsilon)
     //
     vcl_result = viennacl::linalg::prod(vcl_vandermonde1, vcl_input);
 
-    for(std::size_t i = 0; i < m1.size1(); i++)     //reference calculation
+    for (std::size_t i = 0; i < m1.size1(); i++)     //reference calculation
     {
       ScalarType entry = 0;
-      for(std::size_t j = 0; j < m1.size2(); j++)
+      for (std::size_t j = 0; j < m1.size2(); j++)
         entry += m1(i,j) * input_ref[j];
 
       result_ref[i] = entry;
@@ -432,7 +432,7 @@ int vandermonde_test(ScalarType epsilon)
     //
     vcl_vandermonde1(4) = static_cast<ScalarType>(1.0001);
 
-    for(std::size_t j = 0; j < m1.size2(); j++)
+    for (std::size_t j = 0; j < m1.size2(); j++)
     {
       m1(4, j) = std::pow(ScalarType(1.0001), ScalarType(j));
     }
@@ -450,7 +450,7 @@ int vandermonde_test(ScalarType epsilon)
     return EXIT_SUCCESS;
 }
 
-template <typename ScalarType>
+template<typename ScalarType>
 int hankel_test(ScalarType epsilon)
 {
     std::size_t HANKEL_SIZE = 7;
@@ -466,14 +466,14 @@ int hankel_test(ScalarType epsilon)
     dense_matrix<ScalarType> m1(vcl_hankel1.size1(), vcl_hankel1.size2());
     dense_matrix<ScalarType> m2(m1.size1(), m1.size2());
 
-    for(std::size_t i = 0; i < m1.size1(); i++)
-      for(std::size_t j = 0; j < m1.size2(); j++)
+    for (std::size_t i = 0; i < m1.size1(); i++)
+      for (std::size_t j = 0; j < m1.size2(); j++)
       {
         m1(i,j) = static_cast<ScalarType>((i + j) % (2 * m1.size1()));
         m2(i,j) = m1(i,j) * m1(i,j) + ScalarType(1);
       }
 
-    for(std::size_t i = 0; i < input_ref.size(); i++)
+    for (std::size_t i = 0; i < input_ref.size(); i++)
       input_ref[i] = ScalarType(i);
 
     // Copy to ViennaCL
@@ -486,10 +486,10 @@ int hankel_test(ScalarType epsilon)
     //
     vcl_result = viennacl::linalg::prod(vcl_hankel1, vcl_input);
 
-    for(std::size_t i = 0; i < m1.size1(); i++)     //reference calculation
+    for (std::size_t i = 0; i < m1.size1(); i++)     //reference calculation
     {
       ScalarType entry = 0;
-      for(std::size_t j = 0; j < m1.size2(); j++)
+      for (std::size_t j = 0; j < m1.size2(); j++)
         entry += m1(i,j) * input_ref[j];
 
       result_ref[i] = entry;
@@ -513,8 +513,8 @@ int hankel_test(ScalarType epsilon)
     //
     vcl_hankel1 += vcl_hankel2;
 
-    for(std::size_t i = 0; i < m1.size1(); i++)    //reference calculation
-      for(std::size_t j = 0; j < m1.size2(); j++)
+    for (std::size_t i = 0; i < m1.size1(); i++)    //reference calculation
+      for (std::size_t j = 0; j < m1.size2(); j++)
         m1(i,j) += m2(i,j);
 
     viennacl::copy(vcl_hankel1, m2);
@@ -532,8 +532,8 @@ int hankel_test(ScalarType epsilon)
     //
     vcl_hankel1(4,2) = 42;
 
-    for(std::size_t i = 0; i < m1.size1(); i++)    //reference calculation
-      for(std::size_t j = 0; j < m1.size2(); j++)
+    for (std::size_t i = 0; i < m1.size1(); i++)    //reference calculation
+      for (std::size_t j = 0; j < m1.size2(); j++)
       {
         if ((i + j) % (2*m1.size1()) == 6)
           m1(i, j) = 42;
@@ -587,7 +587,7 @@ int main()
 
   std::cout << std::endl;
 
-  if( viennacl::ocl::current_device().double_support() )
+  if ( viennacl::ocl::current_device().double_support() )
   {
     eps = 1e-10;
 

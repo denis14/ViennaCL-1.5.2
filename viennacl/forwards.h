@@ -24,7 +24,7 @@
 */
 
 /**
- @mainpage Source Code Documentation for ViennaCL 1.5.2
+ @mainpage Source Code Documentation for ViennaCL 1.5.1
 
  This is the source code documentation of ViennaCL. Detailed information about the functions in ViennaCL can be found here.
 
@@ -52,11 +52,16 @@
 
 #include "viennacl/meta/enable_if.hpp"
 
+#ifdef VIENNACL_WITH_OPENCL
+#include "CL/cl.h"
+#endif
+
 /** @brief Main namespace in ViennaCL. Holds all the basic types such as vector, matrix, etc. and defines operations upon them. */
 namespace viennacl
 {
   typedef std::size_t                                       vcl_size_t;
   typedef std::ptrdiff_t                                    vcl_ptrdiff_t;
+
 
 
   /** @brief A tag class representing assignment */
@@ -81,12 +86,38 @@ namespace viennacl
   /** @brief A tag class representing the power function */
   struct op_pow {};
 
+  /** @brief A tag class representing equality */
+ struct op_eq {};
+ /** @brief A tag class representing inequality */
+ struct op_neq {};
+ /** @brief A tag class representing greater-than */
+ struct op_greater {};
+ /** @brief A tag class representing less-than */
+ struct op_less {};
+ /** @brief A tag class representing greater-than-or-equal-to */
+ struct op_geq {};
+ /** @brief A tag class representing less-than-or-equal-to */
+ struct op_leq {};
+
+  template<class T>
+  struct op_reduce_vector{ };
+
+  template<class T>
+  struct op_reduce_rows{ };
+
+  template<class T>
+  struct op_reduce_columns{ };
+
+  /** @brief A tag class representing element-wise casting operations on vectors and matrices */
+  template<typename OP>
+  struct op_element_cast {};
+
   /** @brief A tag class representing element-wise binary operations (like multiplication) on vectors or matrices */
-  template <typename OP>
+  template<typename OP>
   struct op_element_binary {};
 
   /** @brief A tag class representing element-wise unary operations (like sin()) on vectors or matrices */
-  template <typename OP>
+  template<typename OP>
   struct op_element_unary {};
 
   /** @brief A tag class representing the modulus function for integers */
@@ -95,6 +126,10 @@ namespace viennacl
   struct op_acos {};
   /** @brief A tag class representing the asin() function */
   struct op_asin {};
+  /** @brief A tag class for representing the argmax() function */
+  struct op_argmax {};
+  /** @brief A tag class for representing the argmin() function */
+  struct op_argmin {};
   /** @brief A tag class representing the atan() function */
   struct op_atan {};
   /** @brief A tag class representing the atan2() function */
@@ -171,13 +206,16 @@ namespace viennacl
   template<class TYPE>
   class scalar;
 
-  template <typename LHS, typename RHS, typename OP>
+  template<typename LHS, typename RHS, typename OP>
   class scalar_expression;
 
-  template <typename SCALARTYPE>
+  template<typename SCALARTYPE>
   class entry_proxy;
 
-  template <typename LHS, typename RHS, typename OP>
+  template<typename SCALARTYPE>
+  class const_entry_proxy;
+
+  template<typename LHS, typename RHS, typename OP>
   class vector_expression;
 
   template<class SCALARTYPE, unsigned int ALIGNMENT>
@@ -189,17 +227,17 @@ namespace viennacl
   template<typename SCALARTYPE>
   class implicit_vector_base;
 
-  template <typename SCALARTYPE>
-  class zero_vector;
+  template<typename SCALARTYPE>
+  struct zero_vector;
 
-  template <typename SCALARTYPE>
-  class unit_vector;
+  template<typename SCALARTYPE>
+  struct unit_vector;
 
-  template <typename SCALARTYPE>
-  class one_vector;
+  template<typename SCALARTYPE>
+  struct one_vector;
 
-  template <typename SCALARTYPE>
-  class scalar_vector;
+  template<typename SCALARTYPE>
+  struct scalar_vector;
 
   template<class SCALARTYPE, typename SizeType = vcl_size_t, typename DistanceType = vcl_ptrdiff_t>
   class vector_base;
@@ -207,31 +245,31 @@ namespace viennacl
   template<class SCALARTYPE, unsigned int ALIGNMENT = 1>
   class vector;
 
-  template <typename ScalarT>
+  template<typename ScalarT>
   class vector_tuple;
 
   //the following forwards are needed for GMRES
-  template <typename SCALARTYPE, unsigned int ALIGNMENT, typename CPU_ITERATOR>
+  template<typename SCALARTYPE, unsigned int ALIGNMENT, typename CPU_ITERATOR>
   void copy(CPU_ITERATOR const & cpu_begin,
             CPU_ITERATOR const & cpu_end,
             vector_iterator<SCALARTYPE, ALIGNMENT> gpu_begin);
 
-  template <typename SCALARTYPE, unsigned int ALIGNMENT_SRC, unsigned int ALIGNMENT_DEST>
+  template<typename SCALARTYPE, unsigned int ALIGNMENT_SRC, unsigned int ALIGNMENT_DEST>
   void copy(const_vector_iterator<SCALARTYPE, ALIGNMENT_SRC> const & gpu_src_begin,
             const_vector_iterator<SCALARTYPE, ALIGNMENT_SRC> const & gpu_src_end,
             vector_iterator<SCALARTYPE, ALIGNMENT_DEST> gpu_dest_begin);
 
-  template <typename SCALARTYPE, unsigned int ALIGNMENT_SRC, unsigned int ALIGNMENT_DEST>
+  template<typename SCALARTYPE, unsigned int ALIGNMENT_SRC, unsigned int ALIGNMENT_DEST>
   void copy(const_vector_iterator<SCALARTYPE, ALIGNMENT_SRC> const & gpu_src_begin,
             const_vector_iterator<SCALARTYPE, ALIGNMENT_SRC> const & gpu_src_end,
             const_vector_iterator<SCALARTYPE, ALIGNMENT_DEST> gpu_dest_begin);
 
-  template <typename SCALARTYPE, unsigned int ALIGNMENT, typename CPU_ITERATOR>
+  template<typename SCALARTYPE, unsigned int ALIGNMENT, typename CPU_ITERATOR>
   void fast_copy(const const_vector_iterator<SCALARTYPE, ALIGNMENT> & gpu_begin,
                  const const_vector_iterator<SCALARTYPE, ALIGNMENT> & gpu_end,
                  CPU_ITERATOR cpu_begin );
 
-  template <typename CPU_ITERATOR, typename SCALARTYPE, unsigned int ALIGNMENT>
+  template<typename CPU_ITERATOR, typename SCALARTYPE, unsigned int ALIGNMENT>
   void fast_copy(CPU_ITERATOR const & cpu_begin,
                   CPU_ITERATOR const & cpu_end,
                   vector_iterator<SCALARTYPE, ALIGNMENT> gpu_begin);
@@ -279,29 +317,53 @@ namespace viennacl
   struct row_iteration;
   struct col_iteration;
 
-  template <typename LHS, typename RHS, typename OP>
+  template<typename LHS, typename RHS, typename OP>
   class matrix_expression;
+
+  class context;
+
+  enum memory_types
+  {
+    MEMORY_NOT_INITIALIZED
+    , MAIN_MEMORY
+    , OPENCL_MEMORY
+    , CUDA_MEMORY
+  };
+
+  namespace backend
+  {
+    class mem_handle;
+  }
 
   //
   // Matrix types:
   //
+  static const std::size_t dense_padding_size = 128;
 
-  template<class SCALARTYPE, typename F = row_major, typename SizeType = vcl_size_t, typename DistanceType = vcl_ptrdiff_t>
+  /** @brief A dense matrix class
+  *
+  * @tparam SCALARTYPE   The underlying scalar type (either float or double)
+  * @tparam ALIGNMENT   The internal memory size is given by (size()/ALIGNMENT + 1) * ALIGNMENT. ALIGNMENT must be a power of two. Best values or usually 4, 8 or 16, higher values are usually a waste of memory.
+  */
+  template<typename ROWCOL, typename MATRIXTYPE>
+  class matrix_iterator;
+
+  template<class SCALARTYPE, typename SizeType = vcl_size_t, typename DistanceType = vcl_ptrdiff_t>
   class matrix_base;
 
-  template <class SCALARTYPE, typename F = row_major, unsigned int ALIGNMENT = 1>
+  template<class SCALARTYPE, typename F = row_major, unsigned int ALIGNMENT = 1>
   class matrix;
 
   template<typename SCALARTYPE>
   class implicit_matrix_base;
 
-  template <class SCALARTYPE>
+  template<class SCALARTYPE>
   class identity_matrix;
 
-  template <class SCALARTYPE>
+  template<class SCALARTYPE>
   class zero_matrix;
 
-  template <class SCALARTYPE>
+  template<class SCALARTYPE>
   class scalar_matrix;
 
   template<class SCALARTYPE, unsigned int ALIGNMENT = 1>
@@ -316,6 +378,9 @@ namespace viennacl
 
   template<class SCALARTYPE, unsigned int ALIGNMENT = 1>
   class ell_matrix;
+
+  template<typename ScalarT, typename IndexT = unsigned int>
+  class sliced_ell_matrix;
 
   template<class SCALARTYPE, unsigned int ALIGNMENT = 1>
   class hyb_matrix;
@@ -335,52 +400,52 @@ namespace viennacl
   //
   // Proxies:
   //
-  template <typename SizeType = vcl_size_t, typename DistanceType = std::ptrdiff_t>
+  template<typename SizeType = vcl_size_t, typename DistanceType = std::ptrdiff_t>
   class basic_range;
 
   typedef basic_range<>  range;
 
-  template <typename SizeType = vcl_size_t, typename DistanceType = std::ptrdiff_t>
+  template<typename SizeType = vcl_size_t, typename DistanceType = std::ptrdiff_t>
   class basic_slice;
 
   typedef basic_slice<>  slice;
 
-  template <typename VectorType>
+  template<typename VectorType>
   class vector_range;
 
-  template <typename VectorType>
+  template<typename VectorType>
   class vector_slice;
 
-  template <typename MatrixType>
+  template<typename MatrixType>
   class matrix_range;
 
-  template <typename MatrixType>
+  template<typename MatrixType>
   class matrix_slice;
 
 
   /** @brief Helper struct for checking whether a type is a host scalar type (e.g. float, double) */
-  template <typename T>
+  template<typename T>
   struct is_cpu_scalar
   {
     enum { value = false };
   };
 
   /** @brief Helper struct for checking whether a type is a viennacl::scalar<> */
-  template <typename T>
+  template<typename T>
   struct is_scalar
   {
     enum { value = false };
   };
 
   /** @brief Helper struct for checking whether a type represents a sign flip on a viennacl::scalar<> */
-  template <typename T>
+  template<typename T>
   struct is_flip_sign_scalar
   {
     enum { value = false };
   };
 
   /** @brief Helper struct for checking whether the provided type represents a scalar (either host, from ViennaCL, or a flip-sign proxy) */
-  template <typename T>
+  template<typename T>
   struct is_any_scalar
   {
     enum { value = (is_scalar<T>::value || is_cpu_scalar<T>::value || is_flip_sign_scalar<T>::value )};
@@ -395,42 +460,50 @@ namespace viennacl
   struct is_any_dense_matrix { enum { value = 0 }; };
 
   /** @brief Helper class for checking whether a matrix has a row-major layout. */
-  template <typename T>
+  template<typename T>
   struct is_row_major
   {
     enum { value = false };
   };
 
   /** @brief Helper class for checking whether a matrix is a compressed_matrix (CSR format) */
-  template <typename T>
+  template<typename T>
   struct is_compressed_matrix
   {
     enum { value = false };
   };
 
   /** @brief Helper class for checking whether a matrix is a coordinate_matrix (COO format) */
-  template <typename T>
+  template<typename T>
   struct is_coordinate_matrix
   {
     enum { value = false };
   };
 
   /** @brief Helper class for checking whether a matrix is an ell_matrix (ELL format) */
-  template <typename T>
+  template<typename T>
   struct is_ell_matrix
   {
     enum { value = false };
   };
 
+  /** @brief Helper class for checking whether a matrix is a sliced_ell_matrix (SELL-C-\sigma format) */
+  template<typename T>
+  struct is_sliced_ell_matrix
+  {
+    enum { value = false };
+  };
+
+
   /** @brief Helper class for checking whether a matrix is a hyb_matrix (hybrid format: ELL plus CSR) */
-  template <typename T>
+  template<typename T>
   struct is_hyb_matrix
   {
     enum { value = false };
   };
 
   /** @brief Helper class for checking whether the provided type is one of the sparse matrix types (compressed_matrix, coordinate_matrix, etc.) */
-  template <typename T>
+  template<typename T>
   struct is_any_sparse_matrix
   {
     enum { value = false };
@@ -438,48 +511,42 @@ namespace viennacl
 
 
   /** @brief Helper class for checking whether a matrix is a circulant matrix */
-  template <typename T>
+  template<typename T>
   struct is_circulant_matrix
   {
     enum { value = false };
   };
 
   /** @brief Helper class for checking whether a matrix is a Hankel matrix */
-  template <typename T>
+  template<typename T>
   struct is_hankel_matrix
   {
     enum { value = false };
   };
 
   /** @brief Helper class for checking whether a matrix is a Toeplitz matrix */
-  template <typename T>
+  template<typename T>
   struct is_toeplitz_matrix
   {
     enum { value = false };
   };
 
   /** @brief Helper class for checking whether a matrix is a Vandermonde matrix */
-  template <typename T>
+  template<typename T>
   struct is_vandermonde_matrix
   {
     enum { value = false };
   };
 
   /** @brief Helper class for checking whether the provided type is any of the dense structured matrix types (circulant, Hankel, etc.) */
-  template <typename T>
+  template<typename T>
   struct is_any_dense_structured_matrix
   {
     enum { value = viennacl::is_circulant_matrix<T>::value || viennacl::is_hankel_matrix<T>::value || viennacl::is_toeplitz_matrix<T>::value || viennacl::is_vandermonde_matrix<T>::value };
   };
 
 
-  enum memory_types
-  {
-    MEMORY_NOT_INITIALIZED
-    , MAIN_MEMORY
-    , OPENCL_MEMORY
-    , CUDA_MEMORY
-  };
+
 
   /** @brief Exception class in case of memory errors */
   class memory_exception : public std::exception
@@ -508,14 +575,13 @@ namespace viennacl
   };
 
 
-  class context;
 
   namespace tools
   {
     //helper for matrix row/col iterators
     //must be specialized for every viennacl matrix type
     /** @brief Helper class for incrementing an iterator in a dense matrix. */
-    template <typename ROWCOL, typename MATRIXTYPE>
+    template<typename ROWCOL, typename MATRIXTYPE>
     struct MATRIX_ITERATOR_INCREMENTER
     {
       typedef typename MATRIXTYPE::ERROR_SPECIALIZATION_FOR_THIS_MATRIX_TYPE_MISSING          ErrorIndicator;
@@ -533,32 +599,32 @@ namespace viennacl
                     viennacl::vector<SCALARTYPE, ALIGNMENT>& input2,
                     viennacl::vector<SCALARTYPE, ALIGNMENT>& output);
 
-    template <typename T>
+    template<typename T>
     viennacl::vector_expression<const vector_base<T>, const vector_base<T>, op_element_binary<op_prod> >
     element_prod(vector_base<T> const & v1, vector_base<T> const & v2);
 
-    template <typename T>
+    template<typename T>
     viennacl::vector_expression<const vector_base<T>, const vector_base<T>, op_element_binary<op_div> >
     element_div(vector_base<T> const & v1, vector_base<T> const & v2);
 
 
 
-    template <typename T>
+    template<typename T>
     void inner_prod_impl(vector_base<T> const & vec1,
                          vector_base<T> const & vec2,
                          scalar<T> & result);
 
-    template <typename LHS, typename RHS, typename OP, typename T>
+    template<typename LHS, typename RHS, typename OP, typename T>
     void inner_prod_impl(viennacl::vector_expression<LHS, RHS, OP> const & vec1,
                          vector_base<T> const & vec2,
                          scalar<T> & result);
 
-    template <typename T, typename LHS, typename RHS, typename OP>
+    template<typename T, typename LHS, typename RHS, typename OP>
     void inner_prod_impl(vector_base<T> const & vec1,
                          viennacl::vector_expression<LHS, RHS, OP> const & vec2,
                          scalar<T> & result);
 
-    template <typename LHS1, typename RHS1, typename OP1,
+    template<typename LHS1, typename RHS1, typename OP1,
               typename LHS2, typename RHS2, typename OP2, typename T>
     void inner_prod_impl(viennacl::vector_expression<LHS1, RHS1, OP1> const & vec1,
                          viennacl::vector_expression<LHS2, RHS2, OP2> const & vec2,
@@ -566,22 +632,22 @@ namespace viennacl
 
     ///////////////////////////
 
-    template <typename T>
+    template<typename T>
     void inner_prod_cpu(vector_base<T> const & vec1,
                         vector_base<T> const & vec2,
                         T & result);
 
-    template <typename LHS, typename RHS, typename OP, typename T>
+    template<typename LHS, typename RHS, typename OP, typename T>
     void inner_prod_cpu(viennacl::vector_expression<LHS, RHS, OP> const & vec1,
                         vector_base<T> const & vec2,
                         T & result);
 
-    template <typename T, typename LHS, typename RHS, typename OP>
+    template<typename T, typename LHS, typename RHS, typename OP>
     void inner_prod_cpu(vector_base<T> const & vec1,
                         viennacl::vector_expression<LHS, RHS, OP> const & vec2,
                         T & result);
 
-    template <typename LHS1, typename RHS1, typename OP1,
+    template<typename LHS1, typename RHS1, typename OP1,
               typename LHS2, typename RHS2, typename OP2, typename S3>
     void inner_prod_cpu(viennacl::vector_expression<LHS1, RHS1, OP1> const & vec1,
                         viennacl::vector_expression<LHS2, RHS2, OP2> const & vec2,
@@ -590,89 +656,76 @@ namespace viennacl
 
 
     //forward definition of norm_1_impl function
-    template <typename T>
+    template<typename T>
     void norm_1_impl(vector_base<T> const & vec, scalar<T> & result);
 
-    //template <typename T, typename F>
-    //void norm_1_impl(matrix_base<T, F> const & A, scalar<T> & result);
-
-    template <typename LHS, typename RHS, typename OP, typename T>
+    template<typename LHS, typename RHS, typename OP, typename T>
     void norm_1_impl(viennacl::vector_expression<LHS, RHS, OP> const & vec,
                      scalar<T> & result);
 
 
-    template <typename T>
+    template<typename T>
     void norm_1_cpu(vector_base<T> const & vec,
                     T & result);
 
-    //template <typename T, typename F>
-    //void norm_1_cpu(matrix_base<T, F> const & vec,
-    //                T & result);
-
-    template <typename LHS, typename RHS, typename OP, typename S2>
+    template<typename LHS, typename RHS, typename OP, typename S2>
     void norm_1_cpu(viennacl::vector_expression<LHS, RHS, OP> const & vec,
                     S2 & result);
 
     //forward definition of norm_2_impl function
-    template <typename T>
+    template<typename T>
     void norm_2_impl(vector_base<T> const & vec, scalar<T> & result);
 
-    template <typename LHS, typename RHS, typename OP, typename T>
+    template<typename LHS, typename RHS, typename OP, typename T>
     void norm_2_impl(viennacl::vector_expression<LHS, RHS, OP> const & vec,
                      scalar<T> & result);
 
-    template <typename T>
+    template<typename T>
     void norm_2_cpu(vector_base<T> const & vec, T & result);
 
-    template <typename LHS, typename RHS, typename OP, typename S2>
+    template<typename LHS, typename RHS, typename OP, typename S2>
     void norm_2_cpu(viennacl::vector_expression<LHS, RHS, OP> const & vec,
                     S2 & result);
 
 
     //forward definition of norm_inf_impl function
-    template <typename T>
+    template<typename T>
     void norm_inf_impl(vector_base<T> const & vec, scalar<T> & result);
 
-    //template <typename T, typename F>
-    //void norm_inf_impl(matrix_base<T, F> const & vec, scalar<T> & result);
-
-    template <typename LHS, typename RHS, typename OP, typename T>
+    template<typename LHS, typename RHS, typename OP, typename T>
     void norm_inf_impl(viennacl::vector_expression<LHS, RHS, OP> const & vec,
                       scalar<T> & result);
 
 
-    template <typename T>
+    template<typename T>
     void norm_inf_cpu(vector_base<T> const & vec, T & result);
 
-    //template <typename T, typename F>
-    //void norm_inf_cpu(matrix_base<T, F> const & vec, T & result);
-
-    template <typename LHS, typename RHS, typename OP, typename S2>
+    template<typename LHS, typename RHS, typename OP, typename S2>
     void norm_inf_cpu(viennacl::vector_expression<LHS, RHS, OP> const & vec,
                       S2 & result);
 
-    template <typename T, typename F>
-    void norm_frobenius_impl(matrix_base<T, F> const & vec, scalar<T> & result);
+    template<typename T>
+    void norm_frobenius_impl(matrix_base<T> const & vec, scalar<T> & result);
 
-    template <typename T, typename F>
-    void norm_frobenius_cpu(matrix_base<T, F> const & vec, T & result);
+    template<typename T>
+    void norm_frobenius_cpu(matrix_base<T> const & vec, T & result);
 
 
-    template <typename T>
+    template<typename T>
     vcl_size_t index_norm_inf(vector_base<T> const & vec);
 
-    template <typename LHS, typename RHS, typename OP>
+    template<typename LHS, typename RHS, typename OP>
     vcl_size_t index_norm_inf(viennacl::vector_expression<LHS, RHS, OP> const & vec);
 
     //forward definition of prod_impl functions
 
-    template <typename NumericT, typename F>
-    void prod_impl(const matrix_base<NumericT, F> & mat,
+    template<typename NumericT>
+    void prod_impl(const matrix_base<NumericT> & mat,
                    const vector_base<NumericT> & vec,
                          vector_base<NumericT> & result);
 
-    template <typename NumericT, typename F>
-    void prod_impl(const matrix_expression< const matrix_base<NumericT, F>, const matrix_base<NumericT, F>, op_trans> & mat_trans,
+    template<typename NumericT>
+    void prod_impl(const matrix_expression< const matrix_base<NumericT>, const matrix_base<NumericT>, op_trans> & mat_trans,
                    const vector_base<NumericT> & vec,
                          vector_base<NumericT> & result);
 
@@ -727,7 +780,7 @@ namespace viennacl
     class no_precond
     {
       public:
-        template <typename VectorType>
+        template<typename VectorType>
         void apply(VectorType &) const {}
     };
 
@@ -780,7 +833,7 @@ namespace viennacl
 
 
   /** @brief Provides an OpenCL kernel generator. */
-  namespace generator
+  namespace device_specific
   {
     /** @brief Provides the implementation for tuning the kernels for a particular device. */
     namespace autotune {}

@@ -69,10 +69,10 @@ void matrix_print(viennacl::matrix<ScalarType, MatrixLayout>& A_orig)
     std::cout << std::endl;
 }
 
-void vector_print(ublas::vector<ScalarType>& v )
+void vector_print(std::vector<ScalarType>& v )
 {
     for (unsigned int i = 0; i < v.size(); i++)
-      std::cout << std::setprecision(6) << std::fixed << v(i) << "\t";
+      std::cout << std::setprecision(6) << std::fixed << v[i] << "\t";
     std::cout << "\n";
 }
 
@@ -82,7 +82,7 @@ void eig_tutorial()
   std::size_t sz = 10;
   std::cout << "Compute eigenvalues and eigenvectors of matrix of size " << sz << "-by-" << sz << std::endl << std::endl;
 
-  ublas::vector<ScalarType> d(sz), e(sz);
+  std::vector<ScalarType> d(sz), e(sz);
   // Initialize diagonal and superdiagonal elements of the tridiagonal matrix
   d[0] = 1; e[0] = 0;
   d[1] = 2; e[1] = 4;

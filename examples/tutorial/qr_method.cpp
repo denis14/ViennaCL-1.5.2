@@ -27,27 +27,23 @@
 #include <stdexcept>
 #include <vector>
 
-//#include "viennacl/linalg/prod.hpp"
+#include "viennacl/linalg/prod.hpp"
 #include "viennacl/linalg/qr-method.hpp"
 
-//#include <examples/benchmarks/benchmark-utils.hpp>
-
-#include <boost/numeric/ublas/vector.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
 
 namespace ublas = boost::numeric::ublas;
 
 typedef float ScalarType;
 
-template <typename MatrixLayout>
-void initialize(viennacl::matrix<ScalarType, MatrixLayout>& A, ublas::vector<ScalarType>& v);
-void vector_print(ublas::vector<ScalarType>& v_ublas );
-template <typename MatrixLayout>
-void matrix_print(viennacl::matrix<ScalarType, MatrixLayout>& A_orig);
+
+void initialize(viennacl::matrix<ScalarType>& A, std::vector<ScalarType>& v);
+void vector_print(std::vector<ScalarType>& v );
+void matrix_print(viennacl::matrix<ScalarType>& A_orig);
 
 
 
-template <typename MatrixLayout>
+
 void qr_method()
 {
     /*
@@ -60,10 +56,10 @@ void qr_method()
 
     std::cout << "Testing matrix of size " << 9 << "-by-" << 9 << std::endl;
 
-    viennacl::matrix<ScalarType, MatrixLayout> A_input(9,9);
-    viennacl::matrix<ScalarType, MatrixLayout> Q(9, 9);
-    ublas::vector<ScalarType> eigenvalues_ref(9);
-    ublas::vector<ScalarType> eigenvalues = ublas::scalar_vector<ScalarType>(9, 0);
+    viennacl::matrix<ScalarType> A_input(9,9);
+    viennacl::matrix<ScalarType> Q(9, 9);
+    std::vector<ScalarType> eigenvalues_ref(9);
+    std::vector<ScalarType> eigenvalues(9);
 
     initialize(A_input, eigenvalues_ref);  //initialize with data for tutorial
 
@@ -97,7 +93,7 @@ void qr_method()
 int main()
 {
 
-  qr_method<viennacl::row_major>();
+  qr_method();
 
   std::cout << std::endl;
   std::cout << "------- Tutorial completed --------" << std::endl;
@@ -107,8 +103,7 @@ int main()
 }
 
 //initialize vector and matrix
-template <typename MatrixLayout>
-void initialize(viennacl::matrix<ScalarType, MatrixLayout>& A, ublas::vector<ScalarType>& v)
+void initialize(viennacl::matrix<ScalarType>& A, std::vector<ScalarType>& v)
 {
     ScalarType M[9][9] = {{4, 1, -2, 2, -7, 3, 9, -6, -2}, {1, -2, 0, 1, -1, 5, 4, 7, 3}, {-2, 0, 3, 2, 0, 3, 6, 1, -1},   {2, 1, 2, 1, 4, 5, 6, 7, 8},
                {-7, -1, 0, 4, 5, 4, 9, 1, -8},  {3, 5, 3, 5, 4, 9, -3, 3, 3}, {9, 4, 6, 6, 9, -3, 3, 6, -7},   {-6, 7, 1, 7, 1, 3, 6, 2, 6},
@@ -124,8 +119,7 @@ void initialize(viennacl::matrix<ScalarType, MatrixLayout>& A, ublas::vector<Sca
         v[i] = V[i];
 }
 
-template <typename MatrixLayout>
-void matrix_print(viennacl::matrix<ScalarType, MatrixLayout>& A_orig)
+void matrix_print(viennacl::matrix<ScalarType>& A_orig)
 {
     ublas::matrix<ScalarType> A(A_orig.size1(), A_orig.size2());
     viennacl::copy(A_orig, A);
@@ -136,9 +130,9 @@ void matrix_print(viennacl::matrix<ScalarType, MatrixLayout>& A_orig)
     }
 }
 
-void vector_print(ublas::vector<ScalarType>& v_ublas )
+void vector_print(std::vector<ScalarType>& v )
 {
-  for (unsigned int i = 0; i < v_ublas.size(); i++)
-      std::cout << std::setprecision(6) << std::fixed << v_ublas(i) << "\t";
+  for (unsigned int i = 0; i < v.size(); i++)
+      std::cout << std::setprecision(6) << std::fixed << v[i] << "\t";
     std::cout << std::endl;
 }

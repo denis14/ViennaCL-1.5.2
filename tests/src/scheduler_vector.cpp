@@ -52,7 +52,7 @@ using namespace boost::numeric;
 //
 // -------------------------------------------------------------
 //
-template <typename ScalarType>
+template<typename ScalarType>
 ScalarType diff(ScalarType const & s1, ScalarType const & s2)
 {
    viennacl::backend::finish();
@@ -63,7 +63,7 @@ ScalarType diff(ScalarType const & s1, ScalarType const & s2)
 //
 // -------------------------------------------------------------
 //
-template <typename ScalarType>
+template<typename ScalarType>
 ScalarType diff(ScalarType const & s1, viennacl::scalar<ScalarType> const & s2)
 {
    viennacl::backend::finish();
@@ -74,7 +74,7 @@ ScalarType diff(ScalarType const & s1, viennacl::scalar<ScalarType> const & s2)
 //
 // -------------------------------------------------------------
 //
-template <typename ScalarType>
+template<typename ScalarType>
 ScalarType diff(ScalarType const & s1, viennacl::entry_proxy<ScalarType> const & s2)
 {
    viennacl::backend::finish();
@@ -85,7 +85,7 @@ ScalarType diff(ScalarType const & s1, viennacl::entry_proxy<ScalarType> const &
 //
 // -------------------------------------------------------------
 //
-template <typename ScalarType, typename ViennaCLVectorType>
+template<typename ScalarType, typename ViennaCLVectorType>
 ScalarType diff(ublas::vector<ScalarType> const & v1, ViennaCLVectorType const & vcl_vec)
 {
    ublas::vector<ScalarType> v2_cpu(vcl_vec.size());
@@ -104,7 +104,7 @@ ScalarType diff(ublas::vector<ScalarType> const & v1, ViennaCLVectorType const &
 }
 
 
-template <typename T1, typename T2>
+template<typename T1, typename T2>
 int check(T1 const & t1, T2 const & t2, double epsilon)
 {
   int retval = EXIT_SUCCESS;
@@ -415,6 +415,83 @@ int test(Epsilon const& epsilon,
     return EXIT_FAILURE;
   }
 
+
+  std::cout << "x = element_pow(x, y)... ";
+  {
+  for (std::size_t i=0; i<ublas_v1.size(); ++i)
+  {
+    ublas_v1[i] = NumericT(2.0) + random<NumericT>();
+    ublas_v2[i] = NumericT(1.0) + random<NumericT>();
+  }
+  viennacl::copy(ublas_v1, vcl_v1);
+  viennacl::copy(ublas_v2, vcl_v2);
+
+  for (std::size_t i=0; i<ublas_v1.size(); ++i)
+    ublas_v1[i] = std::pow(ublas_v1[i], ublas_v2[i]);
+  viennacl::scheduler::statement   my_statement(vcl_v1, viennacl::op_assign(), viennacl::linalg::element_pow(vcl_v1, vcl_v2));
+  viennacl::scheduler::execute(my_statement);
+
+  if (check(ublas_v1, vcl_v1, epsilon) != EXIT_SUCCESS)
+    return EXIT_FAILURE;
+  }
+
+  std::cout << "x = element_pow(x + y, y)... ";
+  {
+  for (std::size_t i=0; i<ublas_v1.size(); ++i)
+  {
+    ublas_v1[i] = NumericT(2.0) + random<NumericT>();
+    ublas_v2[i] = NumericT(1.0) + random<NumericT>();
+  }
+  viennacl::copy(ublas_v1, vcl_v1);
+  viennacl::copy(ublas_v2, vcl_v2);
+
+  for (std::size_t i=0; i<ublas_v1.size(); ++i)
+    ublas_v1[i] = std::pow(ublas_v1[i]  + ublas_v2[i], ublas_v2[i]);
+  viennacl::scheduler::statement   my_statement(vcl_v1, viennacl::op_assign(), viennacl::linalg::element_pow(vcl_v1 + vcl_v2, vcl_v2));
+  viennacl::scheduler::execute(my_statement);
+
+  if (check(ublas_v1, vcl_v1, epsilon) != EXIT_SUCCESS)
+    return EXIT_FAILURE;
+  }
+
+  std::cout << "x = element_pow(x, x + y)... ";
+  {
+  for (std::size_t i=0; i<ublas_v1.size(); ++i)
+  {
+    ublas_v1[i] = NumericT(2.0) + random<NumericT>();
+    ublas_v2[i] = NumericT(1.0) + random<NumericT>();
+  }
+  viennacl::copy(ublas_v1, vcl_v1);
+  viennacl::copy(ublas_v2, vcl_v2);
+
+  for (std::size_t i=0; i<ublas_v1.size(); ++i)
+    ublas_v1[i] = std::pow(ublas_v1[i], ublas_v1[i] + ublas_v2[i]);
+  viennacl::scheduler::statement   my_statement(vcl_v1, viennacl::op_assign(), viennacl::linalg::element_pow(vcl_v1, vcl_v2 + vcl_v1));
+  viennacl::scheduler::execute(my_statement);
+
+  if (check(ublas_v1, vcl_v1, epsilon) != EXIT_SUCCESS)
+    return EXIT_FAILURE;
+  }
+
+  std::cout << "x = element_pow(x - y, y + x)... ";
+  {
+  for (std::size_t i=0; i<ublas_v1.size(); ++i)
+  {
+    ublas_v1[i] = NumericT(2.0) + random<NumericT>();
+    ublas_v2[i] = NumericT(1.0) + random<NumericT>();
+  }
+  viennacl::copy(ublas_v1, vcl_v1);
+  viennacl::copy(ublas_v2, vcl_v2);
+
+  for (std::size_t i=0; i<ublas_v1.size(); ++i)
+    ublas_v1[i] = std::pow(ublas_v1[i] - ublas_v2[i], ublas_v2[i] + ublas_v1[i]);
+  viennacl::scheduler::statement   my_statement(vcl_v1, viennacl::op_assign(), viennacl::linalg::element_pow(vcl_v1 - vcl_v2, vcl_v2 + vcl_v1));
+  viennacl::scheduler::execute(my_statement);
+
+  if (check(ublas_v1, vcl_v1, epsilon) != EXIT_SUCCESS)
+    return EXIT_FAILURE;
+  }
+
   std::cout << "--- Testing elementwise operations (unary) ---" << std::endl;
 #define GENERATE_UNARY_OP_TEST(OPNAME) \
   ublas_v1 = ublas::scalar_vector<NumericT>(ublas_v1.size(), NumericT(0.21)); \
@@ -423,7 +500,7 @@ int test(Epsilon const& epsilon,
   viennacl::copy(ublas_v2.begin(), ublas_v2.end(), vcl_v2.begin()); \
   { \
   for (std::size_t i=0; i<ublas_v1.size(); ++i) \
-    ublas_v1[i] = OPNAME(ublas_v2[i]); \
+    ublas_v1[i] = std::OPNAME(ublas_v2[i]); \
   viennacl::scheduler::statement my_statement(vcl_v1, viennacl::op_assign(), viennacl::linalg::element_##OPNAME(vcl_v2)); \
   viennacl::scheduler::execute(my_statement); \
   if (check(ublas_v1, vcl_v1, epsilon) != EXIT_SUCCESS) \
@@ -659,7 +736,7 @@ int main()
       std::cout << "  eps:     " << epsilon << std::endl;
       std::cout << "  numeric: float" << std::endl;
       retval = test<NumericT>(epsilon);
-      if( retval == EXIT_SUCCESS )
+      if ( retval == EXIT_SUCCESS )
          std::cout << "# Test passed" << std::endl;
       else
          return retval;
@@ -668,7 +745,7 @@ int main()
    std::cout << "----------------------------------------------" << std::endl;
    std::cout << std::endl;
 #ifdef VIENNACL_WITH_OPENCL
-   if( viennacl::ocl::current_device().double_support() )
+   if ( viennacl::ocl::current_device().double_support() )
 #endif
    {
       {
@@ -678,7 +755,7 @@ int main()
          std::cout << "  eps:     " << epsilon << std::endl;
          std::cout << "  numeric: double" << std::endl;
          retval = test<NumericT>(epsilon);
-         if( retval == EXIT_SUCCESS )
+         if ( retval == EXIT_SUCCESS )
            std::cout << "# Test passed" << std::endl;
          else
            return retval;

@@ -47,6 +47,7 @@
 #include "viennacl/compressed_compressed_matrix.hpp"
 #include "viennacl/coordinate_matrix.hpp"
 #include "viennacl/ell_matrix.hpp"
+#include "viennacl/sliced_ell_matrix.hpp"
 #include "viennacl/hyb_matrix.hpp"
 #include "viennacl/vector.hpp"
 #include "viennacl/vector_proxy.hpp"
@@ -65,7 +66,7 @@ using namespace boost::numeric;
 //
 // -------------------------------------------------------------
 //
-template <typename ScalarType>
+template<typename ScalarType>
 ScalarType diff(ScalarType & s1, viennacl::scalar<ScalarType> & s2)
 {
    if (s1 != s2)
@@ -73,7 +74,7 @@ ScalarType diff(ScalarType & s1, viennacl::scalar<ScalarType> & s2)
    return 0;
 }
 
-template <typename ScalarType>
+template<typename ScalarType>
 ScalarType diff(ublas::vector<ScalarType> & v1, viennacl::vector<ScalarType> & v2)
 {
    ublas::vector<ScalarType> v2_cpu(v2.size());
@@ -105,7 +106,7 @@ ScalarType diff(ublas::vector<ScalarType> & v1, viennacl::vector<ScalarType> & v
 }
 
 
-template <typename ScalarType, typename VCL_MATRIX>
+template<typename ScalarType, typename VCL_MATRIX>
 ScalarType diff(ublas::compressed_matrix<ScalarType> & cpu_matrix, VCL_MATRIX & gpu_matrix)
 {
   typedef ublas::compressed_matrix<ScalarType>  CPU_MATRIX;
@@ -168,7 +169,7 @@ ScalarType diff(ublas::compressed_matrix<ScalarType> & cpu_matrix, VCL_MATRIX & 
 }
 
 
-template <typename NumericT, typename VCL_MatrixT, typename Epsilon, typename UblasVectorT, typename VCLVectorT>
+template<typename NumericT, typename VCL_MatrixT, typename Epsilon, typename UblasVectorT, typename VCLVectorT>
 int strided_matrix_vector_product_test(Epsilon epsilon,
                                         UblasVectorT & result, UblasVectorT const & rhs,
                                         VCLVectorT & vcl_result, VCLVectorT & vcl_rhs)
@@ -192,7 +193,7 @@ int strided_matrix_vector_product_test(Epsilon epsilon,
     vec(3) = rhs(9);
     viennacl::project(vcl_result, viennacl::slice(1, 3, 5)) = viennacl::linalg::prod(vcl_sparse_matrix2, viennacl::project(vcl_rhs, viennacl::slice(3, 2, 4)));
 
-    if( std::fabs(diff(result, vcl_result)) > epsilon )
+    if ( std::fabs(diff(result, vcl_result)) > epsilon )
     {
       std::cout << "# Error at operation: matrix-vector product with stided vectors, part 1" << std::endl;
       std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
@@ -206,7 +207,7 @@ int strided_matrix_vector_product_test(Epsilon epsilon,
 
     viennacl::project(vcl_result, viennacl::slice(1, 3, 5)) = viennacl::linalg::prod(vcl_sparse_matrix2, vec);
 
-    if( std::fabs(diff(result, vcl_result)) > epsilon )
+    if ( std::fabs(diff(result, vcl_result)) > epsilon )
     {
       std::cout << "# Error at operation: matrix-vector product with strided vectors, part 2" << std::endl;
       std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
@@ -236,7 +237,7 @@ int resize_test(Epsilon const& epsilon)
    viennacl::copy(vcl_matrix, other_matrix);
 
    std::cout << "Checking for equality after copy..." << std::endl;
-    if( std::fabs(diff(ublas_matrix, vcl_matrix)) > epsilon )
+    if ( std::fabs(diff(ublas_matrix, vcl_matrix)) > epsilon )
     {
         std::cout << "# Error at operation: equality after copy with sparse matrix" << std::endl;
         std::cout << "  diff: " << std::fabs(diff(ublas_matrix, vcl_matrix)) << std::endl;
@@ -254,7 +255,7 @@ int resize_test(Epsilon const& epsilon)
 
    vcl_matrix.resize(10, 10, true);
 
-    if( std::fabs(diff(ublas_matrix, vcl_matrix)) > epsilon )
+    if ( std::fabs(diff(ublas_matrix, vcl_matrix)) > epsilon )
     {
         std::cout << "# Error at operation: resize (to larger) with sparse matrix" << std::endl;
         std::cout << "  diff: " << std::fabs(diff(ublas_matrix, vcl_matrix)) << std::endl;
@@ -281,7 +282,7 @@ int resize_test(Epsilon const& epsilon)
    vcl_matrix.resize(7, 7);
 
    //std::cout << ublas_matrix << std::endl;
-    if( std::fabs(diff(ublas_matrix, vcl_matrix)) > epsilon )
+    if ( std::fabs(diff(ublas_matrix, vcl_matrix)) > epsilon )
     {
         std::cout << "# Error at operation: resize (to smaller) with sparse matrix" << std::endl;
         std::cout << "  diff: " << std::fabs(diff(ublas_matrix, vcl_matrix)) << std::endl;
@@ -401,11 +402,12 @@ int test(Epsilon const& epsilon)
   ublas::vector<NumericT> result;
   ublas::compressed_matrix<NumericT> ublas_matrix;
 
-  if (viennacl::io::read_matrix_market_file(ublas_matrix, "../../examples/testdata/mat65k.mtx") == EXIT_FAILURE)
+  if (viennacl::io::read_matrix_market_file(ublas_matrix, "../examples/testdata/mat65k.mtx") == EXIT_FAILURE)
   {
     std::cout << "Error reading Matrix file" << std::endl;
     return EXIT_FAILURE;
   }
+
   //unsigned int cg_mat_size = cg_mat.size();
   std::cout << "done reading matrix" << std::endl;
 
@@ -442,6 +444,7 @@ int test(Epsilon const& epsilon)
   viennacl::compressed_compressed_matrix<NumericT> vcl_compressed_compressed_matrix(rhs.size(), rhs.size());
   viennacl::coordinate_matrix<NumericT> vcl_coordinate_matrix(rhs.size(), rhs.size());
   viennacl::ell_matrix<NumericT> vcl_ell_matrix;
+  viennacl::sliced_ell_matrix<NumericT> vcl_sliced_ell_matrix;
   viennacl::hyb_matrix<NumericT> vcl_hyb_matrix;
 
   viennacl::copy(rhs.begin(), rhs.end(), vcl_rhs.begin());
@@ -456,7 +459,7 @@ int test(Epsilon const& epsilon)
   std::cout << "Testing products: compressed_matrix" << std::endl;
   vcl_result = viennacl::linalg::prod(vcl_compressed_matrix, vcl_rhs);
 
-  if( std::fabs(diff(result, vcl_result)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result)) > epsilon )
   {
     std::cout << "# Error at operation: matrix-vector product with compressed_matrix" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
@@ -493,7 +496,7 @@ int test(Epsilon const& epsilon)
   boost::numeric::ublas::inplace_solve(trans(ublas_matrix_trans), result, boost::numeric::ublas::unit_upper_tag());
   viennacl::linalg::inplace_solve(vcl_compressed_matrix, vcl_result, viennacl::linalg::unit_upper_tag());
 
-  if( std::fabs(diff(result, vcl_result)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result)) > epsilon )
   {
     std::cout << "# Error at operation: unit upper triangular solve with compressed_matrix" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
@@ -506,7 +509,7 @@ int test(Epsilon const& epsilon)
   boost::numeric::ublas::inplace_solve(trans(ublas_matrix_trans), result, boost::numeric::ublas::upper_tag());
   viennacl::linalg::inplace_solve(vcl_compressed_matrix, vcl_result, viennacl::linalg::upper_tag());
 
-  if( std::fabs(diff(result, vcl_result)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result)) > epsilon )
   {
     std::cout << "# Error at operation: upper triangular solve with compressed_matrix" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
@@ -547,7 +550,7 @@ int test(Epsilon const& epsilon)
                                                     multifrontal_L_row_elimination_num_list_);*/
 
 
-  if( std::fabs(diff(result, vcl_result)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result)) > epsilon )
   {
     std::cout << "# Error at operation: unit lower triangular solve with compressed_matrix" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
@@ -586,7 +589,7 @@ int test(Epsilon const& epsilon)
                                                     multifrontal_U_row_elimination_num_list_);*/
 
 
-  if( std::fabs(diff(result, vcl_result)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result)) > epsilon )
   {
     std::cout << "# Error at operation: lower triangular solve with compressed_matrix" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
@@ -600,7 +603,7 @@ int test(Epsilon const& epsilon)
   boost::numeric::ublas::inplace_solve(ublas_matrix, result, boost::numeric::ublas::lower_tag());
   viennacl::linalg::inplace_solve(vcl_compressed_matrix, vcl_result, viennacl::linalg::lower_tag());
 
-  if( std::fabs(diff(result, vcl_result)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result)) > epsilon )
   {
     std::cout << "# Error at operation: lower triangular solve with compressed_matrix" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
@@ -617,7 +620,7 @@ int test(Epsilon const& epsilon)
   boost::numeric::ublas::inplace_solve(trans(ublas_matrix), result, boost::numeric::ublas::unit_upper_tag());
   viennacl::linalg::inplace_solve(trans(vcl_compressed_matrix), vcl_result, viennacl::linalg::unit_upper_tag());
 
-  if( std::fabs(diff(result, vcl_result)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result)) > epsilon )
   {
     std::cout << "# Error at operation: unit upper triangular solve with compressed_matrix" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
@@ -630,7 +633,7 @@ int test(Epsilon const& epsilon)
   boost::numeric::ublas::inplace_solve(trans(ublas_matrix), result, boost::numeric::ublas::upper_tag());
   viennacl::linalg::inplace_solve(trans(vcl_compressed_matrix), vcl_result, viennacl::linalg::upper_tag());
 
-  if( std::fabs(diff(result, vcl_result)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result)) > epsilon )
   {
     std::cout << "# Error at operation: upper triangular solve with compressed_matrix" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
@@ -644,7 +647,7 @@ int test(Epsilon const& epsilon)
   boost::numeric::ublas::inplace_solve(trans(ublas_matrix), result, boost::numeric::ublas::unit_lower_tag());
   viennacl::linalg::inplace_solve(trans(vcl_compressed_matrix), vcl_result, viennacl::linalg::unit_lower_tag());
 
-  if( std::fabs(diff(result, vcl_result)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result)) > epsilon )
   {
     std::cout << "# Error at operation: unit lower triangular solve with compressed_matrix" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
@@ -657,7 +660,7 @@ int test(Epsilon const& epsilon)
   boost::numeric::ublas::inplace_solve(trans(ublas_matrix), result, boost::numeric::ublas::lower_tag());
   viennacl::linalg::inplace_solve(trans(vcl_compressed_matrix), vcl_result, viennacl::linalg::lower_tag());
 
-  if( std::fabs(diff(result, vcl_result)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result)) > epsilon )
   {
     std::cout << "# Error at operation: lower triangular solve with compressed_matrix" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
@@ -669,7 +672,7 @@ int test(Epsilon const& epsilon)
   result     = viennacl::linalg::prod(ublas_cc_matrix, rhs);
   vcl_result = viennacl::linalg::prod(vcl_compressed_compressed_matrix, vcl_rhs);
 
-  if( std::fabs(diff(result, vcl_result)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result)) > epsilon )
   {
     std::cout << "# Error at operation: matrix-vector product with compressed_compressed_matrix" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
@@ -683,7 +686,7 @@ int test(Epsilon const& epsilon)
     // check that entries are correct by computing the product again:
     result     = viennacl::linalg::prod(temp, rhs);
 
-    if( std::fabs(diff(result, vcl_result)) > epsilon )
+    if ( std::fabs(diff(result, vcl_result)) > epsilon )
     {
       std::cout << "# Error at operation: matrix-vector product with compressed_compressed_matrix (after copy back)" << std::endl;
       std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
@@ -699,7 +702,7 @@ int test(Epsilon const& epsilon)
   result     = viennacl::linalg::prod(ublas_matrix, rhs);
   vcl_result = viennacl::linalg::prod(vcl_coordinate_matrix, vcl_rhs);
 
-  if( std::fabs(diff(result, vcl_result)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result)) > epsilon )
   {
     std::cout << "# Error at operation: matrix-vector product with coordinate_matrix" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
@@ -728,7 +731,7 @@ int test(Epsilon const& epsilon)
   //std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
   //std::cout << "First entry of result vector: " << vcl_result[0] << std::endl;
 
-  if( std::fabs(diff(result, vcl_result)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result)) > epsilon )
   {
     std::cout << "# Error at operation: matrix-vector product with ell_matrix" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
@@ -737,6 +740,29 @@ int test(Epsilon const& epsilon)
 
   std::cout << "Testing products: ell_matrix, strided vectors" << std::endl;
   retval = strided_matrix_vector_product_test<NumericT, viennacl::ell_matrix<NumericT> >(epsilon, result, rhs, vcl_result, vcl_rhs);
+  if (retval != EXIT_SUCCESS)
+    return retval;
+
+  //std::cout << "Copying sliced_ell_matrix" << std::endl;
+  viennacl::copy(ublas_matrix, vcl_sliced_ell_matrix);
+  //ublas_matrix.clear();
+  //viennacl::copy(vcl_hyb_matrix, ublas_matrix);// just to check that it's works
+  //viennacl::copy(ublas_matrix, vcl_hyb_matrix);
+
+  std::cout << "Testing products: sliced_ell_matrix" << std::endl;
+  result     = viennacl::linalg::prod(ublas_matrix, rhs);
+  vcl_result.clear();
+  vcl_result = viennacl::linalg::prod(vcl_sliced_ell_matrix, vcl_rhs);
+
+  if ( std::fabs(diff(result, vcl_result)) > epsilon )
+  {
+    std::cout << "# Error at operation: matrix-vector product with sliced_ell_matrix" << std::endl;
+    std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
+    retval = EXIT_FAILURE;
+  }
+
+  std::cout << "Testing products: sliced_ell_matrix, strided vectors" << std::endl;
+  retval = strided_matrix_vector_product_test<NumericT, viennacl::sliced_ell_matrix<NumericT> >(epsilon, result, rhs, vcl_result, vcl_rhs);
   if (retval != EXIT_SUCCESS)
     return retval;
 
@@ -756,7 +782,7 @@ int test(Epsilon const& epsilon)
   //std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
   //std::cout << "First entry of result vector: " << vcl_result[0] << std::endl;
 
-  if( std::fabs(diff(result, vcl_result)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result)) > epsilon )
   {
     std::cout << "# Error at operation: matrix-vector product with hyb_matrix" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result)) << std::endl;
@@ -781,7 +807,7 @@ int test(Epsilon const& epsilon)
   result     = alpha * viennacl::linalg::prod(ublas_matrix, rhs) + beta * result;
   vcl_result2 = alpha * viennacl::linalg::prod(vcl_compressed_matrix, vcl_rhs) + beta * vcl_result;
 
-  if( std::fabs(diff(result, vcl_result2)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result2)) > epsilon )
   {
     std::cout << "# Error at operation: matrix-vector product (compressed_matrix) with scaled additions" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result2)) << std::endl;
@@ -792,7 +818,7 @@ int test(Epsilon const& epsilon)
   vcl_result2.clear();
   vcl_result2 = alpha * viennacl::linalg::prod(vcl_coordinate_matrix, vcl_rhs) + beta * vcl_result;
 
-  if( std::fabs(diff(result, vcl_result2)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result2)) > epsilon )
   {
     std::cout << "# Error at operation: matrix-vector product (coordinate_matrix) with scaled additions" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result2)) << std::endl;
@@ -802,7 +828,7 @@ int test(Epsilon const& epsilon)
   vcl_result2.clear();
   vcl_result2 = alpha * viennacl::linalg::prod(vcl_ell_matrix, vcl_rhs) + beta * vcl_result;
 
-  if( std::fabs(diff(result, vcl_result2)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result2)) > epsilon )
   {
     std::cout << "# Error at operation: matrix-vector product (ell_matrix) with scaled additions" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result2)) << std::endl;
@@ -812,7 +838,7 @@ int test(Epsilon const& epsilon)
   vcl_result2.clear();
   vcl_result2 = alpha * viennacl::linalg::prod(vcl_hyb_matrix, vcl_rhs) + beta * vcl_result;
 
-  if( std::fabs(diff(result, vcl_result2)) > epsilon )
+  if ( std::fabs(diff(result, vcl_result2)) > epsilon )
   {
     std::cout << "# Error at operation: matrix-vector product (hyb_matrix) with scaled additions" << std::endl;
     std::cout << "  diff: " << std::fabs(diff(result, vcl_result2)) << std::endl;
@@ -848,7 +874,7 @@ int main()
     std::cout << "  eps:     " << epsilon << std::endl;
     std::cout << "  numeric: float" << std::endl;
     retval = test<NumericT>(epsilon);
-    if( retval == EXIT_SUCCESS )
+    if ( retval == EXIT_SUCCESS )
         std::cout << "# Test passed" << std::endl;
     else
         return retval;
@@ -858,7 +884,7 @@ int main()
   std::cout << std::endl;
 
 #ifdef VIENNACL_WITH_OPENCL
-  if( viennacl::ocl::current_device().double_support() )
+  if ( viennacl::ocl::current_device().double_support() )
 #endif
   {
     {
@@ -868,7 +894,7 @@ int main()
       std::cout << "  eps:     " << epsilon << std::endl;
       std::cout << "  numeric: double" << std::endl;
       retval = test<NumericT>(epsilon);
-      if( retval == EXIT_SUCCESS )
+      if ( retval == EXIT_SUCCESS )
         std::cout << "# Test passed" << std::endl;
       else
         return retval;

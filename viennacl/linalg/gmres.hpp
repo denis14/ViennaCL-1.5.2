@@ -91,14 +91,14 @@ namespace viennacl
     namespace detail
     {
 
-      template <typename SRC_VECTOR, typename DEST_VECTOR>
+      template<typename SRC_VECTOR, typename DEST_VECTOR>
       void gmres_copy_helper(SRC_VECTOR const & src, DEST_VECTOR & dest, vcl_size_t len, vcl_size_t start = 0)
       {
         for (vcl_size_t i=0; i<len; ++i)
           dest[start+i] = src[start+i];
       }
 
-      template <typename ScalarType, typename DEST_VECTOR>
+      template<typename ScalarType, typename DEST_VECTOR>
       void gmres_copy_helper(viennacl::vector<ScalarType> const & src, DEST_VECTOR & dest, vcl_size_t len, vcl_size_t start = 0)
       {
         typedef typename viennacl::vector<ScalarType>::difference_type   difference_type;
@@ -115,7 +115,7 @@ namespace viennacl
         * @param mu              The norm of the input vector part relevant for the reflection: norm_2(input_vec[j:size])
         * @param j               Index of the last nonzero index in 'input_vec' after applying the reflection
       */
-      template <typename VectorType, typename ScalarType>
+      template<typename VectorType, typename ScalarType>
       void gmres_setup_householder_vector(VectorType const & input_vec, VectorType & hh_vec, ScalarType & beta, ScalarType & mu, vcl_size_t j)
       {
         ScalarType input_j = input_vec(j);
@@ -146,7 +146,7 @@ namespace viennacl
       }
 
       // Apply (I - beta h h^T) to x (Householder reflection with Householder vector h)
-      template <typename VectorType, typename ScalarType>
+      template<typename VectorType, typename ScalarType>
       void gmres_householder_reflect(VectorType & x, VectorType const & h, ScalarType beta)
       {
         ScalarType hT_in_x = viennacl::linalg::inner_prod(h, x);
@@ -165,7 +165,7 @@ namespace viennacl
     * @param precond    A preconditioner. Precondition operation is done via member function apply()
     * @return The result vector
     */
-    template <typename MatrixType, typename VectorType, typename PreconditionerType>
+    template<typename MatrixType, typename VectorType, typename PreconditionerType>
     VectorType solve(const MatrixType & matrix, VectorType const & rhs, gmres_tag const & tag, PreconditionerType const & precond)
     {
       typedef typename viennacl::result_of::value_type<VectorType>::type        ScalarType;
@@ -174,8 +174,8 @@ namespace viennacl
       VectorType result = rhs;
       viennacl::traits::clear(result);
 
-      unsigned int krylov_dim = tag.krylov_dim();
-      if (problem_size < tag.krylov_dim())
+      std::size_t krylov_dim = static_cast<std::size_t>(tag.krylov_dim());
+      if (problem_size < krylov_dim)
         krylov_dim = problem_size; //A Krylov space larger than the matrix would lead to seg-faults (mathematically, error is certain to be zero already)
 
       VectorType res = rhs;
@@ -225,7 +225,7 @@ namespace viennacl
         //
         // Iterate up until maximal Krylove space dimension is reached:
         //
-        unsigned int k = 0;
+        std::size_t k = 0;
         for (k = 0; k < krylov_dim; ++k)
         {
           tag.iters( tag.iters() + 1 ); //increase iteration counter
@@ -246,7 +246,7 @@ namespace viennacl
             v_k_tilde[k-1] = CPU_ScalarType(1);
 
             //Householder rotations, part 1: Compute P_1 * P_2 * ... * P_{k-1} * e_{k-1}
-            for (int i = k-1; i > -1; --i)
+            for (int i = static_cast<int>(k)-1; i > -1; --i)
               detail::gmres_householder_reflect(v_k_tilde, householder_reflectors[i], betas[i]);
 
             v_k_tilde_temp = viennacl::linalg::prod(matrix, v_k_tilde);
@@ -298,9 +298,9 @@ namespace viennacl
         // Triangular solver stage:
         //
 
-        for (int i=k-1; i>-1; --i)
+        for (int i=static_cast<int>(k)-1; i>-1; --i)
         {
-          for (unsigned int j=i+1; j<k; ++j)
+          for (vcl_size_t j=static_cast<vcl_size_t>(i)+1; j<k; ++j)
             projection_rhs[i] -= R[j][i] * projection_rhs[j];     //R is transposed
 
           projection_rhs[i] /= R[i][i];
@@ -321,7 +321,7 @@ namespace viennacl
         //
         // Form z inplace in 'res' by applying P_1 * ... * P_{k}
         //
-        for (int i=k-1; i>=0; --i)
+        for (int i=static_cast<int>(k)-1; i>=0; --i)
           detail::gmres_householder_reflect(res, householder_reflectors[i], betas[i]);
 
         res *= rho_0;
@@ -340,7 +340,7 @@ namespace viennacl
 
     /** @brief Convenience overload of the solve() function using GMRES. Per default, no preconditioner is used
     */
-    template <typename MatrixType, typename VectorType>
+    template<typename MatrixType, typename VectorType>
     VectorType solve(const MatrixType & matrix, VectorType const & rhs, gmres_tag const & tag)
     {
       return solve(matrix, rhs, tag, no_precond());

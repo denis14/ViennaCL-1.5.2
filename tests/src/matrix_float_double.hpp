@@ -52,7 +52,7 @@
 
 using namespace boost::numeric;
 
-template <typename MatrixType, typename VCLMatrixType>
+template<typename MatrixType, typename VCLMatrixType>
 bool check_for_equality(MatrixType const & ublas_A, VCLMatrixType const & vcl_A, double epsilon)
 {
   typedef typename MatrixType::value_type   value_type;
@@ -84,7 +84,7 @@ bool check_for_equality(MatrixType const & ublas_A, VCLMatrixType const & vcl_A,
 
 
 
-template <typename UBLASMatrixType,
+template<typename UBLASMatrixType,
           typename ViennaCLMatrixType1, typename ViennaCLMatrixType2, typename ViennaCLMatrixType3>
 int run_test(double epsilon,
              UBLASMatrixType & ublas_A, UBLASMatrixType & ublas_B, UBLASMatrixType & ublas_C,
@@ -142,6 +142,16 @@ int run_test(double epsilon,
   if (!check_for_equality(ublas_A, vcl_A, epsilon))
     return EXIT_FAILURE;
 
+  if (ublas_A.size1() == ublas_A.size2())
+  {
+    std::cout << "Testing matrix assignment (transposed)... ";
+    ublas_A = trans(ublas_B);
+    vcl_A   = viennacl::trans(vcl_B);
+
+    if (!check_for_equality(ublas_A, vcl_A, epsilon))
+      return EXIT_FAILURE;
+  }
+
 
 
   //std::cout << std::endl;
@@ -189,6 +199,16 @@ int run_test(double epsilon,
 
   if (!check_for_equality(ublas_C, vcl_C, epsilon))
     return EXIT_FAILURE;
+
+  if (ublas_C.size1() == ublas_C.size2())
+  {
+    std::cout << "Inplace add (transposed): ";
+    ublas_C += trans(ublas_C);
+    vcl_C   += viennacl::trans(vcl_C);
+
+    if (!check_for_equality(ublas_C, vcl_C, epsilon))
+      return EXIT_FAILURE;
+  }
 
   std::cout << "Scaled inplace add: ";
   ublas_C += beta * ublas_A;
@@ -259,6 +279,16 @@ int run_test(double epsilon,
   std::cout << "Inplace sub: ";
   ublas_C -= ublas_B;
   vcl_C -= vcl_B;
+
+  if (!check_for_equality(ublas_C, vcl_C, epsilon))
+    return EXIT_FAILURE;
+
+  if (ublas_C.size1() == ublas_C.size2())
+  {
+    std::cout << "Inplace add (transposed): ";
+    ublas_C -= trans(ublas_C);
+    vcl_C   -= viennacl::trans(vcl_C);
+  }
 
   if (!check_for_equality(ublas_C, vcl_C, epsilon))
     return EXIT_FAILURE;
@@ -766,7 +796,7 @@ int run_test(double epsilon,
 
 
 
-template <typename T, typename ScalarType>
+template<typename T, typename ScalarType>
 int run_test(double epsilon)
 {
     //typedef float               ScalarType;
@@ -970,6 +1000,34 @@ int run_test(double epsilon)
     if ( std::fabs(device_ublas_norm_frobenius - device_vcl_norm_frobenius) / device_ublas_norm_frobenius > epsilon)
     {
       std::cerr << "Failure at norm_frobenius()" << std::endl;
+      return EXIT_FAILURE;
+    }
+
+    vcl_norm_frobenius = viennacl::linalg::norm_frobenius(vcl_range_C);
+    if ( std::fabs(ublas_norm_frobenius - vcl_norm_frobenius) / ublas_norm_frobenius > epsilon)
+    {
+      std::cerr << "Failure at norm_frobenius() with range" << std::endl;
+      return EXIT_FAILURE;
+    }
+
+    device_vcl_norm_frobenius = viennacl::linalg::norm_frobenius(vcl_range_C);
+    if ( std::fabs(device_ublas_norm_frobenius - device_vcl_norm_frobenius) / device_ublas_norm_frobenius > epsilon)
+    {
+      std::cerr << "Failure at norm_frobenius() with range" << std::endl;
+      return EXIT_FAILURE;
+    }
+
+    vcl_norm_frobenius = viennacl::linalg::norm_frobenius(vcl_slice_C);
+    if ( std::fabs(ublas_norm_frobenius - vcl_norm_frobenius) / ublas_norm_frobenius > epsilon)
+    {
+      std::cerr << "Failure at norm_frobenius() with slice" << std::endl;
+      return EXIT_FAILURE;
+    }
+
+    device_vcl_norm_frobenius = viennacl::linalg::norm_frobenius(vcl_slice_C);
+    if ( std::fabs(device_ublas_norm_frobenius - device_vcl_norm_frobenius) / device_ublas_norm_frobenius > epsilon)
+    {
+      std::cerr << "Failure at norm_frobenius() with slice" << std::endl;
       return EXIT_FAILURE;
     }
 

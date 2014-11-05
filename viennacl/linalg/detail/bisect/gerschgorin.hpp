@@ -1,3 +1,7 @@
+#ifndef _VIENNACL_LINALG_DETAIL_BISECT_GERSCHORIN_HPP_
+#define _VIENNACL_LINALG_DETAIL_BISECT_GERSCHORIN_HPP_
+
+
 /* =========================================================================
    Copyright (c) 2010-2014, Institute for Microelectronics,
                             Institute for Analysis and Scientific Computing,
@@ -15,9 +19,14 @@
    License:         MIT (X11), see file LICENSE in the base directory
 ============================================================================= */
 
-/* Computation of Gerschgorin interval for symmetric, tridiagonal matrix */
-#ifndef _VIENNACL_LINALG_DETAIL_GERSCHORIN_HPP_
-#define _VIENNACL_LINALG_DETAIL_GERSCHORIN_HPP_
+
+/** @file viennacl/linalg/detail//bisect/gerschgorin.hpp
+    @brief  Computation of Gerschgorin interval for symmetric, tridiagonal matrix
+
+    Implementation based on the sample provided with the CUDA 6.0 SDK, for which
+    the creation of derivative works is allowed by including the following statement:
+    "This software contains source code provided by NVIDIA Corporation."
+*/
 
 #include <cstdio>
 #include <cstdlib>

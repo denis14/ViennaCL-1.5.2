@@ -71,7 +71,7 @@ namespace viennacl
          * @param Vector vector that is used for computations
          */
         //UBLAS version
-        template <typename MatrixType>
+        template<typename MatrixType>
         class spai_precond
         {
         public:
@@ -90,7 +90,7 @@ namespace viennacl
                 MatrixType pA(A.size1(), A.size2());
                 MatrixType At;
                 //std::cout<<A<<std::endl;
-                if(!tag_.getIsRight()){
+                if (!tag_.getIsRight()){
                     viennacl::linalg::detail::spai::sparse_transpose(A, At);
                 }else{
                     At = A;
@@ -120,7 +120,7 @@ namespace viennacl
          * @param Matrix matrix that is used for computations
          * @param Vector vector that is used for computations
          */
-        template <typename ScalarType, unsigned int MAT_ALIGNMENT>
+        template<typename ScalarType, unsigned int MAT_ALIGNMENT>
         class spai_precond< viennacl::compressed_matrix<ScalarType, MAT_ALIGNMENT> >
         {
             typedef viennacl::compressed_matrix<ScalarType, MAT_ALIGNMENT> MatrixType;
@@ -145,7 +145,7 @@ namespace viennacl
                 UBLASSparseMatrixType ubls_A(A.size1(), A.size2()), ubls_spai_m;
                 UBLASSparseMatrixType ubls_At;
                 viennacl::copy(A, ubls_A);
-                if(!tag_.getIsRight()){
+                if (!tag_.getIsRight()){
                     viennacl::linalg::detail::spai::sparse_transpose(ubls_A, ubls_At);
                 }
                 else{
@@ -185,7 +185,7 @@ namespace viennacl
         * @param Vector vector that is used for computations
         */
         //UBLAS version
-        template <typename MatrixType>
+        template<typename MatrixType>
         class fspai_precond
         {
             typedef typename MatrixType::value_type ScalarType;
@@ -233,7 +233,7 @@ namespace viennacl
         * @param Matrix matrix that is used for computations
         * @param Vector vector that is used for computations
         */
-        template <typename ScalarType, unsigned int MAT_ALIGNMENT>
+        template<typename ScalarType, unsigned int MAT_ALIGNMENT>
         class fspai_precond< viennacl::compressed_matrix<ScalarType, MAT_ALIGNMENT> >
         {
             typedef viennacl::compressed_matrix<ScalarType, MAT_ALIGNMENT>   MatrixType;

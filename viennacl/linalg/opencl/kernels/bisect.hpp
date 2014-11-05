@@ -15,8 +15,15 @@
    License:         MIT (X11), see file LICENSE in the base directory
 ============================================================================= */
 
-/* Determine eigenvalues for large symmetric, tridiagonal matrix. First
-  step of the computation. */
+
+/** @file viennacl/linalg/opencl/kernels/bisect.hpp
+    @brief OpenCL kernels for the bisection algorithm for eigenvalues
+
+    Implementation based on the sample provided with the CUDA 6.0 SDK, for which
+    the creation of derivative works is allowed by including the following statement:
+    "This software contains source code provided by NVIDIA Corporation."
+*/
+
 
 #ifndef VIENNACL_LINALG_OPENCL_KERNELS_BISECT_HPP_
 #define VIENNACL_LINALG_OPENCL_KERNELS_BISECT_HPP_
@@ -33,7 +40,7 @@ namespace opencl
 namespace kernels
 {
   template <typename StringType>
-  void generate_bisect_kernel_large_config(StringType & source)
+  void generate_bisect_kernel_config(StringType & source)
   {
     /* Global configuration parameter */
     source.append("     #define  MAX_THREADS_BLOCK                256\n");
@@ -43,15 +50,13 @@ namespace kernels
 
   }
 
-//begin copy of bisect_util.cpp
-
   ////////////////////////////////////////////////////////////////////////////////
   //! Compute the next lower power of two of n
   //! @param  n  number for which next higher power of two is seeked
   ////////////////////////////////////////////////////////////////////////////////
 
   template <typename StringType>
-  void generate_bisect_kernel_large_floorPow2(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_floorPow2(StringType & source, std::string const & numeric_string)
   {
   source.append("       \n");
   source.append("     inline int  \n");
@@ -84,7 +89,7 @@ namespace kernels
   ////////////////////////////////////////////////////////////////////////////////
 
   template <typename StringType>
-  void generate_bisect_kernel_large_ceilPow2(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_ceilPow2(StringType & source, std::string const & numeric_string)
   {
   source.append("       \n");
   source.append("     inline int  \n");
@@ -118,7 +123,7 @@ namespace kernels
   ////////////////////////////////////////////////////////////////////////////////
 
   template <typename StringType>
-  void generate_bisect_kernel_large_computeMidpoint(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_computeMidpoint(StringType & source, std::string const & numeric_string)
   {
   source.append("       \n");
   source.append("     inline "); source.append(numeric_string); source.append(" \n");
@@ -130,8 +135,6 @@ namespace kernels
   source.append("         uint grp_nm = get_num_groups(0); \n");
   source.append("         uint lcl_id = get_local_id(0); \n");
   source.append("         uint lcl_sz = get_local_size(0); \n");
-
-
   source.append("          "); source.append(numeric_string); source.append("  mid;  \n");
 
   source.append("         if (sign(left) == sign(right))  \n");
@@ -166,7 +169,7 @@ namespace kernels
   ////////////////////////////////////////////////////////////////////////////////
 
   template<typename StringType>
-  void generate_bisect_kernel_large_storeInterval(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_storeInterval(StringType & source, std::string const & numeric_string)
   {
   source.append("     \n");
   source.append("     void  \n");
@@ -216,7 +219,7 @@ namespace kernels
   }
 
   template<typename StringType>
-  void generate_bisect_kernel_large_storeIntervalShort(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_storeIntervalShort(StringType & source, std::string const & numeric_string)
   {
   source.append("     \n");
   source.append("     void  \n");
@@ -287,7 +290,7 @@ namespace kernels
   ////////////////////////////////////////////////////////////////////////////////
 
   template <typename StringType>
-  void generate_bisect_kernel_large_computeNumSmallerEigenvals(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_computeNumSmallerEigenvals(StringType & source, std::string const & numeric_string)
   {
   source.append("       \n");
   source.append("     inline unsigned int  \n");
@@ -363,7 +366,7 @@ namespace kernels
   ////////////////////////////////////////////////////////////////////////////////
 
   template <typename StringType>
-  void generate_bisect_kernel_large_computeNumSmallerEigenvalsLarge(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_computeNumSmallerEigenvalsLarge(StringType & source, std::string const & numeric_string)
   {
   source.append("       \n");
   source.append("     inline unsigned int  \n");
@@ -456,7 +459,7 @@ namespace kernels
   ////////////////////////////////////////////////////////////////////////////////
 
   template<typename StringType>
-  void generate_bisect_kernel_large_storeNonEmptyIntervals(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_storeNonEmptyIntervals(StringType & source, std::string const & numeric_string)
   {
   source.append("       \n");
   source.append("     void  \n");
@@ -531,7 +534,7 @@ namespace kernels
   ////////////////////////////////////////////////////////////////////////////////
 
   template <typename StringType>
-  void generate_bisect_kernel_large_storeNonEmptyIntervalsLarge(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_storeNonEmptyIntervalsLarge(StringType & source, std::string const & numeric_string)
   {
       source.append("       \n");
       source.append("     void  \n");
@@ -605,7 +608,7 @@ namespace kernels
   ////////////////////////////////////////////////////////////////////////////////
 
   template<typename StringType>
-  void generate_bisect_kernel_large_createIndicesCompaction(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_createIndicesCompaction(StringType & source, std::string const & numeric_string)
   {
   source.append("       \n");
   source.append("     void  \n");
@@ -668,7 +671,7 @@ namespace kernels
 
 
   template<typename StringType>
-  void generate_bisect_kernel_large_createIndicesCompactionShort(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_createIndicesCompactionShort(StringType & source, std::string const & numeric_string)
   {
   source.append("       \n");
   source.append("     void  \n");
@@ -747,7 +750,7 @@ namespace kernels
 
 
   template<typename StringType>
-  void generate_bisect_kernel_large_compactIntervals(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_compactIntervals(StringType & source, std::string const & numeric_string)
   {
   source.append("       \n");
   source.append("     void  \n");
@@ -787,7 +790,7 @@ namespace kernels
 
 
   template<typename StringType>
-  void generate_bisect_kernel_large_compactIntervalsShort(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_compactIntervalsShort(StringType & source, std::string const & numeric_string)
   {
   source.append("       \n");
   source.append("     void  \n");
@@ -826,7 +829,7 @@ namespace kernels
 
 
   template<typename StringType>
-  void generate_bisect_kernel_large_storeIntervalConverged(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_storeIntervalConverged(StringType & source, std::string const & numeric_string)
   {
   source.append("       \n");
   source.append("     void  \n");
@@ -894,7 +897,7 @@ namespace kernels
 
 
   template<typename StringType>
-  void generate_bisect_kernel_large_storeIntervalConvergedShort(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_storeIntervalConvergedShort(StringType & source, std::string const & numeric_string)
   {
   source.append("       \n");
   source.append("     void  \n");
@@ -977,7 +980,7 @@ namespace kernels
 
 
   template<typename StringType>
-  void generate_bisect_kernel_large_subdivideActiveInterval(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_subdivideActiveInterval(StringType & source, std::string const & numeric_string)
   {
   source.append("       \n");
   source.append("     void  \n");
@@ -1029,7 +1032,7 @@ namespace kernels
 
 
   template<typename StringType>
-  void generate_bisect_kernel_large_subdivideActiveIntervalShort(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_subdivideActiveIntervalShort(StringType & source, std::string const & numeric_string)
   {
   source.append("       \n");
   source.append("     void  \n");
@@ -1079,28 +1082,8 @@ namespace kernels
   source.append("     }  \n");
   }
 
-//end bisect_util.cpp
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------
-
+  // end of utilities
+  // start of kernels
 
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -1117,7 +1100,7 @@ namespace kernels
   ////////////////////////////////////////////////////////////////////////////////
   ///
   template <typename StringType>
-  void generate_bisect_kernel_large_bisectKernel(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_bisectKernel(StringType & source, std::string const & numeric_string)
   {
       source.append("     __kernel  \n");
       source.append("     void  \n");
@@ -1352,7 +1335,7 @@ namespace kernels
   ////////////////////////////////////////////////////////////////////////////////
 
   template <typename StringType>
-  void generate_bisect_kernel_large_bisectKernelLarge_MultIntervals(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_bisectKernelLarge_MultIntervals(StringType & source, std::string const & numeric_string)
   {
       source.append("     __kernel  \n");
       source.append("     void  \n");
@@ -1418,8 +1401,7 @@ namespace kernels
           // helper for compaction, keep track which threads have a second child
       source.append("         unsigned int  is_active_second = 0;  \n");
 
-  // selbst hinzugefuegt
-      source.append("         barrier(CLK_LOCAL_MEM_FENCE)  ;                                        \n");
+      source.append("         barrier(CLK_LOCAL_MEM_FENCE);            \n");
 
           // initialize common start conditions
       source.append("         if (0 == tid)  \n");
@@ -1552,7 +1534,6 @@ namespace kernels
 
               // clear
       source.append("             s_compaction_list_exc[lcl_id] = 0;  \n");
-           // selbst hinzugefuegt
       source.append("             s_compaction_list_exc[lcl_id + lcl_sz] = 0;   \n");
       source.append("               \n");
       source.append("             if (num_threads_compaction > lcl_sz)              \n");
@@ -1573,7 +1554,6 @@ namespace kernels
       source.append("               \n");
       source.append("             g_lambda[addr]  = s_left[tid];  \n");
       source.append("             g_pos[addr]   = s_right_count[tid];  \n");
-              //printf("s_left = %10.8f\n", s_left[tid]);
       source.append("         }  \n");
       source.append("     }  \n");
   }
@@ -1595,7 +1575,7 @@ namespace kernels
   ////////////////////////////////////////////////////////////////////////////////
 
   template <typename StringType>
-  void generate_bisect_kernel_large_bisectKernelLarge_OneIntervals(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_bisectKernelLarge_OneIntervals(StringType & source, std::string const & numeric_string)
   {
       source.append("     __kernel  \n");
       source.append("     void  \n");
@@ -1614,13 +1594,9 @@ namespace kernels
       source.append("         uint grp_nm = get_num_groups(0); \n");
       source.append("         uint lcl_id = get_local_id(0); \n");
       source.append("         uint lcl_sz = get_local_size(0); \n");
-
-
       source.append("         const unsigned int gtid = (lcl_sz * grp_id) + lcl_id;  \n");
-
       source.append("         __local "); source.append(numeric_string); source.append(" s_left_scratch[MAX_THREADS_BLOCK];  \n");
       source.append("         __local "); source.append(numeric_string); source.append(" s_right_scratch[MAX_THREADS_BLOCK];  \n");
-
           // active interval of thread
           // left and right limit of current interval
       source.append("          "); source.append(numeric_string); source.append(" left, right;  \n");
@@ -1641,48 +1617,34 @@ namespace kernels
       source.append("             right = g_right[gtid];  \n");
       source.append("             right_count = g_pos[gtid];  \n");
       source.append("         }  \n");
-
-
           // flag to determine if all threads converged to eigenvalue
       source.append("         __local  unsigned int  converged_all_threads;  \n");
-
           // initialized shared flag
       source.append("         if (0 == lcl_id)  \n");
       source.append("         {  \n");
       source.append("             converged_all_threads = 0;  \n");
       source.append("         }  \n");
-
       source.append("         barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
-
           // process until all threads converged to an eigenvalue
-          // while( 0 == converged_all_threads) {
-          //for (unsigned int i = 0; i < 5; ++i)                        // selbst hinzugefuegt
       source.append("         while (true)  \n");
       source.append("         {  \n");
-
       source.append("             converged_all_threads = 1;  \n");
-
               // update midpoint for all active threads
       source.append("             if ((gtid < num_intervals) && (0 == converged))  \n");
       source.append("             {  \n");
-
       source.append("                 mid = computeMidpoint(left, right);  \n");
       source.append("             }  \n");
-
               // find number of eigenvalues that are smaller than midpoint
       source.append("             mid_count = computeNumSmallerEigenvalsLarge(g_d, g_s, n,  \n");
       source.append("                                                         mid, gtid, num_intervals,  \n");
       source.append("                                                         s_left_scratch,  \n");
       source.append("                                                         s_right_scratch,  \n");
       source.append("                                                         converged);  \n");
-
       source.append("             barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
-
               // for all active threads
       source.append("             if ((gtid < num_intervals) && (0 == converged))  \n");
       source.append("             {  \n");
-
-                  // udpate intervals -- always one child interval survives
+                  // update intervals -- always one child interval survives
       source.append("                 if (right_count == mid_count)  \n");
       source.append("                 {  \n");
       source.append("                     right = mid;  \n");
@@ -1691,14 +1653,12 @@ namespace kernels
       source.append("                 {  \n");
       source.append("                     left = mid;  \n");
       source.append("                 }  \n");
-
                   // check for convergence
       source.append("                 "); source.append(numeric_string); source.append(" t0 = right - left;  \n");
       source.append("                 "); source.append(numeric_string); source.append(" t1 = max(fabs(right), fabs(left)) * precision;  \n");
 
       source.append("                 if (t0 < min(precision, t1))  \n");
       source.append("                 {  \n");
-
       source.append("                     "); source.append(numeric_string); source.append(" lambda = computeMidpoint(left, right);  \n");
       source.append("                     left = lambda;  \n");
       source.append("                     right = lambda;  \n");
@@ -1710,20 +1670,15 @@ namespace kernels
       source.append("                     converged_all_threads = 0;  \n");
       source.append("                 }  \n");
       source.append("             }  \n");
-
       source.append("             barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
-
       source.append("             if (1 == converged_all_threads)  \n");
       source.append("             {  \n");
       source.append("                 break;  \n");
       source.append("             }  \n");
-
       source.append("             barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
       source.append("         }  \n");
-
           // write data back to global memory
       source.append("         barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
-
       source.append("         if (gtid < num_intervals)  \n");
       source.append("         {  \n");
               // intervals converged so left and right interval limit are both identical
@@ -1738,7 +1693,7 @@ namespace kernels
   ////////////////////////////////////////////////////////////////////////////////
 
   template <typename StringType>
-  void generate_bisect_kernel_large_writeToGmem(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_writeToGmem(StringType & source, std::string const & numeric_string)
   {
       source.append("       \n");
       source.append("     void writeToGmem(const unsigned int tid, const unsigned int tid_2,  \n");
@@ -1808,7 +1763,7 @@ namespace kernels
 
       source.append("    } \n");      // end writing out data
 
-          source.append("         barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");                                    // selbst hinzugefuegt
+          source.append("         barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
 
           // note that s_cl_blocking = s_compaction_list + 1;, that is by writing out
           // s_compaction_list we write the exclusive scan result
@@ -1817,24 +1772,20 @@ namespace kernels
       source.append("             g_blocks_mult[tid] = s_compaction_list[tid];  \n");
       source.append("             g_blocks_mult_sum[tid] = s_cl_helper[tid];  \n");
       source.append("         }  \n");
-
       source.append("         if (tid_2 <= num_blocks_mult)  \n");
       source.append("         {  \n");
       source.append("             g_blocks_mult[tid_2] = s_compaction_list[tid_2];  \n");
       source.append("             g_blocks_mult_sum[tid_2] = s_cl_helper[tid_2];  \n");
       source.append("         }  \n");
       source.append("     }  \n");
-
-
   }
-
 
   ////////////////////////////////////////////////////////////////////////////////
   //! Perform final stream compaction before writing data to global memory
   ////////////////////////////////////////////////////////////////////////////////
 
   template <typename StringType>
-  void generate_bisect_kernel_large_compactStreamsFinal(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_compactStreamsFinal(StringType & source, std::string const & numeric_string)
   {
       source.append("       \n");
       source.append("     void  \n");
@@ -1869,7 +1820,6 @@ namespace kernels
 
       source.append("         if (tid_2 < num_threads_active)  \n");
       source.append("         {  \n");
-
       source.append("             *left_2 = s_left[tid_2];  \n");
       source.append("             *right_2 = s_right[tid_2];  \n");
       source.append("         }  \n");
@@ -1914,8 +1864,7 @@ namespace kernels
       source.append("           s_right_count[ptr_w] = *right_count;  \n");
       source.append("           \n");
       source.append("           \n");
-
-      source.append("         barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");                                                     // selbst hinzugefuegt
+      source.append("         barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
       source.append("         if(tid == 1)  \n");
       source.append("         {  \n");
       source.append("           s_left[ptr_w] = *left;  \n");
@@ -1932,7 +1881,6 @@ namespace kernels
       source.append("           \n");
       source.append("         if (tid_2 < num_threads_active)  \n");
       source.append("         {  \n");
-
               // store compactly in shared mem
       source.append("             s_left[ptr_w_2] = *left_2;  \n");
       source.append("             s_right[ptr_w_2] = *right_2;  \n");
@@ -1947,8 +1895,6 @@ namespace kernels
       source.append("         }  \n");
 
       source.append("     }  \n");
-
-
   }
 
 
@@ -1958,7 +1904,7 @@ namespace kernels
   ////////////////////////////////////////////////////////////////////////////////
 
   template <typename StringType>
-  void generate_bisect_kernel_large_scanCompactBlocksStartAddress(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_scanCompactBlocksStartAddress(StringType & source, std::string const & numeric_string)
   {
       source.append("       \n");
       source.append("     void  \n");
@@ -2037,7 +1983,7 @@ namespace kernels
   ////////////////////////////////////////////////////////////////////////////////
 
   template <typename StringType>
-  void generate_bisect_kernel_large_scanSumBlocks(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_scanSumBlocks(StringType & source, std::string const & numeric_string)
   {
       source.append("       \n");
       source.append("     void  \n");
@@ -2084,14 +2030,11 @@ namespace kernels
 
       source.append("             if (tid < (d-1))  \n");
       source.append("             {  \n");
-
       source.append("                 unsigned int ai = offset*(tid+1) - 1;  \n");
       source.append("                 unsigned int bi = ai + (offset >> 1);  \n");
-
       source.append("                 s_cl_blocking[bi] += s_cl_blocking[ai];  \n");
       source.append("             }  \n");
       source.append("         }  \n");
-
       source.append("         barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
 
       source.append("         if (0 == tid)  \n");
@@ -2116,7 +2059,7 @@ namespace kernels
   ////////////////////////////////////////////////////////////////////////////////
 
   template <typename StringType>
-  void generate_bisect_kernel_large_scanInitial(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_scanInitial(StringType & source, std::string const & numeric_string)
   {
       source.append("       \n");
       source.append("     void  \n");
@@ -2196,9 +2139,7 @@ namespace kernels
       source.append("                         }  \n");
       source.append("                     }  \n");
       source.append("            } \n"); // end s_cl_helper update
-
       source.append("             }  \n");
-
       source.append("             offset <<= 1;  \n");
       source.append("         }  \n");
 
@@ -2207,28 +2148,19 @@ namespace kernels
           // construction
       source.append("         for (int d = 2; d < num_threads_compaction; d <<= 1)  \n");
       source.append("         {  \n");
-
       source.append("             offset >>= 1;  \n");
       source.append("             barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
-
               //
       source.append("             if (tid < (d-1))  \n");
       source.append("             {  \n");
-
       source.append("                 unsigned int  ai = offset*(tid+1) - 1;  \n");
       source.append("                 unsigned int  bi = ai + (offset >> 1);  \n");
-
       source.append("                 s_cl_one[bi] = s_cl_one[bi] + s_cl_one[ai];  \n");
       source.append("                 s_cl_mult[bi] = s_cl_mult[bi] + s_cl_mult[ai];  \n");
       source.append("             }  \n");
       source.append("         }  \n");
-
       source.append("     }  \n");
-
   }
-
-
-
 
   ////////////////////////////////////////////////////////////////////////////////
   //! Bisection to find eigenvalues of a real, symmetric, and tridiagonal matrix
@@ -2244,7 +2176,7 @@ namespace kernels
   ////////////////////////////////////////////////////////////////////////////////
 
   template <typename StringType>
-  void generate_bisect_kernel_large_bisectKernelLarge(StringType & source, std::string const & numeric_string)
+  void generate_bisect_kernel_bisectKernelLarge(StringType & source, std::string const & numeric_string)
   {
       source.append("     __kernel  \n");
       source.append("     void  \n");
@@ -2307,7 +2239,6 @@ namespace kernels
           // helper for exclusive scan
       source.append("         __local unsigned short *s_compaction_list_exc = s_compaction_list + 1;  \n");
 
-
           // variables for currently processed interval
           // left and right limit of active interval
       source.append("         "); source.append(numeric_string); source.append(" left = 0.0f;  \n");
@@ -2351,8 +2282,9 @@ namespace kernels
 
           // for all active threads read intervals from the last level
           // the number of (worst case) active threads per level l is 2^l
-          //while (true)
-      source.append("    for( unsigned int i = 0; i < 15; ++i )    \n");                             // selbst hinzugefuegt
+          // determine coarse intervals. On these intervals the kernel for one or for multiple eigenvalues
+          // will be executed in the second step
+      source.append("    for( unsigned int i = 0; i < 15; ++i )    \n");
       source.append("         {  \n");
       source.append("             s_compaction_list[tid] = 0;  \n");
       source.append("             s_compaction_list[tid + MAX_THREADS_BLOCK] = 0;  \n");
@@ -2438,7 +2370,7 @@ namespace kernels
       source.append("             }  \n");
       source.append("             barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
       source.append("               \n");
-      source.append("        if (compact_second_chunk > 0)               \n");                               // selbst veraendert
+      source.append("        if (compact_second_chunk > 0)               \n");
       source.append("             {  \n");
       source.append("                 compactIntervalsShort(s_left, s_right, s_left_count, s_right_count,  \n");
       source.append("                                  mid, right, mid_count, right_count,  \n");
@@ -2459,15 +2391,12 @@ namespace kernels
       source.append("                 compact_second_chunk = 0;  \n");
       source.append("                 all_threads_converged = 1;  \n");
       source.append("             }  \n");
-
       source.append("             barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
       source.append("             if (num_threads_compaction > lcl_sz)  \n");
       source.append("             {  \n");
       source.append("                 break;  \n");
       source.append("             }  \n");
-
       source.append("         }  \n");
-
       source.append("         barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
 
           // generate two lists of intervals; one with intervals that contain one
@@ -2554,7 +2483,7 @@ namespace kernels
       source.append("         scanInitial(tid, tid_2, num_threads_active, num_threads_compaction,  \n");
       source.append("                     s_cl_one, s_cl_mult, s_cl_blocking, s_cl_helper);  \n");
       source.append("           \n");
-      source.append("         barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");                                                 // selbst hinzugefuegt
+      source.append("         barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
 
       source.append("         scanSumBlocks(tid, tid_2, num_threads_active,  \n");
       source.append("                       num_threads_compaction, s_cl_blocking, s_cl_helper);  \n");
@@ -2616,7 +2545,7 @@ namespace kernels
       source.append("         --s_cl_mult;  \n");
       source.append("         --s_cl_blocking;  \n");
       source.append("           \n");
-      source.append("         barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");                                               // selbst hinzugefuegt
+      source.append("         barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
       source.append("         compactStreamsFinal(tid, tid_2, num_threads_active, &offset_mult_lambda,  \n");
       source.append("                             s_left, s_right, s_left_count, s_right_count,  \n");
       source.append("                             s_cl_one, s_cl_mult, s_cl_blocking, s_cl_helper,  \n");
@@ -2647,20 +2576,18 @@ namespace kernels
       source.append("                       \n");
 
       source.append("     }  \n");
-
-
   }
 
   // main kernel class
-  /** @brief Main kernel class for the generation of ...
+  /** @brief Main kernel class for the generation of the bisection kernels and utilities
     *
     */
   template <class NumericT>
-  struct bisect_kernel_large
+  struct bisect_kernel
   {
     static std::string program_name()
     {
-      return viennacl::ocl::type_to_string<NumericT>::apply() + "_bisect_kernel_large_";
+      return viennacl::ocl::type_to_string<NumericT>::apply() + "_bisect_kernel";
     }
 
     static void init(viennacl::ocl::context & ctx)
@@ -2680,43 +2607,43 @@ namespace kernels
         if (numeric_string == "float" || numeric_string == "double")
         {
           //functions used from bisect_util.cpp
-          generate_bisect_kernel_large_config(source);
-          generate_bisect_kernel_large_floorPow2(source, numeric_string);
-          generate_bisect_kernel_large_ceilPow2(source, numeric_string);
-          generate_bisect_kernel_large_computeMidpoint(source, numeric_string);
+          generate_bisect_kernel_config(source);
+          generate_bisect_kernel_floorPow2(source, numeric_string);
+          generate_bisect_kernel_ceilPow2(source, numeric_string);
+          generate_bisect_kernel_computeMidpoint(source, numeric_string);
 
-          generate_bisect_kernel_large_storeInterval(source, numeric_string);
-          generate_bisect_kernel_large_storeIntervalShort(source, numeric_string);
+          generate_bisect_kernel_storeInterval(source, numeric_string);
+          generate_bisect_kernel_storeIntervalShort(source, numeric_string);
 
-          generate_bisect_kernel_large_computeNumSmallerEigenvals(source, numeric_string);
-          generate_bisect_kernel_large_computeNumSmallerEigenvalsLarge(source, numeric_string);
+          generate_bisect_kernel_computeNumSmallerEigenvals(source, numeric_string);
+          generate_bisect_kernel_computeNumSmallerEigenvalsLarge(source, numeric_string);
 
-          generate_bisect_kernel_large_storeNonEmptyIntervals(source, numeric_string);
-          generate_bisect_kernel_large_storeNonEmptyIntervalsLarge(source, numeric_string);
+          generate_bisect_kernel_storeNonEmptyIntervals(source, numeric_string);
+          generate_bisect_kernel_storeNonEmptyIntervalsLarge(source, numeric_string);
 
-          generate_bisect_kernel_large_createIndicesCompaction(source, numeric_string);
-          generate_bisect_kernel_large_createIndicesCompactionShort(source, numeric_string);
+          generate_bisect_kernel_createIndicesCompaction(source, numeric_string);
+          generate_bisect_kernel_createIndicesCompactionShort(source, numeric_string);
 
-          generate_bisect_kernel_large_compactIntervals(source, numeric_string);
-          generate_bisect_kernel_large_compactIntervalsShort(source, numeric_string);
+          generate_bisect_kernel_compactIntervals(source, numeric_string);
+          generate_bisect_kernel_compactIntervalsShort(source, numeric_string);
 
-          generate_bisect_kernel_large_storeIntervalConverged(source, numeric_string);
-          generate_bisect_kernel_large_storeIntervalConvergedShort(source, numeric_string);
+          generate_bisect_kernel_storeIntervalConverged(source, numeric_string);
+          generate_bisect_kernel_storeIntervalConvergedShort(source, numeric_string);
 
-          generate_bisect_kernel_large_subdivideActiveInterval(source, numeric_string);
-          generate_bisect_kernel_large_subdivideActiveIntervalShort(source, numeric_string);
+          generate_bisect_kernel_subdivideActiveInterval(source, numeric_string);
+          generate_bisect_kernel_subdivideActiveIntervalShort(source, numeric_string);
 
-          generate_bisect_kernel_large_bisectKernel(source, numeric_string);
-          generate_bisect_kernel_large_bisectKernelLarge_MultIntervals(source, numeric_string);
-          generate_bisect_kernel_large_bisectKernelLarge_OneIntervals(source, numeric_string);
+          generate_bisect_kernel_bisectKernel(source, numeric_string);
+          generate_bisect_kernel_bisectKernelLarge_MultIntervals(source, numeric_string);
+          generate_bisect_kernel_bisectKernelLarge_OneIntervals(source, numeric_string);
 
 
-          generate_bisect_kernel_large_writeToGmem(source, numeric_string);
-          generate_bisect_kernel_large_compactStreamsFinal(source, numeric_string);
-          generate_bisect_kernel_large_scanCompactBlocksStartAddress(source, numeric_string);
-          generate_bisect_kernel_large_scanSumBlocks(source, numeric_string);
-          generate_bisect_kernel_large_scanInitial(source, numeric_string);
-          generate_bisect_kernel_large_bisectKernelLarge(source, numeric_string);
+          generate_bisect_kernel_writeToGmem(source, numeric_string);
+          generate_bisect_kernel_compactStreamsFinal(source, numeric_string);
+          generate_bisect_kernel_scanCompactBlocksStartAddress(source, numeric_string);
+          generate_bisect_kernel_scanSumBlocks(source, numeric_string);
+          generate_bisect_kernel_scanInitial(source, numeric_string);
+          generate_bisect_kernel_bisectKernelLarge(source, numeric_string);
 
 
         }
