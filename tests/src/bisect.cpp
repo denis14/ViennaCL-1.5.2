@@ -40,7 +40,7 @@
 #include "viennacl/linalg/tql2.hpp"
 
 #include <examples/benchmarks/benchmark-utils.hpp>
-#include <Eigen/Eigenvalues>
+//#include <Eigen/Eigenvalues>
 
 
 using namespace Eigen;
