@@ -43,7 +43,7 @@
 //#include <Eigen/Eigenvalues>
 
 
-using namespace Eigen;
+//using namespace Eigen;
 
 #define EPS 10.0e-4
 
