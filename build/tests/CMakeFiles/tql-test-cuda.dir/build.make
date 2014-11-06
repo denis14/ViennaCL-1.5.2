@@ -41,10 +41,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/viennacl-dev
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/viennacl-dev/build
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/tql-test-cuda.dir/depend.make
@@ -55,61 +55,61 @@ include tests/CMakeFiles/tql-test-cuda.dir/progress.make
 # Include the compile flags for this target's objects.
 include tests/CMakeFiles/tql-test-cuda.dir/flags.make
 
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/tests/src/tql.cu
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/backend/cpu_ram.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/backend/cuda.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/backend/mem_handle.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/backend/memory.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/backend/util.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/context.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/forwards.h
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/cuda/common.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/cuda/matrix_operations.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/cuda/matrix_operations_col.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/cuda/matrix_operations_prod.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/cuda/matrix_operations_row.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/cuda/scalar_operations.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/cuda/sparse_matrix_operations.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/cuda/sparse_matrix_operations_solve.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/cuda/vector_operations.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/detail/op_applier.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/detail/op_executor.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/host_based/common.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/host_based/matrix_operations.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/host_based/scalar_operations.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/host_based/sparse_matrix_operations.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/host_based/vector_operations.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/matrix_operations.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/prod.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/qr-method-common.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/scalar_operations.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/sparse_matrix_operations.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/tql2.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/linalg/vector_operations.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/matrix.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/matrix_def.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/meta/enable_if.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/meta/predicate.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/meta/result_of.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/meta/tag_of.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/ocl/forwards.h
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/range.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/scalar.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/slice.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/tools/adapter.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/tools/entry_proxy.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/tools/matrix_size_deducer.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/tools/shared_ptr.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/tools/tools.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/traits/context.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/traits/handle.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/traits/row_major.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/traits/size.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/traits/start.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/traits/stride.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/vector.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/vector_def.hpp
-tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /home/andi/git/viennacl-dev/viennacl/vector_proxy.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../tests/src/tql.cu
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/backend/cpu_ram.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/backend/cuda.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/backend/mem_handle.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/backend/memory.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/backend/util.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/context.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/forwards.h
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/cuda/common.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/cuda/matrix_operations.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/cuda/matrix_operations_col.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/cuda/matrix_operations_prod.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/cuda/matrix_operations_row.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/cuda/scalar_operations.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/cuda/sparse_matrix_operations.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/cuda/sparse_matrix_operations_solve.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/cuda/vector_operations.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/detail/op_applier.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/detail/op_executor.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/host_based/common.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/host_based/matrix_operations.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/host_based/scalar_operations.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/host_based/sparse_matrix_operations.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/host_based/vector_operations.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/matrix_operations.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/prod.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/qr-method-common.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/scalar_operations.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/sparse_matrix_operations.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/tql2.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/linalg/vector_operations.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/matrix.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/matrix_def.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/meta/enable_if.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/meta/predicate.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/meta/result_of.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/meta/tag_of.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/ocl/forwards.h
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/range.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/scalar.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/slice.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/tools/adapter.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/tools/entry_proxy.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/tools/matrix_size_deducer.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/tools/shared_ptr.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/tools/tools.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/traits/context.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/traits/handle.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/traits/row_major.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/traits/size.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/traits/start.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/traits/stride.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/vector.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/vector_def.hpp
+tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../viennacl/vector_proxy.hpp
 tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /usr/include/_G_config.h
 tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /usr/include/alloca.h
 tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /usr/include/assert.h
@@ -795,17 +795,17 @@ tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /usr/
 tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: /usr/local/boost_1_55_0/boost/utility/swap.hpp
 tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: tests/CMakeFiles/tql-test-cuda.dir/src/tql-test-cuda_generated_tql.cu.o.cmake
 tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o: ../tests/src/tql.cu
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/viennacl-dev/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o"
-	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/tql-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/tql-test-cuda.dir/src/.
-	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/tql-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING=release -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/tql-test-cuda.dir/src/tql-test-cuda_generated_tql.cu.o.cmake
+	cd /home/andi/git/viennacl-dev/build/tests/CMakeFiles/tql-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/viennacl-dev/build/tests/CMakeFiles/tql-test-cuda.dir/src/.
+	cd /home/andi/git/viennacl-dev/build/tests/CMakeFiles/tql-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/viennacl-dev/build/tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o -D generated_cubin_file:STRING=/home/andi/git/viennacl-dev/build/tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o.cubin.txt -P /home/andi/git/viennacl-dev/build/tests/CMakeFiles/tql-test-cuda.dir/src/tql-test-cuda_generated_tql.cu.o.cmake
 
 # Object files for target tql-test-cuda
 tql__test__cuda_OBJECTS =
 
 # External object files for target tql-test-cuda
 tql__test__cuda_EXTERNAL_OBJECTS = \
-"/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o"
+"/home/andi/git/viennacl-dev/build/tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o"
 
 tests/tql-test-cuda: tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o
 tests/tql-test-cuda: tests/CMakeFiles/tql-test-cuda.dir/build.make
@@ -818,7 +818,7 @@ tests/tql-test-cuda: /usr/lib/i386-linux-gnu/libboost_thread.so
 tests/tql-test-cuda: /usr/lib/i386-linux-gnu/libpthread.so
 tests/tql-test-cuda: tests/CMakeFiles/tql-test-cuda.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable tql-test-cuda"
-	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tql-test-cuda.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/andi/git/viennacl-dev/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tql-test-cuda.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/tql-test-cuda.dir/build: tests/tql-test-cuda
@@ -828,10 +828,10 @@ tests/CMakeFiles/tql-test-cuda.dir/requires:
 .PHONY : tests/CMakeFiles/tql-test-cuda.dir/requires
 
 tests/CMakeFiles/tql-test-cuda.dir/clean:
-	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/tql-test-cuda.dir/cmake_clean.cmake
+	cd /home/andi/git/viennacl-dev/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/tql-test-cuda.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/tql-test-cuda.dir/clean
 
 tests/CMakeFiles/tql-test-cuda.dir/depend: tests/CMakeFiles/tql-test-cuda.dir/src/./tql-test-cuda_generated_tql.cu.o
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/tests /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/tests /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/tql-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/andi/git/viennacl-dev/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/viennacl-dev /home/andi/git/viennacl-dev/tests /home/andi/git/viennacl-dev/build /home/andi/git/viennacl-dev/build/tests /home/andi/git/viennacl-dev/build/tests/CMakeFiles/tql-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/tql-test-cuda.dir/depend
 

@@ -41,10 +41,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andi/git/ViennaCL-1.5.2
+CMAKE_SOURCE_DIR = /home/andi/git/viennacl-dev
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andi/git/ViennaCL-1.5.2/build
+CMAKE_BINARY_DIR = /home/andi/git/viennacl-dev/build
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/bisect-test-cuda.dir/depend.make
@@ -55,7 +55,6 @@ include tests/CMakeFiles/bisect-test-cuda.dir/progress.make
 # Include the compile flags for this target's objects.
 include tests/CMakeFiles/bisect-test-cuda.dir/flags.make
 
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: ../examples/benchmarks/benchmark-utils.hpp
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: ../tests/src/bisect.cu
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: ../viennacl/backend/cpu_ram.hpp
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: ../viennacl/backend/cuda.hpp
@@ -125,154 +124,8 @@ tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: ../viennacl/vector.hpp
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: ../viennacl/vector_def.hpp
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: ../viennacl/vector_proxy.hpp
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/Cholesky
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/Core
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/Eigenvalues
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/Geometry
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/Householder
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/Jacobi
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/LU
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/QR
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/SVD
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Cholesky/LDLT.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Cholesky/LLT.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Array.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/ArrayBase.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/ArrayWrapper.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Assign.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/BandMatrix.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Block.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/BooleanRedux.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/CommaInitializer.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/CoreIterators.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/CwiseBinaryOp.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/CwiseNullaryOp.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/CwiseUnaryOp.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/CwiseUnaryView.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/DenseBase.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/DenseCoeffsBase.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/DenseStorage.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Diagonal.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/DiagonalMatrix.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/DiagonalProduct.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Dot.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/EigenBase.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Flagged.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/ForceAlignedAccess.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Functors.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Fuzzy.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/GeneralProduct.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/GenericPacketMath.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/GlobalFunctions.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/IO.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Map.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/MapBase.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/MathFunctions.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Matrix.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/MatrixBase.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/NestByValue.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/NoAlias.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/NumTraits.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/PermutationMatrix.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/PlainObjectBase.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/ProductBase.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Random.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Redux.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Ref.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Replicate.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/ReturnByValue.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Reverse.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Select.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/SelfAdjointView.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/SelfCwiseBinaryOp.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/SolveTriangular.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/StableNorm.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Stride.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Swap.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Transpose.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Transpositions.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/TriangularMatrix.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/VectorBlock.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/VectorwiseOp.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/Visitor.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/arch/Default/Settings.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/products/CoeffBasedProduct.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/products/GeneralBlockPanelKernel.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/products/GeneralMatrixMatrix.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/products/GeneralMatrixVector.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/products/Parallelizer.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/products/SelfadjointMatrixMatrix.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/products/SelfadjointMatrixVector.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/products/SelfadjointProduct.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/products/SelfadjointRank2Update.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/products/TriangularMatrixMatrix.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/products/TriangularMatrixVector.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/products/TriangularSolverMatrix.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/products/TriangularSolverVector.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/util/BlasUtil.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/util/Constants.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/util/DisableStupidWarnings.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/util/ForwardDeclarations.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/util/MKL_support.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/util/Macros.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/util/Memory.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/util/Meta.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/util/ReenableStupidWarnings.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/util/StaticAssert.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Core/util/XprHelper.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Eigenvalues/ComplexEigenSolver.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Eigenvalues/ComplexSchur.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Eigenvalues/EigenSolver.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Eigenvalues/HessenbergDecomposition.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Eigenvalues/RealQZ.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Eigenvalues/RealSchur.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Eigenvalues/Tridiagonalization.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Geometry/AlignedBox.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Geometry/AngleAxis.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Geometry/EulerAngles.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Geometry/Homogeneous.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Geometry/Hyperplane.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Geometry/OrthoMethods.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Geometry/ParametrizedLine.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Geometry/Quaternion.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Geometry/Rotation2D.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Geometry/RotationBase.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Geometry/Scaling.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Geometry/Transform.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Geometry/Translation.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Geometry/Umeyama.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Householder/BlockHouseholder.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Householder/Householder.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Householder/HouseholderSequence.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/Jacobi/Jacobi.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/LU/Determinant.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/LU/FullPivLU.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/LU/Inverse.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/LU/PartialPivLU.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/QR/ColPivHouseholderQR.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/QR/FullPivHouseholderQR.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/QR/HouseholderQR.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/SVD/JacobiSVD.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/SVD/UpperBidiagonalization.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/misc/Image.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/misc/Kernel.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/misc/Solve.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/plugins/ArrayCwiseBinaryOps.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/plugins/ArrayCwiseUnaryOps.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/plugins/BlockMethods.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/plugins/CommonCwiseBinaryOps.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/plugins/CommonCwiseUnaryOps.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/plugins/MatrixCwiseBinaryOps.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/Eigen/src/plugins/MatrixCwiseUnaryOps.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/_G_config.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/alloca.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/asm-generic/errno-base.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/asm-generic/errno.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/assert.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/builtin_types.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/algorithm
@@ -331,16 +184,12 @@ tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/bits/vector.tcc
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/cassert
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/cctype
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/cerrno
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/cfloat
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/climits
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/clocale
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/cmath
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/complex
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/cstddef
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/cstdio
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/cstdlib
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/cstring
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/cwchar
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/cwctype
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/debug/debug.h
@@ -351,13 +200,11 @@ tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/ext/numeric_traits.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/ext/type_traits.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/fstream
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/functional
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/iomanip
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/ios
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/iosfwd
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/iostream
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/istream
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/limits
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/list
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/map
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/c++/4.8/new
@@ -379,18 +226,12 @@ tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/driver_functions.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/driver_types.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/endian.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/errno.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/features.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/getopt.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/host_config.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/host_defines.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/asm/errno.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/byteswap-16.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/byteswap.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/confname.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/endian.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/environments.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/errno.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/huge_val.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/huge_valf.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/huge_vall.h
@@ -399,34 +240,24 @@ tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/locale.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/mathcalls.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/mathdef.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/mathinline.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/nan.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/posix1_lim.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/posix2_lim.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/posix_opt.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/pthreadtypes.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/sched.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/select.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/select2.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/setjmp.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/sigset.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/stdio.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/stdio2.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/stdio_lim.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/stdlib-bsearch.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/stdlib-float.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/stdlib.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/string3.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/sys_errlist.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/time.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/timex.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/types.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/typesizes.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/unistd.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/waitflags.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/waitstatus.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/wchar.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/wchar2.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/wordsize.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/bits/xopen_lim.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/c++/4.8/bits/atomic_word.h
@@ -446,11 +277,9 @@ tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/sys/cdefs.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/sys/select.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/sys/sysmacros.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/sys/time.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/i386-linux-gnu/sys/types.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/libio.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/limits.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/linux/errno.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/linux/limits.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/locale.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/math.h
@@ -478,7 +307,6 @@ tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/texture_indirect_functions.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/texture_types.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/time.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/unistd.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/vector_functions.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/vector_types.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/include/wchar.h
@@ -487,7 +315,6 @@ tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/lib/gcc/i686-linux-gnu/4.8/include-fixed/limits.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/lib/gcc/i686-linux-gnu/4.8/include-fixed/syslimits.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/lib/gcc/i686-linux-gnu/4.8/include/float.h
-tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/lib/gcc/i686-linux-gnu/4.8/include/omp.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/lib/nvidia-cuda-toolkit/include/cuda_runtime.h
@@ -495,17 +322,17 @@ tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: /usr/lib/nvidia-cuda-toolkit/include/surface_functions.h
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: tests/CMakeFiles/bisect-test-cuda.dir/src/bisect-test-cuda_generated_bisect.cu.o.cmake
 tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o: ../tests/src/bisect.cu
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/ViennaCL-1.5.2/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andi/git/viennacl-dev/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o"
-	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/bisect-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/bisect-test-cuda.dir/src/.
-	cd /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/bisect-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING=release -D generated_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o -D generated_cubin_file:STRING=/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o.cubin.txt -P /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/bisect-test-cuda.dir/src/bisect-test-cuda_generated_bisect.cu.o.cmake
+	cd /home/andi/git/viennacl-dev/build/tests/CMakeFiles/bisect-test-cuda.dir/src && /usr/bin/cmake -E make_directory /home/andi/git/viennacl-dev/build/tests/CMakeFiles/bisect-test-cuda.dir/src/.
+	cd /home/andi/git/viennacl-dev/build/tests/CMakeFiles/bisect-test-cuda.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/andi/git/viennacl-dev/build/tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o -D generated_cubin_file:STRING=/home/andi/git/viennacl-dev/build/tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o.cubin.txt -P /home/andi/git/viennacl-dev/build/tests/CMakeFiles/bisect-test-cuda.dir/src/bisect-test-cuda_generated_bisect.cu.o.cmake
 
 # Object files for target bisect-test-cuda
 bisect__test__cuda_OBJECTS =
 
 # External object files for target bisect-test-cuda
 bisect__test__cuda_EXTERNAL_OBJECTS = \
-"/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o"
+"/home/andi/git/viennacl-dev/build/tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o"
 
 tests/bisect-test-cuda: tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o
 tests/bisect-test-cuda: tests/CMakeFiles/bisect-test-cuda.dir/build.make
@@ -518,7 +345,7 @@ tests/bisect-test-cuda: /usr/lib/i386-linux-gnu/libboost_thread.so
 tests/bisect-test-cuda: /usr/lib/i386-linux-gnu/libpthread.so
 tests/bisect-test-cuda: tests/CMakeFiles/bisect-test-cuda.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable bisect-test-cuda"
-	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/bisect-test-cuda.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/andi/git/viennacl-dev/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/bisect-test-cuda.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/bisect-test-cuda.dir/build: tests/bisect-test-cuda
@@ -528,10 +355,10 @@ tests/CMakeFiles/bisect-test-cuda.dir/requires:
 .PHONY : tests/CMakeFiles/bisect-test-cuda.dir/requires
 
 tests/CMakeFiles/bisect-test-cuda.dir/clean:
-	cd /home/andi/git/ViennaCL-1.5.2/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/bisect-test-cuda.dir/cmake_clean.cmake
+	cd /home/andi/git/viennacl-dev/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/bisect-test-cuda.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/bisect-test-cuda.dir/clean
 
 tests/CMakeFiles/bisect-test-cuda.dir/depend: tests/CMakeFiles/bisect-test-cuda.dir/src/./bisect-test-cuda_generated_bisect.cu.o
-	cd /home/andi/git/ViennaCL-1.5.2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/ViennaCL-1.5.2 /home/andi/git/ViennaCL-1.5.2/tests /home/andi/git/ViennaCL-1.5.2/build /home/andi/git/ViennaCL-1.5.2/build/tests /home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/bisect-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/andi/git/viennacl-dev/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andi/git/viennacl-dev /home/andi/git/viennacl-dev/tests /home/andi/git/viennacl-dev/build /home/andi/git/viennacl-dev/build/tests /home/andi/git/viennacl-dev/build/tests/CMakeFiles/bisect-test-cuda.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/bisect-test-cuda.dir/depend
 

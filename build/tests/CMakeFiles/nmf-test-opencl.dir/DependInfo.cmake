@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/andi/git/ViennaCL-1.5.2/tests/src/nmf.cpp" "/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/nmf-test-opencl.dir/src/nmf.cpp.o"
+  "/home/andi/git/viennacl-dev/tests/src/nmf.cpp" "/home/andi/git/viennacl-dev/build/tests/CMakeFiles/nmf-test-opencl.dir/src/nmf.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

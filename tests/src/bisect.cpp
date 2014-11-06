@@ -27,7 +27,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <time.h>
 
 
 // includes, project
@@ -39,18 +38,12 @@
 #include "viennacl/linalg/bisect_gpu.hpp"
 #include "viennacl/linalg/tql2.hpp"
 
-#include <examples/benchmarks/benchmark-utils.hpp>
-//#include <Eigen/Eigenvalues>
-
-
-//using namespace Eigen;
-
 #define EPS 10.0e-4
 
 typedef float NumericT;
 ////////////////////////////////////////////////////////////////////////////////
 // declaration, forward
-bool runTest(const int mat_size, std::vector<double> &av_times, unsigned int time_index);
+bool runTest(const int mat_size);
 
 
 
@@ -65,8 +58,8 @@ void
 initInputData(std::vector<NumericT> &diagonal, std::vector<NumericT> &superdiagonal, const unsigned int mat_size)
 {
  
-  srand(time(NULL));
-  bool randomValues = true;
+  srand(278217421);
+  bool randomValues = false;
   
   
   if (randomValues == true)
@@ -96,26 +89,6 @@ initInputData(std::vector<NumericT> &diagonal, std::vector<NumericT> &superdiago
   superdiagonal[0] = 0.0f; 
 }
 
-bool values_save(std::vector<double> &av_times, std::vector<unsigned int> &mat_sizes, unsigned int num_tests)
-{
-
-    FILE *datei;
-    long i;
-
-    if(!(datei=fopen("../../execution_times_matrices.dat","w")))
-    {
-      fprintf(stderr,"Error: file access!\n");
-      return false;
-    }
-
-    for(i=0; i < num_tests; i++)
-    {
-      fprintf(datei,"%i\t %7.3f\n", mat_sizes[i], av_times[i]);
-    }
-
-    fclose(datei);
-    return true;
-}
 
 ////////////////////////////////////////////////////////////////////////////////
 // Program main
@@ -124,42 +97,18 @@ int
 main(int argc, char **argv)
 {
     bool test_result = false;
-    unsigned int time_index = 0;
-    std::vector<double> av_times(500);
-    std::vector<unsigned int> mat_sizes(500);
 
-    for( unsigned int mat_size = 11;
-         mat_size < 10000;
-         mat_size = mat_size * 1.15, time_index++)
-      {
-      test_result = runTest(mat_size, av_times, time_index);
-      std::cout << "Matrix_size = \t" << mat_size << std::endl;
-      mat_sizes[time_index] = mat_size;
-
-
-      if(test_result == true)
-      {
-        std::cout << "Test Succeeded!" << std::endl << std::endl;
-      }
-      else
-      {
-        std::cout << "---TEST FAILED---" << std::endl;
-        exit(EXIT_FAILURE);
-      }
+    // run test for large matrix
+    test_result = runTest(520);
+    if(test_result == true)
+    {
+      std::cout << "First Test Succeeded!" << std::endl << std::endl;
     }
-    for(unsigned int i = 0; i < time_index; i++)
-      std::cout << "i: " << i << "\tMat_size " << mat_sizes[i] << "\ttime:\t" << av_times[i] << " ms" << std::endl;
-
-    values_save(av_times, mat_sizes, time_index);
-
-/*
-    MatrixXd A = MatrixXd::Random(6,6);
-    std::cout << "Here is a random 6x6 matrix, A:" << std::endl << A << std::endl << std::endl;
-    EigenSolver<MatrixXd> es(A);
-    std::cout << "The eigenvalues of A are:" << std::endl << es.eigenvalues() << std::endl;
-    std::cout << "The matrix of eigenvectors, V, is:" << std::endl << es.eigenvectors() << std::endl << std::endl;
-
-
+    else
+    {
+      std::cout << "---TEST FAILED---" << std::endl;
+      exit(EXIT_FAILURE);
+    }
 
     // run test for small matrix
     test_result = runTest(230);
@@ -173,47 +122,71 @@ main(int argc, char **argv)
       std::cout << "---TEST FAILED---" << std::endl;
       exit(EXIT_FAILURE);
     }
-*/
-
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Run a simple test
 ////////////////////////////////////////////////////////////////////////////////
 bool
-runTest(const int mat_size, std::vector<double> &av_times, unsigned int time_index)
+runTest(const int mat_size)
 {
     bool bResult = false;
+
     std::vector<NumericT> diagonal(mat_size);
     std::vector<NumericT> superdiagonal(mat_size);
     std::vector<NumericT> eigenvalues_bisect(mat_size);
 
     // -------------Initialize data-------------------
     // Fill the diagonal and superdiagonal elements of the vector
+    initInputData(diagonal, superdiagonal, mat_size);
 
 
     // -------Start the bisection algorithm------------
     std::cout << "Start the bisection algorithm" << std::endl;
     std::cout << "Matrix size: " << mat_size << std::endl;
+    bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect);
+    // Exit if an error occured during the execution of the algorithm
+    if (bResult == false)
+     return false;
 
-    unsigned int iterations = 10;
-    double time_all = 0.0;
-    for(unsigned int i = 0; i < iterations; i++)
+
+    // ---------------Check the results---------------
+    // The results of the bisection algorithm will be checked with the tql2 algorithm
+    // Initialize Data for tql2 algorithm
+    viennacl::matrix<NumericT> Q = viennacl::identity_matrix<NumericT>(mat_size);
+    std::vector<NumericT> diagonal_tql(mat_size);
+    std::vector<NumericT> superdiagonal_tql(mat_size);
+    diagonal_tql = diagonal;
+    superdiagonal_tql = superdiagonal;
+
+    // Start the tql2 algorithm
+    std::cout << "Start the tql2 algorithm..." << std::endl;
+    viennacl::linalg::tql2(Q, diagonal_tql, superdiagonal_tql);
+
+    // Ensure that eigenvalues from tql2 algorithm are sorted in ascending order
+    std::sort(diagonal_tql.begin(), diagonal_tql.end());
+
+
+    // Compare the results from the bisection algorithm with the results
+    // from the tql2 algorithm.
+    std::cout << "Start comparison..." << std::endl;
+    for (uint i = 0; i < mat_size; i++)
     {
-      initInputData(diagonal, superdiagonal, mat_size);
-
-      Timer timer;
-      timer.start();
-      bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect);
-      // Exit if an error occured during the execution of the algorithm
-      if (bResult == false)
-       return false;
-      time_all += timer.get() * 1000;
+       if (std::abs(eigenvalues_bisect[i] - diagonal_tql[i]) > EPS)
+       {
+         std::cout << std::setprecision(8) << eigenvalues_bisect[i] << "  != " << diagonal_tql[i] << "\n";
+         return false;
+       }
     }
-    double time_average = time_all / iterations;
 
-    std::cout << "Time all: \t" << time_all << "ms" << "\taverage Time:\t" << time_average << "ms" << std::endl;
-    av_times[time_index]  = time_average;
+/*
+    // ------------Print the results---------------
+    std::cout << "mat_size = " << mat_size << std::endl;
+    for (unsigned int i = 0; i < mat_size; ++i)
+    {
+      std::cout << "Eigenvalue " << i << ":  \tbisect: " << std::setprecision(8) << eigenvalues_bisect[i] << "\ttql2: " << diagonal_tql[i] << std::endl;
+    }
+*/
 
 
   return bResult;

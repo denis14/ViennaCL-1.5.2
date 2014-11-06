@@ -1,1 +1,1 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP -O3 -DNDEBUG        CMakeFiles/nmf-test-cuda.dir/src/./nmf-test-cuda_generated_nmf.cu.o  -o nmf-test-cuda -rdynamic -lcudart -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP        CMakeFiles/nmf-test-cuda.dir/src/./nmf-test-cuda_generated_nmf.cu.o  -o nmf-test-cuda -rdynamic -lcudart -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

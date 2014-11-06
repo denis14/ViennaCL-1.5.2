@@ -1,1 +1,1 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP -O3 -DNDEBUG        CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.o  -o scheduler_matrix-test-cpu -rdynamic -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP        CMakeFiles/scheduler_matrix-test-cpu.dir/src/scheduler_matrix.cpp.o  -o scheduler_matrix-test-cpu -rdynamic -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

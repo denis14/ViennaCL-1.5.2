@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/andi/git/ViennaCL-1.5.2/tests/src/scalar.cpp" "/home/andi/git/ViennaCL-1.5.2/build/tests/CMakeFiles/scalar-test-cpu.dir/src/scalar.cpp.o"
+  "/home/andi/git/viennacl-dev/tests/src/scalar.cpp" "/home/andi/git/viennacl-dev/build/tests/CMakeFiles/scalar-test-cpu.dir/src/scalar.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

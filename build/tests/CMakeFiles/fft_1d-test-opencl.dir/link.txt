@@ -1,1 +1,1 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP -O3 -DNDEBUG        CMakeFiles/fft_1d-test-opencl.dir/src/fft_1d.cpp.o  -o fft_1d-test-opencl -rdynamic -lOpenCL -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP        CMakeFiles/fft_1d-test-opencl.dir/src/fft_1d.cpp.o  -o fft_1d-test-opencl -rdynamic -lOpenCL -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

@@ -1,1 +1,1 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP -O3 -DNDEBUG        CMakeFiles/fft_2d-test-cpu.dir/src/fft_2d.cpp.o  -o fft_2d-test-cpu -rdynamic -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 
+/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP        CMakeFiles/fft_2d-test-cpu.dir/src/fft_2d.cpp.o  -o fft_2d-test-cpu -rdynamic -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 
