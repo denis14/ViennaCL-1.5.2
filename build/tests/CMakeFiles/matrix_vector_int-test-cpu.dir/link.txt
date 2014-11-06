@@ -1,1 +1,0 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP        CMakeFiles/matrix_vector_int-test-cpu.dir/src/matrix_vector_int.cpp.o  -o matrix_vector_int-test-cpu -rdynamic -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

@@ -1,1 +1,0 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP        CMakeFiles/scheduler_vector-test-cpu.dir/src/scheduler_vector.cpp.o  -o scheduler_vector-test-cpu -rdynamic -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

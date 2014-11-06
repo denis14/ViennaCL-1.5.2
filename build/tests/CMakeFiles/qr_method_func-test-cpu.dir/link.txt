@@ -1,1 +1,0 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP        CMakeFiles/qr_method_func-test-cpu.dir/src/qr_method_func.cpp.o  -o qr_method_func-test-cpu -rdynamic -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

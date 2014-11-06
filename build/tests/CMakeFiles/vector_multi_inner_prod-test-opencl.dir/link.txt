@@ -1,1 +1,0 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP        CMakeFiles/vector_multi_inner_prod-test-opencl.dir/src/vector_multi_inner_prod.cpp.o  -o vector_multi_inner_prod-test-opencl -rdynamic -lOpenCL -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 

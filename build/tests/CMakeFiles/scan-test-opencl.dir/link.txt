@@ -1,1 +1,0 @@
-/usr/bin/c++    -fopenmp -DVIENNACL_WITH_OPENMP        CMakeFiles/scan-test-opencl.dir/src/scan.cpp.o  -o scan-test-opencl -rdynamic -lOpenCL -lboost_chrono -lboost_date_time -lboost_serialization -lboost_system -lboost_thread -lpthread 
