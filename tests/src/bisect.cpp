@@ -99,7 +99,7 @@ main(int argc, char **argv)
     bool test_result = false;
 
     // run test for large matrix
-    test_result = runTest(520);
+    test_result = runTest(1520);
     if(test_result == true)
     {
       std::cout << "First Test Succeeded!" << std::endl << std::endl;
