@@ -272,6 +272,10 @@ bisectKernelLarge_MultIntervals(const NumericT *g_d, const NumericT *g_s, const 
 }
 } // namespace cuda
 } // namespace linalg
+
+
+
+
 } // namespace viennacl
 
 #endif // #ifndef VIENNACL_LINALG_CUDA_BISECT_KERNEL_LARGE_MULTI_HPP_
