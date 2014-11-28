@@ -632,7 +632,7 @@ bisectKernelLarge(const NumericT *g_d, const NumericT *g_s, const unsigned int n
     unsigned int i = 0;
     while (true)
     {
-        if( i > 20 ) break;
+        // if( i > 20 ) break;
         i++;
         s_compaction_list[tid] = 0;
         s_compaction_list[tid + MAX_THREADS_BLOCK] = 0;

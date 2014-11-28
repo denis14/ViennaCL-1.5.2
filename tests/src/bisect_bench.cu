@@ -64,7 +64,7 @@ initInputData(std::vector<NumericT> &diagonal, std::vector<NumericT> &superdiago
 {
  
   srand(time(NULL));
-  bool randomValues = true;
+  bool randomValues = false;
   
   
   if (randomValues == true)
@@ -84,7 +84,7 @@ initInputData(std::vector<NumericT> &diagonal, std::vector<NumericT> &superdiago
     // This will cause in many multiple eigenvalues.
     for (unsigned int i = 0; i < mat_size; ++i)
     {
-       diagonal[i] = ((NumericT)(i % 29)) - 4.5f;
+       diagonal[i] = ((NumericT)(i % 37)) - 4.5f;
        superdiagonal[i] = ((NumericT)(i % 5)) - 4.5f;
     }
   }
@@ -121,13 +121,13 @@ bool values_save(std::vector<double> &av_times, std::vector<unsigned int> &mat_s
 int
 main(int argc, char **argv)
 {
-    bool test_result = false;
+    bool test_result = true;
     unsigned int time_index = 0;
     std::vector<double> av_times(500);
     std::vector<unsigned int> mat_sizes(500);
 
-    for( unsigned int mat_size = 11;
-         mat_size < 22000;
+    for( unsigned int mat_size = 131;
+         mat_size < 32000;
          mat_size = mat_size * 1.2, time_index++)
       {
       test_result = runTest(mat_size, av_times, time_index);
@@ -187,7 +187,7 @@ runTest(const int mat_size, std::vector<double> &av_times, unsigned int time_ind
     std::vector<NumericT> eigenvalues_bisect(mat_size);
 
     // for tql2 algorithm
-    viennacl::matrix<NumericT, viennacl::row_major> Q = viennacl::identity_matrix<NumericT>(mat_size);
+    //viennacl::matrix<NumericT, viennacl::row_major> Q = viennacl::identity_matrix<NumericT>(mat_size);
 
 
     // -------Start the bisection algorithm------------

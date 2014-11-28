@@ -565,11 +565,45 @@ subdivideActiveInterval(const unsigned int tid,
         {
             // mark as not converged if multiple eigenvalues enclosed
             // duplicate interval in storeIntervalsConverged()
-            all_threads_converged = 0;
+            // all_threads_converged = 0;
         }
 
     }  // end for all active threads
-  }
+}
+
+template<class T, class NumericT>
+__device__
+void
+subdivideActiveIntervalMulti(const unsigned int tid,
+                        NumericT *s_left, NumericT *s_right,
+                        T *s_left_count, T *s_right_count,
+                        const unsigned int num_threads_active,
+                        NumericT &left, NumericT &right,
+                        unsigned int &left_count, unsigned int &right_count,
+                        NumericT &mid, unsigned int &all_threads_converged)
+{
+    // for all active threads
+        if (tid < num_threads_active)
+        {
+          left = s_left[tid];
+          right = s_right[tid];
+          left_count = s_left_count[tid];
+          right_count = s_right_count[tid];
+          // check if thread already converged
+          if (left != right)
+          {
+            mid = computeMidpoint(left, right);
+            all_threads_converged = 0;
+          }
+          else if ((right_count - left_count) > 1)
+          {
+          // mark as not converged if multiple eigenvalues enclosed
+          // duplicate interval in storeIntervalsConverged()
+                                                                                                 all_threads_converged = 0;
+                                                                                                 }
+        }  // end for all active threads
+                                                                                       }
+   
 }
 }
 }
