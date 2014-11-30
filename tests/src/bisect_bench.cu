@@ -37,6 +37,7 @@
 #include "viennacl/matrix.hpp"
 
 #include "viennacl/linalg/bisect_gpu.hpp"
+#include "viennacl/linalg/bisect.hpp"
 #include "viennacl/linalg/tql2.hpp"
 
 #include <examples/benchmarks/benchmark-utils.hpp>
@@ -64,7 +65,7 @@ initInputData(std::vector<NumericT> &diagonal, std::vector<NumericT> &superdiago
 {
  
   srand(time(NULL));
-  bool randomValues = false;
+  bool randomValues = true;
   
   
   if (randomValues == true)
@@ -126,9 +127,9 @@ main(int argc, char **argv)
     std::vector<double> av_times(500);
     std::vector<unsigned int> mat_sizes(500);
 
-    for( unsigned int mat_size = 131;
-         mat_size < 32000;
-         mat_size = mat_size * 1.2, time_index++)
+    for( unsigned int mat_size = 16;
+         mat_size < 32200;
+         mat_size = mat_size * 1.15, time_index++)
       {
       test_result = runTest(mat_size, av_times, time_index);
       std::cout << "Matrix_size = \t" << mat_size << std::endl;
@@ -146,7 +147,7 @@ main(int argc, char **argv)
       }
     }
     for(unsigned int i = 0; i < time_index; i++)
-      std::cout << "i: " << i << "\tMat_size " << mat_sizes[i] << "\ttime:\t" << av_times[i] << " ms" << std::endl;
+      std::cout << mat_sizes[i] << "\t" << av_times[i] << std::endl;
 
     values_save(av_times, mat_sizes, time_index);
 
@@ -185,7 +186,8 @@ runTest(const int mat_size, std::vector<double> &av_times, unsigned int time_ind
     std::vector<NumericT> diagonal(mat_size);
     std::vector<NumericT> superdiagonal(mat_size);
     std::vector<NumericT> eigenvalues_bisect(mat_size);
-
+    std::vector<NumericT> eigenvalues_bisect_cpu(mat_size);
+    
     // for tql2 algorithm
     //viennacl::matrix<NumericT, viennacl::row_major> Q = viennacl::identity_matrix<NumericT>(mat_size);
 
@@ -194,7 +196,7 @@ runTest(const int mat_size, std::vector<double> &av_times, unsigned int time_ind
     std::cout << "Start the bisection algorithm" << std::endl;
     std::cout << "Matrix size: " << mat_size << std::endl;
 
-    unsigned int iterations = 2;
+    unsigned int iterations = 3;
     unsigned int max_eigen = 0, max_eigen_abs = 0;
     double time_all = 0.0;
     for(unsigned int i = 0; i < iterations; i++)
@@ -205,11 +207,16 @@ runTest(const int mat_size, std::vector<double> &av_times, unsigned int time_ind
       timer.start();
       
       // bisection - gpu
-      bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect);
+      //bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect);
       
       //---Run the tql2 algorithm-----------------------------------
-      //viennacl::linalg::tql2(Q, diagonal, superdiagonal);
+      viennacl::linalg::tql1<NumericT>(mat_size, diagonal, superdiagonal);
+      bResult = true;
+      
+      // Run the bisect algorithm for CPU only
+      //eigenvalues_bisect_cpu = viennacl::linalg::bisect(diagonal, superdiagonal);
       //bResult = true;
+      
       
       // Exit if an error occured during the execution of the algorithm
       if (bResult == false)
@@ -217,7 +224,7 @@ runTest(const int mat_size, std::vector<double> &av_times, unsigned int time_ind
       time_all += timer.get() * 1000;
      
     }
-    
+    /*
     for(unsigned int n = 1; n < eigenvalues_bisect.size(); n++)
     {
       for(unsigned int m = 0; m < n; m++)
@@ -228,6 +235,7 @@ runTest(const int mat_size, std::vector<double> &av_times, unsigned int time_ind
       max_eigen_abs = max(max_eigen_abs, max_eigen);
       max_eigen = 0;
     }
+    */
     double time_average = time_all / (double)iterations;
 
     std::cout << "Time all: \t" << time_all << "ms" << "\taverage Time:\t" << time_average << "ms" <<  " max_eigen:\t" << max_eigen_abs << std::endl;

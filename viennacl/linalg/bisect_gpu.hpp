@@ -65,7 +65,7 @@ bisect(const std::vector<NumericT> & diagonal, const std::vector<NumericT> & sup
   bool bResult = false;
   // flag if the matrix size is due to explicit user request
   // desired precision of eigenvalues
-  NumericT  precision = 0.00001;
+  NumericT  precision = 0.000001;
   const unsigned int mat_size = diagonal.size();
 
   // set up input
@@ -129,7 +129,7 @@ bisect(const viennacl::vector<NumericT> & diagonal, const viennacl::vector<Numer
   bool bResult = false;
   // flag if the matrix size is due to explicit user request
   // desired precision of eigenvalues
-  NumericT  precision = 0.00001;
+  NumericT  precision = 0.000001;
   const unsigned int mat_size = diagonal.size();
 
   // set up input
