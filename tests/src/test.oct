@@ -1,0 +1,47 @@
+disp("Eigenvalue Computation of a Tridiagonal Symmetric Matrix");
+
+mat_size = 16;
+m = 1;
+mat_times = zeros(50, 2);
+while mat_size < 5600
+  disp("Start Computation of matrix with dimension "), disp(mat_size), disp(" ");
+  mat_times(m, 1) = mat_size;
+  k = 0;
+  iterations = 4;
+  time_all = 0.;
+
+  while k < iterations
+    diagonal = unifrnd(-2., 2., 1, mat_size);
+    superdiagonal = unifrnd(-2., 2., 1, mat_size);
+    %disp(diagonal);
+    %disp(superdiagonal);
+    T = sparse(1,1,diagonal(1),mat_size, mat_size);
+    i = 2;
+    while i <= mat_size
+      T(i, i) = diagonal(i);
+      i++;
+    endwhile
+
+    i = 1;
+    while i < mat_size
+      T(i, i + 1) = superdiagonal(i);
+      T(i + 1, i) = superdiagonal(i);
+      i++;
+    endwhile
+    
+    tic();
+    eigenvalues = eig(T);
+    time = toc();
+    time_all = time_all + time;
+    k++;
+  endwhile
+  av_time = time_all / iterations;
+  disp("Average time = "), disp(av_time * 1000);
+  mat_times(m, 2) = av_time * 1000;
+
+  m++;
+  mat_size = floor( mat_size * 1.15);
+endwhile
+
+disp(mat_times);
+disp("Computation succeeded!");
