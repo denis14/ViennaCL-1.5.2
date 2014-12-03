@@ -197,7 +197,7 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
       s_right_count[ptr_w] = right_count;
 
 
-
+/*
     __syncthreads();
     if(tid == 1)
     {
@@ -206,6 +206,7 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
       s_left_count[ptr_w] = left_count;
       s_right_count[ptr_w] = right_count;
     }
+    */
           if (0 != c_block_iend)
     {
         s_cl_blocking[ptr_blocking_w + 1] = c_block_iend - 1;

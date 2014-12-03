@@ -100,7 +100,7 @@ main(int argc, char **argv)
     bool test_result = false;
 
     // run test for large matrix
-    test_result = runTest(1520);
+    test_result = runTest(3520);
     if(test_result == true)
     {
       std::cout << "First Test Succeeded!" << std::endl << std::endl;
@@ -154,8 +154,8 @@ runTest(const int mat_size)
 
     // ---------------Check the results---------------
     // The results of the bisection algorithm will be checked with the tql2 algorithm
-    // Initialize Data for tql2 algorithm
-    viennacl::matrix<NumericT> Q = viennacl::identity_matrix<NumericT>(mat_size);
+    // Initialize Data for tql1 algorithm
+    //viennacl::matrix<NumericT> Q = viennacl::identity_matrix<NumericT>(mat_size);
     std::vector<NumericT> diagonal_tql(mat_size);
     std::vector<NumericT> superdiagonal_tql(mat_size);
     diagonal_tql = diagonal;
@@ -163,10 +163,10 @@ runTest(const int mat_size)
 
     // Start the tql algorithm
     std::cout << "Start the tql algorithm..." << std::endl;
-    viennacl::linalg::tql1(Q, diagonal_tql, superdiagonal_tql);
+    viennacl::linalg::tql1<NumericT>(mat_size, diagonal_tql, superdiagonal_tql);
     
     // Run the bisect algorithm for CPU only
-    eigenvalues_bisect_cpu = viennacl::linalg::bisect(diagonal, superdiagonal);
+    //eigenvalues_bisect_cpu = viennacl::linalg::bisect(diagonal, superdiagonal);
     bResult = true;
 
     // Ensure that eigenvalues from tql2 algorithm are sorted in ascending order
@@ -181,20 +181,20 @@ runTest(const int mat_size)
     std::cout << "Start comparison..." << std::endl;
     for (uint i = 0; i < mat_size; i++)
     {
-       if (std::abs(diagonal_tql[i] - eigenvalues_bisect_cpu[i]) > EPS)
+       if (std::abs(diagonal_tql[i] - eigenvalues_bisect[i]) > EPS)
        {
-         std::cout << std::setprecision(8) << diagonal_tql[i] << "  != " << eigenvalues_bisect_cpu[i] << "\n";
+         std::cout << std::setprecision(12) << diagonal_tql[i] << "  != " << eigenvalues_bisect[i] << "\n";
          return false;
        }
     }
-
+/*
     // ------------Print the results---------------
     std::cout << "mat_size = " << mat_size << std::endl;
     for (unsigned int i = 0; i < mat_size; ++i)
     {
-      std::cout << "Eigenvalue " << i << ":  \tbisect: " << std::setprecision(8) << eigenvalues_bisect[i] << "\ttql2: " << diagonal_tql[i] << std::endl;
+      std::cout << "Eigenvalue " << i << ":  \tbisect: " << std::setprecision(14) << eigenvalues_bisect[i] << "\ttql: " << diagonal_tql[i] << std::endl;
     }
-
+*/
 
 
   return bResult;

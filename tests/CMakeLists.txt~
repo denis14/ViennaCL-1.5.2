@@ -44,7 +44,7 @@ endif (ENABLE_OPENCL)
 
 # tests with CUDA backend
 if (ENABLE_CUDA)
-  foreach(PROG bisect matrix_product_float matrix_product_double blas3_solve fft_1d fft_2d iterators
+  foreach(PROG bisect bisect_bench matrix_product_float matrix_product_double blas3_solve fft_1d fft_2d iterators
                global_variables
                matrix_vector matrix_vector_int
                matrix_row_float matrix_row_double matrix_row_int

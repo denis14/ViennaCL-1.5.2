@@ -44,7 +44,7 @@ namespace linalg
   {
       for (int i = 1; i < n; i++)
           e[i - 1] = e[i];
-      std::cout << "EPS = " << viennacl::linalg::detail::EPS << std::endl;
+
 
       e[n - 1] = 0;
 
@@ -52,6 +52,7 @@ namespace linalg
       SCALARTYPE tst1 = 0;
       SCALARTYPE eps = 1e-6;
      // SCALARTYPE eps = static_cast<SCALARTYPE>(viennacl::linalg::detail::EPS);
+     //  std::cout << "eps = " << eps << std::endl;
 
       for (int l = 0; l < n; l++)
       {
@@ -117,6 +118,7 @@ namespace linalg
           e[l] = 0;
       }
   }
+
 
 
 

@@ -127,8 +127,8 @@ main(int argc, char **argv)
     std::vector<double> av_times(500);
     std::vector<unsigned int> mat_sizes(500);
 
-    for( unsigned int mat_size = 16;
-         mat_size < 32200;
+    for( unsigned int mat_size = 15000;
+         mat_size < 30000;
          mat_size = mat_size * 1.15, time_index++)
       {
       test_result = runTest(mat_size, av_times, time_index);
@@ -151,12 +151,9 @@ main(int argc, char **argv)
 
     values_save(av_times, mat_sizes, time_index);
 
+
+    
 /*
-    MatrixXd A = MatrixXd::Random(6,6);
-    std::cout << "Here is a random 6x6 matrix, A:" << std::endl << A << std::endl << std::endl;
-    EigenSolver<MatrixXd> es(A);
-    std::cout << "The eigenvalues of A are:" << std::endl << es.eigenvalues() << std::endl;
-    std::cout << "The matrix of eigenvectors, V, is:" << std::endl << es.eigenvectors() << std::endl << std::endl;
 
 
 
@@ -196,7 +193,7 @@ runTest(const int mat_size, std::vector<double> &av_times, unsigned int time_ind
     std::cout << "Start the bisection algorithm" << std::endl;
     std::cout << "Matrix size: " << mat_size << std::endl;
 
-    unsigned int iterations = 3;
+    unsigned int iterations = 20;
     unsigned int max_eigen = 0, max_eigen_abs = 0;
     double time_all = 0.0;
     for(unsigned int i = 0; i < iterations; i++)
@@ -207,16 +204,24 @@ runTest(const int mat_size, std::vector<double> &av_times, unsigned int time_ind
       timer.start();
       
       // bisection - gpu
-      //bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect);
+      bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect);
       
       //---Run the tql2 algorithm-----------------------------------
-      viennacl::linalg::tql1<NumericT>(mat_size, diagonal, superdiagonal);
-      bResult = true;
+      //viennacl::linalg::tql1<NumericT>(mat_size, diagonal, superdiagonal);
+      //bResult = true;
       
       // Run the bisect algorithm for CPU only
       //eigenvalues_bisect_cpu = viennacl::linalg::bisect(diagonal, superdiagonal);
-      //bResult = true;
+      // bResult = true;
       
+      
+      
+    //  MatrixXd A = MatrixXd::Random(mat_size, mat_size);
+      //std::cout << "Here is a random " << mat_size << " matrix, A:" << std::endl << A << std::endl << std::endl;
+  //    EigenSolver<MatrixXd> es(A);
+  //    es.eigenvalues();
+//      es.eigenvectors();
+      //std::cout << "The eigenvalues of A are:" << std::endl << es.eigenvalues() << std::endl;
       
       // Exit if an error occured during the execution of the algorithm
       if (bResult == false)
