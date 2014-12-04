@@ -127,7 +127,7 @@ main(int argc, char **argv)
     std::vector<double> av_times(500);
     std::vector<unsigned int> mat_sizes(500);
 
-    for( unsigned int mat_size = 15000;
+    for( unsigned int mat_size = 60;
          mat_size < 30000;
          mat_size = mat_size * 1.15, time_index++)
       {
@@ -193,7 +193,7 @@ runTest(const int mat_size, std::vector<double> &av_times, unsigned int time_ind
     std::cout << "Start the bisection algorithm" << std::endl;
     std::cout << "Matrix size: " << mat_size << std::endl;
 
-    unsigned int iterations = 20;
+    unsigned int iterations = 2;
     unsigned int max_eigen = 0, max_eigen_abs = 0;
     double time_all = 0.0;
     for(unsigned int i = 0; i < iterations; i++)
@@ -229,7 +229,7 @@ runTest(const int mat_size, std::vector<double> &av_times, unsigned int time_ind
       time_all += timer.get() * 1000;
      
     }
-    /*
+    
     for(unsigned int n = 1; n < eigenvalues_bisect.size(); n++)
     {
       for(unsigned int m = 0; m < n; m++)
@@ -240,7 +240,7 @@ runTest(const int mat_size, std::vector<double> &av_times, unsigned int time_ind
       max_eigen_abs = max(max_eigen_abs, max_eigen);
       max_eigen = 0;
     }
-    */
+    
     double time_average = time_all / (double)iterations;
 
     std::cout << "Time all: \t" << time_all << "ms" << "\taverage Time:\t" << time_average << "ms" <<  " max_eigen:\t" << max_eigen_abs << std::endl;
