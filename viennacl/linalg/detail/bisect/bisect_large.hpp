@@ -122,7 +122,7 @@ processResultDataLargeMatrix(ResultDataLarge<NumericT> &result,
 
       else
       {
-       // printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
+        printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
         bCompareResult = false;
       }
     }
