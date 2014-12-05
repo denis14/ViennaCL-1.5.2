@@ -100,7 +100,7 @@ main(int argc, char **argv)
     bool test_result = false;
 
     // run test for large matrix
-    test_result = runTest(120);
+    test_result = runTest(260);
     if(test_result == true)
     {
       std::cout << "First Test Succeeded!" << std::endl << std::endl;
@@ -112,7 +112,7 @@ main(int argc, char **argv)
     }
 
     // run test for small matrix
-    test_result = runTest(354);
+    test_result = runTest(284);
     if(test_result == true)
     {
       std::cout << std::endl << "---TEST SUCCESSFULLY COMPLETED---" << std::endl;
