@@ -189,13 +189,15 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
 
 
     __syncthreads();
-
-    // store compactly in shared mem
-      s_left[ptr_w] = left;
-      s_right[ptr_w] = right;
-      s_left_count[ptr_w] = left_count;
-      s_right_count[ptr_w] = right_count;
-
+    if(tid < num_threads_active)
+      {
+       // store compactly in shared mem
+       printf("%u\n", ptr_w);
+       s_left[ptr_w] = left;
+       s_right[ptr_w] = right;
+       s_left_count[ptr_w] = left_count;
+       s_right_count[ptr_w] = right_count;
+      }
 
 /*
     __syncthreads();
@@ -207,7 +209,7 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
       s_right_count[ptr_w] = right_count;
     }
     */
-          if (0 != c_block_iend)
+    if (0 != c_block_iend)
     {
         s_cl_blocking[ptr_blocking_w + 1] = c_block_iend - 1;
         s_cl_helper[ptr_blocking_w + 1] = c_sum_block;

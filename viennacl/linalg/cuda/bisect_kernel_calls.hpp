@@ -158,6 +158,11 @@ void bisectLarge_MultIntervals(const viennacl::linalg::detail::InputData<Numeric
         );
       viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
     }
+   else
+   {
+      std::cout << "bisectKernelLarge_MultIntervals wurde nicht aufgerufen" << std::endl;
+   }
+
 }
 }
 }
