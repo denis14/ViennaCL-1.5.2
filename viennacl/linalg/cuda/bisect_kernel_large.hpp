@@ -192,7 +192,7 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
     if(tid < num_threads_active)
       {
        // store compactly in shared mem
-       printf("%u\n", ptr_w);
+ //      printf("%u\n", ptr_w);
        s_left[ptr_w] = left;
        s_right[ptr_w] = right;
        s_left_count[ptr_w] = left_count;
