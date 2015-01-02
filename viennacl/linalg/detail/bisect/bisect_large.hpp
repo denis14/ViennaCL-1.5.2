@@ -33,11 +33,18 @@
 #include <iomanip>  
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+#include <time.h>
+
+#include <ctime>
+
 
 // includes, project
 #include "viennacl/linalg/detail/bisect/config.hpp"
 #include "viennacl/linalg/detail/bisect/structs.hpp"
 #include "viennacl/linalg/detail/bisect/bisect_kernel_calls.hpp"
+#include <time.h>
+#include <examples/benchmarks/benchmark-utils.hpp>
 
 namespace viennacl
 {
@@ -59,20 +66,36 @@ template<typename NumericT>
 void
 computeEigenvaluesLargeMatrix(InputData<NumericT> &input, ResultDataLarge<NumericT> &result,
                               const unsigned int mat_size,
-                              const NumericT lg, const NumericT ug,  const NumericT precision)
+                              const NumericT lg, const NumericT ug,  const NumericT precision, std::vector<double> &times)
 {
-   // First kernel call: decide on which intervals bisect_Large_OneIntervals/
-   // bisect_Large_MultIntervals is executed
-    viennacl::linalg::detail::bisectLarge(input, result, mat_size, lg, ug, precision);
 
-    // compute eigenvalues for intervals that contained only one eigenvalue
-    // after the first processing step
-    viennacl::linalg::detail::bisectLarge_OneIntervals(input, result, mat_size, precision);
+  Timer timer;
+  timer.start();
+  std::clock_t start;
 
-    // process intervals that contained more than one eigenvalue after
-    // the first processing step
-    viennacl::linalg::detail::bisectLarge_MultIntervals(input, result, mat_size, precision);
 
+  start = std::clock();
+
+  // First kernel call: decide on which intervals bisect_Large_OneIntervals/
+  // bisect_Large_MultIntervals is executed
+  viennacl::linalg::detail::bisectLarge(input, result, mat_size, lg, ug, precision);
+ // times[1] = timer.get() * 1000.;
+
+  times[1] = ( std::clock() - start ) / (double) CLOCKS_PER_SEC * 1000;
+
+
+
+  // compute eigenvalues for intervals that contained only one eigenvalue
+  // after the first processing step
+  timer.start();
+  viennacl::linalg::detail::bisectLarge_OneIntervals(input, result, mat_size, precision);
+  times[2] = timer.get() * 1000.;
+
+  // process intervals that contained more than one eigenvalue after
+  // the first processing step
+  timer.start();
+  viennacl::linalg::detail::bisectLarge_MultIntervals(input, result, mat_size, precision);
+  times[3] = timer.get() * 1000.;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -84,10 +107,11 @@ computeEigenvaluesLargeMatrix(InputData<NumericT> &input, ResultDataLarge<Numeri
 template<typename NumericT>
 bool
 processResultDataLargeMatrix(ResultDataLarge<NumericT> &result,
-                             const unsigned int mat_size)
+                             const unsigned int mat_size, std::vector<double> &times)
 {
     bool bCompareResult = true;
-
+    Timer timer_pp;
+    timer_pp.start();
     // copy data from intervals that contained more than one eigenvalue after
     // the first processing step
     std::vector<NumericT> lambda_mult(mat_size);
@@ -135,6 +159,7 @@ processResultDataLargeMatrix(ResultDataLarge<NumericT> &result,
         result.std_eigenvalues[pos_one[i] - 1] = left_one[i];
     }
 
+    times[0] = timer_pp.get() * 1000;
     return bCompareResult;
 }
 } // namespace detail

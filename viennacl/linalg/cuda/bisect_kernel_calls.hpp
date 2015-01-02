@@ -137,27 +137,24 @@ void bisectLarge_MultIntervals(const viennacl::linalg::detail::InputData<Numeric
     unsigned int  num_blocks_mult = result.g_num_blocks_mult;
 
     // setup the execution environment
-    if(num_blocks_mult > 0)
-    {
-      dim3  grid_mult(num_blocks_mult, 1, 1);
-      dim3  threads_mult(MAX_THREADS_BLOCK, 1, 1);
+    dim3  grid_mult(num_blocks_mult, 1, 1);
+    dim3  threads_mult(MAX_THREADS_BLOCK, 1, 1);
 
-      bisectKernelLarge_MultIntervals<<< grid_mult, threads_mult >>>
-        (viennacl::linalg::cuda::detail::cuda_arg<NumericT>(input.g_a),
-         viennacl::linalg::cuda::detail::cuda_arg<NumericT>(input.g_b) + 1,
-         mat_size,
-         viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_blocks_mult),
-         viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_blocks_mult_sum),
-         viennacl::linalg::cuda::detail::cuda_arg<NumericT>(result.g_left_mult),
-         viennacl::linalg::cuda::detail::cuda_arg<NumericT>(result.g_right_mult),
-         viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_left_count_mult),
-         viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_right_count_mult),
-         viennacl::linalg::cuda::detail::cuda_arg<NumericT>(result.g_lambda_mult),
-         viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_pos_mult),
-         precision
-        );
-      viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
-    }
+    bisectKernelLarge_MultIntervals<<< grid_mult, threads_mult >>>
+      (viennacl::linalg::cuda::detail::cuda_arg<NumericT>(input.g_a),
+       viennacl::linalg::cuda::detail::cuda_arg<NumericT>(input.g_b) + 1,
+       mat_size,
+       viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_blocks_mult),
+       viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_blocks_mult_sum),
+       viennacl::linalg::cuda::detail::cuda_arg<NumericT>(result.g_left_mult),
+       viennacl::linalg::cuda::detail::cuda_arg<NumericT>(result.g_right_mult),
+       viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_left_count_mult),
+       viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_right_count_mult),
+       viennacl::linalg::cuda::detail::cuda_arg<NumericT>(result.g_lambda_mult),
+       viennacl::linalg::cuda::detail::cuda_arg<unsigned int>(result.g_pos_mult),
+       precision
+      );
+    viennacl::linalg::cuda::VIENNACL_CUDA_LAST_ERROR_CHECK("bisectKernelLarge_MultIntervals() FAILED.");
 }
 }
 }

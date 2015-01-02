@@ -112,9 +112,9 @@ main(int argc, char **argv)
     }
 
     // run test for small matrix
-    test_result = runTest(354);
+    test_result = runTest(4096);
     if(test_result == true)
-    {
+   {
       std::cout << std::endl << "---TEST SUCCESSFULLY COMPLETED---" << std::endl;
       exit(EXIT_SUCCESS);
     }
@@ -137,6 +137,7 @@ runTest(const int mat_size)
     std::vector<NumericT> superdiagonal(mat_size);
     std::vector<NumericT> eigenvalues_bisect(mat_size);
     std::vector<NumericT> eigenvalues_bisect_cpu(mat_size);
+    std::vector<double> times(5);
 
     // -------------Initialize data-------------------
     // Fill the diagonal and superdiagonal elements of the vector
@@ -146,10 +147,11 @@ runTest(const int mat_size)
     // -------Start the bisection algorithm------------
     std::cout << "Start the bisection algorithm" << std::endl;
     std::cout << "Matrix size: " << mat_size << std::endl;
-    bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect);
+    bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect, times);
     // Exit if an error occured during the execution of the algorithm
     if (bResult == false)
      return false;
+    std::cout << "Times: " << times[1] << std::endl;
 
 
     // ---------------Check the results---------------

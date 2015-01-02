@@ -190,24 +190,15 @@ compactStreamsFinal(const unsigned int tid, const unsigned int tid_2,
 
     __syncthreads();
 
-    // store compactly in shared mem
-      s_left[ptr_w] = left;
-      s_right[ptr_w] = right;
-      s_left_count[ptr_w] = left_count;
-      s_right_count[ptr_w] = right_count;
-
-
-/*
-    __syncthreads();
-    if(tid == 1)
+    if(tid < num_threads_active)
     {
       s_left[ptr_w] = left;
       s_right[ptr_w] = right;
       s_left_count[ptr_w] = left_count;
       s_right_count[ptr_w] = right_count;
     }
-    */
-          if (0 != c_block_iend)
+
+    if (0 != c_block_iend)
     {
         s_cl_blocking[ptr_blocking_w + 1] = c_block_iend - 1;
         s_cl_helper[ptr_blocking_w + 1] = c_sum_block;
@@ -629,12 +620,9 @@ bisectKernelLarge(const NumericT *g_d, const NumericT *g_s, const unsigned int n
     // the number of (worst case) active threads per level l is 2^l
     // determine coarse intervals. On these intervals the kernel for one or for multiple eigenvalues
     // will be executed in the second step
-   // for( unsigned int i = 0; i < 500; ++i )
-    unsigned int i = 0;
-    while (true)
+    //for(unsigned int i = 0; i < 15; ++i)
+    while(true)
     {
-        // if( i > 20 ) break;
-        i++;
         s_compaction_list[tid] = 0;
         s_compaction_list[tid + MAX_THREADS_BLOCK] = 0;
         s_compaction_list[2 * MAX_THREADS_BLOCK] = 0;
@@ -745,7 +733,6 @@ bisectKernelLarge(const NumericT *g_d, const NumericT *g_s, const unsigned int n
 
         if (num_threads_compaction > blockDim.x)
         {
-         //   printf("Break durch num_threads_compaction! \n");
             break;
         }
 

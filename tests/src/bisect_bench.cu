@@ -47,11 +47,6 @@
 #define EPS 10.0e-4
 
 typedef float NumericT;
-////////////////////////////////////////////////////////////////////////////////
-// declaration, forward
-bool runTest(const int mat_size, std::vector<double> &av_times, unsigned int time_index);
-
-
 
 ////////////////////////////////////////////////////////////////////////////////
 /// \brief initInputData   Initialize the diagonal and superdiagonal elements of
@@ -61,14 +56,13 @@ bool runTest(const int mat_size, std::vector<double> &av_times, unsigned int tim
 /// \param mat_size        Dimension of the matrix
 ///
 void
-initInputData(std::vector<NumericT> &diagonal, std::vector<NumericT> &superdiagonal, const unsigned int mat_size)
+initInputData(viennacl::vector<NumericT> &diagonal, viennacl::vector<NumericT> &superdiagonal, const unsigned int mat_size)
 {
  
   srand(time(NULL));
-  bool randomValues = true;
-  
-  
-  if (randomValues == true)
+    
+#define RANDOM_VALUES 1
+  if (RANDOM_VALUES == true)
   {
     // Initialize diagonal and superdiagonal elements with random values
     for (unsigned int i = 0; i < mat_size; ++i)
@@ -95,26 +89,90 @@ initInputData(std::vector<NumericT> &diagonal, std::vector<NumericT> &superdiago
   superdiagonal[0] = 0.0f; 
 }
 
-bool values_save(std::vector<double> &av_times, std::vector<unsigned int> &mat_sizes, unsigned int num_tests)
-{
 
-    FILE *datei;
-    long i;
-
-    if(!(datei=fopen("../../execution_times_matrices.dat","w")))
+////////////////////////////////////////////////////////////////////////////////
+//! Run a simple test
+////////////////////////////////////////////////////////////////////////////////
+bool
+runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_index,  
+        std::vector<double> &av_time_pp, 
+        std::vector<double> &av_kernel1,   
+        std::vector<double> &av_kernel2, 
+        std::vector<double> &av_kernel3, 
+        std::vector<double> &av_time4)
     {
-      fprintf(stderr,"Error: file access!\n");
-      return false;
+    bool bResult = false;
+    viennacl::vector<NumericT> diagonal(mat_size);
+    viennacl::vector<NumericT> superdiagonal(mat_size);
+    viennacl::vector<NumericT> eigenvalues_bisect(mat_size);
+    std::vector<NumericT> eigenvalues_bisect_cpu(mat_size);
+    std::vector<double> times(5);
+    
+
+    
+    // for tql2 algorithm
+    //viennacl::matrix<NumericT, viennacl::row_major> Q = viennacl::identity_matrix<NumericT>(mat_size);
+
+
+    // -------Start the bisection algorithm------------
+    std::cout << "Start the bisection algorithm" << std::endl;
+    std::cout << "Matrix size: " << mat_size << std::endl;
+
+    unsigned int iterations = 10;
+    unsigned int max_eigen_abs = 0;
+    double time_pp      = 0.0;
+    double time_kernel1 = 0.0;
+    double time_kernel2 = 0.0;
+    double time_kernel3 = 0.0;
+    double time_all     = 0.0;
+    double time_4       = 0.0;
+    
+    for(unsigned int i = 0; i < iterations; i++)
+    {
+      initInputData(diagonal, superdiagonal, mat_size);
+
+      Timer timer;
+      timer.start();
+      
+      // bisection - gpu
+      bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect, times);
+      
+      //---Run the tql2 algorithm-----------------------------------
+      //viennacl::linalg::tql1<NumericT>(mat_size, diagonal, superdiagonal);
+      //bResult = true;
+      
+      // Run the bisect algorithm for CPU only
+      //eigenvalues_bisect_cpu = viennacl::linalg::bisect(diagonal, superdiagonal);
+      // bResult = true;
+      
+      
+      
+      // Exit if an error occured during the execution of the algorithm
+      if (bResult == false)
+       return false;
+      time_all     += timer.get() * 1000;
+      time_pp      += times[0];
+      time_kernel1 += times[1];
+      time_kernel2 += times[2];
+      time_kernel3 += times[3];
+      time_4       += times[4];
+         
     }
 
-    for(i=0; i < num_tests; i++)
-    {
-      fprintf(datei,"%i\t %7.3f\n", mat_sizes[i], av_times[i]);
-    }
 
-    fclose(datei);
-    return true;
+    std::cout << "Time: \t" << time_all / (double)iterations << "ms" <<  " max_eigen:\t" << max_eigen_abs << std::endl;
+    
+    av_time_all[time_index] = time_all     / (double)iterations;
+    av_time_pp [time_index] = time_pp      / (double)iterations;
+    av_kernel1 [time_index] = time_kernel1 / (double)iterations;
+    av_kernel2 [time_index] = time_kernel2 / (double)iterations;
+    av_kernel3 [time_index] = time_kernel3 / (double)iterations;
+    av_time4   [time_index] = time_4       / (double)iterations;
+
+  return bResult;
+    
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // Program main
@@ -124,14 +182,19 @@ main(int argc, char **argv)
 {
     bool test_result = true;
     unsigned int time_index = 0;
-    std::vector<double> av_times(500);
+    std::vector<double> av_time_all(500);
+    std::vector<double> av_time_pp(500);
+    std::vector<double> av_kernel1(500);
+    std::vector<double> av_kernel2(500);
+    std::vector<double> av_kernel3(500);
+    std::vector<double> av_time4  (500);
     std::vector<unsigned int> mat_sizes(500);
 
-    for( unsigned int mat_size = 60;
-         mat_size < 30000;
+    for( unsigned int mat_size = 4096;
+         mat_size < 4100;
          mat_size = mat_size * 1.15, time_index++)
       {
-      test_result = runTest(mat_size, av_times, time_index);
+      test_result = runTest(mat_size, av_time_all, time_index, av_time_pp, av_kernel1, av_kernel2, av_kernel3, av_time4);
       std::cout << "Matrix_size = \t" << mat_size << std::endl;
       mat_sizes[time_index] = mat_size;
 
@@ -147,106 +210,16 @@ main(int argc, char **argv)
       }
     }
     for(unsigned int i = 0; i < time_index; i++)
-      std::cout << mat_sizes[i] << "\t" << av_times[i] << std::endl;
-
-    values_save(av_times, mat_sizes, time_index);
-
-
-    
-/*
-
-
-
-    // run test for small matrix
-    test_result = runTest(230);
-    if(test_result == true)
     {
-      std::cout << std::endl << "---TEST SUCCESSFULLY COMPLETED---" << std::endl;
-      exit(EXIT_SUCCESS);
-    }
-    else
-    {
-      std::cout << "---TEST FAILED---" << std::endl;
-      exit(EXIT_FAILURE);
-    }
-*/
+      std::cout << "\nMatrix size:\t" <<  mat_sizes[i] << std::endl;
+      std::cout << "all_ext\t\t" << av_time_all[i] << std::endl;
+      std::cout << "all_int\t\t"   << av_time4[i] << std::endl;
+      std::cout << "postprocessing\t"  << av_time_pp[i] << std::endl;
+      std::cout << "kernel1\t\t"  << av_kernel1[i] << std::endl;
+      std::cout << "kernel2\t\t"  << av_kernel2[i] << std::endl;
+      std::cout << "kernel3\t\t"  << av_kernel3[i] << std::endl;
 
+    }  
 }
 
-////////////////////////////////////////////////////////////////////////////////
-//! Run a simple test
-////////////////////////////////////////////////////////////////////////////////
-bool
-runTest(const int mat_size, std::vector<double> &av_times, unsigned int time_index)
-{
-    bool bResult = false;
-    std::vector<NumericT> diagonal(mat_size);
-    std::vector<NumericT> superdiagonal(mat_size);
-    std::vector<NumericT> eigenvalues_bisect(mat_size);
-    std::vector<NumericT> eigenvalues_bisect_cpu(mat_size);
-    
-    // for tql2 algorithm
-    //viennacl::matrix<NumericT, viennacl::row_major> Q = viennacl::identity_matrix<NumericT>(mat_size);
 
-
-    // -------Start the bisection algorithm------------
-    std::cout << "Start the bisection algorithm" << std::endl;
-    std::cout << "Matrix size: " << mat_size << std::endl;
-
-    unsigned int iterations = 2;
-    unsigned int max_eigen = 0, max_eigen_abs = 0;
-    double time_all = 0.0;
-    for(unsigned int i = 0; i < iterations; i++)
-    {
-      initInputData(diagonal, superdiagonal, mat_size);
-
-      Timer timer;
-      timer.start();
-      
-      // bisection - gpu
-      bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect);
-      
-      //---Run the tql2 algorithm-----------------------------------
-      //viennacl::linalg::tql1<NumericT>(mat_size, diagonal, superdiagonal);
-      //bResult = true;
-      
-      // Run the bisect algorithm for CPU only
-      //eigenvalues_bisect_cpu = viennacl::linalg::bisect(diagonal, superdiagonal);
-      // bResult = true;
-      
-      
-      
-    //  MatrixXd A = MatrixXd::Random(mat_size, mat_size);
-      //std::cout << "Here is a random " << mat_size << " matrix, A:" << std::endl << A << std::endl << std::endl;
-  //    EigenSolver<MatrixXd> es(A);
-  //    es.eigenvalues();
-//      es.eigenvectors();
-      //std::cout << "The eigenvalues of A are:" << std::endl << es.eigenvalues() << std::endl;
-      
-      // Exit if an error occured during the execution of the algorithm
-      if (bResult == false)
-       return false;
-      time_all += timer.get() * 1000;
-     
-    }
-    
-    for(unsigned int n = 1; n < eigenvalues_bisect.size(); n++)
-    {
-      for(unsigned int m = 0; m < n; m++)
-      {
-        if(eigenvalues_bisect[m] == eigenvalues_bisect[n])
-          max_eigen++;
-      }
-      max_eigen_abs = max(max_eigen_abs, max_eigen);
-      max_eigen = 0;
-    }
-    
-    double time_average = time_all / (double)iterations;
-
-    std::cout << "Time all: \t" << time_all << "ms" << "\taverage Time:\t" << time_average << "ms" <<  " max_eigen:\t" << max_eigen_abs << std::endl;
-    av_times[time_index]  = time_average;
-
-
-  return bResult;
-    
-}

@@ -984,7 +984,7 @@ namespace kernels
   {
   source.append("       \n");
   source.append("     void  \n");
-  source.append("     subdivideActiveIntervalMulti(const unsigned int tid,  \n");
+  source.append("     subdivideActiveInterval(const unsigned int tid,  \n");
   source.append("                             __local "); source.append(numeric_string); source.append(" *s_left,    \n");
   source.append("                             __local "); source.append(numeric_string); source.append(" *s_right,   \n");
   source.append("                             __local unsigned int *s_left_count,   \n");
@@ -1070,6 +1070,12 @@ namespace kernels
   source.append("                 *mid = computeMidpoint(*left, *right);  \n");
   source.append("                 *all_threads_converged = 0;  \n");
   source.append("             }  \n");
+  source.append("             else if ((*right_count - *left_count) > 1)  \n");
+  source.append("             {  \n");
+              // mark as not converged if multiple eigenvalues enclosed
+              // duplicate interval in storeIntervalsConverged()
+  source.append("                 *all_threads_converged = 0;  \n");
+  source.append("             }  \n");
 
   source.append("         }    \n");
   // end for all active threads
@@ -1098,7 +1104,7 @@ namespace kernels
   {
       source.append("     __kernel  \n");
       source.append("     void  \n");
-      source.append("     bisectKernelSmall(__global "); source.append(numeric_string); source.append(" *g_d,   \n");
+      source.append("     bisectKernel(__global "); source.append(numeric_string); source.append(" *g_d,   \n");
       source.append("                  __global "); source.append(numeric_string); source.append(" *g_s,   \n");
       source.append("                  const unsigned int n,  \n");
       source.append("                  __global "); source.append(numeric_string); source.append(" *g_left,   \n");
@@ -1192,7 +1198,7 @@ namespace kernels
       source.append("             barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
 
       source.append("             is_active_second = 0;  \n");
-      source.append("             subdivideActiveIntervalMulti(lcl_id,  \n");
+      source.append("             subdivideActiveInterval(lcl_id,  \n");
       source.append("                                     s_left, s_right, s_left_count, s_right_count,  \n");
       source.append("                                     num_threads_active,  \n");
       source.append("                                     &left, &right, &left_count, &right_count,  \n");
@@ -1444,7 +1450,7 @@ namespace kernels
       source.append("             s_compaction_list[2 * MAX_THREADS_BLOCK] = 0;  \n");
 
               // subdivide interval if currently active and not already converged
-      source.append("             subdivideActiveIntervalMulti(tid, s_left, s_right,  \n");
+      source.append("             subdivideActiveInterval(tid, s_left, s_right,  \n");
       source.append("                                     s_left_count, s_right_count,  \n");
       source.append("                                     num_threads_active,  \n");
       source.append("                                     &left, &right, &left_count, &right_count,  \n");
@@ -1852,13 +1858,10 @@ namespace kernels
       source.append("         barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
       source.append("           \n");
           // store compactly in shared mem
-      source.append("           if(tid < num_threads_active) \n");
-      source.append("           { \n ");
-      source.append("             s_left[ptr_w] = *left;  \n");
-      source.append("             s_right[ptr_w] = *right;  \n");
-      source.append("             s_left_count[ptr_w] = *left_count;  \n");
-      source.append("             s_right_count[ptr_w] = *right_count;  \n");
-      source.append("           } \n ");
+      source.append("           s_left[ptr_w] = *left;  \n");
+      source.append("           s_right[ptr_w] = *right;  \n");
+      source.append("           s_left_count[ptr_w] = *left_count;  \n");
+      source.append("           s_right_count[ptr_w] = *right_count;  \n");
       source.append("           \n");
       source.append("           \n");
       source.append("         barrier(CLK_LOCAL_MEM_FENCE)  ;  \n");
@@ -2281,7 +2284,7 @@ namespace kernels
           // the number of (worst case) active threads per level l is 2^l
           // determine coarse intervals. On these intervals the kernel for one or for multiple eigenvalues
           // will be executed in the second step
-      source.append("    while( true )    \n");
+      source.append("    for( unsigned int i = 0; i < 15; ++i )    \n");
       source.append("         {  \n");
       source.append("             s_compaction_list[tid] = 0;  \n");
       source.append("             s_compaction_list[tid + MAX_THREADS_BLOCK] = 0;  \n");

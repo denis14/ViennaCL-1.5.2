@@ -561,12 +561,7 @@ subdivideActiveInterval(const unsigned int tid,
             mid = computeMidpoint(left, right);
             all_threads_converged = 0;
         }
-        else if ((right_count - left_count) > 1)
-        {
-            // mark as not converged if multiple eigenvalues enclosed
-            // duplicate interval in storeIntervalsConverged()
-            // all_threads_converged = 0;
-        }
+
 
     }  // end for all active threads
 }
@@ -583,27 +578,32 @@ subdivideActiveIntervalMulti(const unsigned int tid,
                         NumericT &mid, unsigned int &all_threads_converged)
 {
     // for all active threads
-        if (tid < num_threads_active)
+    if (tid < num_threads_active)
+    {
+
+        left = s_left[tid];
+        right = s_right[tid];
+        left_count = s_left_count[tid];
+        right_count = s_right_count[tid];
+
+        // check if thread already converged
+        if (left != right)
         {
-          left = s_left[tid];
-          right = s_right[tid];
-          left_count = s_left_count[tid];
-          right_count = s_right_count[tid];
-          // check if thread already converged
-          if (left != right)
-          {
+
             mid = computeMidpoint(left, right);
             all_threads_converged = 0;
-          }
-          else if ((right_count - left_count) > 1)
-          {
-          // mark as not converged if multiple eigenvalues enclosed
-          // duplicate interval in storeIntervalsConverged()
-                                                                                                 all_threads_converged = 0;
-                                                                                                 }
-        }  // end for all active threads
-                                                                                       }
-   
+        }
+        else if ((right_count - left_count) > 1)
+        {
+            // mark as not converged if multiple eigenvalues enclosed
+            // duplicate interval in storeIntervalsConverged()
+            all_threads_converged = 0;
+        }
+
+    }  // end for all active threads
+}
+
+
 }
 }
 }
