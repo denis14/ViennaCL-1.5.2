@@ -60,8 +60,8 @@ bool
 bisect(const std::vector<NumericT> & diagonal, const std::vector<NumericT> & superdiagonal, std::vector<NumericT> & eigenvalues,
        std::vector<double> &times)
 {
-  Timer timer;
-  timer.start();
+//  Timer timer;
+//  timer.start();
   assert(diagonal.size() == superdiagonal.size() &&
          diagonal.size() == eigenvalues.size()   &&
          bool("Input vectors do not have the same sizes!"));
@@ -108,7 +108,8 @@ bisect(const std::vector<NumericT> & diagonal, const std::vector<NumericT> & sup
     bResult = viennacl::linalg::detail::processResultDataLargeMatrix(result, mat_size, times);
     eigenvalues = result.std_eigenvalues;
   }
-  times[4] = timer.get() * 1000.;
+  viennacl::backend::finish();
+//  times[4] = timer.get() * 1000.;
   return bResult;
 }
 
@@ -127,8 +128,8 @@ bool
 bisect(const viennacl::vector<NumericT> & diagonal, const viennacl::vector<NumericT> & superdiagonal, viennacl::vector<NumericT> & eigenvalues,
        std::vector<double> &times)
 {
-  Timer timer;
-  timer.start();
+//  Timer timer;
+//  timer.start();
   assert(diagonal.size() == superdiagonal.size() &&
          diagonal.size() == eigenvalues.size()   &&
          bool("Input vectors do not have the same sizes!"));
@@ -176,12 +177,13 @@ bisect(const viennacl::vector<NumericT> & diagonal, const viennacl::vector<Numer
     // get the result from the device and do some sanity checks
 
    bResult = viennacl::linalg::detail::processResultDataLargeMatrix(result, mat_size, times);
-  // bResult = false;
+  // bResult = true;
 
 
     copy(result.std_eigenvalues, eigenvalues);
   }
-  times[4] = timer.get() * 1000.;
+  viennacl::backend::finish();
+  //times[4] = timer.get() * 1000.;
 
   return bResult;
 }

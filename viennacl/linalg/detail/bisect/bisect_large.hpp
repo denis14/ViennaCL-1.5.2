@@ -71,30 +71,26 @@ computeEigenvaluesLargeMatrix(InputData<NumericT> &input, ResultDataLarge<Numeri
 
   Timer timer;
   timer.start();
-  std::clock_t start;
-
-
-  start = std::clock();
 
   // First kernel call: decide on which intervals bisect_Large_OneIntervals/
   // bisect_Large_MultIntervals is executed
   viennacl::linalg::detail::bisectLarge(input, result, mat_size, lg, ug, precision);
- // times[1] = timer.get() * 1000.;
-
-  times[1] = ( std::clock() - start ) / (double) CLOCKS_PER_SEC * 1000;
-
+  viennacl::backend::finish();
+  times[1] = timer.get() * 1000.;
 
 
   // compute eigenvalues for intervals that contained only one eigenvalue
   // after the first processing step
   timer.start();
   viennacl::linalg::detail::bisectLarge_OneIntervals(input, result, mat_size, precision);
+  viennacl::backend::finish();
   times[2] = timer.get() * 1000.;
 
   // process intervals that contained more than one eigenvalue after
   // the first processing step
   timer.start();
   viennacl::linalg::detail::bisectLarge_MultIntervals(input, result, mat_size, precision);
+  viennacl::backend::finish();
   times[3] = timer.get() * 1000.;
 }
 
@@ -158,7 +154,7 @@ processResultDataLargeMatrix(ResultDataLarge<NumericT> &result,
     {
         result.std_eigenvalues[pos_one[i] - 1] = left_one[i];
     }
-
+    viennacl::backend::finish();
     times[0] = timer_pp.get() * 1000;
     return bCompareResult;
 }

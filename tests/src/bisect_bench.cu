@@ -136,7 +136,7 @@ runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_
       
       // bisection - gpu
       bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect, times);
-      
+      viennacl::backend::finish();     // sync
       //---Run the tql2 algorithm-----------------------------------
       //viennacl::linalg::tql1<NumericT>(mat_size, diagonal, superdiagonal);
       //bResult = true;
@@ -150,6 +150,7 @@ runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_
       // Exit if an error occured during the execution of the algorithm
       if (bResult == false)
        return false;
+       
       time_all     += timer.get() * 1000;
       time_pp      += times[0];
       time_kernel1 += times[1];
@@ -190,8 +191,8 @@ main(int argc, char **argv)
     std::vector<double> av_time4  (500);
     std::vector<unsigned int> mat_sizes(500);
 
-    for( unsigned int mat_size = 4096;
-         mat_size < 4100;
+    for( unsigned int mat_size = 513;
+         mat_size < 33000;
          mat_size = mat_size * 1.15, time_index++)
       {
       test_result = runTest(mat_size, av_time_all, time_index, av_time_pp, av_kernel1, av_kernel2, av_kernel3, av_time4);
@@ -209,9 +210,11 @@ main(int argc, char **argv)
         exit(EXIT_FAILURE);
       }
     }
+    
+    /*
     for(unsigned int i = 0; i < time_index; i++)
     {
-      std::cout << "\nMatrix size:\t" <<  mat_sizes[i] << std::endl;
+      std::cout << "\nMatrix size:\t" <<  mat_sizes[i] << "\t" << av_kernel1[i] << std::endl;
       std::cout << "all_ext\t\t" << av_time_all[i] << std::endl;
       std::cout << "all_int\t\t"   << av_time4[i] << std::endl;
       std::cout << "postprocessing\t"  << av_time_pp[i] << std::endl;
@@ -220,6 +223,33 @@ main(int argc, char **argv)
       std::cout << "kernel3\t\t"  << av_kernel3[i] << std::endl;
 
     }  
+    */
+    std::cout << "Kernel 1" << std::endl;
+    for(unsigned int i = 0; i < time_index; i++)
+    {
+      std::cout <<  mat_sizes[i] << "\t" << av_kernel1[i] << std::endl;
+    }
+    
+    std::cout << "Kernel 2" << std::endl;
+    for(unsigned int i = 0; i < time_index; i++)
+    {
+      std::cout <<  mat_sizes[i] << "\t" << av_kernel2[i] << std::endl;
+    }
+    
+    std::cout << "Kernel 3" << std::endl;
+    for(unsigned int i = 0; i < time_index; i++)
+    {
+      std::cout <<  mat_sizes[i] << "\t" << av_kernel3[i] << std::endl;
+    }
+    
+    std::cout << "Postprocessing" << std::endl;
+    for(unsigned int i = 0; i < time_index; i++)
+    {
+      std::cout <<  mat_sizes[i] << "\t" << av_time_pp[i] << std::endl;
+    }
+    
+    
+      
 }
 
 
