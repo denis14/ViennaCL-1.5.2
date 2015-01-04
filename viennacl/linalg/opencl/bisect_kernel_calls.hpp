@@ -37,7 +37,7 @@ namespace linalg
 {
 namespace opencl
 {
-const std::string BISECT_KERNEL_SMALL = "bisectKernel";
+const std::string BISECT_KERNEL_SMALL = "bisectKernelSmall";
 const std::string BISECT_KERNEL_LARGE = "bisectKernelLarge";
 const std::string BISECT_KERNEL_LARGE_ONE_INTERVALS  = "bisectKernelLarge_OneIntervals";
 const std::string BISECT_KERNEL_LARGE_MULT_INTERVALS = "bisectKernelLarge_MultIntervals";
