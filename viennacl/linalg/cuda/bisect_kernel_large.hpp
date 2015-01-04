@@ -622,8 +622,8 @@ bisectKernelLarge(const NumericT *g_d, const NumericT *g_s, const unsigned int n
     // the number of (worst case) active threads per level l is 2^l
     // determine coarse intervals. On these intervals the kernel for one or for multiple eigenvalues
     // will be executed in the second step
-    for(unsigned int i = 0; i < 15; ++i)
-    //while(true)
+    //for(unsigned int i = 0; i < 15; ++i)
+    while(true)
     {
         s_compaction_list[tid] = 0;
         s_compaction_list[tid + MAX_THREADS_BLOCK] = 0;
