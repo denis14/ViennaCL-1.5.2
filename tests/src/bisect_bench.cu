@@ -58,9 +58,9 @@ typedef float NumericT;
 void
 initInputData(viennacl::vector<NumericT> &diagonal, viennacl::vector<NumericT> &superdiagonal, const unsigned int mat_size)
 {
- 
+
   srand(time(NULL));
-    
+
 #define RANDOM_VALUES 1
   if (RANDOM_VALUES == true)
   {
@@ -74,7 +74,7 @@ initInputData(viennacl::vector<NumericT> &diagonal, viennacl::vector<NumericT> &
     }
   }
   else
-  { 
+  {
     // Initialize diagonal and superdiagonal elements with modulo values
     // This will cause in many multiple eigenvalues.
     for (unsigned int i = 0; i < mat_size; ++i)
@@ -86,7 +86,7 @@ initInputData(viennacl::vector<NumericT> &diagonal, viennacl::vector<NumericT> &
   // the first element of s is used as padding on the device (thus the
   // whole vector is copied to the device but the kernels are launched
   // with (s+1) as start address
-  superdiagonal[0] = 0.0f; 
+  superdiagonal[0] = 0.0f;
 }
 
 
@@ -94,11 +94,11 @@ initInputData(viennacl::vector<NumericT> &diagonal, viennacl::vector<NumericT> &
 //! Run a simple test
 ////////////////////////////////////////////////////////////////////////////////
 bool
-runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_index,  
-        std::vector<double> &av_time_pp, 
-        std::vector<double> &av_kernel1,   
-        std::vector<double> &av_kernel2, 
-        std::vector<double> &av_kernel3, 
+runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_index,
+        std::vector<double> &av_time_pp,
+        std::vector<double> &av_kernel1,
+        std::vector<double> &av_kernel2,
+        std::vector<double> &av_kernel3,
         std::vector<double> &av_time4)
     {
     bool bResult = false;
@@ -107,9 +107,9 @@ runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_
     viennacl::vector<NumericT> eigenvalues_bisect(mat_size);
     std::vector<NumericT> eigenvalues_bisect_cpu(mat_size);
     std::vector<double> times(5);
-    
 
-    
+
+
     // for tql2 algorithm
     //viennacl::matrix<NumericT, viennacl::row_major> Q = viennacl::identity_matrix<NumericT>(mat_size);
 
@@ -126,43 +126,43 @@ runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_
     double time_kernel3 = 0.0;
     double time_all     = 0.0;
     double time_4       = 0.0;
-    
+
     for(unsigned int i = 0; i < iterations; i++)
     {
       initInputData(diagonal, superdiagonal, mat_size);
 
       Timer timer;
       timer.start();
-      
+
       // bisection - gpu
       bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect, times);
       viennacl::backend::finish();     // sync
       //---Run the tql2 algorithm-----------------------------------
       //viennacl::linalg::tql1<NumericT>(mat_size, diagonal, superdiagonal);
       //bResult = true;
-      
+
       // Run the bisect algorithm for CPU only
       //eigenvalues_bisect_cpu = viennacl::linalg::bisect(diagonal, superdiagonal);
       // bResult = true;
-      
-      
-      
+
+
+
       // Exit if an error occured during the execution of the algorithm
       if (bResult == false)
        return false;
-       
+
       time_all     += timer.get() * 1000;
       time_pp      += times[0];
       time_kernel1 += times[1];
       time_kernel2 += times[2];
       time_kernel3 += times[3];
       time_4       += times[4];
-         
+
     }
 
 
     std::cout << "Time: \t" << time_all / (double)iterations << "ms" <<  " max_eigen:\t" << max_eigen_abs << std::endl;
-    
+
     av_time_all[time_index] = time_all     / (double)iterations;
     av_time_pp [time_index] = time_pp      / (double)iterations;
     av_kernel1 [time_index] = time_kernel1 / (double)iterations;
@@ -171,7 +171,7 @@ runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_
     av_time4   [time_index] = time_4       / (double)iterations;
 
   return bResult;
-    
+
 }
 
 
@@ -191,7 +191,7 @@ main(int argc, char **argv)
     std::vector<double> av_time4  (500);
     std::vector<unsigned int> mat_sizes(500);
 
-    for( unsigned int mat_size = 513;
+    for( unsigned int mat_size = 11;
          mat_size < 33000;
          mat_size = mat_size * 1.15, time_index++)
       {
@@ -210,7 +210,7 @@ main(int argc, char **argv)
         exit(EXIT_FAILURE);
       }
     }
-    
+
     /*
     for(unsigned int i = 0; i < time_index; i++)
     {
@@ -222,34 +222,34 @@ main(int argc, char **argv)
       std::cout << "kernel2\t\t"  << av_kernel2[i] << std::endl;
       std::cout << "kernel3\t\t"  << av_kernel3[i] << std::endl;
 
-    }  
+    }
     */
-    std::cout << "Kernel 1" << std::endl;
+    std::cout << "Time all" << std::endl;
     for(unsigned int i = 0; i < time_index; i++)
     {
-      std::cout <<  mat_sizes[i] << "\t" << av_kernel1[i] << std::endl;
+      std::cout <<  mat_sizes[i] << "\t" << av_time_all[i] << std::endl;
     }
-    
+/*
     std::cout << "Kernel 2" << std::endl;
     for(unsigned int i = 0; i < time_index; i++)
     {
       std::cout <<  mat_sizes[i] << "\t" << av_kernel2[i] << std::endl;
     }
-    
+
     std::cout << "Kernel 3" << std::endl;
     for(unsigned int i = 0; i < time_index; i++)
     {
       std::cout <<  mat_sizes[i] << "\t" << av_kernel3[i] << std::endl;
     }
-    
+
     std::cout << "Postprocessing" << std::endl;
     for(unsigned int i = 0; i < time_index; i++)
     {
       std::cout <<  mat_sizes[i] << "\t" << av_time_pp[i] << std::endl;
     }
-    
-    
-      
+*/
+
+
 }
 
 
