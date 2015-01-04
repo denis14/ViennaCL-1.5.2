@@ -158,7 +158,6 @@ runTest(const int mat_size)
     // ---------------Check the results---------------
     // The results of the bisection algorithm will be checked with the tql2 algorithm
     // Initialize Data for tql1 algorithm
-    //viennacl::matrix<NumericT> Q = viennacl::identity_matrix<NumericT>(mat_size);
     std::vector<NumericT> diagonal_tql(mat_size);
     std::vector<NumericT> superdiagonal_tql(mat_size);
     diagonal_tql = diagonal;
@@ -170,7 +169,6 @@ runTest(const int mat_size)
     
     // Run the bisect algorithm for CPU only
     //eigenvalues_bisect_cpu = viennacl::linalg::bisect(diagonal, superdiagonal);
-    bResult = true;
 
     // Ensure that eigenvalues from tql2 algorithm are sorted in ascending order
     std::sort(diagonal_tql.begin(), diagonal_tql.end());
@@ -180,7 +178,7 @@ runTest(const int mat_size)
 
 
     // Compare the results from the bisection algorithm with the results
-    // from the tql2 algorithm.
+    // from the tql algorithm.
     std::cout << "Start comparison..." << std::endl;
     for (uint i = 0; i < mat_size; i++)
     {
