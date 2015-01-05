@@ -233,7 +233,7 @@ main(int argc, char **argv)
     std::cout << "Kernel 1" << std::endl;
     for(unsigned int i = 0; i < time_index; i++)
     {
-      std::cout <<  mat_sizes[i] << "\t" << av_kernl1[i] << std::endl;
+      std::cout <<  mat_sizes[i] << "\t" << av_kernel1[i] << std::endl;
     }
 
     std::cout << "Kernel 2" << std::endl;
