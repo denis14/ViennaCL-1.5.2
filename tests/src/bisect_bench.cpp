@@ -191,7 +191,7 @@ main(int argc, char **argv)
     std::vector<double> av_time4  (500);
     std::vector<unsigned int> mat_sizes(500);
 
-    for( unsigned int mat_size = 20000;
+    for( unsigned int mat_size = 10;
          mat_size < 24000;
          mat_size = mat_size * 1.15, time_index++)
       {
