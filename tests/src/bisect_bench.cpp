@@ -192,7 +192,7 @@ main(int argc, char **argv)
     std::vector<unsigned int> mat_sizes(500);
 
     for( unsigned int mat_size = 10;
-         mat_size < 24000;
+         mat_size < 33000;
          mat_size = mat_size * 1.15, time_index++)
       {
       test_result = runTest(mat_size, av_time_all, time_index, av_time_pp, av_kernel1, av_kernel2, av_kernel3, av_time4);
