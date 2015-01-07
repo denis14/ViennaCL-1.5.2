@@ -39,6 +39,8 @@
 #include "viennacl/linalg/bisect_gpu.hpp"
 #include "viennacl/linalg/tql2.hpp"
 
+#include <examples/benchmarks/benchmark-utils.hpp>
+
 #define EPS 10.0e-4
 
 typedef float NumericT;
@@ -101,6 +103,7 @@ main(int argc, char **argv)
 
     // run test for large matrix
     test_result = runTest(260);
+    test_result = runTest(260);
     if(test_result == true)
     {
       std::cout << "First Test Succeeded!" << std::endl << std::endl;
@@ -148,8 +151,11 @@ runTest(const int mat_size)
     // -------Start the bisection algorithm------------
     std::cout << "Start the bisection algorithm" << std::endl;
     std::cout << "Matrix size: " << mat_size << std::endl;
+    Timer timer;
+    timer.start();
     bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect, times);
     // Exit if an error occured during the execution of the algorithm
+    std::cout << "time = \t" << timer.get() * 1000. << std::endl;
     if (bResult == false)
      return false;
     std::cout << "Times: " << times[1] << std::endl;
