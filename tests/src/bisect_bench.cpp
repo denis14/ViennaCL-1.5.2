@@ -148,8 +148,7 @@ runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_
 
 
       // Exit if an error occured during the execution of the algorithm
-      if (bResult == false)
-       return false;
+    
 
       time_all     += timer.get() * 1000;
       time_pp      += times[0];
@@ -157,6 +156,9 @@ runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_
       time_kernel2 += times[2];
       time_kernel3 += times[3];
       time_4       += times[4];
+      
+      if (bResult == false)
+       return false;
 
     }
 
@@ -192,7 +194,7 @@ main(int argc, char **argv)
     std::vector<unsigned int> mat_sizes(500);
 
     for( unsigned int mat_size = 100;
-         mat_size < 33000;
+         mat_size < 10000;
          mat_size = mat_size * 1.15, time_index++)
       {
       test_result = runTest(mat_size, av_time_all, time_index, av_time_pp, av_kernel1, av_kernel2, av_kernel3, av_time4);
@@ -229,7 +231,7 @@ main(int argc, char **argv)
     {
       std::cout <<  mat_sizes[i] << "\t" << av_time_all[i] << std::endl;
     }
-
+/*
     std::cout << "Kernel 1" << std::endl;
     for(unsigned int i = 0; i < time_index; i++)
     {
@@ -254,7 +256,7 @@ main(int argc, char **argv)
       std::cout <<  mat_sizes[i] << "\t" << av_time_pp[i] << std::endl;
     }
 
-
+*/
 
 }
 
