@@ -230,7 +230,7 @@ main(int argc, char **argv)
     {
       std::cout <<  mat_sizes[i] << "\t" << av_time_all[i] << std::endl;
     }
-/*
+
     std::cout << "Kernel 1" << std::endl;
     for(unsigned int i = 0; i < time_index; i++)
     {
@@ -255,7 +255,7 @@ main(int argc, char **argv)
       std::cout <<  mat_sizes[i] << "\t" << av_time_pp[i] << std::endl;
     }
 
-*/
+
 
 }
 
