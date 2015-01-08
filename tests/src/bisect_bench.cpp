@@ -110,7 +110,7 @@ runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_
 
 
 
-    // for tql2 algorithm
+    // for tql algorithm
     //viennacl::matrix<NumericT, viennacl::row_major> Q = viennacl::identity_matrix<NumericT>(mat_size);
 
 
@@ -119,7 +119,6 @@ runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_
     std::cout << "Matrix size: " << mat_size << std::endl;
 
     unsigned int iterations = 10;
-    unsigned int max_eigen_abs = 0;
     double time_pp      = 0.0;
     double time_kernel1 = 0.0;
     double time_kernel2 = 0.0;
@@ -163,7 +162,7 @@ runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_
     }
 
 
-    std::cout << "Time: \t" << time_all / (double)iterations << "ms" <<  " max_eigen:\t" << max_eigen_abs << std::endl;
+    std::cout << "Time: \t" << time_all / (double)iterations << "ms" <<  " max_eigen:\t" << std::endl;
 
     av_time_all[time_index] = time_all     / (double)iterations;
     av_time_pp [time_index] = time_pp      / (double)iterations;
@@ -193,8 +192,8 @@ main(int argc, char **argv)
     std::vector<double> av_time4  (500);
     std::vector<unsigned int> mat_sizes(500);
 
-    for( unsigned int mat_size = 100;
-         mat_size < 10000;
+    for( unsigned int mat_size = 10;
+         mat_size < 33000;
          mat_size = mat_size * 1.15, time_index++)
       {
       test_result = runTest(mat_size, av_time_all, time_index, av_time_pp, av_kernel1, av_kernel2, av_kernel3, av_time4);

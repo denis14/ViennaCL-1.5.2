@@ -106,8 +106,6 @@ processResultDataLargeMatrix(ResultDataLarge<NumericT> &result,
                              const unsigned int mat_size, std::vector<double> &times)
 {
     bool bCompareResult = true;
-    Timer timer_pp;
-    timer_pp.start();
     // copy data from intervals that contained more than one eigenvalue after
     // the first processing step
     std::vector<NumericT> lambda_mult(mat_size);
@@ -154,8 +152,6 @@ processResultDataLargeMatrix(ResultDataLarge<NumericT> &result,
     {
         result.std_eigenvalues[pos_one[i] - 1] = left_one[i];
     }
-  //  viennacl::backend::finish();
-  //  times[0] = timer_pp.get() * 1000;
     return bCompareResult;
 }
 } // namespace detail
