@@ -118,7 +118,7 @@ runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_
     std::cout << "Start the bisection algorithm" << std::endl;
     std::cout << "Matrix size: " << mat_size << std::endl;
 
-    unsigned int iterations = 10;
+    unsigned int iterations = 20;
     double time_pp      = 0.0;
     double time_kernel1 = 0.0;
     double time_kernel2 = 0.0;
