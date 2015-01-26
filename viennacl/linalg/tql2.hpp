@@ -77,7 +77,7 @@ namespace linalg
                   // Compute implicit shift
                   SCALARTYPE g = d[l];
                   SCALARTYPE p = (d[l + 1] - g) / (2 * e[l]);
-                  SCALARTYPE r = viennacl::linalg::detail::pythag<SCALARTYPE>(p, 1.);
+                  SCALARTYPE r = viennacl::linalg::detail::pythag<SCALARTYPE>(p, 1);
                   if (p < 0)
                   {
                       r = -r;

@@ -56,7 +56,7 @@ typedef float NumericT;
 /// \param mat_size        Dimension of the matrix
 ///
 void
-initInputData(viennacl::vector<NumericT> &diagonal, viennacl::vector<NumericT> &superdiagonal, const unsigned int mat_size)
+initInputData(std::vector<NumericT> &diagonal, std::vector<NumericT> &superdiagonal, const unsigned int mat_size)
 {
 
   srand(time(NULL));
@@ -102,8 +102,8 @@ runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_
         std::vector<double> &av_time4)
     {
     bool bResult = false;
-    viennacl::vector<NumericT> diagonal(mat_size);
-    viennacl::vector<NumericT> superdiagonal(mat_size);
+    std::vector<NumericT> diagonal(mat_size);
+    std::vector<NumericT> superdiagonal(mat_size);
     viennacl::vector<NumericT> eigenvalues_bisect(mat_size);
     std::vector<NumericT> eigenvalues_bisect_cpu(mat_size);
     std::vector<double> times(5);
@@ -118,7 +118,7 @@ runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_
     std::cout << "Start the bisection algorithm" << std::endl;
     std::cout << "Matrix size: " << mat_size << std::endl;
 
-    unsigned int iterations = 20;
+    unsigned int iterations = 10;
     double time_pp      = 0.0;
     double time_kernel1 = 0.0;
     double time_kernel2 = 0.0;
@@ -150,12 +150,12 @@ runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_
     
 
       time_all     += timer.get() * 1000;
-      time_pp      += times[0];
+     /* time_pp      += times[0];
       time_kernel1 += times[1];
       time_kernel2 += times[2];
       time_kernel3 += times[3];
       time_4       += times[4];
-      
+      */
       if (bResult == false)
        return false;
 
