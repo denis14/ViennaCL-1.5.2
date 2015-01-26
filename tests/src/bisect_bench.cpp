@@ -134,11 +134,11 @@ runTest(const int mat_size, std::vector<double> &av_time_all, unsigned int time_
       timer.start();
 
       // bisection - gpu
-      bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect, times);
-      viennacl::backend::finish();     // sync
+   //   bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect, times);
+   //   viennacl::backend::finish();     // sync
       //---Run the tql2 algorithm-----------------------------------
-      //viennacl::linalg::tql1<NumericT>(mat_size, diagonal, superdiagonal);
-      //bResult = true;
+      viennacl::linalg::tql1<NumericT>(mat_size, diagonal, superdiagonal);
+      bResult = true;
 
       // Run the bisect algorithm for CPU only
       //eigenvalues_bisect_cpu = viennacl::linalg::bisect(diagonal, superdiagonal);
