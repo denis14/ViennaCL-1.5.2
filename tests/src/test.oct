@@ -3,7 +3,7 @@ disp("Eigenvalue Computation of a Tridiagonal Symmetric Matrix");
 mat_size = 16;
 m = 1;
 mat_times = zeros(50, 2);
-while mat_size < 3000
+while mat_size < 13000
   disp("Start Computation of matrix with dimension "), disp(mat_size), disp(" ");
   mat_times(m, 1) = mat_size;
   k = 0;

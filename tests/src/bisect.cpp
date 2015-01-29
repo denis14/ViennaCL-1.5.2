@@ -62,10 +62,10 @@ initInputData(std::vector<NumericT> &diagonal, std::vector<NumericT> &superdiago
 {
  
   srand(278217421);
-  bool randomValues = false;
-  
-  
-  if (randomValues == true)
+
+#define RANDOM_VALUES false
+
+  if (RANDOM_VALUES == true)
   {
     // Initialize diagonal and superdiagonal elements with random values
     for (unsigned int i = 0; i < mat_size; ++i)
@@ -82,8 +82,8 @@ initInputData(std::vector<NumericT> &diagonal, std::vector<NumericT> &superdiago
     // This will cause in many multiple eigenvalues.
     for (unsigned int i = 0; i < mat_size; ++i)
     {
-       diagonal[i] = ((NumericT)(i % 8)) - 4.5f;
-       superdiagonal[i] = ((NumericT)(i % 5)) - 4.5f;
+       diagonal[i] = ((NumericT)(i % 3)) - 4.5f;
+       superdiagonal[i] = ((NumericT)(i % 3)) - 5.5f;
     }
   }
   // the first element of s is used as padding on the device (thus the
@@ -102,8 +102,7 @@ main(int argc, char **argv)
     bool test_result = false;
 
     // run test for large matrix
-    test_result = runTest(260);
-    test_result = runTest(260);
+    test_result = runTest(250);
     if(test_result == true)
     {
       std::cout << "First Test Succeeded!" << std::endl << std::endl;
@@ -115,7 +114,7 @@ main(int argc, char **argv)
     }
 
     // run test for small matrix
-    test_result = runTest(4096);
+    test_result = runTest(96);
 
     if(test_result == true)
    {
@@ -147,22 +146,19 @@ runTest(const int mat_size)
     // Fill the diagonal and superdiagonal elements of the vector
     initInputData(diagonal, superdiagonal, mat_size);
 
-
     // -------Start the bisection algorithm------------
     std::cout << "Start the bisection algorithm" << std::endl;
     std::cout << "Matrix size: " << mat_size << std::endl;
     Timer timer;
     timer.start();
-    bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect, times);
+    bResult = viennacl::linalg::bisect(diagonal, superdiagonal, eigenvalues_bisect);
     // Exit if an error occured during the execution of the algorithm
     std::cout << "time = \t" << timer.get() * 1000. << std::endl;
     if (bResult == false)
      return false;
-    std::cout << "Times: " << times[1] << std::endl;
-
 
     // ---------------Check the results---------------
-    // The results of the bisection algorithm will be checked with the tql2 algorithm
+    // The results of the bisection algorithm will be checked with the tql algorithm
     // Initialize Data for tql1 algorithm
     std::vector<NumericT> diagonal_tql(mat_size);
     std::vector<NumericT> superdiagonal_tql(mat_size);

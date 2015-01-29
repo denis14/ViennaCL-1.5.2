@@ -57,8 +57,7 @@ namespace linalg
 //! overloaded function template: std::vectors as parameters
 template<typename NumericT>
 bool
-bisect(const std::vector<NumericT> & diagonal, const std::vector<NumericT> & superdiagonal, std::vector<NumericT> & eigenvalues,
-       std::vector<double> &times)
+bisect(const std::vector<NumericT> & diagonal, const std::vector<NumericT> & superdiagonal, std::vector<NumericT> & eigenvalues)
 {
 //  Timer timer;
 //  timer.start();
@@ -102,10 +101,10 @@ bisect(const std::vector<NumericT> & diagonal, const std::vector<NumericT> & sup
 
     // run the kernel
     viennacl::linalg::detail::computeEigenvaluesLargeMatrix(input, result, mat_size,
-                                  lg, ug, precision, times);
+                                  lg, ug, precision);
 
     // get the result from the device and do some sanity checks
-    bResult = viennacl::linalg::detail::processResultDataLargeMatrix(result, mat_size, times);
+    bResult = viennacl::linalg::detail::processResultDataLargeMatrix(result, mat_size);
     eigenvalues = result.std_eigenvalues;
   }
   viennacl::backend::finish();
@@ -125,8 +124,7 @@ bisect(const std::vector<NumericT> & diagonal, const std::vector<NumericT> & sup
 //! overloaded function template: viennacl::vectors as parameters
 template<typename NumericT>
 bool
-bisect(const viennacl::vector<NumericT> & diagonal, const viennacl::vector<NumericT> & superdiagonal, viennacl::vector<NumericT> & eigenvalues,
-       std::vector<double> &times)
+bisect(const viennacl::vector<NumericT> & diagonal, const viennacl::vector<NumericT> & superdiagonal, viennacl::vector<NumericT> & eigenvalues)
 {
 //  Timer timer;
 //  timer.start();
@@ -172,11 +170,11 @@ bisect(const viennacl::vector<NumericT> & diagonal, const viennacl::vector<Numer
     // run the kernel
 
     viennacl::linalg::detail::computeEigenvaluesLargeMatrix(input, result, mat_size,
-                                  lg, ug, precision, times);
+                                  lg, ug, precision);
 
     // get the result from the device and do some sanity checks
 
-   bResult = viennacl::linalg::detail::processResultDataLargeMatrix(result, mat_size, times);
+   bResult = viennacl::linalg::detail::processResultDataLargeMatrix(result, mat_size);
   // bResult = true;
 
 
