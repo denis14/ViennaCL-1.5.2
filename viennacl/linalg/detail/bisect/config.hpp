@@ -28,11 +28,11 @@
 */
 
 // should be power of two
-#define  MAX_THREADS_BLOCK                128 // urspruenglich 256
+#define  MAX_THREADS_BLOCK                256 // urspruenglich 256
 
 #define  MAX_SMALL_MATRIX                 256 // urspruenglich 512
 #define  MAX_THREADS_BLOCK_SMALL_MATRIX   256 // urspruenglich 512
 
 #define  MIN_ABS_INTERVAL                 5.0e-37
 
- #endif // #ifndef VIENNACL_LINALG_DETAIL_CONFIG_HPP_
+ #endif //#ifndef VIENNACL_LINALG_DETAIL_BISECT_CONFIG_HPP_

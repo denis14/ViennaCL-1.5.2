@@ -72,6 +72,11 @@ computeEigenvaluesLargeMatrix(InputData<NumericT> &input, ResultDataLarge<Numeri
   // bisect_Large_MultIntervals is executed
   viennacl::linalg::detail::bisectLarge(input, result, mat_size, lg, ug, precision);
 
+  unsigned int num_one_intervals = result.g_num_one;
+  printf("num_blocks_one  = %u\n", num_one_intervals );
+
+  unsigned int num_blocks_mult = result.g_num_blocks_mult;
+  printf("num_blocks_mult = %u\n", num_blocks_mult);
 
 
   // compute eigenvalues for intervals that contained only one eigenvalue
@@ -132,7 +137,8 @@ processResultDataLargeMatrix(ResultDataLarge<NumericT> &result,
 
       else
       {
-        printf("pos_mult[%u] = %u\n", i, pos_mult[i]);
+
+        printf("linalg/detail/bisect_large.hpp: pos_mult[%u] = %u\n", i, pos_mult[i]);
         bCompareResult = false;
       }
     }

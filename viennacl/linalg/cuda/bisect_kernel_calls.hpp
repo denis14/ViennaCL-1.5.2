@@ -160,7 +160,7 @@ void bisectLarge_MultIntervals(const viennacl::linalg::detail::InputData<Numeric
     }
    else
    {
-      std::cout << "bisectKernelLarge_MultIntervals wurde nicht aufgerufen" << std::endl;
+      std::cout << "linalg/cuda/bisect_kernel_calls.hpp: bisectKernelLarge_MultIntervals wurde nicht aufgerufen" << std::endl;
    }
 
 }
