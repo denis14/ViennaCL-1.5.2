@@ -30,8 +30,13 @@
 // should be power of two
 #define  MAX_THREADS_BLOCK                256 // urspruenglich 256
 
-#define  MAX_SMALL_MATRIX                 256 // urspruenglich 512
-#define  MAX_THREADS_BLOCK_SMALL_MATRIX   256 // urspruenglich 512
+#ifdef VIENNACL_WITH_OPENCL
+#  define MAX_SMALL_MATRIX                 256 // urspruenglich 512
+#  define MAX_THREADS_BLOCK_SMALL_MATRIX   256 // urspruenglich 512
+#else
+#  define MAX_SMALL_MATRIX                  512
+#  define MAX_THREADS_BLOCK_SMALL_MATRIX    512
+#endif
 
 #define  MIN_ABS_INTERVAL                 5.0e-37
 

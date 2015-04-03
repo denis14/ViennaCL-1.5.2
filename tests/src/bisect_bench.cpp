@@ -155,7 +155,7 @@ main(int argc, char **argv)
     std::vector<unsigned int> mat_sizes(500);
 
     for( unsigned int mat_size = 16;
-         mat_size < 550;
+         mat_size < 600;
          mat_size = mat_size * 1.15, time_index++)
       {
       test_result = runTest(mat_size, av_time_all, time_index);
